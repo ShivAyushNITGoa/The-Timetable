@@ -1,0 +1,482 @@
+import React, { useState, useEffect } from 'react';
+import { Navbar, ActiveTab } from './components/Navbar';
+import { DayScheduleView } from './components/DayScheduleView';
+import { WeeklyGridView } from './components/WeeklyGridView';
+import { CoursesDirectory } from './components/CoursesDirectory';
+import { AttendanceTracker } from './components/AttendanceTracker';
+import { ExamScheduleView } from './components/ExamScheduleView';
+import { AcademicPortalView } from './components/AcademicPortalView';
+import { TestCalendarView } from './components/TestCalendarView';
+import { BranchYearSelector } from './components/BranchYearSelector';
+import { ScheduleCustomizerModal } from './components/ScheduleCustomizerModal';
+import { CourseModal } from './components/CourseModal';
+import { MobileBottomNav } from './components/MobileBottomNav';
+import { BrandLogo } from './components/BrandLogo';
+import {
+  StudentProfile,
+  DEFAULT_STUDENT_PROFILE,
+  getActiveBranchSemesterData,
+  BRANCHES_LIST,
+} from './data/branchesData';
+import { AcademicTest } from './data/testTypes';
+import {
+  getStoredTests,
+  saveStoredTests,
+  addAcademicTest,
+  deleteAcademicTest,
+} from './utils/testStorage';
+import { downloadICS } from './utils/calendarExport';
+import { TimeSlot, DayOfWeek } from './data/timetableData';
+import { initPWA } from './pwa';
+import {
+  Sparkles,
+  CalendarCheck,
+  Building2,
+  CheckCircle,
+  Sliders,
+  ChevronRight,
+  Plus,
+} from 'lucide-react';
+
+export default function App() {
+  const [activeTab, setActiveTab] = useState<ActiveTab>('day');
+
+  // Universal Student Profile (Branch, Year, Semester, Batch, Elective, Minor)
+  const [profile, setProfile] = useState<StudentProfile>(() => {
+    try {
+      const saved = localStorage.getItem('nit_goa_student_profile');
+      if (saved && saved !== 'undefined' && saved !== 'null') {
+        const parsed = JSON.parse(saved);
+        if (parsed && typeof parsed === 'object' && parsed.branch) {
+          return {
+            ...DEFAULT_STUDENT_PROFILE,
+            ...parsed,
+          };
+        }
+      }
+    } catch (e) {
+      console.error(e);
+    }
+    return DEFAULT_STUDENT_PROFILE;
+  });
+
+  const safeProfile: StudentProfile = profile && profile.branch ? profile : DEFAULT_STUDENT_PROFILE;
+
+  // Active Branch & Semester Dataset
+  const activeBranchData = getActiveBranchSemesterData(safeProfile.branch, safeProfile.semester);
+
+  // Determine default day based on today's date
+  const [selectedDay, setSelectedDay] = useState<DayOfWeek>(() => {
+    const day = new Date().getDay();
+    const daysMap: Record<number, DayOfWeek> = {
+      0: 'Sunday',
+      1: 'Monday',
+      2: 'Tuesday',
+      3: 'Wednesday',
+      4: 'Thursday',
+      5: 'Friday',
+      6: 'Saturday',
+    };
+    return daysMap[day] || 'Monday';
+  });
+
+  // Elective Choice (EE541 vs EE545 for EEE, or from profile)
+  const [selectedElective, setSelectedElective] = useState<string>(() => {
+    return safeProfile.elective || safeProfile.electiveCode || 'EE541';
+  });
+
+  // Lab Batch Choice (batch1 vs batch2)
+  const [selectedBatch, setSelectedBatch] = useState<string>(() => {
+    return safeProfile.batch || safeProfile.labBatch || 'batch1';
+  });
+
+  // Customized Schedule Override (persisted per branch/sem)
+  const [scheduleOverride, setScheduleOverride] = useState<
+    Record<DayOfWeek, TimeSlot[]> | null
+  >(() => {
+    try {
+      const key = `nit_goa_schedule_${safeProfile.branch}_${safeProfile.semester}`;
+      const saved = localStorage.getItem(key);
+      if (saved) return JSON.parse(saved);
+    } catch (e) {
+      console.error(e);
+    }
+    return null;
+  });
+
+  // Academic Tests List
+  const [tests, setTests] = useState<AcademicTest[]>(() => {
+    return getStoredTests();
+  });
+
+  // Modal states
+  const [isBranchSelectorOpen, setIsBranchSelectorOpen] = useState(false);
+  const [isCustomizerOpen, setIsCustomizerOpen] = useState(false);
+  const [activeModalCourse, setActiveModalCourse] = useState<string | null>(null);
+
+  // Toast message
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  // PWA initialization
+  useEffect(() => {
+    initPWA();
+  }, []);
+
+  // Save profile to localStorage
+  useEffect(() => {
+    try {
+      if (profile && profile.branch) {
+        localStorage.setItem('nit_goa_student_profile', JSON.stringify(profile));
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, [profile]);
+
+  // Sync tests from localStorage
+  const refreshTests = () => {
+    setTests(getStoredTests());
+  };
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => {
+      setToastMessage(null);
+    }, 3500);
+  };
+
+  // Profile save handler from modal
+  const handleSaveProfile = (newProfile: StudentProfile) => {
+    setProfile(newProfile);
+    if (newProfile.elective) setSelectedElective(newProfile.elective);
+    else if (newProfile.electiveCode) setSelectedElective(newProfile.electiveCode);
+    if (newProfile.batch) setSelectedBatch(newProfile.batch);
+    else if (newProfile.labBatch) setSelectedBatch(newProfile.labBatch);
+
+    // Reset schedule override if branch/sem changed
+    const key = `nit_goa_schedule_${newProfile.branch}_${newProfile.semester}`;
+    const saved = localStorage.getItem(key);
+    setScheduleOverride(saved ? JSON.parse(saved) : null);
+
+    showToast(
+      `Switched to Year ${newProfile.year} • Semester ${newProfile.semester} (${newProfile.branch})`
+    );
+  };
+
+  // Schedule customization save handler
+  const handleSaveScheduleDay = (
+    day: DayOfWeek,
+    slots: TimeSlot[]
+  ) => {
+    const currentSchedule = scheduleOverride || activeBranchData.schedule;
+    const updated = {
+      ...currentSchedule,
+      [day]: slots,
+    };
+    setScheduleOverride(updated);
+    try {
+      localStorage.setItem(
+        `nit_goa_schedule_${safeProfile.branch}_${safeProfile.semester}`,
+        JSON.stringify(updated)
+      );
+    } catch (e) {
+      console.error(e);
+    }
+    showToast(`Saved customized timetable for ${day}`);
+  };
+
+  const handleResetSchedule = () => {
+    setScheduleOverride(null);
+    try {
+      localStorage.removeItem(`nit_goa_schedule_${safeProfile.branch}_${safeProfile.semester}`);
+    } catch (e) {
+      console.error(e);
+    }
+    showToast('Reset timetable to official institute master schedule');
+  };
+
+  // Test operations
+  const handleAddTest = (newTest: Omit<AcademicTest, 'id' | 'createdAt'>) => {
+    addAcademicTest(newTest);
+    refreshTests();
+    showToast(`Added test for ${newTest.courseCode}: ${newTest.title}`);
+  };
+
+  const handleDeleteTest = (id: string) => {
+    deleteAcademicTest(id);
+    refreshTests();
+    showToast('Test removed from calendar');
+  };
+
+  // Export calendar handler
+  const handleExportCalendar = () => {
+    const effectiveSchedule = scheduleOverride || activeBranchData.schedule;
+    downloadICS({
+      branch: safeProfile.branch,
+      semester: safeProfile.semester,
+      schedule: effectiveSchedule,
+      courses: activeBranchData.courses,
+      tests,
+      elective: selectedElective,
+      batch: selectedBatch,
+    });
+    showToast('Timetable & scheduled tests exported as .ics calendar file!');
+  };
+
+  const effectiveSchedule = scheduleOverride || activeBranchData.schedule;
+  const branchInfo = BRANCHES_LIST.find((b) => b.code === safeProfile.branch) || BRANCHES_LIST[0];
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
+      {/* Main Navigation Header with Branch Switcher & Test Tab */}
+      <Navbar
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        profile={safeProfile}
+        onOpenBranchSelector={() => setIsBranchSelectorOpen(true)}
+        selectedElective={selectedElective}
+        setSelectedElective={setSelectedElective}
+        selectedBatch={selectedBatch}
+        setSelectedBatch={setSelectedBatch}
+        onExportCalendar={handleExportCalendar}
+        testCount={tests.length}
+      />
+
+      {/* Universal Student Profile Context Strip (Hidden on mobile to preserve vertical screen estate) */}
+      <div className="hidden sm:block bg-slate-900/70 border-b border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2 flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div className="flex items-center gap-2 text-slate-300 flex-wrap">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+            <span>
+              Active Curriculum:{' '}
+              <strong className="text-white">
+                B.Tech {safeProfile.year}
+                {safeProfile.year === 1
+                  ? 'st'
+                  : safeProfile.year === 2
+                  ? 'nd'
+                  : safeProfile.year === 3
+                  ? 'rd'
+                  : 'th'}{' '}
+                Year • Sem {safeProfile.semester} ({safeProfile.branch} - {branchInfo.name})
+              </strong>
+            </span>
+
+            {safeProfile.branch === 'EEE' && safeProfile.semester === 5 && safeProfile.hasMinor && (
+              <>
+                <span className="text-slate-600">•</span>
+                <span className="text-cyan-300 font-semibold flex items-center gap-1">
+                  <Sparkles className="w-3 h-3 text-cyan-400" />
+                  CS300M (CSE Minor) Active
+                </span>
+              </>
+            )}
+
+            {scheduleOverride && (
+              <span className="px-2 py-0.2 rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/30 font-semibold">
+                Custom Schedule Active
+              </span>
+            )}
+          </div>
+
+          <div className="flex items-center gap-3 text-slate-400">
+            {/* Quick Test reminder badge */}
+            <button
+              onClick={() => setActiveTab('tests')}
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-amber-300 transition text-[11px] font-semibold border border-slate-700"
+            >
+              <CalendarCheck className="w-3.5 h-3.5 text-amber-400" />
+              <span>{tests.length} Tests in Calendar</span>
+            </button>
+
+            {/* Change Profile CTA */}
+            <button
+              onClick={() => setIsBranchSelectorOpen(true)}
+              className="inline-flex items-center gap-1 text-slate-400 hover:text-amber-400 transition"
+              title="Change your branch or academic year"
+            >
+              <Building2 className="w-3.5 h-3.5 text-amber-400" />
+              <span className="underline decoration-slate-700">Switch Branch / Year</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content Area */}
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-6 pb-28 sm:pb-8">
+        {/* Day Schedule Tab */}
+        {activeTab === 'day' && (
+          <DayScheduleView
+            selectedDay={selectedDay}
+            onSelectDay={setSelectedDay}
+            selectedElective={selectedElective}
+            selectedBatch={selectedBatch}
+            onOpenCourseModal={setActiveModalCourse}
+            schedule={effectiveSchedule}
+            courses={activeBranchData.courses}
+            branch={safeProfile.branch}
+            semester={safeProfile.semester}
+            tests={tests}
+            onOpenCustomizer={() => setIsCustomizerOpen(true)}
+          />
+        )}
+
+        {/* Weekly Matrix Grid Tab */}
+        {activeTab === 'weekly' && (
+          <WeeklyGridView
+            schedule={effectiveSchedule}
+            courses={activeBranchData.courses}
+            selectedElective={selectedElective}
+            selectedBatch={selectedBatch}
+            onOpenCourseModal={setActiveModalCourse}
+            branch={safeProfile.branch}
+            semester={safeProfile.semester}
+          />
+        )}
+
+        {/* Tests & Quizzes Calendar Tab */}
+        {activeTab === 'tests' && (
+          <TestCalendarView
+            tests={tests}
+            onAddTest={handleAddTest}
+            onDeleteTest={handleDeleteTest}
+            onExportCalendar={handleExportCalendar}
+            courses={activeBranchData.courses}
+            branch={safeProfile.branch}
+            semester={safeProfile.semester}
+          />
+        )}
+
+        {/* Courses Directory Tab */}
+        {activeTab === 'courses' && (
+          <CoursesDirectory
+            onOpenCourseModal={setActiveModalCourse}
+            selectedElective={selectedElective}
+            courses={activeBranchData.courses}
+            branch={safeProfile.branch}
+            semester={safeProfile.semester}
+          />
+        )}
+
+        {/* 75% Attendance Tracker Tab */}
+        {activeTab === 'attendance' && (
+          <AttendanceTracker
+            courses={activeBranchData.courses}
+            selectedElective={selectedElective}
+            branch={safeProfile.branch}
+            semester={safeProfile.semester}
+          />
+        )}
+
+        {/* Exam Slots Tab */}
+        {activeTab === 'exams' && (
+          <ExamScheduleView
+            courses={activeBranchData.courses}
+            selectedElective={selectedElective}
+            onOpenCourseModal={setActiveModalCourse}
+            branch={safeProfile.branch}
+            semester={safeProfile.semester}
+          />
+        )}
+
+        {/* SGPA & Academic Hub Tab */}
+        {activeTab === 'academic' && (
+          <AcademicPortalView
+            courses={activeBranchData.courses}
+            selectedElective={selectedElective}
+            onOpenCourseModal={setActiveModalCourse}
+            branch={safeProfile.branch}
+            semester={safeProfile.semester}
+          />
+        )}
+      </main>
+
+      {/* Universal Branch & Year Selection Modal */}
+      <BranchYearSelector
+        isOpen={isBranchSelectorOpen}
+        onClose={() => setIsBranchSelectorOpen(false)}
+        profile={safeProfile}
+        currentProfile={safeProfile}
+        onSaveProfile={handleSaveProfile}
+      />
+
+      {/* Schedule Customizer Modal */}
+      <ScheduleCustomizerModal
+        isOpen={isCustomizerOpen}
+        onClose={() => setIsCustomizerOpen(false)}
+        selectedDay={selectedDay}
+        currentSlots={effectiveSchedule[selectedDay] || []}
+        courses={activeBranchData.courses}
+        onSaveSlots={(slots) => handleSaveScheduleDay(selectedDay, slots)}
+        onResetSchedule={handleResetSchedule}
+      />
+
+      {/* Course Detail Modal */}
+      <CourseModal
+        courseCode={activeModalCourse}
+        courses={activeBranchData.courses}
+        onClose={() => setActiveModalCourse(null)}
+        onTrackAttendance={() => {
+          setActiveTab('attendance');
+          showToast(`Switched to Attendance Tracker for ${activeModalCourse}`);
+        }}
+      />
+
+      {/* Mobile Bottom Navigation Bar (Docked on < sm screens) */}
+      <MobileBottomNav
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        testCount={tests.length}
+        profile={safeProfile}
+        onOpenBranchSelector={() => setIsBranchSelectorOpen(true)}
+        onExportCalendar={handleExportCalendar}
+        onOpenCustomizer={() => setIsCustomizerOpen(true)}
+      />
+
+      {/* Floating Action Toast Notification (positioned above mobile nav) */}
+      {toastMessage && (
+        <div className="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-50 bg-slate-900 border border-amber-500/40 text-slate-100 px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-200">
+          <CheckCircle className="w-5 h-5 text-amber-400 shrink-0" />
+          <span className="text-xs sm:text-sm font-medium">{toastMessage}</span>
+        </div>
+      )}
+
+      {/* Institutional Footer */}
+      <footer className="mt-auto border-t border-slate-800 bg-slate-900/90 py-8 text-xs text-slate-400 pb-24 sm:pb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-left">
+            {/* The GDevelopers Brand Logo in Footer */}
+            <BrandLogo
+              iconSize={42}
+              showText={true}
+              variant="dark"
+              subtitle="Engineering Student Solutions"
+            />
+
+            <div className="h-10 w-px bg-slate-800 hidden sm:block" />
+
+            <div>
+              <div className="text-slate-200 font-semibold">
+                National Institute of Technology Goa • राष्ट्रीय प्रौद्योगिकी संस्थान गोवा
+              </div>
+              <div className="text-[11px] text-slate-400 mt-0.5">
+                Odd Semester Master Timetable • Cuncolim Campus
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-6 text-[11px] text-slate-400">
+            <div className="text-center sm:text-right">
+              <span className="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Academics</span>
+              <span className="text-slate-300">Dr. Mini (Dean)</span> • <span className="text-slate-300">Dr. Suresh Mikkili (Timetable)</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-800/80 border border-slate-700/80">
+              <span className="w-2 h-2 rounded-full bg-[#9EB81E] animate-pulse"></span>
+              <span className="text-slate-300 font-medium text-[11px]">Powered by The GDevelopers</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}

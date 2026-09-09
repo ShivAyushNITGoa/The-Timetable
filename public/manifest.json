@@ -1,0 +1,77 @@
+{
+  "name": "The GDevelopers - Hardware & Silicon Engineering Tracker",
+  "short_name": "The GDevelopers",
+  "description": "Comprehensive progress tracker, curriculum breakdown, tools master, and semiconductor/embedded engineering OS by The GDevelopers.",
+  "start_url": "/",
+  "id": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#09090b",
+  "theme_color": "#0f172a",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["education", "productivity", "utilities", "developer"],
+  "icons": [
+    {
+      "src": "/g-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/G%20icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "64x64",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Internship Pipeline",
+      "short_name": "Pipeline",
+      "description": "Explore 80+ Semiconductor and Embedded companies",
+      "url": "/#companies",
+      "icons": [{ "src": "/favicon.svg", "sizes": "64x64" }]
+    },
+    {
+      "name": "Curriculum Modules",
+      "short_name": "Curriculum",
+      "description": "Track VLSI, RISC-V and RTL curriculum progress",
+      "url": "/#curriculum",
+      "icons": [{ "src": "/favicon.svg", "sizes": "64x64" }]
+    },
+    {
+      "name": "Industry Tools",
+      "short_name": "Tools",
+      "description": "Explore open-source & commercial EDA / simulation toolchains",
+      "url": "/#tools",
+      "icons": [{ "src": "/favicon.svg", "sizes": "64x64" }]
+    }
+  ],
+  "screenshots": []
+}

@@ -1,0 +1,273 @@
+import React from 'react';
+import { BRANCHES_LIST, BranchCode, StudentProfile, DEFAULT_STUDENT_PROFILE } from '../data/branchesData';
+import { X, Check, GraduationCap, Building2, BookOpen, Layers, Sparkles } from 'lucide-react';
+import { BrandIcon } from './BrandLogo';
+
+interface BranchYearSelectorProps {
+  isOpen: boolean;
+  onClose: () => void;
+  profile?: StudentProfile;
+  currentProfile?: StudentProfile;
+  onSaveProfile: (profile: StudentProfile) => void;
+}
+
+export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
+  isOpen,
+  onClose,
+  profile,
+  currentProfile,
+  onSaveProfile,
+}) => {
+  const activeProfile = profile || currentProfile || DEFAULT_STUDENT_PROFILE;
+
+  const [selectedBranch, setSelectedBranch] = React.useState<BranchCode>(activeProfile?.branch || 'EEE');
+  const [selectedYear, setSelectedYear] = React.useState<number>(activeProfile?.year || 3);
+  const [selectedSemester, setSelectedSemester] = React.useState<number>(activeProfile?.semester || 5);
+  const [labBatch, setLabBatch] = React.useState<string>(activeProfile?.labBatch || activeProfile?.batch || 'batch1');
+  const [hasMinor, setHasMinor] = React.useState<boolean>(activeProfile?.hasMinor ?? true);
+
+  // Sync state whenever the modal opens or the profile updates
+  React.useEffect(() => {
+    if (isOpen) {
+      const p = profile || currentProfile || DEFAULT_STUDENT_PROFILE;
+      setSelectedBranch(p.branch || 'EEE');
+      setSelectedYear(p.year || 3);
+      setSelectedSemester(p.semester || 5);
+      setLabBatch(p.labBatch || p.batch || 'batch1');
+      setHasMinor(p.hasMinor ?? true);
+    }
+  }, [isOpen, profile, currentProfile]);
+
+  if (!isOpen) return null;
+
+  // When year changes, update semester sensibly
+  const handleYearChange = (year: number) => {
+    setSelectedYear(year);
+    // Odd semester is typically autumn (1, 3, 5, 7)
+    const defaultSem = year * 2 - 1;
+    setSelectedSemester(defaultSem);
+  };
+
+  const handleSave = () => {
+    const p = profile || currentProfile || DEFAULT_STUDENT_PROFILE;
+    onSaveProfile({
+      ...p,
+      branch: selectedBranch,
+      year: selectedYear,
+      semester: selectedSemester,
+      labBatch,
+      batch: labBatch,
+      hasMinor: selectedBranch === 'EEE' && selectedSemester === 5 ? hasMinor : false,
+      minorCode: hasMinor ? 'CS300M' : undefined,
+    });
+    onClose();
+  };
+
+  const activeBranchInfo = BRANCHES_LIST.find((b) => b.code === selectedBranch) || BRANCHES_LIST[0];
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200">
+      <div className="bg-slate-900 border border-slate-700/80 rounded-3xl max-w-xl w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition"
+          aria-label="Close"
+        >
+          <X className="w-5 h-5" />
+        </button>
+
+        {/* Modal Header */}
+        <div className="flex items-center gap-3.5 mb-6">
+          <BrandIcon size={48} className="shrink-0 rounded-2xl shadow-lg shadow-[#9EB81E]/20" />
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] uppercase font-bold text-[#9EB81E] tracking-wider">The GDevelopers Hub</span>
+            </div>
+            <h2 className="text-lg sm:text-xl font-bold text-white tracking-tight">Select Branch & Academic Year</h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Switch curriculum, slot schedules, and room allocations across all NIT Goa programs.
+            </p>
+          </div>
+        </div>
+
+        {/* Step 1: Select Engineering Branch */}
+        <div className="space-y-3 mb-6">
+          <label className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
+            <Building2 className="w-3.5 h-3.5 text-amber-400" />
+            1. Engineering Branch (Department)
+          </label>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            {BRANCHES_LIST.map((branch) => {
+              const isSelected = selectedBranch === branch.code;
+              return (
+                <button
+                  key={branch.code}
+                  type="button"
+                  onClick={() => setSelectedBranch(branch.code)}
+                  className={`p-3.5 rounded-2xl text-left border transition-all flex items-start justify-between gap-2 ${
+                    isSelected
+                      ? 'bg-slate-800 border-amber-500 shadow-md shadow-amber-500/10 ring-1 ring-amber-500/50'
+                      : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 hover:bg-slate-800/40'
+                  }`}
+                >
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className={`font-mono font-bold text-sm ${branch.iconColor}`}>
+                        {branch.code}
+                      </span>
+                      <span className="text-xs font-semibold text-slate-200">
+                        {branch.name}
+                      </span>
+                    </div>
+                    <div className="text-[11px] text-slate-400 mt-1 line-clamp-1">
+                      {branch.fullName}
+                    </div>
+                  </div>
+                  {isSelected && (
+                    <div className="w-5 h-5 rounded-full bg-amber-500 flex items-center justify-center text-slate-950 shrink-0">
+                      <Check className="w-3 h-3 stroke-[3]" />
+                    </div>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Step 2: Select Year of Study */}
+        <div className="space-y-3 mb-6">
+          <label className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
+            <Layers className="w-3.5 h-3.5 text-indigo-400" />
+            2. Year of Study
+          </label>
+          <div className="grid grid-cols-4 gap-2">
+            {[1, 2, 3, 4].map((year) => {
+              const isSelected = selectedYear === year;
+              const yearName = ['1st', '2nd', '3rd', '4th'][year - 1];
+              return (
+                <button
+                  key={year}
+                  type="button"
+                  onClick={() => handleYearChange(year)}
+                  className={`min-h-[52px] py-2.5 px-2 rounded-2xl border text-center transition-all flex flex-col items-center justify-center active:scale-95 ${
+                    isSelected
+                      ? 'bg-indigo-600/30 border-indigo-400 text-indigo-100 font-bold shadow-md shadow-indigo-500/20 ring-1 ring-indigo-400'
+                      : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700'
+                  }`}
+                >
+                  <div className="text-sm font-bold">{yearName}</div>
+                  <div className="text-[10px] mt-0.5 opacity-80">Year {year}</div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Step 3: Select Active Semester */}
+        <div className="space-y-3 mb-6">
+          <label className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
+            <BookOpen className="w-3.5 h-3.5 text-emerald-400" />
+            3. Semester (Odd / Even)
+          </label>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            {[selectedYear * 2 - 1, selectedYear * 2].map((sem) => {
+              const isSelected = selectedSemester === sem;
+              const isOdd = sem % 2 !== 0;
+              return (
+                <button
+                  key={sem}
+                  type="button"
+                  onClick={() => setSelectedSemester(sem)}
+                  className={`min-h-[52px] p-3 rounded-2xl border text-left transition-all flex items-center justify-between active:scale-[0.99] ${
+                    isSelected
+                      ? 'bg-emerald-600/25 border-emerald-500 text-emerald-100 font-bold shadow-md shadow-emerald-500/10 ring-1 ring-emerald-400'
+                      : 'bg-slate-950/60 border-slate-800 text-slate-300 hover:border-slate-700'
+                  }`}
+                >
+                  <div>
+                    <div className="text-sm font-bold">Semester {sem}</div>
+                    <div className="text-[11px] text-slate-400">
+                      {isOdd ? 'Odd Semester (July–Dec)' : 'Even Semester (Jan–May)'}
+                    </div>
+                  </div>
+                  {isSelected && (
+                    <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center text-slate-950 shrink-0">
+                      <Check className="w-3 h-3 stroke-[3]" />
+                    </div>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Optional: Lab Batch & CSE Minor toggle for EEE 5 */}
+        <div className="p-4 bg-slate-950/60 border border-slate-800 rounded-2xl space-y-3 mb-6">
+          <div className="text-xs font-semibold text-slate-300">Preferences & Section:</div>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-center gap-2 text-xs flex-wrap">
+              <span className="text-slate-400">Lab Batch:</span>
+              <button
+                type="button"
+                onClick={() => setLabBatch('batch1')}
+                className={`min-h-[44px] px-3.5 py-2 rounded-xl border text-xs font-bold transition active:scale-95 ${
+                  labBatch === 'batch1'
+                    ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-xs'
+                    : 'bg-slate-900 border-slate-700 text-slate-400 hover:text-white'
+                }`}
+              >
+                Batch 1 (Roll 1-30)
+              </button>
+              <button
+                type="button"
+                onClick={() => setLabBatch('batch2')}
+                className={`min-h-[44px] px-3.5 py-2 rounded-xl border text-xs font-bold transition active:scale-95 ${
+                  labBatch === 'batch2'
+                    ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-xs'
+                    : 'bg-slate-900 border-slate-700 text-slate-400 hover:text-white'
+                }`}
+              >
+                Batch 2 (Roll 31+)
+              </button>
+            </div>
+
+            {selectedBranch === 'EEE' && selectedSemester === 5 && (
+              <label className="flex items-center gap-2 cursor-pointer text-xs text-cyan-300 font-medium min-h-[44px]">
+                <input
+                  type="checkbox"
+                  checked={hasMinor}
+                  onChange={(e) => setHasMinor(e.target.checked)}
+                  className="rounded border-slate-700 bg-slate-800 text-cyan-500 focus:ring-cyan-500 w-5 h-5"
+                />
+                <span className="flex items-center gap-1">
+                  <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+                  CS300M (CSE Minor) Active
+                </span>
+              </label>
+            )}
+          </div>
+        </div>
+
+        {/* Action Buttons - Sticky on mobile */}
+        <div className="sticky bottom-0 bg-slate-900/95 backdrop-blur-md pt-3 pb-1 border-t border-slate-800 flex items-center justify-end gap-3">
+          <button
+            type="button"
+            onClick={onClose}
+            className="min-h-[44px] px-4 py-2.5 rounded-xl text-slate-400 hover:text-white text-xs font-semibold transition active:scale-95"
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            onClick={handleSave}
+            className="min-h-[44px] px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-amber-500/20 transition flex items-center gap-2 active:scale-95"
+          >
+            <Check className="w-4 h-4 stroke-[3]" />
+            Apply Schedule ({selectedBranch} Sem {selectedSemester})
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};

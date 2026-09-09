@@ -1,0 +1,6 @@
+{
+  "name": "EEE Sem 5 Timetable (CS300M Minor)",
+  "description": "Universal timetable and academic tracker for all B.Tech branches and years at NIT Goa, with custom class scheduler, test calendar, and calendar sync.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
