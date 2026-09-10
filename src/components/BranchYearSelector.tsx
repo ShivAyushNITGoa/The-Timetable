@@ -250,21 +250,21 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
         </div>
 
         {/* Action Buttons - Sticky on mobile */}
-        <div className="sticky bottom-0 bg-slate-900/95 backdrop-blur-md pt-3 pb-1 border-t border-slate-800 flex items-center justify-end gap-3">
+        <div className="sticky bottom-0 bg-slate-900/95 backdrop-blur-md pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom,0px))] border-t border-slate-800 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-2 sm:gap-3">
           <button
             type="button"
             onClick={onClose}
-            className="min-h-[44px] px-4 py-2.5 rounded-xl text-slate-400 hover:text-white text-xs font-semibold transition active:scale-95"
+            className="min-h-[44px] px-4 py-2.5 rounded-xl text-slate-300 hover:text-white text-xs font-semibold transition active:scale-95 text-center bg-slate-800/60 sm:bg-transparent"
           >
             Cancel
           </button>
           <button
             type="button"
             onClick={handleSave}
-            className="min-h-[44px] px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-amber-500/20 transition flex items-center gap-2 active:scale-95"
+            className="min-h-[44px] px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-amber-500/20 transition flex items-center justify-center gap-2 active:scale-95"
           >
-            <Check className="w-4 h-4 stroke-[3]" />
-            Apply Schedule ({selectedBranch} Sem {selectedSemester})
+            <Check className="w-4 h-4 stroke-[3] shrink-0" />
+            <span className="truncate">Apply Schedule ({selectedBranch} Sem {selectedSemester})</span>
           </button>
         </div>
       </div>

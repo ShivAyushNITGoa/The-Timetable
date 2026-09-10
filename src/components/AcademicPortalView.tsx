@@ -170,11 +170,11 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
           </div>
 
           {/* Sub-tab navigation */}
-          <div className="flex items-center gap-1.5 p-1 bg-slate-900 rounded-xl border border-slate-800 overflow-x-auto scrollbar-none" id="subtab-navigation">
+          <div className="flex items-center gap-1.5 p-1 bg-slate-900 rounded-xl border border-slate-800 overflow-x-auto scrollbar-none w-full md:w-auto" id="subtab-navigation">
             <button
               id="subtab-faculty-btn"
               onClick={() => setActiveSubTab('faculty')}
-              className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition flex items-center gap-1.5 whitespace-nowrap ${
+              className={`min-h-[40px] sm:min-h-0 px-3.5 py-2 sm:py-1.5 text-xs font-semibold rounded-lg transition flex items-center gap-1.5 whitespace-nowrap active:scale-95 ${
                 activeSubTab === 'faculty'
                   ? 'bg-amber-500 text-slate-950 shadow-xs'
                   : 'text-slate-400 hover:text-white'
@@ -187,7 +187,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
             <button
               id="subtab-calculator-btn"
               onClick={() => setActiveSubTab('calculator')}
-              className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition flex items-center gap-1.5 whitespace-nowrap ${
+              className={`min-h-[40px] sm:min-h-0 px-3.5 py-2 sm:py-1.5 text-xs font-semibold rounded-lg transition flex items-center gap-1.5 whitespace-nowrap active:scale-95 ${
                 activeSubTab === 'calculator'
                   ? 'bg-amber-500 text-slate-950 shadow-xs'
                   : 'text-slate-400 hover:text-white'
@@ -200,7 +200,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
             <button
               id="subtab-venues-btn"
               onClick={() => setActiveSubTab('venues')}
-              className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition flex items-center gap-1.5 whitespace-nowrap ${
+              className={`min-h-[40px] sm:min-h-0 px-3.5 py-2 sm:py-1.5 text-xs font-semibold rounded-lg transition flex items-center gap-1.5 whitespace-nowrap active:scale-95 ${
                 activeSubTab === 'venues'
                   ? 'bg-amber-500 text-slate-950 shadow-xs'
                   : 'text-slate-400 hover:text-white'
@@ -213,7 +213,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
             <button
               id="subtab-ordinances-btn"
               onClick={() => setActiveSubTab('ordinances')}
-              className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition flex items-center gap-1.5 whitespace-nowrap ${
+              className={`min-h-[40px] sm:min-h-0 px-3.5 py-2 sm:py-1.5 text-xs font-semibold rounded-lg transition flex items-center gap-1.5 whitespace-nowrap active:scale-95 ${
                 activeSubTab === 'ordinances'
                   ? 'bg-amber-500 text-slate-950 shadow-xs'
                   : 'text-slate-400 hover:text-white'
@@ -226,7 +226,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
             <button
               id="subtab-portals-btn"
               onClick={() => setActiveSubTab('portals')}
-              className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition flex items-center gap-1.5 whitespace-nowrap ${
+              className={`min-h-[40px] sm:min-h-0 px-3.5 py-2 sm:py-1.5 text-xs font-semibold rounded-lg transition flex items-center gap-1.5 whitespace-nowrap active:scale-95 ${
                 activeSubTab === 'portals'
                   ? 'bg-amber-500 text-slate-950 shadow-xs'
                   : 'text-slate-400 hover:text-white'

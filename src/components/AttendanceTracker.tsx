@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Course } from '../data/timetableData';
-import { CheckCircle2, AlertTriangle, Sparkles, Plus, Minus, RotateCcw, ShieldCheck } from 'lucide-react';
+import { CheckCircle2, AlertTriangle, Sparkles, Plus, Minus, RotateCcw, ShieldCheck, Pencil, Check, X } from 'lucide-react';
 
 interface AttendanceRecord {
   attended: number;
@@ -92,6 +92,28 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
       ...prev,
       [code]: { attended: 0, total: 0 },
     }));
+  };
+
+  // Direct editing state for attendance values
+  const [editingCode, setEditingCode] = useState<string | null>(null);
+  const [editAttended, setEditAttended] = useState<number>(0);
+  const [editTotal, setEditTotal] = useState<number>(0);
+
+  const startEditing = (code: string) => {
+    const current = attendance[code] || { attended: 0, total: 0 };
+    setEditingCode(code);
+    setEditAttended(current.attended);
+    setEditTotal(current.total);
+  };
+
+  const saveDirectAttendance = (code: string) => {
+    const safeAttended = Math.max(0, Number(editAttended) || 0);
+    const safeTotal = Math.max(safeAttended, Number(editTotal) || 0);
+    setAttendance((prev) => ({
+      ...prev,
+      [code]: { attended: safeAttended, total: safeTotal },
+    }));
+    setEditingCode(null);
   };
 
   // Filter out the unselected elective if relevant
@@ -217,37 +239,96 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
                 )}
               </div>
 
-              {/* Quick Action Buttons - 44px touch targets for mobile thumbs */}
-              <div className="flex items-center justify-between gap-2 pt-3 border-t border-slate-800/80">
-                <div className="flex items-center gap-2 flex-1">
-                  <button
-                    type="button"
-                    onClick={() => markClassPresent(code)}
-                    className="min-h-[44px] flex-1 px-3 py-2.5 text-xs font-bold rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 active:bg-emerald-500/40 text-emerald-300 border border-emerald-500/30 transition flex items-center justify-center gap-1.5 active:scale-95"
-                  >
-                    <Plus className="w-4 h-4 stroke-[2.5]" />
-                    <span>Present (+1)</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => markClassAbsent(code)}
-                    className="min-h-[44px] flex-1 px-3 py-2.5 text-xs font-bold rounded-xl bg-rose-500/20 hover:bg-rose-500/30 active:bg-rose-500/40 text-rose-300 border border-rose-500/30 transition flex items-center justify-center gap-1.5 active:scale-95"
-                  >
-                    <Minus className="w-4 h-4 stroke-[2.5]" />
-                    <span>Absent (+1)</span>
-                  </button>
+              {/* Direct Edit Mode or Quick Action Buttons */}
+              {editingCode === code ? (
+                <div className="pt-3 border-t border-slate-800/80 space-y-2 animate-in fade-in">
+                  <div className="text-[11px] font-bold text-amber-400 flex items-center justify-between">
+                    <span>Direct Edit Class Counts</span>
+                    <span className="text-[10px] text-slate-400 font-normal">Attended ≤ Total</span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div>
+                      <label className="text-[10px] text-slate-400 block mb-0.5">Attended</label>
+                      <input
+                        type="number"
+                        min="0"
+                        value={editAttended}
+                        onChange={(e) => setEditAttended(Math.max(0, parseInt(e.target.value) || 0))}
+                        className="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-amber-500 font-mono"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-[10px] text-slate-400 block mb-0.5">Total Held</label>
+                      <input
+                        type="number"
+                        min={editAttended}
+                        value={editTotal}
+                        onChange={(e) => setEditTotal(Math.max(0, parseInt(e.target.value) || 0))}
+                        className="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-amber-500 font-mono"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 pt-1">
+                    <button
+                      type="button"
+                      onClick={() => saveDirectAttendance(code)}
+                      className="flex-1 min-h-[36px] px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 transition"
+                    >
+                      <Check className="w-3.5 h-3.5 stroke-[3]" />
+                      <span>Save Numbers</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setEditingCode(null)}
+                      className="min-h-[36px] px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition"
+                    >
+                      Cancel
+                    </button>
+                  </div>
                 </div>
+              ) : (
+                <div className="flex items-center justify-between gap-2 pt-3 border-t border-slate-800/80">
+                  <div className="flex items-center gap-2 flex-1">
+                    <button
+                      type="button"
+                      onClick={() => markClassPresent(code)}
+                      className="min-h-[44px] flex-1 px-3 py-2.5 text-xs font-bold rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 active:bg-emerald-500/40 text-emerald-300 border border-emerald-500/30 transition flex items-center justify-center gap-1.5 active:scale-95"
+                    >
+                      <Plus className="w-4 h-4 stroke-[2.5]" />
+                      <span>Present (+1)</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => markClassAbsent(code)}
+                      className="min-h-[44px] flex-1 px-3 py-2.5 text-xs font-bold rounded-xl bg-rose-500/20 hover:bg-rose-500/30 active:bg-rose-500/40 text-rose-300 border border-rose-500/30 transition flex items-center justify-center gap-1.5 active:scale-95"
+                    >
+                      <Minus className="w-4 h-4 stroke-[2.5]" />
+                      <span>Absent (+1)</span>
+                    </button>
+                  </div>
 
-                <button
-                  type="button"
-                  onClick={() => resetCourse(code)}
-                  className="min-h-[44px] min-w-[44px] flex items-center justify-center text-slate-500 hover:text-slate-300 rounded-xl hover:bg-slate-800 transition active:scale-95 shrink-0"
-                  title="Reset counter"
-                  aria-label={`Reset attendance counter for ${code}`}
-                >
-                  <RotateCcw className="w-4 h-4" />
-                </button>
-              </div>
+                  <div className="flex items-center gap-1 shrink-0">
+                    <button
+                      type="button"
+                      onClick={() => startEditing(code)}
+                      className="min-h-[44px] min-w-[40px] px-2 flex items-center justify-center text-slate-400 hover:text-amber-300 rounded-xl hover:bg-slate-800 transition active:scale-95 border border-transparent hover:border-slate-700"
+                      title="Directly edit attendance numbers"
+                      aria-label={`Edit numbers for ${code}`}
+                    >
+                      <Pencil className="w-3.5 h-3.5" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => resetCourse(code)}
+                      className="min-h-[44px] min-w-[40px] px-2 flex items-center justify-center text-slate-500 hover:text-rose-300 rounded-xl hover:bg-slate-800 transition active:scale-95"
+                      title="Reset counter"
+                      aria-label={`Reset attendance counter for ${code}`}
+                    >
+                      <RotateCcw className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           );
         })}

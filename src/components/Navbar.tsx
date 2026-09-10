@@ -52,7 +52,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="sm:hidden py-2.5 flex items-center justify-between gap-2">
           {/* Brand & NIT Goa Tag */}
           <div className="flex items-center gap-2.5 min-w-0">
-            <BrandIcon size={32} className="rounded-xl shadow-xs shrink-0" />
+            <BrandIcon size={34} className="rounded-xl shadow-sm shrink-0 ring-1 ring-white/10" />
             <div className="min-w-0">
               <div className="flex items-center gap-1.5 leading-none">
                 <span className="text-sm font-bold text-white tracking-tight">NIT Goa</span>

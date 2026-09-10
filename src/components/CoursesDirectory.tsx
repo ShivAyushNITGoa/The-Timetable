@@ -94,9 +94,9 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
       </div>
 
       {/* Search and Filters */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+      <div className="w-full max-w-full min-w-0 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
         {/* Category Tabs */}
-        <div className="flex items-center gap-1.5 p-1 bg-slate-900 rounded-xl border border-slate-800 overflow-x-auto scrollbar-none">
+        <div className="w-full sm:w-auto max-w-full min-w-0 flex items-center gap-1.5 p-1 bg-slate-900 rounded-xl border border-slate-800 overflow-x-auto scrollbar-none touch-pan-x">
           {[
             { id: 'all', label: 'All Courses' },
             { id: 'core', label: 'Core Theory' },
@@ -107,7 +107,7 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
             <button
               key={tab.id}
               onClick={() => setFilter(tab.id as any)}
-              className={`px-3 py-1.5 text-xs font-semibold rounded-lg whitespace-nowrap transition ${
+              className={`px-3 py-1.5 text-xs font-semibold rounded-lg whitespace-nowrap transition shrink-0 ${
                 filter === tab.id
                   ? 'bg-amber-500 text-slate-950 shadow-xs'
                   : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
@@ -119,7 +119,7 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
         </div>
 
         {/* Search Input */}
-        <div className="relative min-w-[240px]">
+        <div className="relative w-full sm:w-64 sm:min-w-[220px] shrink-0">
           <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"

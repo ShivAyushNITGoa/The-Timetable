@@ -5,59 +5,23 @@ import path from 'path';
 // Exact SVGs for The GDevelopers Icon and Logo
 const iconSvg = `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <rect width="512" height="512" rx="112" fill="#9EB81E" />
+  <rect width="512" height="512" rx="104" fill="#b0b91a" />
   <path
-    fill-rule="evenodd"
-    clip-rule="evenodd"
+    d="M 256 128 C 358.4 128, 384 192, 384 256 C 384 320, 358.4 384, 256 384 C 153.6 384, 128 320, 128 256 L 192 256 C 192 288, 204.8 320, 256 320 C 307.2 320, 320 288, 320 256 C 320 224, 307.2 192, 256 192 L 256 256 L 192 256 L 192 128 L 256 128 Z"
     fill="#FFFFFF"
-    d="
-      M 82 256
-      C 82 352.1 159.9 430 256 430
-      C 352.1 430 430 352.1 430 256
-      C 430 159.9 352.1 82 256 82
-      L 169 82
-      L 169 256
-      L 82 256
-      Z
-      M 256 169
-      C 304.05 169 343 207.95 343 256
-      C 343 304.05 304.05 343 256 343
-      L 256 169
-      Z
-    "
   />
 </svg>
 `;
 
 // Logo SVG (horizontal banner)
 const logoSvg = `
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 100" width="1040" height="200">
-  <rect width="520" height="100" fill="transparent" />
-  <g transform="translate(10, 10)">
-    <rect width="80" height="80" rx="18" fill="#9EB81E" />
-    <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
-      fill="#FFFFFF"
-      d="
-        M 12.8 40
-        C 12.8 55.02 24.98 67.2 40 67.2
-        C 55.02 67.2 67.2 55.02 67.2 40
-        C 67.2 24.98 55.02 12.8 40 12.8
-        L 26.4 12.8
-        L 26.4 40
-        L 12.8 40
-        Z
-        M 40 26.4
-        C 47.51 26.4 53.6 32.49 53.6 40
-        C 53.6 47.51 47.51 53.6 40 53.6
-        L 40 26.4
-        Z
-      "
-    />
-  </g>
-  <text x="110" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="52" fill="#9EB81E">The</text>
-  <text x="215" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="52" fill="#E2DDD0">GDevelopers</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 60" width="560" height="120">
+  <rect width="280" height="60" fill="transparent" />
+  <rect x="10" y="10" width="40" height="40" rx="8" fill="#b0b91a" />
+  <path d="M30 20 C38 20, 40 25, 40 30 C40 35, 38 40, 30 40 C22 40, 20 35, 20 30 L25 30 C25 32.5, 26 35, 30 35 C34 35, 35 32.5, 35 30 C35 27.5, 34 25, 30 25 L30 30 L25 30 L25 20 L30 20 Z" fill="#FFFFFF" />
+  <text x="60" y="36" font-family="Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="20" fill="#e0d6c8">
+    <tspan fill="#b0b91a">The</tspan> GDevelopers
+  </text>
 </svg>
 `;
 
@@ -84,11 +48,16 @@ async function build() {
     .png()
     .toFile(path.join(publicDir, 'logo.png'));
 
-  // 3. PWA icons
+  // 3. PWA icons in all standard sizes
   await sharp(Buffer.from(iconSvg))
     .resize(192, 192)
     .png()
     .toFile(path.join(publicDir, 'pwa-192x192.png'));
+
+  await sharp(Buffer.from(iconSvg))
+    .resize(192, 192)
+    .png()
+    .toFile(path.join(publicDir, 'icon-192.png'));
 
   await sharp(Buffer.from(iconSvg))
     .resize(512, 512)
@@ -98,6 +67,29 @@ async function build() {
   await sharp(Buffer.from(iconSvg))
     .resize(512, 512)
     .png()
+    .toFile(path.join(publicDir, 'icon-512.png'));
+
+  await sharp(Buffer.from(iconSvg))
+    .resize(512, 512)
+    .png()
+    .toFile(path.join(publicDir, 'icon.png'));
+
+  // Maskable icon with safe zone padding (standard 10% padding for circular/squircle masks)
+  const maskableSvg = `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" fill="#b0b91a" />
+  <g transform="translate(51.2, 51.2) scale(0.8)">
+    <path
+      d="M 256 128 C 358.4 128, 384 192, 384 256 C 384 320, 358.4 384, 256 384 C 153.6 384, 128 320, 128 256 L 192 256 C 192 288, 204.8 320, 256 320 C 307.2 320, 320 288, 320 256 C 320 224, 307.2 192, 256 192 L 256 256 L 192 256 L 192 128 L 256 128 Z"
+      fill="#FFFFFF"
+    />
+  </g>
+</svg>
+`;
+
+  await sharp(Buffer.from(maskableSvg))
+    .resize(512, 512)
+    .png()
     .toFile(path.join(publicDir, 'pwa-maskable-512x512.png'));
 
   await sharp(Buffer.from(iconSvg))
@@ -105,7 +97,27 @@ async function build() {
     .png()
     .toFile(path.join(publicDir, 'apple-touch-icon.png'));
 
-  // Favicon (48x48)
+  await sharp(Buffer.from(iconSvg))
+    .resize(180, 180)
+    .png()
+    .toFile(path.join(publicDir, 'app-touch-icon.png'));
+
+  // Favicons (16x16, 32x32, 48x48, 64x64)
+  await sharp(Buffer.from(iconSvg))
+    .resize(16, 16)
+    .png()
+    .toFile(path.join(publicDir, 'favicon-16x16.png'));
+
+  await sharp(Buffer.from(iconSvg))
+    .resize(32, 32)
+    .png()
+    .toFile(path.join(publicDir, 'favicon-32x32.png'));
+
+  await sharp(Buffer.from(iconSvg))
+    .resize(64, 64)
+    .png()
+    .toFile(path.join(publicDir, 'favicon.png'));
+
   await sharp(Buffer.from(iconSvg))
     .resize(48, 48)
     .png()
@@ -114,6 +126,7 @@ async function build() {
   // 4. Save clean SVGs
   fs.writeFileSync(path.join(publicDir, 'brand-icon.svg'), iconSvg.trim());
   fs.writeFileSync(path.join(publicDir, 'icon.svg'), iconSvg.trim());
+  fs.writeFileSync(path.join(publicDir, 'favicon.svg'), iconSvg.trim());
   fs.writeFileSync(path.join(publicDir, 'G icon.svg'), iconSvg.trim());
   fs.writeFileSync(path.join(publicDir, 'g-icon.svg'), iconSvg.trim());
   fs.writeFileSync(path.join(publicDir, 'brand-logo.svg'), logoSvg.trim());

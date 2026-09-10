@@ -23,6 +23,7 @@ import {
   getStoredTests,
   saveStoredTests,
   addAcademicTest,
+  updateAcademicTest,
   deleteAcademicTest,
 } from './utils/testStorage';
 import { downloadICS } from './utils/calendarExport';
@@ -113,6 +114,7 @@ export default function App() {
   const [isBranchSelectorOpen, setIsBranchSelectorOpen] = useState(false);
   const [isCustomizerOpen, setIsCustomizerOpen] = useState(false);
   const [activeModalCourse, setActiveModalCourse] = useState<string | null>(null);
+  const [scheduleTestCourseCode, setScheduleTestCourseCode] = useState<string | null>(null);
 
   // Toast message
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -200,6 +202,12 @@ export default function App() {
     addAcademicTest(newTest);
     refreshTests();
     showToast(`Added test for ${newTest.courseCode}: ${newTest.title}`);
+  };
+
+  const handleUpdateTest = (updatedTest: AcademicTest) => {
+    updateAcademicTest(updatedTest);
+    refreshTests();
+    showToast(`Updated: ${updatedTest.title}`);
   };
 
   const handleDeleteTest = (id: string) => {
@@ -303,7 +311,7 @@ export default function App() {
       </div>
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-6 pb-28 sm:pb-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-6 pb-[calc(7.5rem+env(safe-area-inset-bottom,0px))] sm:pb-8">
         {/* Day Schedule Tab */}
         {activeTab === 'day' && (
           <DayScheduleView
@@ -318,6 +326,11 @@ export default function App() {
             semester={safeProfile.semester}
             tests={tests}
             onOpenCustomizer={() => setIsCustomizerOpen(true)}
+            onNavigateToTests={() => setActiveTab('tests')}
+            onScheduleTest={(courseCode) => {
+              if (courseCode) setScheduleTestCourseCode(courseCode);
+              setActiveTab('tests');
+            }}
           />
         )}
 
@@ -339,11 +352,14 @@ export default function App() {
           <TestCalendarView
             tests={tests}
             onAddTest={handleAddTest}
+            onUpdateTest={handleUpdateTest}
             onDeleteTest={handleDeleteTest}
             onExportCalendar={handleExportCalendar}
             courses={activeBranchData.courses}
             branch={safeProfile.branch}
             semester={safeProfile.semester}
+            initialCourseCode={scheduleTestCourseCode}
+            onClearInitialCourseCode={() => setScheduleTestCourseCode(null)}
           />
         )}
 
@@ -420,6 +436,11 @@ export default function App() {
           setActiveTab('attendance');
           showToast(`Switched to Attendance Tracker for ${activeModalCourse}`);
         }}
+        onScheduleTest={(courseCode) => {
+          setScheduleTestCourseCode(courseCode);
+          setActiveTab('tests');
+          showToast(`Scheduling new assessment for ${courseCode}`);
+        }}
       />
 
       {/* Mobile Bottom Navigation Bar (Docked on < sm screens) */}
@@ -433,44 +454,45 @@ export default function App() {
         onOpenCustomizer={() => setIsCustomizerOpen(true)}
       />
 
-      {/* Floating Action Toast Notification (positioned above mobile nav) */}
+      {/* Floating Action Toast Notification (positioned cleanly above mobile nav) */}
       {toastMessage && (
-        <div className="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-50 bg-slate-900 border border-amber-500/40 text-slate-100 px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-200">
+        <div className="fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] sm:bottom-6 right-4 sm:right-6 z-50 bg-slate-900/95 backdrop-blur-md border border-amber-500/40 text-slate-100 px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-200 max-w-[calc(100vw-2rem)]">
           <CheckCircle className="w-5 h-5 text-amber-400 shrink-0" />
-          <span className="text-xs sm:text-sm font-medium">{toastMessage}</span>
+          <span className="text-xs sm:text-sm font-medium truncate">{toastMessage}</span>
         </div>
       )}
 
       {/* Institutional Footer */}
-      <footer className="mt-auto border-t border-slate-800 bg-slate-900/90 py-8 text-xs text-slate-400 pb-24 sm:pb-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-left">
+      <footer className="mt-auto border-t border-slate-800 bg-slate-900/90 py-8 text-xs text-slate-400 pb-[calc(7.5rem+env(safe-area-inset-bottom,0px))] sm:pb-8 overflow-hidden w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6 w-full">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 text-center sm:text-left max-w-full w-full">
             {/* The GDevelopers Brand Logo in Footer */}
             <BrandLogo
-              iconSize={42}
+              iconSize={36}
               showText={true}
               variant="dark"
               subtitle="Engineering Student Solutions"
+              className="justify-center sm:justify-start max-w-full"
             />
 
-            <div className="h-10 w-px bg-slate-800 hidden sm:block" />
+            <div className="h-10 w-px bg-slate-800 hidden sm:block shrink-0" />
 
-            <div>
-              <div className="text-slate-200 font-semibold">
+            <div className="max-w-full">
+              <div className="text-slate-200 font-semibold break-words">
                 National Institute of Technology Goa • राष्ट्रीय प्रौद्योगिकी संस्थान गोवा
               </div>
-              <div className="text-[11px] text-slate-400 mt-0.5">
+              <div className="text-[11px] text-slate-400 mt-0.5 break-words">
                 Odd Semester Master Timetable • Cuncolim Campus
               </div>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-6 text-[11px] text-slate-400">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-[11px] text-slate-400 max-w-full">
             <div className="text-center sm:text-right">
               <span className="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Academics</span>
               <span className="text-slate-300">Dr. Mini (Dean)</span> • <span className="text-slate-300">Dr. Suresh Mikkili (Timetable)</span>
             </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-800/80 border border-slate-700/80">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-800/80 border border-slate-700/80 shrink-0">
               <span className="w-2 h-2 rounded-full bg-[#9EB81E] animate-pulse"></span>
               <span className="text-slate-300 font-medium text-[11px]">Powered by The GDevelopers</span>
             </div>

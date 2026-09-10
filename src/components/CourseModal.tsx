@@ -1,13 +1,14 @@
 import React from 'react';
 import { COURSES, Course } from '../data/timetableData';
 import { getAllKnownCourses } from '../data/branchesData';
-import { X, BookOpen, Clock, MapPin, Award, User, Mail, Sparkles, CheckCircle2, Globe, FileText, ExternalLink } from 'lucide-react';
+import { X, BookOpen, Clock, MapPin, Award, User, Mail, Sparkles, CheckCircle2, Globe, FileText, ExternalLink, Calendar } from 'lucide-react';
 
 interface CourseModalProps {
   courseCode: string | null;
   courses?: Record<string, Course>;
   onClose: () => void;
   onTrackAttendance?: (courseCode: string) => void;
+  onScheduleTest?: (courseCode: string) => void;
 }
 
 export const CourseModal: React.FC<CourseModalProps> = ({
@@ -15,6 +16,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
   courses,
   onClose,
   onTrackAttendance,
+  onScheduleTest,
 }) => {
   if (!courseCode) return null;
 
@@ -401,12 +403,24 @@ export const CourseModal: React.FC<CourseModalProps> = ({
         </div>
 
         {/* Modal Footer */}
-        {/* Modal Footer */}
-        <div className="p-4 bg-slate-800/80 border-t border-slate-800 flex items-center justify-between gap-2 shrink-0 pb-[max(1rem,env(safe-area-inset-bottom))]">
+        <div className="p-4 bg-slate-800/80 border-t border-slate-800 flex items-center justify-between gap-2 shrink-0 pb-[max(1rem,env(safe-area-inset-bottom,0px))]">
           <span className="text-xs text-slate-400 hidden sm:inline">
             NIT Goa Academic Curriculum
           </span>
-          <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+          <div className="flex items-center gap-2 w-full sm:w-auto justify-end flex-wrap">
+            {onScheduleTest && (
+              <button
+                type="button"
+                onClick={() => {
+                  onScheduleTest(course.code);
+                  onClose();
+                }}
+                className="min-h-[44px] flex-1 sm:flex-initial px-4 py-2.5 text-xs font-semibold rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 transition flex items-center justify-center gap-1.5 active:scale-95"
+              >
+                <Calendar className="w-4 h-4 text-amber-400" />
+                <span>Schedule Test</span>
+              </button>
+            )}
             {onTrackAttendance && (
               <button
                 type="button"

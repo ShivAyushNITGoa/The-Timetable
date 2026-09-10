@@ -11,6 +11,7 @@ import {
   Check,
   Beaker,
   ChevronRight,
+  ChevronLeft,
   Edit3,
   CalendarCheck,
 } from 'lucide-react';
@@ -27,6 +28,8 @@ interface DayScheduleViewProps {
   semester?: number;
   tests?: AcademicTest[];
   onOpenCustomizer?: () => void;
+  onNavigateToTests?: () => void;
+  onScheduleTest?: (courseCode?: string) => void;
 }
 
 export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
@@ -41,6 +44,8 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
   semester = 5,
   tests = [],
   onOpenCustomizer,
+  onNavigateToTests,
+  onScheduleTest,
 }) => {
   const slots: TimeSlot[] = schedule[selectedDay] || [];
 
@@ -88,6 +93,24 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
   // Check if any scheduled tests fall on the current calendar date if today is selected
   const todayDateStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
   const todaysTests = isSelectedDayToday ? tests.filter((t) => t.date === todayDateStr) : [];
+
+  // Helper to find any active upcoming test for a course
+  const getCourseUpcomingTest = (courseCode?: string) => {
+    if (!courseCode) return undefined;
+    return tests.find(
+      (t) => t.courseCode.toUpperCase() === courseCode.toUpperCase() && t.status !== 'Completed'
+    );
+  };
+
+  const currentDayIndexInDays = days.indexOf(selectedDay);
+  const goToPrevDay = () => {
+    const prevIdx = (currentDayIndexInDays - 1 + days.length) % days.length;
+    onSelectDay(days[prevIdx]);
+  };
+  const goToNextDay = () => {
+    const nextIdx = (currentDayIndexInDays + 1) % days.length;
+    onSelectDay(days[nextIdx]);
+  };
 
   return (
     <div className="space-y-6">
@@ -138,7 +161,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
       {/* Alert banner if test scheduled today */}
       {todaysTests.length > 0 && (
-        <div className="p-4 rounded-2xl bg-gradient-to-r from-rose-950/80 to-amber-950/60 border border-rose-500/40 shadow-xl flex items-center justify-between gap-4 animate-in fade-in">
+        <div className="p-4 rounded-2xl bg-gradient-to-r from-rose-950/80 to-amber-950/60 border border-rose-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-in fade-in">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-300 flex items-center justify-center font-bold shrink-0">
               <CalendarCheck className="w-5 h-5" />
@@ -152,28 +175,63 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
               </div>
             </div>
           </div>
+
+          {onNavigateToTests && (
+            <button
+              type="button"
+              onClick={onNavigateToTests}
+              className="px-3.5 py-1.5 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 text-rose-200 border border-rose-500/40 text-xs font-bold flex items-center gap-1.5 transition self-start sm:self-auto shrink-0"
+            >
+              <span>View Agenda & Tasks</span>
+              <ChevronRight className="w-3.5 h-3.5" />
+            </button>
+          )}
         </div>
       )}
 
       {/* Day Header & Briefing Bar */}
       <div className="bg-slate-800/50 border border-slate-700/60 rounded-2xl p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2">
-            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-              {selectedDay}'s Timetable
-            </h2>
-            {isSelectedDayToday && (
-              <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 animate-pulse">
-                Live Today
-              </span>
-            )}
+        <div className="flex items-center justify-between w-full sm:w-auto gap-2">
+          <div>
+            <div className="flex items-center gap-2">
+              <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                {selectedDay}'s Timetable
+              </h2>
+              {isSelectedDayToday && (
+                <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 animate-pulse">
+                  Live Today
+                </span>
+              )}
+            </div>
+            <p className="text-xs text-slate-400 mt-1">
+              {branch} Semester {semester} • NIT Goa Campus
+            </p>
           </div>
-          <p className="text-xs text-slate-400 mt-1">
-            {branch} Semester {semester} • NIT Goa Campus
-          </p>
+
+          {/* Quick Prev / Next Day navigation buttons for mobile thumb */}
+          <div className="flex items-center gap-1.5 sm:hidden">
+            <button
+              type="button"
+              onClick={goToPrevDay}
+              className="w-10 h-10 rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 hover:text-white flex items-center justify-center border border-slate-700/80 active:scale-95 transition shadow-xs"
+              aria-label="Previous day"
+              title="Previous day"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              type="button"
+              onClick={goToNextDay}
+              className="w-10 h-10 rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 hover:text-white flex items-center justify-center border border-slate-700/80 active:scale-95 transition shadow-xs"
+              aria-label="Next day"
+              title="Next day"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
-        {/* Badges for Day & Customize Button */}
+        {/* Badges for Day & Customize / Test Buttons */}
         <div className="flex items-center gap-2 flex-wrap">
           <div className="px-3 py-1.5 rounded-xl bg-slate-800 border border-slate-700 text-xs text-slate-300">
             <strong className="text-white">{totalClasses}</strong> Sessions
@@ -194,7 +252,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
           {onOpenCustomizer && (
             <button
               onClick={onOpenCustomizer}
-              className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs text-amber-300 border border-amber-500/30 font-semibold flex items-center gap-1.5 transition"
+              className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs text-amber-300 border border-amber-500/30 font-semibold flex items-center gap-1.5 transition active:scale-95"
               title="Customize timing or add extra slots to this day"
             >
               <Edit3 className="w-3.5 h-3.5" />
@@ -311,6 +369,17 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                         Elective Choice Active: <span className="text-indigo-300 font-semibold">{chosenOption?.code}</span> (Parallel: {otherOption.code})
                       </p>
                     )}
+
+                    {(() => {
+                      const courseTest = getCourseUpcomingTest(chosenOption?.code);
+                      if (!courseTest) return null;
+                      return (
+                        <div className="mt-2.5 inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-amber-500/15 border border-amber-500/30 text-xs text-amber-300">
+                          <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                          <span>{courseTest.type}: <strong>{courseTest.title}</strong> ({courseTest.date})</span>
+                        </div>
+                      );
+                    })()}
                   </div>
                   <ChevronRight className="w-5 h-5 text-slate-500 group-hover:text-white transition shrink-0 self-center" />
                 </div>
@@ -374,6 +443,29 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                     <p className="text-[11px] text-slate-400 mt-2 bg-slate-900/60 px-2.5 py-1 rounded-lg inline-block border border-slate-800">
                       Batch Selection: <strong className="text-emerald-300">{selectedBatch === 'batch1' ? 'Batch 1' : 'Batch 2'}</strong> • Alternate batch: {alternateLab.code}
                     </p>
+
+                    {(() => {
+                      const labTest = getCourseUpcomingTest(currentLab.code);
+                      if (!labTest) return null;
+                      return (
+                        <div className="mt-2.5 inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-amber-500/15 border border-amber-500/30 text-xs text-amber-300">
+                          <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                          <span>{labTest.type}: <strong>{labTest.title}</strong> ({labTest.date})</span>
+                          {onNavigateToTests && (
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                onNavigateToTests();
+                              }}
+                              className="ml-1 text-[11px] underline font-bold hover:text-white"
+                            >
+                              Agenda
+                            </button>
+                          )}
+                        </div>
+                      );
+                    })()}
                   </div>
                   <ChevronRight className="w-5 h-5 text-slate-500 group-hover:text-white transition shrink-0 self-center" />
                 </div>
@@ -468,6 +560,17 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                   {slot.notes && !isMinor && (
                     <p className="text-[11px] text-slate-400 mt-1.5 italic">{slot.notes}</p>
                   )}
+
+                  {(() => {
+                    const regularTest = getCourseUpcomingTest(course?.code || slot.courseCode);
+                    if (!regularTest) return null;
+                    return (
+                      <div className="mt-2.5 inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-amber-500/15 border border-amber-500/30 text-xs text-amber-300">
+                        <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                        <span>{regularTest.type}: <strong>{regularTest.title}</strong> ({regularTest.date})</span>
+                      </div>
+                    );
+                  })()}
                 </div>
 
                 <ChevronRight className="w-5 h-5 text-slate-500 group-hover:text-white transition shrink-0 self-center" />

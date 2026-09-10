@@ -54,7 +54,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
           onClick={() => setIsMoreMenuOpen(false)}
         >
           <div
-            className="bg-slate-900 border-t border-slate-700/80 rounded-t-3xl p-5 max-h-[80vh] overflow-y-auto shadow-2xl space-y-4 animate-in slide-in-from-bottom duration-300"
+            className="bg-slate-900 border-t border-slate-700/80 rounded-t-3xl p-5 pb-[max(1.75rem,env(safe-area-inset-bottom,0px))] max-h-[85vh] overflow-y-auto shadow-2xl space-y-4 animate-in slide-in-from-bottom duration-300"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Sheet Handle & Header */}
@@ -200,43 +200,43 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
 
       {/* Fixed Ergonomic Bottom Dock for Mobile */}
       <nav
-        className="fixed bottom-0 left-0 right-0 z-40 bg-slate-900/95 backdrop-blur-xl border-t border-slate-800/90 sm:hidden shadow-2xl px-2 py-1.5 pb-[max(0.375rem,env(safe-area-inset-bottom))]"
+        className="fixed bottom-0 left-0 right-0 z-40 bg-slate-900/95 backdrop-blur-xl border-t border-slate-800/90 sm:hidden shadow-2xl px-1.5 py-1.5 pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] select-none"
         aria-label="Mobile Navigation"
       >
-        <div className="grid grid-cols-5 gap-1 items-center max-w-md mx-auto">
+        <div className="grid grid-cols-5 gap-1 items-center max-w-md mx-auto w-full">
           {/* Day Schedule Tab */}
           <button
             type="button"
             onClick={() => handleSelectTab('day')}
-            className={`min-h-[48px] flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1 ${
+            className={`min-h-[48px] flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1 px-0.5 ${
               activeTab === 'day'
                 ? 'text-amber-400 font-bold bg-amber-500/10'
                 : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/40'
             }`}
           >
             <Calendar className={`w-5 h-5 transition-transform ${activeTab === 'day' ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
-            <span className="text-[10px] mt-0.5 tracking-tight">Today</span>
+            <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">Today</span>
           </button>
 
           {/* Weekly Matrix Tab */}
           <button
             type="button"
             onClick={() => handleSelectTab('weekly')}
-            className={`min-h-[48px] flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1 ${
+            className={`min-h-[48px] flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1 px-0.5 ${
               activeTab === 'weekly'
                 ? 'text-amber-400 font-bold bg-amber-500/10'
                 : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/40'
             }`}
           >
             <Grid className={`w-5 h-5 transition-transform ${activeTab === 'weekly' ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
-            <span className="text-[10px] mt-0.5 tracking-tight">Week</span>
+            <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">Week</span>
           </button>
 
           {/* Tests & Quizzes Tab with Badge */}
           <button
             type="button"
             onClick={() => handleSelectTab('tests')}
-            className={`min-h-[48px] flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1 relative ${
+            className={`min-h-[48px] flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1 px-0.5 relative ${
               activeTab === 'tests'
                 ? 'text-amber-400 font-bold bg-amber-500/10'
                 : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/40'
@@ -245,40 +245,40 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             <div className="relative">
               <CalendarCheck className={`w-5 h-5 transition-transform ${activeTab === 'tests' ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
               {testCount > 0 && (
-                <span className="absolute -top-1.5 -right-2.5 px-1.5 py-0.2 bg-rose-500 text-white rounded-full text-[9px] font-black leading-tight border border-slate-900">
+                <span className="absolute -top-1 -right-2 px-1.5 py-0.2 bg-rose-500 text-white rounded-full text-[9px] font-black leading-tight border border-slate-900 pointer-events-none">
                   {testCount}
                 </span>
               )}
             </div>
-            <span className="text-[10px] mt-0.5 tracking-tight">Tests</span>
+            <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">Tests</span>
           </button>
 
           {/* Attendance Tracker Tab */}
           <button
             type="button"
             onClick={() => handleSelectTab('attendance')}
-            className={`min-h-[48px] flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1 ${
+            className={`min-h-[48px] flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1 px-0.5 ${
               activeTab === 'attendance'
                 ? 'text-amber-400 font-bold bg-amber-500/10'
                 : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/40'
             }`}
           >
             <CheckSquare className={`w-5 h-5 transition-transform ${activeTab === 'attendance' ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
-            <span className="text-[10px] mt-0.5 tracking-tight">75% Attend</span>
+            <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">Attend</span>
           </button>
 
           {/* More Menu Drawer Trigger */}
           <button
             type="button"
             onClick={() => setIsMoreMenuOpen(true)}
-            className={`min-h-[48px] flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1 ${
+            className={`min-h-[48px] flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1 px-0.5 ${
               isMoreTabActive || isMoreMenuOpen
                 ? 'text-amber-400 font-bold bg-amber-500/10'
                 : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/40'
             }`}
           >
             <Menu className={`w-5 h-5 transition-transform ${isMoreTabActive ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
-            <span className="text-[10px] mt-0.5 tracking-tight">More</span>
+            <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">More</span>
           </button>
         </div>
       </nav>
