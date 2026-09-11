@@ -2,7 +2,47 @@ import { AcademicTest, TestType, TestPriority, PrepStatus } from '../data/testTy
 
 const TESTS_STORAGE_KEY = 'nit_goa_academic_tests_v1';
 
+export const DEFAULT_TESTS: AcademicTest[] = [
+  {
+    id: 'DEMO Test',
+    courseCode: 'EE300',
+    courseName: 'Power Electronics',
+    title: 'DEMO TEST',
+    type: 'Quiz',
+    date: '2026-09-15',
+    startTime: '11:00',
+    endTime: '11:55',
+    room: '51/52',
+    syllabus: 'Module 1: Power Semiconductor Devices, SCR firing circuits, MOSFET and IGBT switching characteristics.',
+    weightageMarks: 15,
+    obtainedMarks: undefined,
+    priority: 'High',
+    status: 'In Progress',
+    checklist: [
+      { id: 'c1', text: 'Revise SCR Two-Transistor Model', done: true },
+      { id: 'c2', text: 'Derive Turn-off Time (tq) and snubber equations', done: false },
+      { id: 'c3', text: 'Practice gate triggering circuit diagrams', done: false },
+    ],
+    notes: 'Calculators are allowed. Dr. Sreeraj announced 3 numericals + 2 conceptual questions.',
+    createdAt: Date.now() - 86400000 * 2,
+  },
+  
+];
 
+export function getStoredTests(): AcademicTest[] {
+  try {
+    const raw = localStorage.getItem(TESTS_STORAGE_KEY);
+    if (!raw) {
+      localStorage.setItem(TESTS_STORAGE_KEY, JSON.stringify(DEFAULT_TESTS));
+      return DEFAULT_TESTS;
+    }
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : DEFAULT_TESTS;
+  } catch (err) {
+    console.error('Failed to load academic tests:', err);
+    return DEFAULT_TESTS;
+  }
+}
 
 export function saveTests(tests: AcademicTest[]): void {
   try {
