@@ -273,12 +273,12 @@ export const ScheduleCustomizerModal: React.FC<ScheduleCustomizerModalProps> = (
             </div>
 
             <div className="grid grid-cols-2 gap-2 text-xs">
-              <div>
+              <div className="min-w-0">
                 <label className="text-slate-400 block mb-1">Course Code</label>
                 <select
                   value={editCourseCode}
                   onChange={(e) => setEditCourseCode(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 text-white"
+                  className="w-full min-w-0 truncate bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 text-white"
                 >
                   {Object.keys(courses).map((code) => (
                     <option key={code} value={code}>
@@ -371,12 +371,12 @@ export const ScheduleCustomizerModal: React.FC<ScheduleCustomizerModalProps> = (
             </div>
 
             <div className="grid grid-cols-2 gap-2 text-xs">
-              <div>
+              <div className="min-w-0">
                 <label className="text-slate-400 block mb-1">Course Code</label>
                 <select
                   value={newCourseCode}
                   onChange={(e) => setNewCourseCode(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 text-white"
+                  className="w-full min-w-0 truncate bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 text-white"
                 >
                   {Object.keys(courses).map((code) => (
                     <option key={code} value={code}>

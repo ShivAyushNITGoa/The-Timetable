@@ -11,6 +11,9 @@ import {
   CalendarCheck,
   ChevronDown,
   Building2,
+  Mail,
+  AlertCircle,
+  Info,
 } from 'lucide-react';
 import { StudentProfile, DEFAULT_STUDENT_PROFILE, BRANCHES_LIST } from '../data/branchesData';
 import { BrandLogo, BrandIcon } from './BrandLogo';
@@ -28,6 +31,7 @@ interface NavbarProps {
   setSelectedBatch: (batch: string) => void;
   onExportCalendar: () => void;
   testCount: number;
+  onOpenPwaGuide?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -41,6 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   setSelectedBatch,
   onExportCalendar,
   testCount,
+  onOpenPwaGuide,
 }) => {
   const safeProfile = profile && profile.branch ? profile : DEFAULT_STUDENT_PROFILE;
   const branchInfo = BRANCHES_LIST.find((b) => b.code === safeProfile.branch) || BRANCHES_LIST[0];
@@ -62,7 +67,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </span>
               </div>
               <p className="text-[10px] text-slate-400 font-medium leading-none mt-1 truncate">
-                Year {safeProfile.year} • Sem {safeProfile.semester}
+                {safeProfile.semester <= 2
+                  ? `Year 1 • Sec ${safeProfile.firstYearSection || 'A'} (Sem ${safeProfile.semester})`
+                  : `Year ${safeProfile.year} • Sem ${safeProfile.semester}`}
               </p>
             </div>
           </div>
@@ -90,6 +97,17 @@ export const Navbar: React.FC<NavbarProps> = ({
               aria-label="Export Calendar"
             >
               <Download className="w-3.5 h-3.5" />
+            </button>
+
+            {/* Small i-icon button: PWA info & installation guide */}
+            <button
+              type="button"
+              onClick={onOpenPwaGuide}
+              className="min-h-[38px] min-w-[38px] p-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 active:bg-cyan-500/30 text-cyan-300 border border-cyan-500/30 flex items-center justify-center active:scale-95 transition shadow-xs"
+              title="PWA Info & Local Install Guide"
+              aria-label="PWA Information and Local Installation Guide"
+            >
+              <Info className="w-4 h-4 text-cyan-400" />
             </button>
           </div>
         </div>
@@ -185,7 +203,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                 >
                   <Building2 className="w-3 h-3 text-amber-400" />
                   <span>
-                    Year {safeProfile.year} • Sem {safeProfile.semester} ({safeProfile.branch})
+                    {safeProfile.semester <= 2
+                      ? `Year 1 • Sec ${safeProfile.firstYearSection || 'A'} (Sem ${safeProfile.semester})`
+                      : `Year ${safeProfile.year} • Sem ${safeProfile.semester} (${safeProfile.branch})`}
                   </span>
                   <ChevronDown className="w-3 h-3 text-amber-400 group-hover:translate-y-0.5 transition" />
                 </button>
@@ -284,6 +304,17 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <Download className="w-3.5 h-3.5 text-amber-400" />
               <span>Export Calendar (.ics)</span>
+            </button>
+
+            {/* PWA Info & Local Install Guide Button */}
+            <button
+              type="button"
+              onClick={onOpenPwaGuide}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-xs font-semibold transition active:scale-95 shadow-xs"
+              title="This is an installable Progressive Web App (PWA). Click for offline local install guide."
+            >
+              <Info className="w-3.5 h-3.5 text-cyan-400" />
+              <span>PWA Guide</span>
             </button>
           </div>
         </div>

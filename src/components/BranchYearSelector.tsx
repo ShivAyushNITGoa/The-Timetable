@@ -1,6 +1,12 @@
 import React from 'react';
-import { BRANCHES_LIST, BranchCode, StudentProfile, DEFAULT_STUDENT_PROFILE } from '../data/branchesData';
-import { X, Check, GraduationCap, Building2, BookOpen, Layers, Sparkles } from 'lucide-react';
+import {
+  BRANCHES_LIST,
+  BranchCode,
+  StudentProfile,
+  DEFAULT_STUDENT_PROFILE,
+  FirstYearSection,
+} from '../data/branchesData';
+import { X, Check, GraduationCap, Building2, BookOpen, Layers, Sparkles, Users } from 'lucide-react';
 import { BrandIcon } from './BrandLogo';
 
 interface BranchYearSelectorProps {
@@ -23,6 +29,9 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
   const [selectedBranch, setSelectedBranch] = React.useState<BranchCode>(activeProfile?.branch || 'EEE');
   const [selectedYear, setSelectedYear] = React.useState<number>(activeProfile?.year || 3);
   const [selectedSemester, setSelectedSemester] = React.useState<number>(activeProfile?.semester || 5);
+  const [selectedSection, setSelectedSection] = React.useState<FirstYearSection>(
+    activeProfile?.firstYearSection || 'A'
+  );
   const [labBatch, setLabBatch] = React.useState<string>(activeProfile?.labBatch || activeProfile?.batch || 'batch1');
   const [hasMinor, setHasMinor] = React.useState<boolean>(activeProfile?.hasMinor ?? true);
 
@@ -33,6 +42,7 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
       setSelectedBranch(p.branch || 'EEE');
       setSelectedYear(p.year || 3);
       setSelectedSemester(p.semester || 5);
+      setSelectedSection(p.firstYearSection || 'A');
       setLabBatch(p.labBatch || p.batch || 'batch1');
       setHasMinor(p.hasMinor ?? true);
     }
@@ -55,12 +65,22 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
       branch: selectedBranch,
       year: selectedYear,
       semester: selectedSemester,
+      firstYearSection: selectedSection,
       labBatch,
       batch: labBatch,
       hasMinor: selectedBranch === 'EEE' && selectedSemester === 5 ? hasMinor : false,
       minorCode: hasMinor ? 'CS300M' : undefined,
     });
     onClose();
+  };
+
+  const isFirstYear = selectedYear === 1;
+  const isOddSem = selectedSemester % 2 !== 0;
+
+  // Determine cycle for display
+  const getSectionCycle = (sec: FirstYearSection) => {
+    const isPhysics = (isOddSem && (sec === 'A' || sec === 'B')) || (!isOddSem && (sec === 'C' || sec === 'D'));
+    return isPhysics ? 'Physics Cycle' : 'Chemistry Cycle';
   };
 
   const activeBranchInfo = BRANCHES_LIST.find((b) => b.code === selectedBranch) || BRANCHES_LIST[0];
@@ -202,6 +222,58 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
           </div>
         </div>
 
+        {/* Step 4 (For 1st Year only): 4 Sections (Sections A, B, C, D) */}
+        {isFirstYear && (
+          <div className="space-y-3 mb-6 p-4 rounded-2xl bg-cyan-950/20 border border-cyan-500/30">
+            <div className="flex items-start gap-2.5">
+              <Users className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+              <div>
+                <div className="text-xs font-bold uppercase tracking-wider text-cyan-200">
+                  1st Year Academic Section (NIT Goa Common Cycle)
+                </div>
+                <p className="text-[11px] text-slate-300 mt-1 leading-relaxed">
+                  In 1st Year, courses are section-wise rather than branch-wise.
+                  <strong className="text-cyan-300"> Sections A & B</strong> have the same course, and
+                  <strong className="text-cyan-300"> Sections C & D</strong> have the same course — they switch cycles between Semester 1 and Semester 2. After 1st year, students follow their respective branch syllabus.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2">
+              {(['A', 'B', 'C', 'D'] as FirstYearSection[]).map((sec) => {
+                const isSelected = selectedSection === sec;
+                const cycle = getSectionCycle(sec);
+                const room = sec === 'A' ? 'LH 01' : sec === 'B' ? 'LH 02' : sec === 'C' ? 'LH 03' : 'LH 04';
+                return (
+                  <button
+                    key={sec}
+                    type="button"
+                    onClick={() => setSelectedSection(sec)}
+                    className={`p-3 rounded-xl border text-left transition-all ${
+                      isSelected
+                        ? 'bg-cyan-500/20 border-cyan-400 text-white font-bold ring-1 ring-cyan-400 shadow-md shadow-cyan-500/10'
+                        : 'bg-slate-900/80 border-slate-800 text-slate-300 hover:border-slate-700'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-bold">Section {sec}</span>
+                      {isSelected && (
+                        <div className="w-4 h-4 rounded-full bg-cyan-400 text-slate-950 flex items-center justify-center">
+                          <Check className="w-2.5 h-2.5 stroke-[3]" />
+                        </div>
+                      )}
+                    </div>
+                    <div className="text-[10px] text-slate-400 mt-1">Room {room}</div>
+                    <div className="text-[10px] font-medium text-cyan-300 mt-0.5">
+                      {cycle}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
         {/* Optional: Lab Batch & CSE Minor toggle for EEE 5 */}
         <div className="p-4 bg-slate-950/60 border border-slate-800 rounded-2xl space-y-3 mb-6">
           <div className="text-xs font-semibold text-slate-300">Preferences & Section:</div>
@@ -264,7 +336,11 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
             className="min-h-[44px] px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-amber-500/20 transition flex items-center justify-center gap-2 active:scale-95"
           >
             <Check className="w-4 h-4 stroke-[3] shrink-0" />
-            <span className="truncate">Apply Schedule ({selectedBranch} Sem {selectedSemester})</span>
+            <span className="truncate">
+              {isFirstYear
+                ? `Apply Schedule (1st Year Sec ${selectedSection} • Sem ${selectedSemester})`
+                : `Apply Schedule (${selectedBranch} Sem ${selectedSemester})`}
+            </span>
           </button>
         </div>
       </div>

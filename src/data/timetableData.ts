@@ -1,7 +1,7 @@
 export interface Course {
   code: string;
   name: string;
-  type: 'Theory' | 'Practical' | 'Tutorial' | 'MLC' | 'Minor';
+  type: 'Theory' | 'Practical' | 'Tutorial' | 'MLC' | 'Minor' | 'Elective' | 'Open Elective';
   credits: number;
   ltp: string;
   teachingSlot: string;
@@ -18,7 +18,7 @@ export interface Course {
   books?: string[];
   room: string;
   isMinor?: boolean;
-  category: 'core' | 'elective' | 'minor' | 'lab' | 'mlc';
+  category: 'core' | 'elective' | 'minor' | 'lab' | 'mlc' | 'open_elective';
   notes?: string;
   modules?: string[];
   textbooks?: string[];

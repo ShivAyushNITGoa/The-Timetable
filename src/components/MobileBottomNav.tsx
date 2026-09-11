@@ -13,6 +13,8 @@ import {
   Download,
   Sliders,
   ChevronRight,
+  Mail,
+  Info,
 } from 'lucide-react';
 import { ActiveTab } from './Navbar';
 import { StudentProfile } from '../data/branchesData';
@@ -25,6 +27,7 @@ interface MobileBottomNavProps {
   onOpenBranchSelector: () => void;
   onExportCalendar: () => void;
   onOpenCustomizer?: () => void;
+  onOpenPwaGuide?: () => void;
 }
 
 export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
@@ -35,6 +38,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
   onOpenBranchSelector,
   onExportCalendar,
   onOpenCustomizer,
+  onOpenPwaGuide,
 }) => {
   const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false);
 
@@ -193,6 +197,40 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                 <Download className="w-4 h-4 text-amber-400" />
                 <span>Export to Google/Apple Calendar (.ics)</span>
               </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setIsMoreMenuOpen(false);
+                  onOpenPwaGuide?.();
+                }}
+                className="w-full min-h-[44px] px-4 py-2.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 text-xs font-bold flex items-center justify-center gap-2 transition active:scale-95"
+              >
+                <Info className="w-4 h-4 text-cyan-400" />
+                <span>PWA App & Local Install Guide</span>
+              </button>
+            </div>
+
+            {/* Mobile Drawer Bottom Disclaimer & Developer */}
+            <div className="pt-3 border-t border-slate-800 text-[11px] space-y-2">
+              <div className="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/25 text-slate-300">
+                <div className="flex items-center gap-1.5 text-amber-300 font-bold text-[10px] uppercase tracking-wide">
+                  <span>⚠️ Disclaimer</span>
+                </div>
+                <p className="text-xs text-slate-300 mt-1">
+                  This is <strong>not an official portal of NIT Goa</strong>. Report any mistake/correction on email:
+                </p>
+                <a
+                  href="mailto:shivshivamxyz@gmail.com?subject=NIT%20Goa%20Timetable%20Correction"
+                  className="mt-2 min-h-[38px] px-3 py-1.5 rounded-xl bg-amber-500/20 text-amber-300 hover:text-white flex items-center gap-1.5 font-medium text-xs break-all border border-amber-500/30"
+                >
+                  <Mail className="w-3.5 h-3.5 shrink-0" />
+                  <span>shivshivamxyz@gmail.com</span>
+                </a>
+              </div>
+              <div className="text-center text-[10px] text-slate-500">
+                Architect and developer: <strong className="text-slate-300">Ayush Kumar</strong>
+              </div>
             </div>
           </div>
         </div>

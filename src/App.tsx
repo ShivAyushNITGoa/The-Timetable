@@ -37,10 +37,34 @@ import {
   Sliders,
   ChevronRight,
   Plus,
+  Mail,
+  AlertTriangle,
+  Code,
+  Info,
 } from 'lucide-react';
+import { PwaInstallGuideModal } from './components/PwaInstallGuideModal';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<ActiveTab>('day');
+  const [activeTab, setActiveTab] = useState<ActiveTab>(() => {
+    try {
+      const saved = localStorage.getItem('nit_goa_active_tab') as ActiveTab;
+      if (saved && ['day', 'weekly', 'courses', 'tests', 'attendance', 'exams', 'academic'].includes(saved)) {
+        return saved;
+      }
+    } catch (e) {
+      console.error(e);
+    }
+    return 'day';
+  });
+
+  const handleSetActiveTab = (tab: ActiveTab) => {
+    setActiveTab(tab);
+    try {
+      localStorage.setItem('nit_goa_active_tab', tab);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   // Universal Student Profile (Branch, Year, Semester, Batch, Elective, Minor)
   const [profile, setProfile] = useState<StudentProfile>(() => {
@@ -64,10 +88,23 @@ export default function App() {
   const safeProfile: StudentProfile = profile && profile.branch ? profile : DEFAULT_STUDENT_PROFILE;
 
   // Active Branch & Semester Dataset
-  const activeBranchData = getActiveBranchSemesterData(safeProfile.branch, safeProfile.semester);
+  const activeBranchData = getActiveBranchSemesterData(
+    safeProfile.branch,
+    safeProfile.semester,
+    safeProfile.firstYearSection
+  );
 
-  // Determine default day based on today's date
+  // Determine default day based on saved day or today's date
   const [selectedDay, setSelectedDay] = useState<DayOfWeek>(() => {
+    try {
+      const saved = localStorage.getItem('nit_goa_selected_day') as DayOfWeek;
+      const validDays: DayOfWeek[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+      if (saved && validDays.includes(saved)) {
+        return saved;
+      }
+    } catch (e) {
+      console.error(e);
+    }
     const day = new Date().getDay();
     const daysMap: Record<number, DayOfWeek> = {
       0: 'Sunday',
@@ -81,15 +118,58 @@ export default function App() {
     return daysMap[day] || 'Monday';
   });
 
+  const handleSelectDay = (day: DayOfWeek) => {
+    setSelectedDay(day);
+    try {
+      localStorage.setItem('nit_goa_selected_day', day);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   // Elective Choice (EE541 vs EE545 for EEE, or from profile)
   const [selectedElective, setSelectedElective] = useState<string>(() => {
     return safeProfile.elective || safeProfile.electiveCode || 'EE541';
   });
 
+  const handleUpdateElective = (elective: string) => {
+    setSelectedElective(elective);
+    setProfile((prev) => {
+      const updated = {
+        ...prev,
+        elective,
+        electiveCode: elective,
+      };
+      try {
+        localStorage.setItem('nit_goa_student_profile', JSON.stringify(updated));
+      } catch (e) {
+        console.error(e);
+      }
+      return updated;
+    });
+  };
+
   // Lab Batch Choice (batch1 vs batch2)
   const [selectedBatch, setSelectedBatch] = useState<string>(() => {
     return safeProfile.batch || safeProfile.labBatch || 'batch1';
   });
+
+  const handleUpdateBatch = (batch: string) => {
+    setSelectedBatch(batch);
+    setProfile((prev) => {
+      const updated = {
+        ...prev,
+        batch,
+        labBatch: batch,
+      };
+      try {
+        localStorage.setItem('nit_goa_student_profile', JSON.stringify(updated));
+      } catch (e) {
+        console.error(e);
+      }
+      return updated;
+    });
+  };
 
   // Customized Schedule Override (persisted per branch/sem)
   const [scheduleOverride, setScheduleOverride] = useState<
@@ -113,6 +193,7 @@ export default function App() {
   // Modal states
   const [isBranchSelectorOpen, setIsBranchSelectorOpen] = useState(false);
   const [isCustomizerOpen, setIsCustomizerOpen] = useState(false);
+  const [isPwaModalOpen, setIsPwaModalOpen] = useState(false);
   const [activeModalCourse, setActiveModalCourse] = useState<string | null>(null);
   const [scheduleTestCourseCode, setScheduleTestCourseCode] = useState<string | null>(null);
 
@@ -239,15 +320,16 @@ export default function App() {
       {/* Main Navigation Header with Branch Switcher & Test Tab */}
       <Navbar
         activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        setActiveTab={handleSetActiveTab}
         profile={safeProfile}
         onOpenBranchSelector={() => setIsBranchSelectorOpen(true)}
         selectedElective={selectedElective}
-        setSelectedElective={setSelectedElective}
+        setSelectedElective={handleUpdateElective}
         selectedBatch={selectedBatch}
-        setSelectedBatch={setSelectedBatch}
+        setSelectedBatch={handleUpdateBatch}
         onExportCalendar={handleExportCalendar}
         testCount={tests.length}
+        onOpenPwaGuide={() => setIsPwaModalOpen(true)}
       />
 
       {/* Universal Student Profile Context Strip (Hidden on mobile to preserve vertical screen estate) */}
@@ -258,15 +340,15 @@ export default function App() {
             <span>
               Active Curriculum:{' '}
               <strong className="text-white">
-                B.Tech {safeProfile.year}
-                {safeProfile.year === 1
-                  ? 'st'
-                  : safeProfile.year === 2
-                  ? 'nd'
-                  : safeProfile.year === 3
-                  ? 'rd'
-                  : 'th'}{' '}
-                Year • Sem {safeProfile.semester} ({safeProfile.branch} - {branchInfo.name})
+                {safeProfile.semester <= 2
+                  ? `B.Tech 1st Year (Section ${safeProfile.firstYearSection || 'A'}) • Sem ${safeProfile.semester} (${
+                      (safeProfile.firstYearSection === 'C' || safeProfile.firstYearSection === 'D')
+                        ? (safeProfile.semester === 1 ? 'Chemistry Cycle' : 'Physics Cycle')
+                        : (safeProfile.semester === 1 ? 'Physics Cycle' : 'Chemistry Cycle')
+                    } • ${safeProfile.branch})`
+                  : `B.Tech ${safeProfile.year}${
+                      safeProfile.year === 2 ? 'nd' : safeProfile.year === 3 ? 'rd' : 'th'
+                    } Year • Sem ${safeProfile.semester} (${safeProfile.branch} - ${branchInfo.name})`}
               </strong>
             </span>
 
@@ -316,7 +398,7 @@ export default function App() {
         {activeTab === 'day' && (
           <DayScheduleView
             selectedDay={selectedDay}
-            onSelectDay={setSelectedDay}
+            onSelectDay={handleSelectDay}
             selectedElective={selectedElective}
             selectedBatch={selectedBatch}
             onOpenCourseModal={setActiveModalCourse}
@@ -403,6 +485,7 @@ export default function App() {
             onOpenCourseModal={setActiveModalCourse}
             branch={safeProfile.branch}
             semester={safeProfile.semester}
+            onOpenPwaGuide={() => setIsPwaModalOpen(true)}
           />
         )}
       </main>
@@ -443,15 +526,22 @@ export default function App() {
         }}
       />
 
+      {/* PWA Information & Local Installation Guide Modal */}
+      <PwaInstallGuideModal
+        isOpen={isPwaModalOpen}
+        onClose={() => setIsPwaModalOpen(false)}
+      />
+
       {/* Mobile Bottom Navigation Bar (Docked on < sm screens) */}
       <MobileBottomNav
         activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        setActiveTab={handleSetActiveTab}
         testCount={tests.length}
         profile={safeProfile}
         onOpenBranchSelector={() => setIsBranchSelectorOpen(true)}
         onExportCalendar={handleExportCalendar}
         onOpenCustomizer={() => setIsCustomizerOpen(true)}
+        onOpenPwaGuide={() => setIsPwaModalOpen(true)}
       />
 
       {/* Floating Action Toast Notification (positioned cleanly above mobile nav) */}
@@ -464,37 +554,102 @@ export default function App() {
 
       {/* Institutional Footer */}
       <footer className="mt-auto border-t border-slate-800 bg-slate-900/90 py-8 text-xs text-slate-400 pb-[calc(7.5rem+env(safe-area-inset-bottom,0px))] sm:pb-8 overflow-hidden w-full">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6 w-full">
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 text-center sm:text-left max-w-full w-full">
-            {/* The GDevelopers Brand Logo in Footer */}
-            <BrandLogo
-              iconSize={36}
-              showText={true}
-              variant="dark"
-              subtitle="Engineering Student Solutions"
-              className="justify-center sm:justify-start max-w-full"
-            />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col gap-6 w-full">
+          {/* Main Footer Row */}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 w-full">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 text-center sm:text-left max-w-full w-full">
+              {/* The GDevelopers Brand Logo in Footer */}
+              <BrandLogo
+                iconSize={36}
+                showText={true}
+                variant="dark"
+                subtitle="Engineering Student Solutions"
+                className="justify-center sm:justify-start max-w-full"
+              />
 
-            <div className="h-10 w-px bg-slate-800 hidden sm:block shrink-0" />
+              <div className="h-10 w-px bg-slate-800 hidden sm:block shrink-0" />
 
-            <div className="max-w-full">
-              <div className="text-slate-200 font-semibold break-words">
-                National Institute of Technology Goa • राष्ट्रीय प्रौद्योगिकी संस्थान गोवा
+              <div className="max-w-full">
+                <div className="text-slate-200 font-semibold break-words">
+                  National Institute of Technology Goa • राष्ट्रीय प्रौद्योगिकी संस्थान गोवा
+                </div>
+                <div className="text-[11px] text-slate-400 mt-0.5 break-words">
+                  B.Tech Timetable Portal • Cuncolim Campus
+                </div>
               </div>
-              <div className="text-[11px] text-slate-400 mt-0.5 break-words">
-                Odd Semester Master Timetable • Cuncolim Campus
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-[11px] text-slate-400 max-w-full">
+              <div className="text-center sm:text-right">
+                <span className="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Academics</span>
+                <span className="text-slate-300">Dr. Mini (Dean)</span> • <span className="text-slate-300">Dr. Suresh Mikkili (Timetable)</span>
               </div>
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-800/80 border border-slate-700/80 shrink-0">
+                <span className="w-2 h-2 rounded-full bg-[#9EB81E] animate-pulse"></span>
+                <span className="text-slate-300 font-medium text-[11px]">Powered by The GDevelopers</span>
+              </div>
+
+              {/* Small PWA i-button in Footer */}
+              <button
+                type="button"
+                onClick={() => setIsPwaModalOpen(true)}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-[11px] font-semibold transition active:scale-95 shrink-0"
+                title="This is a Progressive Web App. Click for offline installation guide."
+              >
+                <Info className="w-3.5 h-3.5 text-cyan-400" />
+                <span>PWA • Install Locally</span>
+              </button>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-[11px] text-slate-400 max-w-full">
-            <div className="text-center sm:text-right">
-              <span className="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Academics</span>
-              <span className="text-slate-300">Dr. Mini (Dean)</span> • <span className="text-slate-300">Dr. Suresh Mikkili (Timetable)</span>
+          {/* Credits & Official Disclaimer Strip (Responsive Mobile-First) */}
+          <div className="pt-5 border-t border-slate-800/80 flex flex-col gap-3.5 w-full">
+            {/* Unofficial Disclaimer & Correction Email Alert Card */}
+            <div className="w-full bg-amber-500/10 border border-amber-500/25 rounded-2xl p-4 sm:p-4.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 shadow-sm">
+              <div className="flex items-start gap-3 min-w-0">
+                <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 text-amber-400">
+                  <AlertTriangle className="w-4 h-4" />
+                </div>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                      Disclaimer
+                    </span>
+                    <span className="text-xs sm:text-sm font-bold text-amber-200">
+                      This is not an official portal of NIT Goa
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                    Report any mistake or schedule correction on email:
+                  </p>
+                </div>
+              </div>
+
+              {/* Direct Mail Action Button (Optimized 44px+ touch target on mobile) */}
+              <a
+                href="mailto:shivshivamxyz@gmail.com?subject=NIT%20Goa%20Timetable%20Correction"
+                className="w-full sm:w-auto min-h-[44px] px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 transition active:scale-95 shadow-md shadow-amber-500/15 shrink-0 text-center"
+              >
+                <Mail className="w-4 h-4 shrink-0" />
+                <span className="break-all">shivshivamxyz@gmail.com</span>
+              </a>
             </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-800/80 border border-slate-700/80 shrink-0">
-              <span className="w-2 h-2 rounded-full bg-[#9EB81E] animate-pulse"></span>
-              <span className="text-slate-300 font-medium text-[11px]">Powered by The GDevelopers</span>
+
+            {/* Architect & Developer Attribution Bar */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-2.5 text-center sm:text-left px-1">
+              <div className="flex items-center gap-2 flex-wrap justify-center sm:justify-start">
+                <div className="flex items-center gap-1.5 text-xs text-slate-400">
+                  <Code className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                  <span>Architect and developer of this portal:</span>
+                </div>
+                <span className="text-slate-100 font-bold text-xs bg-slate-800/90 px-2.5 py-1 rounded-lg border border-slate-700/80">
+                  Ayush Kumar
+                </span>
+              </div>
+
+              <div className="text-[11px] text-slate-500">
+                Cuncolim Campus • All B.Tech Branches & Years
+              </div>
             </div>
           </div>
         </div>
