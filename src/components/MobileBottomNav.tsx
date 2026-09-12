@@ -288,7 +288,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                 </span>
               )}
             </div>
-            <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">Tests</span>
+            <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">Tests & Tasks</span>
           </button>
 
           {/* Attendance Tracker Tab */}

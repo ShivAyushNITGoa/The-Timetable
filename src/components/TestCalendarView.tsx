@@ -404,10 +404,10 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
               </span>
             </div>
             <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-              Tests, Quizzes & Examination Planner
+              Tests, Tasks & Assessment Planner
             </h2>
             <p className="text-xs text-slate-400 mt-1 max-w-2xl">
-              Schedule surprise quizzes, mid-sem exam slots, practical lab vivas, and assignment deadlines. Sync directly to Google Calendar or Apple Calendar with alarms.
+              Schedule surprise quizzes, mid-sem exam slots, practical lab vivas, and assignment deadlines with preparation task checklists. Sync directly to Google Calendar or Apple Calendar with alarms.
             </p>
           </div>
 
@@ -728,7 +728,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
             <div className="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 text-[11px] text-slate-400 flex items-center justify-between gap-2">
               <span className="flex items-center gap-1.5 truncate">
                 <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                <span>Tap any assessment to view syllabus & manage tasks • ✏️ Edit • 🗑️ Delete • ↻ Tap status to cycle</span>
+                <span>Tap any assessment to view syllabus & manage tasks • ✏️ Edit Test • 🗑️ Delete • ↻ Tap status to cycle</span>
               </span>
             </div>
 
@@ -846,7 +846,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                           )}
                         </div>
 
-                        {/* Card quick actions: Edit, Delete */}
+                        {/* Card quick actions: Edit Test, Delete */}
                         <div className="flex items-center gap-1.5 ml-auto">
                           <button
                             type="button"
@@ -858,7 +858,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                             title="Edit test date, syllabus, or venue"
                           >
                             <Pencil className="w-3.5 h-3.5 text-amber-400" />
-                            <span className="hidden sm:inline">Edit</span>
+                            <span className="hidden sm:inline">Edit Test</span>
                           </button>
                           <button
                             type="button"
@@ -924,7 +924,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                 title="Edit test parameters"
               >
                 <Pencil className="w-3.5 h-3.5" />
-                <span>Edit Test</span>
+                <span>Edit Test Details</span>
               </button>
             </div>
 
@@ -1062,7 +1062,8 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                                 handleStartEditTask(item.id, item.text);
                               }}
                               className="p-1 rounded-lg text-slate-400 hover:text-amber-400 hover:bg-slate-800 transition"
-                              title="Edit task text"
+                              title="Edit task"
+                              aria-label="Edit task"
                             >
                               <Pencil className="w-3.5 h-3.5" />
                             </button>
@@ -1074,6 +1075,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                               }}
                               className="p-1 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-slate-800 transition"
                               title="Delete task"
+                              aria-label="Delete task"
                             >
                               <Trash2 className="w-3.5 h-3.5" />
                             </button>
@@ -1100,6 +1102,8 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                   onClick={() => handleAddChecklistItem(activeTestDetail)}
                   disabled={!newChecklistText.trim()}
                   className="px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:opacity-40 disabled:hover:bg-amber-500 text-xs font-bold text-slate-950 transition flex items-center gap-1 shrink-0"
+                  title="Add task to preparation checklist"
+                  aria-label="Add task"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   <span>Add Task</span>

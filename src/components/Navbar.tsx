@@ -355,7 +355,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             <CalendarCheck className="w-4 h-4" />
-            <span>Tests & Quizzes</span>
+            <span>Tests & Tasks</span>
             {testCount > 0 && (
               <span
                 className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
