@@ -6,6 +6,7 @@ import { CoursesDirectory } from './components/CoursesDirectory';
 import { AttendanceTracker } from './components/AttendanceTracker';
 import { ExamScheduleView } from './components/ExamScheduleView';
 import { AcademicPortalView } from './components/AcademicPortalView';
+import { ResourcesView } from './components/ResourcesView';
 import { TestCalendarView } from './components/TestCalendarView';
 import { BranchYearSelector } from './components/BranchYearSelector';
 import { ScheduleCustomizerModal } from './components/ScheduleCustomizerModal';
@@ -48,7 +49,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveTab>(() => {
     try {
       const saved = localStorage.getItem('nit_goa_active_tab') as ActiveTab;
-      if (saved && ['day', 'weekly', 'courses', 'tests', 'attendance', 'exams', 'academic'].includes(saved)) {
+      if (saved && ['day', 'weekly', 'courses', 'tests', 'attendance', 'exams', 'academic', 'resources'].includes(saved)) {
         return saved;
       }
     } catch (e) {
@@ -486,6 +487,13 @@ export default function App() {
             branch={safeProfile.branch}
             semester={safeProfile.semester}
             onOpenPwaGuide={() => setIsPwaModalOpen(true)}
+          />
+        )}
+
+        {/* Resources & Official Documents Repository Tab */}
+        {activeTab === 'resources' && (
+          <ResourcesView
+            profile={safeProfile}
           />
         )}
       </main>

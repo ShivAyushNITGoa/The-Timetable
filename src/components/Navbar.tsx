@@ -14,11 +14,12 @@ import {
   Mail,
   AlertCircle,
   Info,
+  FileText,
 } from 'lucide-react';
 import { StudentProfile, DEFAULT_STUDENT_PROFILE, BRANCHES_LIST } from '../data/branchesData';
 import { BrandLogo, BrandIcon } from './BrandLogo';
 
-export type ActiveTab = 'day' | 'weekly' | 'courses' | 'tests' | 'attendance' | 'exams' | 'academic';
+export type ActiveTab = 'day' | 'weekly' | 'courses' | 'tests' | 'attendance' | 'exams' | 'academic' | 'resources';
 
 interface NavbarProps {
   activeTab: ActiveTab;
@@ -415,6 +416,18 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <GraduationCap className="w-4 h-4" />
             <span>SGPA & Academic Hub</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('resources')}
+            className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition ${
+              activeTab === 'resources'
+                ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/15 font-bold'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+            }`}
+          >
+            <FileText className="w-4 h-4" />
+            <span>Resources & Syllabi</span>
           </button>
         </nav>
       </div>

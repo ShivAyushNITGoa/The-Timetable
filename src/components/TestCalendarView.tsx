@@ -659,29 +659,9 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-1.5 shrink-0 self-end sm:self-center">
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleOpenEditModal(test);
-                          }}
-                          className="p-1.5 rounded-lg text-slate-400 hover:text-amber-400 hover:bg-slate-800 border border-slate-700/60"
-                          title="Edit test details"
-                        >
-                          <Pencil className="w-3.5 h-3.5" />
-                        </button>
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setTestToDelete(test);
-                          }}
-                          className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-slate-800 border border-slate-700/60"
-                          title="Delete test"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
+                      <div className="flex items-center gap-1 shrink-0 self-end sm:self-center text-slate-400 group-hover:text-amber-400 text-xs font-semibold transition">
+                        <span className="hidden sm:inline text-[11px] text-slate-400 group-hover:text-amber-300">Tasks & Details</span>
+                        <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-amber-400" />
                       </div>
                     </div>
                   ))}
@@ -846,31 +826,20 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                           )}
                         </div>
 
-                        {/* Card quick actions: Edit Test, Delete */}
+                        {/* Card quick action: Tasks & Details */}
                         <div className="flex items-center gap-1.5 ml-auto">
                           <button
                             type="button"
                             onClick={(e) => {
                               e.stopPropagation();
-                              handleOpenEditModal(test);
+                              setActiveTestDetail(test);
                             }}
-                            className="p-1.5 sm:px-2.5 sm:py-1 rounded-xl text-slate-300 hover:text-amber-300 bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center gap-1 transition text-xs font-semibold active:scale-95"
-                            title="Edit test date, syllabus, or venue"
+                            className="p-1.5 sm:px-3 sm:py-1 rounded-xl text-slate-200 hover:text-amber-300 bg-slate-800/90 hover:bg-slate-700 border border-slate-700 flex items-center gap-1.5 transition text-xs font-semibold active:scale-95 shadow-sm"
+                            title="Open preparation tasks and test details"
                           >
-                            <Pencil className="w-3.5 h-3.5 text-amber-400" />
-                            <span className="hidden sm:inline">Edit Test</span>
-                          </button>
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setTestToDelete(test);
-                            }}
-                            className="p-1.5 sm:px-2.5 sm:py-1 rounded-xl text-slate-400 hover:text-rose-300 bg-slate-800 hover:bg-rose-500/10 border border-slate-700 hover:border-rose-500/30 flex items-center gap-1 transition text-xs font-semibold active:scale-95"
-                            title="Delete test"
-                          >
-                            <Trash2 className="w-3.5 h-3.5 text-rose-400" />
-                            <span className="hidden sm:inline">Delete</span>
+                            <ListTodo className="w-3.5 h-3.5 text-amber-400" />
+                            <span className="hidden sm:inline">Tasks & Details</span>
+                            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
                           </button>
                         </div>
                       </div>
@@ -1146,21 +1115,37 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
               </div>
             </div>
 
-            {/* Actions: Delete test & close */}
-            <div className="flex items-center justify-between pt-3 pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] border-t border-slate-800 text-xs gap-3">
-              <button
-                type="button"
-                onClick={() => setTestToDelete(activeTestDetail)}
-                className="min-h-[44px] px-3.5 py-2 rounded-xl text-rose-400 hover:text-rose-300 hover:bg-rose-500/10 border border-transparent hover:border-rose-500/20 flex items-center gap-1.5 font-semibold transition active:scale-95"
-              >
-                <Trash2 className="w-4 h-4" />
-                <span>Delete Test</span>
-              </button>
+            {/* Actions: Edit, Delete test & close */}
+            <div className="flex items-center justify-between pt-3 pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] border-t border-slate-800 text-xs gap-2 flex-wrap">
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const current = activeTestDetail;
+                    setActiveTestDetail(null);
+                    handleOpenEditModal(current);
+                  }}
+                  className="min-h-[44px] px-3.5 py-2 rounded-xl text-amber-300 hover:text-amber-200 hover:bg-amber-500/10 border border-amber-500/30 flex items-center gap-1.5 font-semibold transition active:scale-95"
+                  title="Edit test date, time, venue, or syllabus"
+                >
+                  <Pencil className="w-4 h-4" />
+                  <span>Edit Assessment</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setTestToDelete(activeTestDetail)}
+                  className="min-h-[44px] px-3.5 py-2 rounded-xl text-rose-400 hover:text-rose-300 hover:bg-rose-500/10 border border-transparent hover:border-rose-500/20 flex items-center gap-1.5 font-semibold transition active:scale-95"
+                  title="Delete this test"
+                >
+                  <Trash2 className="w-4 h-4" />
+                  <span>Delete</span>
+                </button>
+              </div>
 
               <button
                 type="button"
                 onClick={() => setActiveTestDetail(null)}
-                className="min-h-[44px] px-6 py-2 rounded-xl bg-amber-500 text-slate-950 font-bold hover:bg-amber-400 transition active:scale-95 shadow-md"
+                className="min-h-[44px] px-6 py-2 rounded-xl bg-amber-500 text-slate-950 font-bold hover:bg-amber-400 transition active:scale-95 shadow-md ml-auto"
               >
                 Done
               </button>

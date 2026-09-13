@@ -15,6 +15,7 @@ import {
   ChevronRight,
   Mail,
   Info,
+  FileText,
 } from 'lucide-react';
 import { ActiveTab } from './Navbar';
 import { StudentProfile } from '../data/branchesData';
@@ -42,7 +43,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
 }) => {
   const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false);
 
-  const isMoreTabActive = ['courses', 'exams', 'academic'].includes(activeTab);
+  const isMoreTabActive = ['courses', 'exams', 'academic', 'resources'].includes(activeTab);
 
   const handleSelectTab = (tab: ActiveTab) => {
     setActiveTab(tab);
@@ -163,6 +164,27 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                     <div>Master Exam Slots</div>
                     <div className={`text-[11px] font-normal ${activeTab === 'exams' ? 'text-slate-800' : 'text-slate-400'}`}>
                       Slot A–H timings & clash prevention
+                    </div>
+                  </div>
+                </div>
+                <ChevronRight className="w-4 h-4 opacity-70" />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleSelectTab('resources')}
+                className={`w-full min-h-[48px] px-4 py-3 rounded-2xl text-left font-semibold text-sm flex items-center justify-between transition active:scale-[0.98] ${
+                  activeTab === 'resources'
+                    ? 'bg-amber-500 text-slate-950 font-bold'
+                    : 'bg-slate-800/50 text-slate-200 hover:bg-slate-800 border border-slate-800'
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <FileText className={`w-5 h-5 ${activeTab === 'resources' ? 'text-slate-950' : 'text-amber-400'}`} />
+                  <div>
+                    <div>Official Resources & Syllabi</div>
+                    <div className={`text-[11px] font-normal ${activeTab === 'resources' ? 'text-slate-800' : 'text-slate-400'}`}>
+                      Open timetables, syllabus books & ordinances
                     </div>
                   </div>
                 </div>

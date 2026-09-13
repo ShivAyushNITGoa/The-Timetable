@@ -233,8 +233,16 @@ export const CSE_7: SemesterData = {
       room: 'Room 51/52',
       category: 'mlc',
       notes: 'Demand forecasting, cost analysis, market structures (monopoly, oligopoly), capital budgeting, break-even analysis.',
-      modules: ['Microeconomic principles, demand forecasting, production and cost functions, pricing under imperfect competition, capital budgeting and project appraisal.'],
-      textbooks: ['R. Paneerselvam, "Engineering Economics", Prentice Hall of India']
+      modules: [
+        'Module 1: Foundations of Engineering Economics & Demand Analysis - Nature, scope, and engineering significance; law of demand and supply, elasticity of demand, demand forecasting methods (qualitative and regression analysis).',
+        'Module 2: Production & Cost Theory - Production functions (Cobb-Douglas), laws of diminishing returns, returns to scale; short-run and long-run cost curves, economies of scale, break-even analysis and profit maximization.',
+        'Module 3: Market Structures & Pricing Policies - Perfect competition, monopoly, monopolistic competition, and oligopoly; pricing strategies: cost-plus, price discrimination, penetration, skimming, marginal cost pricing.',
+        'Module 4: Capital Budgeting & Investment Decisions - Time value of money, cash flow equivalence; Net Present Value (NPV), Internal Rate of Return (IRR), Payback Period, Benefit-Cost ratio, depreciation accounting.'
+      ],
+      textbooks: [
+        'R. Paneerselvam, "Engineering Economics", 2nd Edition, Prentice Hall of India',
+        'Leland Blank and Anthony Tarquin, "Engineering Economy", McGraw-Hill'
+      ]
     },
     'CS402': {
       code: 'CS402',
@@ -252,8 +260,16 @@ export const CSE_7: SemesterData = {
       room: 'Department Research Lab',
       category: 'lab',
       notes: 'Capstone Phase I: Problem definition, literature survey, architectural design, feasibility analysis, preliminary prototyping, and intermediate defense.',
-      modules: ['Problem formulation, literature review, architectural diagram, milestone presentation, preliminary codebase implementation.'],
-      textbooks: ['NIT Goa B.Tech Project Guidelines Handbook']
+      modules: [
+        'Phase 1: Problem Formulation & Literature Review - Formulating computer science research objectives, comprehensive survey of IEEE/ACM transactions, gap analysis, and requirement specifications.',
+        'Phase 2: System Architecture & Design Specification - Software/hardware architectural diagram, database schema design, algorithm flowchart, UML modeling, and technology stack selection.',
+        'Phase 3: Prototype Implementation & Module Testing - Implementing core algorithms/modules, backend API integration, preliminary testing, and Git version control setup.',
+        'Phase 4: Interim Defense & Technical Documentation - Compiling interim technical report conforming to NIT Goa formatting guidelines, slide defense before departmental review committee.'
+      ],
+      textbooks: [
+        'NIT Goa B.Tech Project Guidelines Handbook',
+        'David F. Beer, David McMurrey, "A Guide to Writing as an Engineer", John Wiley'
+      ]
     },
     'CS401': {
       code: 'CS401',
@@ -271,24 +287,31 @@ export const CSE_7: SemesterData = {
       room: 'Room 51/52',
       category: 'core',
       notes: 'Comprehensive evaluation covering all core B.Tech Computer Science and Engineering courses from 3rd to 6th semesters.',
-      modules: ['Algorithms, Data Structures, Operating Systems, Database Systems, Computer Networks, Theory of Computation, Computer Organization.'],
-      textbooks: ['GATE Computer Science and Information Technology Syllabus and Reference Texts']
+      modules: [
+        'Domain 1: Algorithms & Data Structures - Asymptotic analysis, arrays, stacks, queues, linked lists, binary search trees, AVL trees, heaps, hashing, divide-and-conquer, greedy algorithms, dynamic programming, graph algorithms (BFS, DFS, Dijkstra, Prim), NP-completeness.',
+        'Domain 2: Computer Systems & Architecture - Boolean algebra, combinational and sequential logic, ALU, instruction pipelining, cache memory hierarchy, virtual memory, interrupt handling, addressing modes.',
+        'Domain 3: Operating Systems & Databases - Process management, threads, CPU scheduling algorithms, process synchronization (mutex, semaphores), deadlock detection and prevention, paging, ER models, relational algebra, SQL, BCNF/3NF normalization, transactions and ACID properties.',
+        'Domain 4: Networks, Theory of Computation & Compilers - ISO/OSI and TCP/IP protocol stacks, sliding window protocols, routing algorithms (Dijkstra, Bellman-Ford), TCP/UDP, DNS, HTTP, regular languages, finite automata, context-free grammars, Turing machines, lexical analysis, parsing.'
+      ],
+      textbooks: [
+        'GATE Computer Science and Information Technology Syllabus and Reference Texts',
+        'Thomas H. Cormen, "Introduction to Algorithms", MIT Press',
+        'Abraham Silberschatz, "Operating System Concepts", Wiley'
+      ]
     }
   },
   schedule: buildInstituteMasterSchedule({
     prefix: 'cse7',
-    room: 'Room 51/52',
-    slotA: 'CS529',
-    slotB: 'CS501',
-    slotC: 'CS814',
-    slotD: 'CS534',
-    slotE: 'CS541',
-    slotF: 'CS815',
-    mlcFriday: 'HS350',
-    labMon: { code: 'CS402', name: 'Major Project - I (MCN)', room: 'Research Lab' },
-    labThu: { code: 'CS402', name: 'Major Project - I Implementation', room: 'Research Lab' },
-    notesMonLab: 'Dr. Modi Chirag N (MCN) - Major Project - I',
-    notesThuLab: 'Department Research Lab - Prototyping & Mentorship',
+    room: 'Room 18',
+    slotA: 'CS534',
+    slotB: 'CS529',
+    slotD: 'CS501',
+    slotF: 'CS541',
+    slotG_Minor: 'CS400M',
+    slotH_OpenElective: 'IKS351',
+    mlcFriday: 'CS401',
+    labThu: { code: 'CS402', name: 'Major Project - I (Dr. Chirag N Modi)', room: 'Room 18 / Research Lab' },
+    notesThuLab: 'Dr. Chirag N Modi (MCN) - Major Project - I Capstone Review',
     customSaturdayFocus: 'Big Data & Cloud Virtualization Research Seminars',
   })
 };
@@ -315,8 +338,16 @@ export const CVE_7: SemesterData = {
       room: 'Room 48',
       category: 'elective',
       notes: 'Teaching Slot A. Electromagnetic spectrum, sensor platforms (Landsat, Sentinel), GIS spatial data models (raster/vector), and terrain modeling.',
-      modules: ['Physics of remote sensing, multispectral imagery, visual and digital image classification, GIS database models, watershed delineation.'],
-      textbooks: ['Thomas Lillesand, Ralph W. Kiefer, Jonathan Chipman, "Remote Sensing and Image Interpretation", Wiley']
+      modules: [
+        'Module 1: Physics of Remote Sensing - Electromagnetic spectrum, atmospheric windows, spectral reflectance curves of water, soil, and green vegetation; sensors and orbital platforms (sun-synchronous and geostationary orbits, Landsat, Sentinel, IRS).',
+        'Module 2: Digital Image Processing & Classification - Digital image representations, radiometric and geometric pre-processing, image enhancement techniques, visual interpretation keys, supervised and unsupervised classification (Maximum Likelihood, K-Means).',
+        'Module 3: Geographic Information Systems (GIS) Foundations - Spatial data concepts, raster and vector data models, coordinate reference systems, map projections (UTM), topology creation, and spatial database management systems (SDBMS).',
+        'Module 4: Spatial Analysis & Civil Engineering Applications - Proximity and overlay operations, buffer analysis, network analysis, Digital Elevation Models (DEM/DTM), watershed delineation, flood inundation modeling, land use/land cover change detection.'
+      ],
+      textbooks: [
+        'Thomas Lillesand, Ralph W. Kiefer, Jonathan Chipman, "Remote Sensing and Image Interpretation", 7th Edition, Wiley',
+        'Kang-tsung Chang, "Introduction to Geographic Information Systems", McGraw-Hill'
+      ]
     },
     'CV521': {
       code: 'CV521',
@@ -334,8 +365,16 @@ export const CVE_7: SemesterData = {
       room: 'Room 48',
       category: 'elective',
       notes: 'Teaching Slot B. Stresses in flexible and rigid pavements, Burmister 2-layer theory, IRC:37 flexible pavement guidelines, IRC:58 concrete pavements.',
-      modules: ['Wheel load stresses, ESWL, pavement material characterization (resilient modulus), structural design of bituminous and concrete pavements.'],
-      textbooks: ['Yang H. Huang, "Pavement Analysis and Design", 2nd Edition, Pearson']
+      modules: [
+        'Module 1: Wheel Load Stresses & Traffic Factors - Types of pavements, structural comparison; axle load distributions, Equivalent Single Wheel Load (ESWL), contact pressure and tyre pressure, legal axle load limits.',
+        'Module 2: Stresses in Flexible Pavements & Material Mechanics - Boussinesq theory, Burmister two-layer and multi-layer elastic layered systems; subgrade soil characterization, CBR test, resilient modulus, dynamic modulus, asphalt binder rheology.',
+        'Module 3: Design of Flexible Pavements - Design factors, design life, cumulative standard axles (CSA), IRC:37-2018 guidelines, bituminous layer fatigue cracking and rutting failure criteria, drainage design in flexible pavements.',
+        'Module 4: Stresses & Design of Rigid Pavements - Westergaard stress equations for corner, edge, and interior wheel loadings; temperature stresses (warping and frictional), combination of stresses, IRC:58-2015 design provisions, joint design (expansion, contraction, tie bars, dowel bars).'
+      ],
+      textbooks: [
+        'Yang H. Huang, "Pavement Analysis and Design", 2nd Edition, Pearson Education',
+        'IRC:37-2018 & IRC:58-2015 Standard Codes, Indian Roads Congress'
+      ]
     },
     'CV537': {
       code: 'CV537',
@@ -353,8 +392,16 @@ export const CVE_7: SemesterData = {
       room: 'Room 48',
       category: 'elective',
       notes: 'Teaching Slot C. Vibro-compaction, stone columns, pre-loading with PVD, chemical grouting, geosynthetics, soil nailing.',
-      modules: ['Ground modification principles, deep compaction, dewatering methods, geosynthetics classification and design, reinforced earth walls.'],
-      textbooks: ['P. Purushothama Raj, "Ground Improvement Techniques", Laxmi Publications']
+      modules: [
+        'Module 1: Principles of Ground Modification & Deep Compaction - Engineering need for ground improvement, problematic soils (expansive black cotton soils, collapsible soils, soft marine clays); dynamic compaction, vibro-flotation, vibro-replacement, and stone columns.',
+        'Module 2: Drainage & Dewatering Systems - Well point systems, deep well dewatering, vacuum dewatering, electro-osmotic consolidation; preloading with surcharge, vertical sand drains, and Prefabricated Vertical Drains (PVD).',
+        'Module 3: Chemical Stabilization & Grouting Technologies - Soil stabilization using cement, lime, fly ash, bitumen; grouting materials (suspension vs solution grouts), permeation grouting, compaction grouting, jet grouting, deep soil mixing.',
+        'Module 4: Geosynthetics & Soil Reinforcement - Geotextiles, geogrids, geomembranes, geonets; mechanisms of reinforced earth, internal and external stability of reinforced soil retaining walls, soil nailing, micropiles, rock bolting.'
+      ],
+      textbooks: [
+        'P. Purushothama Raj, "Ground Improvement Techniques", Laxmi Publications',
+        'Robert M. Koerner, "Designing with Geosynthetics", Prentice Hall'
+      ]
     },
     'CV535': {
       code: 'CV535',
@@ -372,8 +419,16 @@ export const CVE_7: SemesterData = {
       room: 'Room 48',
       category: 'elective',
       notes: 'Teaching Slot D. Diversion headworks, Bligh and Khosla seepage theories, spillways, energy dissipators, penstocks, surge tanks.',
-      modules: ['Weirs and barrages on permeable foundations, Khosla theory, ogee spillway hydraulics, hydropower plant layout and turbine selection.'],
-      textbooks: ['S. K. Garg, "Irrigation Engineering and Hydraulic Structures", Khanna']
+      modules: [
+        'Module 1: Diversion Headworks & Seepage Theories - Layout and components of diversion headworks; subsurface flow on permeable foundations, Bligh creep theory, Lane weighted creep theory, Khosla theory of independent variables and exit gradient calculations.',
+        'Module 2: Canal Falls & Cross-Drainage Works - Types of canal falls (Ogee, Rapid, Stepped, Sarda type), energy dissipation mechanisms below falls; design principles of aqueducts, siphon aqueducts, super passages, and level crossings.',
+        'Module 3: Spillways & Energy Dissipators - Classification of spillways, hydraulics of Ogee spillway crest profile, discharge equations, chute spillway, siphon spillway; energy dissipation below spillways: hydraulic jump stilling basins, roller and trajectory buckets.',
+        'Module 4: Hydropower Systems & Water Conductor Elements - Layout of high, medium, and low head hydropower plants; run-of-river and pumped storage schemes; intake structures, penstocks, water hammer phenomenon, surge tanks (simple, restricted orifice, differential), hydraulic turbine selection.'
+      ],
+      textbooks: [
+        'S. K. Garg, "Irrigation Engineering and Hydraulic Structures", Khanna Publishers',
+        'P. N. Modi, "Irrigation, Water Resources and Water Power Engineering", Standard Book House'
+      ]
     },
     'CV525': {
       code: 'CV525',
@@ -391,8 +446,16 @@ export const CVE_7: SemesterData = {
       room: 'Room 48',
       category: 'elective',
       notes: 'Teaching Slot E. SDOF dynamic response, Duhamel integral, MDOF modal analysis, response spectrum analysis (IS 1893:2016).',
-      modules: ['Single-degree-of-freedom systems under harmonic and earthquake ground motion, multi-degree-of-freedom equations of motion, modal superposition.'],
-      textbooks: ['Anil K. Chopra, "Dynamics of Structures: Theory and Applications to Earthquake Engineering", Pearson']
+      modules: [
+        'Module 1: Single-Degree-of-Freedom (SDOF) Systems - Undamped and viscously damped free vibration, logarithmic decrement, Coulomb damping; forced vibration under harmonic excitation, dynamic magnification factor, resonance, vibration transmissibility and isolation.',
+        'Module 2: Response to General Dynamic Loading - Response to step, ramp, and impulse excitations, Duhamel integral formulation, numerical evaluation of dynamic response (Newmark-Beta and Wilson-theta methods), earthquake ground motion response spectra.',
+        'Module 3: Multi-Degree-of-Freedom (MDOF) Systems - Equations of motion for shear building frames, mass and stiffness matrices, characteristic equation, natural frequencies and mode shapes, orthogonality properties of normal modes, modal analysis and modal superposition.',
+        'Module 4: Continuous Systems & Seismic Code Provisions - Free vibration of uniform flexural beams, boundary conditions; introduction to Indian standard seismic code provisions (IS 1893:2016) for equivalent static lateral force and dynamic response spectrum analysis.'
+      ],
+      textbooks: [
+        'Anil K. Chopra, "Dynamics of Structures: Theory and Applications to Earthquake Engineering", 4th Edition, Pearson',
+        'Mario Paz, William Leigh, "Structural Dynamics: Theory and Computation", Springer'
+      ]
     },
     'CV538': {
       code: 'CV538',
@@ -410,8 +473,16 @@ export const CVE_7: SemesterData = {
       room: 'Room 48',
       category: 'elective',
       notes: 'Teaching Slot F. Deterioration mechanisms of concrete and steel, NDT methods (UPV, Rebound hammer), FRP retrofitting, structural strengthening.',
-      modules: ['Corrosion in RC structures, visual inspection and NDT diagnostics, crack repair materials (epoxy grouts), jacketing and carbon fiber laminates.'],
-      textbooks: ['P. C. Varghese, "Maintenance, Repair & Rehabilitation and Minor Works of Buildings", PHI']
+      modules: [
+        'Module 1: Distress & Deterioration Mechanisms in Concrete - Causes of deterioration: carbonation, chloride ingress, alkali-silica reaction, sulfate attack, freeze-thaw cycles; corrosion of steel reinforcement (electrochemistry, half-cell potentials), structural distress cracking.',
+        'Module 2: Diagnostic Assessment & Non-Destructive Testing (NDT) - Visual inspection, core sampling, Schmidt rebound hammer, Ultrasonic Pulse Velocity (UPV), cover meter, rebar corrosion mapping, carbonation depth phenolphthalein test.',
+        'Module 3: Repair Materials & Crack Remediation - Polymeric repair mortars, expansive cements, epoxy resins, polyurethane sealants, rust inhibitors; crack repair techniques: resin injection, stitching, routing and sealing, external bonding.',
+        'Module 4: Structural Retrofitting & Strengthening Techniques - RC column and beam jacketing, steel plate bonding, external prestressing, Fiber Reinforced Polymers (CFRP, GFRP) for flexural, shear, and seismic confinement; case studies.'
+      ],
+      textbooks: [
+        'P. C. Varghese, "Maintenance, Repair & Rehabilitation and Minor Works of Buildings", PHI Learning',
+        'B. Vidivelli, "Rehabilitation of Concrete Structures", Standard Publishers'
+      ]
     },
     'HS350': {
       code: 'HS350',
@@ -429,8 +500,16 @@ export const CVE_7: SemesterData = {
       room: 'Room 48',
       category: 'mlc',
       notes: 'Engineering economics and cost analysis.',
-      modules: ['Cost analysis, interest formulas, depreciation methods, benefit-cost ratio.'],
-      textbooks: ['R. Paneerselvam, "Engineering Economics"']
+      modules: [
+        'Module 1: Foundations of Engineering Economics & Demand Analysis - Law of supply and demand, price and income elasticity, demand forecasting for civil infrastructure projects.',
+        'Module 2: Production & Cost Theory - Short-run and long-run cost curves, production functions, economies of scale, break-even analysis for construction firms.',
+        'Module 3: Market Structures & Pricing Policies - Perfect competition, monopoly, oligopolistic contractor bidding strategies, tender evaluation economics.',
+        'Module 4: Capital Budgeting & Investment Appraisal - Time value of money, discounted cash flows, Net Present Value (NPV), Internal Rate of Return (IRR), Benefit-Cost ratio for public works, asset depreciation.'
+      ],
+      textbooks: [
+        'R. Paneerselvam, "Engineering Economics", 2nd Edition, Prentice Hall of India',
+        'Leland Blank and Anthony Tarquin, "Engineering Economy", McGraw-Hill'
+      ]
     },
     'CV400': {
       code: 'CV400',
@@ -448,8 +527,16 @@ export const CVE_7: SemesterData = {
       room: 'Civil Project Lab',
       category: 'lab',
       notes: 'Civil engineering design project, structural modeling, geotechnical investigation, or environmental modeling.',
-      modules: ['Project site selection, preliminary design, software simulation in ETABS/STAAD/Abaqus, progress presentation.'],
-      textbooks: ['NIT Goa Civil Engineering B.Tech Project Manual']
+      modules: [
+        'Phase 1: Project Site Selection & Literature Review - Selection of civil infrastructure/environmental engineering problem, site reconnaissance, survey of ASCE/ICE research publications.',
+        'Phase 2: Numerical Modeling & Geotechnical Assessment - Structural modeling in ETABS/STAAD.Pro or geotechnical simulation in PLAXIS/GeoStudio, soil investigation parameter estimation.',
+        'Phase 3: Design Computations & Experimental Validation - Detailed structural RCC/steel design calculations as per Indian Standards, experimental laboratory testing of soil/concrete specimens.',
+        'Phase 4: Interim Evaluation & Defense - Compiling interim project report according to NIT Goa guidelines, defense presentation before the departmental evaluation committee.'
+      ],
+      textbooks: [
+        'NIT Goa Civil Engineering B.Tech Project Manual',
+        'Bureau of Indian Standards (IS 456, IS 800, IS 1893)'
+      ]
     },
     'CV402': {
       code: 'CV402',
@@ -467,24 +554,30 @@ export const CVE_7: SemesterData = {
       room: 'Room 48',
       category: 'core',
       notes: 'Comprehensive viva across structural engineering, fluid mechanics, surveying, soil mechanics, and transportation engineering.',
-      modules: ['Solid mechanics, RC design, Soil mechanics, Fluid mechanics, Transportation and Environmental engineering.'],
-      textbooks: ['GATE Civil Engineering Syllabus']
+      modules: [
+        'Domain 1: Structural Engineering & Mechanics - Stress-strain relations, bending and shear stresses, deflection of determinate and indeterminate beams, slope deflection and moment distribution methods, RCC limit state design (IS 456), structural steel design (IS 800).',
+        'Domain 2: Geotechnical & Foundation Engineering - Phase relations, index properties, soil classification, permeability, effective stress, Terzaghi 1D consolidation theory, Mohr-Coulomb shear strength, lateral earth pressure, shallow and deep foundation bearing capacity.',
+        'Domain 3: Fluid Mechanics & Water Resources - Fluid properties, hydrostatic pressure, Bernoulli equation, viscous pipe flow, Darcy-Weisbach friction, open channel flow (Manning formula, hydraulic jump), hydrological cycle, unit hydrograph, water and wastewater treatment processes.',
+        'Domain 4: Transportation Engineering & Surveying - Highway geometric design (stopping sight distance, super-elevation, horizontal and vertical curves), pavement materials (CBR, aggregates, bitumen), levelling, theodolite traversing, tachometry, contouring.'
+      ],
+      textbooks: [
+        'GATE Civil Engineering Syllabus and Reference Texts',
+        'B.C. Punmia, "Surveying and Soil Mechanics", Laxmi Publications',
+        'S. Ramamrutham, "Theory of Structures", Dhanpat Rai'
+      ]
     }
   },
   schedule: buildInstituteMasterSchedule({
     prefix: 'cve7',
-    room: 'Room 48',
-    slotA: 'CV518',
-    slotB: 'CV521',
-    slotC: 'CV537',
-    slotD: 'CV535',
+    room: 'Room 69',
+    slotA: 'HS350',
+    slotB: 'CV538',
+    slotC: 'CV535',
+    slotD: 'CV518',
     slotE: 'CV525',
-    slotF: 'CV538',
-    mlcFriday: 'HS350',
-    labMon: { code: 'CV400', name: 'Major Project - I (AB)', room: 'Civil Project Lab' },
-    labThu: { code: 'CV400', name: 'Major Project - I Design Lab', room: 'Civil Project Lab' },
-    notesMonLab: 'Dr. Aparup Biswal (AB) - Major Project - I',
-    notesThuLab: 'Structural & Geotechnical Modeling Lab',
+    slotF: 'CV537',
+    labTue: { code: 'CV400', name: 'Major Project - I (Dr. Aparup Biswal)', room: 'Room 69 / Civil Project Lab' },
+    notesTueLab: 'Dr. Aparup Biswal (AB) - Major Project - I Evaluation',
     customSaturdayFocus: 'Geotechnical & Structural Dynamics Research Review',
   })
 };
@@ -511,8 +604,16 @@ export const ECE_7: SemesterData = {
       room: 'Room 54',
       category: 'elective',
       notes: 'Teaching Slot A. MOS current mirrors, folded cascode op-amps, bandgap references, continuous-time and switched-capacitor filters.',
-      modules: ['Sub-micron MOS models, high-swing current mirrors, telescopic and folded cascode op-amps, stability and frequency compensation, bandgap voltage references.'],
-      textbooks: ['Behzad Razavi, "Design of Analog CMOS Integrated Circuits", McGraw-Hill']
+      modules: [
+        'Module 1: Sub-Micron MOS Physics & Current Mirrors - Short-channel MOS effects, velocity saturation, channel length modulation; advanced current mirrors (cascode, high-swing, Wilson), matching considerations, active loads.',
+        'Module 2: High-Gain Operational Amplifiers - Telescopic and folded cascode operational amplifiers, output swing limitations, common-mode feedback (CMFB) circuits, slew rate, power supply rejection ratio (PSRR).',
+        'Module 3: Stability & Frequency Compensation - Multi-pole amplifier frequency response, Miller compensation, pole splitting, lead-lag compensation, phase margin, settling time, two-stage and three-stage op-amp topologies.',
+        'Module 4: Voltage References & Switched-Capacitor Circuits - Temperature-independent references, PTAT and CTAT generation, bandgap voltage reference circuits; switched-capacitor integrators, sampling switches, clock feedthrough and charge injection cancellation.'
+      ],
+      textbooks: [
+        'Behzad Razavi, "Design of Analog CMOS Integrated Circuits", 2nd Edition, McGraw-Hill',
+        'Paul R. Gray, Paul J. Hurst, Stephen H. Lewis, Robert G. Meyer, "Analysis and Design of Analog Integrated Circuits", Wiley'
+      ]
     },
     'EC506': {
       code: 'EC506',
@@ -530,8 +631,16 @@ export const ECE_7: SemesterData = {
       room: 'Room 54',
       category: 'elective',
       notes: 'Teaching Slot B. Shannon entropy, mutual information, channel capacity theorem, linear block codes, cyclic codes, convolutional codes, Viterbi decoding.',
-      modules: ['Source coding theorems (Huffman, Shannon-Fano), Channel capacity of BSC and AWGN channels, Linear block codes (generator and parity-check matrices), Convolutional encoders and Viterbi algorithm.'],
-      textbooks: ['Thomas M. Cover, Joy A. Thomas, "Elements of Information Theory", Wiley', 'Shu Lin, Daniel J. Costello, "Error Control Coding", Pearson']
+      modules: [
+        'Module 1: Information Measures & Source Coding - Uncertainty and information, Shannon entropy, joint and conditional entropy, mutual information; source coding theorem, Huffman coding, Shannon-Fano-Elias coding, Lempel-Ziv coding.',
+        'Module 2: Channel Capacity & Continuous Channels - Discrete Memoryless Channels (DMC), channel coding theorem, capacity of Binary Symmetric Channel (BSC) and Binary Erasure Channel (BEC); differential entropy, Shannon-Hartley theorem for AWGN channels.',
+        'Module 3: Linear Block Codes & Cyclic Codes - Generator and parity-check matrices, syndrome decoding, Hamming codes, dual codes; cyclic codes, polynomial representation, shift register encoders, syndrome computation, BCH and Reed-Solomon codes.',
+        'Module 4: Convolutional Codes & Modern Coding Schemes - Convolutional encoders, state diagram, trellis diagram; Maximum Likelihood Decoding and Viterbi algorithm, soft-decision decoding, puncturing; introduction to Turbo codes and Low-Density Parity-Check (LDPC) codes.'
+      ],
+      textbooks: [
+        'Thomas M. Cover, Joy A. Thomas, "Elements of Information Theory", 2nd Edition, Wiley-Interscience',
+        'Shu Lin, Daniel J. Costello, "Error Control Coding", 2nd Edition, Pearson'
+      ]
     },
     'EC501': {
       code: 'EC501',
@@ -549,8 +658,16 @@ export const ECE_7: SemesterData = {
       room: 'Room 54',
       category: 'elective',
       notes: 'Teaching Slot C. Bioelectric potentials (ECG, EEG, EMG), baseline wander and noise filtering, QRS detection (Pan-Tompkins), wavelets, biomedical classification.',
-      modules: ['Genesis of physiological signals, bio-potential electrodes, ECG noise cancellation using adaptive filters, Pan-Tompkins algorithm, wavelets for heart rate variability (HRV).'],
-      textbooks: ['Rangaraj M. Rangayyan, "Biomedical Signal Analysis", Wiley-IEEE Press']
+      modules: [
+        'Module 1: Genesis of Physiological Signals & Bio-potentials - Origin of bioelectric action potentials, resting membrane potentials; ECG, EEG, EMG waveforms; electrode-tissue interface, instrumentation amplifier design, noise sources and motion artifacts.',
+        'Module 2: Bio-Signal Conditioning & Adaptive Filtering - Baseline wander suppression, 50/60 Hz power-line notch filtering; adaptive noise cancellation (LMS and RLS algorithms) for maternal ECG extraction and electromyographic noise reduction.',
+        'Module 3: ECG Feature Extraction & Rhythm Analysis - Detection of fiducial points, Pan-Tompkins QRS detection algorithm, heart rate variability (HRV) time-domain and frequency-domain analysis; sleep EEG rhythm analysis (alpha, beta, theta, delta waves).',
+        'Module 4: Advanced Time-Frequency Methods & Pattern Recognition - Continuous and Discrete Wavelet Transforms (CWT/DWT) for transient detection; empirical mode decomposition (EMD); machine learning classification of cardiac arrhythmias using SVM and neural networks.'
+      ],
+      textbooks: [
+        'Rangaraj M. Rangayyan, "Biomedical Signal Analysis", 2nd Edition, Wiley-IEEE Press',
+        'Willis J. Tompkins, "Biomedical Digital Signal Processing", Prentice Hall'
+      ]
     },
     'EC515': {
       code: 'EC515',
@@ -568,8 +685,16 @@ export const ECE_7: SemesterData = {
       room: 'Room 54',
       category: 'elective',
       notes: 'Teaching Slot D. S-parameter matrix, microwave waveguides, microstrip lines, power dividers (Wilkinson), directional couplers, microwave amplifiers.',
-      modules: ['Waveguides (TE/TM modes), Scattering parameters, microstrip transmission lines, impedance matching using Smith charts, Gunn diode, IMPATT diode, microwave filters.'],
-      textbooks: ['David M. Pozar, "Microwave Engineering", 4th Edition, Wiley']
+      modules: [
+        'Module 1: Microwave Transmission Lines & Network Analysis - High-frequency transmission line theory, Smith chart impedance matching (single and double stub); Scattering parameters (S-matrix), properties of reciprocal and lossless networks, signal flow graphs.',
+        'Module 2: Microwave Passive Components - Waveguide T-junctions, E-plane and H-plane tees, Magic Tee; directional couplers (Bethe hole, branch line), Wilkinson power dividers, ferrite circulators and isolators.',
+        'Module 3: Solid-State Microwave Devices - Transferred electron devices (Gunn diode, domain formation), avalanche transit-time devices (IMPATT, TRAPATT, BARITT diodes), parametric amplifiers, Schottky barrier diodes, PIN diodes for RF switching.',
+        'Module 4: Microwave Amplifiers & Resonators - Microwave bipolar and FET amplifiers, two-port power gains, stability circles, low-noise amplifier (LNA) design; rectangular and circular cavity resonators, quality factor (Q), microstrip planar filters.'
+      ],
+      textbooks: [
+        'David M. Pozar, "Microwave Engineering", 4th Edition, John Wiley & Sons',
+        'Samuel Y. Liao, "Microwave Devices and Circuits", 3rd Edition, Pearson'
+      ]
     },
     'EC852': {
       code: 'EC852',
@@ -587,8 +712,16 @@ export const ECE_7: SemesterData = {
       room: 'Room 54',
       category: 'elective',
       notes: 'Teaching Slot E. Convex sets, linear programming (Simplex), unconstrained optimization (gradient descent, Newton-Raphson), KKT conditions, genetic algorithms.',
-      modules: ['Convex optimization formulations, Simplex method, gradient descent and quasi-Newton methods, Karush-Kuhn-Tucker (KKT) optimality conditions, evolutionary algorithms.'],
-      textbooks: ['Stephen Boyd, Lieven Vandenberghe, "Convex Optimization", Cambridge University Press']
+      modules: [
+        'Module 1: Convex Sets, Functions & Problem Formulation - Affine and convex sets, hyperplanes, convex cones; convex functions, epigraphs, Jensen inequality; formulation of optimization problems in signal processing and communication systems.',
+        'Module 2: Linear Programming & Duality Theory - Standard form linear programming, geometry of linear programs, Simplex algorithm and two-phase method; duality theory, weak and strong duality, dual Simplex method.',
+        'Module 3: Unconstrained & Constrained Non-Linear Optimization - Unconstrained optimization: line search methods, gradient descent, Newton method, BFGS quasi-Newton; constrained optimization: Lagrange multipliers, Karush-Kuhn-Tucker (KKT) first and second order optimality conditions.',
+        'Module 4: Interior-Point Methods & Evolutionary Algorithms - Barrier methods, primal-dual interior point algorithms; nature-inspired metaheuristics: Genetic Algorithms (GA), Particle Swarm Optimization (PSO), applications in antenna array synthesis and wireless resource allocation.'
+      ],
+      textbooks: [
+        'Stephen Boyd, Lieven Vandenberghe, "Convex Optimization", Cambridge University Press',
+        'Singiresu S. Rao, "Engineering Optimization: Theory and Practice", 5th Edition, Wiley'
+      ]
     },
     'EC517': {
       code: 'EC517',
@@ -606,8 +739,16 @@ export const ECE_7: SemesterData = {
       room: 'Room 54',
       category: 'elective',
       notes: 'Teaching Slot F. Stuck-at fault modeling, ATPG (D-algorithm, PODEM), scan path architectures, Built-In Self-Test (BIST), boundary scan (IEEE 1149.1).',
-      modules: ['Fault models (stuck-at, bridging, delay), Automatic Test Pattern Generation (ATPG), Design for Testability (DFT), Scan architectures, Built-In Self-Test (BIST) with LFSR.'],
-      textbooks: ['M. L. Bushnell, V. D. Agrawal, "Essentials of Electronic Testing for Digital, Memory and Mixed-Signal VLSI Circuits", Springer']
+      modules: [
+        'Module 1: Fault Modeling in VLSI Circuits - Physical defects, fault equivalence and fault dominance; single and multiple stuck-at fault models, bridging faults, transistor open and short faults, delay fault modeling.',
+        'Module 2: Test Generation for Combinational & Sequential Logic - Fault simulation algorithms (serial, parallel, deductive, concurrent); Automatic Test Pattern Generation (ATPG): D-algorithm, PODEM, FAN algorithm; sequential ATPG challenges.',
+        'Module 3: Design for Testability (DFT) & Scan Architectures - Controllability and observability measures (SCOAP); ad-hoc testability techniques; structured DFT: full-scan and partial-scan design, scan flip-flop architectures, boundary scan standard (IEEE 1149.1 / JTAG).',
+        'Module 4: Built-In Self-Test (BIST) & Memory Testing - BIST architecture, test pattern generation with Linear Feedback Shift Registers (LFSR), response compression (signature analysis, MISR); RAM testing: March tests, memory BIST (MBIST).'
+      ],
+      textbooks: [
+        'M. L. Bushnell, V. D. Agrawal, "Essentials of Electronic Testing for Digital, Memory and Mixed-Signal VLSI Circuits", Springer',
+        'Niranjan K. Jha, Sandeep Gupta, "Testing of Digital Systems", Cambridge University Press'
+      ]
     },
     'EC901': {
       code: 'EC901',
@@ -625,8 +766,16 @@ export const ECE_7: SemesterData = {
       room: 'Room 54',
       category: 'open_elective',
       notes: 'Institute open elective: Linear algebra (SVD, PCA), multivariate calculus, probability distributions, convex optimization for machine learning algorithms.',
-      modules: ['Vector spaces, matrix decompositions (Eigen, SVD), multivariate Gaussian, maximum likelihood estimation, gradient descent algorithms.'],
-      textbooks: ['Marc Peter Deisenroth et al., "Mathematics for Machine Learning", Cambridge']
+      modules: [
+        'Module 1: Linear Algebra & Matrix Decompositions - Vector spaces, linear independence, basis and dimension; inner products, orthogonal projections, Gram-Schmidt orthogonalization; eigenvalues and eigenvectors, Singular Value Decomposition (SVD), Principal Component Analysis (PCA).',
+        'Module 2: Multivariate Calculus & Optimization - Vector-valued functions, Jacobian and Hessian matrices; directional derivatives, multivariable chain rule; unconstrained optimization, gradient descent, stochastic gradient descent (SGD), momentum, Adam optimizer.',
+        'Module 3: Probability & Random Variables - Joint, marginal, and conditional probabilities, Bayes theorem; discrete and continuous distributions (Gaussian, Bernoulli, Multinomial); expectation, covariance matrices, multivariate Gaussian distributions.',
+        'Module 4: Statistical Inference & Information Measures - Maximum Likelihood Estimation (MLE), Maximum A Posteriori (MAP) estimation; Kullback-Leibler (KL) divergence, cross-entropy loss, Bayesian linear regression, applications to neural network loss formulations.'
+      ],
+      textbooks: [
+        'Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong, "Mathematics for Machine Learning", Cambridge University Press',
+        'Gilbert Strang, "Linear Algebra and Learning from Data", Wellesley-Cambridge Press'
+      ]
     },
     'HS350': {
       code: 'HS350',
@@ -644,8 +793,16 @@ export const ECE_7: SemesterData = {
       room: 'Room 54',
       category: 'mlc',
       notes: 'Economic feasibility, corporate costing, and investment appraisal.',
-      modules: ['Cost structures, cash flow analysis, depreciation, and project appraisal.'],
-      textbooks: ['R. Paneerselvam, "Engineering Economics"']
+      modules: [
+        'Module 1: Foundations of Engineering Economics & Demand Analysis - Law of supply and demand, price elasticity, market forecasting for consumer electronics and semiconductor products.',
+        'Module 2: Production & Cost Theory - Short-run and long-run cost functions, economies of scale in VLSI fabrication and assembly, break-even analysis.',
+        'Module 3: Market Structures & Pricing Policies - Perfect competition, monopoly, oligopolistic competition in telecom markets, cost-plus and technology-skimming pricing.',
+        'Module 4: Capital Budgeting & Project Appraisal - Time value of money, discounted cash flows, Net Present Value (NPV), Internal Rate of Return (IRR), Benefit-Cost ratio, equipment depreciation.'
+      ],
+      textbooks: [
+        'R. Paneerselvam, "Engineering Economics", 2nd Edition, Prentice Hall of India',
+        'Leland Blank and Anthony Tarquin, "Engineering Economy", McGraw-Hill'
+      ]
     },
     'EC400': {
       code: 'EC400',
@@ -663,8 +820,16 @@ export const ECE_7: SemesterData = {
       room: 'ECE Research Lab',
       category: 'lab',
       notes: 'Hardware or simulation capstone in VLSI, Signal Processing, Embedded IoT, or Wireless Communications.',
-      modules: ['Project scope formulation, literature review, hardware architecture/schematic design, prototype testing, milestone evaluation.'],
-      textbooks: ['NIT Goa ECE Capstone Project Guidelines']
+      modules: [
+        'Phase 1: Project Formulation & Literature Survey - Formulating core engineering objective in VLSI, DSP, communications, or embedded systems; critical review of IEEE transactions and patents.',
+        'Phase 2: Architectural Modeling & Simulation - System architectural block diagram, schematic design, RTL Verilog/VHDL modeling or MATLAB/Python algorithmic simulation.',
+        'Phase 3: Hardware Implementation & Benchmarking - Cadence/Synopsys circuit synthesis or FPGA/microcontroller hardware benchtop testing, preliminary experimental metric validation.',
+        'Phase 4: Interim Evaluation & Defense - Interim thesis documentation following NIT Goa style guidelines, presentation before departmental project review committee.'
+      ],
+      textbooks: [
+        'NIT Goa ECE Capstone Project Guidelines',
+        'David F. Beer, David McMurrey, "A Guide to Writing as an Engineer", John Wiley'
+      ]
     },
     'EC402': {
       code: 'EC402',
@@ -682,25 +847,31 @@ export const ECE_7: SemesterData = {
       room: 'Room 54',
       category: 'core',
       notes: 'Comprehensive viva on Analog/Digital Communication, DSP, Electronic Devices, Circuits, and Microprocessors.',
-      modules: ['Electronic devices and circuits, Digital logic, Signals & Systems, Analog and digital communications, DSP, Microprocessors.'],
-      textbooks: ['GATE Electronics and Communication Engineering Reference Texts']
+      modules: [
+        'Domain 1: Signals, Systems & Networks - Continuous and discrete-time signals, LTI systems, Fourier series and transforms, Laplace and Z-transforms, DFT/FFT, FIR/IIR digital filter design; network theorems, transient analysis, two-port networks.',
+        'Domain 2: Electronic Devices & Analog Circuits - Energy bands, carrier transport, PN junction diode, Zener diode, BJT, MOSFET physics and biasing; small-signal amplifiers, frequency response, feedback amplifiers, op-amp configurations.',
+        'Domain 3: Digital Circuits & Embedded Microprocessors - Boolean algebra, logic gates, combinational circuits (multiplexers, decoders, adders), sequential circuits (latches, flip-flops, counters), finite state machines, 8085/8086 microprocessors, memory interfacing.',
+        'Domain 4: Communications & Electromagnetics - Amplitude, frequency, and phase modulation; digital modulation (BPSK, QPSK, QAM), noise in communication systems, channel capacity; Maxwell equations, plane waves, transmission lines, Smith charts, antennas.'
+      ],
+      textbooks: [
+        'GATE Electronics and Communication Engineering Reference Texts',
+        'Simon Haykin, "Communication Systems", Wiley',
+        'Adel S. Sedra, Kenneth C. Smith, "Microelectronic Circuits", Oxford University Press'
+      ]
     }
   },
   schedule: buildInstituteMasterSchedule({
     prefix: 'ece7',
-    room: 'Room 54',
-    slotA: 'EC521',
-    slotB: 'EC506',
+    room: 'Room 5',
+    slotB: 'EC517',
     slotC: 'EC501',
-    slotD: 'EC515',
-    slotE: 'EC852',
-    slotF: 'EC517',
-    slotH_OpenElective: 'EC901',
-    mlcFriday: 'HS350',
-    labMon: { code: 'EC400', name: 'Major Project - I (TP)', room: 'ECE Research Lab' },
-    labThu: { code: 'EC400', name: 'Major Project - I Prototyping', room: 'ECE Research Lab' },
-    notesMonLab: 'Dr. Trilochan Panigrahi (TP) - Major Project - I',
-    notesThuLab: 'ECE Research Lab - FPGA & Hardware Bench',
+    slotD: 'EC506',
+    slotE: 'EC521',
+    slotF: 'EC515',
+    slotG_Minor: 'EC400M',
+    slotH_OpenElective: 'IKS351',
+    labThu: { code: 'EC402', name: 'Major Project - I (Dr. Shivnarayan Patidar)', room: 'Room 5 / ECE Research Lab' },
+    notesThuLab: 'Dr. Shivnarayan Patidar (SP) - Major Project - I Capstone Review',
     customSaturdayFocus: 'Advanced VLSI Testing & Information Theory Clinics',
   })
 };
@@ -829,8 +1000,16 @@ export const EEE_7: SemesterData = {
       room: 'Room 70/71',
       category: 'open_elective',
       notes: 'Institute open elective for non-EEE students: Fundamentals of electric vehicles, battery chemistries, motor configurations, EV charging levels, and environmental life-cycle analysis.',
-      modules: ['EV system overview, motors, battery pack basics, charging standards, regenerative braking and environmental impact.'],
-      textbooks: ['Mehrdad Ehsani et al., "Modern Electric, Hybrid Electric, and Fuel Cell Vehicles"']
+      modules: [
+        'Module 1: Electric Vehicle Architecture & Dynamics - Historical background, EV classifications (HEV, PHEV, BEV, FCEV); vehicle dynamics, rolling resistance, aerodynamic drag, grading resistance, tractive effort curves, energy consumption per kilometer.',
+        'Module 2: EV Electric Motors & Powertrains - Comparison of traction motors (DC series, induction, BLDC, Permanent Magnet Synchronous Motors); regenerative braking principles, power converter topology for motor control, single and multi-gear transmissions.',
+        'Module 3: Battery Energy Storage & BMS - Battery chemistry fundamentals (Lead-acid, NiMH, Lithium-ion, LFP, NMC), battery pack configuration (cells in series-parallel); Battery Management System (BMS) roles: state of charge (SOC) estimation, thermal runaway prevention, cell balancing.',
+        'Module 4: EV Charging Infrastructure & Grid Integration - AC Level 1, Level 2, and DC Fast Charging standards (CCS-2, CHAdeMO, GB/T); wireless inductive power transfer; smart charging, Vehicle-to-Grid (V2G) concepts, environmental well-to-wheel emissions lifecycle analysis.'
+      ],
+      textbooks: [
+        'Mehrdad Ehsani, Yimin Gao, Stefano Longo, Kambiz M. Ebrahimi, "Modern Electric, Hybrid Electric, and Fuel Cell Vehicles", CRC Press',
+        'Iqbal Husain, "Electric and Hybrid Vehicles: Design Fundamentals", CRC Press'
+      ]
     },
     'HS350': {
       code: 'HS350',
@@ -848,8 +1027,16 @@ export const EEE_7: SemesterData = {
       room: 'Room 70/71',
       category: 'mlc',
       notes: 'Financial evaluation, tariff calculations, power project feasibility, and capital investment appraisal.',
-      modules: ['Microeconomics, electricity tariffs, capital budgeting, break-even analysis.'],
-      textbooks: ['R. Paneerselvam, "Engineering Economics"']
+      modules: [
+        'Module 1: Foundations of Engineering Economics & Demand Analysis - Law of supply and demand, price elasticity, load forecasting and power demand projections.',
+        'Module 2: Production & Cost Theory - Short-run and long-run cost curves, economies of scale in power generation and grid transmission, break-even analysis.',
+        'Module 3: Market Structures & Electricity Tariffs - Monopoly vs deregulated power markets; electricity tariff formulation: flat rate, block meter, two-part, maximum demand, time-of-use (TOU) tariffs.',
+        'Module 4: Capital Budgeting & Investment Appraisal - Time value of money, discounted cash flows, Net Present Value (NPV), Internal Rate of Return (IRR), Payback Period for renewable energy installations, transformer and asset depreciation.'
+      ],
+      textbooks: [
+        'R. Paneerselvam, "Engineering Economics", 2nd Edition, Prentice Hall of India',
+        'Leland Blank and Anthony Tarquin, "Engineering Economy", McGraw-Hill'
+      ]
     },
     'EE400': {
       code: 'EE400',
@@ -867,8 +1054,16 @@ export const EEE_7: SemesterData = {
       room: 'Power Systems / Hardware Lab',
       category: 'lab',
       notes: 'Electrical engineering capstone: hardware prototype or deep simulation in Smart Grids, Power Converters, Motor Drives, or Renewable Integration.',
-      modules: ['Project literature review, converter topology or grid model selection, simulation in MATLAB/Simulink/PLECS, hardware testbench setup, milestone defense.'],
-      textbooks: ['NIT Goa EEE Capstone Project Handbook']
+      modules: [
+        'Phase 1: Project Scope Formulation & Literature Review - Identifying technical problem in smart grids, renewable energy, power converters, or EV drives; exhaustive IEEE Transactions literature review.',
+        'Phase 2: Mathematical Modeling & Simulation - Deriving differential equations, MATLAB/Simulink/PLECS circuit simulation, controller design and stability verification.',
+        'Phase 3: Hardware Testbench Development - Gate driver circuitry, PCB layout design, sensor interfacing, DSP/microcontroller programming for PWM generation, preliminary experimental testing.',
+        'Phase 4: Interim Evaluation & Defense - Documentation of interim project report per NIT Goa academic standards, defense presentation before departmental faculty panel.'
+      ],
+      textbooks: [
+        'NIT Goa EEE Capstone Project Handbook',
+        'David F. Beer, David McMurrey, "A Guide to Writing as an Engineer", John Wiley'
+      ]
     },
     'EE402': {
       code: 'EE402',
@@ -886,23 +1081,31 @@ export const EEE_7: SemesterData = {
       room: 'Room 70/71',
       category: 'core',
       notes: 'Comprehensive viva voce covering Circuit Theory, Electrical Machines I & II, Power Systems, Control Systems, and Power Electronics.',
-      modules: ['Circuit analysis, Electrical Machines, Power Transmission & Distribution, Control Systems, Analog Electronics, Power Electronics.'],
-      textbooks: ['GATE Electrical Engineering Syllabi and Reference Texts']
+      modules: [
+        'Domain 1: Electric Circuits & Electromagnetic Fields - Mesh and nodal analysis, network theorems (Thevenin, Norton, Superposition, Maximum Power Transfer), transient response of RL, RC, RLC circuits, two-port networks, Gauss law, Ampere law, magnetic boundary conditions, Biot-Savart law.',
+        'Domain 2: Electrical Machines - Single-phase and three-phase transformers (equivalent circuits, phasor diagrams, efficiency, regulation), DC machines (armature reaction, speed control, braking), 3-phase induction motors (torque-slip curves, starting methods), synchronous machines (salient and cylindrical rotor models, V-curves).',
+        'Domain 3: Power Systems & Protection - Overhead line parameters, ABCD constants, per-unit representation, power flow analysis (Gauss-Seidel, Newton-Raphson), symmetrical and unsymmetrical fault calculations, overcurrent and distance relays, circuit breakers.',
+        'Domain 4: Control Systems & Power Electronics - Transfer functions, block diagram reduction, Routh-Hurwitz stability, root locus, Bode and Nyquist plots, state-space representations; power semiconductor devices (SCR, MOSFET, IGBT), phase-controlled rectifiers, DC-DC choppers (buck, boost, buck-boost), voltage source inverters (VSI).'
+      ],
+      textbooks: [
+        'GATE Electrical Engineering Syllabi and Reference Texts',
+        'I. J. Nagrath, D. P. Kothari, "Electric Machines", McGraw-Hill',
+        'Ned Mohan, Tore M. Undeland, William P. Robbins, "Power Electronics: Converters, Applications, and Design", Wiley'
+      ]
     }
   },
   schedule: buildInstituteMasterSchedule({
     prefix: 'eee7',
-    room: 'Room 70/71',
-    slotB: 'EE514',
-    slotC: 'EE531',
-    slotD: 'EE552',
+    room: 'Room 8/9',
+    slotA: 'EE514',
+    slotB: 'EE552',
+    slotC: 'HS350',
+    slotD: 'EE530',
     slotE: 'EE560',
-    slotH_OpenElective: 'EE903',
-    mlcFriday: 'HS350',
-    labMon: { code: 'EE400', name: 'Major Project - I (CV)', room: 'Power Systems Lab' },
-    labThu: { code: 'EE400', name: 'Major Project - I Hardware Lab', room: 'Power Electronics Lab' },
-    notesMonLab: 'Dr. C. Vyjayanthi (CV) - Major Project - I',
-    notesThuLab: 'Department Project Labs - Hardware Simulation & Testing',
+    slotF: 'EE541',
+    slotH_OpenElective: 'EE531',
+    labThu: { code: 'EE400', name: 'Major Project - I (Dr. C. Vyjayanthi)', room: 'Room 8/9 / Power Systems Lab' },
+    notesThuLab: 'Dr. C. Vyjayanthi (CV) - Major Project - I Review',
     customSaturdayFocus: 'Smart Grids & Electric Vehicle Power Converters Seminar',
   })
 };
@@ -929,8 +1132,16 @@ export const ME_7: SemesterData = {
       room: 'Room 74/75',
       category: 'elective',
       notes: 'Teaching Slot A. Micro-EDM, micro-USM, laser micro-machining, photolithography, cleanroom fabrication, nano-finishing processes.',
-      modules: ['Principles of micro-manufacturing, micro-mechanical cutting, thermal micro-machining (micro-EDM, laser), chemical and electrochemical micro-machining, AFM.'],
-      textbooks: ['V. K. Jain, "Introduction to Micromachining", CRC Press']
+      modules: [
+        'Module 1: Foundations of Micro-Manufacturing & Scaling Effects - Definition, miniaturization drivers, scaling laws in manufacturing; size effect in micro-cutting, minimum chip thickness, micro-tool fabrication using micro-grinding and EDM wire electro-discharge grinding.',
+        'Module 2: Advanced Thermal & Beam Micro-Machining - Micro-EDM (spark energy regimes, RC and transistor circuits, dielectric fluids), micro-wire EDM; Laser Beam Micro-Machining (excimer and femtosecond laser ablation, thermal HAZ minimization); electron beam micro-machining.',
+        'Module 3: Chemical, Electrochemical & Lithographic Processes - Photolithography (positive/negative resists, mask aligners), wet chemical anisotropic etching of silicon (KOH, TMAH), Deep Reactive Ion Etching (DRIE / Bosch process), LIGA and micro-electroforming.',
+        'Module 4: Nano-Finishing & Precision Metrology - Magnetorheological abrasive flow finishing (MRAFF), elastic emission machining (EEM), chemical mechanical polishing (CMP); characterization techniques: Atomic Force Microscopy (AFM), Scanning Electron Microscopy (SEM), optical surface profilometry.'
+      ],
+      textbooks: [
+        'V. K. Jain, "Introduction to Micromachining", 2nd Edition, CRC Press',
+        'Mark J. Madou, "Fundamentals of Microfabrication and Nanotechnology", CRC Press'
+      ]
     },
     'ME535': {
       code: 'ME535',
@@ -948,8 +1159,16 @@ export const ME_7: SemesterData = {
       room: 'Room 74/75',
       category: 'elective',
       notes: 'Teaching Slot B. Governing equations (Navier-Stokes), finite difference and finite volume methods, SIMPLE algorithm, turbulence models (k-epsilon).',
-      modules: ['Conservation equations in differential form, Finite Volume Method (FVM) for diffusion and convection-diffusion, upwind schemes, SIMPLE pressure-velocity coupling, grid generation.'],
-      textbooks: ['H. K. Versteeg, W. Malalasekera, "An Introduction to Computational Fluid Dynamics: The Finite Volume Method", Pearson']
+      modules: [
+        'Module 1: Governing Equations & Mathematical Nature of Flow - Conservation equations of mass, momentum (Navier-Stokes), and energy in conservative differential forms; mathematical classification of PDEs (elliptic, parabolic, hyperbolic) and physical boundary conditions.',
+        'Module 2: Finite Volume Discretization for Diffusion & Convection - Finite volume method (FVM) for 1D and 2D steady diffusion; convective flux discretization schemes: Central Differencing, Upwind Differencing, Hybrid, and QUICK schemes; false diffusion and boundedness criteria.',
+        'Module 3: Pressure-Velocity Coupling & Solution Algorithms - Staggered vs collocated grids; pressure-velocity linkage algorithms: Semi-Implicit Method for Pressure-Linked Equations (SIMPLE), SIMPLER, and PISO; convergence criteria and under-relaxation factors.',
+        'Module 4: Turbulence Modeling & Grid Generation - Reynolds-Averaged Navier-Stokes (RANS) equations, Reynolds stresses, Boussinesq eddy viscosity hypothesis; two-equation turbulence models (standard k-epsilon and SST k-omega), near-wall treatment (wall functions); structured and unstructured mesh generation.'
+      ],
+      textbooks: [
+        'H. K. Versteeg, W. Malalasekera, "An Introduction to Computational Fluid Dynamics: The Finite Volume Method", 2nd Edition, Pearson',
+        'John D. Anderson Jr., "Computational Fluid Dynamics: The Basics with Applications", McGraw-Hill'
+      ]
     },
     'ME513': {
       code: 'ME513',
@@ -967,8 +1186,16 @@ export const ME_7: SemesterData = {
       room: 'Room 74/75',
       category: 'elective',
       notes: 'Teaching Slot C. DFMA philosophy, design for casting, forging, welding, injection moulding, Boothroyd-Dewhurst DFA methodology.',
-      modules: ['General design guidelines for manufacturability, design for sand and die casting, design for sheet metal stamping, Boothroyd and Dewhurst DFA method, mistake-proofing (Poka-Yoke).'],
-      textbooks: ['Geoffrey Boothroyd, Peter Dewhurst, Winston A. Knight, "Product Design for Manufacture and Assembly", CRC Press']
+      modules: [
+        'Module 1: DFMA Principles & Concurrent Engineering - Engineering design process, concurrent engineering philosophy, integration of design and manufacturing; material and process selection criteria, standard components and modularity.',
+        'Module 2: Design for Primary Manufacturing Processes - Design for Sand Casting and Die Casting (parting lines, draft angles, ribs, wall thickness uniformity, coring); Design for Forging (flash allowances, die wear); Design for Sheet Metal Forming (bend radii, relief notches).',
+        'Module 3: Design for Machining & Polymer Processing - Design guidelines for turning, milling, and drilling operations (tool accessibility, standardized hole sizes); Design for Injection Moulding (shrinkage compensation, weld lines, gate locations, ejection pins).',
+        'Module 4: Boothroyd-Dewhurst DFA & Mistake-Proofing - Boothroyd and Dewhurst DFA index, theoretical minimum part count criteria; design for manual, automated, and robotic assembly; poke-yoke (mistake-proofing) geometric design principles, life-cycle design (DFE and DFR).'
+      ],
+      textbooks: [
+        'Geoffrey Boothroyd, Peter Dewhurst, Winston A. Knight, "Product Design for Manufacture and Assembly", 3rd Edition, CRC Press',
+        'David M. Anderson, "Design for Manufacturability: How to Use Concurrent Engineering to Rapidly Develop Low-Cost, High-Quality Products", CRC Press'
+      ]
     },
     'ME524': {
       code: 'ME524',
@@ -986,8 +1213,16 @@ export const ME_7: SemesterData = {
       room: 'Room 74/75',
       category: 'elective',
       notes: 'Teaching Slot D. Vehicle chassis and body, transmission systems (clutch, manual/automatic gearbox, differential), steering geometry, braking systems (ABS), suspension.',
-      modules: ['Chassis layout, single/multi-plate clutches, synchromesh gearboxes, epicyclic automatic transmission, propeller shaft, differential, Ackermann steering, independent suspensions.'],
-      textbooks: ['Kirpal Singh, "Automobile Engineering Vol. 1 & 2", Standard Publishers']
+      modules: [
+        'Module 1: Vehicle Architecture & Powertrain Layout - Chassis classification, frameless and monocoque body designs; vehicle aerodynamics; internal combustion engine auxiliary subsystems: MPFI fuel injection, turbocharging, intercooling, Euro VI / Bharat Stage VI emission standards.',
+        'Module 2: Transmission & Driveline Systems - Single and multi-plate dry clutches, diaphragm springs; manual synchromesh gearboxes, planetary/epicyclic automatic gearboxes, Continuously Variable Transmissions (CVT); propeller shaft, universal joints, slip joints, differential and limited-slip differential.',
+        'Module 3: Steering Geometry & Suspension Systems - Steering mechanics, Ackermann and Davis steering principles, camber, caster, kingpin inclination, toe-in/toe-out, power steering (hydraulic and EPS); independent suspension systems (MacPherson strut, double wishbone), coil springs, torsion bars, anti-roll bars.',
+        'Module 4: Braking Systems & Automotive Safety - Drum and disc brakes, hydraulic and pneumatic braking systems; Anti-lock Braking Systems (ABS), Electronic Brakeforce Distribution (EBD), Electronic Stability Program (ESP); active and passive safety features, crash test regulations.'
+      ],
+      textbooks: [
+        'Kirpal Singh, "Automobile Engineering Vol. 1 & 2", 13th Edition, Standard Publishers',
+        'William H. Crouse, Donald L. Anglin, "Automotive Mechanics", 10th Edition, McGraw-Hill'
+      ]
     },
     'ME512': {
       code: 'ME512',
@@ -1005,8 +1240,16 @@ export const ME_7: SemesterData = {
       room: 'Room 74/75',
       category: 'elective',
       notes: 'Teaching Slot E. Reinforcements (fibers, particles), polymer/metal/ceramic matrix composites, classical lamination theory, failure criteria (Tsai-Hill, Tsai-Wu).',
-      modules: ['Classification of composites, rule of mixtures for elastic constants, orthotropic lamina stress-strain relations, ABD matrix for laminates, Tsai-Wu failure criterion.'],
-      textbooks: ['Robert M. Jones, "Mechanics of Composite Materials", Taylor & Francis']
+      modules: [
+        'Module 1: Classification & Matrix-Reinforcement Systems - Definition and classification of composites; fibers (glass, carbon, aramid, natural fibers) and particulate reinforcements; matrix materials (thermosetting polymers, thermoplastics, metal matrices, ceramic matrices); manufacturing methods: hand lay-up, resin transfer moulding (RTM), filament winding, pultrusion.',
+        'Module 2: Micromechanics of a Lamina - Volume and mass fractions; rule of mixtures for longitudinal and transverse elastic modulus, Poisson ratio, and shear modulus; Halpin-Tsai empirical relations, stress transfer mechanics, critical fiber length.',
+        'Module 3: Macromechanics of an Orthotropic Lamina - Hooke law for anisotropic, monoclinic, and orthotropic materials; plane stress constitutive equations for an orthotropic lamina in principal material axes; coordinate transformation of stresses and strains, transformed stiffness matrix [Q-bar].',
+        'Module 4: Classical Lamination Theory & Failure Criteria - Kirchhoff-Love kinematic assumptions for laminates; laminate strain-displacement relationships; derivation of laminate stiffness matrices [A], [B], [D]; symmetric, antisymmetric, and cross-ply laminates; failure theories: Maximum Stress, Maximum Strain, Tsai-Hill, and Tsai-Wu quadratic failure criterion.'
+      ],
+      textbooks: [
+        'Robert M. Jones, "Mechanics of Composite Materials", 2nd Edition, Taylor & Francis',
+        'Autar K. Kaw, "Mechanics of Composite Materials", 2nd Edition, CRC Press'
+      ]
     },
     'HS300': {
       code: 'HS300',
@@ -1024,8 +1267,16 @@ export const ME_7: SemesterData = {
       room: 'Room 74/75',
       category: 'mlc',
       notes: 'Economic feasibility of mechanical engineering plants, depreciation, costing.',
-      modules: ['Economics fundamentals, cost estimation, time value of money, plant investment appraisal.'],
-      textbooks: ['R. Paneerselvam, "Engineering Economics"']
+      modules: [
+        'Module 1: Foundations of Engineering Economics & Demand Analysis - Law of supply and demand, elasticity of demand, demand forecasting for industrial machinery and automotive products.',
+        'Module 2: Production & Cost Theory - Short-run and long-run production functions, economies and diseconomies of scale in mass manufacturing, break-even analysis.',
+        'Module 3: Market Structures & Industrial Pricing - Perfect competition, monopoly, oligopolistic pricing models, target costing and life-cycle costing for engineering products.',
+        'Module 4: Capital Budgeting & Plant Appraisal - Time value of money, discounted cash flow methods, Net Present Value (NPV), Internal Rate of Return (IRR), Payback Period, machine depreciation accounting (declining balance, straight-line).'
+      ],
+      textbooks: [
+        'R. Paneerselvam, "Engineering Economics", 2nd Edition, Prentice Hall of India',
+        'Leland Blank and Anthony Tarquin, "Engineering Economy", McGraw-Hill'
+      ]
     },
     'ME400': {
       code: 'ME400',
@@ -1043,8 +1294,16 @@ export const ME_7: SemesterData = {
       room: 'Mechanical Research Lab',
       category: 'lab',
       notes: 'Design and fabrication or numerical CFD/FEA analysis of mechanical prototypes, thermal systems, or robotics mechanisms.',
-      modules: ['Mechanism/thermal system formulation, CAD design, ANSYS/CFD modeling, component procurement, preliminary fabrication.'],
-      textbooks: ['NIT Goa Mechanical Engineering B.Tech Project Manual']
+      modules: [
+        'Phase 1: Project Scope Definition & Literature Review - Formulating engineering objective in thermal-fluids, robotics, biomechanics, design, or manufacturing; extensive review of ASME/Elsevier journals.',
+        'Phase 2: Mathematical Modeling & CAD Synthesis - 3D parametric CAD modeling in SolidWorks/Creo, kinematic/dynamic equation formulation, finite element analysis in ANSYS.',
+        'Phase 3: Prototype Component Fabrication & Sizing - Actuator and sensor sizing, bill of materials (BOM), 3D printing/machining of sub-assemblies, preliminary experimental test rig assembly.',
+        'Phase 4: Interim Evaluation & Defense - Compiling interim project documentation according to NIT Goa thesis style guidelines, oral defense before departmental assessment panel.'
+      ],
+      textbooks: [
+        'NIT Goa Mechanical Engineering B.Tech Project Manual',
+        'David F. Beer, David McMurrey, "A Guide to Writing as an Engineer", John Wiley'
+      ]
     },
     'ME402': {
       code: 'ME402',
@@ -1062,23 +1321,30 @@ export const ME_7: SemesterData = {
       room: 'Room 74/75',
       category: 'core',
       notes: 'Comprehensive examination across Thermodynamics, Heat Transfer, Fluid Mechanics, Mechanics of Solids, Machine Design, and Manufacturing.',
-      modules: ['Thermodynamics, Heat Transfer, Fluid Mechanics, Strength of Materials, Theory of Machines, Machine Design, Manufacturing Technology.'],
-      textbooks: ['GATE Mechanical Engineering Syllabi and Reference Texts']
+      modules: [
+        'Domain 1: Mechanics of Solids & Machine Design - Free body diagrams, Mohr circle, shear force and bending moment diagrams, deflection of beams, torsion of shafts, Euler column buckling; fatigue failure (S-N curve, Goodman/Soderberg criteria), design of bolted/welded joints, shafts, gears, bearings.',
+        'Domain 2: Fluid Mechanics & Thermal Sciences - Bernoulli equation, viscous laminar and turbulent pipe flow, boundary layer theory, Navier-Stokes equations; First and Second laws of thermodynamics, entropy, power cycles (Rankine, Otto, Diesel, Brayton, refrigeration); conduction, convection (dimensionless numbers), radiation heat transfer.',
+        'Domain 3: Theory of Machines & Vibrations - Kinematic pairs, inversions, velocity and acceleration analysis, gear trains, flywheels, dynamic balancing of rotating/reciprocating masses; free, forced, and damped single-degree-of-freedom vibrations, resonance, vibration isolation.',
+        'Domain 4: Manufacturing Technology & Industrial Engineering - Casting patterns and gating design, metal forming (rolling, extrusion, forging), welding metallurgy, orthogonal cutting mechanics (Merchant circle), tool life (Taylor equation), CNC programming; forecasting, EOQ inventory models, PERT/CPM, linear programming.'
+      ],
+      textbooks: [
+        'GATE Mechanical Engineering Syllabi and Reference Texts',
+        'Yunus A. Cengel, Michael A. Boles, "Thermodynamics: An Engineering Approach", McGraw-Hill',
+        'Joseph E. Shigley, "Mechanical Engineering Design", McGraw-Hill'
+      ]
     }
   },
   schedule: buildInstituteMasterSchedule({
     prefix: 'me7',
-    room: 'Room 74/75',
-    slotA: 'ME518',
-    slotB: 'ME535',
-    slotC: 'ME513',
-    slotD: 'ME524',
-    slotE: 'ME512',
-    mlcFriday: 'HS300',
-    labMon: { code: 'ME400', name: 'Major Project - I (CV)', room: 'Mechanical Research Lab' },
-    labThu: { code: 'ME400', name: 'Major Project - I Fabrication', room: 'Central Workshop' },
-    notesMonLab: 'Dr. Chaitanya Vundru (CV) - Mechanical Research Lab',
-    notesThuLab: 'Central Workshop / CAD-CFD Lab',
+    room: 'Room 30/31',
+    slotA: 'HS350',
+    slotB: 'ME524',
+    slotC: 'ME512',
+    slotD: 'ME513',
+    slotE: 'ME535',
+    slotF: 'ME518',
+    labTue: { code: 'ME400', name: 'Major Project - I (Dr. Chaitanya Vundru)', room: 'Room 30/31 / Mechanical Research Lab' },
+    notesTueLab: 'Dr. Chaitanya Vundru (CV) - Major Project - I Capstone Review',
     customSaturdayFocus: 'CFD & Composite Materials Problem Solving Session',
   })
 };
@@ -1104,8 +1370,16 @@ export const CSE_8: SemesterData = {
       room: 'Room 51/52',
       category: 'elective',
       notes: 'Word embeddings (Word2Vec), RNN, GRU, Transformers (BERT, GPT), Attention mechanisms, LLMs.',
-      modules: ['Language modeling, sequence labeling, self-attention, Transformers, instruction fine-tuning, RAG architectures.'],
-      textbooks: ['Dan Jurafsky, James H. Martin, "Speech and Language Processing", 3rd Edition']
+      modules: [
+        'Module 1: Statistical NLP & Vector Space Embeddings - N-gram language models, perplexity, smoothing; vector space representations: TF-IDF, Continuous Bag of Words (CBOW), Skip-Gram (Word2Vec), GloVe; sub-word tokenization: Byte-Pair Encoding (BPE), WordPiece.',
+        'Module 2: Sequential Deep Models & Recurrent Architectures - Recurrent Neural Networks (RNN), vanishing and exploding gradients, Backpropagation Through Time (BPTT); Long Short-Term Memory (LSTM), Gated Recurrent Units (GRU); bidirectional RNNs, sequence-to-sequence models.',
+        'Module 3: Attention Mechanism & Transformer Architectures - Bahdanau additive and Luong multiplicative attention; Transformer encoder-decoder architecture: scaled dot-product attention, multi-head attention, positional encodings, layer normalization; Transformer-based encoders (BERT, RoBERTa) and decoders (GPT series).',
+        'Module 4: Large Language Models, Fine-Tuning & Generative AI - Pre-training objectives (masked language modeling, causal language modeling); fine-tuning techniques: Parameter-Efficient Fine-Tuning (LoRA, QLoRA), Prompt Engineering, In-Context Learning; Retrieval-Augmented Generation (RAG), RLHF alignment.'
+      ],
+      textbooks: [
+        'Dan Jurafsky, James H. Martin, "Speech and Language Processing", 3rd Edition, Pearson',
+        'Ian Goodfellow, Yoshua Bengio, Aaron Courville, "Deep Learning", MIT Press'
+      ]
     },
     'CS542': {
       code: 'CS542',
@@ -1123,8 +1397,16 @@ export const CSE_8: SemesterData = {
       room: 'Room 51/52',
       category: 'elective',
       notes: 'Vulnerability assessment, buffer overflows, penetration testing, malware reverse engineering, digital evidence acquisition.',
-      modules: ['Threat modeling, memory corruption attacks, forensic disk analysis, network forensics, Incident response frameworks.'],
-      textbooks: ['Eoghan Casey, "Digital Evidence and Computer Crime", Academic Press']
+      modules: [
+        'Module 1: Cyber Security Fundamentals & Software Vulnerabilities - Threat modeling, CIA triad, attack surfaces; software vulnerabilities: stack and heap buffer overflows, format string vulnerabilities, integer overflows, return-oriented programming (ROP); secure coding practices.',
+        'Module 2: Penetration Testing & Network Security Operations - Penetration testing methodologies (reconnaissance, scanning, exploitation, post-exploitation); firewall architectures, Intrusion Detection and Prevention Systems (IDS/IPS), Web Application Security (OWASP Top 10: SQL injection, XSS, CSRF).',
+        'Module 3: Digital Evidence Acquisition & Forensics - Principles of digital forensics, chain of custody, search and seizure; physical and logical data acquisition (disk imaging, write blockers); file system forensics (FAT, NTFS, ext4), metadata analysis, deleted file recovery and carving.',
+        'Module 4: Memory Forensics & Reverse Engineering - Volatile memory acquisition, memory analysis with Volatility framework (process listing, DLL injection detection); static and dynamic malware analysis, disassembly and debugging (Ghidra, IDA Pro, x64dbg), ransomware behavior analysis.'
+      ],
+      textbooks: [
+        'Eoghan Casey, "Digital Evidence and Computer Crime: Forensic Science, Computers, and the Internet", 3rd Edition, Academic Press',
+        'William Stallings, "Cryptography and Network Security: Principles and Practice", 8th Edition, Pearson'
+      ]
     },
     'CS450': {
       code: 'CS450',
@@ -1142,8 +1424,16 @@ export const CSE_8: SemesterData = {
       room: 'Department Research Lab',
       category: 'lab',
       notes: 'Final Capstone Project defense, publication in IEEE/ACM conferences, software deployment, and patent filing.',
-      modules: ['Implementation, extensive benchmark testing, thesis drafting, external viva defense.'],
-      textbooks: ['NIT Goa B.Tech Project Guidelines Handbook']
+      modules: [
+        'Phase 1: Advanced Implementation & System Integration - Full-scale coding, system integration, API development, cloud deployment (Docker, Kubernetes), database scaling, and performance optimization.',
+        'Phase 2: Comprehensive Experimental Evaluation - Benchmark testing, unit/integration testing, comparative performance evaluation against state-of-the-art baselines, ablation studies, and scalability profiling.',
+        'Phase 3: Research Dissemination & Intellectual Property - Drafting research papers for peer-reviewed IEEE/ACM conferences/journals, technical documentation, source code repository archiving, patent evaluation where applicable.',
+        'Phase 4: Comprehensive Thesis & Viva Voce Defense - Final project report submission in accordance with NIT Goa dissertation formatting guidelines, public oral presentation and project demonstration before external and internal examiners.'
+      ],
+      textbooks: [
+        'NIT Goa B.Tech Project Guidelines Handbook',
+        'Justin Zobel, "Writing for Computer Science", 3rd Edition, Springer'
+      ]
     }
   },
   schedule: buildFinalSemSchedule('cse8', 'Room 51/52', 'CS540', 'CS542', 'CS450')
@@ -1167,8 +1457,17 @@ export const CVE_8: SemesterData = {
       room: 'Room 48',
       category: 'elective',
       notes: 'Pre-tensioning, post-tensioning, loss of prestress, design of PSC beams, composite beams.',
-      modules: ['Prestressing systems, anchorages, loss calculation, limit state design of flexural PSC sections, end block design.'],
-      textbooks: ['N. Krishna Raju, "Prestressed Concrete", McGraw-Hill']
+      modules: [
+        'Module 1: Principles & Systems of Prestressing - Basic concepts of prestressed concrete, comparison with reinforced concrete; high-strength concrete and high-tensile steel requirements; pretensioning and post-tensioning systems (Freyssinet, Magnel-Blaton, Gifford-Udall, Lee-McCall); anchorage devices.',
+        'Module 2: Losses of Prestress - Immediate and time-dependent losses: elastic shortening of concrete, friction and wobble effects, anchorage slip, creep of concrete, shrinkage of concrete, and relaxation of steel stress; total loss estimations as per IS 1343:2012.',
+        'Module 3: Analysis & Design of Flexural Members - Stress analysis in prestressed concrete beams at transfer and working loads; load balancing concept; cracking moment; Limit State of Collapse (flexural and shear strength), Limit State of Serviceability (deflection and crack width checks) as per IS 1343.',
+        'Module 4: Anchorage Zone Stresses & Composite Construction - Stress distribution in end blocks, Guyon and Magnel methods of anchorage zone reinforcement design, bursting and spalling tensions; composite prestressed concrete beams, differential shrinkage, horizontal shear transfer at interfaces.'
+      ],
+      textbooks: [
+        'N. Krishna Raju, "Prestressed Concrete", 6th Edition, McGraw-Hill',
+        'P. Dayaratnam, "Prestressed Concrete Structures", Oxford & IBH Publishing',
+        'IS 1343:2012, "Code of Practice for Prestressed Concrete", Bureau of Indian Standards'
+      ]
     },
     'CV545': {
       code: 'CV545',
@@ -1186,8 +1485,17 @@ export const CVE_8: SemesterData = {
       room: 'Room 48',
       category: 'elective',
       notes: 'Seismic hazard analysis, IS 1893:2016 response spectrum method, ductile detailing as per IS 13920:2016.',
-      modules: ['Earthquake characteristics, equivalent static lateral force, dynamic analysis, ductile detailing of beams and columns.'],
-      textbooks: ['Pankaj Agarwal, Manish Shrikhande, "Earthquake Resistant Design of Structures", PHI']
+      modules: [
+        'Module 1: Engineering Seismology & Structural Dynamics - Origin of earthquakes, plate tectonics, seismic waves, fault mechanisms, magnitude and intensity scales, seismographs; single-degree-of-freedom (SDOF) systems: free and forced vibrations, damping, response spectrum concept.',
+        'Module 2: Seismic Conceptual Design & Irregularities - Building configurations for seismic resistance, continuous load paths, soft storey effect, torsional irregularity, re-entrant corners, short column effect; pounding between adjacent structures, soil-structure interaction overview.',
+        'Module 3: Seismic Analysis Methods as per IS 1893:2016 - Design lateral force calculation using Equivalent Static Method; dynamic analysis: Response Spectrum Method (modal combination rules: SRSS, CQC); design base shear, vertical distribution of seismic forces, drift limitations.',
+        'Module 4: Ductile Detailing & Modern Aseismic Strategies - Philosophy of capacity design, strong-column weak-beam mechanism; ductile detailing of beams, columns, beam-column joints, and shear walls in accordance with IS 13920:2016; introduction to seismic base isolation and passive tuned mass dampers.'
+      ],
+      textbooks: [
+        'Pankaj Agarwal, Manish Shrikhande, "Earthquake Resistant Design of Structures", PHI Learning',
+        'S. K. Duggal, "Earthquake Resistant Design of Structures", 2nd Edition, Oxford University Press',
+        'IS 1893 (Part 1): 2016 & IS 13920: 2016, Bureau of Indian Standards'
+      ]
     },
     'CV450': {
       code: 'CV450',
@@ -1205,8 +1513,16 @@ export const CVE_8: SemesterData = {
       room: 'Civil Project Lab',
       category: 'lab',
       notes: 'Final Capstone Project in structural design, geotechnical foundation analysis, or infrastructure planning.',
-      modules: ['Detailed engineering drawings, structural/geotechnical test validation, final thesis submission, viva defense.'],
-      textbooks: ['Civil Engineering B.Tech Project Manual']
+      modules: [
+        'Phase 1: Advanced Experimental / Numerical Investigation - Rigorous laboratory experimental investigations (concrete testing, soil mechanics, flume tests) or sophisticated numerical modeling (ETABS, SAP2000, PLAXIS, GIS).',
+        'Phase 2: Parametric Analysis & Design Optimization - Sensitivity analyses, structural optimization, cost estimations, compliance checks with relevant Bureau of Indian Standards (BIS) and IRC codes.',
+        'Phase 3: Comprehensive Dissertation Compilation - Preparation of detailed engineering drawings, structural design calculations, bills of quantities (BOQ), and final comprehensive B.Tech thesis manuscript.',
+        'Phase 4: Final Capstone Viva Voce Defense - Presentation of project achievements, methodology, outcomes, and societal impact before an evaluation committee comprising internal faculty and external examiners.'
+      ],
+      textbooks: [
+        'Civil Engineering B.Tech Project Manual, NIT Goa',
+        'Relevant Bureau of Indian Standards (BIS) & IRC Codes of Practice'
+      ]
     }
   },
   schedule: buildFinalSemSchedule('cve8', 'Room 48', 'CV540', 'CV545', 'CV450')
@@ -1230,8 +1546,17 @@ export const ECE_8: SemesterData = {
       room: 'Room 54',
       category: 'elective',
       notes: 'Cellular concept, small scale fading (Rayleigh/Rician), OFDM, Massive MIMO, 5G NR physical layer.',
-      modules: ['Cellular reuse, fading channels, OFDM transceiver architecture, MIMO channel capacity, beamforming in 5G.'],
-      textbooks: ['David Tse, Pramod Viswanath, "Fundamentals of Wireless Communication", Cambridge']
+      modules: [
+        'Module 1: Cellular Concepts & Radio Propagation - Cellular architecture, frequency reuse, handoff strategies, co-channel interference; path loss models (log-distance, Okumura-Hata); small-scale multipath fading: Rayleigh, Rician, and Nakagami distributions; Doppler spread and coherence time.',
+        'Module 2: Multicarrier Modulation & OFDM Systems - Inter-Symbol Interference (ISI), principles of multicarrier transmission; Orthogonal Frequency Division Multiplexing (OFDM): transceiver architecture, FFT/IFFT implementation, cyclic prefix (CP); Peak-to-Average Power Ratio (PAPR) reduction techniques; OFDMA.',
+        'Module 3: Multiple Antenna Systems (MIMO) & Beamforming - Diversity techniques (spatial, temporal, frequency); Alamouti space-time block coding (STBC), spatial multiplexing; MIMO channel capacity (water-filling algorithm); Massive MIMO concepts, pilot contamination, channel state information (CSI) estimation.',
+        'Module 4: 5G NR Physical Layer & Advanced Technologies - 5G New Radio (NR) numerology, scalable subcarrier spacing, frame structures; mmWave communications, hybrid digital-analog beamforming, non-orthogonal multiple access (NOMA), ultra-reliable low-latency communications (URLLC), Open RAN (O-RAN).'
+      ],
+      textbooks: [
+        'David Tse, Pramod Viswanath, "Fundamentals of Wireless Communication", Cambridge University Press',
+        'Andrea Goldsmith, "Wireless Communications", Cambridge University Press',
+        'Erik Dahlman, Stefan Parkvall, Johan Skold, "5G NR: The Next Generation Wireless Access Technology", Academic Press'
+      ]
     },
     'EC535': {
       code: 'EC535',
@@ -1249,8 +1574,17 @@ export const ECE_8: SemesterData = {
       room: 'Room 54',
       category: 'elective',
       notes: 'Dynamic and leakage power dissipation in CMOS, clock gating, multi-threshold CMOS (MTCMOS), dynamic voltage scaling (DVFS).',
-      modules: ['Sources of power dissipation, low-power architectural strategies, circuit level techniques, transistor sizing for power.'],
-      textbooks: ['Kaushik Roy, Sharat C. Prasad, "Low-Power CMOS VLSI Circuit Design", Wiley']
+      modules: [
+        'Module 1: Physics of Power Dissipation in CMOS - Drivers for low-power design; dynamic power dissipation (switching activity factor, capacitive load, short-circuit power); static leakage power dissipation (sub-threshold leakage, gate oxide tunneling, band-to-band tunneling, DIBL effect); total power estimation metrics.',
+        'Module 2: Architectural & Algorithmic Low-Power Strategies - Parallelism and pipelining for voltage scaling without throughput loss; algorithmic transformations: retiming, resource sharing, algebraic transformations; low-power memory architectures: partitioned memory, banking, low-swing buses.',
+        'Module 3: Circuit & Logic-Level Low-Power Techniques - Clock distribution networks and clock gating strategies; Multi-Threshold CMOS (MTCMOS / power gating) with sleep transistors, Sub-threshold logic design, Variable Threshold CMOS (VTCMOS), Pass-transistor logic, Pre-computation logic.',
+        'Module 4: Dynamic Power Management & Energy Harvesting - Dynamic Voltage and Frequency Scaling (DVFS) algorithms, adaptive voltage scaling (AVS), power domain isolation and level shifters; low-power interconnect design; self-powered energy harvesting interface circuits for IoT edge nodes.'
+      ],
+      textbooks: [
+        'Kaushik Roy, Sharat C. Prasad, "Low-Power CMOS VLSI Circuit Design", John Wiley & Sons',
+        'Jan M. Rabaey, "Low Power Design Essentials", Springer',
+        'Anantha P. Chandrakasan, Robert W. Brodersen, "Low Power Digital CMOS Design", Kluwer Academic Publishers'
+      ]
     },
     'EC450': {
       code: 'EC450',
@@ -1268,8 +1602,16 @@ export const ECE_8: SemesterData = {
       room: 'ECE Research Lab',
       category: 'lab',
       notes: 'Full-scale experimental hardware or algorithmic realization, patent evaluation, and final viva voce.',
-      modules: ['Hardware prototype testing, performance metric validation, final capstone thesis presentation.'],
-      textbooks: ['NIT Goa ECE Capstone Project Manual']
+      modules: [
+        'Phase 1: Full-Scale Implementation & Prototyping - Complete fabrication and assembly of high-speed RF/analog PCB or FPGA-based digital signal processing architecture, firmware integration, and lab bench testing.',
+        'Phase 2: Signal & Performance Metric Characterization - Bit Error Rate (BER) testing, SNR measurement, logic analyzer and digital storage oscilloscope (DSO) waveform capture, power consumption profiling, and compliance testing.',
+        'Phase 3: Scholarly Manuscript Preparation - Drafting scientific paper for submission to IEEE/IET/Springer conferences or journals; open-source hardware/software documentation; patentability search and filing where applicable.',
+        'Phase 4: Final Capstone Dissertation & External Defense - Preparation of comprehensive B.Tech thesis adhering to NIT Goa dissertation templates; public project demonstration and oral viva before external university evaluators.'
+      ],
+      textbooks: [
+        'NIT Goa ECE Capstone Project Manual',
+        'David F. Beer, David McMurrey, "A Guide to Writing as an Engineer", John Wiley'
+      ]
     }
   },
   schedule: buildFinalSemSchedule('ece8', 'Room 54', 'EC530', 'EC535', 'EC450')
@@ -1293,8 +1635,17 @@ export const EEE_8: SemesterData = {
       room: 'Room 70/71',
       category: 'elective',
       notes: 'Breakdown mechanisms in gases, liquids, and solids; lightning impulse generation (Marx generator); HVDC converter bridges.',
-      modules: ['Townsend breakdown, streamer theory, Marx impulse circuit, 12-pulse HVDC converter bridge, reactive power control in HVDC.'],
-      textbooks: ['E. Kuffel, W. S. Zaengl, J. Kuffel, "High Voltage Engineering: Fundamentals", Newnes']
+      modules: [
+        'Module 1: Conduction & Dielectric Breakdown Phenomena - Breakdown in gases: Townsend first and second ionization coefficients, Paschen law, Streamer theory; breakdown in commercial liquids (suspended particle, cavitation mechanisms); breakdown in solid dielectrics: intrinsic, electromechanical, thermal breakdown, treeing and tracking.',
+        'Module 2: Generation & Measurement of High Voltages - Generation of high DC voltages: Cockcroft-Walton voltage multiplier; High AC voltages: cascaded transformers, resonant transformers; Lightning impulse generator (Marx circuit, wave-shaping R-C components); sphere gaps, electrostatic voltmeters, capacitive voltage dividers.',
+        'Module 3: Overvoltage Transients & Insulation Coordination - Atmospheric lightning and switching surges, traveling wave theory on transmission lines, reflection and refraction at junctions; surge arresters (Metal Oxide Varistors / ZnO); insulation coordination principles as per IEC/IS standards.',
+        'Module 4: HVDC Transmission Systems & Converter Topologies - Comparison between HVAC and HVDC transmission; Graetz 6-pulse and 12-pulse bridge converter circuits; converter transformer ratings, firing angle control and extinction angle control; reactive power management and harmonic filter design in HVDC converter stations; Voltage Source Converter (VSC-HVDC).'
+      ],
+      textbooks: [
+        'E. Kuffel, W. S. Zaengl, J. Kuffel, "High Voltage Engineering: Fundamentals", 2nd Edition, Newnes (Elsevier)',
+        'M. S. Naidu, V. Kamaraju, "High Voltage Engineering", 5th Edition, McGraw-Hill',
+        'K. R. Padiyar, "HVDC Power Transmission Systems: Technology and System Interactions", New Age International'
+      ]
     },
     'EE540': {
       code: 'EE540',
@@ -1312,8 +1663,17 @@ export const EEE_8: SemesterData = {
       room: 'Room 70/71',
       category: 'elective',
       notes: 'Rotor angle stability, swing equation, equal area criterion, small-signal stability, power system stabilizers (PSS).',
-      modules: ['Synchronous machine modeling, transient stability analysis using numerical integration, PSS design for oscillation damping.'],
-      textbooks: ['P. Kundur, "Power System Stability and Control", McGraw-Hill']
+      modules: [
+        'Module 1: Synchronous Machine Modeling & Dynamics - Physical description of synchronous machine, Park transformation (d-q-0 axis variables); flux linkage equations, voltage and torque equations; transient and sub-transient inductances and time constants; IEEE standard excitation systems (type DC, AC, ST) and prime mover governor models.',
+        'Module 2: Transient Stability & Equal Area Criterion - Mechanical and electrical torque balances, swing equation for multi-machine systems; Equal Area Criterion: critical clearing angle, critical clearing time, three-phase fault on transmission lines; numerical integration methods: Euler, modified Euler, and Runge-Kutta 4th order.',
+        'Module 3: Small-Signal Stability Analysis - Linearization of state-space power system equations; modal analysis: eigenvalues, eigenvectors, participation factors, mode shapes; low-frequency electromechanical oscillations (local modes and inter-area modes); damping ratio, sensitivity analysis.',
+        'Module 4: Power System Stabilizers (PSS) & Voltage Stability - Concept and architecture of Power System Stabilizer (PSS), lead-lag compensator design for damping rotor angle swings; Voltage stability: P-V and Q-V curves, reactive power margins; Voltage Collapse Proximity Indicators (VCPI); FACTS devices (STATCOM, SVC) for dynamic stability enhancement.'
+      ],
+      textbooks: [
+        'Prabha Kundur, "Power System Stability and Control", McGraw-Hill',
+        'K. R. Padiyar, "Power System Dynamics: Stability and Control", 2nd Edition, BS Publications',
+        'Peter W. Sauer, M. A. Pai, "Power System Dynamics and Stability", Stipes Publishing'
+      ]
     },
     'EE450': {
       code: 'EE450',
@@ -1331,8 +1691,16 @@ export const EEE_8: SemesterData = {
       room: 'Power Systems / Hardware Lab',
       category: 'lab',
       notes: 'Capstone Phase II: Hardware prototype fabrication, experimental validation, IEEE transaction/conference paper submission, and viva defense.',
-      modules: ['Hardware fabrication and bench testing, efficiency and THD measurement, thesis writing, external examiner defense.'],
-      textbooks: ['NIT Goa EEE Capstone Manual']
+      modules: [
+        'Phase 1: Full-Scale Hardware Prototyping & Converter Assembly - Hardware fabrication of power converter stages, magnetics winding (inductors/transformers), high-frequency PCB layout, gate-driver isolation, sensor integration (Hall-effect current/voltage sensors).',
+        'Phase 2: Controller Implementation & Hardware-in-the-Loop Validation - Real-time digital controller deployment on DSP (TI TMS320F28379D) or FPGA; hardware-in-the-loop (HIL) simulation validation, transient step-load testing, efficiency profiling, Total Harmonic Distortion (THD) measurements.',
+        'Phase 3: Research Dissemination & Publication - Manuscript preparation conforming to IEEE PES/PELS conference or journal formatting, documentation of open-access experimental datasets, intellectual property assessment.',
+        'Phase 4: Comprehensive Thesis & Viva Voce Defense - Submission of final hardcover B.Tech dissertation per NIT Goa postgraduate & undergraduate thesis regulations; public demonstration and defense before external academic and industrial evaluators.'
+      ],
+      textbooks: [
+        'NIT Goa EEE Capstone Manual',
+        'David F. Beer, David McMurrey, "A Guide to Writing as an Engineer", John Wiley'
+      ]
     }
   },
   schedule: buildFinalSemSchedule('eee8', 'Room 70/71', 'EE535', 'EE540', 'EE450')
@@ -1356,8 +1724,17 @@ export const ME_8: SemesterData = {
       room: 'Room 74/75',
       category: 'elective',
       notes: 'Forward and inverse kinematics (DH parameters), Jacobian and velocity analysis, trajectory planning, robot dynamics (Euler-Lagrange).',
-      modules: ['Denavit-Hartenberg (D-H) representation, homogeneous transformations, inverse kinematics solutions, path planning, gripper design.'],
-      textbooks: ['John J. Craig, "Introduction to Robotics: Mechanics and Control", Pearson']
+      modules: [
+        'Module 1: Spatial Descriptions, Transformations & Forward Kinematics - Coordinate frames, rotation matrices, Euler angles, roll-pitch-yaw angles; homogeneous transformation matrices; Denavit-Hartenberg (D-H) parameter representation; forward kinematics formulation for planar 2R/3R arms, SCARA, and 6-DOF industrial serial manipulators.',
+        'Module 2: Inverse Kinematics & Manipulator Jacobians - Geometric and algebraic inverse kinematics solution techniques, existence of multiple solutions; velocity kinematics: linear and angular velocities of links, Manipulator Jacobian matrix; kinematic singularities and rank deficiency; static force-torque relations.',
+        'Module 3: Manipulator Dynamics & Trajectory Planning - Euler-Lagrange dynamic formulation, kinetic and potential energy of rigid bodies; inertia matrix, Coriolis and centripetal terms, gravity vector; trajectory planning in joint space and Cartesian space: cubic polynomials, quintic polynomials, parabolic blends (LSPB).',
+        'Module 4: Robot Control, End-Effectors & Industrial Automation - Independent joint control: PD and PID feedback control; computed torque control; end-effector gripping mechanisms (vacuum, mechanical jaws, magnetic grippers); programmable logic controllers (PLCs), ladder logic, robotic work-cell automation and collaborative robots (Cobots).'
+      ],
+      textbooks: [
+        'John J. Craig, "Introduction to Robotics: Mechanics and Control", 3rd Edition, Pearson',
+        'Mark W. Spong, Seth Hutchinson, M. Vidyasagar, "Robot Modeling and Control", Wiley',
+        'Mikell P. Groover, "Automation, Production Systems, and Computer-Integrated Manufacturing", Pearson'
+      ]
     },
     'ME545': {
       code: 'ME545',
@@ -1375,8 +1752,17 @@ export const ME_8: SemesterData = {
       room: 'Room 74/75',
       category: 'elective',
       notes: 'Joule/Brayton cycle with intercooling, reheating and regeneration, turbojet, turbofan, and rocket propulsion mechanics.',
-      modules: ['Thermodynamic analysis of gas turbine power plants, centrifugal and axial flow compressors, combustion chambers, jet propulsion parameters.'],
-      textbooks: ['H. Cohen, G. F. C. Rogers, H. I. H. Saravanamuttoo, "Gas Turbine Theory", Pearson']
+      modules: [
+        'Module 1: Ideal & Real Gas Turbine Cycles - Ideal Joule/Brayton cycle; effect of component irreversibilities: compressor and turbine isentropic efficiencies, pressure losses in ducting and combustor; real cycle thermodynamics; performance improvements: intercooling, reheat, regeneration (recuperation), combined cycle power plants.',
+        'Module 2: Centrifugal & Axial Flow Compressors - Centrifugal compressors: impeller velocity triangles, slip factor, work input factor, diffuser performance, surging and choking; Axial flow compressors: stage velocity diagrams, degree of reaction, blade loading, stage pressure ratio, stall and rotating stall.',
+        'Module 3: Combustion Systems & Axial Flow Turbines - Gas turbine combustion chambers (can, annular, can-annular), combustion intensity, stability loop, flame stabilization; Axial flow turbines: impulse and reaction stages, stage efficiency, blade cooling techniques (internal convection, impingement, film cooling) for ultra-high turbine entry temperatures (TET).',
+        'Module 4: Aircraft Jet Engines & Rocket Propulsion - Principles of aircraft propulsion, thrust equations, propulsive and thermal efficiencies, specific thrust, TSFC; thermodynamic analysis of Turbojet, Turbofan (high and low bypass), Turboprop, and Ramjet engines; fundamentals of chemical rocket propulsion: solid and liquid propellant rockets, specific impulse.'
+      ],
+      textbooks: [
+        'H. Cohen, G. F. C. Rogers, H. I. H. Saravanamuttoo, "Gas Turbine Theory", 7th Edition, Pearson',
+        'V. Ganesan, "Gas Turbines", 3rd Edition, Tata McGraw-Hill',
+        'Jack D. Mattingly, "Elements of Propulsion: Gas Turbines and Rockets", AIAA Education Series'
+      ]
     },
     'ME450': {
       code: 'ME450',
@@ -1394,8 +1780,16 @@ export const ME_8: SemesterData = {
       room: 'Mechanical Research Lab',
       category: 'lab',
       notes: 'Final capstone defense, fabricated prototype demonstration, thermal/mechanical test measurement, and viva examination.',
-      modules: ['Experimental test rig commissioning, error analysis, thesis submission, final external presentation.'],
-      textbooks: ['NIT Goa Mechanical Engineering B.Tech Project Manual']
+      modules: [
+        'Phase 1: Full Prototyping & Experimental Test Rig Setup - Complete fabrication and assembly of mechanical, thermal, robotic, or mechatronic systems; sensor instrumentation (thermocouples, load cells, strain gauges, pressure transducers, DAQ cards).',
+        'Phase 2: Comprehensive Experimental Testing & Uncertainty Analysis - Full operational parameter testing, repeatability checks, calibration curves, propagation of uncertainty using Kline-McClintock methodology, validation with FEA/CFD numerical predictions.',
+        'Phase 3: Scholarly Dissemination & Intellectual Property - Drafting scientific manuscripts for publication in ASME, Elsevier, or Springer indexed journals/conferences; patent application drafting if novel inventions are demonstrated.',
+        'Phase 4: Final B.Tech Dissertation & Viva Voce Defense - Final manuscript submission according to NIT Goa academic style conventions; demonstration of physical prototype and comprehensive oral presentation before internal and external university examiners.'
+      ],
+      textbooks: [
+        'NIT Goa Mechanical Engineering B.Tech Project Manual',
+        'David F. Beer, David McMurrey, "A Guide to Writing as an Engineer", John Wiley'
+      ]
     }
   },
   schedule: buildFinalSemSchedule('me8', 'Room 74/75', 'ME540', 'ME545', 'ME450')
