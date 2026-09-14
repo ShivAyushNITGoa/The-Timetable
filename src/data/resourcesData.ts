@@ -1,4 +1,4 @@
-export type DocumentCategory = 'timetable' | 'curriculum' | 'syllabus' | 'calendar' | 'rules';
+export type DocumentCategory = 'timetable' | 'curriculum' | 'syllabus' | 'calendar' | 'rules' | 'circular';
 export type BranchFilter = 'ALL' | 'COMMON' | 'CSE' | 'ECE' | 'EEE' | 'ME' | 'CVE';
 export type YearFilter = 'ALL' | '1' | '2' | '3' | '4';
 
@@ -1049,5 +1049,219 @@ export const NIT_GOA_RESOURCES: ResourceDocument[] = [
         }
       }
     ]
+  },
+
+  // ==========================================
+  // OFFICIAL CIRCULARS, NOTICES & CAMPUS BYLAWS
+  // ==========================================
+  {
+    id: 'circ-holidays-2024-25',
+    title: 'NIT Goa Official List of Gazetted & Restricted Holidays (2024–2025)',
+    shortTitle: 'Official Holidays List',
+    docNumber: 'NITG/ADMIN/HOLIDAY/2024-25/112',
+    category: 'calendar',
+    branch: 'ALL',
+    year: 'ALL',
+    semesterRange: 'All Semesters',
+    academicYear: '2024–2025',
+    issuingAuthority: 'Office of the Registrar, National Institute of Technology Goa',
+    effectiveDate: 'Approved for Calendar Year 2024-2025',
+    summary: 'The statutory list of closed holidays, central government gazetted days, and Goa state regional observances (including Goa Liberation Day, Feast of St. Francis Xavier, and Ganesh Chaturthi).',
+    tags: ['Circular', 'Holidays', 'Goa Liberation Day', 'Diwali', 'Ganesh Chaturthi', 'Registrar'],
+    pdfFileName: 'NIT_Goa_Gazetted_Holiday_List_2024_2025.pdf',
+    externalOfficialUrl: 'https://www.nitgoa.ac.in/uploaded_files/Holiday_List_2024.pdf',
+    sections: [
+      {
+        title: 'Statutory Institute Closed Holidays',
+        subheading: 'Applicable to All Academic Blocks, Laboratories, and Administrative Sections',
+        table: {
+          headers: ['Occasion / Observance', 'Date', 'Day of Week', 'Statutory Classification'],
+          rows: [
+            ['Republic Day', 'January 26', 'Friday', 'Gazetted National Holiday'],
+            ['Maha Shivratri', 'March 08', 'Friday', 'Closed Holiday'],
+            ['Id-ul-Fitr', 'April 11', 'Thursday', 'Closed Holiday'],
+            ['Mahavir Jayanti', 'April 21', 'Sunday', 'Closed Holiday'],
+            ['Buddha Purnima', 'May 23', 'Thursday', 'Closed Holiday'],
+            ['Bakrid / Id-ul-Zuha', 'June 17', 'Monday', 'Closed Holiday'],
+            ['Muharram', 'July 17', 'Wednesday', 'Closed Holiday'],
+            ['Independence Day', 'August 15', 'Thursday', 'Gazetted National Holiday'],
+            ['Ganesh Chaturthi (1st Day)', 'September 07', 'Saturday', 'State Festival of Goa'],
+            ['Ganesh Chaturthi (2nd Day)', 'September 08', 'Sunday', 'State Festival of Goa'],
+            ['Mahatma Gandhi Birthday', 'October 02', 'Wednesday', 'Gazetted National Holiday'],
+            ['Dussehra (Vijay Dashami)', 'October 12', 'Saturday', 'Closed Holiday'],
+            ['Diwali (Deepavali)', 'October 31', 'Thursday', 'Closed Holiday'],
+            ['Guru Nanak Birthday', 'November 15', 'Friday', 'Closed Holiday'],
+            ['Feast of St. Francis Xavier', 'December 03', 'Tuesday', 'Goa Regional Holiday'],
+            ['Goa Liberation Day', 'December 19', 'Thursday', 'State Holiday of Goa'],
+            ['Christmas Day', 'December 25', 'Wednesday', 'Closed Holiday']
+          ]
+        }
+      }
+    ]
+  },
+
+  {
+    id: 'circ-fee-structure',
+    title: 'NIT Goa B.Tech Fee Structure & Tuition Waiver Guidelines Notification',
+    shortTitle: 'B.Tech Fee Structure Circular',
+    docNumber: 'NITG/ACAD/FEE/2024-25/08',
+    category: 'circular',
+    branch: 'ALL',
+    year: 'ALL',
+    semesterRange: 'Semesters 1 through 8',
+    academicYear: '2024–2025',
+    issuingAuthority: 'Office of Dean (Academics) & Accounts Section',
+    effectiveDate: 'Academic Year 2024-25',
+    summary: 'Official notification detailing semester tuition fees, institute developmental charges, hostel and mess advance fees, and Government of India income-based tuition fee waiver categories.',
+    tags: ['Fee Structure', 'Tuition Waiver', 'Hostel Fee', 'Mess Advance', 'Accounts'],
+    pdfFileName: 'NIT_Goa_BTech_Fee_Structure_2024_2025.pdf',
+    externalOfficialUrl: 'https://www.nitgoa.ac.in/uploaded_files/Fee_Structure_BTech_2024.pdf',
+    sections: [
+      {
+        title: 'Semester Fee Breakdown (B.Tech Regular Program)',
+        table: {
+          headers: ['Fee Head / Component', 'General / OBC (> 5 Lakh)', 'Family Income 1–5 Lakh (2/3rd Waiver)', 'SC / ST / PwD / Income < 1 Lakh'],
+          rows: [
+            ['Tuition Fee (Per Semester)', 'Rs. 62,500', 'Rs. 20,833', 'Rs. 0 (100% Waived)'],
+            ['Institute Development Fee', 'Rs. 4,000', 'Rs. 4,000', 'Rs. 4,000'],
+            ['Library & Computer Center Fee', 'Rs. 3,000', 'Rs. 3,000', 'Rs. 3,000'],
+            ['Student Activity & Gymkhana', 'Rs. 2,500', 'Rs. 2,500', 'Rs. 2,500'],
+            ['Examination & Grade Card Fee', 'Rs. 2,000', 'Rs. 2,000', 'Rs. 2,000'],
+            ['Medical & Group Insurance', 'Rs. 1,200', 'Rs. 1,200', 'Rs. 1,200'],
+            ['Hostel Seat Rent (Per Sem)', 'Rs. 6,000', 'Rs. 6,000', 'Rs. 6,000'],
+            ['Electricity & Water Advance', 'Rs. 3,500', 'Rs. 3,500', 'Rs. 3,500'],
+            ['Mess Advance (Adjustable)', 'Rs. 24,000', 'Rs. 24,000', 'Rs. 24,000'],
+            ['Total Payable per Semester', 'Rs. 1,08,700', 'Rs. 67,033', 'Rs. 46,200']
+          ]
+        }
+      },
+      {
+        title: 'Tuition Fee Remittance & Remission Rules',
+        content: [
+          '• Full Tuition Fee Remission: The SC/ST/PH students shall get complete fee waiver (100%).',
+          '• Most Economically Backward: Students whose family income is less than Rs. 1.00 lakh per annum shall get full remission of tuition fees on production of valid income certificate.',
+          '• Other Economically Backward: Students whose family income is between Rs. 1.00 lakh to Rs. 5.00 lakh per annum shall get remission of 2/3rd of the tuition fee.',
+          '• Payment Mode: Remittance strictly through SBI Collect or HDFC Qfix payment portal. Cash or manual DD is not accepted.'
+        ]
+      }
+    ]
+  },
+
+  {
+    id: 'circ-hostel-bylaws',
+    title: 'NIT Goa Permanent Campus (Cuncolim) Hostel & Mess Rules / Regulations',
+    shortTitle: 'Hostel & Mess Code of Conduct',
+    docNumber: 'NITG/HOSTEL/RULES/2024-25/01',
+    category: 'rules',
+    branch: 'ALL',
+    year: 'ALL',
+    semesterRange: 'All Residential Students',
+    academicYear: '2024–2025',
+    issuingAuthority: 'Council of Wardens & Dean (Student Welfare)',
+    effectiveDate: 'Enforced at Permanent Campus, Cuncolim',
+    summary: 'Rules governing residential hostel life, gate curfew timings (10:00 PM), mess rebate policies (minimum 4 consecutive days prior intimation), Wi-Fi usage, and anti-ragging undertakings.',
+    tags: ['Hostel', 'Mess', 'Cuncolim Campus', 'Curfew', 'Anti-Ragging', 'Council of Wardens'],
+    pdfFileName: 'NIT_Goa_Hostel_Mess_Rules_Cuncolim_Campus.pdf',
+    externalOfficialUrl: 'https://www.nitgoa.ac.in/uploaded_files/Hostel_Rules_Regulations.pdf',
+    sections: [
+      {
+        title: 'Hostel Curfew & Movement Protocol',
+        content: [
+          '• Main Campus Gate Closing Time: Strictly 10:00 PM on all days. Late entry requires prior formal sanction from Chief Warden.',
+          '• Hostel Biometric Attendance: Recorded between 09:30 PM and 10:15 PM daily by resident caretakers.',
+          '• Night Out / Leave Passes: All overnight stays away from campus require written approval via the ERP portal endorsed by Parents/Guardians.',
+          '• Quiet Hours: Strictly observed between 11:00 PM and 06:00 AM in all student wings.'
+        ]
+      },
+      {
+        title: 'Mess Rebate & Dining Regulations',
+        table: {
+          headers: ['Meal Slot', 'Dining Hours', 'Menu Structure', 'Rebate Eligibility'],
+          rows: [
+            ['Breakfast', '07:30 AM – 09:00 AM', 'South / North Indian + Tea/Coffee/Milk', 'N/A'],
+            ['Lunch', '12:30 PM – 02:00 PM', 'Full Thali (Rice, Dal, 2 Sabjis, Curd/Papad)', 'N/A'],
+            ['Evening Snacks', '05:00 PM – 06:00 PM', 'Snacks + Tea/Coffee', 'N/A'],
+            ['Dinner', '07:45 PM – 09:30 PM', 'Rotis, Sabji, Dal, Rice, Sweet / Fruit', 'N/A'],
+            ['Mess Rebate Rule', 'Min. 4 consecutive days', 'Prior application 48 hours in advance', 'Rs. 120/day refund']
+          ]
+        }
+      }
+    ]
+  },
+
+  {
+    id: 'circ-bus-shuttle',
+    title: 'NIT Goa Official Campus Bus & Transit Timetable (Margao – Cuncolim Campus)',
+    shortTitle: 'Campus Bus Transit Schedule',
+    docNumber: 'NITG/TRANS/BUS/2024-25/03',
+    category: 'timetable',
+    branch: 'ALL',
+    year: 'ALL',
+    semesterRange: 'All Semesters',
+    academicYear: '2024–2025',
+    issuingAuthority: 'Transport Committee & Office of Security In-Charge',
+    effectiveDate: 'Current Transit Schedule',
+    summary: 'Official shuttle bus timings connecting Margao Railway Station / KTC Bus Stand with the NIT Goa Permanent Campus in Cuncolim for day-scholars, resident students, and staff.',
+    tags: ['Bus Schedule', 'Transport', 'Cuncolim Campus', 'Margao Shuttle', 'Day Scholars'],
+    pdfFileName: 'NIT_Goa_Official_Bus_Schedule_Cuncolim.pdf',
+    externalOfficialUrl: 'https://www.nitgoa.ac.in/uploaded_files/Bus_Schedule_Cuncolim_Campus.pdf',
+    sections: [
+      {
+        title: 'Daily Campus Shuttle Timetable (Monday to Friday)',
+        table: {
+          headers: ['Trip No', 'Departure Point', 'Departure Time', 'Route Via', 'Arrival at Destination'],
+          rows: [
+            ['Trip 1 (Morning)', 'Margao KTC Bus Stand', '07:30 AM', 'Navelim, Chinchinim, Cuncolim', '08:15 AM (NIT Goa Campus)'],
+            ['Trip 2 (Morning)', 'Margao Railway Station', '07:45 AM', 'Comba, Navelim, Cuncolim', '08:25 AM (NIT Goa Campus)'],
+            ['Trip 3 (Noon Return)', 'NIT Goa Cuncolim Campus', '01:30 PM', 'Cuncolim, Chinchinim, Navelim', '02:15 PM (Margao KTC)'],
+            ['Trip 4 (Evening Return)', 'NIT Goa Cuncolim Campus', '05:40 PM', 'Direct via NH-66 bypass', '06:20 PM (Margao KTC & Station)'],
+            ['Trip 5 (Night Transit)', 'NIT Goa Cuncolim Campus', '08:30 PM', 'Cuncolim Market, Navelim', '09:10 PM (Margao Station)']
+          ]
+        }
+      }
+    ]
+  },
+
+  {
+    id: 'circ-central-library',
+    title: 'NIT Goa Central Library Rules & Digital Access Protocols (IEEE, ScienceDirect & NDLI)',
+    shortTitle: 'Central Library & E-Resources',
+    docNumber: 'NITG/LIB/CIRC/2024-25/02',
+    category: 'rules',
+    branch: 'ALL',
+    year: 'ALL',
+    semesterRange: 'All B.Tech Semesters',
+    academicYear: '2024–2025',
+    issuingAuthority: 'Central Library Committee & Officer In-Charge',
+    effectiveDate: 'Enforced for Academic Session 2024-25',
+    summary: 'Authoritative guide to Central Library borrowing privileges (6 books for UG students), Book Bank Scheme for SC/ST students, remote off-campus access via Shibboleth/VPN, and digital journals access.',
+    tags: ['Library', 'IEEE Xplore', 'ScienceDirect', 'NDLI', 'Book Bank', 'Remote Access'],
+    pdfFileName: 'NIT_Goa_Central_Library_Rules_Digital_Access.pdf',
+    externalOfficialUrl: 'https://www.nitgoa.ac.in/library/',
+    sections: [
+      {
+        title: 'Library Working Hours & Borrowing Privileges',
+        table: {
+          headers: ['Category', 'Working Hours', 'Book Quota', 'Loan Duration', 'Overdue Fine'],
+          rows: [
+            ['Monday – Friday', '08:30 AM – 09:00 PM', '6 Books (UG Students)', '15 Days', 'Rs. 2 per book / day'],
+            ['Saturdays & Sundays', '09:00 AM – 05:00 PM', '4 Books (PG Scholars)', '30 Days', 'Rs. 2 per book / day'],
+            ['Examination Window', '08:30 AM – 11:00 PM', 'Reference Copies', 'Overnight only', 'Rs. 10 per book / day'],
+            ['Book Bank (SC/ST)', 'Full Semester', 'Full Set (5 Books)', 'Whole Semester', 'Nil']
+          ]
+        }
+      },
+      {
+        title: 'Digital E-Resources & Remote Off-Campus Access',
+        content: [
+          '• IEEE Xplore Digital Library: Full text access to all IEEE Transactions, Journals, Magazines, and Conference Proceedings.',
+          '• Elsevier ScienceDirect: Complete engineering and computer science journals bouquet.',
+          '• SpringerLink & ACM Digital Library: Access to full ACM Computing Surveys and Springer LNCS proceedings.',
+          '• National Digital Library of India (NDLI): Club membership enabled for all registered institute email addresses (@nitgoa.ac.in).',
+          '• Remote Access Portal: Authenticate via Institute LDAP credentials at https://library.nitgoa.ac.in:8443'
+        ]
+      }
+    ]
   }
 ];
+

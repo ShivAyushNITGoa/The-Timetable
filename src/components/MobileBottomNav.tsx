@@ -101,6 +101,73 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
               </button>
             </div>
 
+            {/* Quick Navigation: Primary Views */}
+            <div className="space-y-1.5">
+              <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-1">
+                Primary Views
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                <button
+                  type="button"
+                  onClick={() => handleSelectTab('day')}
+                  className={`min-h-[44px] px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-2.5 transition active:scale-95 ${
+                    activeTab === 'day'
+                      ? 'bg-amber-500 text-slate-950 font-bold shadow-xs'
+                      : 'bg-slate-800/80 text-slate-200 hover:bg-slate-800 border border-slate-700/60'
+                  }`}
+                >
+                  <Calendar className={`w-4 h-4 shrink-0 ${activeTab === 'day' ? 'text-slate-950' : 'text-amber-400'}`} />
+                  <span className="truncate">Day Schedule</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => handleSelectTab('weekly')}
+                  className={`min-h-[44px] px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-2.5 transition active:scale-95 ${
+                    activeTab === 'weekly'
+                      ? 'bg-amber-500 text-slate-950 font-bold shadow-xs'
+                      : 'bg-slate-800/80 text-slate-200 hover:bg-slate-800 border border-slate-700/60'
+                  }`}
+                >
+                  <Grid className={`w-4 h-4 shrink-0 ${activeTab === 'weekly' ? 'text-slate-950' : 'text-amber-400'}`} />
+                  <span className="truncate">Weekly Matrix</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => handleSelectTab('tests')}
+                  className={`min-h-[44px] px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-between gap-1.5 transition active:scale-95 ${
+                    activeTab === 'tests'
+                      ? 'bg-amber-500 text-slate-950 font-bold shadow-xs'
+                      : 'bg-slate-800/80 text-slate-200 hover:bg-slate-800 border border-slate-700/60'
+                  }`}
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <CalendarCheck className={`w-4 h-4 shrink-0 ${activeTab === 'tests' ? 'text-slate-950' : 'text-amber-400'}`} />
+                    <span className="truncate">Tests & Tasks</span>
+                  </div>
+                  {testCount > 0 && (
+                    <span className="text-[10px] px-1.5 py-0.2 bg-rose-500 text-white rounded-full font-black">
+                      {testCount}
+                    </span>
+                  )}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => handleSelectTab('attendance')}
+                  className={`min-h-[44px] px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-2.5 transition active:scale-95 ${
+                    activeTab === 'attendance'
+                      ? 'bg-amber-500 text-slate-950 font-bold shadow-xs'
+                      : 'bg-slate-800/80 text-slate-200 hover:bg-slate-800 border border-slate-700/60'
+                  }`}
+                >
+                  <CheckSquare className={`w-4 h-4 shrink-0 ${activeTab === 'attendance' ? 'text-slate-950' : 'text-amber-400'}`} />
+                  <span className="truncate">Attendance</span>
+                </button>
+              </div>
+            </div>
+
             {/* Navigation Options */}
             <div className="space-y-1.5">
               <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-1">
@@ -260,18 +327,22 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
 
       {/* Fixed Ergonomic Bottom Dock for Mobile */}
       <nav
-        className="fixed bottom-0 left-0 right-0 z-40 bg-slate-900/95 backdrop-blur-xl border-t border-slate-800/90 sm:hidden shadow-2xl px-1.5 py-1.5 pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] select-none"
+        className="fixed bottom-0 left-0 right-0 z-40 bg-slate-900/95 backdrop-blur-xl border-t border-slate-800/90 sm:hidden shadow-2xl px-1 py-1 pb-[max(0.6rem,env(safe-area-inset-bottom,0px))] select-none"
         aria-label="Mobile Navigation"
+        role="tablist"
       >
-        <div className="grid grid-cols-5 gap-1 items-center max-w-md mx-auto w-full">
+        <div className="grid grid-cols-5 gap-0.5 items-center max-w-md mx-auto w-full">
           {/* Day Schedule Tab */}
           <button
             type="button"
+            role="tab"
+            aria-selected={activeTab === 'day'}
+            aria-label="Today Schedule"
             onClick={() => handleSelectTab('day')}
-            className={`min-h-[48px] flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1 px-0.5 ${
+            className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1.5 px-0.5 active:scale-90 ${
               activeTab === 'day'
-                ? 'text-amber-400 font-bold bg-amber-500/10'
-                : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/40'
+                ? 'text-amber-400 font-bold bg-amber-500/15 shadow-xs'
+                : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/50'
             }`}
           >
             <Calendar className={`w-5 h-5 transition-transform ${activeTab === 'day' ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
@@ -281,25 +352,31 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
           {/* Weekly Matrix Tab */}
           <button
             type="button"
+            role="tab"
+            aria-selected={activeTab === 'weekly'}
+            aria-label="Weekly Timetable Matrix"
             onClick={() => handleSelectTab('weekly')}
-            className={`min-h-[48px] flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1 px-0.5 ${
+            className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1.5 px-0.5 active:scale-90 ${
               activeTab === 'weekly'
-                ? 'text-amber-400 font-bold bg-amber-500/10'
-                : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/40'
+                ? 'text-amber-400 font-bold bg-amber-500/15 shadow-xs'
+                : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/50'
             }`}
           >
             <Grid className={`w-5 h-5 transition-transform ${activeTab === 'weekly' ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
-            <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">Week</span>
+            <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">Weekly</span>
           </button>
 
           {/* Tests & Quizzes Tab with Badge */}
           <button
             type="button"
+            role="tab"
+            aria-selected={activeTab === 'tests'}
+            aria-label={`Tests and Tasks Planner${testCount > 0 ? `, ${testCount} tests scheduled` : ''}`}
             onClick={() => handleSelectTab('tests')}
-            className={`min-h-[48px] flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1 px-0.5 relative ${
+            className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1.5 px-0.5 relative active:scale-90 ${
               activeTab === 'tests'
-                ? 'text-amber-400 font-bold bg-amber-500/10'
-                : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/40'
+                ? 'text-amber-400 font-bold bg-amber-500/15 shadow-xs'
+                : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/50'
             }`}
           >
             <div className="relative">
@@ -310,34 +387,49 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                 </span>
               )}
             </div>
-            <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">Tests & Tasks</span>
+            <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">Tests</span>
           </button>
 
           {/* Attendance Tracker Tab */}
           <button
             type="button"
+            role="tab"
+            aria-selected={activeTab === 'attendance'}
+            aria-label="75 Percent Attendance Tracker"
             onClick={() => handleSelectTab('attendance')}
-            className={`min-h-[48px] flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1 px-0.5 ${
+            className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1.5 px-0.5 active:scale-90 ${
               activeTab === 'attendance'
-                ? 'text-amber-400 font-bold bg-amber-500/10'
-                : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/40'
+                ? 'text-amber-400 font-bold bg-amber-500/15 shadow-xs'
+                : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/50'
             }`}
           >
             <CheckSquare className={`w-5 h-5 transition-transform ${activeTab === 'attendance' ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
-            <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">Attend</span>
+            <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">
+              <span className="hidden min-[360px]:inline">Attendance</span>
+              <span className="min-[360px]:hidden">Attend</span>
+            </span>
           </button>
 
           {/* More Menu Drawer Trigger */}
           <button
             type="button"
+            role="button"
+            aria-haspopup="dialog"
+            aria-expanded={isMoreMenuOpen}
+            aria-label="More navigation options and menu"
             onClick={() => setIsMoreMenuOpen(true)}
-            className={`min-h-[48px] flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1 px-0.5 ${
+            className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1.5 px-0.5 active:scale-90 relative ${
               isMoreTabActive || isMoreMenuOpen
-                ? 'text-amber-400 font-bold bg-amber-500/10'
-                : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/40'
+                ? 'text-amber-400 font-bold bg-amber-500/15 shadow-xs'
+                : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/50'
             }`}
           >
-            <Menu className={`w-5 h-5 transition-transform ${isMoreTabActive ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
+            <div className="relative">
+              <Menu className={`w-5 h-5 transition-transform ${isMoreTabActive || isMoreMenuOpen ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
+              {isMoreTabActive && (
+                <span className="absolute -top-0.5 -right-1 w-2 h-2 rounded-full bg-amber-400 ring-2 ring-slate-900" />
+              )}
+            </div>
             <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">More</span>
           </button>
         </div>

@@ -1,5 +1,23 @@
 import { DayOfWeek, TimeSlot } from '../timetableData';
 
+export interface LabBatchOption {
+  code: string;
+  name: string;
+  faculty: string;
+  room: string;
+}
+
+export interface LabSlotDef {
+  code: string;
+  name: string;
+  room: string;
+  faculty?: string;
+  labOptions?: {
+    batch1: LabBatchOption;
+    batch2: LabBatchOption;
+  };
+}
+
 export interface InstituteScheduleParams {
   prefix: string;
   room: string;
@@ -12,11 +30,11 @@ export interface InstituteScheduleParams {
   slotG_Minor?: string;
   slotH_OpenElective?: string;
   mlcFriday?: string; // 1-credit course on Friday 16:00-16:55 (e.g. ES300, HS350, IKS351)
-  labMon?: { code: string; name: string; room: string };
-  labTue?: { code: string; name: string; room: string };
-  labWed?: { code: string; name: string; room: string };
-  labThu?: { code: string; name: string; room: string };
-  labFri?: { code: string; name: string; room: string };
+  labMon?: LabSlotDef;
+  labTue?: LabSlotDef;
+  labWed?: LabSlotDef;
+  labThu?: LabSlotDef;
+  labFri?: LabSlotDef;
   notesMonLab?: string;
   notesTueLab?: string;
   notesWedLab?: string;
@@ -136,7 +154,18 @@ export function buildInstituteMasterSchedule(p: InstituteScheduleParams): Record
         : { id: `${prefix}-m4`, day: 'Monday', startTime: '12:00', endTime: '12:55', slotName: 'Slot D', courseCode: 'FREE', room, isFree: true },
       { id: `${prefix}-ml`, day: 'Monday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
       labMon
-        ? { id: `${prefix}-m5`, day: 'Monday', startTime: '14:00', endTime: '16:55', slotName: 'LAB Session (3 Hrs)', courseCode: labMon.code, room: labMon.room, isLab: true, notes: notesMonLab || labMon.name }
+        ? {
+            id: `${prefix}-m5`,
+            day: 'Monday',
+            startTime: '14:00',
+            endTime: '16:55',
+            slotName: labMon.labOptions ? 'LAB 1 (B2) / LAB 3 (B1)' : 'LAB Session (3 Hrs)',
+            courseCode: labMon.code,
+            room: labMon.room,
+            isLab: true,
+            labOptions: labMon.labOptions,
+            notes: notesMonLab || labMon.name,
+          }
         : { id: `${prefix}-m5`, day: 'Monday', startTime: '14:00', endTime: '16:55', slotName: 'Project / Department Seminar', courseCode: 'FREE', room: 'Department Labs', isFree: true },
     ],
     Tuesday: [
@@ -154,7 +183,18 @@ export function buildInstituteMasterSchedule(p: InstituteScheduleParams): Record
         : { id: `${prefix}-t4`, day: 'Tuesday', startTime: '12:00', endTime: '12:55', slotName: 'Minor Slot (G)', courseCode: 'FREE', room, isFree: true },
       { id: `${prefix}-tl`, day: 'Tuesday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
       labTue
-        ? { id: `${prefix}-t5`, day: 'Tuesday', startTime: '14:00', endTime: '16:55', slotName: 'LAB Session (3 Hrs)', courseCode: labTue.code, room: labTue.room, isLab: true, notes: notesTueLab || labTue.name }
+        ? {
+            id: `${prefix}-t5`,
+            day: 'Tuesday',
+            startTime: '14:00',
+            endTime: '16:55',
+            slotName: labTue.labOptions ? 'LAB 2 (B1) / LAB 3 (B2)' : 'LAB Session (3 Hrs)',
+            courseCode: labTue.code,
+            room: labTue.room,
+            isLab: true,
+            labOptions: labTue.labOptions,
+            notes: notesTueLab || labTue.name,
+          }
         : { id: `${prefix}-t5`, day: 'Tuesday', startTime: '14:00', endTime: '16:55', slotName: 'Library & Mentorship Slot', courseCode: 'FREE', room: 'Central Library', isFree: true },
     ],
     Wednesday: [
@@ -178,7 +218,18 @@ export function buildInstituteMasterSchedule(p: InstituteScheduleParams): Record
         ? { id: `${prefix}-w6`, day: 'Wednesday', startTime: '15:00', endTime: '15:55', slotName: 'Open Elective (Slot H)', courseCode: slotH_OpenElective, room, notes: 'Institute Open Elective' }
         : { id: `${prefix}-w6`, day: 'Wednesday', startTime: '15:00', endTime: '15:55', slotName: 'Open Elective (Slot H)', courseCode: 'FREE', room, isFree: true },
       labWed
-        ? { id: `${prefix}-w7`, day: 'Wednesday', startTime: '16:00', endTime: '16:55', slotName: 'Laboratory / Tutorial', courseCode: labWed.code, room: labWed.room, isLab: true, notes: notesWedLab || labWed.name }
+        ? {
+            id: `${prefix}-w7`,
+            day: 'Wednesday',
+            startTime: '16:00',
+            endTime: '16:55',
+            slotName: 'Laboratory / Tutorial',
+            courseCode: labWed.code,
+            room: labWed.room,
+            isLab: true,
+            labOptions: labWed.labOptions,
+            notes: notesWedLab || labWed.name,
+          }
         : { id: `${prefix}-w7`, day: 'Wednesday', startTime: '16:00', endTime: '16:55', slotName: 'Tutorial / Remedial', courseCode: 'FREE', room, isFree: true },
     ],
     Thursday: [
@@ -196,7 +247,18 @@ export function buildInstituteMasterSchedule(p: InstituteScheduleParams): Record
         : { id: `${prefix}-th4`, day: 'Thursday', startTime: '12:00', endTime: '12:55', slotName: 'Open Elective (Slot H)', courseCode: 'FREE', room, isFree: true },
       { id: `${prefix}-thl`, day: 'Thursday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
       labThu
-        ? { id: `${prefix}-th5`, day: 'Thursday', startTime: '14:00', endTime: '16:55', slotName: 'LAB Session (3 Hrs)', courseCode: labThu.code, room: labThu.room, isLab: true, notes: notesThuLab || labThu.name }
+        ? {
+            id: `${prefix}-th5`,
+            day: 'Thursday',
+            startTime: '14:00',
+            endTime: '16:55',
+            slotName: labThu.labOptions ? 'LAB 1 (B1) / LAB 2 (B2)' : 'LAB Session (3 Hrs)',
+            courseCode: labThu.code,
+            room: labThu.room,
+            isLab: true,
+            labOptions: labThu.labOptions,
+            notes: notesThuLab || labThu.name,
+          }
         : { id: `${prefix}-th5`, day: 'Thursday', startTime: '14:00', endTime: '16:55', slotName: 'Project Research Slot', courseCode: 'FREE', room: 'Computing Lab', isFree: true },
     ],
     Friday: [

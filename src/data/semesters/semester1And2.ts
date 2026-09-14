@@ -612,7 +612,21 @@ export function getSectionSchedule(section: FirstYearSection): Record<DayOfWeek,
         { id: 'secA-m3', day: 'Monday', startTime: '11:00', endTime: '11:55', slotName: 'Slot C', courseCode: 'MA100', room: 'LH 01 (45/46)', notes: 'MA100 Tutorial: Dr. GSK' },
         { id: 'secA-m4', day: 'Monday', startTime: '12:00', endTime: '12:55', slotName: 'Slot D', courseCode: 'ME101', room: 'LH 01 (45/46)', notes: 'ME101: GS/SPC' },
         { id: 'secA-ml', day: 'Monday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
-        { id: 'secA-m5', day: 'Monday', startTime: '14:00', endTime: '16:55', slotName: 'LAB Session (3 Hrs)', courseCode: 'LAB_MON_A', room: 'Physics / Workshop Lab (33/38)', isLab: true, notes: 'PH101(A1): Dr. SRP | ME101: Dr. GS(A2)' },
+        {
+          id: 'secA-m5',
+          day: 'Monday',
+          startTime: '14:00',
+          endTime: '16:55',
+          slotName: 'LAB 1 (A1) / LAB 2 (A2)',
+          courseCode: 'PH101',
+          room: 'Physics / Drawing Hall (33/38)',
+          isLab: true,
+          labOptions: {
+            batch1: { code: 'PH101', name: 'Engineering Physics Lab (A1)', faculty: 'Dr. Saidi Reddy Parne (SRP)', room: 'Physics Lab' },
+            batch2: { code: 'ME101', name: 'Engineering Drawing (A2)', faculty: 'Dr. Gurkirat Singh (GS)', room: 'Drawing Hall (33/38)' }
+          },
+          notes: 'Batch A1: PH101 (Dr. SRP) | Batch A2: ME101 (Dr. GS)'
+        },
       ],
       Tuesday: [
         { id: 'secA-t1', day: 'Tuesday', startTime: '09:00', endTime: '09:55', slotName: 'Slot E', courseCode: 'ME100', room: 'LH 01 (45/46)', notes: 'Dr. Darrius Diogo Barreto (DDB)' },
@@ -620,7 +634,21 @@ export function getSectionSchedule(section: FirstYearSection): Record<DayOfWeek,
         { id: 'secA-t3', day: 'Tuesday', startTime: '11:00', endTime: '11:55', slotName: 'Slot A', courseCode: 'PH100', room: 'LH 01 (45/46)', notes: 'Dr. Saidi Reddy Parne (SRP)' },
         { id: 'secA-t4', day: 'Tuesday', startTime: '12:00', endTime: '12:55', slotName: 'Minor / Math Slot (G)', courseCode: 'MA100', room: 'LH 01 (45/46)', notes: 'Dr. G. Shiva Kumar Reddy (GSK)' },
         { id: 'secA-tl', day: 'Tuesday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
-        { id: 'secA-t5', day: 'Tuesday', startTime: '14:00', endTime: '16:55', slotName: 'LAB Session (3 Hrs)', courseCode: 'LAB_TUE_A', room: 'Physics / Workshop Lab (33/38)', isLab: true, notes: 'PH101(A2): Dr. SRP | ME101: Dr. SPC(A1)' },
+        {
+          id: 'secA-t5',
+          day: 'Tuesday',
+          startTime: '14:00',
+          endTime: '16:55',
+          slotName: 'LAB 2 (A1) / LAB 1 (A2)',
+          courseCode: 'ME101',
+          room: 'Drawing Hall (33/38) / Physics Lab',
+          isLab: true,
+          labOptions: {
+            batch1: { code: 'ME101', name: 'Engineering Drawing (A1)', faculty: 'Dr. Siba Prasad Choudhury (SPC)', room: 'Drawing Hall (33/38)' },
+            batch2: { code: 'PH101', name: 'Engineering Physics Lab (A2)', faculty: 'Dr. Saidi Reddy Parne (SRP)', room: 'Physics Lab' }
+          },
+          notes: 'Batch A1: ME101 (Dr. SPC) | Batch A2: PH101 (Dr. SRP)'
+        },
       ],
       Wednesday: [
         { id: 'secA-w1', day: 'Wednesday', startTime: '09:00', endTime: '09:55', slotName: 'Slot B', courseCode: 'EE100', room: 'LH 01 (45/46)', notes: 'Dr. Amol D Rahulkar (ADR)' },
@@ -629,7 +657,21 @@ export function getSectionSchedule(section: FirstYearSection): Record<DayOfWeek,
         { id: 'secA-w4', day: 'Wednesday', startTime: '12:00', endTime: '12:55', slotName: 'Slot E', courseCode: 'ME100', room: 'LH 01 (45/46)', notes: 'Dr. Darrius Diogo Barreto (DDB)' },
         { id: 'secA-wl', day: 'Wednesday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
         { id: 'secA-w5', day: 'Wednesday', startTime: '14:00', endTime: '14:55', slotName: 'Minor / Math Slot (G)', courseCode: 'MA100', room: 'LH 01 (45/46)', notes: 'Dr. GSK' },
-        { id: 'secA-w6', day: 'Wednesday', startTime: '15:00', endTime: '16:55', slotName: 'LAB Session', courseCode: 'LAB_WED_A', room: 'EE / Computing Lab', isLab: true, notes: 'EE101(A1): SP | CS101(A2): CF1' },
+        {
+          id: 'secA-w6',
+          day: 'Wednesday',
+          startTime: '15:00',
+          endTime: '16:55',
+          slotName: 'LAB 3 (A1) / LAB 4 (A2)',
+          courseCode: 'EE101',
+          room: 'EE / Computing Lab',
+          isLab: true,
+          labOptions: {
+            batch1: { code: 'EE101', name: 'Basics of Electrical Engg Lab (A1)', faculty: 'Ms. Shefali Painuli (SP)', room: 'Electrical Lab' },
+            batch2: { code: 'CS101', name: 'Computer Programming Lab (A2)', faculty: 'Contract Faculty 1 (CF1)', room: 'Computing Lab' }
+          },
+          notes: 'Batch A1: EE101 (SP) | Batch A2: CS101 (CF1)'
+        },
       ],
       Thursday: [
         { id: 'secA-th1', day: 'Thursday', startTime: '09:00', endTime: '09:55', slotName: 'Slot F', courseCode: 'CS100', room: 'LH 01 (45/46)', notes: 'Dr. Keshavamurthy B N (BNK)' },
@@ -637,7 +679,21 @@ export function getSectionSchedule(section: FirstYearSection): Record<DayOfWeek,
         { id: 'secA-th3', day: 'Thursday', startTime: '11:00', endTime: '11:55', slotName: 'Slot B', courseCode: 'EE100', room: 'LH 01 (45/46)', notes: 'Dr. Amol D Rahulkar (ADR)' },
         { id: 'secA-th4', day: 'Thursday', startTime: '12:00', endTime: '12:55', slotName: 'Slot H', courseCode: 'FREE', room: 'LH 01', isFree: true },
         { id: 'secA-thl', day: 'Thursday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
-        { id: 'secA-th5', day: 'Thursday', startTime: '14:00', endTime: '16:55', slotName: 'LAB Session (3 Hrs)', courseCode: 'LAB_THU_A', room: 'EE / Computing Lab', isLab: true, notes: 'EE101(A2): SP | CS101(A1): CF1' },
+        {
+          id: 'secA-th5',
+          day: 'Thursday',
+          startTime: '14:00',
+          endTime: '16:55',
+          slotName: 'LAB 4 (A1) / LAB 3 (A2)',
+          courseCode: 'CS101',
+          room: 'Computing / EE Lab',
+          isLab: true,
+          labOptions: {
+            batch1: { code: 'CS101', name: 'Computer Programming Lab (A1)', faculty: 'Contract Faculty 1 (CF1)', room: 'Computing Lab' },
+            batch2: { code: 'EE101', name: 'Basics of Electrical Engg Lab (A2)', faculty: 'Ms. Shefali Painuli (SP)', room: 'Electrical Lab' }
+          },
+          notes: 'Batch A1: CS101 (CF1) | Batch A2: EE101 (SP)'
+        },
       ],
       Friday: [
         { id: 'secA-f1', day: 'Friday', startTime: '09:00', endTime: '09:55', slotName: 'Slot C', courseCode: 'FREE', room: 'LH 01', isFree: true },
@@ -670,7 +726,21 @@ export function getSectionSchedule(section: FirstYearSection): Record<DayOfWeek,
         { id: 'secB-m3', day: 'Monday', startTime: '11:00', endTime: '11:55', slotName: 'Slot C', courseCode: 'ME100', room: 'LH 02 (43/44)', notes: 'Dr. Sanjeev Singh (SS)' },
         { id: 'secB-m4', day: 'Monday', startTime: '12:00', endTime: '12:55', slotName: 'Slot D', courseCode: 'MA100', room: 'LH 02 (43/44)', notes: 'MA100 Tutorial' },
         { id: 'secB-ml', day: 'Monday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
-        { id: 'secB-m5', day: 'Monday', startTime: '14:00', endTime: '16:55', slotName: 'LAB Session (3 Hrs)', courseCode: 'LAB_MON_B', room: 'EE / Computing Lab', isLab: true, notes: 'EE101(B1): MTT | CS101(B2): CF1' },
+        {
+          id: 'secB-m5',
+          day: 'Monday',
+          startTime: '14:00',
+          endTime: '16:55',
+          slotName: 'LAB 3 (B1) / LAB 4 (B2)',
+          courseCode: 'EE101',
+          room: 'Electrical / Computing Lab',
+          isLab: true,
+          labOptions: {
+            batch1: { code: 'EE101', name: 'Basics of Electrical Engg Lab (B1)', faculty: 'Ms. Shefali Painuli (SP)', room: 'Electrical Lab' },
+            batch2: { code: 'CS101', name: 'Computer Programming Lab (B2)', faculty: 'Contract Faculty 1 (CF1)', room: 'Computing Lab' }
+          },
+          notes: 'Batch B1: EE101 (SP) | Batch B2: CS101 (CF1)'
+        },
       ],
       Tuesday: [
         { id: 'secB-t1', day: 'Tuesday', startTime: '09:00', endTime: '09:55', slotName: 'Slot E', courseCode: 'MA100', room: 'LH 02 (43/44)', notes: 'Dr. Ragoju Ravi (RR)' },
@@ -678,7 +748,21 @@ export function getSectionSchedule(section: FirstYearSection): Record<DayOfWeek,
         { id: 'secB-t3', day: 'Tuesday', startTime: '11:00', endTime: '11:55', slotName: 'Liberal Arts', courseCode: 'HU100', room: 'Room 37 (CV Raman)', notes: 'Liberal Arts: Dr. Sarani Ghosal Mondal' },
         { id: 'secB-t4', day: 'Tuesday', startTime: '12:00', endTime: '12:55', slotName: 'Slot G', courseCode: 'FREE', room: 'LH 02', isFree: true },
         { id: 'secB-tl', day: 'Tuesday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
-        { id: 'secB-t5', day: 'Tuesday', startTime: '14:00', endTime: '16:55', slotName: 'LAB Session (3 Hrs)', courseCode: 'LAB_TUE_B', room: 'EE / Computing Lab', isLab: true, notes: 'EE101(B2): MTT | CS101(B1): CF1' },
+        {
+          id: 'secB-t5',
+          day: 'Tuesday',
+          startTime: '14:00',
+          endTime: '16:55',
+          slotName: 'LAB 4 (B1) / LAB 3 (B2)',
+          courseCode: 'CS101',
+          room: 'Computing / Electrical Lab',
+          isLab: true,
+          labOptions: {
+            batch1: { code: 'CS101', name: 'Computer Programming Lab (B1)', faculty: 'Contract Faculty 1 (CF1)', room: 'Computing Lab' },
+            batch2: { code: 'EE101', name: 'Basics of Electrical Engg Lab (B2)', faculty: 'Ms. Shefali Painuli (SP)', room: 'Electrical Lab' }
+          },
+          notes: 'Batch B1: CS101 (CF1) | Batch B2: EE101 (SP)'
+        },
       ],
       Wednesday: [
         { id: 'secB-w1', day: 'Wednesday', startTime: '09:00', endTime: '09:55', slotName: 'Slot B', courseCode: 'CS100', room: 'LH 02 (43/44)', notes: 'Dr. Keshavamurthy B N (KBN)' },
@@ -686,7 +770,21 @@ export function getSectionSchedule(section: FirstYearSection): Record<DayOfWeek,
         { id: 'secB-w3', day: 'Wednesday', startTime: '11:00', endTime: '11:55', slotName: 'Slot D', courseCode: 'EE100', room: 'LH 02 (43/44)', notes: 'Dr. Amol D Rahulkar (ADR)' },
         { id: 'secB-w4', day: 'Wednesday', startTime: '12:00', endTime: '12:55', slotName: 'Slot E', courseCode: 'MA100', room: 'LH 02 (43/44)', notes: 'Dr. Ragoju Ravi (RR)' },
         { id: 'secB-wl', day: 'Wednesday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
-        { id: 'secB-w5', day: 'Wednesday', startTime: '14:00', endTime: '16:55', slotName: 'LAB Session (3 Hrs)', courseCode: 'LAB_WED_B', room: 'Physics / Workshop Lab (33/38)', isLab: true, notes: 'PH101(B1): Dr. KUK | ME101: Dr. SW(B2)' },
+        {
+          id: 'secB-w5',
+          day: 'Wednesday',
+          startTime: '14:00',
+          endTime: '16:55',
+          slotName: 'LAB 1 (B1) / LAB 2 (B2)',
+          courseCode: 'PH101',
+          room: 'Physics / Drawing Hall (33/38)',
+          isLab: true,
+          labOptions: {
+            batch1: { code: 'PH101', name: 'Engineering Physics Lab (B1)', faculty: 'Dr. Karuna Umakant Korgaonkar (KUK)', room: 'Physics Lab' },
+            batch2: { code: 'ME101', name: 'Engineering Drawing (B2)', faculty: 'Dr. Srikumar Warrier (SW)', room: 'Drawing Hall (33/38)' }
+          },
+          notes: 'Batch B1: PH101 (Dr. KUK) | Batch B2: ME101 (Dr. SW)'
+        },
       ],
       Thursday: [
         { id: 'secB-th1', day: 'Thursday', startTime: '09:00', endTime: '09:55', slotName: 'Slot F', courseCode: 'PH100', room: 'LH 02 (43/44)', notes: 'Dr. Saidi Reddy Parne (SRP)' },
@@ -694,7 +792,21 @@ export function getSectionSchedule(section: FirstYearSection): Record<DayOfWeek,
         { id: 'secB-th3', day: 'Thursday', startTime: '11:00', endTime: '11:55', slotName: 'Slot B', courseCode: 'ME101', room: 'LH 02 (43/44)', notes: 'ME101: CV/SW' },
         { id: 'secB-th4', day: 'Thursday', startTime: '12:00', endTime: '12:55', slotName: 'Slot H', courseCode: 'FREE', room: 'LH 02', isFree: true },
         { id: 'secB-thl', day: 'Thursday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
-        { id: 'secB-th5', day: 'Thursday', startTime: '14:00', endTime: '16:55', slotName: 'LAB Session (3 Hrs)', courseCode: 'LAB_THU_B', room: 'Physics / Workshop Lab (33/38)', isLab: true, notes: 'PH101(B2): Dr. KUK | ME101: Dr. CV(B1)' },
+        {
+          id: 'secB-th5',
+          day: 'Thursday',
+          startTime: '14:00',
+          endTime: '16:55',
+          slotName: 'LAB 2 (B1) / LAB 1 (B2)',
+          courseCode: 'ME101',
+          room: 'Drawing Hall (33/38) / Physics Lab',
+          isLab: true,
+          labOptions: {
+            batch1: { code: 'ME101', name: 'Engineering Drawing (B1)', faculty: 'Dr. Chaitanya Vundru (CV)', room: 'Drawing Hall (33/38)' },
+            batch2: { code: 'PH101', name: 'Engineering Physics Lab (B2)', faculty: 'Dr. Karuna Umakant Korgaonkar (KUK)', room: 'Physics Lab' }
+          },
+          notes: 'Batch B1: ME101 (Dr. CV) | Batch B2: PH101 (Dr. KUK)'
+        },
       ],
       Friday: [
         { id: 'secB-f1', day: 'Friday', startTime: '09:00', endTime: '09:55', slotName: 'Slot C', courseCode: 'ME100', room: 'LH 02 (43/44)', notes: 'Dr. Sanjeev Singh (SS)' },
@@ -726,7 +838,21 @@ export function getSectionSchedule(section: FirstYearSection): Record<DayOfWeek,
         { id: 'secC-m3', day: 'Monday', startTime: '11:00', endTime: '11:55', slotName: 'Slot C', courseCode: 'ME150', room: 'LH 03 (40/41)', notes: 'Dr. Prasenjit Dey (PD)' },
         { id: 'secC-m4', day: 'Monday', startTime: '12:00', endTime: '12:55', slotName: 'Physical Education Slot', courseCode: 'PE150', room: 'LH 03 (40/41)', notes: 'Mr. Akhilesh Maravi (AM)' },
         { id: 'secC-ml', day: 'Monday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
-        { id: 'secC-m5', day: 'Monday', startTime: '14:00', endTime: '16:55', slotName: 'LAB Session (3 Hrs)', courseCode: 'LAB_MON_C', room: 'Chemistry / Workshop Lab', isLab: true, notes: 'CY151(C1): Dr. LP | ME151: Dr. PD/SW(C2)' },
+        {
+          id: 'secC-m5',
+          day: 'Monday',
+          startTime: '14:00',
+          endTime: '16:55',
+          slotName: 'LAB 1 (C1) / LAB 2 (C2)',
+          courseCode: 'CY151',
+          room: 'Chemistry / Workshop Complex',
+          isLab: true,
+          labOptions: {
+            batch1: { code: 'CY151', name: 'Engineering Chemistry Lab (C1)', faculty: 'Dr. Lasitha P (LP)', room: 'Chemistry Lab' },
+            batch2: { code: 'ME151', name: 'Workshop Practices (C2)', faculty: 'Dr. Prasenjit Dey / Dr. Srikumar Warrier (PD/SW)', room: 'Workshop Complex' }
+          },
+          notes: 'Batch C1: CY151 (Dr. LP) | Batch C2: ME151 (Dr. PD/SW)'
+        },
         { id: 'secC-m6', day: 'Monday', startTime: '17:00', endTime: '17:55', slotName: 'Physical Education Ground', courseCode: 'PE150', room: 'SAC Ground', notes: 'PE Drills' },
       ],
       Tuesday: [
@@ -735,7 +861,21 @@ export function getSectionSchedule(section: FirstYearSection): Record<DayOfWeek,
         { id: 'secC-t3', day: 'Tuesday', startTime: '11:00', endTime: '11:55', slotName: 'Slot A', courseCode: 'CY150', room: 'LH 03 (40/41)', notes: 'Dr. Velavan Kathirvelu (VK)' },
         { id: 'secC-t4', day: 'Tuesday', startTime: '12:00', endTime: '12:55', slotName: 'Minor Slot (G)', courseCode: 'MA400M', room: 'LH 03 (40/41)', notes: 'Optimization: Dr. RPJ' },
         { id: 'secC-tl', day: 'Tuesday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
-        { id: 'secC-t5', day: 'Tuesday', startTime: '14:00', endTime: '16:55', slotName: 'LAB Session (3 Hrs)', courseCode: 'LAB_TUE_C', room: 'Chemistry / Workshop Lab', isLab: true, notes: 'CY151(C2): Dr. LP | ME151: Dr. PD/DSS(C1)' },
+        {
+          id: 'secC-t5',
+          day: 'Tuesday',
+          startTime: '14:00',
+          endTime: '16:55',
+          slotName: 'LAB 2 (C1) / LAB 1 (C2)',
+          courseCode: 'ME151',
+          room: 'Workshop Complex / Chemistry Lab',
+          isLab: true,
+          labOptions: {
+            batch1: { code: 'ME151', name: 'Workshop Practices (C1)', faculty: 'Dr. Prasenjit Dey / Dr. Sanjeev Singh (PD/DSS)', room: 'Workshop Complex' },
+            batch2: { code: 'CY151', name: 'Engineering Chemistry Lab (C2)', faculty: 'Dr. Lasitha P (LP)', room: 'Chemistry Lab' }
+          },
+          notes: 'Batch C1: ME151 (Dr. PD/DSS) | Batch C2: CY151 (Dr. LP)'
+        },
       ],
       Wednesday: [
         { id: 'secC-w1', day: 'Wednesday', startTime: '09:00', endTime: '09:55', slotName: 'Slot B', courseCode: 'MA100', room: 'LH 03 (40/41)', notes: 'Dr. L. Shangerganesh (LSG)' },
@@ -743,7 +883,21 @@ export function getSectionSchedule(section: FirstYearSection): Record<DayOfWeek,
         { id: 'secC-w3', day: 'Wednesday', startTime: '11:00', endTime: '11:55', slotName: 'Slot E', courseCode: 'HU150', room: 'LH 03 (40/41)', notes: 'Dr. Unais K T' },
         { id: 'secC-w4', day: 'Wednesday', startTime: '12:00', endTime: '12:55', slotName: 'Slot E', courseCode: 'FREE', room: 'LH 03', isFree: true },
         { id: 'secC-wl', day: 'Wednesday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
-        { id: 'secC-w5', day: 'Wednesday', startTime: '14:00', endTime: '16:55', slotName: 'LAB Session (3 Hrs)', courseCode: 'LAB_WED_C', room: 'Electronics / Lang Lab', isLab: true, notes: 'EC151(C1): Dr. LIG | HU150(C2): Dr. UKT' },
+        {
+          id: 'secC-w5',
+          day: 'Wednesday',
+          startTime: '14:00',
+          endTime: '16:55',
+          slotName: 'LAB 3 (C1) / LAB 4 (C2)',
+          courseCode: 'EC151',
+          room: 'Electronics / Language Lab',
+          isLab: true,
+          labOptions: {
+            batch1: { code: 'EC151', name: 'Basics of Electronics Engg Lab (C1)', faculty: 'Dr. Lalat Indu Giri (LIG)', room: 'Electronics Lab' },
+            batch2: { code: 'HU150', name: 'Professional Communication Lab (C2)', faculty: 'Dr. Unais K T (UKT)', room: 'Language Lab' }
+          },
+          notes: 'Batch C1: EC151 (Dr. LIG) | Batch C2: HU150 (Dr. UKT)'
+        },
         { id: 'secC-w6', day: 'Wednesday', startTime: '17:00', endTime: '17:55', slotName: 'Physical Education Ground', courseCode: 'PE150', room: 'SAC Ground' },
       ],
       Thursday: [
@@ -752,7 +906,21 @@ export function getSectionSchedule(section: FirstYearSection): Record<DayOfWeek,
         { id: 'secC-th3', day: 'Thursday', startTime: '11:00', endTime: '11:55', slotName: 'Slot B', courseCode: 'MA100', room: 'LH 03 (40/41)', notes: 'Dr. L. Shangerganesh (LSG)' },
         { id: 'secC-th4', day: 'Thursday', startTime: '12:00', endTime: '12:55', slotName: 'Slot H', courseCode: 'FREE', room: 'LH 03', isFree: true },
         { id: 'secC-thl', day: 'Thursday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
-        { id: 'secC-th5', day: 'Thursday', startTime: '14:00', endTime: '16:55', slotName: 'LAB Session (3 Hrs)', courseCode: 'LAB_THU_C', room: 'Electronics / Lang Lab', isLab: true, notes: 'EC151(C2): Dr. LIG | HU150(C1): Dr. UKT' },
+        {
+          id: 'secC-th5',
+          day: 'Thursday',
+          startTime: '14:00',
+          endTime: '16:55',
+          slotName: 'LAB 4 (C1) / LAB 3 (C2)',
+          courseCode: 'HU150',
+          room: 'Language / Electronics Lab',
+          isLab: true,
+          labOptions: {
+            batch1: { code: 'HU150', name: 'Professional Communication Lab (C1)', faculty: 'Dr. Unais K T (UKT)', room: 'Language Lab' },
+            batch2: { code: 'EC151', name: 'Basics of Electronics Engg Lab (C2)', faculty: 'Dr. Lalat Indu Giri (LIG)', room: 'Electronics Lab' }
+          },
+          notes: 'Batch C1: HU150 (Dr. UKT) | Batch C2: EC151 (Dr. LIG)'
+        },
       ],
       Friday: [
         { id: 'secC-f1', day: 'Friday', startTime: '09:00', endTime: '09:55', slotName: 'Slot C', courseCode: 'ME150', room: 'LH 03 (40/41)', notes: 'Dr. Prasenjit Dey (PD)' },
@@ -785,7 +953,21 @@ export function getSectionSchedule(section: FirstYearSection): Record<DayOfWeek,
       { id: 'secD-m3', day: 'Monday', startTime: '11:00', endTime: '11:55', slotName: 'Slot C', courseCode: 'MA100', room: 'LH 04 (27/28)', notes: 'Dr. Ravi Prasad K. J. (RPJ)' },
       { id: 'secD-m4', day: 'Monday', startTime: '12:00', endTime: '12:55', slotName: 'Slot D', courseCode: 'HU150', room: 'LH 04 (27/28)', notes: 'Dr. Sarani Ghosal Mondal (SGM)' },
       { id: 'secD-ml', day: 'Monday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
-      { id: 'secD-m5', day: 'Monday', startTime: '14:00', endTime: '16:55', slotName: 'LAB Session (3 Hrs)', courseCode: 'LAB_MON_D', room: 'Electronics / Lang Lab', isLab: true, notes: 'EC151(D1): Dr. TP | HU150(D2): Dr. SGM' },
+      {
+        id: 'secD-m5',
+        day: 'Monday',
+        startTime: '14:00',
+        endTime: '16:55',
+        slotName: 'LAB 3 (D1) / LAB 4 (D2)',
+        courseCode: 'EC151',
+        room: 'Electronics / Language Lab',
+        isLab: true,
+        labOptions: {
+          batch1: { code: 'EC151', name: 'Basics of Electronics Engg Lab (D1)', faculty: 'Dr. Trilochan Panigrahi (TP)', room: 'Electronics Lab' },
+          batch2: { code: 'HU150', name: 'Professional Communication Lab (D2)', faculty: 'Dr. Sarani Ghosal Mondal (SGM)', room: 'Language Lab' }
+        },
+        notes: 'Batch D1: EC151 (Dr. TP) | Batch D2: HU150 (Dr. SGM)'
+      },
     ],
     Tuesday: [
       { id: 'secD-t1', day: 'Tuesday', startTime: '09:00', endTime: '09:55', slotName: 'Slot E', courseCode: 'CY150', room: 'LH 04 (27/28)', notes: 'Dr Lasitha P (LP)' },
@@ -793,7 +975,21 @@ export function getSectionSchedule(section: FirstYearSection): Record<DayOfWeek,
       { id: 'secD-t3', day: 'Tuesday', startTime: '11:00', endTime: '11:55', slotName: 'Slot A', courseCode: 'ME150', room: 'LH 04 (27/28)', notes: 'Dr. Samar Singhal (SS)' },
       { id: 'secD-t4', day: 'Tuesday', startTime: '12:00', endTime: '12:55', slotName: 'Physical Education Slot', courseCode: 'PE150', room: 'LH 04 (27/28)', notes: 'Mr. Akhilesh Maravi (AM)' },
       { id: 'secD-tl', day: 'Tuesday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
-      { id: 'secD-t5', day: 'Tuesday', startTime: '14:00', endTime: '16:55', slotName: 'LAB Session (3 Hrs)', courseCode: 'LAB_TUE_D', room: 'Electronics / Lang Lab', isLab: true, notes: 'EC151(D2): Dr. TP | HU150(D1): Dr. SGM' },
+      {
+        id: 'secD-t5',
+        day: 'Tuesday',
+        startTime: '14:00',
+        endTime: '16:55',
+        slotName: 'LAB 4 (D1) / LAB 3 (D2)',
+        courseCode: 'HU150',
+        room: 'Language / Electronics Lab',
+        isLab: true,
+        labOptions: {
+          batch1: { code: 'HU150', name: 'Professional Communication Lab (D1)', faculty: 'Dr. Sarani Ghosal Mondal (SGM)', room: 'Language Lab' },
+          batch2: { code: 'EC151', name: 'Basics of Electronics Engg Lab (D2)', faculty: 'Dr. Trilochan Panigrahi (TP)', room: 'Electronics Lab' }
+        },
+        notes: 'Batch D1: HU150 (Dr. SGM) | Batch D2: EC151 (Dr. TP)'
+      },
     ],
     Wednesday: [
       { id: 'secD-w1', day: 'Wednesday', startTime: '09:00', endTime: '09:55', slotName: 'Slot B', courseCode: 'MA100', room: 'LH 04 (27/28)', notes: 'Dr. Ravi Prasad K. J. (RPJ)' },
@@ -801,7 +997,21 @@ export function getSectionSchedule(section: FirstYearSection): Record<DayOfWeek,
       { id: 'secD-w3', day: 'Wednesday', startTime: '11:00', endTime: '11:55', slotName: 'Slot D', courseCode: 'EC150', room: 'LH 04 (27/28)', notes: 'Dr. Lalat Indu Giri (LIG)' },
       { id: 'secD-w4', day: 'Wednesday', startTime: '12:00', endTime: '12:55', slotName: 'Slot E', courseCode: 'CY150', room: 'LH 04 (27/28)', notes: 'Dr Lasitha P (LP)' },
       { id: 'secD-wl', day: 'Wednesday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
-      { id: 'secD-w5', day: 'Wednesday', startTime: '14:00', endTime: '16:55', slotName: 'LAB Session (3 Hrs)', courseCode: 'LAB_WED_D', room: 'Chemistry / Workshop Lab', isLab: true, notes: 'CY151(D1): Dr. LP | ME151: Dr. AS/GS(D2)' },
+      {
+        id: 'secD-w5',
+        day: 'Wednesday',
+        startTime: '14:00',
+        endTime: '16:55',
+        slotName: 'LAB 1 (D1) / LAB 2 (D2)',
+        courseCode: 'CY151',
+        room: 'Chemistry / Workshop Complex',
+        isLab: true,
+        labOptions: {
+          batch1: { code: 'CY151', name: 'Engineering Chemistry Lab (D1)', faculty: 'Dr. Lasitha P (LP)', room: 'Chemistry Lab' },
+          batch2: { code: 'ME151', name: 'Workshop Practices (D2)', faculty: 'Dr. Aniruddha Samanta / Dr. Gurkirat Singh (AS/GS)', room: 'Workshop Complex' }
+        },
+        notes: 'Batch D1: CY151 (Dr. LP) | Batch D2: ME151 (Dr. AS/GS)'
+      },
     ],
     Thursday: [
       { id: 'secD-th1', day: 'Thursday', startTime: '09:00', endTime: '09:55', slotName: 'Slot F', courseCode: 'ME150', room: 'LH 04 (27/28)', notes: 'Dr. Samar Singhal (SS)' },
@@ -809,7 +1019,21 @@ export function getSectionSchedule(section: FirstYearSection): Record<DayOfWeek,
       { id: 'secD-th3', day: 'Thursday', startTime: '11:00', endTime: '11:55', slotName: 'Slot B', courseCode: 'MA100', room: 'LH 04 (27/28)', notes: 'Dr. Ravi Prasad K. J. (RPJ)' },
       { id: 'secD-th4', day: 'Thursday', startTime: '12:00', endTime: '12:55', slotName: 'Slot H', courseCode: 'FREE', room: 'LH 04', isFree: true },
       { id: 'secD-thl', day: 'Thursday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
-      { id: 'secD-th5', day: 'Thursday', startTime: '14:00', endTime: '16:55', slotName: 'LAB Session (3 Hrs)', courseCode: 'LAB_THU_D', room: 'Chemistry / Workshop Lab', isLab: true, notes: 'CY151(D2): Dr. LP | ME151: Dr. AS/SPC(D1)' },
+      {
+        id: 'secD-th5',
+        day: 'Thursday',
+        startTime: '14:00',
+        endTime: '16:55',
+        slotName: 'LAB 2 (D1) / LAB 1 (D2)',
+        courseCode: 'ME151',
+        room: 'Workshop Complex / Chemistry Lab',
+        isLab: true,
+        labOptions: {
+          batch1: { code: 'ME151', name: 'Workshop Practices (D1)', faculty: 'Dr. Aniruddha Samanta / Dr. Siba Prasad Choudhury (AS/SPC)', room: 'Workshop Complex' },
+          batch2: { code: 'CY151', name: 'Engineering Chemistry Lab (D2)', faculty: 'Dr. Lasitha P (LP)', room: 'Chemistry Lab' }
+        },
+        notes: 'Batch D1: ME151 (Dr. AS/SPC) | Batch D2: CY151 (Dr. LP)'
+      },
       { id: 'secD-th6', day: 'Thursday', startTime: '17:00', endTime: '17:55', slotName: 'Physical Education Ground', courseCode: 'PE150', room: 'SAC Ground' },
     ],
     Friday: [

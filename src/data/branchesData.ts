@@ -97,6 +97,9 @@ export interface StudentProfile {
   hasMinor: boolean;
   minorCode?: string;
   customSchedule?: Record<DayOfWeek, TimeSlot[]>;
+  studentName?: string;
+  rollNo?: string;
+  branchTitle?: string;
 }
 
 export const DEFAULT_PROFILE: StudentProfile = {

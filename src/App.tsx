@@ -494,6 +494,17 @@ export default function App() {
         {activeTab === 'resources' && (
           <ResourcesView
             profile={safeProfile}
+            courses={activeBranchData.courses}
+            scheduleOverride={scheduleOverride}
+            tests={tests}
+            onSelectBranchYear={(branch, year, semester) => {
+              handleSaveProfile({
+                ...safeProfile,
+                branch: branch as any,
+                year,
+                semester,
+              });
+            }}
           />
         )}
       </main>

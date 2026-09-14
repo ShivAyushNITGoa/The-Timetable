@@ -209,11 +209,11 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
           </div>
 
           {/* Quick Prev / Next Day navigation buttons for mobile thumb */}
-          <div className="flex items-center gap-1.5 sm:hidden">
+          <div className="flex items-center gap-2 sm:hidden">
             <button
               type="button"
               onClick={goToPrevDay}
-              className="w-10 h-10 rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 hover:text-white flex items-center justify-center border border-slate-700/80 active:scale-95 transition shadow-xs"
+              className="min-h-[44px] min-w-[44px] rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 hover:text-white flex items-center justify-center border border-slate-700/80 active:scale-95 transition shadow-xs"
               aria-label="Previous day"
               title="Previous day"
             >
@@ -222,7 +222,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
             <button
               type="button"
               onClick={goToNextDay}
-              className="w-10 h-10 rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 hover:text-white flex items-center justify-center border border-slate-700/80 active:scale-95 transition shadow-xs"
+              className="min-h-[44px] min-w-[44px] rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 hover:text-white flex items-center justify-center border border-slate-700/80 active:scale-95 transition shadow-xs"
               aria-label="Next day"
               title="Next day"
             >
