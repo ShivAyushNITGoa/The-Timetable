@@ -7,8 +7,9 @@ export interface SemesterData {
 }
 
 // ==========================================
-// 3rd Semester (2nd Year Odd) - CSE (Room 70/71)
-// Faculty Advisor: Dr. Venkatnareshbabu Kuppili (venkatnaresh@nitgoa.ac.in)
+// ==========================================
+// 3rd Semester (2nd Year Odd) - CSE (Room 74/75)
+// Faculty Advisor: Dr. Keshavamurthy B N (bnkeshav.fcse@nitgoa.ac.in)
 // ==========================================
 export const CSE_3: SemesterData = {
   courses: {
@@ -16,19 +17,18 @@ export const CSE_3: SemesterData = {
       code: 'CS200',
       name: 'Data Structures',
       type: 'Theory',
-      credits: 3,
-      ltp: '3-0-0',
+      credits: 4,
+      ltp: '3-1-0',
       teachingSlot: 'A',
       examSlot: 'A',
-      coordinator: 'Dr. Venkatnareshbabu Kuppili',
-      shortName: 'VNK',
-      facultyDesignation: 'Associate Professor & Faculty Advisor (CSE)',
-      facultyResearch: 'Data Structures, Machine Learning, Deep Learning, Big Data',
-      email: 'venkatnaresh@nitgoa.ac.in',
-      facultyWebsite: 'https://www.nitgoa.ac.in/department/cse',
-      room: 'Room 70/71',
+      coordinator: 'Ms. Helga Lobo',
+      shortName: 'HL',
+      facultyDesignation: 'Faculty (CSE)',
+      facultyResearch: 'Data Structures, Algorithms, Graph Theory',
+      email: 'helga@nitgoa.ac.in',
+      room: 'Room 74/75',
       category: 'core',
-      notes: 'Teaching Slot A (Mon 09:00, Tue 11:00, Thu 10:00). Stacks, queues, linked lists, trees, binary search trees, AVL, heaps, graph traversals, and hashing.',
+      notes: 'Teaching Slot A (Mon 09:00, Tue 11:00, Thu 10:00, Wed 16:00 Tut). Stacks, queues, linked lists, trees, binary search trees, AVL, heaps, graph traversals, and hashing.',
       modules: [
         'Module 1: Linear Data Structures - Arrays, dynamic lists, singly/doubly/circular linked lists, stacks and queues: array & pointer implementations, infix to postfix conversion.',
         'Module 2: Trees & Balanced Search Trees - Binary trees, properties, traversals (inorder, preorder, postorder), Binary Search Trees (BST), AVL trees, rotations, B-Trees.',
@@ -42,21 +42,20 @@ export const CSE_3: SemesterData = {
     },
     'CS201': {
       code: 'CS201',
-      name: 'Digital Logic Design',
+      name: 'Digital System Design',
       type: 'Theory',
       credits: 3,
       ltp: '3-0-0',
-      teachingSlot: 'B',
-      examSlot: 'B',
-      coordinator: 'Dr. Sanjay Saha',
-      shortName: 'SS',
-      facultyDesignation: 'Assistant Professor (CSE)',
+      teachingSlot: 'C',
+      examSlot: 'C',
+      coordinator: 'Dr. Lokesh Kumar Bramhane',
+      shortName: 'LB',
+      facultyDesignation: 'Assistant Professor (ECE/CSE)',
       facultyResearch: 'Digital Architectures, VLSI, Hardware Security',
-      email: 'sanjaysaha@nitgoa.ac.in',
-      facultyWebsite: 'https://www.nitgoa.ac.in/department/cse',
-      room: 'Room 70/71',
+      email: 'lokesh.bramhane@nitgoa.ac.in',
+      room: 'Room 74/75',
       category: 'core',
-      notes: 'Teaching Slot B (Mon 10:00, Wed 09:00, Thu 11:00). Boolean algebra, K-maps, multiplexers, decoders, flip-flops, registers, counters, FSM, and Verilog HDL basics.',
+      notes: 'Teaching Slot C (Mon 11:00, Wed 10:00, Fri 09:00). Boolean algebra, K-maps, multiplexers, decoders, flip-flops, registers, counters, FSM, and Verilog HDL basics.',
       modules: [
         'Module 1: Boolean Algebra & Logic Simplification - Number systems, binary codes, Boolean theorems, canonical forms, K-map minimization (up to 5 variables), Quine-McCluskey method.',
         'Module 2: Combinational Logic Circuits - Half/full adders, ripple carry adders, carry lookahead adders, magnitude comparators, decoders, encoders, multiplexers, demultiplexers.',
@@ -72,19 +71,18 @@ export const CSE_3: SemesterData = {
       code: 'CS202',
       name: 'Discrete Mathematics',
       type: 'Theory',
-      credits: 3,
-      ltp: '3-0-0',
-      teachingSlot: 'C',
-      examSlot: 'C',
-      coordinator: 'Dr. Meenakshi Panda',
-      shortName: 'MP',
+      credits: 4,
+      ltp: '3-1-0',
+      teachingSlot: 'F',
+      examSlot: 'F',
+      coordinator: 'Mrs. Sreedivya',
+      shortName: 'SD',
       facultyDesignation: 'Assistant Professor (CSE)',
-      facultyResearch: 'Discrete Mathematics, Graph Theory, Sensor Networks',
-      email: 'meenakshi.panda@nitgoa.ac.in',
-      facultyWebsite: 'https://www.nitgoa.ac.in/department/cse',
-      room: 'Room 70/71',
+      facultyResearch: 'Discrete Mathematics, Graph Theory, Formal Methods',
+      email: 'sreedivya@nitgoa.ac.in',
+      room: 'Room 74/75',
       category: 'core',
-      notes: 'Teaching Slot C (Mon 11:00, Wed 10:00, Fri 09:00). Mathematical logic, predicates, sets, relations, lattices, algebraic structures, recurrence relations, and graph coloring.',
+      notes: 'Teaching Slot F (Tue 10:00, Wed 15:00, Thu 09:00, Fri 12:00). Mathematical logic, predicates, sets, relations, lattices, algebraic structures, recurrence relations, and graph coloring.',
       modules: [
         'Module 1: Mathematical Logic & Predicates - Propositional logic, truth tables, tautologies, predicate calculus, universal and existential quantifiers, rules of inference.',
         'Module 2: Sets, Relations & Functions - Properties of relations, equivalence relations, partial ordering, Hasse diagrams, lattices, bijective functions, pigeonhole principle.',
@@ -96,20 +94,47 @@ export const CSE_3: SemesterData = {
         'J. P. Tremblay, R. Manohar, "Discrete Mathematical Structures with Applications to Computer Science", McGraw-Hill'
       ]
     },
+    'CS203': {
+      code: 'CS203',
+      name: 'Object Oriented Programming',
+      type: 'Theory',
+      credits: 4,
+      ltp: '3-1-0',
+      teachingSlot: 'B',
+      examSlot: 'B',
+      coordinator: 'Dr. Mini S',
+      shortName: 'MS',
+      facultyDesignation: 'Associate Professor (CSE)',
+      facultyResearch: 'OOP Paradigms, Wireless Networks, Distributed Systems',
+      email: 'mini@nitgoa.ac.in',
+      room: 'Room 74/75',
+      category: 'core',
+      notes: 'Teaching Slot B (Mon 10:00, Wed 09:00, Thu 11:00, Fri 11:00). OOP principles, classes, objects, inheritance, polymorphism, templates, exception handling, and STL.',
+      modules: [
+        'Module 1: Principles of Object-Oriented Programming - Encapsulation, abstraction, data hiding, classes and objects, constructors, destructors, copy constructors, dynamic memory allocation.',
+        'Module 2: Inheritance & Polymorphism - Single, multiple, multilevel, hierarchical inheritance, virtual base classes, function and operator overloading, runtime polymorphism via virtual functions.',
+        'Module 3: Templates, Exceptions & STL - Function and class templates, standard template library (vectors, lists, maps, iterators, algorithms), try-catch-throw mechanisms, exception hierarchies.',
+        'Module 4: Design Patterns & Systems Design - SOLID design principles, Creational patterns (Factory, Singleton), Structural patterns (Adapter, Decorator), Behavioral patterns (Observer, Strategy).'
+      ],
+      textbooks: [
+        'Bjarne Stroustrup, "The C++ Programming Language", 4th Edition, Addison-Wesley',
+        'Herbert Schildt, "Java: The Complete Reference", 12th Edition, McGraw-Hill'
+      ]
+    },
     'MA201': {
       code: 'MA201',
-      name: 'Probability and Queuing Theory',
+      name: 'Probability, Statistics and Queuing Theory',
       type: 'Theory',
       credits: 3,
       ltp: '3-0-0',
       teachingSlot: 'D',
       examSlot: 'D',
-      coordinator: 'Dr. J.V. Shanmukha Kumar',
-      shortName: 'JVS',
-      facultyDesignation: 'Assistant Professor (Mathematics)',
-      facultyResearch: 'Probability, Stochastic Models, Applied Analysis',
-      email: 'shanmukhakumar@nitgoa.ac.in',
-      room: 'Room 70/71',
+      coordinator: 'Dr. L. Shangerganesh',
+      shortName: 'LSG',
+      facultyDesignation: 'Associate Professor (Mathematics)',
+      facultyResearch: 'Probability, Differential Equations, Stochastic Modeling',
+      email: 'shangerganesh@nitgoa.ac.in',
+      room: 'Room 74/75',
       category: 'core',
       notes: 'Teaching Slot D (Mon 12:00, Wed 11:00, Fri 10:00). Probability distributions, random processes, queuing models (M/M/1, M/M/c), Markov chains.',
       modules: [
@@ -125,57 +150,78 @@ export const CSE_3: SemesterData = {
     },
     'CS204': {
       code: 'CS204',
-      name: 'Computer Organization and Architecture',
-      type: 'Theory',
-      credits: 3,
-      ltp: '3-0-0',
-      teachingSlot: 'E',
-      examSlot: 'E',
-      coordinator: 'Dr. Damodar Reddy E',
-      shortName: 'DRE',
-      facultyDesignation: 'Associate Professor (CSE)',
-      facultyResearch: 'Computer Architecture, Memory Subsystems, High Performance Computing',
-      email: 'damodar.reddy@nitgoa.ac.in',
-      room: 'Room 70/71',
-      category: 'core',
-      notes: 'Teaching Slot E (Tue 09:00, Wed 12:00, Fri 11:00). Instruction set architecture, ALU design, fast adders, Booth multiplier, hardwired/microprogrammed control, memory hierarchy, cache mapping, pipelining.',
+      name: 'Data Structures Laboratory',
+      type: 'Practical',
+      credits: 2,
+      ltp: '0-0-3',
+      teachingSlot: 'Mon/Thu 14:00 - 16:55 (Room 22)',
+      examSlot: 'Practical',
+      coordinator: 'Ms. Helga Lobo',
+      shortName: 'HL',
+      facultyDesignation: 'Faculty (CSE)',
+      facultyResearch: 'Data Structures, Benchmarking',
+      email: 'helga@nitgoa.ac.in',
+      room: 'Room 22',
+      category: 'lab',
+      notes: 'Mon 14:00-16:55 (Batch 1) / Thu 14:00-16:55 (Batch 2). Implementations of linked lists, stacks, queues, binary search trees, heaps, graphs, sorting and searching algorithms.',
       modules: [
-        'Module 1: Machine Instructions & Arithmetic - Addressing modes, instruction formats, fixed and floating point representations (IEEE 754), ALU design, fast adders, Booth multiplication algorithm.',
-        'Module 2: Processing Unit & Control Design - Single-bus and multi-bus CPU organization, data path, execution of complete instructions, hardwired vs microprogrammed control units.',
-        'Module 3: Memory Organization - Memory hierarchy, main memory, cache memory principles, mapping techniques (direct, associative, set-associative), cache replacement policies, virtual memory.',
-        'Module 4: Pipelining & I/O Subsystem - Instruction pipelining, pipeline hazards (data, structural, control), branch prediction, programmed I/O, interrupt-driven I/O, DMA controllers.'
+        'Experiment 1: Array and linked list implementations: Singly, doubly, and circular linked lists.',
+        'Experiment 2: Stack applications: Infix to postfix expression conversion and evaluation.',
+        'Experiment 3: Binary Search Tree (BST) construction, recursive traversals, and deletion.',
+        'Experiment 4: Priority queue using min/max binary heap and Heapsort algorithm.',
+        'Experiment 5: Graph traversal implementations: BFS, DFS, and Dijkstra shortest path.'
       ],
-      textbooks: [
-        'Carl Hamacher, Zvonko Vranesic, Safwat Zaky, "Computer Organization and Embedded Systems", McGraw-Hill',
-        'David A. Patterson, John L. Hennessy, "Computer Organization and Design: The Hardware/Software Interface", Morgan Kaufmann'
-      ]
+      textbooks: ['Data Structures Laboratory Manual, Department of CSE, NIT Goa']
     },
-    'CS203': {
-      code: 'CS203',
-      name: 'Object Oriented Design and Programming',
-      type: 'Theory',
-      credits: 3,
-      ltp: '3-0-0',
-      teachingSlot: 'F',
-      examSlot: 'F',
-      coordinator: 'Dr. Pravati Swain',
-      shortName: 'PS',
-      facultyDesignation: 'Associate Professor & HoD (CSE)',
-      facultyResearch: 'OOP Paradigms, Wireless Networks, Distributed Systems',
-      email: 'pravatiswain@nitgoa.ac.in',
-      room: 'Room 70/71',
-      category: 'core',
-      notes: 'Teaching Slot F (Tue 10:00, Thu 09:00, Fri 12:00). OOP principles, classes, objects, inheritance, polymorphism, templates, exception handling, STL, and design patterns in C++/Java.',
+    'CS205': {
+      code: 'CS205',
+      name: 'Digital Systems Design Laboratory',
+      type: 'Practical',
+      credits: 2,
+      ltp: '0-0-3',
+      teachingSlot: 'Mon/Thu 14:00 - 16:55 (ECE Dept)',
+      examSlot: 'Practical',
+      coordinator: 'Dr. Lokesh Kumar Bramhane',
+      shortName: 'LB',
+      facultyDesignation: 'Assistant Professor (ECE/CSE)',
+      facultyResearch: 'Digital Circuits, Hardware Verification',
+      email: 'lokesh.bramhane@nitgoa.ac.in',
+      room: 'ECE Department',
+      category: 'lab',
+      notes: 'Mon 14:00-16:55 (Batch 2) / Thu 14:00-16:55 (Batch 1). Logic gates verification, combinational circuits (adders, multiplexers, decoders), flip-flops, shift registers, and counter designs.',
       modules: [
-        'Module 1: Principles of Object-Oriented Programming - Encapsulation, abstraction, data hiding, classes and objects, constructors, destructors, copy constructors, dynamic memory allocation.',
-        'Module 2: Inheritance & Polymorphism - Single, multiple, multilevel, hierarchical inheritance, virtual base classes, function and operator overloading, runtime polymorphism via virtual functions.',
-        'Module 3: Templates, Exceptions & STL - Function and class templates, standard template library (vectors, lists, maps, iterators, algorithms), try-catch-throw mechanisms, exception hierarchies.',
-        'Module 4: Design Patterns & Systems Design - SOLID design principles, Creational patterns (Factory, Singleton), Structural patterns (Adapter, Decorator), Behavioral patterns (Observer, Strategy).'
+        'Experiment 1: Verification of truth tables of basic, universal, and XOR logic gates.',
+        'Experiment 2: Design and realization of half and full adder/subtractor circuits.',
+        'Experiment 3: Realization of 4:1 multiplexer and 1:4 demultiplexer circuits.',
+        'Experiment 4: Design of synchronous and asynchronous 4-bit binary up/down counters.',
+        'Experiment 5: HDL simulation and FPGA synthesis of combinational and sequential modules.'
       ],
-      textbooks: [
-        'Bjarne Stroustrup, "The C++ Programming Language", 4th Edition, Addison-Wesley',
-        'Herbert Schildt, "Java: The Complete Reference", 12th Edition, McGraw-Hill'
-      ]
+      textbooks: ['Digital Systems Design Laboratory Manual, NIT Goa']
+    },
+    'CS206': {
+      code: 'CS206',
+      name: 'Object Oriented Programming Laboratory',
+      type: 'Practical',
+      credits: 2,
+      ltp: '0-0-3',
+      teachingSlot: 'Tuesday 14:00 - 16:55 (Room 30 / Room 22)',
+      examSlot: 'Practical',
+      coordinator: 'Dr. Mini S / Mr. Sarvesh Sawant',
+      shortName: 'MS/SS',
+      facultyDesignation: 'Faculty (CSE)',
+      facultyResearch: 'OOP Implementations & Software Design',
+      email: 'mini@nitgoa.ac.in',
+      room: 'Room 30 / Room 22',
+      category: 'lab',
+      notes: 'Tue 14:00-16:55. Batch 1: Dr. Mini S (Room 30) | Batch 2: Mr. Sarvesh Sawant (Room 22).',
+      modules: [
+        'Experiment 1: Class, object creation, constructor overloading, and memory allocation.',
+        'Experiment 2: Operator overloading (unary and binary) and friend functions.',
+        'Experiment 3: Multiple and multilevel inheritance with virtual base classes.',
+        'Experiment 4: Generic templates and Standard Template Library (vector, map, list).',
+        'Experiment 5: File I/O streams and user-defined exception handling.'
+      ],
+      textbooks: ['OOP Laboratory Manual, Department of CSE, NIT Goa']
     },
     'ES300': {
       code: 'ES300',
@@ -190,9 +236,9 @@ export const CSE_3: SemesterData = {
       facultyDesignation: 'Associate Professor (Chemistry)',
       facultyResearch: 'Environmental Science, Green Chemistry',
       email: 'velavan@nitgoa.ac.in',
-      room: 'Room 70/71',
+      room: 'Room 74/75',
       category: 'mlc',
-      notes: 'Friday 16:00 - 16:55 (Room 70/71). Ecosystem dynamics, biodiversity, pollution control, e-waste handling, green energy systems.',
+      notes: 'Friday 16:00 - 16:55 (Room 74/75). Ecosystem dynamics, biodiversity, pollution control, e-waste handling, green energy systems.',
       modules: [
         'Module 1: Natural Resources & Multidisciplinary Nature - Renewable and non-renewable resources; forest, water, mineral, food, and energy resources; land degradation and soil conservation.',
         'Module 2: Ecosystems & Biodiversity - Concept, structure, and functions of forest, grassland, desert, and aquatic ecosystems; threats to biodiversity, hot-spots, and in-situ/ex-situ conservation.',
@@ -203,74 +249,105 @@ export const CSE_3: SemesterData = {
         'Erach Bharucha, "Textbook of Environmental Studies for Undergraduate Courses", Universities Press',
         'R. Rajagopalan, "Environmental Studies: From Crisis to Cure", Oxford University Press'
       ]
-    },
-    'CS205': {
-      code: 'CS205',
-      name: 'Digital Logic Design Laboratory',
-      type: 'Practical',
-      credits: 2,
-      ltp: '0-0-3',
-      teachingSlot: 'Mon/Thu 14:00 - 16:55 (Room 46)',
-      examSlot: 'Practical',
-      coordinator: 'Dr. Sanjay Saha',
-      shortName: 'SS',
-      facultyDesignation: 'Assistant Professor (CSE)',
-      facultyResearch: 'Digital Hardware Implementations',
-      email: 'sanjaysaha@nitgoa.ac.in',
-      room: 'Room 46',
-      category: 'lab',
-      notes: 'Mon 14:00-16:55 (Batch 1) / Thu 14:00-16:55 (Batch 2). Logic gates verification, combinational circuits (adders, multiplexers, decoders), flip-flops, shift registers, and counter designs.',
-      modules: [
-        'Experiment 1: Verification of truth tables of basic, universal, and XOR logic gates.',
-        'Experiment 2: Design and realization of half and full adder/subtractor circuits.',
-        'Experiment 3: Realization of 4:1 multiplexer and 1:4 demultiplexer circuits.',
-        'Experiment 4: Design of synchronous and asynchronous 4-bit binary up/down counters.',
-        'Experiment 5: HDL simulation and FPGA synthesis of combinational and sequential modules.'
-      ],
-      textbooks: ['Digital Logic Design Laboratory Manual, Department of CSE, NIT Goa']
-    },
-    'CS206': {
-      code: 'CS206',
-      name: 'Data Structures Laboratory',
-      type: 'Practical',
-      credits: 2,
-      ltp: '0-0-3',
-      teachingSlot: 'Mon/Thu 14:00 - 16:55 (Room 30)',
-      examSlot: 'Practical',
-      coordinator: 'Dr. Meenakshi Panda',
-      shortName: 'MP',
-      facultyDesignation: 'Assistant Professor (CSE)',
-      facultyResearch: 'Data Structure Benchmarks and Algorithms',
-      email: 'meenakshi.panda@nitgoa.ac.in',
-      room: 'Room 30',
-      category: 'lab',
-      notes: 'Mon 14:00-16:55 (Batch 2) / Thu 14:00-16:55 (Batch 1). C/C++ implementation of linked lists, stacks, queues, binary search trees, heaps, graphs, sorting and searching algorithms.',
-      modules: [
-        'Experiment 1: Array and linked list implementations: Singly, doubly, and circular linked lists.',
-        'Experiment 2: Stack applications: Infix to postfix expression conversion and evaluation.',
-        'Experiment 3: Binary Search Tree (BST) construction, recursive traversals, and deletion.',
-        'Experiment 4: Priority queue using min/max binary heap and Heapsort algorithm.',
-        'Experiment 5: Graph traversal implementations: BFS, DFS, and Dijkstra shortest path.'
-      ],
-      textbooks: ['Data Structures Laboratory Manual, NIT Goa']
     }
   },
-  schedule: buildInstituteMasterSchedule({
-    prefix: 'cse3',
-    room: 'Room 70/71',
-    slotA: 'CS200',
-    slotB: 'CS201',
-    slotC: 'CS202',
-    slotD: 'MA201',
-    slotE: 'CS204',
-    slotF: 'CS203',
-    mlcFriday: 'ES300',
-    labMon: { code: 'CS205', name: 'DLD Lab (SS - Rm 46) B1 / DS Lab (MP - Rm 30) B2', room: 'Room 46 / Room 30' },
-    labThu: { code: 'CS206', name: 'DLD Lab (SS - Rm 46) B2 / DS Lab (MP - Rm 30) B1', room: 'Room 46 / Room 30' },
-    notesMonLab: 'Batch 1: CS205 (SS) Room 46 | Batch 2: CS206 (MP) Room 30',
-    notesThuLab: 'Batch 1: CS206 (MP) Room 30 | Batch 2: CS205 (SS) Room 46',
-    customSaturdayFocus: 'Probability & Data Structures Problem Clinics',
-  })
+  schedule: {
+    Monday: [
+      { id: 'cse3-m1', day: 'Monday', startTime: '09:00', endTime: '09:55', slotName: 'Slot A', courseCode: 'CS200', room: 'Room 74/75', notes: 'Ms. Helga Lobo (HL)' },
+      { id: 'cse3-m2', day: 'Monday', startTime: '10:00', endTime: '10:55', slotName: 'Slot B', courseCode: 'CS203', room: 'Room 74/75', notes: 'Dr. Mini S (MS)' },
+      { id: 'cse3-m3', day: 'Monday', startTime: '11:00', endTime: '11:55', slotName: 'Slot C', courseCode: 'CS201', room: 'Room 74/75', notes: 'Dr. Lokesh Kumar Bramhane (LB)' },
+      { id: 'cse3-m4', day: 'Monday', startTime: '12:00', endTime: '12:55', slotName: 'Slot D', courseCode: 'MA201', room: 'Room 74/75', notes: 'Dr. L. Shangerganesh (LSG)' },
+      { id: 'cse3-ml', day: 'Monday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
+      {
+        id: 'cse3-m5',
+        day: 'Monday',
+        startTime: '14:00',
+        endTime: '16:55',
+        slotName: 'LAB Session (3 Hrs)',
+        courseCode: 'CS204',
+        room: 'Room 22 / ECE Dept',
+        isLab: true,
+        labOptions: {
+          batch1: { code: 'CS204', name: 'Data Structures Lab (B1)', faculty: 'Ms. Helga Lobo (HL)', room: 'Room 22' },
+          batch2: { code: 'CS205', name: 'Digital Systems Design Lab (B2)', faculty: 'Dr. Lokesh Kumar Bramhane (LB)', room: 'ECE Department' }
+        },
+        notes: 'Batch 1: CS204 DS Lab (HL - Rm 22) | Batch 2: CS205 DSD Lab (LB - ECE Dept)'
+      }
+    ],
+    Tuesday: [
+      { id: 'cse3-t1', day: 'Tuesday', startTime: '09:00', endTime: '09:55', slotName: 'Self Study / Library', courseCode: 'FREE', room: 'Library', isFree: true },
+      { id: 'cse3-t2', day: 'Tuesday', startTime: '10:00', endTime: '10:55', slotName: 'Slot F', courseCode: 'CS202', room: 'Room 74/75', notes: 'Mrs. Sreedivya (SD)' },
+      { id: 'cse3-t3', day: 'Tuesday', startTime: '11:00', endTime: '11:55', slotName: 'Slot A', courseCode: 'CS200', room: 'Room 74/75', notes: 'Ms. Helga Lobo (HL)' },
+      { id: 'cse3-t4', day: 'Tuesday', startTime: '12:00', endTime: '12:55', slotName: 'Minor / Open Hour', courseCode: 'FREE', room: 'Room 74/75', isFree: true },
+      { id: 'cse3-tl', day: 'Tuesday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
+      {
+        id: 'cse3-t5',
+        day: 'Tuesday',
+        startTime: '14:00',
+        endTime: '16:55',
+        slotName: 'LAB Session (3 Hrs)',
+        courseCode: 'CS206',
+        room: 'Room 30 / Room 22',
+        isLab: true,
+        labOptions: {
+          batch1: { code: 'CS206', name: 'OOP Lab (B1)', faculty: 'Dr. Mini S (MS)', room: 'Room 30' },
+          batch2: { code: 'CS206', name: 'OOP Lab (B2)', faculty: 'Mr. Sarvesh Sawant (SS)', room: 'Room 22' }
+        },
+        notes: 'Batch 1: CS206 OOP Lab (MS - Rm 30) | Batch 2: CS206 OOP Lab (SS - Rm 22)'
+      }
+    ],
+    Wednesday: [
+      { id: 'cse3-w1', day: 'Wednesday', startTime: '09:00', endTime: '09:55', slotName: 'Slot B', courseCode: 'CS203', room: 'Room 74/75', notes: 'Dr. Mini S (MS)' },
+      { id: 'cse3-w2', day: 'Wednesday', startTime: '10:00', endTime: '10:55', slotName: 'Slot C', courseCode: 'CS201', room: 'Room 74/75', notes: 'Dr. Lokesh Kumar Bramhane (LB)' },
+      { id: 'cse3-w3', day: 'Wednesday', startTime: '11:00', endTime: '11:55', slotName: 'Slot D', courseCode: 'MA201', room: 'Room 74/75', notes: 'Dr. L. Shangerganesh (LSG)' },
+      { id: 'cse3-w4', day: 'Wednesday', startTime: '12:00', endTime: '12:55', slotName: 'Open / Free Hour', courseCode: 'FREE', room: 'Room 74/75', isFree: true },
+      { id: 'cse3-wl', day: 'Wednesday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
+      { id: 'cse3-w5', day: 'Wednesday', startTime: '14:00', endTime: '14:55', slotName: 'Minor / Free', courseCode: 'FREE', room: 'Campus', isFree: true },
+      { id: 'cse3-w6', day: 'Wednesday', startTime: '15:00', endTime: '15:55', slotName: 'Slot F (Extra)', courseCode: 'CS202', room: 'Room 74/75', notes: 'Mrs. Sreedivya (SD)' },
+      { id: 'cse3-w7', day: 'Wednesday', startTime: '16:00', endTime: '16:55', slotName: 'Tutorial Slot', courseCode: 'CS200', room: 'Room 74/75', notes: 'Data Structures Tutorial - Ms. Helga Lobo (HL)' }
+    ],
+    Thursday: [
+      { id: 'cse3-th1', day: 'Thursday', startTime: '09:00', endTime: '09:55', slotName: 'Slot F', courseCode: 'CS202', room: 'Room 74/75', notes: 'Mrs. Sreedivya (SD)' },
+      { id: 'cse3-th2', day: 'Thursday', startTime: '10:00', endTime: '10:55', slotName: 'Slot A', courseCode: 'CS200', room: 'Room 74/75', notes: 'Ms. Helga Lobo (HL)' },
+      { id: 'cse3-th3', day: 'Thursday', startTime: '11:00', endTime: '11:55', slotName: 'Slot B', courseCode: 'CS203', room: 'Room 74/75', notes: 'Dr. Mini S (MS)' },
+      { id: 'cse3-th4', day: 'Thursday', startTime: '12:00', endTime: '12:55', slotName: 'Open Elective / Free', courseCode: 'FREE', room: 'Room 74/75', isFree: true },
+      { id: 'cse3-thl', day: 'Thursday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
+      {
+        id: 'cse3-th5',
+        day: 'Thursday',
+        startTime: '14:00',
+        endTime: '16:55',
+        slotName: 'LAB Session (3 Hrs)',
+        courseCode: 'CS205',
+        room: 'ECE Dept / Room 22',
+        isLab: true,
+        labOptions: {
+          batch1: { code: 'CS205', name: 'Digital Systems Design Lab (B1)', faculty: 'Dr. Lokesh Kumar Bramhane (LB)', room: 'ECE Department' },
+          batch2: { code: 'CS204', name: 'Data Structures Lab (B2)', faculty: 'Ms. Helga Lobo (HL)', room: 'Room 22' }
+        },
+        notes: 'Batch 1: CS205 DSD Lab (LB - ECE Dept) | Batch 2: CS204 DS Lab (HL - Rm 22)'
+      }
+    ],
+    Friday: [
+      { id: 'cse3-f1', day: 'Friday', startTime: '09:00', endTime: '09:55', slotName: 'Slot C', courseCode: 'CS201', room: 'Room 74/75', notes: 'Dr. Lokesh Kumar Bramhane (LB)' },
+      { id: 'cse3-f2', day: 'Friday', startTime: '10:00', endTime: '10:55', slotName: 'Slot D', courseCode: 'MA201', room: 'Room 74/75', notes: 'Dr. L. Shangerganesh (LSG)' },
+      { id: 'cse3-f3', day: 'Friday', startTime: '11:00', endTime: '11:55', slotName: 'Slot E', courseCode: 'CS203', room: 'Room 74/75', notes: 'Dr. Mini S (MS)' },
+      { id: 'cse3-f4', day: 'Friday', startTime: '12:00', endTime: '12:55', slotName: 'Slot F', courseCode: 'CS202', room: 'Room 74/75', notes: 'Mrs. Sreedivya (SD)' },
+      { id: 'cse3-fl', day: 'Friday', startTime: '12:55', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
+      { id: 'cse3-f5', day: 'Friday', startTime: '14:00', endTime: '14:55', slotName: 'Minor / Free', courseCode: 'FREE', room: 'Campus', isFree: true },
+      { id: 'cse3-f6', day: 'Friday', startTime: '15:00', endTime: '15:55', slotName: 'Open Slot / Library', courseCode: 'FREE', room: 'Library', isFree: true },
+      { id: 'cse3-f7', day: 'Friday', startTime: '16:00', endTime: '16:55', slotName: 'MLC Slot (1 Credit)', courseCode: 'ES300', room: 'Room 74/75', notes: 'Environmental Studies - Dr. Velavan Kathirvelu (VK)' }
+    ],
+    Saturday: [
+      { id: 'cse3-s1', day: 'Saturday', startTime: '09:00', endTime: '10:30', slotName: 'Coding Clinic', courseCode: 'CS204', room: 'Room 22', notes: 'Data Structures & Algorithms Implementation Practice' },
+      { id: 'cse3-s2', day: 'Saturday', startTime: '10:45', endTime: '12:00', slotName: 'Digital System Lab Clinic', courseCode: 'CS205', room: 'ECE Dept', notes: 'Hardware Logic Design & Verilog Debugging' },
+      { id: 'cse3-sl', day: 'Saturday', startTime: '12:00', endTime: '14:00', slotName: 'LUNCH', courseCode: '', room: 'Cafeteria', isLunch: true },
+      { id: 'cse3-s3', day: 'Saturday', startTime: '14:00', endTime: '16:00', slotName: 'Self-Study & Revision', courseCode: 'FREE', room: 'Central Library', isFree: true }
+    ],
+    Sunday: [
+      { id: 'cse3-su1', day: 'Sunday', startTime: '09:00', endTime: '17:00', slotName: 'Weekend Rest & Sports', courseCode: 'FREE', room: 'Campus', isFree: true }
+    ]
+  }
 };
 
 // ==========================================
@@ -542,12 +619,32 @@ export const CVE_3: SemesterData = {
     slotE: 'CV204',
     slotF: 'CV202',
     mlcFriday: 'ES300',
-    labMon: { code: 'CV207', name: 'Surveying Lab (SRM/VM)', room: 'Survey Field / Lab' },
-    labTue: { code: 'CV206', name: 'Fluid Mechanics Lab (RDS)', room: 'Fluid Mechanics Lab' },
-    labThu: { code: 'CV205', name: 'Material Testing Lab (AB/BM)', room: 'Material Testing Lab' },
-    notesMonLab: 'Dr. Sathishraj Mani / Dr. Vinamra Mishra - Survey Field / Lab',
-    notesTueLab: 'Dr. Rishi D Sahastrabuddhe (RDS) - Fluid Mechanics Lab',
-    notesThuLab: 'Dr. Aparup Biswal / Dr. Bapi Mondal - Material Testing Lab',
+    labMon: {
+      code: 'CV205',
+      name: 'MT Lab (AB/BM) B1 / FM Lab (RDS) B2',
+      room: 'Material Testing Lab / Fluid Mechanics Lab',
+      labOptions: {
+        batch1: { code: 'CV205', name: 'Material Testing Lab (B1)', faculty: 'Dr. Aparup Biswal / Dr. Bapi Mondal (AB/BM)', room: 'Material Testing Lab' },
+        batch2: { code: 'CV206', name: 'Fluid Mechanics Lab (B2)', faculty: 'Dr. Rishi D Sahastrabuddhe (RDS)', room: 'Fluid Mechanics Lab' }
+      }
+    },
+    labTue: {
+      code: 'CV206',
+      name: 'FM Lab (RDS) B1 / MT Lab (AB/BM) B2',
+      room: 'Fluid Mechanics Lab / Material Testing Lab',
+      labOptions: {
+        batch1: { code: 'CV206', name: 'Fluid Mechanics Lab (B1)', faculty: 'Dr. Rishi D Sahastrabuddhe (RDS)', room: 'Fluid Mechanics Lab' },
+        batch2: { code: 'CV205', name: 'Material Testing Lab (B2)', faculty: 'Dr. Aparup Biswal / Dr. Bapi Mondal (AB/BM)', room: 'Material Testing Lab' }
+      }
+    },
+    labThu: {
+      code: 'CV207',
+      name: 'Surveying Lab (SRM/VM)',
+      room: 'Survey Field / Lab',
+    },
+    notesMonLab: 'Batch 1: CV205 MT Lab (AB/BM) | Batch 2: CV206 FM Lab (RDS)',
+    notesTueLab: 'Batch 1: CV206 FM Lab (RDS) | Batch 2: CV205 MT Lab (AB/BM)',
+    notesThuLab: 'CV207 Surveying Lab - Dr. Sathishraj Mani / Dr. Vinamra Mishra (Survey Field)',
     customSaturdayFocus: 'Mechanics of Solids & Fluid Mechanics Problem Clinics',
   })
 };
@@ -765,10 +862,26 @@ export const ECE_3: SemesterData = {
     slotD: 'EC200',
     slotG_Minor: 'EC203',
     mlcFriday: 'ES300',
-    labMon: { code: 'EC204', name: 'Digital System Design Laboratory (AC)', room: 'Digital Design Lab' },
-    labTue: { code: 'EC205', name: 'Signals & Systems Laboratory (TVK)', room: 'DSP & Signal Processing Lab' },
-    notesMonLab: 'Dr. Anirban Chatterjee (AC) - Digital Design Lab',
-    notesTueLab: 'Dr. T. Veerakumar (TVK) - DSP & Signal Processing Lab',
+    labMon: {
+      code: 'EC204',
+      name: 'DSD Lab (AC) B1 / SS Lab (TVK) B2',
+      room: 'Digital Design Lab / DSP Lab',
+      labOptions: {
+        batch1: { code: 'EC204', name: 'Digital System Design Lab (B1)', faculty: 'Dr. Anirban Chatterjee (AC)', room: 'Digital Design Lab' },
+        batch2: { code: 'EC205', name: 'Signals & Systems Lab (B2)', faculty: 'Dr. T. Veerakumar (TVK)', room: 'DSP & Signal Processing Lab' }
+      }
+    },
+    labTue: {
+      code: 'EC205',
+      name: 'SS Lab (TVK) B1 / DSD Lab (AC) B2',
+      room: 'DSP Lab / Digital Design Lab',
+      labOptions: {
+        batch1: { code: 'EC205', name: 'Signals & Systems Lab (B1)', faculty: 'Dr. T. Veerakumar (TVK)', room: 'DSP & Signal Processing Lab' },
+        batch2: { code: 'EC204', name: 'Digital System Design Lab (B2)', faculty: 'Dr. Anirban Chatterjee (AC)', room: 'Digital Design Lab' }
+      }
+    },
+    notesMonLab: 'Batch 1: EC204 DSD Lab (AC) | Batch 2: EC205 SS Lab (TVK)',
+    notesTueLab: 'Batch 1: EC205 SS Lab (TVK) | Batch 2: EC204 DSD Lab (AC)',
     customSaturdayFocus: 'Network Theory & Digital Circuit Design Clinics',
   })
 };
@@ -1011,12 +1124,32 @@ export const EEE_3: SemesterData = {
     slotE: 'EE203',
     slotF: 'EE200',
     mlcFriday: 'ES300',
-    labMon: { code: 'EE204', name: 'Simulation Lab (SD)', room: 'Room 39' },
-    labTue: { code: 'EE205', name: 'Measurement Lab (ADR/SHP)', room: 'Room 16 Abdul Kalam Complex' },
-    labThu: { code: 'EE206', name: 'Tinkering Lab - I (AWS)', room: 'Room 04 Abdul Kalam Complex' },
-    notesMonLab: 'Dr. Soumitra Das (SD) | Tech: Mr. Rohit Madhu Gawas - Room 39',
-    notesTueLab: 'Dr. Amol D Rahulkar / Dr. Shanta Hardas Patil | Tech: Mr. Pinaki Chatterjee - Room 16',
-    notesThuLab: 'Dr. Ankeshwarapu Sunil (AWS) | Tech: Mr. Rohit Madhu Gawas - Room 04',
+    labMon: {
+      code: 'EE206',
+      name: 'Tinkering Lab - I (AWS) B1 / Measurement Lab (ADR/SHP) B2',
+      room: 'Room 04 / Room 16 Abdul Kalam Complex',
+      labOptions: {
+        batch1: { code: 'EE206', name: 'Tinkering Lab - I (B1)', faculty: 'Dr. Ankeshwarapu Sunil (AWS)', room: 'Room 04 Abdul Kalam Complex' },
+        batch2: { code: 'EE205', name: 'Electrical & Electronics Measurement Lab (B2)', faculty: 'Dr. Amol D Rahulkar / Dr. Shanta Hardas Patil (ADR/SHP)', room: 'Room 16 Abdul Kalam Complex' }
+      }
+    },
+    labTue: {
+      code: 'EE205',
+      name: 'Measurement Lab (ADR/SHP) B1 / Tinkering Lab - I (AWS) B2',
+      room: 'Room 16 / Room 04 Abdul Kalam Complex',
+      labOptions: {
+        batch1: { code: 'EE205', name: 'Electrical & Electronics Measurement Lab (B1)', faculty: 'Dr. Amol D Rahulkar / Dr. Shanta Hardas Patil (ADR/SHP)', room: 'Room 16 Abdul Kalam Complex' },
+        batch2: { code: 'EE206', name: 'Tinkering Lab - I (B2)', faculty: 'Dr. Ankeshwarapu Sunil (AWS)', room: 'Room 04 Abdul Kalam Complex' }
+      }
+    },
+    labThu: {
+      code: 'EE204',
+      name: 'Simulation Laboratory (SD)',
+      room: 'Room 39',
+    },
+    notesMonLab: 'Batch 1: EE206 Tinkering Lab - I (AWS - Rm 04) | Batch 2: EE205 Measurement Lab (ADR/SHP - Rm 16)',
+    notesTueLab: 'Batch 1: EE205 Measurement Lab (ADR/SHP - Rm 16) | Batch 2: EE206 Tinkering Lab - I (AWS - Rm 04)',
+    notesThuLab: 'EE204 Simulation Lab - Dr. Soumitra Das (SD) | Tech: Mr. Rohit Madhu Gawas (Room 39)',
     customSaturdayFocus: 'Electromagnetic Fields & Circuit Analysis Numerical Practice',
   })
 };
@@ -1259,10 +1392,26 @@ export const ME_3: SemesterData = {
     slotE: 'ME202',
     slotF: 'ME201',
     mlcFriday: 'ES300',
-    labMon: { code: 'ME205', name: 'Machine Drawing (DSS/CV)', room: 'Drawing Hall (Room 33/38)' },
-    labThu: { code: 'ME206', name: 'Design Lab-1 (DDB)', room: 'Design Lab (Room 12 CV Raman)' },
-    notesMonLab: 'Dr. Sanjeev Singh / Dr. Chaitanya Vundru - Drawing Hall 33/38',
-    notesThuLab: 'Dr. Darrius Diogo Barreto (DDB) - Room 12 CV Raman',
+    labTue: {
+      code: 'ME206',
+      name: 'Design Lab-1 (DDB) B1 / Machine Drawing (CV) B2',
+      room: 'Room 12 CV Raman / Room 33/38',
+      labOptions: {
+        batch1: { code: 'ME206', name: 'Design Lab-1 (B1)', faculty: 'Dr. Darrius Diogo Barreto (DDB)', room: 'Design Lab (Room 12 CV Raman)' },
+        batch2: { code: 'ME205', name: 'Machine Drawing (B2)', faculty: 'Dr. Chaitanya Vundru (CV)', room: 'Drawing Hall (Room 33/38)' }
+      }
+    },
+    labThu: {
+      code: 'ME205',
+      name: 'Machine Drawing (DSS) B1 / Design Lab-1 (DDB) B2',
+      room: 'Room 33/38 / Room 12 CV Raman',
+      labOptions: {
+        batch1: { code: 'ME205', name: 'Machine Drawing (B1)', faculty: 'Dr. Sanjeev Singh (DSS)', room: 'Drawing Hall (Room 33/38)' },
+        batch2: { code: 'ME206', name: 'Design Lab-1 (B2)', faculty: 'Dr. Darrius Diogo Barreto (DDB)', room: 'Design Lab (Room 12 CV Raman)' }
+      }
+    },
+    notesTueLab: 'Batch 1: ME206 Design Lab-1 (DDB - Rm 12) | Batch 2: ME205 Machine Drawing (CV - Rm 33/38)',
+    notesThuLab: 'Batch 1: ME205 Machine Drawing (DSS - Rm 33/38) | Batch 2: ME206 Design Lab-1 (DDB - Rm 12)',
     customSaturdayFocus: 'Thermodynamics & Mechanics of Solids Problem Solving',
   })
 };

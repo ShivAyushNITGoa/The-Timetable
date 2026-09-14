@@ -291,8 +291,24 @@ export const CSE_5: SemesterData = {
     slotF: 'CS302',
     slotG_Minor: 'CS300M',
     mlcFriday: 'HU350',
-    labMon: { code: 'CS304', name: 'OS Lab (SD - Rm 46) / DAA Lab (MP - Rm 30)', room: 'Room 46 / Room 30' },
-    labThu: { code: 'CS305', name: 'DAA Lab (DRE - Rm 30) / OS Lab (SD - Rm 46)', room: 'Room 30 / Room 46' },
+    labMon: {
+      code: 'CS304',
+      name: 'OS Lab (SD - Rm 46) / DAA Lab (MP - Rm 30)',
+      room: 'Room 46 / Room 30',
+      labOptions: {
+        batch1: { code: 'CS304', name: 'Operating Systems Lab (B1)', faculty: 'Mrs. Sreedivya (SD)', room: 'Room 46' },
+        batch2: { code: 'CS305', name: 'Design and Analysis of Algorithm Lab (B2)', faculty: 'Dr. Meenakshi Panda (MP)', room: 'Room 30' }
+      }
+    },
+    labThu: {
+      code: 'CS305',
+      name: 'DAA Lab (DRE - Rm 30) / OS Lab (SD - Rm 46)',
+      room: 'Room 30 / Room 46',
+      labOptions: {
+        batch1: { code: 'CS305', name: 'Design and Analysis of Algorithm Lab (B1)', faculty: 'Dr. Damodar Reddy E (DRE)', room: 'Room 30' },
+        batch2: { code: 'CS304', name: 'Operating Systems Lab (B2)', faculty: 'Mrs. Sreedivya (SD)', room: 'Room 46' }
+      }
+    },
     labWed: { code: 'CS306', name: 'Technical Seminar (BNK)', room: 'Room 56/57' },
     notesWedLab: 'Dr. Keshavamurthy B N (BNK) - Room 56/57 (16:00-16:55)',
     notesMonLab: 'Batch 1: CS304 (SD) Room 46 | Batch 2: CS305 (MP) Room 30',
@@ -541,8 +557,24 @@ export const CVE_5: SemesterData = {
     slotE: 'CV301',
     slotF: 'CV501',
     mlcFriday: 'ES300',
-    labMon: { code: 'CV305', name: 'TE Lab (VM/SRM) B2 / GT Lab (HKM) B1', room: 'Transportation / Geotechnical Lab' },
-    labTue: { code: 'CV306', name: 'TE Lab (VM/SRM) B1 / GT Lab (HKM) B2', room: 'Transportation / Geotechnical Lab' },
+    labMon: {
+      code: 'CV306',
+      name: 'GT Lab (HKM) B1 / TE Lab (VM/SRM) B2',
+      room: 'Geotechnical / Transportation Lab',
+      labOptions: {
+        batch1: { code: 'CV306', name: 'Geotechnical Engineering Lab (B1)', faculty: 'Dr. Harikumar M (HKM)', room: 'Geotechnical Lab' },
+        batch2: { code: 'CV305', name: 'Transportation Engineering Lab (B2)', faculty: 'Dr. Vinamra Mishra / Dr. Sathishraj Mani (VM/SRM)', room: 'Transportation Lab' }
+      }
+    },
+    labTue: {
+      code: 'CV305',
+      name: 'TE Lab (VM/SRM) B1 / GT Lab (HKM) B2',
+      room: 'Transportation / Geotechnical Lab',
+      labOptions: {
+        batch1: { code: 'CV305', name: 'Transportation Engineering Lab (B1)', faculty: 'Dr. Vinamra Mishra / Dr. Sathishraj Mani (VM/SRM)', room: 'Transportation Lab' },
+        batch2: { code: 'CV306', name: 'Geotechnical Engineering Lab (B2)', faculty: 'Dr. Harikumar M (HKM)', room: 'Geotechnical Lab' }
+      }
+    },
     labWed: { code: 'CV301', name: 'RC Design Tutorial (AB)', room: 'Room 25/26' },
     labThu: { code: 'CV300', name: 'Seminar (SS) & Tutorial (BM)', room: 'Room 25/26' },
     notesWedLab: 'Dr. Aparup Biswal (AB) - RC Design Tutorial (16:00-16:55)',
@@ -822,9 +854,33 @@ export const ECE_5: SemesterData = {
     slotF: 'EC302',
     slotH_OpenElective: 'CS900',
     slotG_Minor: 'EC400M',
-    labMon: { code: 'EC306', name: 'LIC Lab (EM) B1 / DSP Lab (SP) B2', room: 'LIC Lab / DSP Lab' },
-    labTue: { code: 'EC305', name: 'Microprocessor Lab (PGR) B1 / LIC Lab (EM) B2', room: 'Microprocessor Lab / LIC Lab' },
-    labThu: { code: 'EC304', name: 'DSP Lab (SP) B1 / Microprocessor Lab (PGR) B2', room: 'DSP Lab / Microprocessor Lab' },
+    labMon: {
+      code: 'EC306',
+      name: 'LIC Lab (EM) B1 / DSP Lab (SP) B2',
+      room: 'LIC Lab / DSP Lab',
+      labOptions: {
+        batch1: { code: 'EC306', name: 'Linear Integrated Circuits Lab (B1)', faculty: 'Dr. Mallikarjun Erramshetty (EM)', room: 'LIC Lab' },
+        batch2: { code: 'EC304', name: 'Digital Signal Processing Lab (B2)', faculty: 'Dr. Shivnarayan Patidar (SP)', room: 'DSP Lab' }
+      }
+    },
+    labTue: {
+      code: 'EC305',
+      name: 'Microprocessor Lab (PGR) B1 / LIC Lab (EM) B2',
+      room: 'Microprocessor Lab / LIC Lab',
+      labOptions: {
+        batch1: { code: 'EC305', name: 'Microprocessors and Microcontrollers Lab (B1)', faculty: 'Dr. Prashanth GR (PGR)', room: 'Microprocessor Lab' },
+        batch2: { code: 'EC306', name: 'Linear Integrated Circuits Lab (B2)', faculty: 'Dr. Mallikarjun Erramshetty (EM)', room: 'LIC Lab' }
+      }
+    },
+    labThu: {
+      code: 'EC304',
+      name: 'DSP Lab (SP) B1 / Microprocessor Lab (PGR) B2',
+      room: 'DSP Lab / Microprocessor Lab',
+      labOptions: {
+        batch1: { code: 'EC304', name: 'Digital Signal Processing Lab (B1)', faculty: 'Dr. Shivnarayan Patidar (SP)', room: 'DSP Lab' },
+        batch2: { code: 'EC305', name: 'Microprocessors and Microcontrollers Lab (B2)', faculty: 'Dr. Prashanth GR (PGR)', room: 'Microprocessor Lab' }
+      }
+    },
     labWed: { code: 'HU350', name: 'Professional Ethics & Human Values (SGM)', room: 'Room 53' },
     notesWedLab: 'Dr Sarani Ghosal Mondal (SGM) - Room 53 (16:00-16:55)',
     notesMonLab: 'Batch 1: EC306 LIC Lab (EM) | Batch 2: EC304 DSP Lab (SP)',
@@ -1109,8 +1165,24 @@ export const ME_5: SemesterData = {
     slotE: 'ME303',
     slotF: 'ME500',
     mlcFriday: 'ES300',
-    labMon: { code: 'ME305', name: 'Machine Shop - II (BS) B2 / Thermal Lab - II (SS) B1', room: 'G.D. Naidu / Visvesvaraya' },
-    labThu: { code: 'ME306', name: 'Machine Shop - II (BS) B1 / Thermal Lab - II (SS) B2', room: 'G.D. Naidu / Visvesvaraya' },
+    labMon: {
+      code: 'ME306',
+      name: 'Thermal Lab - II (SS) B1 / Machine Shop - II (BS) B2',
+      room: 'Visvesvaraya Lab / G.D. Naidu Lab',
+      labOptions: {
+        batch1: { code: 'ME306', name: 'Thermal Engineering Lab - II (B1)', faculty: 'Dr. Samar Singhal (SS)', room: 'Visvesvaraya Lab (Room 22, 16)' },
+        batch2: { code: 'ME305', name: 'Machine Shop - II (B2)', faculty: 'Dr. B. Santhi (BS)', room: 'G.D. Naidu Lab' }
+      }
+    },
+    labThu: {
+      code: 'ME305',
+      name: 'Machine Shop - II (BS) B1 / Thermal Lab - II (SS) B2',
+      room: 'G.D. Naidu Lab / Visvesvaraya Lab',
+      labOptions: {
+        batch1: { code: 'ME305', name: 'Machine Shop - II (B1)', faculty: 'Dr. B. Santhi (BS)', room: 'G.D. Naidu Lab' },
+        batch2: { code: 'ME306', name: 'Thermal Engineering Lab - II (B2)', faculty: 'Dr. Samar Singhal (SS)', room: 'Visvesvaraya Lab (Room 22, 16)' }
+      }
+    },
     labWed: { code: 'ME304', name: 'DME-II Tutorial (CV)', room: 'Room 55' },
     notesWedLab: 'Dr. Chaitanya Vundru (CV) - DME-II Tutorial (16:00-16:55)',
     notesMonLab: 'Batch 1: ME306 Thermal Lab (SS) | Batch 2: ME305 Machine Shop (BS)',
