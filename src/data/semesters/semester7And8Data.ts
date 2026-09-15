@@ -65,7 +65,7 @@ function buildFinalSemSchedule(prefix: string, room: string, elect1: string, ele
 }
 
 // ==========================================
-// 7th Semester (4th Year Odd) - CSE (Room 51/52)
+// 7th Semester (4th Year Odd) - CSE (Room 18)
 // Faculty Advisor: Dr. Modi Chirag N (cnmodi@nitgoa.ac.in)
 // ==========================================
 export const CSE_7: SemesterData = {
@@ -83,7 +83,7 @@ export const CSE_7: SemesterData = {
       facultyDesignation: 'Faculty (Department of CSE)',
       facultyResearch: 'Big Data Analytics, Distributed File Systems, Cloud Computing',
       email: 'sarvesh@nitgoa.ac.in',
-      room: 'Room 51/52',
+      room: 'Room 18',
       category: 'elective',
       notes: 'Teaching Slot A. Hadoop HDFS, MapReduce, Apache Spark, NoSQL stores (HBase, Cassandra), stream processing, and large-scale graph mining.',
       modules: [
@@ -110,7 +110,7 @@ export const CSE_7: SemesterData = {
       facultyDesignation: 'Associate Professor & Dean Academics (CSE)',
       facultyResearch: 'Data Structures, Optimization, Sensor Networks',
       email: 'mini@nitgoa.ac.in',
-      room: 'Room 51/52',
+      room: 'Room 18',
       category: 'elective',
       notes: 'Teaching Slot B. Splay trees, Red-Black trees, Fibonacci heaps, Disjoint set forests, Trie structures, Suffix trees, and persistent data structures.',
       modules: [
@@ -134,7 +134,7 @@ export const CSE_7: SemesterData = {
       facultyDesignation: 'Faculty (CSE)',
       facultyResearch: 'Algorithmic Game Theory, Multi-Agent Systems',
       email: 'cf1.cse@nitgoa.ac.in',
-      room: 'Room 51/52',
+      room: 'Room 18',
       category: 'elective',
       notes: 'Teaching Slot C. Strategic games, Nash equilibrium, mixed strategies, extensive form games, auctions (Vickrey), mechanism design.',
       modules: [
@@ -158,7 +158,7 @@ export const CSE_7: SemesterData = {
       facultyDesignation: 'Associate Professor & HoD (CSE)',
       facultyResearch: 'Cloud Virtualization, Task Scheduling, Fault Tolerance',
       email: 'pravati@nitgoa.ac.in',
-      room: 'Room 51/52',
+      room: 'Room 18',
       category: 'elective',
       notes: 'Teaching Slot D. Hypervisors (Type 1 & 2), containerization (Docker, Kubernetes), cloud service models (IaaS, PaaS, SaaS), cloud storage, SLA management.',
       modules: [
@@ -182,7 +182,7 @@ export const CSE_7: SemesterData = {
       facultyDesignation: 'Associate Professor & Faculty Advisor (CSE)',
       facultyResearch: 'Blockchain Protocols, Smart Contracts, Distributed Ledgers',
       email: 'cnmodi@nitgoa.ac.in',
-      room: 'Room 51/52',
+      room: 'Room 18',
       category: 'elective',
       notes: 'Teaching Slot E. Bitcoin protocol, Proof of Work (PoW), Proof of Stake (PoS), Ethereum virtual machine (EVM), Solidity smart contracts, DeFi applications.',
       modules: [
@@ -206,7 +206,7 @@ export const CSE_7: SemesterData = {
       facultyDesignation: 'Associate Professor (CSE)',
       facultyResearch: 'Data Mining, OLAP Architectures, Information Systems',
       email: 'damodar.reddy@nitgoa.ac.in',
-      room: 'Room 51/52',
+      room: 'Room 18',
       category: 'elective',
       notes: 'Teaching Slot F. OLAP cubes, Star and Snowflake schemas, association rule mining (Apriori, FP-Growth), classification (C4.5, SVM), clustering (DBSCAN).',
       modules: [
@@ -230,7 +230,7 @@ export const CSE_7: SemesterData = {
       facultyDesignation: 'Assistant Professor (Economics / Humanities)',
       facultyResearch: 'Industrial Organization, Public Finance, Microeconomics',
       email: 'sunilkumar@nitgoa.ac.in',
-      room: 'Room 51/52',
+      room: 'Room 18',
       category: 'mlc',
       notes: 'Demand forecasting, cost analysis, market structures (monopoly, oligopoly), capital budgeting, break-even analysis.',
       modules: [
@@ -284,7 +284,7 @@ export const CSE_7: SemesterData = {
       facultyDesignation: 'Associate Professor (CSE)',
       facultyResearch: 'Curriculum Evaluation',
       email: 'cnmodi@nitgoa.ac.in',
-      room: 'Room 51/52',
+      room: 'Room 18',
       category: 'core',
       notes: 'Comprehensive evaluation covering all core B.Tech Computer Science and Engineering courses from 3rd to 6th semesters.',
       modules: [
@@ -317,7 +317,7 @@ export const CSE_7: SemesterData = {
 };
 
 // ==========================================
-// 7th Semester (4th Year Odd) - Civil (Room 48)
+// 7th Semester (4th Year Odd) - Civil (Room 69)
 // Faculty Advisor: Dr. Vinamra Mishra (vinamra@nitgoa.ac.in)
 // ==========================================
 export const CVE_7: SemesterData = {
@@ -335,7 +335,7 @@ export const CVE_7: SemesterData = {
       facultyDesignation: 'Assistant Professor (Civil)',
       facultyResearch: 'Geospatial Analytics, Hydrology, Remote Sensing',
       email: 'rishi@nitgoa.ac.in',
-      room: 'Room 48',
+      room: 'Room 69',
       category: 'elective',
       notes: 'Teaching Slot A. Electromagnetic spectrum, sensor platforms (Landsat, Sentinel), GIS spatial data models (raster/vector), and terrain modeling.',
       modules: [
@@ -362,7 +362,7 @@ export const CVE_7: SemesterData = {
       facultyDesignation: 'Assistant Professor & Faculty Advisor (Civil)',
       facultyResearch: 'Pavement Design, Asphalt Mechanics, Highway Engineering',
       email: 'vinamra@nitgoa.ac.in',
-      room: 'Room 48',
+      room: 'Room 69',
       category: 'elective',
       notes: 'Teaching Slot B. Stresses in flexible and rigid pavements, Burmister 2-layer theory, IRC:37 flexible pavement guidelines, IRC:58 concrete pavements.',
       modules: [
@@ -389,7 +389,7 @@ export const CVE_7: SemesterData = {
       facultyDesignation: 'Assistant Professor (Civil)',
       facultyResearch: 'Geotechnical Engineering, Soil Stabilization',
       email: 'srikanth@nitgoa.ac.in',
-      room: 'Room 48',
+      room: 'Room 69',
       category: 'elective',
       notes: 'Teaching Slot C. Vibro-compaction, stone columns, pre-loading with PVD, chemical grouting, geosynthetics, soil nailing.',
       modules: [
@@ -416,7 +416,7 @@ export const CVE_7: SemesterData = {
       facultyDesignation: 'Assistant Professor (Civil)',
       facultyResearch: 'Hydraulic Structures, Hydropower Engineering',
       email: 'harikumar@nitgoa.ac.in',
-      room: 'Room 48',
+      room: 'Room 69',
       category: 'elective',
       notes: 'Teaching Slot D. Diversion headworks, Bligh and Khosla seepage theories, spillways, energy dissipators, penstocks, surge tanks.',
       modules: [
@@ -443,7 +443,7 @@ export const CVE_7: SemesterData = {
       facultyDesignation: 'Assistant Professor (Civil)',
       facultyResearch: 'Structural Dynamics, Earthquake Engineering',
       email: 'bapi@nitgoa.ac.in',
-      room: 'Room 48',
+      room: 'Room 69',
       category: 'elective',
       notes: 'Teaching Slot E. SDOF dynamic response, Duhamel integral, MDOF modal analysis, response spectrum analysis (IS 1893:2016).',
       modules: [
@@ -470,7 +470,7 @@ export const CVE_7: SemesterData = {
       facultyDesignation: 'Assistant Professor (Civil)',
       facultyResearch: 'Structural Rehabilitation, NDT of Concrete',
       email: 'sathishraj@nitgoa.ac.in',
-      room: 'Room 48',
+      room: 'Room 69',
       category: 'elective',
       notes: 'Teaching Slot F. Deterioration mechanisms of concrete and steel, NDT methods (UPV, Rebound hammer), FRP retrofitting, structural strengthening.',
       modules: [
@@ -497,7 +497,7 @@ export const CVE_7: SemesterData = {
       facultyDesignation: 'Assistant Professor (Humanities)',
       facultyResearch: 'Economics',
       email: 'sunilkumar@nitgoa.ac.in',
-      room: 'Room 48',
+      room: 'Room 69',
       category: 'mlc',
       notes: 'Engineering economics and cost analysis.',
       modules: [
@@ -551,7 +551,7 @@ export const CVE_7: SemesterData = {
       facultyDesignation: 'Assistant Professor (Civil)',
       facultyResearch: 'Comprehensive Assessment',
       email: 'aparup@nitgoa.ac.in',
-      room: 'Room 48',
+      room: 'Room 69',
       category: 'core',
       notes: 'Comprehensive viva across structural engineering, fluid mechanics, surveying, soil mechanics, and transportation engineering.',
       modules: [
@@ -583,7 +583,7 @@ export const CVE_7: SemesterData = {
 };
 
 // ==========================================
-// 7th Semester (4th Year Odd) - ECE (Room 54)
+// 7th Semester (4th Year Odd) - ECE (Room 5)
 // Faculty Advisor: Dr. Shivnarayan Patidar (shivnarayan.patidar@nitgoa.ac.in)
 // ==========================================
 export const ECE_7: SemesterData = {
@@ -601,7 +601,7 @@ export const ECE_7: SemesterData = {
       facultyDesignation: 'Associate Professor (ECE)',
       facultyResearch: 'Analog IC Design, Low Voltage Circuits, Data Converters',
       email: 'nithinkumar@nitgoa.ac.in',
-      room: 'Room 54',
+      room: 'Room 5',
       category: 'elective',
       notes: 'Teaching Slot A. MOS current mirrors, folded cascode op-amps, bandgap references, continuous-time and switched-capacitor filters.',
       modules: [
@@ -628,7 +628,7 @@ export const ECE_7: SemesterData = {
       facultyDesignation: 'Associate Professor (ECE)',
       facultyResearch: 'Information Theory, Error Control Coding, Wireless Networks',
       email: 'tpanigrahi@nitgoa.ac.in',
-      room: 'Room 54',
+      room: 'Room 5',
       category: 'elective',
       notes: 'Teaching Slot B. Shannon entropy, mutual information, channel capacity theorem, linear block codes, cyclic codes, convolutional codes, Viterbi decoding.',
       modules: [
@@ -655,7 +655,7 @@ export const ECE_7: SemesterData = {
       facultyDesignation: 'Associate Professor & Faculty Advisor (ECE)',
       facultyResearch: 'Biomedical Engineering, ECG/EEG Processing, Machine Learning',
       email: 'shivnarayan.patidar@nitgoa.ac.in',
-      room: 'Room 54',
+      room: 'Room 5',
       category: 'elective',
       notes: 'Teaching Slot C. Bioelectric potentials (ECG, EEG, EMG), baseline wander and noise filtering, QRS detection (Pan-Tompkins), wavelets, biomedical classification.',
       modules: [
@@ -682,7 +682,7 @@ export const ECE_7: SemesterData = {
       facultyDesignation: 'Associate Professor (ECE)',
       facultyResearch: 'Microwaves, Antennas, S-parameters',
       email: 'anirban.chatterjee@nitgoa.ac.in',
-      room: 'Room 54',
+      room: 'Room 5',
       category: 'elective',
       notes: 'Teaching Slot D. S-parameter matrix, microwave waveguides, microstrip lines, power dividers (Wilkinson), directional couplers, microwave amplifiers.',
       modules: [
@@ -709,7 +709,7 @@ export const ECE_7: SemesterData = {
       facultyDesignation: 'Associate Professor (ECE)',
       facultyResearch: 'Mathematical Optimization, Convex Optimization',
       email: 'mallikarjun.e@nitgoa.ac.in',
-      room: 'Room 54',
+      room: 'Room 5',
       category: 'elective',
       notes: 'Teaching Slot E. Convex sets, linear programming (Simplex), unconstrained optimization (gradient descent, Newton-Raphson), KKT conditions, genetic algorithms.',
       modules: [
@@ -736,7 +736,7 @@ export const ECE_7: SemesterData = {
       facultyDesignation: 'Professor (ECE)',
       facultyResearch: 'VLSI Testing, Fault Modeling, Built-In Self-Test',
       email: 'vasanthamh@nitgoa.ac.in',
-      room: 'Room 54',
+      room: 'Room 5',
       category: 'elective',
       notes: 'Teaching Slot F. Stuck-at fault modeling, ATPG (D-algorithm, PODEM), scan path architectures, Built-In Self-Test (BIST), boundary scan (IEEE 1149.1).',
       modules: [
@@ -763,7 +763,7 @@ export const ECE_7: SemesterData = {
       facultyDesignation: 'Associate Professor (ECE)',
       facultyResearch: 'Machine Learning Mathematics',
       email: 'tpanigrahi@nitgoa.ac.in',
-      room: 'Room 54',
+      room: 'Room 5',
       category: 'open_elective',
       notes: 'Institute open elective: Linear algebra (SVD, PCA), multivariate calculus, probability distributions, convex optimization for machine learning algorithms.',
       modules: [
@@ -790,7 +790,7 @@ export const ECE_7: SemesterData = {
       facultyDesignation: 'Assistant Professor (Humanities)',
       facultyResearch: 'Economics',
       email: 'sunilkumar@nitgoa.ac.in',
-      room: 'Room 54',
+      room: 'Room 5',
       category: 'mlc',
       notes: 'Economic feasibility, corporate costing, and investment appraisal.',
       modules: [
@@ -844,7 +844,7 @@ export const ECE_7: SemesterData = {
       facultyDesignation: 'Associate Professor (ECE)',
       facultyResearch: 'Comprehensive Assessment',
       email: 'grprashanth@nitgoa.ac.in',
-      room: 'Room 54',
+      room: 'Room 5',
       category: 'core',
       notes: 'Comprehensive viva on Analog/Digital Communication, DSP, Electronic Devices, Circuits, and Microprocessors.',
       modules: [
@@ -877,7 +877,7 @@ export const ECE_7: SemesterData = {
 };
 
 // ==========================================
-// 7th Semester (4th Year Odd) - EEE (Room 70/71)
+// 7th Semester (4th Year Odd) - EEE (Room 8/9)
 // Faculty Advisor: Dr. C. Vyjayanthi (c.vyjayanthi@nitgoa.ac.in)
 // ==========================================
 export const EEE_7: SemesterData = {
@@ -895,7 +895,7 @@ export const EEE_7: SemesterData = {
       facultyDesignation: 'Associate Professor & Faculty Advisor (EEE)',
       facultyResearch: 'Smart Grid Architectures, Microgrids, Phasor Measurement Units (PMUs)',
       email: 'c.vyjayanthi@nitgoa.ac.in',
-      room: 'Room 70/71',
+      room: 'Room 8/9',
       category: 'elective',
       notes: 'Teaching Slot B. Smart grid drivers, Advanced Metering Infrastructure (AMI), Phasor Measurement Units (PMUs), Wide Area Measurement Systems (WAMS), demand response, microgrid control.',
       modules: [
@@ -922,7 +922,7 @@ export const EEE_7: SemesterData = {
       facultyDesignation: 'Assistant Professor (EEE)',
       facultyResearch: 'Electric Vehicle Powertrains, Battery Management Systems',
       email: 'shanta@nitgoa.ac.in',
-      room: 'Room 70/71',
+      room: 'Room 8/9',
       category: 'elective',
       notes: 'Teaching Slot C. EV vehicle dynamics, traction motor selection (BLDC, PMSM, induction), battery chemistry (Li-ion, LFP), Battery Management Systems (BMS), charging topologies (AC Level 2, DC Fast Charging).',
       modules: [
@@ -949,7 +949,7 @@ export const EEE_7: SemesterData = {
       facultyDesignation: 'Faculty (Department of EEE)',
       facultyResearch: 'Power System Optimization, Metaheuristics',
       email: 'shefali@nitgoa.ac.in',
-      room: 'Room 70/71',
+      room: 'Room 8/9',
       category: 'elective',
       notes: 'Teaching Slot D. Classical optimization, Lagrange multipliers, Kuhn-Tucker conditions, linear programming, nonlinear programming, Particle Swarm Optimization (PSO) for power systems.',
       modules: [
@@ -973,7 +973,7 @@ export const EEE_7: SemesterData = {
       facultyDesignation: 'Faculty (Department of EEE)',
       facultyResearch: 'VLSI Fabrication Processes, Semiconductor Physics',
       email: 'shefali@nitgoa.ac.in',
-      room: 'Room 70/71',
+      room: 'Room 8/9',
       category: 'elective',
       notes: 'Teaching Slot E. Cleanroom environments, silicon wafer preparation (Czochralski crystal growth), thermal oxidation, photolithography, chemical vapor deposition (CVD), ion implantation, and metallization.',
       modules: [
@@ -997,7 +997,7 @@ export const EEE_7: SemesterData = {
       facultyDesignation: 'Assistant Professor (EEE)',
       facultyResearch: 'Clean Transportation & EV Tech',
       email: 'shanta@nitgoa.ac.in',
-      room: 'Room 70/71',
+      room: 'Room 8/9',
       category: 'open_elective',
       notes: 'Institute open elective for non-EEE students: Fundamentals of electric vehicles, battery chemistries, motor configurations, EV charging levels, and environmental life-cycle analysis.',
       modules: [
@@ -1024,7 +1024,7 @@ export const EEE_7: SemesterData = {
       facultyDesignation: 'Assistant Professor (Humanities)',
       facultyResearch: 'Economics and Industrial Management',
       email: 'sunilkumar@nitgoa.ac.in',
-      room: 'Room 70/71',
+      room: 'Room 8/9',
       category: 'mlc',
       notes: 'Financial evaluation, tariff calculations, power project feasibility, and capital investment appraisal.',
       modules: [
@@ -1078,7 +1078,7 @@ export const EEE_7: SemesterData = {
       facultyDesignation: 'Associate Professor (EEE)',
       facultyResearch: 'Comprehensive Assessment',
       email: 'mikkili.suresh@nitgoa.ac.in',
-      room: 'Room 70/71',
+      room: 'Room 8/9',
       category: 'core',
       notes: 'Comprehensive viva voce covering Circuit Theory, Electrical Machines I & II, Power Systems, Control Systems, and Power Electronics.',
       modules: [
@@ -1097,13 +1097,12 @@ export const EEE_7: SemesterData = {
   schedule: buildInstituteMasterSchedule({
     prefix: 'eee7',
     room: 'Room 8/9',
-    slotA: 'EE514',
-    slotB: 'EE552',
-    slotC: 'HS350',
-    slotD: 'EE530',
+    slotB: 'EE514',
+    slotC: 'EE531',
+    slotD: 'EE552',
     slotE: 'EE560',
-    slotF: 'EE541',
-    slotH_OpenElective: 'EE531',
+    slotH_OpenElective: 'EE903',
+    mlcFriday: 'HS350',
     labThu: { code: 'EE400', name: 'Major Project - I (Dr. C. Vyjayanthi)', room: 'Room 8/9 / Power Systems Lab' },
     notesThuLab: 'Dr. C. Vyjayanthi (CV) - Major Project - I Review',
     customSaturdayFocus: 'Smart Grids & Electric Vehicle Power Converters Seminar',
@@ -1111,7 +1110,7 @@ export const EEE_7: SemesterData = {
 };
 
 // ==========================================
-// 7th Semester (4th Year Odd) - Mechanical (Room 74/75)
+// 7th Semester (4th Year Odd) - Mechanical (Room 30/31)
 // Faculty Advisor: Dr. Chaitanya Vundru (chaitanya.vundru@nitgoa.ac.in)
 // ==========================================
 export const ME_7: SemesterData = {
@@ -1129,7 +1128,7 @@ export const ME_7: SemesterData = {
       facultyDesignation: 'Assistant Professor (Mechanical)',
       facultyResearch: 'Micro-machining, Precision Engineering, Advanced Manufacturing',
       email: 'gurkirat@nitgoa.ac.in',
-      room: 'Room 74/75',
+      room: 'Room 30/31',
       category: 'elective',
       notes: 'Teaching Slot A. Micro-EDM, micro-USM, laser micro-machining, photolithography, cleanroom fabrication, nano-finishing processes.',
       modules: [
@@ -1156,7 +1155,7 @@ export const ME_7: SemesterData = {
       facultyDesignation: 'Assistant Professor (Mechanical)',
       facultyResearch: 'CFD, Turbulence Modeling, Thermal Fluids',
       email: 'prasenjit@nitgoa.ac.in',
-      room: 'Room 74/75',
+      room: 'Room 30/31',
       category: 'elective',
       notes: 'Teaching Slot B. Governing equations (Navier-Stokes), finite difference and finite volume methods, SIMPLE algorithm, turbulence models (k-epsilon).',
       modules: [
@@ -1183,7 +1182,7 @@ export const ME_7: SemesterData = {
       facultyDesignation: 'Assistant Professor (Mechanical)',
       facultyResearch: 'DFMA, Product Design, Concurrent Engineering',
       email: 'santhi@nitgoa.ac.in',
-      room: 'Room 74/75',
+      room: 'Room 30/31',
       category: 'elective',
       notes: 'Teaching Slot C. DFMA philosophy, design for casting, forging, welding, injection moulding, Boothroyd-Dewhurst DFA methodology.',
       modules: [
@@ -1210,7 +1209,7 @@ export const ME_7: SemesterData = {
       facultyDesignation: 'Assistant Professor (Mechanical)',
       facultyResearch: 'Automotive Systems, Aerodynamics, Vehicle Dynamics',
       email: 'spchoudhury@nitgoa.ac.in',
-      room: 'Room 74/75',
+      room: 'Room 30/31',
       category: 'elective',
       notes: 'Teaching Slot D. Vehicle chassis and body, transmission systems (clutch, manual/automatic gearbox, differential), steering geometry, braking systems (ABS), suspension.',
       modules: [
@@ -1237,7 +1236,7 @@ export const ME_7: SemesterData = {
       facultyDesignation: 'Associate Professor (Mechanical)',
       facultyResearch: 'Composites, Micromechanics, Lamina Theory',
       email: 'abhijit.sarkar@nitgoa.ac.in',
-      room: 'Room 74/75',
+      room: 'Room 30/31',
       category: 'elective',
       notes: 'Teaching Slot E. Reinforcements (fibers, particles), polymer/metal/ceramic matrix composites, classical lamination theory, failure criteria (Tsai-Hill, Tsai-Wu).',
       modules: [
@@ -1264,7 +1263,7 @@ export const ME_7: SemesterData = {
       facultyDesignation: 'Assistant Professor (Humanities)',
       facultyResearch: 'Industrial Economics',
       email: 'sunilkumar@nitgoa.ac.in',
-      room: 'Room 74/75',
+      room: 'Room 30/31',
       category: 'mlc',
       notes: 'Economic feasibility of mechanical engineering plants, depreciation, costing.',
       modules: [
@@ -1318,7 +1317,7 @@ export const ME_7: SemesterData = {
       facultyDesignation: 'Assistant Professor (Mechanical)',
       facultyResearch: 'Comprehensive Assessment',
       email: 'samar.singhal@nitgoa.ac.in',
-      room: 'Room 74/75',
+      room: 'Room 30/31',
       category: 'core',
       notes: 'Comprehensive examination across Thermodynamics, Heat Transfer, Fluid Mechanics, Mechanics of Solids, Machine Design, and Manufacturing.',
       modules: [
@@ -1367,7 +1366,7 @@ export const CSE_8: SemesterData = {
       facultyDesignation: 'Associate Professor (CSE)',
       facultyResearch: 'Deep Learning, NLP, Computer Vision',
       email: 'bnkeshav.fcse@nitgoa.ac.in',
-      room: 'Room 51/52',
+      room: 'Room 18',
       category: 'elective',
       notes: 'Word embeddings (Word2Vec), RNN, GRU, Transformers (BERT, GPT), Attention mechanisms, LLMs.',
       modules: [
@@ -1394,7 +1393,7 @@ export const CSE_8: SemesterData = {
       facultyDesignation: 'Associate Professor (CSE)',
       facultyResearch: 'Cyber Security, Malware Analysis, Cloud Forensics',
       email: 'cnmodi@nitgoa.ac.in',
-      room: 'Room 51/52',
+      room: 'Room 18',
       category: 'elective',
       notes: 'Vulnerability assessment, buffer overflows, penetration testing, malware reverse engineering, digital evidence acquisition.',
       modules: [
@@ -1436,7 +1435,7 @@ export const CSE_8: SemesterData = {
       ]
     }
   },
-  schedule: buildFinalSemSchedule('cse8', 'Room 51/52', 'CS540', 'CS542', 'CS450')
+  schedule: buildFinalSemSchedule('cse8', 'Room 18', 'CS540', 'CS542', 'CS450')
 };
 
 export const CVE_8: SemesterData = {
@@ -1454,7 +1453,7 @@ export const CVE_8: SemesterData = {
       facultyDesignation: 'Assistant Professor (Civil)',
       facultyResearch: 'Prestressed Concrete, Bridge Engineering',
       email: 'sethulekshmi@nitgoa.ac.in',
-      room: 'Room 48',
+      room: 'Room 69',
       category: 'elective',
       notes: 'Pre-tensioning, post-tensioning, loss of prestress, design of PSC beams, composite beams.',
       modules: [
@@ -1482,7 +1481,7 @@ export const CVE_8: SemesterData = {
       facultyDesignation: 'Assistant Professor (Civil)',
       facultyResearch: 'Earthquake Engineering',
       email: 'bapi@nitgoa.ac.in',
-      room: 'Room 48',
+      room: 'Room 69',
       category: 'elective',
       notes: 'Seismic hazard analysis, IS 1893:2016 response spectrum method, ductile detailing as per IS 13920:2016.',
       modules: [
@@ -1525,7 +1524,7 @@ export const CVE_8: SemesterData = {
       ]
     }
   },
-  schedule: buildFinalSemSchedule('cve8', 'Room 48', 'CV540', 'CV545', 'CV450')
+  schedule: buildFinalSemSchedule('cve8', 'Room 69', 'CV540', 'CV545', 'CV450')
 };
 
 export const ECE_8: SemesterData = {
@@ -1543,7 +1542,7 @@ export const ECE_8: SemesterData = {
       facultyDesignation: 'Associate Professor (ECE)',
       facultyResearch: '5G Cellular Networks, Massive MIMO, OFDM',
       email: 'tpanigrahi@nitgoa.ac.in',
-      room: 'Room 54',
+      room: 'Room 5',
       category: 'elective',
       notes: 'Cellular concept, small scale fading (Rayleigh/Rician), OFDM, Massive MIMO, 5G NR physical layer.',
       modules: [
@@ -1571,7 +1570,7 @@ export const ECE_8: SemesterData = {
       facultyDesignation: 'Professor (ECE)',
       facultyResearch: 'Low Power Circuits, Energy Harvesting',
       email: 'vasanthamh@nitgoa.ac.in',
-      room: 'Room 54',
+      room: 'Room 5',
       category: 'elective',
       notes: 'Dynamic and leakage power dissipation in CMOS, clock gating, multi-threshold CMOS (MTCMOS), dynamic voltage scaling (DVFS).',
       modules: [
@@ -1614,7 +1613,7 @@ export const ECE_8: SemesterData = {
       ]
     }
   },
-  schedule: buildFinalSemSchedule('ece8', 'Room 54', 'EC530', 'EC535', 'EC450')
+  schedule: buildFinalSemSchedule('ece8', 'Room 5', 'EC530', 'EC535', 'EC450')
 };
 
 export const EEE_8: SemesterData = {
@@ -1632,7 +1631,7 @@ export const EEE_8: SemesterData = {
       facultyDesignation: 'Associate Professor (EEE)',
       facultyResearch: 'High Voltage Transmission, Insulation Diagnostics',
       email: 'mikkili.suresh@nitgoa.ac.in',
-      room: 'Room 70/71',
+      room: 'Room 8/9',
       category: 'elective',
       notes: 'Breakdown mechanisms in gases, liquids, and solids; lightning impulse generation (Marx generator); HVDC converter bridges.',
       modules: [
@@ -1660,7 +1659,7 @@ export const EEE_8: SemesterData = {
       facultyDesignation: 'Associate Professor & HoD (EEE)',
       facultyResearch: 'Power System Stability, Synchrophasors',
       email: 'c.vyjayanthi@nitgoa.ac.in',
-      room: 'Room 70/71',
+      room: 'Room 8/9',
       category: 'elective',
       notes: 'Rotor angle stability, swing equation, equal area criterion, small-signal stability, power system stabilizers (PSS).',
       modules: [
@@ -1703,7 +1702,7 @@ export const EEE_8: SemesterData = {
       ]
     }
   },
-  schedule: buildFinalSemSchedule('eee8', 'Room 70/71', 'EE535', 'EE540', 'EE450')
+  schedule: buildFinalSemSchedule('eee8', 'Room 8/9', 'EE535', 'EE540', 'EE450')
 };
 
 export const ME_8: SemesterData = {
@@ -1721,7 +1720,7 @@ export const ME_8: SemesterData = {
       facultyDesignation: 'Assistant Professor (Mechanical)',
       facultyResearch: 'Robotics Kinematics, Industrial Automation, Cobots',
       email: 'chaitanya.vundru@nitgoa.ac.in',
-      room: 'Room 74/75',
+      room: 'Room 30/31',
       category: 'elective',
       notes: 'Forward and inverse kinematics (DH parameters), Jacobian and velocity analysis, trajectory planning, robot dynamics (Euler-Lagrange).',
       modules: [
@@ -1749,7 +1748,7 @@ export const ME_8: SemesterData = {
       facultyDesignation: 'Faculty (Department of Mechanical Engineering)',
       facultyResearch: 'Gas Turbines, Aerospace Propulsion, Combustion',
       email: 'srikumar@nitgoa.ac.in',
-      room: 'Room 74/75',
+      room: 'Room 30/31',
       category: 'elective',
       notes: 'Joule/Brayton cycle with intercooling, reheating and regeneration, turbojet, turbofan, and rocket propulsion mechanics.',
       modules: [
@@ -1792,5 +1791,5 @@ export const ME_8: SemesterData = {
       ]
     }
   },
-  schedule: buildFinalSemSchedule('me8', 'Room 74/75', 'ME540', 'ME545', 'ME450')
+  schedule: buildFinalSemSchedule('me8', 'Room 30/31', 'ME540', 'ME545', 'ME450')
 };

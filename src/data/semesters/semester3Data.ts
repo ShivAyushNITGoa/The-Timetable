@@ -882,6 +882,8 @@ export const ECE_3: SemesterData = {
     },
     notesMonLab: 'Batch 1: EC204 DSD Lab (AC) | Batch 2: EC205 SS Lab (TVK)',
     notesTueLab: 'Batch 1: EC205 SS Lab (TVK) | Batch 2: EC204 DSD Lab (AC)',
+    wedTutorial: { code: 'EC201', name: 'Semiconductor Devices & Modeling Tutorial (LKB)', room: 'Room 72', notes: 'Dr. Lalat Kanta Bera (LKB)' },
+    thursSlotHOverride: { code: 'EC200', name: 'Network Theory Tutorial (AC)', room: 'Room 72', notes: 'Dr. Anirban Chatterjee (AC)', slotName: 'Tutorial (EC200)' },
     customSaturdayFocus: 'Network Theory & Digital Circuit Design Clinics',
   })
 };
@@ -894,7 +896,7 @@ export const EEE_3: SemesterData = {
   courses: {
     'MA203': {
       code: 'MA203',
-      name: 'Transform Calculus and Complex Variables',
+      name: 'Mathematics - III (Transform Calculus & Complex Analysis)',
       type: 'Theory',
       credits: 3,
       ltp: '3-0-0',
@@ -918,7 +920,7 @@ export const EEE_3: SemesterData = {
     },
     'EE202': {
       code: 'EE202',
-      name: 'Analog Electronics',
+      name: 'Analog Electronic Circuits',
       type: 'Theory',
       credits: 3,
       ltp: '3-0-0',
@@ -1412,6 +1414,7 @@ export const ME_3: SemesterData = {
     },
     notesTueLab: 'Batch 1: ME206 Design Lab-1 (DDB - Rm 12) | Batch 2: ME205 Machine Drawing (CV - Rm 33/38)',
     notesThuLab: 'Batch 1: ME205 Machine Drawing (DSS - Rm 33/38) | Batch 2: ME206 Design Lab-1 (DDB - Rm 12)',
+    monLecture: { code: 'ME203', name: 'Mechanics of Machinery (CV)', room: 'Room 66/67', notes: 'Dr. Chaitanya Vundru (CV)' },
     customSaturdayFocus: 'Thermodynamics & Mechanics of Solids Problem Solving',
   })
 };
