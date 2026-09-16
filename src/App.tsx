@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Navbar, ActiveTab } from './components/Navbar';
 import { DayScheduleView } from './components/DayScheduleView';
 import { WeeklyGridView } from './components/WeeklyGridView';
@@ -13,6 +13,8 @@ import { ScheduleCustomizerModal } from './components/ScheduleCustomizerModal';
 import { CourseModal } from './components/CourseModal';
 import { MobileBottomNav } from './components/MobileBottomNav';
 import { BrandLogo } from './components/BrandLogo';
+import { LandingPage } from './components/LandingPage';
+import { AdminPanelModal } from './components/AdminPanelModal';
 import {
   StudentProfile,
   DEFAULT_STUDENT_PROFILE,
@@ -28,8 +30,25 @@ import {
   deleteAcademicTest,
 } from './utils/testStorage';
 import { downloadICS } from './utils/calendarExport';
-import { TimeSlot, DayOfWeek } from './data/timetableData';
+import { TimeSlot, DayOfWeek, Course } from './data/timetableData';
 import { initPWA } from './pwa';
+import {
+  auth,
+  signInWithGoogle,
+  signOutUser,
+  isUserAdmin,
+  ADMIN_EMAIL,
+} from './firebase';
+import { onAuthStateChanged, User } from 'firebase/auth';
+import {
+  getTimetableOverride,
+  getAllTimetableOverrides,
+  getAllCourseOverrides,
+  subscribeToAnnouncements,
+  AnnouncementDoc,
+  getUserCloudData,
+  saveUserCloudData,
+} from './services/firestoreSync';
 import {
   Sparkles,
   CalendarCheck,
@@ -42,10 +61,54 @@ import {
   AlertTriangle,
   Code,
   Info,
+  ShieldCheck,
+  Bell,
+  X,
 } from 'lucide-react';
 import { PwaInstallGuideModal } from './components/PwaInstallGuideModal';
 
 export default function App() {
+  // Firebase Auth State
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [authLoading, setAuthLoading] = useState(true);
+
+  // App Entry / Landing Page State: If not logged in and first time in session, show landing page
+  const [hasEnteredApp, setHasEnteredApp] = useState<boolean>(() => {
+    try {
+      return sessionStorage.getItem('nit_goa_entered_app') === 'true';
+    } catch {
+      return false;
+    }
+  });
+  const [showLandingPage, setShowLandingPage] = useState(false);
+  const [isAdminModalOpen, setIsAdminModalOpen] = useState(false);
+
+  // Firestore Cloud Overrides & Announcements
+  const [cloudScheduleOverride, setCloudScheduleOverride] = useState<Record<DayOfWeek, TimeSlot[]> | null>(null);
+  const [allTimetableOverrides, setAllTimetableOverrides] = useState<Record<string, Record<DayOfWeek, TimeSlot[]>>>({});
+  const [cloudCourseOverrides, setCloudCourseOverrides] = useState<Record<string, Partial<Course>>>({});
+  const [announcements, setAnnouncements] = useState<AnnouncementDoc[]>([]);
+  const [dismissedAnnouncements, setDismissedAnnouncements] = useState<string[]>([]);
+
+  // Listen to Firebase Auth state
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+      setAuthLoading(false);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  // Subscribe to live announcements
+  useEffect(() => {
+    const unsubscribe = subscribeToAnnouncements((items) => {
+      setAnnouncements(items);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const isAdmin = isUserAdmin(currentUser);
+
   const [activeTab, setActiveTab] = useState<ActiveTab>(() => {
     try {
       const saved = localStorage.getItem('nit_goa_active_tab') as ActiveTab;
@@ -217,6 +280,122 @@ export default function App() {
     }
   }, [profile]);
 
+  // Sync user progress from Cloud Firestore upon authentication
+  useEffect(() => {
+    if (!currentUser?.uid) return;
+
+    getUserCloudData(currentUser.uid)
+      .then((cloudData) => {
+        if (cloudData) {
+          if (cloudData.profile) {
+            setProfile((prev) => ({ ...prev, ...cloudData.profile }));
+          }
+          if (cloudData.tests && Array.isArray(cloudData.tests) && cloudData.tests.length > 0) {
+            saveStoredTests(cloudData.tests);
+            setTests(cloudData.tests);
+          }
+          if (cloudData.attendance) {
+            Object.entries(cloudData.attendance).forEach(([key, val]) => {
+              try {
+                localStorage.setItem(key, JSON.stringify(val));
+              } catch (e) {
+                console.error(e);
+              }
+            });
+          }
+          if (cloudData.selectedElective) {
+            setSelectedElective(cloudData.selectedElective);
+          }
+          if (cloudData.selectedBatch) {
+            setSelectedBatch(cloudData.selectedBatch);
+          }
+        }
+      })
+      .catch((err) => {
+        console.warn('Could not load user cloud data (offline mode active):', err);
+      });
+  }, [currentUser?.uid]);
+
+  // Listen for attendance updates and synchronize immediately to cloud
+  useEffect(() => {
+    const handleAttendanceUpdated = (e: any) => {
+      if (!currentUser?.uid) return;
+      const { storageKey, attendance } = e.detail || {};
+      if (storageKey && attendance) {
+        saveUserCloudData(currentUser.uid, {
+          email: currentUser.email || '',
+          attendance: {
+            [storageKey]: attendance,
+          },
+        }).catch((err) => {
+          console.warn('Could not sync attendance to cloud:', err);
+        });
+      }
+    };
+
+    window.addEventListener('nit_goa_attendance_updated', handleAttendanceUpdated);
+    return () => window.removeEventListener('nit_goa_attendance_updated', handleAttendanceUpdated);
+  }, [currentUser?.uid, currentUser?.email]);
+
+  // Sync tests list to Cloud
+  useEffect(() => {
+    if (!currentUser?.uid) return;
+    saveUserCloudData(currentUser.uid, {
+      email: currentUser.email || '',
+      tests,
+    }).catch((err) => {
+      console.warn('Could not sync tests to cloud:', err);
+    });
+  }, [currentUser?.uid, tests]);
+
+  // Sync profile to Cloud
+  useEffect(() => {
+    if (!currentUser?.uid) return;
+    saveUserCloudData(currentUser.uid, {
+      email: currentUser.email || '',
+      profile,
+      selectedElective,
+      selectedBatch,
+    }).catch((err) => {
+      console.warn('Could not sync profile to cloud:', err);
+    });
+  }, [currentUser?.uid, profile, selectedElective, selectedBatch]);
+
+  // Load cloud timetable & course overrides from Firestore
+  const refreshAllOverrides = () => {
+    const timetableKey = safeProfile.semester <= 2
+      ? `SEC-${safeProfile.firstYearSection || 'A'}-${safeProfile.semester}`
+      : `${safeProfile.branch}-${safeProfile.semester}`;
+
+    getTimetableOverride(timetableKey)
+      .then((override) => {
+        if (override) {
+          setCloudScheduleOverride(override);
+        }
+      })
+      .catch((err) => console.error('Error fetching timetable override:', err));
+
+    getAllTimetableOverrides()
+      .then((allOverrides) => {
+        if (allOverrides) {
+          setAllTimetableOverrides(allOverrides);
+        }
+      })
+      .catch((err) => console.error('Error fetching all timetable overrides:', err));
+
+    getAllCourseOverrides()
+      .then((overrides) => {
+        if (overrides) {
+          setCloudCourseOverrides(overrides);
+        }
+      })
+      .catch((err) => console.error('Error fetching course overrides:', err));
+  };
+
+  useEffect(() => {
+    refreshAllOverrides();
+  }, [safeProfile.branch, safeProfile.semester, safeProfile.firstYearSection]);
+
   // Sync tests from localStorage
   const refreshTests = () => {
     setTests(getStoredTests());
@@ -227,6 +406,28 @@ export default function App() {
     setTimeout(() => {
       setToastMessage(null);
     }, 3500);
+  };
+
+  // Google Authentication Handlers
+  const handleGoogleSignIn = async () => {
+    try {
+      await signInWithGoogle();
+      setHasEnteredApp(true);
+      sessionStorage.setItem('nit_goa_entered_app', 'true');
+      showToast('Successfully signed in with Google!');
+    } catch (err: any) {
+      console.error('Sign in error:', err);
+      showToast(err.message || 'Google sign-in was cancelled or failed.');
+    }
+  };
+
+  const handleGoogleSignOut = async () => {
+    try {
+      await signOutUser();
+      showToast('Signed out successfully.');
+    } catch (err: any) {
+      console.error('Sign out error:', err);
+    }
   };
 
   // Profile save handler from modal
@@ -252,7 +453,7 @@ export default function App() {
     day: DayOfWeek,
     slots: TimeSlot[]
   ) => {
-    const currentSchedule = scheduleOverride || activeBranchData.schedule;
+    const currentSchedule = scheduleOverride || cloudScheduleOverride || activeBranchData.schedule;
     const updated = {
       ...currentSchedule,
       [day]: slots,
@@ -298,14 +499,35 @@ export default function App() {
     showToast('Test removed from calendar');
   };
 
+  // Effective courses with cloud overrides merged in
+  const effectiveCourses = useMemo(() => {
+    const merged: Record<string, Course> = { ...activeBranchData.courses };
+    Object.entries(cloudCourseOverrides).forEach(([code, override]) => {
+      if (override && typeof override === 'object') {
+        if (merged[code]) {
+          merged[code] = {
+            ...merged[code],
+            ...override,
+          };
+        } else if ('title' in override || 'name' in override) {
+          merged[code] = override as Course;
+        }
+      }
+    });
+    return merged;
+  }, [activeBranchData.courses, cloudCourseOverrides]);
+
+  const effectiveSchedule = useMemo(() => {
+    return scheduleOverride || cloudScheduleOverride || activeBranchData.schedule;
+  }, [scheduleOverride, cloudScheduleOverride, activeBranchData.schedule]);
+
   // Export calendar handler
   const handleExportCalendar = () => {
-    const effectiveSchedule = scheduleOverride || activeBranchData.schedule;
     downloadICS({
       branch: safeProfile.branch,
       semester: safeProfile.semester,
       schedule: effectiveSchedule,
-      courses: activeBranchData.courses,
+      courses: effectiveCourses,
       tests,
       elective: selectedElective,
       batch: selectedBatch,
@@ -313,8 +535,67 @@ export default function App() {
     showToast('Timetable & scheduled tests exported as .ics calendar file!');
   };
 
-  const effectiveSchedule = scheduleOverride || activeBranchData.schedule;
   const branchInfo = BRANCHES_LIST.find((b) => b.code === safeProfile.branch) || BRANCHES_LIST[0];
+
+  // If Firebase Auth is still restoring state, show initial clean loader
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-6 text-slate-100">
+        <div className="w-10 h-10 rounded-2xl border-4 border-amber-500/20 border-t-amber-400 animate-spin mb-4" />
+        <p className="text-xs font-semibold text-slate-300">Loading NIT Goa Timetable...</p>
+      </div>
+    );
+  }
+
+  // 1. Gated Landing Page: If user is not logged in, or explicitly opened About/Landing
+  if (!currentUser || showLandingPage) {
+    return (
+      <>
+        <LandingPage
+          currentUser={currentUser}
+          isAdmin={isAdmin}
+          onSignIn={handleGoogleSignIn}
+          onSignOut={handleGoogleSignOut}
+          onContinueToTimetable={() => setShowLandingPage(false)}
+          onOpenAdminPanel={() => setIsAdminModalOpen(true)}
+          authLoading={authLoading}
+        />
+        <AdminPanelModal
+          isOpen={isAdminModalOpen}
+          onClose={() => setIsAdminModalOpen(false)}
+          currentUser={currentUser}
+          announcements={announcements}
+          timetableOverrides={allTimetableOverrides}
+          courseOverrides={cloudCourseOverrides}
+          onOverridesUpdated={refreshAllOverrides}
+          onTimetableUpdated={(branch, sem, day, slots) => {
+            const currentKey = safeProfile.semester <= 2
+              ? `SEC-${safeProfile.firstYearSection || 'A'}-${safeProfile.semester}`
+              : `${safeProfile.branch}-${safeProfile.semester}`;
+            const targetKey = sem <= 2 ? `SEC-A-${sem}` : `${branch}-${sem}`;
+            if (currentKey === targetKey) {
+              setCloudScheduleOverride((prev) => ({
+                ...(prev || activeBranchData.schedule),
+                [day]: slots,
+              }));
+            }
+            showToast(`Saved timetable override for ${branch} Sem ${sem} (${day})`);
+          }}
+          onCoursesUpdated={(courseCode, override) => {
+            setCloudCourseOverrides((prev) => ({
+              ...prev,
+              [courseCode]: override,
+            }));
+            showToast(`Updated course & syllabus override for ${courseCode}`);
+          }}
+        />
+        <PwaInstallGuideModal
+          isOpen={isPwaModalOpen}
+          onClose={() => setIsPwaModalOpen(false)}
+        />
+      </>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
@@ -331,6 +612,12 @@ export default function App() {
         onExportCalendar={handleExportCalendar}
         testCount={tests.length}
         onOpenPwaGuide={() => setIsPwaModalOpen(true)}
+        currentUser={currentUser}
+        isAdmin={isAdmin}
+        onSignIn={handleGoogleSignIn}
+        onSignOut={handleGoogleSignOut}
+        onOpenAdmin={() => setIsAdminModalOpen(true)}
+        onOpenLanding={() => setShowLandingPage(true)}
       />
 
       {/* Universal Student Profile Context Strip (Hidden on mobile to preserve vertical screen estate) */}
@@ -368,9 +655,27 @@ export default function App() {
                 Custom Schedule Active
               </span>
             )}
+
+            {cloudScheduleOverride && !scheduleOverride && (
+              <span className="px-2 py-0.2 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 font-semibold">
+                Cloud Sync Active
+              </span>
+            )}
           </div>
 
           <div className="flex items-center gap-3 text-slate-400">
+            {/* Admin quick indicator if logged in as ashivamone@gmail.com */}
+            {isAdmin && (
+              <button
+                type="button"
+                onClick={() => setIsAdminModalOpen(true)}
+                className="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[11px] font-bold hover:bg-amber-500/30 transition"
+              >
+                <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
+                <span>Admin Privileges Active</span>
+              </button>
+            )}
+
             {/* Quick Test reminder badge */}
             <button
               onClick={() => setActiveTab('tests')}
@@ -395,6 +700,42 @@ export default function App() {
 
       {/* Main Content Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-6 pb-[calc(7.5rem+env(safe-area-inset-bottom,0px))] sm:pb-8">
+        {/* Active Institute Announcements Broadcast Banner */}
+        {announcements
+          .filter((a) => a.active && !dismissedAnnouncements.includes(a.id))
+          .map((ann) => (
+            <div
+              key={ann.id}
+              className="mb-4 p-4 rounded-2xl bg-gradient-to-r from-amber-500/15 via-slate-900 to-amber-950/30 border border-amber-500/40 flex items-start justify-between gap-3 shadow-md animate-in fade-in slide-in-from-top-2 duration-300"
+            >
+              <div className="flex items-start gap-3 min-w-0">
+                <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/30 text-amber-300 flex items-center justify-center shrink-0 mt-0.5">
+                  <Bell className="w-4 h-4 text-amber-400" />
+                </div>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="text-[10px] uppercase font-black tracking-wider px-2 py-0.5 rounded-md bg-amber-400 text-slate-950 shadow-xs">
+                      Official Notice
+                    </span>
+                    <h4 className="text-sm font-bold text-amber-200">{ann.title}</h4>
+                  </div>
+                  <p className="text-xs text-slate-200 mt-1 leading-relaxed whitespace-pre-line">{ann.content}</p>
+                  <span className="text-[10px] text-slate-400 mt-1.5 block">
+                    Posted by <strong className="text-slate-300">{ann.author}</strong> • Real-time Institute Broadcast
+                  </span>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setDismissedAnnouncements((prev) => [...prev, ann.id])}
+                className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition shrink-0"
+                title="Dismiss Notice"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+          ))}
+
         {/* Day Schedule Tab */}
         {activeTab === 'day' && (
           <DayScheduleView
@@ -404,7 +745,7 @@ export default function App() {
             selectedBatch={selectedBatch}
             onOpenCourseModal={setActiveModalCourse}
             schedule={effectiveSchedule}
-            courses={activeBranchData.courses}
+            courses={effectiveCourses}
             branch={safeProfile.branch}
             semester={safeProfile.semester}
             tests={tests}
@@ -421,7 +762,7 @@ export default function App() {
         {activeTab === 'weekly' && (
           <WeeklyGridView
             schedule={effectiveSchedule}
-            courses={activeBranchData.courses}
+            courses={effectiveCourses}
             selectedElective={selectedElective}
             selectedBatch={selectedBatch}
             onOpenCourseModal={setActiveModalCourse}
@@ -438,7 +779,7 @@ export default function App() {
             onUpdateTest={handleUpdateTest}
             onDeleteTest={handleDeleteTest}
             onExportCalendar={handleExportCalendar}
-            courses={activeBranchData.courses}
+            courses={effectiveCourses}
             branch={safeProfile.branch}
             semester={safeProfile.semester}
             initialCourseCode={scheduleTestCourseCode}
@@ -451,7 +792,7 @@ export default function App() {
           <CoursesDirectory
             onOpenCourseModal={setActiveModalCourse}
             selectedElective={selectedElective}
-            courses={activeBranchData.courses}
+            courses={effectiveCourses}
             branch={safeProfile.branch}
             semester={safeProfile.semester}
           />
@@ -460,7 +801,7 @@ export default function App() {
         {/* 75% Attendance Tracker Tab */}
         {activeTab === 'attendance' && (
           <AttendanceTracker
-            courses={activeBranchData.courses}
+            courses={effectiveCourses}
             selectedElective={selectedElective}
             branch={safeProfile.branch}
             semester={safeProfile.semester}
@@ -470,7 +811,7 @@ export default function App() {
         {/* Exam Slots Tab */}
         {activeTab === 'exams' && (
           <ExamScheduleView
-            courses={activeBranchData.courses}
+            courses={effectiveCourses}
             selectedElective={selectedElective}
             onOpenCourseModal={setActiveModalCourse}
             branch={safeProfile.branch}
@@ -481,7 +822,7 @@ export default function App() {
         {/* SGPA & Academic Hub Tab */}
         {activeTab === 'academic' && (
           <AcademicPortalView
-            courses={activeBranchData.courses}
+            courses={effectiveCourses}
             selectedElective={selectedElective}
             onOpenCourseModal={setActiveModalCourse}
             branch={safeProfile.branch}
@@ -494,7 +835,7 @@ export default function App() {
         {activeTab === 'resources' && (
           <ResourcesView
             profile={safeProfile}
-            courses={activeBranchData.courses}
+            courses={effectiveCourses}
             scheduleOverride={scheduleOverride}
             tests={tests}
             onSelectBranchYear={(branch, year, semester) => {
@@ -524,7 +865,7 @@ export default function App() {
         onClose={() => setIsCustomizerOpen(false)}
         selectedDay={selectedDay}
         currentSlots={effectiveSchedule[selectedDay] || []}
-        courses={activeBranchData.courses}
+        courses={effectiveCourses}
         onSaveSlots={(slots) => handleSaveScheduleDay(selectedDay, slots)}
         onResetSchedule={handleResetSchedule}
       />
@@ -532,7 +873,7 @@ export default function App() {
       {/* Course Detail Modal */}
       <CourseModal
         courseCode={activeModalCourse}
-        courses={activeBranchData.courses}
+        courses={effectiveCourses}
         onClose={() => setActiveModalCourse(null)}
         onTrackAttendance={() => {
           setActiveTab('attendance');
@@ -551,6 +892,37 @@ export default function App() {
         onClose={() => setIsPwaModalOpen(false)}
       />
 
+      {/* Administrator Control Panel Modal (Authorized for ashivamone@gmail.com) */}
+      <AdminPanelModal
+        isOpen={isAdminModalOpen}
+        onClose={() => setIsAdminModalOpen(false)}
+        currentUser={currentUser}
+        announcements={announcements}
+        timetableOverrides={allTimetableOverrides}
+        courseOverrides={cloudCourseOverrides}
+        onOverridesUpdated={refreshAllOverrides}
+        onTimetableUpdated={(branch, sem, day, slots) => {
+          const currentKey = safeProfile.semester <= 2
+            ? `SEC-${safeProfile.firstYearSection || 'A'}-${safeProfile.semester}`
+            : `${safeProfile.branch}-${safeProfile.semester}`;
+          const targetKey = sem <= 2 ? `SEC-A-${sem}` : `${branch}-${sem}`;
+          if (currentKey === targetKey) {
+            setCloudScheduleOverride((prev) => ({
+              ...(prev || activeBranchData.schedule),
+              [day]: slots,
+            }));
+          }
+          showToast(`Saved timetable override for ${branch} Sem ${sem} (${day})`);
+        }}
+        onCoursesUpdated={(courseCode, override) => {
+          setCloudCourseOverrides((prev) => ({
+            ...prev,
+            [courseCode]: override,
+          }));
+          showToast(`Updated course & syllabus override for ${courseCode}`);
+        }}
+      />
+
       {/* Mobile Bottom Navigation Bar (Docked on < sm screens) */}
       <MobileBottomNav
         activeTab={activeTab}
@@ -561,6 +933,12 @@ export default function App() {
         onExportCalendar={handleExportCalendar}
         onOpenCustomizer={() => setIsCustomizerOpen(true)}
         onOpenPwaGuide={() => setIsPwaModalOpen(true)}
+        currentUser={currentUser}
+        isAdmin={isAdmin}
+        onOpenAdmin={() => setIsAdminModalOpen(true)}
+        onSignIn={handleGoogleSignIn}
+        onSignOut={handleGoogleSignOut}
+        onOpenLanding={() => setShowLandingPage(true)}
       />
 
       {/* Floating Action Toast Notification (positioned cleanly above mobile nav) */}

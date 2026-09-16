@@ -93,8 +93,7 @@ export const DocumentReaderModal: React.FC<DocumentReaderModalProps> = ({
   };
 
   const handleDownloadFile = () => {
-    const element = document.createElement ? window.document.createElement('a') : null;
-    if (!element) return;
+    const element = window.document.createElement('a');
 
     let htmlContent = `<!DOCTYPE html>
 <html>

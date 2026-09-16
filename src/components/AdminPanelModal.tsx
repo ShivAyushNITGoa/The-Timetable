@@ -1,0 +1,1045 @@
+import React, { useState, useEffect } from 'react';
+import {
+  X,
+  ShieldCheck,
+  Calendar,
+  BookOpen,
+  Bell,
+  Save,
+  RotateCcw,
+  Plus,
+  Trash2,
+  CheckCircle2,
+  AlertTriangle,
+  Clock,
+  MapPin,
+  User as UserIcon,
+  RefreshCw,
+  ExternalLink,
+  Info,
+} from 'lucide-react';
+import { User } from 'firebase/auth';
+import {
+  BRANCH_SEMESTER_DATA,
+  BRANCHES_LIST,
+  BranchCode,
+  getAllKnownCourses,
+  getActiveBranchSemesterData,
+} from '../data/branchesData';
+import { Course, TimeSlot, DayOfWeek } from '../data/timetableData';
+import {
+  saveTimetableOverride,
+  resetTimetableOverride,
+  saveCourseOverride,
+  resetCourseOverride,
+  createAnnouncement,
+  toggleAnnouncementActive,
+  removeAnnouncement,
+  AnnouncementDoc,
+} from '../services/firestoreSync';
+
+export interface AdminPanelModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  currentUser: User | null;
+  announcements?: AnnouncementDoc[];
+  timetableOverrides?: Record<string, Record<DayOfWeek, TimeSlot[]>>;
+  courseOverrides?: Record<string, Partial<Course>>;
+  onOverridesUpdated?: () => void;
+  onTimetableUpdated?: (branch: string, sem: number, day: DayOfWeek, slots: TimeSlot[]) => void;
+  onCoursesUpdated?: (courseCode: string, override: Partial<Course>) => void;
+}
+
+type AdminTab = 'timetable' | 'syllabus' | 'announcements' | 'diagnostics';
+
+const DAYS: DayOfWeek[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+
+export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
+  isOpen,
+  onClose,
+  currentUser,
+  announcements = [],
+  timetableOverrides = {},
+  courseOverrides = {},
+  onOverridesUpdated,
+  onTimetableUpdated,
+  onCoursesUpdated,
+}) => {
+  const [activeTab, setActiveTab] = useState<AdminTab>('timetable');
+  const [saveStatus, setSaveStatus] = useState<string | null>(null);
+  const [isSaving, setIsSaving] = useState(false);
+  const [confirmResetTimetable, setConfirmResetTimetable] = useState(false);
+  const [confirmResetCourse, setConfirmResetCourse] = useState(false);
+
+  // Timetable Editor State
+  const [selectedBranch, setSelectedBranch] = useState<BranchCode>('CSE');
+  const [selectedSemester, setSelectedSemester] = useState<number>(7);
+  const [selectedSection, setSelectedSection] = useState<'A' | 'B' | 'C' | 'D'>('C');
+  const [editingSchedule, setEditingSchedule] = useState<Record<DayOfWeek, TimeSlot[]>>({
+    Monday: [],
+    Tuesday: [],
+    Wednesday: [],
+    Thursday: [],
+    Friday: [],
+    Saturday: [],
+    Sunday: [],
+  });
+  const [selectedDay, setSelectedDay] = useState<DayOfWeek>('Monday');
+
+  // Syllabus Editor State
+  const [allCourses, setAllCourses] = useState<Record<string, Course>>({});
+  const [selectedCourseCode, setSelectedCourseCode] = useState<string>('CS200');
+  const [editingCourse, setEditingCourse] = useState<Partial<Course>>({});
+  const [newModuleText, setNewModuleText] = useState('');
+  const [newBookText, setNewBookText] = useState('');
+
+  // Announcements State
+  const [newAnnouncementTitle, setNewAnnouncementTitle] = useState('');
+  const [newAnnouncementContent, setNewAnnouncementContent] = useState('');
+  const [newAnnouncementType, setNewAnnouncementType] = useState<'info' | 'warning' | 'success' | 'urgent'>('info');
+
+  // Initialize course catalog
+  useEffect(() => {
+    const courses = getAllKnownCourses();
+    setAllCourses(courses);
+  }, []);
+
+  // Compute key for timetable
+  const timetableKey =
+    selectedSemester <= 2
+      ? `SEC-${selectedSection}-${selectedSemester}`
+      : `${selectedBranch}-${selectedSemester}`;
+
+  // Load schedule when selection changes
+  useEffect(() => {
+    if (timetableOverrides && timetableOverrides[timetableKey]) {
+      setEditingSchedule(JSON.parse(JSON.stringify(timetableOverrides[timetableKey])));
+    } else {
+      const defaultData = getActiveBranchSemesterData(
+        selectedBranch,
+        selectedSemester,
+        selectedSection
+      );
+      if (defaultData && defaultData.schedule) {
+        setEditingSchedule(JSON.parse(JSON.stringify(defaultData.schedule)));
+      }
+    }
+  }, [selectedBranch, selectedSemester, selectedSection, timetableOverrides, timetableKey]);
+
+  // Load course details when selectedCourseCode changes
+  useEffect(() => {
+    if (!selectedCourseCode) return;
+    const base = allCourses[selectedCourseCode] || {
+      code: selectedCourseCode,
+      name: '',
+      credits: 3,
+      ltp: '3-0-0',
+      coordinator: '',
+      room: '',
+      category: 'core',
+      modules: [],
+      textbooks: [],
+    };
+    const override = (courseOverrides && courseOverrides[selectedCourseCode]) || {};
+    setEditingCourse({
+      ...base,
+      ...override,
+      modules: override.modules || base.modules || [],
+      textbooks: override.textbooks || base.textbooks || [],
+    });
+  }, [selectedCourseCode, allCourses, courseOverrides]);
+
+  if (!isOpen) return null;
+
+  // Handlers for Timetable Editor
+  const handleSlotChange = (day: DayOfWeek, index: number, field: keyof TimeSlot, value: any) => {
+    setEditingSchedule((prev) => {
+      const nextDaySlots = [...(prev[day] || [])];
+      nextDaySlots[index] = {
+        ...nextDaySlots[index],
+        [field]: value,
+      };
+      return {
+        ...prev,
+        [day]: nextDaySlots,
+      };
+    });
+  };
+
+  const handleAddSlot = (day: DayOfWeek) => {
+    const newSlot: TimeSlot = {
+      id: `${timetableKey}-${day.toLowerCase().slice(0, 3)}-custom-${Date.now()}`,
+      day,
+      startTime: '14:00',
+      endTime: '14:55',
+      slotName: 'Custom Slot',
+      courseCode: 'CS200',
+      room: 'Room 18',
+    };
+    setEditingSchedule((prev) => ({
+      ...prev,
+      [day]: [...(prev[day] || []), newSlot],
+    }));
+  };
+
+  const handleDeleteSlot = (day: DayOfWeek, index: number) => {
+    setEditingSchedule((prev) => {
+      const nextDaySlots = (prev[day] || []).filter((_, i) => i !== index);
+      return {
+        ...prev,
+        [day]: nextDaySlots,
+      };
+    });
+  };
+
+  const handleSaveTimetable = async () => {
+    if (!currentUser?.email) return;
+    try {
+      setIsSaving(true);
+      setSaveStatus(null);
+      await saveTimetableOverride(
+        timetableKey,
+        editingSchedule,
+        currentUser.email,
+        editingSchedule.Monday?.[0]?.room || ''
+      );
+      onOverridesUpdated?.();
+      if (onTimetableUpdated) {
+        DAYS.forEach((day) => {
+          onTimetableUpdated(selectedBranch, selectedSemester, day, editingSchedule[day] || []);
+        });
+      }
+      setSaveStatus('Timetable override saved to Firestore successfully!');
+      setTimeout(() => setSaveStatus(null), 4000);
+    } catch (err: any) {
+      console.error(err);
+      setSaveStatus(`Failed to save: ${err.message}`);
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const handleResetTimetable = async () => {
+    if (!confirmResetTimetable) {
+      setConfirmResetTimetable(true);
+      setSaveStatus(`Click Reset again within 4 seconds to confirm resetting ${timetableKey} baseline.`);
+      setTimeout(() => setConfirmResetTimetable(false), 4000);
+      return;
+    }
+    setConfirmResetTimetable(false);
+    try {
+      setIsSaving(true);
+      await resetTimetableOverride(timetableKey);
+      onOverridesUpdated?.();
+      const defaultData = getActiveBranchSemesterData(
+        selectedBranch,
+        selectedSemester,
+        selectedSection
+      );
+      setEditingSchedule(JSON.parse(JSON.stringify(defaultData.schedule)));
+      setSaveStatus('Reset timetable to Master Timetable baseline.');
+      setTimeout(() => setSaveStatus(null), 4000);
+    } catch (err: any) {
+      setSaveStatus(`Reset failed: ${err.message}`);
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  // Handlers for Course Syllabus Editor
+  const handleSaveCourse = async () => {
+    if (!currentUser?.email || !editingCourse.code) return;
+    try {
+      setIsSaving(true);
+      setSaveStatus(null);
+      await saveCourseOverride(editingCourse as Course, currentUser.email);
+      onOverridesUpdated?.();
+      if (onCoursesUpdated && editingCourse.code) {
+        onCoursesUpdated(editingCourse.code, editingCourse);
+      }
+      setSaveStatus(`Course ${editingCourse.code} saved to Firestore successfully!`);
+      setTimeout(() => setSaveStatus(null), 4000);
+    } catch (err: any) {
+      setSaveStatus(`Failed to save course: ${err.message}`);
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const handleResetCourse = async () => {
+    if (!editingCourse.code) return;
+    if (!confirmResetCourse) {
+      setConfirmResetCourse(true);
+      setSaveStatus(`Click Reset again within 4 seconds to confirm resetting ${editingCourse.code}.`);
+      setTimeout(() => setConfirmResetCourse(false), 4000);
+      return;
+    }
+    setConfirmResetCourse(false);
+    try {
+      setIsSaving(true);
+      await resetCourseOverride(editingCourse.code);
+      onOverridesUpdated?.();
+      const base = allCourses[editingCourse.code];
+      if (base) {
+        setEditingCourse(JSON.parse(JSON.stringify(base)));
+      }
+      setSaveStatus(`Reverted ${editingCourse.code} to default syllabus.`);
+      setTimeout(() => setSaveStatus(null), 4000);
+    } catch (err: any) {
+      setSaveStatus(`Revert failed: ${err.message}`);
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  // Announcements Handlers
+  const handlePostAnnouncement = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newAnnouncementTitle.trim() || !newAnnouncementContent.trim() || !currentUser?.email) return;
+    try {
+      setIsSaving(true);
+      await createAnnouncement(
+        newAnnouncementTitle.trim(),
+        newAnnouncementContent.trim(),
+        newAnnouncementType,
+        currentUser.email,
+        currentUser.displayName || 'Academic Admin'
+      );
+      setNewAnnouncementTitle('');
+      setNewAnnouncementContent('');
+      setSaveStatus('Announcement published live to students!');
+      setTimeout(() => setSaveStatus(null), 4000);
+    } catch (err: any) {
+      setSaveStatus(`Failed to post announcement: ${err.message}`);
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
+      <div className="bg-slate-900 border border-slate-700 w-full max-w-5xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+        {/* Modal Top Header */}
+        <div className="px-5 py-4 border-b border-slate-800 bg-slate-950/60 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/30">
+              <ShieldCheck size={20} />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h2 className="text-base font-bold text-white tracking-tight">
+                  Academic Administrator Control Panel
+                </h2>
+                <span className="text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold border border-amber-500/30">
+                  SUPERUSER
+                </span>
+              </div>
+              <p className="text-xs text-slate-400">
+                Verified Admin: <span className="text-slate-200 font-mono">{currentUser?.email}</span>
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={onClose}
+            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
+          >
+            <X size={18} />
+          </button>
+        </div>
+
+        {/* Tab Navigation */}
+        <div className="px-5 border-b border-slate-800 bg-slate-900 flex items-center gap-2 overflow-x-auto">
+          <button
+            onClick={() => setActiveTab('timetable')}
+            className={`flex items-center gap-2 px-3.5 py-3 text-xs font-semibold border-b-2 transition whitespace-nowrap ${
+              activeTab === 'timetable'
+                ? 'border-indigo-500 text-white'
+                : 'border-transparent text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <Calendar size={15} />
+            Timetable Editor
+          </button>
+          <button
+            onClick={() => setActiveTab('syllabus')}
+            className={`flex items-center gap-2 px-3.5 py-3 text-xs font-semibold border-b-2 transition whitespace-nowrap ${
+              activeTab === 'syllabus'
+                ? 'border-indigo-500 text-white'
+                : 'border-transparent text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <BookOpen size={15} />
+            Course Syllabus & LTP
+          </button>
+          <button
+            onClick={() => setActiveTab('announcements')}
+            className={`flex items-center gap-2 px-3.5 py-3 text-xs font-semibold border-b-2 transition whitespace-nowrap ${
+              activeTab === 'announcements'
+                ? 'border-indigo-500 text-white'
+                : 'border-transparent text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <Bell size={15} />
+            Broadcast Notices ({announcements.length})
+          </button>
+          <button
+            onClick={() => setActiveTab('diagnostics')}
+            className={`flex items-center gap-2 px-3.5 py-3 text-xs font-semibold border-b-2 transition whitespace-nowrap ${
+              activeTab === 'diagnostics'
+                ? 'border-indigo-500 text-white'
+                : 'border-transparent text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <ShieldCheck size={15} />
+            System & Cloud Status
+          </button>
+        </div>
+
+        {/* Status Toast / Banner */}
+        {saveStatus && (
+          <div className="mx-5 mt-4 p-3 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Info size={16} />
+              <span>{saveStatus}</span>
+            </div>
+            <button onClick={() => setSaveStatus(null)} className="text-slate-400 hover:text-white">
+              <X size={14} />
+            </button>
+          </div>
+        )}
+
+        {/* Modal Scrollable Body */}
+        <div className="p-5 overflow-y-auto flex-1 text-slate-200">
+          {/* TAB 1: TIMETABLE EDITOR */}
+          {activeTab === 'timetable' && (
+            <div className="space-y-6">
+              {/* Selector Bar */}
+              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 grid grid-cols-1 sm:grid-cols-4 gap-3">
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">
+                    Semester
+                  </label>
+                  <select
+                    value={selectedSemester}
+                    onChange={(e) => setSelectedSemester(Number(e.target.value))}
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500"
+                  >
+                    {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
+                      <option key={s} value={s}>
+                        Semester {s} {s <= 2 ? '(First Year)' : ''}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {selectedSemester <= 2 ? (
+                  <div>
+                    <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">
+                      Section
+                    </label>
+                    <select
+                      value={selectedSection}
+                      onChange={(e) => setSelectedSection(e.target.value as any)}
+                      className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500"
+                    >
+                      <option value="A">Section A (Physics Cycle)</option>
+                      <option value="B">Section B (Physics Cycle)</option>
+                      <option value="C">Section C (Chemistry Cycle - LH 03)</option>
+                      <option value="D">Section D (Chemistry Cycle - LH 04)</option>
+                    </select>
+                  </div>
+                ) : (
+                  <div>
+                    <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">
+                      Department Branch
+                    </label>
+                    <select
+                      value={selectedBranch}
+                      onChange={(e) => setSelectedBranch(e.target.value as BranchCode)}
+                      className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500"
+                    >
+                      {BRANCHES_LIST.map((b) => (
+                        <option key={b.code} value={b.code}>
+                          {b.code} - {b.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">
+                    Editing Target
+                  </label>
+                  <div className="px-3 py-1.5 bg-slate-900 border border-slate-700 rounded-lg text-xs font-mono text-indigo-300">
+                    {timetableKey}
+                  </div>
+                </div>
+
+                <div className="flex items-end gap-2">
+                  <button
+                    onClick={handleSaveTimetable}
+                    disabled={isSaving}
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition shadow"
+                  >
+                    <Save size={14} />
+                    {isSaving ? 'Saving...' : 'Save Cloud'}
+                  </button>
+                  <button
+                    onClick={handleResetTimetable}
+                    disabled={isSaving}
+                    title="Reset to Master Timetable baseline"
+                    className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition"
+                  >
+                    <RotateCcw size={14} />
+                  </button>
+                </div>
+              </div>
+
+              {/* Day Selector */}
+              <div className="flex items-center gap-1.5 border-b border-slate-800 pb-2">
+                {DAYS.map((day) => (
+                  <button
+                    key={day}
+                    onClick={() => setSelectedDay(day)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+                      selectedDay === day
+                        ? 'bg-indigo-600 text-white'
+                        : 'bg-slate-800 text-slate-400 hover:text-white'
+                    }`}
+                  >
+                    {day} ({(editingSchedule[day] || []).length})
+                  </button>
+                ))}
+                <button
+                  onClick={() => handleAddSlot(selectedDay)}
+                  className="ml-auto inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-teal-400 text-xs font-semibold transition"
+                >
+                  <Plus size={14} />
+                  Add Slot
+                </button>
+              </div>
+
+              {/* Slots Table */}
+              <div className="space-y-3">
+                {(editingSchedule[selectedDay] || []).length === 0 ? (
+                  <div className="p-8 text-center text-slate-500 text-xs">
+                    No slots configured for {selectedDay}. Click "+ Add Slot" above to insert a lecture or lab.
+                  </div>
+                ) : (
+                  (editingSchedule[selectedDay] || []).map((slot, index) => (
+                    <div
+                      key={slot.id || index}
+                      className="p-3.5 rounded-xl bg-slate-950 border border-slate-800/90 grid grid-cols-1 md:grid-cols-12 gap-3 items-center"
+                    >
+                      <div className="md:col-span-2">
+                        <label className="block text-[10px] text-slate-500 font-semibold mb-0.5">Timing</label>
+                        <div className="flex items-center gap-1 text-xs">
+                          <input
+                            type="text"
+                            value={slot.startTime}
+                            onChange={(e) => handleSlotChange(selectedDay, index, 'startTime', e.target.value)}
+                            className="w-14 bg-slate-900 border border-slate-700 rounded px-1.5 py-1 text-center font-mono text-white text-xs"
+                          />
+                          <span className="text-slate-500">-</span>
+                          <input
+                            type="text"
+                            value={slot.endTime}
+                            onChange={(e) => handleSlotChange(selectedDay, index, 'endTime', e.target.value)}
+                            className="w-14 bg-slate-900 border border-slate-700 rounded px-1.5 py-1 text-center font-mono text-white text-xs"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="md:col-span-2">
+                        <label className="block text-[10px] text-slate-500 font-semibold mb-0.5">Slot Name</label>
+                        <input
+                          type="text"
+                          value={slot.slotName || ''}
+                          onChange={(e) => handleSlotChange(selectedDay, index, 'slotName', e.target.value)}
+                          className="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1 text-white text-xs"
+                          placeholder="Slot A, Slot B, Lab..."
+                        />
+                      </div>
+
+                      <div className="md:col-span-2">
+                        <label className="block text-[10px] text-slate-500 font-semibold mb-0.5">Course Code</label>
+                        <input
+                          type="text"
+                          value={slot.courseCode || ''}
+                          onChange={(e) => handleSlotChange(selectedDay, index, 'courseCode', e.target.value.toUpperCase())}
+                          className="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1 text-amber-300 font-mono text-xs font-bold"
+                          placeholder="EE201, FREE, LUNCH..."
+                        />
+                      </div>
+
+                      <div className="md:col-span-2">
+                        <label className="block text-[10px] text-slate-500 font-semibold mb-0.5">Room Location</label>
+                        <input
+                          type="text"
+                          value={slot.room || ''}
+                          onChange={(e) => handleSlotChange(selectedDay, index, 'room', e.target.value)}
+                          className="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1 text-white text-xs"
+                          placeholder="Room 18, Room 69..."
+                        />
+                      </div>
+
+                      <div className="md:col-span-3">
+                        <label className="block text-[10px] text-slate-500 font-semibold mb-0.5">Faculty / Notes</label>
+                        <input
+                          type="text"
+                          value={slot.notes || ''}
+                          onChange={(e) => handleSlotChange(selectedDay, index, 'notes', e.target.value)}
+                          className="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1 text-slate-300 text-xs"
+                          placeholder="Faculty name or details"
+                        />
+                      </div>
+
+                      <div className="md:col-span-1 flex justify-end">
+                        <button
+                          onClick={() => handleDeleteSlot(selectedDay, index)}
+                          className="p-1.5 rounded-lg text-slate-500 hover:text-rose-400 hover:bg-rose-500/10 transition"
+                          title="Delete slot"
+                        >
+                          <Trash2 size={15} />
+                        </button>
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* TAB 2: COURSE SYLLABUS & LTP */}
+          {activeTab === 'syllabus' && (
+            <div className="space-y-6">
+              {/* Course Selection */}
+              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div className="w-full sm:w-80">
+                  <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">
+                    Select Course Code
+                  </label>
+                  <select
+                    value={selectedCourseCode}
+                    onChange={(e) => setSelectedCourseCode(e.target.value)}
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500"
+                  >
+                    {Object.keys(allCourses).sort().map((code) => (
+                      <option key={code} value={code}>
+                        {code} - {allCourses[code].name.slice(0, 40)}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={handleSaveCourse}
+                    disabled={isSaving}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition shadow"
+                  >
+                    <Save size={14} />
+                    {isSaving ? 'Saving...' : 'Save Syllabus to Cloud'}
+                  </button>
+                  <button
+                    onClick={handleResetCourse}
+                    disabled={isSaving}
+                    title="Revert to default syllabus"
+                    className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition"
+                  >
+                    <RotateCcw size={14} />
+                  </button>
+                </div>
+              </div>
+
+              {/* Course Form Details */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-5 rounded-xl bg-slate-950 border border-slate-800">
+                <div>
+                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Course Code</label>
+                  <input
+                    type="text"
+                    value={editingCourse.code || ''}
+                    onChange={(e) => setEditingCourse({ ...editingCourse, code: e.target.value })}
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-amber-300 font-mono font-bold"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Credits</label>
+                  <input
+                    type="number"
+                    value={editingCourse.credits || 0}
+                    onChange={(e) => setEditingCourse({ ...editingCourse, credits: Number(e.target.value) })}
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">LTP Ratio</label>
+                  <input
+                    type="text"
+                    value={editingCourse.ltp || ''}
+                    onChange={(e) => setEditingCourse({ ...editingCourse, ltp: e.target.value })}
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white font-mono"
+                    placeholder="3-0-0"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Classroom / Lab</label>
+                  <input
+                    type="text"
+                    value={editingCourse.room || ''}
+                    onChange={(e) => setEditingCourse({ ...editingCourse, room: e.target.value })}
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white"
+                    placeholder="Room 18, Room 8/9..."
+                  />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Course Title / Name</label>
+                  <input
+                    type="text"
+                    value={editingCourse.name || ''}
+                    onChange={(e) => setEditingCourse({ ...editingCourse, name: e.target.value })}
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white font-semibold"
+                  />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Course Coordinator</label>
+                  <input
+                    type="text"
+                    value={editingCourse.coordinator || ''}
+                    onChange={(e) => setEditingCourse({ ...editingCourse, coordinator: e.target.value })}
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white"
+                  />
+                </div>
+
+                <div className="sm:col-span-4">
+                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Course Overview & Notes</label>
+                  <textarea
+                    rows={2}
+                    value={editingCourse.notes || ''}
+                    onChange={(e) => setEditingCourse({ ...editingCourse, notes: e.target.value })}
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-300"
+                  />
+                </div>
+              </div>
+
+              {/* Modules List */}
+              <div className="p-5 rounded-xl bg-slate-950 border border-slate-800 space-y-3">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xs font-bold text-white uppercase tracking-wider">
+                    Syllabus Modules ({(editingCourse.modules || []).length})
+                  </h3>
+                </div>
+
+                {(editingCourse.modules || []).map((mod, idx) => (
+                  <div key={idx} className="flex items-start gap-2">
+                    <span className="text-xs font-bold text-indigo-400 pt-2 shrink-0">{idx + 1}.</span>
+                    <textarea
+                      rows={2}
+                      value={mod}
+                      onChange={(e) => {
+                        const updated = [...(editingCourse.modules || [])];
+                        updated[idx] = e.target.value;
+                        setEditingCourse({ ...editingCourse, modules: updated });
+                      }}
+                      className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-slate-200"
+                    />
+                    <button
+                      onClick={() => {
+                        const updated = (editingCourse.modules || []).filter((_, i) => i !== idx);
+                        setEditingCourse({ ...editingCourse, modules: updated });
+                      }}
+                      className="p-1.5 text-slate-500 hover:text-rose-400"
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                  </div>
+                ))}
+
+                <div className="flex gap-2 pt-2">
+                  <input
+                    type="text"
+                    value={newModuleText}
+                    onChange={(e) => setNewModuleText(e.target.value)}
+                    placeholder="Module N: Topic details..."
+                    className="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white"
+                  />
+                  <button
+                    onClick={() => {
+                      if (!newModuleText.trim()) return;
+                      setEditingCourse({
+                        ...editingCourse,
+                        modules: [...(editingCourse.modules || []), newModuleText.trim()],
+                      });
+                      setNewModuleText('');
+                    }}
+                    className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-teal-400 text-xs font-semibold"
+                  >
+                    Add Module
+                  </button>
+                </div>
+              </div>
+
+              {/* Textbooks List */}
+              <div className="p-5 rounded-xl bg-slate-950 border border-slate-800 space-y-3">
+                <h3 className="text-xs font-bold text-white uppercase tracking-wider">
+                  Prescribed Textbooks & References ({(editingCourse.textbooks || []).length})
+                </h3>
+
+                {(editingCourse.textbooks || []).map((book, idx) => (
+                  <div key={idx} className="flex items-center gap-2">
+                    <span className="text-xs font-mono text-slate-500">[{idx + 1}]</span>
+                    <input
+                      type="text"
+                      value={book}
+                      onChange={(e) => {
+                        const updated = [...(editingCourse.textbooks || [])];
+                        updated[idx] = e.target.value;
+                        setEditingCourse({ ...editingCourse, textbooks: updated });
+                      }}
+                      className="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200"
+                    />
+                    <button
+                      onClick={() => {
+                        const updated = (editingCourse.textbooks || []).filter((_, i) => i !== idx);
+                        setEditingCourse({ ...editingCourse, textbooks: updated });
+                      }}
+                      className="p-1.5 text-slate-500 hover:text-rose-400"
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                  </div>
+                ))}
+
+                <div className="flex gap-2 pt-2">
+                  <input
+                    type="text"
+                    value={newBookText}
+                    onChange={(e) => setNewBookText(e.target.value)}
+                    placeholder="Author, 'Book Title', Publisher"
+                    className="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white"
+                  />
+                  <button
+                    onClick={() => {
+                      if (!newBookText.trim()) return;
+                      setEditingCourse({
+                        ...editingCourse,
+                        textbooks: [...(editingCourse.textbooks || []), newBookText.trim()],
+                      });
+                      setNewBookText('');
+                    }}
+                    className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-teal-400 text-xs font-semibold"
+                  >
+                    Add Book
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* TAB 3: ANNOUNCEMENTS */}
+          {activeTab === 'announcements' && (
+            <div className="space-y-6">
+              {/* Post New Announcement */}
+              <form onSubmit={handlePostAnnouncement} className="p-5 rounded-xl bg-slate-950 border border-slate-800 space-y-4">
+                <h3 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                  <Bell size={14} className="text-amber-400" />
+                  Broadcast Live Academic Notice
+                </h3>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="sm:col-span-2">
+                    <label className="block text-[11px] text-slate-400 font-semibold mb-1">Notice Title</label>
+                    <input
+                      type="text"
+                      required
+                      value={newAnnouncementTitle}
+                      onChange={(e) => setNewAnnouncementTitle(e.target.value)}
+                      placeholder="e.g. Schedule Change: Slot E cancelled on Friday"
+                      className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-[11px] text-slate-400 font-semibold mb-1">Notice Type</label>
+                    <select
+                      value={newAnnouncementType}
+                      onChange={(e) => setNewAnnouncementType(e.target.value as any)}
+                      className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white"
+                    >
+                      <option value="info">Information (Blue)</option>
+                      <option value="warning">Warning / Alert (Amber)</option>
+                      <option value="urgent">Urgent / Important (Red)</option>
+                      <option value="success">Event / Good News (Green)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Notice Details</label>
+                  <textarea
+                    rows={3}
+                    required
+                    value={newAnnouncementContent}
+                    onChange={(e) => setNewAnnouncementContent(e.target.value)}
+                    placeholder="Enter message for students and faculty..."
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-xs text-slate-200"
+                  />
+                </div>
+
+                <div className="flex justify-end">
+                  <button
+                    type="submit"
+                    disabled={isSaving}
+                    className="px-5 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition shadow flex items-center gap-2"
+                  >
+                    <Bell size={14} />
+                    Publish Broadcast Notice
+                  </button>
+                </div>
+              </form>
+
+              {/* List of Announcements */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                  Active & Past Broadcasts ({announcements.length})
+                </h3>
+
+                {announcements.length === 0 ? (
+                  <div className="p-8 text-center text-slate-500 text-xs bg-slate-950 rounded-xl border border-slate-800">
+                    No announcements published yet. Post one above to show on student screens.
+                  </div>
+                ) : (
+                  announcements.map((ann) => (
+                    <div
+                      key={ann.id}
+                      className={`p-4 rounded-xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${
+                        ann.active
+                          ? 'bg-slate-950 border-slate-800'
+                          : 'bg-slate-950/40 border-slate-800/40 opacity-60'
+                      }`}
+                    >
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-2">
+                          <span
+                            className={`text-[10px] font-bold px-2 py-0.5 rounded uppercase ${
+                              ann.type === 'urgent'
+                                ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
+                                : ann.type === 'warning'
+                                ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                                : ann.type === 'success'
+                                ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                                : 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
+                            }`}
+                          >
+                            {ann.type}
+                          </span>
+                          <h4 className="text-sm font-semibold text-white">{ann.title}</h4>
+                        </div>
+                        <p className="text-xs text-slate-300">{ann.content}</p>
+                        <div className="text-[11px] text-slate-500 flex items-center gap-2">
+                          <span>By: {ann.authorName}</span>
+                          <span>•</span>
+                          <span>{new Date(ann.createdAt).toLocaleDateString()}</span>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-2 shrink-0">
+                        <button
+                          onClick={() => toggleAnnouncementActive(ann.id, ann.active)}
+                          className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+                            ann.active
+                              ? 'bg-amber-500/20 text-amber-300 hover:bg-amber-500/30'
+                              : 'bg-slate-800 text-slate-400 hover:text-white'
+                          }`}
+                        >
+                          {ann.active ? 'Disable' : 'Enable'}
+                        </button>
+                        <button
+                          onClick={() => removeAnnouncement(ann.id)}
+                          className="p-1.5 rounded-lg text-slate-500 hover:text-rose-400 hover:bg-rose-500/10 transition"
+                        >
+                          <Trash2 size={16} />
+                        </button>
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* TAB 4: DIAGNOSTICS */}
+          {activeTab === 'diagnostics' && (
+            <div className="space-y-6">
+              <div className="p-5 rounded-xl bg-slate-950 border border-slate-800 space-y-4">
+                <h3 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                  <ShieldCheck size={16} className="text-emerald-400" />
+                  Cloud Firebase Security & Storage Status
+                </h3>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                  <div className="p-3.5 rounded-lg bg-slate-900 border border-slate-800">
+                    <div className="text-slate-400">Firebase Project ID</div>
+                    <div className="text-white font-mono font-bold mt-1">nifty-cursor-gjlsj</div>
+                  </div>
+                  <div className="p-3.5 rounded-lg bg-slate-900 border border-slate-800">
+                    <div className="text-slate-400">Firestore Database ID</div>
+                    <div className="text-white font-mono font-bold mt-1 text-[11px] truncate">
+                      ai-studio-thetimetable-bbc64c6a-3ecd-43a7-992a-0f1184c7b5a4
+                    </div>
+                  </div>
+                  <div className="p-3.5 rounded-lg bg-slate-900 border border-slate-800">
+                    <div className="text-slate-400">Authorized Admin Email</div>
+                    <div className="text-amber-300 font-mono font-bold mt-1">ashivamone@gmail.com</div>
+                  </div>
+                  <div className="p-3.5 rounded-lg bg-slate-900 border border-slate-800">
+                    <div className="text-slate-400">Security Rules Status</div>
+                    <div className="text-emerald-400 font-bold mt-1 flex items-center gap-1.5">
+                      <CheckCircle2 size={14} /> Deployed & Hardened
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-lg bg-slate-900/60 border border-slate-800 text-xs space-y-2">
+                  <div className="font-semibold text-slate-200">Active Live Overrides Summary:</div>
+                  <div className="flex gap-4 text-slate-400">
+                    <div>
+                      Custom Timetables in Firestore:{' '}
+                      <strong className="text-white">{Object.keys(timetableOverrides || {}).length}</strong>
+                    </div>
+                    <div>
+                      Custom Course Syllabi:{' '}
+                      <strong className="text-white">{Object.keys(courseOverrides || {}).length}</strong>
+                    </div>
+                    <div>
+                      Announcements:{' '}
+                      <strong className="text-white">{(announcements || []).length}</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Modal Footer */}
+        <div className="px-5 py-3 border-t border-slate-800 bg-slate-950/60 flex items-center justify-between text-xs text-slate-500">
+          <div>Changes saved to Firestore reflect live across all connected student sessions.</div>
+          <button
+            onClick={onClose}
+            className="px-4 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-semibold transition"
+          >
+            Done
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};

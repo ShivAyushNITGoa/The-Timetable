@@ -62,6 +62,11 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
   useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(attendance));
+      window.dispatchEvent(
+        new CustomEvent('nit_goa_attendance_updated', {
+          detail: { storageKey: STORAGE_KEY, attendance },
+        })
+      );
     } catch (e) {
       console.error(e);
     }

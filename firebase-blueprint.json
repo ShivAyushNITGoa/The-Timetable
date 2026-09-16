@@ -1,0 +1,83 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile with role authentication information",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "description": "Email of the user" },
+        "displayName": { "type": "string", "description": "Display name of the user" },
+        "photoURL": { "type": "string", "description": "Avatar photo URL" },
+        "role": { "type": "string", "description": "User role: admin or student", "enum": ["admin", "student"] },
+        "lastLogin": { "type": "string", "description": "ISO timestamp of last login" },
+        "createdAt": { "type": "string", "description": "ISO timestamp of account creation" }
+      },
+      "required": ["email", "role"]
+    },
+    "TimetableOverride": {
+      "title": "TimetableOverride",
+      "description": "Admin overrides for a specific branch and semester timetable",
+      "type": "object",
+      "properties": {
+        "branchSemesterKey": { "type": "string", "description": "Branch and semester key identifier" },
+        "room": { "type": "string", "description": "Default classroom location" },
+        "scheduleData": { "type": "string", "description": "Serialized JSON string of customized schedule slots" },
+        "notes": { "type": "string", "description": "Custom administrator notes for this schedule" },
+        "updatedBy": { "type": "string", "description": "Admin email who performed the update" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp of last edit" }
+      },
+      "required": ["branchSemesterKey", "updatedBy", "updatedAt"]
+    },
+    "CourseOverride": {
+      "title": "CourseOverride",
+      "description": "Admin modifications to course syllabus, LTP, coordinator, and textbooks",
+      "type": "object",
+      "properties": {
+        "code": { "type": "string", "description": "Course code identifier" },
+        "name": { "type": "string", "description": "Course title" },
+        "credits": { "type": "number", "description": "Course credit count" },
+        "ltp": { "type": "string", "description": "Lecture-Tutorial-Practical format" },
+        "coordinator": { "type": "string", "description": "Faculty course coordinator" },
+        "room": { "type": "string", "description": "Classroom or laboratory location" },
+        "modules": { "type": "string", "description": "Serialized JSON list of syllabus modules" },
+        "textbooks": { "type": "string", "description": "Serialized JSON list of textbooks" },
+        "updatedBy": { "type": "string", "description": "Admin email who updated this course" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp of last edit" }
+      },
+      "required": ["code", "updatedBy", "updatedAt"]
+    },
+    "InstituteAnnouncement": {
+      "title": "InstituteAnnouncement",
+      "description": "Academic notices and broadcast announcements from administrators",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Announcement title" },
+        "content": { "type": "string", "description": "Announcement body message" },
+        "type": { "type": "string", "description": "Notice priority type", "enum": ["info", "warning", "success", "urgent"] },
+        "active": { "type": "boolean", "description": "Whether the announcement is active" },
+        "authorEmail": { "type": "string", "description": "Admin author email" },
+        "authorName": { "type": "string", "description": "Admin author display name" },
+        "createdAt": { "type": "string", "description": "ISO timestamp of creation" }
+      },
+      "required": ["title", "content", "type", "active", "authorEmail", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Stores user profile and role data"
+    },
+    "/timetable_overrides/{branchSemesterKey}": {
+      "schema": "TimetableOverride",
+      "description": "Stores admin schedule modifications per branch and semester"
+    },
+    "/course_overrides/{courseCode}": {
+      "schema": "CourseOverride",
+      "description": "Stores admin syllabus, LTP, and faculty updates per course"
+    },
+    "/institute_announcements/{announcementId}": {
+      "schema": "InstituteAnnouncement",
+      "description": "Stores institute academic announcements"
+    }
+  }
+}

@@ -16,9 +16,15 @@ import {
   Mail,
   Info,
   FileText,
+  ShieldCheck,
+  Cloud,
+  LogOut,
+  LogIn,
+  Sparkles,
 } from 'lucide-react';
 import { ActiveTab } from './Navbar';
 import { StudentProfile } from '../data/branchesData';
+import { User } from 'firebase/auth';
 
 interface MobileBottomNavProps {
   activeTab: ActiveTab;
@@ -29,6 +35,12 @@ interface MobileBottomNavProps {
   onExportCalendar: () => void;
   onOpenCustomizer?: () => void;
   onOpenPwaGuide?: () => void;
+  currentUser?: User | null;
+  isAdmin?: boolean;
+  onOpenAdmin?: () => void;
+  onSignIn?: () => void;
+  onSignOut?: () => void;
+  onOpenLanding?: () => void;
 }
 
 export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
@@ -40,6 +52,12 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
   onExportCalendar,
   onOpenCustomizer,
   onOpenPwaGuide,
+  currentUser,
+  isAdmin,
+  onOpenAdmin,
+  onSignIn,
+  onSignOut,
+  onOpenLanding,
 }) => {
   const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false);
 
@@ -99,6 +117,75 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                 <Building2 className="w-4 h-4" />
                 <span>Switch</span>
               </button>
+            </div>
+
+            {/* Admin Panel Button (Authorized for ashivamone@gmail.com) */}
+            {isAdmin && onOpenAdmin && (
+              <button
+                type="button"
+                onClick={() => {
+                  setIsMoreMenuOpen(false);
+                  onOpenAdmin();
+                }}
+                className="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-bold text-xs flex items-center justify-between shadow-lg shadow-amber-500/20 active:scale-[0.98] transition border border-amber-400/50"
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className="p-1.5 rounded-lg bg-slate-950 text-amber-400">
+                    <ShieldCheck className="w-4 h-4" />
+                  </div>
+                  <div className="text-left">
+                    <div className="font-black text-xs text-slate-950">Administrator Control Panel</div>
+                    <div className="text-[10px] text-slate-800 font-semibold">
+                      Live sync timetable slots, syllabi & notices
+                    </div>
+                  </div>
+                </div>
+                <ChevronRight className="w-4 h-4 text-slate-950 opacity-80" />
+              </button>
+            )}
+
+            {/* User Account & Cloud Sync Card */}
+            <div className="p-3.5 rounded-2xl bg-slate-800/80 border border-slate-700/70 flex items-center justify-between gap-3">
+              <div className="min-w-0">
+                <div className="flex items-center gap-1.5 text-amber-400 text-[11px] font-bold">
+                  <Cloud className="w-3.5 h-3.5" />
+                  <span>Cloud & Offline Progress Sync</span>
+                </div>
+                {currentUser ? (
+                  <div className="text-xs text-slate-200 mt-0.5 truncate font-medium">
+                    {currentUser.email}
+                  </div>
+                ) : (
+                  <div className="text-xs text-slate-400 mt-0.5">
+                    Sign in to backup progress
+                  </div>
+                )}
+              </div>
+              {currentUser ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMoreMenuOpen(false);
+                    onSignOut?.();
+                  }}
+                  className="min-h-[40px] px-3 py-1.5 rounded-xl bg-slate-700 hover:bg-slate-600 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition active:scale-95 shrink-0"
+                >
+                  <LogOut className="w-3.5 h-3.5" />
+                  <span>Sign Out</span>
+                </button>
+              ) : onSignIn ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMoreMenuOpen(false);
+                    onSignIn();
+                  }}
+                  className="min-h-[40px] px-3.5 py-1.5 rounded-xl bg-white text-slate-950 font-bold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-sm shrink-0"
+                >
+                  <LogIn className="w-3.5 h-3.5" />
+                  <span>Sign In</span>
+                </button>
+              ) : null}
             </div>
 
             {/* Quick Navigation: Primary Views */}
@@ -298,6 +385,20 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                 <Info className="w-4 h-4 text-cyan-400" />
                 <span>PWA App & Local Install Guide</span>
               </button>
+
+              {onOpenLanding && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMoreMenuOpen(false);
+                    onOpenLanding();
+                  }}
+                  className="w-full min-h-[44px] px-4 py-2.5 rounded-xl bg-indigo-500/15 hover:bg-indigo-500/25 text-indigo-300 border border-indigo-500/30 text-xs font-bold flex items-center justify-center gap-2 transition active:scale-95"
+                >
+                  <Sparkles className="w-4 h-4 text-indigo-400" />
+                  <span>About NIT Goa Portal & PWA</span>
+                </button>
+              )}
             </div>
 
             {/* Mobile Drawer Bottom Disclaimer & Developer */}

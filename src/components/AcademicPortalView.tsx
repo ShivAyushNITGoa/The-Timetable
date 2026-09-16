@@ -94,6 +94,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
   // Local storage management state
   const [storageStats, setStorageStats] = useState<LocalStorageStats>(() => getLocalStorageStats());
   const [storageMessage, setStorageMessage] = useState<string | null>(null);
+  const [confirmClearData, setConfirmClearData] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const refreshStorageStats = () => {
@@ -1140,17 +1141,26 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
               <button
                 type="button"
                 onClick={() => {
-                  if (window.confirm('Are you sure you want to clear all your local timetable customizations, attendance logs, and test records? This cannot be undone unless you have a backup.')) {
-                    clearAllPortalLocalData();
-                    setStorageMessage('All local data cleared successfully. Reloading view...');
-                    refreshStorageStats();
-                    setTimeout(() => window.location.reload(), 600);
+                  if (!confirmClearData) {
+                    setConfirmClearData(true);
+                    setStorageMessage('Click "Confirm Reset" again within 4 seconds to clear all local data.');
+                    setTimeout(() => setConfirmClearData(false), 4000);
+                    return;
                   }
+                  setConfirmClearData(false);
+                  clearAllPortalLocalData();
+                  setStorageMessage('All local data cleared successfully. Reloading view...');
+                  refreshStorageStats();
+                  setTimeout(() => window.location.reload(), 600);
                 }}
-                className="min-h-[44px] px-3 py-2 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/30 text-xs font-semibold flex items-center justify-center gap-1.5 transition active:scale-95 w-full sm:w-auto"
+                className={`min-h-[44px] px-3 py-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition active:scale-95 w-full sm:w-auto ${
+                  confirmClearData
+                    ? 'bg-rose-600 hover:bg-rose-500 text-white border border-rose-400 shadow-md shadow-rose-900/30 animate-pulse'
+                    : 'bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/30'
+                }`}
               >
-                <Trash2 className="w-3.5 h-3.5 text-rose-400" />
-                <span>Reset All Local Data</span>
+                <Trash2 className="w-3.5 h-3.5" />
+                <span>{confirmClearData ? 'Click Again to Confirm Reset' : 'Reset All Local Data'}</span>
               </button>
             </div>
           </div>
