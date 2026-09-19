@@ -230,14 +230,40 @@ export function getActiveBranchSemesterData(
   return BRANCH_SEMESTER_DATA['EEE-5'];
 }
 
-export function getAllKnownCourses(): Record<string, Course> {
-  const map: Record<string, Course> = { ...EEE5_COURSES };
+import { OFFICIAL_NIT_GOA_SYLLABI } from './officialSyllabusRegistry';
 
-  // Add 1st year courses
+export function getAllKnownCourses(): Record<string, Course> {
+  const map: Record<string, Course> = {};
+
+  // First seed from official syllabus registry so all courses from handbooks are available
+  Object.values(OFFICIAL_NIT_GOA_SYLLABI).forEach((syl) => {
+    map[syl.code] = {
+      code: syl.code,
+      name: syl.name,
+      credits: syl.credits || 3,
+      ltp: syl.ltp || '3-0-0',
+      coordinator: 'Department Faculty',
+      room: 'Main Academic Block',
+      category: syl.code.includes('L') ? 'lab' : syl.code.endsWith('M') ? 'elective' : 'core',
+      type: syl.code.includes('L') ? 'Practical' : syl.code.endsWith('M') ? 'Minor' : 'Theory',
+      shortName: syl.name.slice(0, 16),
+      examSlot: 'Slot A',
+      teachingSlot: 'A',
+      modules: syl.modules || [],
+      textbooks: syl.textbooks || [],
+      notes: `Official NIT Goa ${syl.branch} syllabus handbook`,
+      isMinor: syl.code.endsWith('M') || syl.branch === 'MINOR_CSE',
+    };
+  });
+
+  // Then layer 1st year cycle courses
   Object.assign(map, PHYSICS_CYCLE_COURSES);
   Object.assign(map, CHEMISTRY_CYCLE_COURSES);
 
-  // Add all semester courses
+  // Then layer EEE 5th semester courses
+  Object.assign(map, EEE5_COURSES);
+
+  // Then layer all branch semester timetable courses
   Object.values(BRANCH_SEMESTER_DATA).forEach((branchSem) => {
     if (branchSem && branchSem.courses) {
       Object.assign(map, branchSem.courses);

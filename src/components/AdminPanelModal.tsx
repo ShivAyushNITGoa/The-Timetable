@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   X,
   ShieldCheck,
@@ -17,6 +17,10 @@ import {
   RefreshCw,
   ExternalLink,
   Info,
+  Search,
+  Filter,
+  PlusCircle,
+  Sparkles,
 } from 'lucide-react';
 import { User } from 'firebase/auth';
 import {
@@ -86,10 +90,14 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
   });
   const [selectedDay, setSelectedDay] = useState<DayOfWeek>('Monday');
 
-  // Syllabus Editor State
+  // Syllabus & Course Manager State
   const [allCourses, setAllCourses] = useState<Record<string, Course>>({});
   const [selectedCourseCode, setSelectedCourseCode] = useState<string>('CS200');
   const [editingCourse, setEditingCourse] = useState<Partial<Course>>({});
+  const [courseSearchQuery, setCourseSearchQuery] = useState('');
+  const [courseDeptFilter, setCourseDeptFilter] = useState<string>('ALL');
+  const [courseCategoryFilter, setCourseCategoryFilter] = useState<string>('ALL');
+  const [confirmDeleteCourse, setConfirmDeleteCourse] = useState(false);
   const [newModuleText, setNewModuleText] = useState('');
   const [newBookText, setNewBookText] = useState('');
 
@@ -246,18 +254,94 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
     }
   };
 
-  // Handlers for Course Syllabus Editor
+  // Filtered courses for management catalog
+  const filteredCourseCodes = useMemo(() => {
+    const query = courseSearchQuery.trim().toLowerCase();
+    return Object.keys(allCourses)
+      .filter((code) => {
+        const c = allCourses[code];
+        if (!c) return false;
+        // Search term matching
+        if (query) {
+          const matchCode = code.toLowerCase().includes(query);
+          const matchName = c.name ? c.name.toLowerCase().includes(query) : false;
+          const matchCoord = c.coordinator ? c.coordinator.toLowerCase().includes(query) : false;
+          if (!matchCode && !matchName && !matchCoord) return false;
+        }
+        // Category matching
+        if (courseCategoryFilter !== 'ALL' && c.category !== courseCategoryFilter) {
+          return false;
+        }
+        // Department / Branch matching
+        if (courseDeptFilter !== 'ALL') {
+          if (courseDeptFilter === 'MINOR') {
+            if (!c.isMinor && !code.endsWith('M')) return false;
+          } else if (courseDeptFilter === 'FIRST_YEAR') {
+            const firstYearCodes = [
+              'MA100', 'PH100', 'CY100', 'ME100', 'EE100', 'CS100', 'HS100',
+              'MA150', 'PH150', 'CY150', 'ME150', 'EE150', 'CS150', 'HS150',
+            ];
+            if (!firstYearCodes.includes(code)) return false;
+          } else if (!code.startsWith(courseDeptFilter)) {
+            return false;
+          }
+        }
+        return true;
+      })
+      .sort();
+  }, [allCourses, courseSearchQuery, courseDeptFilter, courseCategoryFilter]);
+
+  // Handlers for Course Management & Syllabus Editor
+  const handleCreateNewCourse = () => {
+    const prefix = courseDeptFilter !== 'ALL' && courseDeptFilter !== 'FIRST_YEAR' && courseDeptFilter !== 'MINOR'
+      ? courseDeptFilter
+      : 'CS';
+    const newCode = `${prefix}${Math.floor(200 + Math.random() * 600)}`;
+    const newCourse: Course = {
+      code: newCode,
+      name: 'New Academic Course',
+      shortName: 'New Course',
+      credits: 3,
+      ltp: '3-0-0',
+      coordinator: 'Department Faculty',
+      room: 'Room 18',
+      category: 'core',
+      type: 'Theory',
+      teachingSlot: 'A',
+      examSlot: 'Slot A',
+      modules: ['Module 1: Fundamental Principles & Core Concepts'],
+      textbooks: ['Standard Course Reference Book, 2024 Edition'],
+      notes: 'Added via Academic Administrator Console',
+      isMinor: false,
+    };
+    setAllCourses((prev) => ({ ...prev, [newCode]: newCourse }));
+    setSelectedCourseCode(newCode);
+    setEditingCourse(newCourse);
+    setSaveStatus(`Created new course template (${newCode}). Fill in course details and click "Save Course to Cloud".`);
+    setTimeout(() => setSaveStatus(null), 5000);
+  };
+
   const handleSaveCourse = async () => {
     if (!currentUser?.email || !editingCourse.code) return;
     try {
       setIsSaving(true);
       setSaveStatus(null);
-      await saveCourseOverride(editingCourse as Course, currentUser.email);
+      const cleanCode = editingCourse.code.trim().toUpperCase();
+      const courseToSave: Course = {
+        ...(editingCourse as Course),
+        code: cleanCode,
+      };
+      await saveCourseOverride(courseToSave, currentUser.email);
+      setAllCourses((prev) => ({
+        ...prev,
+        [cleanCode]: courseToSave,
+      }));
       onOverridesUpdated?.();
-      if (onCoursesUpdated && editingCourse.code) {
-        onCoursesUpdated(editingCourse.code, editingCourse);
+      if (onCoursesUpdated) {
+        onCoursesUpdated(cleanCode, courseToSave);
       }
-      setSaveStatus(`Course ${editingCourse.code} saved to Firestore successfully!`);
+      setSelectedCourseCode(cleanCode);
+      setSaveStatus(`Course ${cleanCode} saved to Firestore successfully!`);
       setTimeout(() => setSaveStatus(null), 4000);
     } catch (err: any) {
       setSaveStatus(`Failed to save course: ${err.message}`);
@@ -270,7 +354,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
     if (!editingCourse.code) return;
     if (!confirmResetCourse) {
       setConfirmResetCourse(true);
-      setSaveStatus(`Click Reset again within 4 seconds to confirm resetting ${editingCourse.code}.`);
+      setSaveStatus(`Click Reset again within 4 seconds to revert ${editingCourse.code} to baseline.`);
       setTimeout(() => setConfirmResetCourse(false), 4000);
       return;
     }
@@ -283,10 +367,42 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
       if (base) {
         setEditingCourse(JSON.parse(JSON.stringify(base)));
       }
-      setSaveStatus(`Reverted ${editingCourse.code} to default syllabus.`);
+      setSaveStatus(`Reverted ${editingCourse.code} to master curriculum syllabus.`);
       setTimeout(() => setSaveStatus(null), 4000);
     } catch (err: any) {
       setSaveStatus(`Revert failed: ${err.message}`);
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const handleDeleteCourse = async () => {
+    if (!editingCourse.code) return;
+    const targetCode = editingCourse.code;
+    if (!confirmDeleteCourse) {
+      setConfirmDeleteCourse(true);
+      setSaveStatus(`Click Delete again within 4s to confirm removing ${targetCode} from catalog.`);
+      setTimeout(() => setConfirmDeleteCourse(false), 4000);
+      return;
+    }
+    setConfirmDeleteCourse(false);
+    try {
+      setIsSaving(true);
+      await resetCourseOverride(targetCode);
+      setAllCourses((prev) => {
+        const copy = { ...prev };
+        delete copy[targetCode];
+        return copy;
+      });
+      onOverridesUpdated?.();
+      setSaveStatus(`Course ${targetCode} removed from active catalog.`);
+      const remaining = Object.keys(allCourses).filter((c) => c !== targetCode);
+      if (remaining.length > 0) {
+        setSelectedCourseCode(remaining[0]);
+      }
+      setTimeout(() => setSaveStatus(null), 4000);
+    } catch (err: any) {
+      setSaveStatus(`Delete failed: ${err.message}`);
     } finally {
       setIsSaving(false);
     }
@@ -612,44 +728,157 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
             </div>
           )}
 
-          {/* TAB 2: COURSE SYLLABUS & LTP */}
+          {/* TAB 2: COURSE MANAGEMENT & SYLLABUS */}
           {activeTab === 'syllabus' && (
             <div className="space-y-6">
-              {/* Course Selection */}
-              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
-                <div className="w-full sm:w-80">
-                  <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">
-                    Select Course Code
-                  </label>
+              {/* Course Catalog Search & Filter Controls */}
+              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-3">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+                  {/* Search Bar */}
+                  <div className="relative flex-1">
+                    <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                    <input
+                      type="text"
+                      value={courseSearchQuery}
+                      onChange={(e) => setCourseSearchQuery(e.target.value)}
+                      placeholder="Search by code (e.g. CS200, EE301), title, or faculty..."
+                      className="w-full bg-slate-900 border border-slate-700 rounded-lg pl-9 pr-8 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                    />
+                    {courseSearchQuery && (
+                      <button
+                        onClick={() => setCourseSearchQuery('')}
+                        className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+                      >
+                        <X size={13} />
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Actions & Course Count */}
+                  <div className="flex items-center gap-2 shrink-0">
+                    <span className="text-[11px] font-mono text-slate-400 px-2.5 py-1 rounded bg-slate-900 border border-slate-800">
+                      {filteredCourseCodes.length} / {Object.keys(allCourses).length} courses
+                    </span>
+                    <button
+                      onClick={handleCreateNewCourse}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition shadow"
+                    >
+                      <PlusCircle size={14} />
+                      New Course
+                    </button>
+                  </div>
+                </div>
+
+                {/* Filter Pills */}
+                <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-slate-800/80">
+                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1 mr-1">
+                    <Filter size={12} /> Dept:
+                  </span>
+                  {[
+                    { id: 'ALL', label: 'All Depts' },
+                    { id: 'CS', label: 'CSE' },
+                    { id: 'EC', label: 'ECE' },
+                    { id: 'EE', label: 'EEE' },
+                    { id: 'ME', label: 'ME' },
+                    { id: 'CV', label: 'Civil' },
+                    { id: 'FIRST_YEAR', label: '1st Year Common' },
+                    { id: 'MINOR', label: 'Minor CSE' },
+                  ].map((dept) => (
+                    <button
+                      key={dept.id}
+                      onClick={() => setCourseDeptFilter(dept.id)}
+                      className={`px-2.5 py-1 rounded text-[11px] font-medium transition ${
+                        courseDeptFilter === dept.id
+                          ? 'bg-indigo-600 text-white shadow-sm'
+                          : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800'
+                      }`}
+                    >
+                      {dept.label}
+                    </button>
+                  ))}
+
+                  <div className="h-4 w-[1px] bg-slate-800 mx-1 hidden sm:block" />
+
+                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider ml-1">Type:</span>
+                  {[
+                    { id: 'ALL', label: 'All' },
+                    { id: 'core', label: 'Core' },
+                    { id: 'elective', label: 'Elective' },
+                    { id: 'lab', label: 'Lab' },
+                  ].map((cat) => (
+                    <button
+                      key={cat.id}
+                      onClick={() => setCourseCategoryFilter(cat.id)}
+                      className={`px-2 py-0.5 rounded text-[10px] uppercase font-semibold transition ${
+                        courseCategoryFilter === cat.id
+                          ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                          : 'bg-slate-900 text-slate-400 hover:text-white'
+                      }`}
+                    >
+                      {cat.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Course Selector & Save / Revert Actions */}
+              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+                <div className="flex-1">
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                      Selected Course to Manage
+                    </label>
+                    {courseOverrides && courseOverrides[selectedCourseCode] && (
+                      <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold flex items-center gap-1">
+                        <Sparkles size={10} /> Active Cloud Override
+                      </span>
+                    )}
+                  </div>
                   <select
                     value={selectedCourseCode}
                     onChange={(e) => setSelectedCourseCode(e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500 font-mono"
                   >
-                    {Object.keys(allCourses).sort().map((code) => (
-                      <option key={code} value={code}>
-                        {code} - {allCourses[code].name.slice(0, 40)}
-                      </option>
-                    ))}
+                    {filteredCourseCodes.length === 0 ? (
+                      <option value="">No courses matching current filters</option>
+                    ) : (
+                      filteredCourseCodes.map((code) => {
+                        const c = allCourses[code];
+                        const isOverridden = courseOverrides && courseOverrides[code];
+                        return (
+                          <option key={code} value={code}>
+                            {code} - {c?.name ? c.name.slice(0, 48) : 'Course'} {isOverridden ? '⚡ (Overridden)' : ''}
+                          </option>
+                        );
+                      })
+                    )}
                   </select>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 pt-2 md:pt-4">
                   <button
                     onClick={handleSaveCourse}
-                    disabled={isSaving}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition shadow"
+                    disabled={isSaving || !editingCourse.code}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white text-xs font-bold transition shadow"
                   >
                     <Save size={14} />
-                    {isSaving ? 'Saving...' : 'Save Syllabus to Cloud'}
+                    {isSaving ? 'Saving...' : 'Save Course to Cloud'}
                   </button>
                   <button
                     onClick={handleResetCourse}
-                    disabled={isSaving}
-                    title="Revert to default syllabus"
+                    disabled={isSaving || !editingCourse.code}
+                    title="Revert to default curriculum syllabus"
                     className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition"
                   >
                     <RotateCcw size={14} />
+                  </button>
+                  <button
+                    onClick={handleDeleteCourse}
+                    disabled={isSaving || !editingCourse.code}
+                    title="Delete course from catalog"
+                    className="p-2 rounded-lg bg-slate-800 hover:bg-rose-500/20 text-slate-400 hover:text-rose-400 text-xs transition"
+                  >
+                    <Trash2 size={14} />
                   </button>
                 </div>
               </div>
@@ -661,9 +890,34 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                   <input
                     type="text"
                     value={editingCourse.code || ''}
-                    onChange={(e) => setEditingCourse({ ...editingCourse, code: e.target.value })}
+                    onChange={(e) => setEditingCourse({ ...editingCourse, code: e.target.value.toUpperCase() })}
                     className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-amber-300 font-mono font-bold"
+                    placeholder="e.g. CS200, EE301"
                   />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Course Title / Name</label>
+                  <input
+                    type="text"
+                    value={editingCourse.name || ''}
+                    onChange={(e) => setEditingCourse({ ...editingCourse, name: e.target.value })}
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white font-semibold"
+                    placeholder="e.g. Data Structures and Algorithms"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Category</label>
+                  <select
+                    value={editingCourse.category || 'core'}
+                    onChange={(e) => setEditingCourse({ ...editingCourse, category: e.target.value as any })}
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white"
+                  >
+                    <option value="core">Core</option>
+                    <option value="elective">Elective</option>
+                    <option value="lab">Lab</option>
+                  </select>
                 </div>
 
                 <div>
@@ -677,7 +931,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">LTP Ratio</label>
+                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">L-T-P Ratio</label>
                   <input
                     type="text"
                     value={editingCourse.ltp || ''}
@@ -688,34 +942,65 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Classroom / Lab</label>
+                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Course Type</label>
+                  <select
+                    value={editingCourse.type || 'Theory'}
+                    onChange={(e) => setEditingCourse({ ...editingCourse, type: e.target.value as any })}
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white"
+                  >
+                    <option value="Theory">Theory</option>
+                    <option value="Practical">Practical (Lab)</option>
+                    <option value="Tutorial">Tutorial</option>
+                    <option value="Elective">Elective</option>
+                    <option value="Open Elective">Open Elective</option>
+                    <option value="Minor">Minor</option>
+                    <option value="MLC">MLC</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Teaching Slot</label>
+                  <input
+                    type="text"
+                    value={editingCourse.teachingSlot || ''}
+                    onChange={(e) => setEditingCourse({ ...editingCourse, teachingSlot: e.target.value })}
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-indigo-300 font-mono font-bold"
+                    placeholder="Slot A, Slot B, Lab..."
+                  />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Classroom / Lab Location</label>
                   <input
                     type="text"
                     value={editingCourse.room || ''}
                     onChange={(e) => setEditingCourse({ ...editingCourse, room: e.target.value })}
                     className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white"
-                    placeholder="Room 18, Room 8/9..."
+                    placeholder="Room 18, Room 8/9, Networks Lab..."
                   />
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Course Title / Name</label>
-                  <input
-                    type="text"
-                    value={editingCourse.name || ''}
-                    onChange={(e) => setEditingCourse({ ...editingCourse, name: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white font-semibold"
-                  />
-                </div>
-
-                <div className="sm:col-span-2">
-                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Course Coordinator</label>
+                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Course Coordinator / Faculty</label>
                   <input
                     type="text"
                     value={editingCourse.coordinator || ''}
                     onChange={(e) => setEditingCourse({ ...editingCourse, coordinator: e.target.value })}
                     className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white"
+                    placeholder="Faculty Name(s)"
                   />
+                </div>
+
+                <div className="sm:col-span-4 flex items-center gap-2 pt-1">
+                  <label className="flex items-center gap-2 cursor-pointer text-xs text-slate-300">
+                    <input
+                      type="checkbox"
+                      checked={!!editingCourse.isMinor}
+                      onChange={(e) => setEditingCourse({ ...editingCourse, isMinor: e.target.checked })}
+                      className="rounded border-slate-700 bg-slate-900 text-indigo-600 focus:ring-indigo-500"
+                    />
+                    <span>Mark as Minor Degree Specialization Course (Minor in CSE)</span>
+                  </label>
                 </div>
 
                 <div className="sm:col-span-4">
@@ -725,6 +1010,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                     value={editingCourse.notes || ''}
                     onChange={(e) => setEditingCourse({ ...editingCourse, notes: e.target.value })}
                     className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-300"
+                    placeholder="Overview, prerequisites, or official curriculum handbook notes..."
                   />
                 </div>
               </div>

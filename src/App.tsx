@@ -919,6 +919,8 @@ export default function App() {
       <CourseModal
         courseCode={activeModalCourse}
         courses={effectiveCourses}
+        branch={safeProfile.branch}
+        semester={safeProfile.semester}
         onClose={() => setActiveModalCourse(null)}
         onTrackAttendance={() => {
           setActiveTab('attendance');

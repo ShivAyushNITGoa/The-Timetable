@@ -23,7 +23,9 @@ import {
   Award,
   Clock,
   Send,
+  Globe,
 } from 'lucide-react';
+import { StudentToolsHub } from './StudentToolsHub';
 import {
   NIT_GOA_RESOURCES,
   ResourceDocument,
@@ -51,7 +53,7 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
   scheduleOverride = null,
   tests = [],
 }) => {
-  const [viewMode, setViewMode] = useState<'institute' | 'classified'>('institute');
+  const [viewMode, setViewMode] = useState<'institute' | 'classified' | 'tools'>('institute');
   const [selectedCategory, setSelectedCategory] = useState<DocumentCategory | 'ALL'>('ALL');
   const [selectedBranch, setSelectedBranch] = useState<BranchFilter>('ALL');
   const [selectedYear, setSelectedYear] = useState<YearFilter>('ALL');
@@ -199,34 +201,50 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
         </div>
       </div>
 
-      {/* Primary Section Switcher: Authentic Institute Files vs. Classify My Webapp Data */}
-      <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-2 sm:p-2.5 flex flex-col sm:flex-row items-center gap-2 shadow-lg">
+      {/* Primary Section Switcher: Authentic Institute Files vs. Classify My Webapp Data vs External Tools */}
+      <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-2 sm:p-2.5 flex flex-col md:flex-row items-stretch gap-2 shadow-lg">
         <button
           type="button"
           onClick={() => setViewMode('institute')}
-          className={`w-full sm:flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2.5 transition active:scale-[0.98] ${
+          className={`w-full md:flex-1 py-3 px-3.5 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition active:scale-[0.98] ${
             viewMode === 'institute'
               ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20 font-black'
               : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
           }`}
         >
-          <Building2 className="w-4 h-4" />
-          <span>Authentic NIT Goa Files & Syllabi ({NIT_GOA_RESOURCES.length})</span>
+          <Building2 className="w-4 h-4 shrink-0" />
+          <span>NIT Goa Syllabi ({NIT_GOA_RESOURCES.length})</span>
         </button>
 
         <button
           type="button"
           onClick={() => setViewMode('classified')}
-          className={`w-full sm:flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2.5 transition active:scale-[0.98] ${
+          className={`w-full md:flex-1 py-3 px-3.5 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition active:scale-[0.98] ${
             viewMode === 'classified'
               ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20 font-black'
               : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
           }`}
         >
-          <FileCheck2 className="w-4 h-4" />
-          <span>Classify My Webapp Data into Official NIT Goa Documents ({classifiedDocs.length})</span>
-          <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-mono border border-emerald-500/30">
+          <FileCheck2 className="w-4 h-4 shrink-0" />
+          <span>Classified Dossiers ({classifiedDocs.length})</span>
+          <span className="px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-mono border border-emerald-500/30">
             Live
+          </span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setViewMode('tools')}
+          className={`w-full md:flex-1 py-3 px-3.5 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition active:scale-[0.98] ${
+            viewMode === 'tools'
+              ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20 font-black'
+              : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+          }`}
+        >
+          <Globe className="w-4 h-4 shrink-0" />
+          <span>Student Tools & Help</span>
+          <span className="px-1.5 py-0.2 rounded-full bg-cyan-500/20 text-cyan-300 text-[10px] font-mono border border-cyan-500/30">
+            35+ Sites
           </span>
         </button>
       </div>
@@ -839,9 +857,9 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                     <button
                       type="button"
                       onClick={() => setActiveDocument(doc)}
-                      className="flex-1 min-h-[40px] px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95 shadow-md"
+                      className="flex-1 min-h-[40px] px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95 shadow-md whitespace-nowrap"
                     >
-                      <Eye className="w-4 h-4" />
+                      <Eye className="w-4 h-4 shrink-0" />
                       <span>Read Embedded PDF</span>
                     </button>
 
@@ -849,10 +867,10 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                       href={doc.externalOfficialUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center border border-slate-700 transition"
+                      className="w-10 h-10 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center border border-slate-700 transition shrink-0"
                       title="Open official PDF on NIT Goa website"
                     >
-                      <ExternalLink className="w-4 h-4" />
+                      <ExternalLink className="w-4 h-4 shrink-0" />
                     </a>
                   </div>
                 </div>
@@ -882,6 +900,18 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
               </button>
             </div>
           )}
+        </div>
+      )}
+
+      {/* ========================================================================= */}
+      {/* MODE C: EXTERNAL STUDENT TOOLS, SITES & HELP                              */}
+      {/* ========================================================================= */}
+      {viewMode === 'tools' && (
+        <div className="space-y-6 animate-in fade-in duration-200" id="resources-student-tools-tab">
+          <StudentToolsHub
+            branch={safeProfile.branch}
+            semester={safeProfile.semester}
+          />
         </div>
       )}
 

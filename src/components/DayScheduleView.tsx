@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { TimeSlot, Course, DayOfWeek } from '../data/timetableData';
 import { AcademicTest } from '../data/testTypes';
 import {
@@ -9,12 +9,19 @@ import {
   AlertCircle,
   Coffee,
   Check,
+  X,
   Beaker,
   ChevronRight,
   ChevronLeft,
   Edit3,
   CalendarCheck,
   Plus,
+  Bell,
+  BellRing,
+  Calendar,
+  CheckSquare,
+  CheckCircle2,
+  TrendingUp,
 } from 'lucide-react';
 
 interface DayScheduleViewProps {
@@ -92,10 +99,118 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
     return currentTimeMinutes >= endTotal;
   };
 
+  // Attendance sync
+  const safeBranch = (branch || 'EEE').toLowerCase();
+  const safeSemester = semester ?? 5;
+  const attendanceStorageKey = `nit_goa_attendance_${safeBranch}_sem${safeSemester}`;
+
+  const [attendanceRecords, setAttendanceRecords] = useState<Record<string, { attended: number; total: number }>>(() => {
+    try {
+      const saved = localStorage.getItem(attendanceStorageKey);
+      return saved ? JSON.parse(saved) : {};
+    } catch {
+      return {};
+    }
+  });
+
+  useEffect(() => {
+    const handleAttendanceUpdate = (e: any) => {
+      if (e.detail?.storageKey === attendanceStorageKey && e.detail?.attendance) {
+        setAttendanceRecords(e.detail.attendance);
+      }
+    };
+    window.addEventListener('nit_goa_attendance_updated', handleAttendanceUpdate);
+    return () => window.removeEventListener('nit_goa_attendance_updated', handleAttendanceUpdate);
+  }, [attendanceStorageKey]);
+
+  const handleLogAttendance = (targetCourseCode: string, isPresent: boolean, e: React.MouseEvent) => {
+    e.stopPropagation();
+    const current = attendanceRecords[targetCourseCode] || { attended: 0, total: 0 };
+    const updated = {
+      ...attendanceRecords,
+      [targetCourseCode]: {
+        attended: isPresent ? current.attended + 1 : current.attended,
+        total: current.total + 1,
+      },
+    };
+    setAttendanceRecords(updated);
+    try {
+      localStorage.setItem(attendanceStorageKey, JSON.stringify(updated));
+      window.dispatchEvent(
+        new CustomEvent('nit_goa_attendance_updated', {
+          detail: { storageKey: attendanceStorageKey, attendance: updated },
+        })
+      );
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const [notificationActive, setNotificationActive] = useState(() => {
+    try {
+      return 'Notification' in window && Notification.permission === 'granted';
+    } catch {
+      return false;
+    }
+  });
+
+  const handleRequestNotifications = async () => {
+    if (!('Notification' in window)) return;
+    if (Notification.permission === 'granted') {
+      new Notification('NIT Goa Timetable Reminders', {
+        body: 'Timetable alerts are active for all scheduled sessions.',
+        icon: '/favicon.svg',
+      });
+      setNotificationActive(true);
+    } else if (Notification.permission !== 'denied') {
+      const perm = await Notification.requestPermission();
+      if (perm === 'granted') {
+        setNotificationActive(true);
+        new Notification('NIT Goa Timetable Reminders', {
+          body: 'Class alerts enabled! You will receive timely reminders before lectures.',
+          icon: '/favicon.svg',
+        });
+      }
+    }
+  };
+
   // Day summary calculations
   const totalClasses = slots.filter((s) => !s.isLunch && !s.isFree).length;
   const hasMinor = slots.some((s) => s.isMinor || s.courseCode === 'CS300M');
   const hasLab = slots.some((s) => s.isLab);
+
+  // Active session and upcoming session calculations
+  const activeSlot = isSelectedDayToday
+    ? slots.find((s) => !s.isLunch && !s.isFree && isSlotActive(s.startTime, s.endTime))
+    : null;
+
+  const nextSlot = isSelectedDayToday
+    ? slots.find((s) => {
+        if (s.isLunch || s.isFree) return false;
+        const [sh, sm] = s.startTime.split(':').map(Number);
+        return sh * 60 + sm > currentTimeMinutes;
+      })
+    : null;
+
+  const minutesUntilNext = nextSlot
+    ? (() => {
+        const [sh, sm] = nextSlot.startTime.split(':').map(Number);
+        return sh * 60 + sm - currentTimeMinutes;
+      })()
+    : null;
+
+  const minutesRemainingInActive = activeSlot
+    ? (() => {
+        const [eh, em] = activeSlot.endTime.split(':').map(Number);
+        return eh * 60 + em - currentTimeMinutes;
+      })()
+    : null;
+
+  const completedClassesToday = isSelectedDayToday
+    ? slots.filter((s) => !s.isLunch && !s.isFree && isSlotPassed(s.endTime)).length
+    : 0;
+
+  const freeSlots = slots.filter((s) => s.isFree || s.isLunch);
 
   // Check if any scheduled tests fall on the current calendar date if today is selected
   const todayDateStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
@@ -193,6 +308,127 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
               <ChevronRight className="w-3.5 h-3.5" />
             </button>
           )}
+        </div>
+      )}
+
+      {/* Jump to Today banner when browsing another day */}
+      {!isSelectedDayToday && (
+        <div className="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <Calendar className="w-4 h-4 text-amber-400 shrink-0" />
+            <span className="text-xs text-slate-300">
+              Viewing <strong>{selectedDay}</strong>'s schedule. Today is <strong>{currentDayName}</strong>.
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={() => onSelectDay(currentDayName as DayOfWeek)}
+            className="min-h-[40px] px-3.5 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-sm shrink-0"
+          >
+            <span>Jump to Today ({currentDayName.slice(0, 3)})</span>
+            <ChevronRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      )}
+
+      {/* Live Academic Status & Next Class Countdown Hero */}
+      {isSelectedDayToday && (
+        <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800/90 to-slate-900 border border-slate-700/80 shadow-md space-y-3.5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div
+                className={`w-11 h-11 rounded-xl flex items-center justify-center font-bold shrink-0 ${
+                  activeSlot
+                    ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 animate-pulse'
+                    : 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
+                }`}
+              >
+                {activeSlot ? <Clock className="w-5 h-5 text-amber-400" /> : <TrendingUp className="w-5 h-5 text-indigo-400" />}
+              </div>
+              <div>
+                <div className="text-[11px] font-bold uppercase tracking-wider flex items-center gap-2">
+                  {activeSlot ? (
+                    <span className="text-amber-400 flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping inline-block" />
+                      Class Happening Right Now
+                    </span>
+                  ) : nextSlot ? (
+                    <span className="text-cyan-300 flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5 text-cyan-400" />
+                      Next Upcoming Session
+                    </span>
+                  ) : (
+                    <span className="text-emerald-400 flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                      All Scheduled Lectures Done
+                    </span>
+                  )}
+                </div>
+                <div className="text-sm sm:text-base font-bold text-white mt-0.5">
+                  {activeSlot ? (
+                    <span>
+                      {courses[activeSlot.courseCode]?.name || activeSlot.slotName} ({activeSlot.courseCode}) •{' '}
+                      {minutesRemainingInActive !== null && minutesRemainingInActive > 0
+                        ? `${minutesRemainingInActive} mins remaining`
+                        : 'Concluding now'}
+                    </span>
+                  ) : nextSlot ? (
+                    <span>
+                      {courses[nextSlot.courseCode]?.name || nextSlot.slotName} ({nextSlot.courseCode}) at {nextSlot.startTime}{' '}
+                      {minutesUntilNext !== null && (
+                        <span className="text-amber-300 font-semibold">(Starts in {minutesUntilNext} mins)</span>
+                      )}
+                    </span>
+                  ) : (
+                    <span>All classes for today have concluded! You are free for the day.</span>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Class Notification Toggle */}
+            <div className="flex items-center gap-2 self-start sm:self-center">
+              <button
+                type="button"
+                onClick={handleRequestNotifications}
+                className={`min-h-[38px] px-3 py-1.5 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition active:scale-95 ${
+                  notificationActive
+                    ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-300'
+                    : 'bg-slate-800 hover:bg-slate-700 border-slate-700 text-slate-300'
+                }`}
+                title="Enable web alerts before your classes"
+              >
+                {notificationActive ? (
+                  <BellRing className="w-3.5 h-3.5 text-emerald-400" />
+                ) : (
+                  <Bell className="w-3.5 h-3.5 text-slate-400" />
+                )}
+                <span>{notificationActive ? 'Class Alerts Active' : 'Enable Class Alerts'}</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Daily Progress & Breaks */}
+          <div className="pt-2.5 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs text-slate-400">
+            <div className="flex items-center gap-2.5">
+              <span className="text-slate-300 font-medium">Daily Progress:</span>
+              <span className="font-bold text-white">
+                {completedClassesToday} of {totalClasses} classes completed
+              </span>
+              <div className="w-24 h-2 bg-slate-800 rounded-full overflow-hidden inline-block">
+                <div
+                  className="h-full bg-gradient-to-r from-amber-500 to-emerald-400 transition-all duration-500"
+                  style={{ width: `${totalClasses > 0 ? (completedClassesToday / totalClasses) * 100 : 0}%` }}
+                />
+              </div>
+            </div>
+            {freeSlots.length > 0 && (
+              <div className="flex items-center gap-1.5 text-[11px] text-slate-400">
+                <Coffee className="w-3.5 h-3.5 text-amber-400/90" />
+                <span>Free/Break slots: {freeSlots.map((s) => s.startTime + '–' + s.endTime).join(', ')}</span>
+              </div>
+            )}
+          </div>
         </div>
       )}
 
@@ -429,6 +665,53 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                   </div>
                   <ChevronRight className="w-5 h-5 text-slate-500 group-hover:text-white transition shrink-0 self-center" />
                 </div>
+
+                {/* Inline Attendance Action & Status Bar */}
+                {chosenOption?.code && (
+                  <div
+                    className="mt-3.5 pt-3 border-t border-slate-700/60 flex items-center justify-between gap-2 flex-wrap"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <div className="flex items-center gap-2">
+                      <CheckSquare className="w-3.5 h-3.5 text-amber-400" />
+                      <span className="text-xs text-slate-300 font-medium">Attendance:</span>
+                      {(() => {
+                        const rec = attendanceRecords[chosenOption.code] || { attended: 0, total: 0 };
+                        const pct = rec.total > 0 ? Math.round((rec.attended / rec.total) * 100) : null;
+                        return (
+                          <span
+                            className={`text-xs font-bold font-mono ${
+                              pct === null ? 'text-slate-400' : pct >= 75 ? 'text-emerald-400' : 'text-rose-400'
+                            }`}
+                          >
+                            {pct !== null ? `${pct}% (${rec.attended}/${rec.total})` : 'Not logged yet'}
+                          </span>
+                        );
+                      })()}
+                    </div>
+
+                    <div className="flex items-center gap-1.5">
+                      <button
+                        type="button"
+                        onClick={(e) => handleLogAttendance(chosenOption.code, true, e)}
+                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 active:bg-emerald-500/40 text-emerald-300 border border-emerald-500/40 text-xs font-bold flex items-center gap-1 transition active:scale-95"
+                        title={`Mark +1 Present for ${chosenOption.code}`}
+                      >
+                        <Check className="w-3 h-3 text-emerald-400" />
+                        <span>+ Present</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => handleLogAttendance(chosenOption.code, false, e)}
+                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 active:bg-rose-500/40 text-rose-300 border border-rose-500/40 text-xs font-bold flex items-center gap-1 transition active:scale-95"
+                        title={`Mark +1 Absent for ${chosenOption.code}`}
+                      >
+                        <X className="w-3 h-3 text-rose-400" />
+                        <span>+ Absent</span>
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             );
           }
@@ -531,6 +814,53 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                   </div>
                   <ChevronRight className="w-5 h-5 text-slate-500 group-hover:text-white transition shrink-0 self-center" />
                 </div>
+
+                {/* Inline Attendance Action & Status Bar */}
+                {currentLab?.code && (
+                  <div
+                    className="mt-3.5 pt-3 border-t border-slate-700/60 flex items-center justify-between gap-2 flex-wrap"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <div className="flex items-center gap-2">
+                      <CheckSquare className="w-3.5 h-3.5 text-emerald-400" />
+                      <span className="text-xs text-slate-300 font-medium">Lab Attendance:</span>
+                      {(() => {
+                        const rec = attendanceRecords[currentLab.code] || { attended: 0, total: 0 };
+                        const pct = rec.total > 0 ? Math.round((rec.attended / rec.total) * 100) : null;
+                        return (
+                          <span
+                            className={`text-xs font-bold font-mono ${
+                              pct === null ? 'text-slate-400' : pct >= 75 ? 'text-emerald-400' : 'text-rose-400'
+                            }`}
+                          >
+                            {pct !== null ? `${pct}% (${rec.attended}/${rec.total})` : 'Not logged yet'}
+                          </span>
+                        );
+                      })()}
+                    </div>
+
+                    <div className="flex items-center gap-1.5">
+                      <button
+                        type="button"
+                        onClick={(e) => handleLogAttendance(currentLab.code, true, e)}
+                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 active:bg-emerald-500/40 text-emerald-300 border border-emerald-500/40 text-xs font-bold flex items-center gap-1 transition active:scale-95"
+                        title={`Mark +1 Present for ${currentLab.code}`}
+                      >
+                        <Check className="w-3 h-3 text-emerald-400" />
+                        <span>+ Present</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => handleLogAttendance(currentLab.code, false, e)}
+                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 active:bg-rose-500/40 text-rose-300 border border-rose-500/40 text-xs font-bold flex items-center gap-1 transition active:scale-95"
+                        title={`Mark +1 Absent for ${currentLab.code}`}
+                      >
+                        <X className="w-3 h-3 text-rose-400" />
+                        <span>+ Absent</span>
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             );
           }
@@ -653,6 +983,54 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
                 <ChevronRight className="w-5 h-5 text-slate-500 group-hover:text-white transition shrink-0 self-center" />
               </div>
+
+              {/* Inline Attendance Action & Status Bar */}
+              {(course?.code || slot.courseCode) && (
+                <div
+                  className="mt-3.5 pt-3 border-t border-slate-700/60 flex items-center justify-between gap-2 flex-wrap"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="flex items-center gap-2">
+                    <CheckSquare className="w-3.5 h-3.5 text-amber-400" />
+                    <span className="text-xs text-slate-300 font-medium">Attendance:</span>
+                    {(() => {
+                      const code = course?.code || slot.courseCode;
+                      const rec = attendanceRecords[code] || { attended: 0, total: 0 };
+                      const pct = rec.total > 0 ? Math.round((rec.attended / rec.total) * 100) : null;
+                      return (
+                        <span
+                          className={`text-xs font-bold font-mono ${
+                            pct === null ? 'text-slate-400' : pct >= 75 ? 'text-emerald-400' : 'text-rose-400'
+                          }`}
+                        >
+                          {pct !== null ? `${pct}% (${rec.attended}/${rec.total})` : 'Not logged yet'}
+                        </span>
+                      );
+                    })()}
+                  </div>
+
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      type="button"
+                      onClick={(e) => handleLogAttendance(course?.code || slot.courseCode, true, e)}
+                      className="min-h-[34px] px-2.5 py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 active:bg-emerald-500/40 text-emerald-300 border border-emerald-500/40 text-xs font-bold flex items-center gap-1 transition active:scale-95"
+                      title={`Mark +1 Present for ${course?.code || slot.courseCode}`}
+                    >
+                      <Check className="w-3 h-3 text-emerald-400" />
+                      <span>+ Present</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={(e) => handleLogAttendance(course?.code || slot.courseCode, false, e)}
+                      className="min-h-[34px] px-2.5 py-1 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 active:bg-rose-500/40 text-rose-300 border border-rose-500/40 text-xs font-bold flex items-center gap-1 transition active:scale-95"
+                      title={`Mark +1 Absent for ${course?.code || slot.courseCode}`}
+                    >
+                      <X className="w-3 h-3 text-rose-400" />
+                      <span>+ Absent</span>
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           );
         })}

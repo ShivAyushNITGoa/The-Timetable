@@ -621,23 +621,25 @@ export const DocumentReaderModal: React.FC<DocumentReaderModalProps> = ({
         </div>
         )}
 
-        {/* Reader Bottom Status Strip */}
-        <div className="bg-slate-900 px-4 py-2 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400 shrink-0">
-          <div className="flex items-center gap-2 truncate">
-            <span className="w-2 h-2 rounded-full bg-emerald-400" />
-            <span className="truncate">Loaded: {document.pdfFileName}</span>
+        {/* Reader Bottom Status Strip - Hide when viewing embedded PDF */}
+        {activeTab !== 'pdf' && (
+          <div className="bg-slate-900 px-4 py-2 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400 shrink-0">
+            <div className="flex items-center gap-2 truncate">
+              <span className="w-2 h-2 rounded-full bg-emerald-400" />
+              <span className="truncate">Loaded: {document.pdfFileName}</span>
+            </div>
+            <div className="flex items-center gap-3 shrink-0">
+              <span className="hidden sm:inline">Press Esc to exit</span>
+              <button
+                type="button"
+                onClick={onClose}
+                className="text-amber-400 hover:text-amber-300 font-bold"
+              >
+                Close
+              </button>
+            </div>
           </div>
-          <div className="flex items-center gap-3 shrink-0">
-            <span className="hidden sm:inline">Press Esc to exit</span>
-            <button
-              type="button"
-              onClick={onClose}
-              className="text-amber-400 hover:text-amber-300 font-bold"
-            >
-              Close
-            </button>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );

@@ -37,6 +37,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { BrandLogo, BrandIcon } from './BrandLogo';
+import { StudentToolsHub } from './StudentToolsHub';
 import { 
   getLocalStorageStats, 
   downloadLocalBackupFile, 
@@ -355,7 +356,16 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
               }`}
             >
               <Globe className="w-3.5 h-3.5" />
-              <span>Institute Links</span>
+              <span>Student Tools & Portals</span>
+              <span
+                className={`text-[10px] font-bold font-mono px-1.5 py-0.2 rounded-full ${
+                  activeSubTab === 'portals'
+                    ? 'bg-slate-950/20 text-slate-950'
+                    : 'bg-amber-500/20 text-amber-300'
+                }`}
+              >
+                35+
+              </span>
             </button>
           </div>
         </div>
@@ -913,62 +923,15 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
         </div>
       )}
 
-      {/* SUB-TAB 5: INSTITUTE PORTALS */}
+      {/* SUB-TAB 5: STUDENT TOOLS & PORTALS */}
       {activeSubTab === 'portals' && (
-        <div className="space-y-4" id="portals-section">
-          {/* Official Portal Notice & Disclaimer Card */}
-          <div className="p-5 bg-gradient-to-r from-amber-500/10 via-amber-500/15 to-amber-500/5 border border-amber-500/30 rounded-2xl shadow-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
-                <ShieldAlert className="w-5 h-5 text-amber-400" />
-              </div>
-              <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40">
-                    Important Notice
-                  </span>
-                  <span className="text-xs text-slate-400">Student & Faculty Advisory</span>
-                </div>
-                <h3 className="text-sm sm:text-base font-bold text-white">
-                  Independent Student Project for NIT Goa
-                </h3>
-                <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                  This timetable application is an independent community project engineered to assist students with schedule management, attendance tracking, and syllabus reference. For any mistake, schedule discrepancies, or updates, please report them directly:
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-wrap sm:flex-col items-stretch gap-2 shrink-0 w-full sm:w-auto">
-              <a
-                href="mailto:shivshivamxyz@gmail.com?subject=NIT%20Goa%20Timetable%20Correction&body=Hi%20Ayush,%0D%0A%0D%0AI%20noticed%20the%20following%20discrepancy/correction:%0D%0A"
-                className="w-full sm:w-auto min-h-[44px] px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 transition shadow-md shadow-amber-500/20 active:scale-95 text-center"
-              >
-                <Mail className="w-4 h-4 shrink-0" />
-                <span>Report Mistake / Correction</span>
-              </a>
-              <button
-                type="button"
-                onClick={() => {
-                  navigator.clipboard.writeText('shivshivamxyz@gmail.com');
-                  setCopiedEmail('shivshivamxyz@gmail.com');
-                  setTimeout(() => setCopiedEmail(null), 2500);
-                }}
-                className="w-full sm:w-auto min-h-[44px] px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold flex items-center justify-center gap-2 transition active:scale-95"
-              >
-                {copiedEmail === 'shivshivamxyz@gmail.com' ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-emerald-400" />
-                    <span className="text-emerald-300">Copied Email!</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5 text-slate-400" />
-                    <span className="break-all">Copy shivshivamxyz@gmail.com</span>
-                  </>
-                )}
-              </button>
-            </div>
-          </div>
+        <div className="space-y-6" id="portals-section">
+          {/* Comprehensive Student Tools, Sites & External Help Hub */}
+          <StudentToolsHub
+            onOpenPwaGuide={onOpenPwaGuide}
+            branch={safeBranch.toUpperCase()}
+            semester={safeSemester}
+          />
 
           {/* Ayush Kumar & The GDevelopers Creator Card */}
           <div className="p-6 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border border-[#9EB81E]/40 rounded-2xl shadow-xl shadow-[#9EB81E]/5 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -1163,37 +1126,6 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
                 <span>{confirmClearData ? 'Click Again to Confirm Reset' : 'Reset All Local Data'}</span>
               </button>
             </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {NIT_GOA_PORTALS.map((portal) => (
-            <a
-              key={portal.name}
-              href={portal.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group p-5 bg-slate-800/50 border border-slate-700/70 hover:border-amber-500/50 rounded-2xl transition-all flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-2">
-                  <span className="text-xs font-semibold text-amber-400 flex items-center gap-1.5">
-                    <Globe className="w-3.5 h-3.5" /> Verified Resource
-                  </span>
-                  <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-white transition" />
-                </div>
-                <h3 className="text-base font-bold text-white group-hover:text-amber-300 transition">
-                  {portal.name}
-                </h3>
-                <p className="text-xs text-slate-300 mt-2 leading-relaxed">
-                  {portal.description}
-                </p>
-              </div>
-
-              <div className="mt-4 pt-3 border-t border-slate-800 text-xs text-cyan-400 flex items-center gap-1 font-mono">
-                {portal.url}
-              </div>
-            </a>
-          ))}
           </div>
         </div>
       )}

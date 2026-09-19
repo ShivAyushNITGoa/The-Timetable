@@ -28,6 +28,7 @@ import {
   AlertCircle,
   AlertTriangle,
   Mail,
+  Code,
 } from 'lucide-react';
 import { BrandIcon, BrandLogo } from './BrandLogo';
 import { usePWAInstall } from '../hooks/usePWAInstall';
@@ -292,34 +293,53 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           )}
 
           {/* Unofficial Disclaimer & Correction Email Alert Card */}
-          <div className="mt-6 max-w-3xl mx-auto w-full bg-amber-500/10 border border-amber-500/25 rounded-2xl p-4 sm:p-4.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 shadow-sm text-left">
-            <div className="flex items-start gap-3 min-w-0">
-              <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 text-amber-400">
-                <AlertTriangle className="w-4 h-4" />
-              </div>
-              <div className="min-w-0">
-                <div className="flex items-center gap-1.5 flex-wrap">
-                  <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
-                    Disclaimer
-                  </span>
-                  <span className="text-xs sm:text-sm font-bold text-amber-200">
-                    Independent Student Project for NIT Goa
-                  </span>
+          <div className="mt-6 max-w-3xl mx-auto w-full bg-amber-500/10 border border-amber-500/25 rounded-2xl p-4 sm:p-4.5 flex flex-col gap-3 sm:gap-3.5 shadow-sm text-left">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
+              <div className="flex items-start gap-3 min-w-0">
+                <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 text-amber-400">
+                  <AlertTriangle className="w-4 h-4" />
                 </div>
-                <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                  This is not an official portal of NIT Goa. Report any mistake or schedule correction on email:
-                </p>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                      Disclaimer
+                    </span>
+                    <span className="text-xs sm:text-sm font-bold text-amber-200">
+                      Independent Student Project for NIT Goa
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                    This is not an official portal of NIT Goa. Report any mistake or schedule correction on email:
+                  </p>
+                </div>
               </div>
+
+              {/* Direct Mail Action Button (Optimized 44px+ touch target on mobile) */}
+              <a
+                href="mailto:shivshivamxyz@gmail.com?subject=NIT%20Goa%20Timetable%20Correction"
+                className="w-full sm:w-auto min-h-[44px] px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 transition active:scale-95 shadow-md shadow-amber-500/15 shrink-0 text-center"
+              >
+                <Mail className="w-4 h-4 shrink-0" />
+                <span className="break-all">shivshivamxyz@gmail.com</span>
+              </a>
             </div>
 
-            {/* Direct Mail Action Button (Optimized 44px+ touch target on mobile) */}
-            <a
-              href="mailto:shivshivamxyz@gmail.com?subject=NIT%20Goa%20Timetable%20Correction"
-              className="w-full sm:w-auto min-h-[44px] px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 transition active:scale-95 shadow-md shadow-amber-500/15 shrink-0 text-center"
-            >
-              <Mail className="w-4 h-4 shrink-0" />
-              <span className="break-all">shivshivamxyz@gmail.com</span>
-            </a>
+            {/* Architect & Developer Attribution Bar */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-2.5 text-center sm:text-left px-1 pt-3 border-t border-amber-500/20 w-full">
+              <div className="flex items-center gap-2 flex-wrap justify-center sm:justify-start">
+                <div className="flex items-center gap-1.5 text-xs text-slate-300">
+                  <Code className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                  <span>Architect and developer:</span>
+                </div>
+                <span className="text-slate-100 font-bold text-xs bg-slate-800/90 px-2.5 py-1 rounded-lg border border-slate-700/80">
+                  Ayush Kumar
+                </span>
+              </div>
+
+              <div className="text-[11px] text-slate-400">
+                Cuncolim Campus • All B.Tech Branches & Years
+              </div>
+            </div>
           </div>
 
           {/* Quick Metrics & Highlights */}
@@ -673,34 +693,53 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       {/* Institutional Footer */}
       <footer className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-4">
         {/* Unofficial Disclaimer & Correction Email Alert Card */}
-        <div className="w-full bg-amber-500/10 border border-amber-500/25 rounded-2xl p-4 sm:p-4.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 shadow-sm text-left">
-          <div className="flex items-start gap-3 min-w-0">
-            <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 text-amber-400">
-              <AlertTriangle className="w-4 h-4" />
-            </div>
-            <div className="min-w-0">
-              <div className="flex items-center gap-1.5 flex-wrap">
-                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
-                  Notice
-                </span>
-                <span className="text-xs sm:text-sm font-bold text-amber-200">
-                  Independent Student Project for NIT Goa
-                </span>
+        <div className="w-full bg-amber-500/10 border border-amber-500/25 rounded-2xl p-4 sm:p-4.5 flex flex-col gap-3 sm:gap-3.5 shadow-sm text-left">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
+            <div className="flex items-start gap-3 min-w-0">
+              <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 text-amber-400">
+                <AlertTriangle className="w-4 h-4" />
               </div>
-              <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                This is not an official portal of NIT Goa. Report any mistake or schedule correction on email:
-              </p>
+              <div className="min-w-0">
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                    Notice
+                  </span>
+                  <span className="text-xs sm:text-sm font-bold text-amber-200">
+                    Independent Student Project for NIT Goa
+                  </span>
+                </div>
+                <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                  This is not an official portal of NIT Goa. Report any mistake or schedule correction on email:
+                </p>
+              </div>
             </div>
+
+            {/* Direct Mail Action Button (Optimized 44px+ touch target on mobile) */}
+            <a
+              href="mailto:shivshivamxyz@gmail.com?subject=NIT%20Goa%20Timetable%20Correction"
+              className="w-full sm:w-auto min-h-[44px] px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 transition active:scale-95 shadow-md shadow-amber-500/15 shrink-0 text-center"
+            >
+              <Mail className="w-4 h-4 shrink-0" />
+              <span className="break-all">shivshivamxyz@gmail.com</span>
+            </a>
           </div>
 
-          {/* Direct Mail Action Button (Optimized 44px+ touch target on mobile) */}
-          <a
-            href="mailto:shivshivamxyz@gmail.com?subject=NIT%20Goa%20Timetable%20Correction"
-            className="w-full sm:w-auto min-h-[44px] px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 transition active:scale-95 shadow-md shadow-amber-500/15 shrink-0 text-center"
-          >
-            <Mail className="w-4 h-4 shrink-0" />
-            <span className="break-all">shivshivamxyz@gmail.com</span>
-          </a>
+          {/* Architect & Developer Attribution Bar */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-2.5 text-center sm:text-left px-1 pt-3 border-t border-amber-500/20 w-full">
+            <div className="flex items-center gap-2 flex-wrap justify-center sm:justify-start">
+              <div className="flex items-center gap-1.5 text-xs text-slate-300">
+                <Code className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                <span>Architect and developer:</span>
+              </div>
+              <span className="text-slate-100 font-bold text-xs bg-slate-800/90 px-2.5 py-1 rounded-lg border border-slate-700/80">
+                Ayush Kumar
+              </span>
+            </div>
+
+            <div className="text-[11px] text-slate-400">
+              Cuncolim Campus • All B.Tech Branches & Years
+            </div>
+          </div>
         </div>
 
         <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 text-xs text-slate-400 space-y-2">

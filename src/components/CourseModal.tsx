@@ -2,12 +2,42 @@ import React from 'react';
 import { COURSES, Course } from '../data/timetableData';
 import { getAllKnownCourses } from '../data/branchesData';
 import { getOfficialCourseSyllabus } from '../data/officialSyllabusRegistry';
-import { X, BookOpen, Clock, MapPin, Award, User, Mail, Sparkles, CheckCircle2, Globe, FileText, ExternalLink, Calendar, Download, Bookmark } from 'lucide-react';
+import {
+  X,
+  BookOpen,
+  Clock,
+  MapPin,
+  Award,
+  User,
+  Mail,
+  Sparkles,
+  CheckCircle2,
+  Globe,
+  FileText,
+  ExternalLink,
+  Calendar,
+  Download,
+  Bookmark,
+  CheckSquare,
+  Plus,
+  Trash2,
+  Check,
+  AlertCircle,
+} from 'lucide-react';
 import { EmbeddedPdfViewer } from './EmbeddedPdfViewer';
+
+interface CourseTask {
+  id: string;
+  text: string;
+  done: boolean;
+  createdAt: string;
+}
 
 interface CourseModalProps {
   courseCode: string | null;
   courses?: Record<string, Course>;
+  branch?: string;
+  semester?: number;
   onClose: () => void;
   onTrackAttendance?: (courseCode: string) => void;
   onScheduleTest?: (courseCode: string) => void;
@@ -16,6 +46,8 @@ interface CourseModalProps {
 export const CourseModal: React.FC<CourseModalProps> = ({
   courseCode,
   courses,
+  branch,
+  semester,
   onClose,
   onTrackAttendance,
   onScheduleTest,
@@ -65,56 +97,193 @@ export const CourseModal: React.FC<CourseModalProps> = ({
   const isMinor = course.isMinor || courseCode === 'CS300M';
   const [viewTab, setViewTab] = React.useState<'details' | 'pdf'>('details');
 
+  // Attendance state & sync
+  const attendanceKey = branch && semester ? `nit_goa_attendance_${branch}_sem${semester}` : `nit_goa_attendance_default`;
+  const [attendance, setAttendance] = React.useState<{ attended: number; total: number }>({ attended: 0, total: 0 });
+
+  React.useEffect(() => {
+    try {
+      const stored = localStorage.getItem(attendanceKey);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (parsed[courseCode]) {
+          setAttendance(parsed[courseCode]);
+        }
+      }
+    } catch {
+      // ignore
+    }
+  }, [attendanceKey, courseCode]);
+
+  const updateAttendance = (newAttended: number, newTotal: number) => {
+    const validAttended = Math.max(0, newAttended);
+    const validTotal = Math.max(0, newTotal);
+    setAttendance({ attended: validAttended, total: validTotal });
+
+    try {
+      const stored = localStorage.getItem(attendanceKey);
+      const parsed = stored ? JSON.parse(stored) : {};
+      parsed[courseCode] = { attended: validAttended, total: validTotal };
+      localStorage.setItem(attendanceKey, JSON.stringify(parsed));
+      window.dispatchEvent(
+        new CustomEvent('nit_goa_attendance_updated', {
+          detail: { branch, semester, courseCode, attended: validAttended, total: validTotal },
+        })
+      );
+    } catch {
+      // ignore
+    }
+  };
+
+  // Personal study tasks & notes state
+  const taskKey = `nit_goa_tasks_${courseCode}`;
+  const [tasks, setTasks] = React.useState<CourseTask[]>(() => {
+    try {
+      const saved = localStorage.getItem(taskKey);
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+  const [newTaskInput, setNewTaskInput] = React.useState('');
+
+  const handleAddTask = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    const trimmed = newTaskInput.trim();
+    if (!trimmed) return;
+    const newTask: CourseTask = {
+      id: `${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
+      text: trimmed,
+      done: false,
+      createdAt: new Date().toLocaleDateString(),
+    };
+    const updated = [newTask, ...tasks];
+    setTasks(updated);
+    setNewTaskInput('');
+    try {
+      localStorage.setItem(taskKey, JSON.stringify(updated));
+    } catch {
+      // ignore
+    }
+  };
+
+  const handleToggleTask = (id: string) => {
+    const updated = tasks.map((t) => (t.id === id ? { ...t, done: !t.done } : t));
+    setTasks(updated);
+    try {
+      localStorage.setItem(taskKey, JSON.stringify(updated));
+    } catch {
+      // ignore
+    }
+  };
+
+  const handleDeleteTask = (id: string) => {
+    const updated = tasks.filter((t) => t.id !== id);
+    setTasks(updated);
+    try {
+      localStorage.setItem(taskKey, JSON.stringify(updated));
+    } catch {
+      // ignore
+    }
+  };
+
+  const attendancePct = attendance.total > 0 ? Math.round((attendance.attended / attendance.total) * 100) : null;
+  const safeBunks = attendance.total > 0 ? Math.floor((attendance.attended - 0.75 * attendance.total) / 0.75) : 0;
+  const neededClasses =
+    attendance.total > 0 && attendancePct !== null && attendancePct < 75
+      ? Math.ceil((0.75 * attendance.total - attendance.attended) / 0.25)
+      : 0;
+
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-xs transition-opacity animate-in fade-in duration-200"
+      className={`fixed inset-0 z-50 flex items-end sm:items-center justify-center ${viewTab === 'pdf' ? 'p-0 sm:p-3 md:p-4' : 'p-0 sm:p-4'} bg-black/80 backdrop-blur-xs transition-opacity animate-in fade-in duration-200`}
       onClick={onClose}
     >
       <div 
-        className={`relative w-full ${viewTab === 'pdf' ? 'max-w-6xl h-[92vh] max-h-[96vh]' : 'max-w-lg max-h-[94vh]'} bg-slate-900 border border-slate-700/80 rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col transition-all duration-200 animate-in slide-in-from-bottom duration-200`}
+        className={`relative w-full ${
+          viewTab === 'pdf'
+            ? 'w-full h-full sm:h-[95vh] max-h-none sm:max-h-[96vh] sm:max-w-6xl rounded-none sm:rounded-2xl border-0 sm:border border-slate-700/80 shadow-2xl'
+            : 'max-w-lg max-h-[94vh] rounded-t-3xl sm:rounded-3xl border border-slate-700/80 shadow-2xl'
+        } bg-slate-900 overflow-hidden flex flex-col transition-all duration-200 animate-in slide-in-from-bottom duration-200`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className={`p-5 sm:p-6 border-b shrink-0 ${isMinor ? 'bg-gradient-to-r from-cyan-950/80 via-slate-900 to-indigo-950/60 border-cyan-500/30' : 'bg-slate-800/60 border-slate-700/60'}`}>
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-                <span className={`px-2.5 py-0.5 text-xs font-semibold rounded-md uppercase tracking-wider ${
-                  isMinor 
-                    ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-xs shadow-cyan-500/10' 
-                    : course.category === 'core' 
-                    ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30' 
-                    : course.category === 'elective'
-                    ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30' 
-                    : course.category === 'lab'
-                    ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' 
-                    : 'bg-slate-700 text-slate-300'
-                }`}>
-                  {isMinor ? 'CSE Minor Special' : course.type}
-                </span>
-                <span className="text-xs px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700">
-                  {course.credits} {course.credits === 1 ? 'Credit' : 'Credits'} (L-T-P: {course.ltp})
-                </span>
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight flex items-center gap-2">
-                <span>{course.code}</span>
-                <span className="text-slate-400 font-normal">|</span>
-                <span className={isMinor ? 'text-cyan-300' : 'text-slate-100'}>{course.name}</span>
-              </h3>
+        {viewTab === 'pdf' ? (
+          <div className="px-4 py-2.5 bg-slate-900/95 border-b border-slate-800 flex items-center justify-between gap-3 shrink-0">
+            <div className="flex items-center gap-2 min-w-0">
+              <span className="text-xs font-mono font-bold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/25 shrink-0">
+                {course.code}
+              </span>
+              <span className="text-xs sm:text-sm font-semibold text-white truncate">
+                {course.name}
+              </span>
+              <span className="text-[11px] text-slate-400 hidden md:inline">
+                • Slot {course.teachingSlot} ({course.room})
+              </span>
             </div>
-            <button 
-              type="button"
-              onClick={onClose}
-              className="min-h-[44px] min-w-[44px] flex items-center justify-center text-slate-400 hover:text-white rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 transition active:scale-95 shrink-0"
-              aria-label="Close modal"
-            >
-              <X className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
 
-        {/* In-App Tab Selector (Overview vs Official Embedded PDF) */}
-        {officialSyllabus?.pdfPath && (
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                type="button"
+                onClick={() => setViewTab('details')}
+                className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-slate-700 transition flex items-center gap-1.5 active:scale-95"
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Overview Details</span>
+                <span className="sm:hidden">Details</span>
+              </button>
+              <button 
+                type="button"
+                onClick={onClose}
+                className="p-1.5 text-slate-400 hover:text-white rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 transition active:scale-95 shrink-0"
+                aria-label="Close modal"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className={`p-5 sm:p-6 border-b shrink-0 ${isMinor ? 'bg-gradient-to-r from-cyan-950/80 via-slate-900 to-indigo-950/60 border-cyan-500/30' : 'bg-slate-800/60 border-slate-700/60'}`}>
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                  <span className={`px-2.5 py-0.5 text-xs font-semibold rounded-md uppercase tracking-wider ${
+                    isMinor 
+                      ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-xs shadow-cyan-500/10' 
+                      : course.category === 'core' 
+                      ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30' 
+                      : course.category === 'elective'
+                      ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30' 
+                      : course.category === 'lab'
+                      ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' 
+                      : 'bg-slate-700 text-slate-300'
+                  }`}>
+                    {isMinor ? 'CSE Minor Special' : course.type}
+                  </span>
+                  <span className="text-xs px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700">
+                    {course.credits} {course.credits === 1 ? 'Credit' : 'Credits'} (L-T-P: {course.ltp})
+                  </span>
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight flex items-center gap-2">
+                  <span>{course.code}</span>
+                  <span className="text-slate-400 font-normal">|</span>
+                  <span className={isMinor ? 'text-cyan-300' : 'text-slate-100'}>{course.name}</span>
+                </h3>
+              </div>
+              <button 
+                type="button"
+                onClick={onClose}
+                className="min-h-[44px] min-w-[44px] flex items-center justify-center text-slate-400 hover:text-white rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 transition active:scale-95 shrink-0"
+                aria-label="Close modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* In-App Tab Selector (Overview vs Official Embedded PDF) - Only show in details mode */}
+        {officialSyllabus?.pdfPath && viewTab === 'details' && (
           <div className="flex items-center gap-2 px-5 sm:px-6 py-2.5 bg-slate-900 border-b border-slate-800 shrink-0 flex-wrap">
             <button
               type="button"
@@ -131,11 +300,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
             <button
               type="button"
               onClick={() => setViewTab('pdf')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 active:scale-95 ${
-                viewTab === 'pdf'
-                  ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
-                  : 'bg-slate-800/80 text-amber-300 hover:text-amber-200 hover:bg-slate-800 border border-amber-500/30'
-              }`}
+              className="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 active:scale-95 bg-slate-800/80 text-amber-300 hover:text-amber-200 hover:bg-slate-800 border border-amber-500/30"
             >
               <FileText className="w-3.5 h-3.5" />
               <span>Official Embedded PDF Handbook</span>
@@ -292,31 +457,31 @@ export const CourseModal: React.FC<CourseModalProps> = ({
 
           {/* Official Accreditation Badge */}
           {officialSyllabus && (
-            <div className="p-3.5 bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border border-amber-500/30 rounded-xl space-y-2.5">
-              <div className="flex items-center justify-between gap-3">
-                <div className="flex items-center gap-2.5 min-w-0">
-                  <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+            <div className="p-3.5 bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border border-amber-500/30 rounded-xl space-y-3">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="flex items-start sm:items-center gap-2.5 min-w-0">
+                  <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
                     <CheckCircle2 className="w-4 h-4" />
                   </div>
                   <div className="min-w-0">
                     <div className="text-[11px] font-bold text-amber-400 uppercase tracking-wider">
                       NIT Goa Accredited Syllabus
                     </div>
-                    <div className="text-xs text-slate-300 truncate font-medium">
+                    <div className="text-xs text-slate-300 font-medium">
                       {officialSyllabus.branch === 'COMMON' || officialSyllabus.pdfName.includes('FIRST')
                         ? '1st Year Handbook (All Sections A, B, C, D)'
                         : `${officialSyllabus.branch} Handbook (2nd, 3rd & 4th Years)`}
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center gap-1.5 shrink-0">
+                <div className="flex items-center gap-2 w-full sm:w-auto shrink-0">
                   <button
                     type="button"
                     onClick={() => setViewTab('pdf')}
-                    className="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-xs"
+                    className="flex-1 sm:flex-initial px-3.5 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95 shadow-xs whitespace-nowrap"
                     title="Read official embedded PDF handbook inside webapp"
                   >
-                    <FileText className="w-3.5 h-3.5" />
+                    <FileText className="w-3.5 h-3.5 shrink-0" />
                     <span>Read Embedded PDF</span>
                   </button>
                   {officialSyllabus.sourceUrl && (
@@ -324,17 +489,17 @@ export const CourseModal: React.FC<CourseModalProps> = ({
                       href={officialSyllabus.sourceUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition"
+                      className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition shrink-0"
                       title="Open official PDF on NIT Goa website (nitgoa.ac.in)"
                     >
-                      <ExternalLink className="w-3.5 h-3.5" />
+                      <ExternalLink className="w-3.5 h-3.5 shrink-0" />
                     </a>
                   )}
                 </div>
               </div>
-              <div className="text-[11px] text-slate-400 border-t border-slate-800/80 pt-1.5 flex items-center justify-between">
-                <span className="font-mono text-slate-400">File: {officialSyllabus.pdfName}</span>
-                <span className="text-amber-300/80 font-mono">Credits: {effectiveCredits} | LTP: {effectiveLtp}</span>
+              <div className="text-[11px] text-slate-400 border-t border-slate-800/80 pt-2 flex flex-wrap items-center justify-between gap-2">
+                <span className="font-mono text-slate-400 truncate">File: {officialSyllabus.pdfName}</span>
+                <span className="text-amber-300/80 font-mono shrink-0">Credits: {effectiveCredits} | LTP: {effectiveLtp}</span>
               </div>
             </div>
           )}
@@ -555,6 +720,288 @@ export const CourseModal: React.FC<CourseModalProps> = ({
             </div>
           </div>
 
+          {/* Quick Attendance Card */}
+          <div className="p-4 bg-slate-800/50 border border-slate-700/70 rounded-2xl space-y-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <CheckSquare className="w-4 h-4 text-amber-400" />
+                <h4 className="text-sm font-bold text-white">Course Attendance</h4>
+              </div>
+              <span
+                className={`text-xs font-bold font-mono px-2 py-0.5 rounded-md ${
+                  attendancePct === null
+                    ? 'bg-slate-800 text-slate-400'
+                    : attendancePct >= 75
+                    ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                    : attendancePct >= 65
+                    ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                    : 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
+                }`}
+              >
+                {attendancePct !== null ? `${attendancePct}%` : 'Not recorded'}
+              </span>
+            </div>
+
+            {/* Attendance Progress Bar */}
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between text-xs text-slate-400">
+                <span>
+                  Classes Attended: <strong className="text-white">{attendance.attended}</strong> / {attendance.total}
+                </span>
+                <span className="font-semibold text-slate-300">Target: 75%</span>
+              </div>
+              <div className="h-2 w-full bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+                <div
+                  className={`h-full transition-all duration-300 ${
+                    attendancePct === null
+                      ? 'w-0'
+                      : attendancePct >= 75
+                      ? 'bg-emerald-500'
+                      : attendancePct >= 65
+                      ? 'bg-amber-500'
+                      : 'bg-rose-500'
+                  }`}
+                  style={{ width: `${Math.min(100, attendancePct || 0)}%` }}
+                />
+              </div>
+            </div>
+
+            {/* Attendance Insight / Bunk Advice */}
+            <div className="text-xs p-2 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300 flex items-center gap-2">
+              {attendancePct === null ? (
+                <span>Log your attendances below to track your 75% eligibility.</span>
+              ) : attendancePct >= 75 ? (
+                <div className="flex items-center gap-1.5 text-emerald-400 font-medium">
+                  <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
+                  <span>
+                    Safe zone! You can safely miss <strong>{safeBunks}</strong> upcoming {safeBunks === 1 ? 'class' : 'classes'} and stay above 75%.
+                  </span>
+                </div>
+              ) : (
+                <div className="flex items-center gap-1.5 text-rose-400 font-medium">
+                  <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                  <span>
+                    Shortage warning! Attend the next <strong>{neededClasses}</strong> consecutive {neededClasses === 1 ? 'class' : 'classes'} to reach 75%.
+                  </span>
+                </div>
+              )}
+            </div>
+
+            {/* Attendance Actions */}
+            <div className="flex items-center justify-between gap-2 pt-1">
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => updateAttendance(attendance.attended + 1, attendance.total + 1)}
+                  className="px-3 py-1.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 active:bg-emerald-500/40 text-emerald-300 border border-emerald-500/40 text-xs font-bold flex items-center gap-1 transition active:scale-95"
+                  title="Record 1 class attended"
+                >
+                  <Check className="w-3.5 h-3.5" />
+                  <span>+ Attended</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => updateAttendance(attendance.attended, attendance.total + 1)}
+                  className="px-3 py-1.5 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 active:bg-rose-500/40 text-rose-300 border border-rose-500/40 text-xs font-bold flex items-center gap-1 transition active:scale-95"
+                  title="Record 1 class missed"
+                >
+                  <X className="w-3.5 h-3.5" />
+                  <span>+ Missed</span>
+                </button>
+              </div>
+
+              {attendance.total > 0 && (
+                <button
+                  type="button"
+                  onClick={() => updateAttendance(0, 0)}
+                  className="text-[11px] text-slate-500 hover:text-rose-400 transition"
+                  title="Reset attendance for this course"
+                >
+                  Reset
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Personal Course Tasks & Study Notes */}
+          <div className="p-4 bg-slate-800/50 border border-slate-700/70 rounded-2xl space-y-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Bookmark className="w-4 h-4 text-indigo-400" />
+                <h4 className="text-sm font-bold text-white">Study Tasks & Deadlines</h4>
+              </div>
+              <span className="text-xs text-slate-400 font-medium">
+                {tasks.filter((t) => t.done).length}/{tasks.length} done
+              </span>
+            </div>
+
+            {/* Add Task Input Form */}
+            <form onSubmit={handleAddTask} className="flex items-center gap-2">
+              <input
+                type="text"
+                value={newTaskInput}
+                onChange={(e) => setNewTaskInput(e.target.value)}
+                placeholder="Add assignment, viva prep, or reminder..."
+                className="flex-1 bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-hidden focus:border-amber-400"
+              />
+              <button
+                type="submit"
+                disabled={!newTaskInput.trim()}
+                className="px-3 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-950 font-bold text-xs flex items-center gap-1 transition active:scale-95 shrink-0"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                <span>Add</span>
+              </button>
+            </form>
+
+            {/* Task List */}
+            {tasks.length > 0 ? (
+              <div className="space-y-1.5 max-h-40 overflow-y-auto pr-1">
+                {tasks.map((task) => (
+                  <div
+                    key={task.id}
+                    className="p-2 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2 text-xs"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => handleToggleTask(task.id)}
+                      className="flex items-center gap-2 min-w-0 text-left flex-1"
+                    >
+                      <div
+                        className={`w-4 h-4 rounded-md border flex items-center justify-center shrink-0 transition ${
+                          task.done
+                            ? 'bg-emerald-500 border-emerald-500 text-slate-950'
+                            : 'border-slate-600 hover:border-amber-400'
+                        }`}
+                      >
+                        {task.done && <Check className="w-3 h-3 stroke-[3]" />}
+                      </div>
+                      <span className={`truncate ${task.done ? 'line-through text-slate-500' : 'text-slate-200'}`}>
+                        {task.text}
+                      </span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => handleDeleteTask(task.id)}
+                      className="text-slate-500 hover:text-rose-400 p-1 rounded transition shrink-0"
+                      title="Delete task"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-[11px] text-slate-500 italic">
+                No active tasks logged yet for this course. Add lab submissions, viva reminders, or reading notes above!
+              </p>
+            )}
+          </div>
+
+          {/* External Study Help & Tools for this Course */}
+          <div className="p-4 bg-slate-800/40 border border-slate-700/60 rounded-2xl space-y-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Globe className="w-4 h-4 text-cyan-400" />
+                <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+                  Course Study Help & External Tools
+                </h4>
+              </div>
+              <span className="text-[10px] text-slate-400 font-mono">External Portals</span>
+            </div>
+
+            <p className="text-xs text-slate-300">
+              One-click access to curated video lectures, research papers, and interactive simulators for <strong className="text-white">{course.name}</strong>:
+            </p>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-1">
+              <a
+                href={`https://nptel.ac.in/courses?keyword=${encodeURIComponent(course.name)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-medium text-slate-200 hover:text-white flex items-center justify-between gap-1.5 transition group active:scale-95"
+                title="Search NPTEL / SWAYAM video lectures by IIT & IISc faculty"
+              >
+                <div className="truncate">
+                  <span className="text-[10px] text-emerald-400 block font-mono font-bold">NPTEL</span>
+                  <span className="truncate block font-semibold">Video Lectures</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-emerald-300 shrink-0" />
+              </a>
+
+              <a
+                href={`https://ieeexplore.ieee.org/search/searchresult.jsp?newsearch=true&queryText=${encodeURIComponent(course.name)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-medium text-slate-200 hover:text-white flex items-center justify-between gap-1.5 transition group active:scale-95"
+                title="Search IEEE Xplore digital library publications"
+              >
+                <div className="truncate">
+                  <span className="text-[10px] text-blue-400 block font-mono font-bold">IEEE Xplore</span>
+                  <span className="truncate block font-semibold">Research Papers</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-300 shrink-0" />
+              </a>
+
+              <a
+                href={`https://www.wolframalpha.com/input?i=${encodeURIComponent(course.name)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-medium text-slate-200 hover:text-white flex items-center justify-between gap-1.5 transition group active:scale-95"
+                title="Wolfram Alpha computational knowledge engine"
+              >
+                <div className="truncate">
+                  <span className="text-[10px] text-amber-400 block font-mono font-bold">Wolfram Alpha</span>
+                  <span className="truncate block font-semibold">Math & Theory</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-amber-300 shrink-0" />
+              </a>
+
+              <a
+                href="https://www.vlab.co.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-medium text-slate-200 hover:text-white flex items-center justify-between gap-1.5 transition group active:scale-95"
+                title="Virtual Labs interactive simulations (Ministry of Education)"
+              >
+                <div className="truncate">
+                  <span className="text-[10px] text-cyan-400 block font-mono font-bold">MHRD / MoE</span>
+                  <span className="truncate block font-semibold">Virtual Labs</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-cyan-300 shrink-0" />
+              </a>
+
+              <a
+                href={`https://scholar.google.com/scholar?q=${encodeURIComponent(course.name)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-medium text-slate-200 hover:text-white flex items-center justify-between gap-1.5 transition group active:scale-95"
+                title="Google Scholar citations and academic literature"
+              >
+                <div className="truncate">
+                  <span className="text-[10px] text-indigo-400 block font-mono font-bold">Google</span>
+                  <span className="truncate block font-semibold">Scholar Citations</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-300 shrink-0" />
+              </a>
+
+              <a
+                href="https://www.overleaf.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-medium text-slate-200 hover:text-white flex items-center justify-between gap-1.5 transition group active:scale-95"
+                title="Overleaf online collaborative LaTeX editor for lab records & reports"
+              >
+                <div className="truncate">
+                  <span className="text-[10px] text-pink-400 block font-mono font-bold">Overleaf</span>
+                  <span className="truncate block font-semibold">LaTeX Reports</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-pink-300 shrink-0" />
+              </a>
+            </div>
+          </div>
+
           {course.notes && (
             <div className="text-xs text-slate-400 bg-slate-800/30 p-2.5 rounded-lg border border-slate-800">
               <span className="text-slate-300 font-semibold">Note:</span> {course.notes}
@@ -563,47 +1010,49 @@ export const CourseModal: React.FC<CourseModalProps> = ({
         </div>
       )}
 
-        {/* Modal Footer */}
-        <div className="p-4 bg-slate-800/80 border-t border-slate-800 flex items-center justify-between gap-2 shrink-0 pb-[max(1rem,env(safe-area-inset-bottom,0px))]">
-          <span className="text-xs text-slate-400 hidden sm:inline">
-            NIT Goa Academic Curriculum
-          </span>
-          <div className="flex items-center gap-2 w-full sm:w-auto justify-end flex-wrap">
-            {onScheduleTest && (
+        {/* Modal Footer - Only in Details view to maximize PDF viewing area */}
+        {viewTab !== 'pdf' && (
+          <div className="p-4 bg-slate-800/80 border-t border-slate-800 flex items-center justify-between gap-2 shrink-0 pb-[max(1rem,env(safe-area-inset-bottom,0px))]">
+            <span className="text-xs text-slate-400 hidden sm:inline">
+              NIT Goa Academic Curriculum
+            </span>
+            <div className="flex items-center gap-2 w-full sm:w-auto justify-end flex-wrap">
+              {onScheduleTest && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    onScheduleTest(course.code);
+                    onClose();
+                  }}
+                  className="min-h-[44px] flex-1 sm:flex-initial px-4 py-2.5 text-xs font-semibold rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 transition flex items-center justify-center gap-1.5 active:scale-95"
+                >
+                  <Calendar className="w-4 h-4 text-amber-400" />
+                  <span>Schedule Test</span>
+                </button>
+              )}
+              {onTrackAttendance && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    onTrackAttendance(course.code);
+                    onClose();
+                  }}
+                  className="min-h-[44px] flex-1 sm:flex-initial px-4 py-2.5 text-xs font-semibold rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center justify-center gap-1.5 active:scale-95"
+                >
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <span>Track Attendance</span>
+                </button>
+              )}
               <button
                 type="button"
-                onClick={() => {
-                  onScheduleTest(course.code);
-                  onClose();
-                }}
-                className="min-h-[44px] flex-1 sm:flex-initial px-4 py-2.5 text-xs font-semibold rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 transition flex items-center justify-center gap-1.5 active:scale-95"
+                onClick={onClose}
+                className="min-h-[44px] px-6 py-2.5 text-xs font-bold rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 transition shadow-md active:scale-95"
               >
-                <Calendar className="w-4 h-4 text-amber-400" />
-                <span>Schedule Test</span>
+                Close
               </button>
-            )}
-            {onTrackAttendance && (
-              <button
-                type="button"
-                onClick={() => {
-                  onTrackAttendance(course.code);
-                  onClose();
-                }}
-                className="min-h-[44px] flex-1 sm:flex-initial px-4 py-2.5 text-xs font-semibold rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center justify-center gap-1.5 active:scale-95"
-              >
-                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>Track Attendance</span>
-              </button>
-            )}
-            <button
-              type="button"
-              onClick={onClose}
-              className="min-h-[44px] px-6 py-2.5 text-xs font-bold rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 transition shadow-md active:scale-95"
-            >
-              Close
-            </button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

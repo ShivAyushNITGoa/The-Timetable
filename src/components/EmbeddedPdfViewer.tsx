@@ -17,11 +17,13 @@ import {
   BookOpen,
   ArrowRight,
   Layers,
+  Move,
+  Check,
+  X,
 } from 'lucide-react';
 
 // Configure PDF.js worker
 if (typeof window !== 'undefined') {
-  // Use public worker or CDN fallback
   try {
     pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
   } catch {
@@ -54,17 +56,20 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const renderTaskRef = useRef<any>(null);
 
   // PDF Document state
   const [pdfDoc, setPdfDoc] = useState<any | null>(null);
   const [numPages, setNumPages] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(initialPage);
-  const [scale, setScale] = useState<number>(1.2);
+  const [scale, setScale] = useState<number>(1.0);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [viewerMode, setViewerMode] = useState<'canvas' | 'native'>('canvas');
+  const [isPanning, setIsPanning] = useState<boolean>(false);
+  const panStartRef = useRef<{ x: number; y: number; scrollLeft: number; scrollTop: number } | null>(null);
 
   // Search state
   const [showSearch, setShowSearch] = useState<boolean>(false);
@@ -75,6 +80,31 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
 
   // Jump page input
   const [jumpPageInput, setJumpPageInput] = useState<string>(String(initialPage));
+
+  // Auto-calculate optimal fit scale based on viewport width
+  const fitWidth = useCallback(
+    async (docToUse?: any, pageToMeasure?: number) => {
+      const activeDoc = docToUse || pdfDoc;
+      if (!activeDoc || !containerRef.current) return;
+      try {
+        const page = await activeDoc.getPage(pageToMeasure || currentPage || 1);
+        const unscaledViewport = page.getViewport({ scale: 1.0 });
+        const containerWidth = containerRef.current.clientWidth;
+        
+        // Mobile padding is smaller than desktop
+        const padding = containerWidth < 640 ? 20 : 48;
+        const availableWidth = Math.max(containerWidth - padding, 280);
+        const fitRatio = availableWidth / unscaledViewport.width;
+        
+        // Clamp scale nicely between 0.45 and 2.5
+        const targetScale = Math.min(Math.max(Number(fitRatio.toFixed(2)), 0.45), 2.5);
+        setScale(targetScale);
+      } catch (err) {
+        console.warn('Auto fit scale calculation error:', err);
+      }
+    },
+    [pdfDoc, currentPage]
+  );
 
   // Load PDF Document
   useEffect(() => {
@@ -96,29 +126,35 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
 
         setPdfDoc(doc);
         setNumPages(doc.numPages);
-        setCurrentPage(initialPage > 0 && initialPage <= doc.numPages ? initialPage : 1);
-        setJumpPageInput(String(initialPage > 0 && initialPage <= doc.numPages ? initialPage : 1));
+        const startPage = initialPage > 0 && initialPage <= doc.numPages ? initialPage : 1;
+        setCurrentPage(startPage);
+        setJumpPageInput(String(startPage));
         setLoading(false);
+
+        // Auto fit width on load
+        fitWidth(doc, startPage);
       } catch (err: any) {
         console.warn('Canvas PDF engine load error, attempting fallback:', err);
         if (isCancelled) return;
-        
+
         // Try direct ArrayBuffer fetch fallback
         try {
           const response = await fetch(pdfUrl);
           if (!response.ok) throw new Error(`HTTP ${response.status}: Failed to fetch PDF`);
           const buffer = await response.arrayBuffer();
           const doc = await pdfjsLib.getDocument({ data: new Uint8Array(buffer) }).promise;
-          
+
           if (isCancelled) return;
           setPdfDoc(doc);
           setNumPages(doc.numPages);
           setCurrentPage(1);
+          setJumpPageInput('1');
           setLoading(false);
+          fitWidth(doc, 1);
         } catch (bufferErr: any) {
           console.error('All PDF load methods failed:', bufferErr);
           if (isCancelled) return;
-          setError('Could not load PDF in Canvas engine. You can toggle Native Browser Mode or download directly.');
+          setError('Could not render document in HTML5 Canvas. You can switch to Native Browser Mode or download directly.');
           setViewerMode('native');
           setLoading(false);
         }
@@ -136,6 +172,16 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
       }
     };
   }, [pdfUrl, initialPage]);
+
+  // Handle Window Resize to maintain fit-width
+  useEffect(() => {
+    const handleResize = () => {
+      // Debounce slightly
+      fitWidth();
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [fitWidth]);
 
   // Render Page on Canvas
   const renderPage = useCallback(
@@ -156,8 +202,8 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
         const ctx = canvas.getContext('2d', { alpha: false });
         if (!ctx) return;
 
-        // Account for high-density displays (Retina/4K)
-        const pixelRatio = window.devicePixelRatio || 1;
+        // Account for high-density displays (Retina/4K), capped at 2 for performance
+        const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
         const viewport = page.getViewport({ scale });
 
         canvas.width = Math.floor(viewport.width * pixelRatio);
@@ -175,6 +221,11 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
         const renderTask = page.render(renderContext);
         renderTaskRef.current = renderTask;
         await renderTask.promise;
+
+        // Reset scroll position to top whenever a new page renders
+        if (scrollContainerRef.current) {
+          scrollContainerRef.current.scrollTop = 0;
+        }
       } catch (err: any) {
         if (err?.name !== 'RenderingCancelledException') {
           console.error('Page render error:', err);
@@ -188,7 +239,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
     if (viewerMode === 'canvas' && pdfDoc && currentPage >= 1 && currentPage <= numPages) {
       renderPage(currentPage);
     }
-  }, [pdfDoc, currentPage, scale, viewerMode, renderPage]);
+  }, [pdfDoc, currentPage, scale, viewerMode, renderPage, numPages]);
 
   // Handle Page navigation
   const goToPrevPage = () => {
@@ -218,15 +269,46 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
   };
 
   // Zoom controls
-  const zoomIn = () => setScale((prev) => Math.min(prev + 0.2, 3.0));
-  const zoomOut = () => setScale((prev) => Math.max(prev - 0.2, 0.6));
-  const resetZoom = () => setScale(1.2);
-  const fitWidth = () => {
-    if (!containerRef.current || !pdfDoc) return;
-    const containerWidth = containerRef.current.clientWidth - 48;
-    // Standard PDF page width is ~595pt
-    const newScale = Math.max(0.6, Math.min(containerWidth / 612, 2.5));
-    setScale(newScale);
+  const zoomIn = () => setScale((prev) => Math.min(Number((prev + 0.15).toFixed(2)), 3.0));
+  const zoomOut = () => setScale((prev) => Math.max(Number((prev - 0.15).toFixed(2)), 0.4));
+  const resetZoom = () => setScale(1.0);
+
+  // Mouse wheel zoom with Ctrl/Meta key
+  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    if (e.ctrlKey || e.metaKey) {
+      e.preventDefault();
+      if (e.deltaY < 0) {
+        zoomIn();
+      } else {
+        zoomOut();
+      }
+    }
+  };
+
+  // Mouse drag-to-pan when canvas is wider/taller than container
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Only on primary button click
+    if (e.button !== 0 || !scrollContainerRef.current) return;
+    setIsPanning(true);
+    panStartRef.current = {
+      x: e.clientX,
+      y: e.clientY,
+      scrollLeft: scrollContainerRef.current.scrollLeft,
+      scrollTop: scrollContainerRef.current.scrollTop,
+    };
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isPanning || !panStartRef.current || !scrollContainerRef.current) return;
+    const dx = e.clientX - panStartRef.current.x;
+    const dy = e.clientY - panStartRef.current.y;
+    scrollContainerRef.current.scrollLeft = panStartRef.current.scrollLeft - dx;
+    scrollContainerRef.current.scrollTop = panStartRef.current.scrollTop - dy;
+  };
+
+  const handleMouseUpOrLeave = () => {
+    setIsPanning(false);
+    panStartRef.current = null;
   };
 
   // Text Search across document
@@ -282,24 +364,28 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
     setIsFullscreen((prev) => !prev);
   };
 
-  // Escape key exits fullscreen
+  // Keyboard navigation
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
+      const activeEl = document.activeElement;
+      if (activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA')) {
+        return;
+      }
       if (e.key === 'Escape') {
         if (isFullscreen) {
           setIsFullscreen(false);
         } else if (onClose) {
           onClose();
         }
-      } else if (e.key === 'ArrowLeft' && !showSearch) {
-        goToPrevPage();
-      } else if (e.key === 'ArrowRight' && !showSearch) {
+      } else if (e.key === 'ArrowRight' || e.key === 'PageDown') {
         goToNextPage();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        goToPrevPage();
       }
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  }, [isFullscreen, currentPage, numPages, showSearch, onClose]);
+  }, [isFullscreen, currentPage, numPages, onClose]);
 
   return (
     <div
@@ -307,11 +393,11 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
       className={`${
         isFullscreen
           ? 'fixed inset-0 z-[9999] w-screen h-screen rounded-none'
-          : 'relative w-full h-full min-h-[560px] rounded-2xl'
+          : 'relative w-full h-full min-h-[540px] rounded-2xl'
       } bg-slate-950 border border-slate-800 flex flex-col overflow-hidden shadow-2xl transition-all ${className}`}
     >
       {/* Top Header Bar */}
-      <div className="bg-slate-900 px-4 py-3 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3 shrink-0">
+      <div className="bg-slate-900 px-4 py-2.5 sm:py-3 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 shrink-0">
         {/* Title & Document Badge */}
         <div className="flex items-center gap-2.5 min-w-0">
           <div className="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 border border-amber-500/30">
@@ -319,15 +405,15 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
           </div>
           <div className="min-w-0">
             <div className="flex items-center gap-2">
-              <span className="text-xs sm:text-sm font-bold text-white truncate max-w-[200px] sm:max-w-md">
+              <span className="text-xs sm:text-sm font-bold text-white truncate max-w-[180px] sm:max-w-md">
                 {title}
               </span>
               <span className="hidden sm:inline-block text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-slate-800 text-amber-300 border border-slate-700">
                 Official PDF
               </span>
             </div>
-            <p className="text-[11px] text-slate-400 truncate max-w-[220px] sm:max-w-sm">
-              {pdfFileName} • Permanent Campus Accreditation
+            <p className="text-[11px] text-slate-400 truncate max-w-[200px] sm:max-w-sm">
+              {pdfFileName} • Permanent Campus Handbooks
             </p>
           </div>
         </div>
@@ -359,7 +445,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
                   ? 'bg-amber-500 text-slate-950 shadow-xs'
                   : 'text-slate-400 hover:text-white'
               }`}
-              title="HTML5 Canvas Engine (guaranteed rendering in all browsers/iframes)"
+              title="HTML5 Canvas Engine (Interactive zoom, pan & jump)"
             >
               Canvas View
             </button>
@@ -371,9 +457,9 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
                   ? 'bg-amber-500 text-slate-950 shadow-xs'
                   : 'text-slate-400 hover:text-white'
               }`}
-              title="Native Browser Plugin"
+              title="Native Browser PDF Plugin"
             >
-              Native Plugin
+              Native
             </button>
           </div>
 
@@ -409,6 +495,17 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
           >
             {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
           </button>
+
+          {onClose && (
+            <button
+              type="button"
+              onClick={onClose}
+              className="min-h-[36px] p-2 rounded-xl bg-slate-800 hover:bg-rose-500/20 text-slate-400 hover:text-rose-400 border border-slate-700 transition ml-0.5"
+              aria-label="Close"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          )}
         </div>
       </div>
 
@@ -465,7 +562,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
         </div>
       )}
 
-      {/* Course Modules Quick Strip (if available) */}
+      {/* Course Modules Quick Strip */}
       {courseModules && courseModules.length > 0 && (
         <div className="bg-slate-950 px-4 py-2 border-b border-slate-800/80 flex items-center gap-2 overflow-x-auto text-xs shrink-0 no-scrollbar">
           <span className="text-[11px] font-semibold text-amber-400 flex items-center gap-1 shrink-0">
@@ -493,28 +590,28 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
         </div>
       )}
 
-      {/* Canvas Controls Toolbar (Only active in Canvas Mode) */}
+      {/* Canvas Controls Toolbar (Active in Canvas Mode) */}
       {viewerMode === 'canvas' && (
-        <div className="bg-slate-900/90 px-4 py-2 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3 shrink-0 text-xs">
+        <div className="bg-slate-900/95 px-4 py-2 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3 shrink-0 text-xs">
           {/* Page Navigation */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
             <button
               type="button"
               onClick={goToPrevPage}
               disabled={currentPage <= 1 || loading}
-              className="p-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:hover:bg-slate-800 text-slate-300 border border-slate-700 transition"
+              className="p-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:hover:bg-slate-800 text-slate-300 border border-slate-700 transition active:scale-95"
               title="Previous Page"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
 
             <form onSubmit={handleJumpSubmit} className="flex items-center gap-1.5">
-              <span className="text-slate-400 text-xs">Page</span>
+              <span className="text-slate-400 text-xs hidden sm:inline">Page</span>
               <input
                 type="text"
                 value={jumpPageInput}
                 onChange={(e) => setJumpPageInput(e.target.value)}
-                onBlur={() => setJumpPageInput(String(currentPage))}
+                onBlur={handleJumpSubmit}
                 className="w-12 text-center py-1 rounded-lg bg-slate-950 border border-slate-700 text-white font-mono text-xs focus:outline-hidden focus:border-amber-500"
               />
               <span className="text-slate-400 text-xs">of {numPages || '...'}</span>
@@ -524,20 +621,20 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
               type="button"
               onClick={goToNextPage}
               disabled={currentPage >= numPages || loading}
-              className="p-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:hover:bg-slate-800 text-slate-300 border border-slate-700 transition"
+              className="p-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:hover:bg-slate-800 text-slate-300 border border-slate-700 transition active:scale-95"
               title="Next Page"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
 
-          {/* Zoom Controls */}
+          {/* Zoom & Fit Controls */}
           <div className="flex items-center gap-1.5">
             <button
               type="button"
               onClick={zoomOut}
-              disabled={scale <= 0.6 || loading}
-              className="p-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-slate-300 border border-slate-700 transition"
+              disabled={scale <= 0.45 || loading}
+              className="p-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-slate-300 border border-slate-700 transition active:scale-95"
               title="Zoom Out"
             >
               <ZoomOut className="w-4 h-4" />
@@ -546,7 +643,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
             <button
               type="button"
               onClick={resetZoom}
-              className="px-2.5 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-mono font-medium border border-slate-700 transition"
+              className="px-2 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-mono font-medium border border-slate-700 transition"
               title="Reset Zoom to 100%"
             >
               {Math.round(scale * 100)}%
@@ -556,7 +653,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
               type="button"
               onClick={zoomIn}
               disabled={scale >= 3.0 || loading}
-              className="p-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-slate-300 border border-slate-700 transition"
+              className="p-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-slate-300 border border-slate-700 transition active:scale-95"
               title="Zoom In"
             >
               <ZoomIn className="w-4 h-4" />
@@ -564,9 +661,9 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
 
             <button
               type="button"
-              onClick={fitWidth}
-              className="hidden sm:inline-flex px-2.5 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium border border-slate-700 transition"
-              title="Fit to Container Width"
+              onClick={() => fitWidth()}
+              className="px-2.5 py-1 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 text-xs font-semibold transition active:scale-95"
+              title="Auto-Fit Page to Window Width"
             >
               Fit Width
             </button>
@@ -574,8 +671,19 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
         </div>
       )}
 
-      {/* Main Document Body */}
-      <div className="flex-1 w-full h-full min-h-0 relative bg-slate-950 overflow-auto flex flex-col items-center justify-start p-3 sm:p-6">
+      {/* Main Document Body - Scrollable Container */}
+      <div
+        ref={scrollContainerRef}
+        onWheel={handleWheel}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUpOrLeave}
+        onMouseLeave={handleMouseUpOrLeave}
+        tabIndex={0}
+        className={`flex-1 w-full h-full min-h-0 relative bg-slate-950 overflow-y-auto overflow-x-auto select-text scroll-smooth focus:outline-hidden ${
+          isPanning ? 'cursor-grabbing' : 'cursor-default'
+        }`}
+      >
         {/* Loading Spinner */}
         {loading && (
           <div className="absolute inset-0 z-20 bg-slate-950/80 backdrop-blur-xs flex flex-col items-center justify-center gap-3">
@@ -589,7 +697,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
 
         {/* Error State */}
         {error && (
-          <div className="max-w-md my-auto p-6 rounded-2xl bg-slate-900 border border-amber-500/30 text-center space-y-3">
+          <div className="max-w-md mx-auto my-12 p-6 rounded-2xl bg-slate-900 border border-amber-500/30 text-center space-y-3">
             <AlertCircle className="w-8 h-8 text-amber-400 mx-auto" />
             <h4 className="text-sm font-bold text-white">Browser Display Notice</h4>
             <p className="text-xs text-slate-300 leading-relaxed">{error}</p>
@@ -613,20 +721,56 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
           </div>
         )}
 
-        {/* View Mode 1: Canvas Rendering Engine (100% reliable inside iframes/browsers) */}
+        {/* View Mode 1: Canvas Rendering Engine (CRITICAL: No my-auto to prevent flex overflow clipping!) */}
         {viewerMode === 'canvas' && !error && (
-          <div className="flex flex-col items-center my-auto shadow-2xl rounded-lg overflow-hidden border border-slate-800/80 bg-white">
-            <canvas ref={canvasRef} className="block max-w-full" />
+          <div className="w-full min-h-full flex flex-col items-center justify-start p-2 sm:p-5">
+            {/* Canvas wrapper card */}
+            <div className="shadow-2xl rounded-lg overflow-hidden border border-slate-700/80 bg-white mb-6">
+              <canvas ref={canvasRef} className="block select-none" />
+            </div>
+
+            {/* Quick Page Turning Navigation Bar right below canvas */}
+            {numPages > 1 && (
+              <div className="w-full max-w-sm flex items-center justify-between gap-3 p-2.5 sm:p-3 bg-slate-900/95 border border-slate-800 rounded-2xl text-xs text-slate-300 backdrop-blur-md shadow-xl mb-6 shrink-0">
+                <button
+                  type="button"
+                  onClick={goToPrevPage}
+                  disabled={currentPage <= 1 || loading}
+                  className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:hover:bg-slate-800 text-slate-200 font-semibold flex items-center gap-1.5 transition active:scale-95"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                  <span>Previous</span>
+                </button>
+
+                <div className="flex items-center gap-1 font-mono text-xs">
+                  <span className="text-slate-400">Page</span>
+                  <span className="text-white font-bold px-1.5 py-0.5 rounded bg-slate-950 border border-slate-800">
+                    {currentPage}
+                  </span>
+                  <span className="text-slate-400">of {numPages}</span>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={goToNextPage}
+                  disabled={currentPage >= numPages || loading}
+                  className="px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:opacity-40 text-slate-950 font-bold flex items-center gap-1.5 transition shadow active:scale-95"
+                >
+                  <span>Next</span>
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            )}
           </div>
         )}
 
         {/* View Mode 2: Native Browser Object / Iframe Embed */}
         {viewerMode === 'native' && (
-          <div className="w-full h-full min-h-[480px] flex-1 flex flex-col">
+          <div className="w-full h-full min-h-[480px] flex-1 flex flex-col p-2">
             <object
               data={`${pdfUrl}#toolbar=1&navpanes=1`}
               type="application/pdf"
-              className="w-full h-full flex-1 rounded-xl border border-slate-800 bg-slate-900 shadow-inner"
+              className="w-full h-full flex-1 rounded-xl border border-slate-800 bg-slate-900 shadow-inner min-h-[500px]"
             >
               {/* Fallback inside object tag if browser lacks native plugin */}
               <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center space-y-3 bg-slate-900 rounded-xl">
