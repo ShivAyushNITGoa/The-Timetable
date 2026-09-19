@@ -27,6 +27,7 @@ import {
   RefreshCw,
   AlertCircle,
   AlertTriangle,
+  Mail,
 } from 'lucide-react';
 import { BrandIcon, BrandLogo } from './BrandLogo';
 import { usePWAInstall } from '../hooks/usePWAInstall';
@@ -89,13 +90,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <BrandIcon size={36} className="rounded-xl shadow-md ring-1 ring-white/10 shrink-0" />
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-bold tracking-tight text-white text-base sm:text-lg">NIT Goa Portal</span>
-                <span className="text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-slate-800 text-amber-300 font-semibold border border-amber-500/30">
-                  Student Companion
-                </span>
+                <span className="font-bold tracking-tight text-white text-base sm:text-lg">NIT Goa Timetable</span>
               </div>
               <p className="text-[11px] text-slate-400 hidden sm:block">
-                Unofficial Academic Timetable, Attendance & Curriculum Hub
+                National Institute of Technology Goa • Academic Timetable & Syllabi
               </p>
             </div>
           </div>
@@ -182,10 +180,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-10 pb-16 sm:pt-16 sm:pb-20 border-b border-slate-800 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          {/* Unofficial Disclaimer Tag */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold mb-6 max-w-full">
-            <AlertTriangle className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-            <span className="truncate">Independent Student Portal • Not an Official App of NIT Goa Administration</span>
+          {/* Accreditation Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold mb-6 max-w-full">
+            <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+            <span className="truncate">NIT Goa • All Departments & 2025 Accredited Handbooks</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white max-w-4xl mx-auto leading-tight sm:leading-tight">
@@ -259,7 +257,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                 onClick={onContinueToTimetable}
                 className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 px-7 py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm transition shadow-lg shadow-amber-500/20 active:scale-95"
               >
-                <span>Open Timetable Portal</span>
+                <span>Open Timetable</span>
                 <ArrowRight className="w-5 h-5" />
               </button>
             )}
@@ -292,6 +290,37 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               * Guest mode is disabled. Sign-in with your Google account is required to safely synchronize and back up your academic records.
             </p>
           )}
+
+          {/* Unofficial Disclaimer & Correction Email Alert Card */}
+          <div className="mt-6 max-w-3xl mx-auto w-full bg-amber-500/10 border border-amber-500/25 rounded-2xl p-4 sm:p-4.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 shadow-sm text-left">
+            <div className="flex items-start gap-3 min-w-0">
+              <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 text-amber-400">
+                <AlertTriangle className="w-4 h-4" />
+              </div>
+              <div className="min-w-0">
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                    Disclaimer
+                  </span>
+                  <span className="text-xs sm:text-sm font-bold text-amber-200">
+                    Independent Student Project for NIT Goa
+                  </span>
+                </div>
+                <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                  This is not an official portal of NIT Goa. Report any mistake or schedule correction on email:
+                </p>
+              </div>
+            </div>
+
+            {/* Direct Mail Action Button (Optimized 44px+ touch target on mobile) */}
+            <a
+              href="mailto:shivshivamxyz@gmail.com?subject=NIT%20Goa%20Timetable%20Correction"
+              className="w-full sm:w-auto min-h-[44px] px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 transition active:scale-95 shadow-md shadow-amber-500/15 shrink-0 text-center"
+            >
+              <Mail className="w-4 h-4 shrink-0" />
+              <span className="break-all">shivshivamxyz@gmail.com</span>
+            </a>
+          </div>
 
           {/* Quick Metrics & Highlights */}
           <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto text-left">
@@ -641,19 +670,49 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         </div>
       </section>
 
-      {/* Institutional Disclaimer & Footer */}
-      <footer className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+      {/* Institutional Footer */}
+      <footer className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-4">
+        {/* Unofficial Disclaimer & Correction Email Alert Card */}
+        <div className="w-full bg-amber-500/10 border border-amber-500/25 rounded-2xl p-4 sm:p-4.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 shadow-sm text-left">
+          <div className="flex items-start gap-3 min-w-0">
+            <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 text-amber-400">
+              <AlertTriangle className="w-4 h-4" />
+            </div>
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                  Notice
+                </span>
+                <span className="text-xs sm:text-sm font-bold text-amber-200">
+                  Independent Student Project for NIT Goa
+                </span>
+              </div>
+              <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                This is not an official portal of NIT Goa. Report any mistake or schedule correction on email:
+              </p>
+            </div>
+          </div>
+
+          {/* Direct Mail Action Button (Optimized 44px+ touch target on mobile) */}
+          <a
+            href="mailto:shivshivamxyz@gmail.com?subject=NIT%20Goa%20Timetable%20Correction"
+            className="w-full sm:w-auto min-h-[44px] px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 transition active:scale-95 shadow-md shadow-amber-500/15 shrink-0 text-center"
+          >
+            <Mail className="w-4 h-4 shrink-0" />
+            <span className="break-all">shivshivamxyz@gmail.com</span>
+          </a>
+        </div>
+
         <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 text-xs text-slate-400 space-y-2">
           <div className="flex items-center gap-2 text-amber-300 font-bold uppercase tracking-wider text-[11px]">
-            <AlertTriangle className="w-4 h-4" />
-            <span>Important Notice & Legal Disclaimer</span>
+            <BookOpen className="w-4 h-4 text-amber-400" />
+            <span>National Institute of Technology Goa • Academic Reference</span>
           </div>
           <p className="leading-relaxed">
-            This web application is an <strong>independent, unofficial student academic utility</strong> developed by
-            students for the NIT Goa community. It is <strong>NOT an official portal, app, or endorsed product of the National Institute of Technology Goa administration</strong>.
-            Official circulars, grade reports, and institute notifications are published exclusively on the official institute website (
+            Curriculum data, course codes, timetable slots, and credit distributions are sourced directly from the official NIT Goa 
+            Senate ordinances and 2025 Handbooks. For administrative circulars and semester registrations, visit the main institute website at{' '}
             <a
-              href="http://www.nitgoa.ac.in"
+              href="https://nitgoa.ac.in"
               target="_blank"
               rel="noopener noreferrer"
               className="text-amber-400 hover:underline inline-flex items-center gap-0.5 font-medium"
@@ -661,11 +720,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               nitgoa.ac.in
               <ExternalLink className="w-3 h-3" />
             </a>
-            ).
+            .
           </p>
           <div className="pt-2 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-500">
-            <span>NIT Goa Student Companion • Permanent Campus, Cuncolim, Goa 403703</span>
-            <span>Architect & Developer: Ayush Kumar</span>
+            <span>NIT Goa Academic Timetable • Permanent Campus, Cuncolim, Goa 403703</span>
+            <span>Academic Database Edition 2025</span>
           </div>
         </div>
       </footer>

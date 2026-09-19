@@ -28,10 +28,244 @@ export interface ResourceDocument {
   tags: string[];
   pdfFileName: string;
   externalOfficialUrl: string;
+  pdfUrl?: string;
   sections: ResourceDocumentSection[];
 }
 
 export const NIT_GOA_RESOURCES: ResourceDocument[] = [
+  // ==========================================
+  // OFFICIAL NIT GOA ACCREDITED SYLLABUS HANDBOOKS (nitgoa.ac.in)
+  // ==========================================
+  {
+    id: 'syl-first-year-official-2025',
+    title: 'NIT Goa B.Tech First Year (All Sections A, B, C, D) - Official Curriculum & Syllabus Handbook',
+    shortTitle: '1st Year Official Syllabus Handbook',
+    docNumber: 'NITG/ACAD/2024-25/FIRST-YEAR-SYLLABUS',
+    category: 'syllabus',
+    branch: 'COMMON',
+    year: '1',
+    semesterRange: 'Semesters 1 & 2 (Physics & Chemistry Cycles - All Sections A, B, C, D)',
+    academicYear: '2024–2025 Approved Curriculum',
+    issuingAuthority: 'Office of Dean (Academics) & First Year Coordination Committee, NIT Goa',
+    effectiveDate: '24 July 2024 / Current Academic Year',
+    summary: 'Official accredited First Year B.Tech syllabus handbook directly issued by NIT Goa for all branches and sections (A, B, C, D) across Physics and Chemistry Cycles. Contains detailed 4-module syllabi, credits, LTP schemes, textbooks, reference books, and lab experiments for MA100, PH100, CS100, EE100, ME100, HU100, PH101, CS101, EE101, ME101, MA150, CY150, HU150, EC150, ME150, HU151, CY151, EC151, ME151, and PE150.',
+    tags: ['1st Year', 'First Year', 'All Sections', 'Physics Cycle', 'Chemistry Cycle', 'Official Handbook', 'Syllabus', 'MA100', 'PH100', 'CS100', 'EE100', 'CY150', 'EC150'],
+    pdfFileName: 'FIRST YEAR 24july2025.pdf',
+    pdfUrl: '/syllabi/FIRST_YEAR_2025.pdf',
+    externalOfficialUrl: 'https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf',
+    sections: [
+      {
+        title: 'Physics Cycle Curriculum & Scheme',
+        subheading: 'Semesters 1 / 2 (Sections A & B / Sections C & D)',
+        content: [
+          '• MA100: Mathematics - I (3-1-0 : 4 Credits) - Linear algebra, differential calculus, multivariable calculus, vector calculus.',
+          '• PH100: Physics (3-0-0 : 3 Credits) - Quantum mechanics, lasers & fiber optics, electromagnetic theory, semiconductor physics.',
+          '• CS100: Computer Programming and Problem Solving (3-0-0 : 3 Credits) - C programming, pointers, arrays, memory management.',
+          '• EE100: Basic Electrical Science (3-0-0 : 3 Credits) - DC/AC circuit analysis, magnetic circuits, transformers, electrical machines.',
+          '• ME100: Engineering Mechanics (3-0-0 : 3 Credits) - Statics, dynamics, friction, kinematics of particles and rigid bodies.',
+          '• HU100: Professional Communication (2-0-0 : 2 Credits) - Technical writing, presentation skills, grammar, phonetics.',
+          '• PH101, CS101, EE101, ME101: Practical Laboratories corresponding to the above foundational modules.'
+        ]
+      },
+      {
+        title: 'Chemistry Cycle Curriculum & Scheme',
+        subheading: 'Semesters 1 / 2 (Sections C & D / Sections A & B)',
+        content: [
+          '• MA150: Mathematics - II (3-1-0 : 4 Credits) - Differential equations, Laplace transforms, Fourier series and integrals.',
+          '• CY150: Chemistry (3-0-0 : 3 Credits) - Thermodynamics, electrochemistry, spectroscopy, polymers, green chemistry.',
+          '• HU150: Technical English (2-0-0 : 2 Credits) - Advanced technical communication and interpersonal dynamics.',
+          '• EC150: Basic Electronics Engineering (3-0-0 : 3 Credits) - Diodes, BJT, Op-Amps, digital logic gates, communication fundamentals.',
+          '• ME150: Elements of Mechanical Engineering (3-0-0 : 3 Credits) - Power plants, internal combustion engines, machine elements, manufacturing.',
+          '• HU151, CY151, EC151, ME151: Practical Laboratories and Engineering Workshop.',
+          '• PE150: Physical Education (Non-Credit Audit Course) - Fitness, yoga, and sports.'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'syl-eee-official-2025',
+    title: 'NIT Goa B.Tech in Electrical & Electronics Engineering (EEE) - Official Curriculum & Syllabus Handbook (2nd, 3rd & 4th Years)',
+    shortTitle: 'EEE 2nd, 3rd & 4th Yr Syllabus Handbook',
+    docNumber: 'NITG/ACAD/2025/EEE-HANDBOOK',
+    category: 'syllabus',
+    branch: 'EEE',
+    year: 'ALL',
+    semesterRange: 'Semesters 3 through 8 (2nd, 3rd & 4th Years B.Tech; 1st Year governed by 1st Year Handbook)',
+    academicYear: '2025 Accredited Curriculum',
+    issuingAuthority: 'Department of Electrical & Electronics Engineering, NIT Goa (Cuncolim)',
+    effectiveDate: '2025 Edition (Permanent Campus)',
+    summary: 'Official accredited curriculum and course-by-course syllabus handbook directly issued by NIT Goa for B.Tech in EEE for 2nd, 3rd, and 4th Years. Contains comprehensive 4-module syllabi, LTP, credits, textbooks, reference books, and program outcomes.',
+    tags: ['EEE', 'Official Handbook', '2025', '2nd Year', '3rd Year', '4th Year', 'Syllabus', 'Circuit Theory', 'Power Systems', 'Machines', 'Power Electronics'],
+    pdfFileName: 'EEE2025.pdf',
+    pdfUrl: '/syllabi/EEE2025.pdf',
+    externalOfficialUrl: 'https://nitgoa.ac.in/uploads/EEE2025.pdf',
+    sections: [
+      {
+        title: 'Curriculum Structure & Degree Requirements (2nd to 4th Years)',
+        subheading: 'B.Tech EEE Credit Framework (Semesters 3 through 8)',
+        content: [
+          '• Professional Core (Sem 3 to 6): Circuit Theory, Electronic Devices, Digital Systems, Electrical Machines, Power Systems, Control Theory, Microprocessors.',
+          '• Professional & Open Electives (Sem 7 & 8): Smart Grids, HVDC, Electric Vehicles, AI/ML Applications, Power Quality.',
+          '• Major Project & Industrial Training: Capstone engineering project and mandatory 8-week summer internship.'
+        ]
+      },
+      {
+        title: 'Core Subjects Detailed Breakdown',
+        subheading: 'Accredited 4-Module Structure with Textbooks',
+        content: [
+          '• MA203: Probability, Statistics and Complex Analysis (3-0-0 : 3 Credits)',
+          '• EE200: Circuit Theory (3-0-0 : 3 Credits) - Two port networks, 3-phase circuits, Laplace transform, filter design.',
+          '• EE201: Electronic Devices and Circuits (3-0-0 : 3 Credits) - Semiconductor diodes, BJT, MOSFET, small-signal amplifiers.',
+          '• EE300: Power Systems - I (3-1-0 : 4 Credits) - Line parameters, modeling, sag/tension, underground cables, insulators.',
+          '• EE301: Power Electronics (3-0-0 : 3 Credits) - SCR, MOSFET, IGBT, rectifiers, choppers, inverters, PWM control.',
+          '• Full PDF contains complete syllabi for all 100+ EEE courses and electives.'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'syl-ece-official-2025',
+    title: 'NIT Goa B.Tech in Electronics & Communication Engineering (ECE) - Official Curriculum & Syllabus Handbook (2nd, 3rd & 4th Years)',
+    shortTitle: 'ECE 2nd, 3rd & 4th Yr Syllabus Handbook',
+    docNumber: 'NITG/ACAD/2025/ECE-HANDBOOK',
+    category: 'syllabus',
+    branch: 'ECE',
+    year: 'ALL',
+    semesterRange: 'Semesters 3 through 8 (2nd, 3rd & 4th Years B.Tech; 1st Year governed by 1st Year Handbook)',
+    academicYear: '2025 Accredited Curriculum',
+    issuingAuthority: 'Department of Electronics & Communication Engineering, NIT Goa',
+    effectiveDate: '2025 Edition (Permanent Campus)',
+    summary: 'Official accredited curriculum and syllabus handbook for B.Tech ECE for 2nd, 3rd, and 4th Years issued by NIT Goa. Complete details of Signals & Systems, Analog/Digital Communication, VLSI Design, DSP, RF & Antennas, and Embedded Systems.',
+    tags: ['ECE', 'Official Handbook', '2025', '2nd Year', '3rd Year', '4th Year', 'Syllabus', 'VLSI', 'Digital Communication', 'DSP', 'Embedded Systems'],
+    pdfFileName: 'ECE2025.pdf',
+    pdfUrl: '/syllabi/ECE2025.pdf',
+    externalOfficialUrl: 'https://nitgoa.ac.in/uploads/ECE2025.pdf',
+    sections: [
+      {
+        title: 'Curriculum Scheme & Core Specializations (2nd to 4th Years)',
+        subheading: 'Electronics & Communication Engineering Focus Areas',
+        content: [
+          '• Signals and Information Processing: Continuous & discrete-time signals, Fourier/Z-transforms, DSP algorithms.',
+          '• Microelectronics & VLSI: Semiconductor devices, CMOS digital VLSI, analog IC design, layout rules and EDA flows.',
+          '• Communication Networks: Analog & digital modulation, information theory, wireless and cellular networks, 5G/6G systems.',
+          '• RF & Microwave Engineering: Transmission lines, wave guides, antenna design, radar and satellite systems.'
+        ]
+      },
+      {
+        title: 'Key Course Syllabi Preview',
+        subheading: 'Authentic 4-Module breakdown',
+        content: [
+          '• EC200: Electronic Devices and Circuits (3-0-0 : 3 Credits)',
+          '• EC201: Digital Logic Design (3-0-0 : 3 Credits)',
+          '• EC300: Analog Communication (3-0-0 : 3 Credits)',
+          '• EC350: Digital VLSI Design (3-0-0 : 3 Credits)',
+          '• Complete handbook embedded below with over 150 pages of syllabus definitions.'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'syl-cse-official-2025',
+    title: 'NIT Goa B.Tech in Computer Science & Engineering (CSE) - Official Curriculum & Syllabus Handbook (2nd, 3rd & 4th Years)',
+    shortTitle: 'CSE 2nd, 3rd & 4th Yr Syllabus Handbook',
+    docNumber: 'NITG/ACAD/2025/CSE-HANDBOOK',
+    category: 'syllabus',
+    branch: 'CSE',
+    year: 'ALL',
+    semesterRange: 'Semesters 3 through 8 (2nd, 3rd & 4th Years B.Tech; 1st Year governed by 1st Year Handbook)',
+    academicYear: '2025 Accredited Curriculum',
+    issuingAuthority: 'Department of Computer Science & Engineering, NIT Goa',
+    effectiveDate: '2025 Edition (Permanent Campus)',
+    summary: 'Official accredited curriculum and course syllabi handbook for B.Tech CSE for 2nd, 3rd, and 4th Years issued by NIT Goa. Covers Data Structures, Design & Analysis of Algorithms, OS, DBMS, Computer Networks, Compilers, AI, Cloud Computing, and Security.',
+    tags: ['CSE', 'Official Handbook', '2025', '2nd Year', '3rd Year', '4th Year', 'Syllabus', 'Algorithms', 'Operating Systems', 'Networks', 'Machine Learning', 'Databases'],
+    pdfFileName: 'CSE2025.pdf',
+    pdfUrl: '/syllabi/CSE2025.pdf',
+    externalOfficialUrl: 'https://nitgoa.ac.in/uploads/CSE2025.pdf',
+    sections: [
+      {
+        title: 'CSE Curriculum Architecture (2nd to 4th Years)',
+        subheading: 'Theory, Systems, Applications & Electives',
+        content: [
+          '• Theoretical Computing: Discrete Mathematics, Automata & Formal Languages, Graph Theory, Algorithm Analysis.',
+          '• Systems & Architecture: Computer Organization, Operating Systems, Advanced Computer Architecture, Distributed Systems.',
+          '• Software & Data: Object Oriented Programming, DBMS, Software Engineering, Big Data Analytics.',
+          '• Intelligent Systems & Security: Machine Learning, Deep Learning, Cryptography & Network Security, Cloud Computing.'
+        ]
+      },
+      {
+        title: 'Key Course Syllabi Preview',
+        subheading: 'Authentic 4-Module breakdown',
+        content: [
+          '• CS200: Data Structures and Algorithms (3-0-0 : 3 Credits)',
+          '• CS201: Discrete Mathematical Structures (3-1-0 : 4 Credits)',
+          '• CS300: Design and Analysis of Algorithms (3-1-0 : 4 Credits)',
+          '• CS301: Operating Systems (3-0-0 : 3 Credits)',
+          '• CS350: Database Management Systems (3-0-0 : 3 Credits)',
+          '• CS351: Computer Networks (3-0-0 : 3 Credits)'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'syl-me-official-2025',
+    title: 'NIT Goa B.Tech in Mechanical Engineering (ME/MCE) - Official Curriculum & Syllabus Handbook (2nd, 3rd & 4th Years)',
+    shortTitle: 'Mechanical 2nd, 3rd & 4th Yr Handbook',
+    docNumber: 'NITG/ACAD/2025/ME-HANDBOOK',
+    category: 'syllabus',
+    branch: 'ME',
+    year: 'ALL',
+    semesterRange: 'Semesters 3 through 8 (2nd, 3rd & 4th Years B.Tech; 1st Year governed by 1st Year Handbook)',
+    academicYear: '2025 Accredited Curriculum',
+    issuingAuthority: 'Department of Mechanical Engineering, NIT Goa',
+    effectiveDate: '2025 Edition (Permanent Campus)',
+    summary: 'Official accredited curriculum and syllabus handbook for B.Tech Mechanical Engineering (MCE) for 2nd, 3rd, and 4th Years issued by NIT Goa. Covers Engineering Mechanics, Thermodynamics, Fluid Dynamics, Heat Transfer, Machine Design, CAD/CAM, Robotics and Manufacturing.',
+    tags: ['ME', 'MCE', 'Mechanical', 'Official Handbook', '2025', '2nd Year', '3rd Year', '4th Year', 'Syllabus', 'Thermodynamics', 'Fluid Mechanics', 'Robotics', 'Manufacturing'],
+    pdfFileName: 'MCE2025.pdf',
+    pdfUrl: '/syllabi/MCE2025.pdf',
+    externalOfficialUrl: 'https://nitgoa.ac.in/uploads/MCE2025.pdf',
+    sections: [
+      {
+        title: 'Mechanical Engineering Streams (2nd to 4th Years)',
+        subheading: 'Thermal, Design, and Manufacturing Sciences',
+        content: [
+          '• Thermal & Fluid Engineering: Thermodynamics, Fluid Mechanics, Heat & Mass Transfer, IC Engines, Refrigeration.',
+          '• Mechanical Design: Mechanics of Materials, Kinematics & Dynamics of Machines, Machine Design I & II, Vibrations.',
+          '• Manufacturing & Materials: Materials Science, Machining Processes, Foundry, Welding, Metrology, Additive Manufacturing.',
+          '• Automation & Robotics: Robotics & Industrial Automation, Mechatronics, Finite Element Analysis (FEA), CFD.'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'syl-cve-official-2025',
+    title: 'NIT Goa B.Tech in Civil Engineering (CVE) - Official Curriculum & Syllabus Handbook (2nd, 3rd & 4th Years)',
+    shortTitle: 'Civil 2nd, 3rd & 4th Yr Syllabus Handbook',
+    docNumber: 'NITG/ACAD/2025/CVE-HANDBOOK',
+    category: 'syllabus',
+    branch: 'CVE',
+    year: 'ALL',
+    semesterRange: 'Semesters 3 through 8 (2nd, 3rd & 4th Years B.Tech; 1st Year governed by 1st Year Handbook)',
+    academicYear: '2025 Accredited Curriculum',
+    issuingAuthority: 'Department of Civil Engineering, NIT Goa',
+    effectiveDate: '2025 Edition (Permanent Campus)',
+    summary: 'Official accredited curriculum and course syllabus handbook for B.Tech Civil Engineering for 2nd, 3rd, and 4th Years issued by NIT Goa. Covers Surveying, Fluid Mechanics, Structural Analysis, RCC Design, Geotechnical, Transportation, and Environmental Engineering.',
+    tags: ['CVE', 'Civil', 'Official Handbook', '2025', '2nd Year', '3rd Year', '4th Year', 'Syllabus', 'Structural Analysis', 'RCC', 'Geotechnical', 'Environmental'],
+    pdfFileName: 'CVE2025.pdf',
+    pdfUrl: '/syllabi/CVE2025.pdf',
+    externalOfficialUrl: 'https://nitgoa.ac.in/uploads/CVE2025.pdf',
+    sections: [
+      {
+        title: 'Civil Engineering Specialization Tracks (2nd to 4th Years)',
+        subheading: 'Structures, Geotech, Water Resources & Transportation',
+        content: [
+          '• Structural Engineering: Structural Mechanics, Indeterminate Structures, Design of Concrete Structures, Steel Design, Earthquake Resistance.',
+          '• Geotechnical & Foundation: Soil Mechanics, Foundation Engineering, Ground Improvement, Soil Dynamics.',
+          '• Water Resources & Environmental: Hydraulics, Hydrology, Water Supply Engineering, Wastewater Treatment.',
+          '• Transportation & Infrastructure: Highway Engineering, Traffic Analysis, Pavement Design, Project Management.'
+        ]
+      }
+    ]
+  },
   // ==========================================
   // TIMETABLES (All Branches & All Years)
   // ==========================================

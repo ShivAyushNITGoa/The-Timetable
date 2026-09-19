@@ -84,7 +84,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-1 bg-slate-700 rounded-full mx-auto" />
-                <span className="text-sm font-bold text-white">Campus Portal Menu</span>
+                <span className="text-sm font-bold text-white">Academic Navigation</span>
               </div>
               <button
                 type="button"
@@ -396,7 +396,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                   className="w-full min-h-[44px] px-4 py-2.5 rounded-xl bg-indigo-500/15 hover:bg-indigo-500/25 text-indigo-300 border border-indigo-500/30 text-xs font-bold flex items-center justify-center gap-2 transition active:scale-95"
                 >
                   <Sparkles className="w-4 h-4 text-indigo-400" />
-                  <span>About NIT Goa Portal & PWA</span>
+                  <span>About NIT Goa Timetable & PWA</span>
                 </button>
               )}
             </div>
@@ -405,10 +405,10 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             <div className="pt-3 border-t border-slate-800 text-[11px] space-y-2">
               <div className="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/25 text-slate-300">
                 <div className="flex items-center gap-1.5 text-amber-300 font-bold text-[10px] uppercase tracking-wide">
-                  <span>⚠️ Disclaimer</span>
+                  <span>ℹ️ Notice</span>
                 </div>
                 <p className="text-xs text-slate-300 mt-1">
-                  This is <strong>not an official portal of NIT Goa</strong>. Report any mistake/correction on email:
+                  Independent student academic schedule project for NIT Goa. Report any mistake/correction on email:
                 </p>
                 <a
                   href="mailto:shivshivamxyz@gmail.com?subject=NIT%20Goa%20Timetable%20Correction"
@@ -527,9 +527,13 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
           >
             <div className="relative">
               <Menu className={`w-5 h-5 transition-transform ${isMoreTabActive || isMoreMenuOpen ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
-              {isMoreTabActive && (
+              {isAdmin ? (
+                <span className="absolute -top-1.5 -right-2 px-1 py-0.2 bg-amber-400 text-slate-950 rounded-full text-[8px] font-black leading-none border border-slate-900 pointer-events-none shadow-xs">
+                  ADMIN
+                </span>
+              ) : isMoreTabActive ? (
                 <span className="absolute -top-0.5 -right-1 w-2 h-2 rounded-full bg-amber-400 ring-2 ring-slate-900" />
-              )}
+              ) : null}
             </div>
             <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">More</span>
           </button>

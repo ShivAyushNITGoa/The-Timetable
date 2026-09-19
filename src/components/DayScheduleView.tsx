@@ -14,6 +14,7 @@ import {
   ChevronLeft,
   Edit3,
   CalendarCheck,
+  Plus,
 } from 'lucide-react';
 
 interface DayScheduleViewProps {
@@ -30,6 +31,9 @@ interface DayScheduleViewProps {
   onOpenCustomizer?: () => void;
   onNavigateToTests?: () => void;
   onScheduleTest?: (courseCode?: string) => void;
+  isAdmin?: boolean;
+  onAdminEditSlot?: (slot: TimeSlot, day: DayOfWeek) => void;
+  onAdminAddSlot?: (day: DayOfWeek) => void;
 }
 
 export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
@@ -46,6 +50,9 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
   onOpenCustomizer,
   onNavigateToTests,
   onScheduleTest,
+  isAdmin = false,
+  onAdminEditSlot,
+  onAdminAddSlot,
 }) => {
   const slots: TimeSlot[] = schedule[selectedDay] || [];
 
@@ -259,6 +266,17 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
               <span>Edit Day Schedule</span>
             </button>
           )}
+
+          {isAdmin && onAdminAddSlot && (
+            <button
+              onClick={() => onAdminAddSlot(selectedDay)}
+              className="px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-sm"
+              title="Admin: Add a new slot to this day"
+            >
+              <Plus className="w-3.5 h-3.5" />
+              <span>+ Add Slot (Admin)</span>
+            </button>
+          )}
         </div>
       </div>
 
@@ -303,8 +321,20 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                     </span>
                   </div>
                 </div>
-                <div className="font-mono text-xs text-slate-400 shrink-0">
-                  {slot.startTime} – {slot.endTime}
+                <div className="flex items-center gap-2.5">
+                  <div className="font-mono text-xs text-slate-400 shrink-0">
+                    {slot.startTime} – {slot.endTime}
+                  </div>
+                  {isAdmin && onAdminEditSlot && (
+                    <button
+                      type="button"
+                      onClick={() => onAdminEditSlot(slot, selectedDay)}
+                      className="px-2.5 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center gap-1 shadow-sm transition active:scale-95"
+                    >
+                      <Edit3 className="w-3 h-3" />
+                      <span>Edit</span>
+                    </button>
+                  )}
                 </div>
               </div>
             );
@@ -345,9 +375,25 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                     </span>
                     <span className="text-xs text-slate-400">(55 mins)</span>
                   </div>
-                  <div className="flex items-center gap-1.5 text-xs text-slate-400">
-                    <MapPin className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>Room {slot.room}</span>
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1.5 text-xs text-slate-400">
+                      <MapPin className="w-3.5 h-3.5 text-emerald-400" />
+                      <span>Room {slot.room}</span>
+                    </div>
+                    {isAdmin && onAdminEditSlot && (
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onAdminEditSlot(slot, selectedDay);
+                        }}
+                        className="px-2.5 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center gap-1 shadow-sm transition active:scale-95"
+                        title="Admin: Edit Slot & Syllabus"
+                      >
+                        <Edit3 className="w-3 h-3" />
+                        <span>Edit Slot</span>
+                      </button>
+                    )}
                   </div>
                 </div>
 
@@ -421,9 +467,25 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                     </span>
                     <span className="text-xs text-slate-400">(2 Hrs 55 Mins)</span>
                   </div>
-                  <div className="flex items-center gap-1.5 text-xs text-emerald-400">
-                    <MapPin className="w-3.5 h-3.5" />
-                    <span>{slot.room}</span>
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1.5 text-xs text-emerald-400">
+                      <MapPin className="w-3.5 h-3.5" />
+                      <span>{slot.room}</span>
+                    </div>
+                    {isAdmin && onAdminEditSlot && (
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onAdminEditSlot(slot, selectedDay);
+                        }}
+                        className="px-2.5 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center gap-1 shadow-sm transition active:scale-95"
+                        title="Admin: Edit Slot & Syllabus"
+                      >
+                        <Edit3 className="w-3 h-3" />
+                        <span>Edit Slot</span>
+                      </button>
+                    )}
                   </div>
                 </div>
 
@@ -521,9 +583,25 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                   </span>
                 </div>
 
-                <div className={`flex items-center gap-1.5 text-xs font-medium ${isMinor ? 'text-cyan-300' : 'text-slate-300'}`}>
-                  <MapPin className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Room {slot.room || course?.room}</span>
+                <div className="flex items-center gap-2">
+                  <div className={`flex items-center gap-1.5 text-xs font-medium ${isMinor ? 'text-cyan-300' : 'text-slate-300'}`}>
+                    <MapPin className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Room {slot.room || course?.room}</span>
+                  </div>
+                  {isAdmin && onAdminEditSlot && (
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onAdminEditSlot(slot, selectedDay);
+                      }}
+                      className="px-2.5 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center gap-1 shadow-sm transition active:scale-95"
+                      title="Admin: Edit Slot & Syllabus"
+                    >
+                      <Edit3 className="w-3 h-3" />
+                      <span>Edit Slot</span>
+                    </button>
+                  )}
                 </div>
               </div>
 
@@ -579,6 +657,19 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
           );
         })}
       </div>
+
+      {isAdmin && onAdminAddSlot && (
+        <div className="pt-2">
+          <button
+            type="button"
+            onClick={() => onAdminAddSlot(selectedDay)}
+            className="w-full py-3.5 rounded-2xl bg-amber-500/15 hover:bg-amber-500/25 border border-dashed border-amber-500/40 text-amber-300 font-bold text-xs flex items-center justify-center gap-2 transition active:scale-98 shadow-sm"
+          >
+            <Plus className="w-4 h-4" />
+            <span>+ Add Slot for {selectedDay} (Admin)</span>
+          </button>
+        </div>
+      )}
     </div>
   );
 };

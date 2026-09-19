@@ -1,0 +1,622 @@
+{
+  "MA100": {
+    "code": "MA100",
+    "name": "Matrices and Advanced Calculus",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "3-1-0",
+    "credits": 4,
+    "modules": [
+      "Module 1: Matrices and Applications - Matrix operations, addition, scalar multiplication, transpose, adjoint and properties; System of linear equations and Gaussian elimination; Determinants and properties; Cramer's rule; Vector Space: Subspaces, Linear dependence/independence, Basis, Dimension, Standard Basis of R^n, Linear transformations, Matrix of a linear transformation, change of basis and similarity, rank-nullity theorem; Inner product spaces, Gram-Schmidt process, Orthonormal bases, Eigenvalues and Eigenvectors, Characteristic polynomials, Diagonalization.",
+      "Module 2: Differential Calculus - Functions of single variable: Functions and transcendental Functions; Limits, Continuity and Differentiability; Mean value theorems, Taylor's and Maclaurin's theorems; Parametric equations and Polar coordinates. Functions of several variables: Partial differentiation; Total differentiation, Euler's theorem and generalization; Change of variables, Jacobians; Maxima and minima, Lagrange's method of Multipliers.",
+      "Module 3: Integral Calculus - Fundamental theorem of calculus; Improper integrals; Beta and Gamma functions; Applications of Integrals: Arc length, Surface area and volume of revolution; Multiple integrals: Double and triple integrals, Change of order of integration, Change of variables to polar, cylindrical and spherical coordinates.",
+      "Module 4: Fourier Series & Infinite Series - Convergence of sequences and series, Power series, Ratio test, Root test, Alternating series; Fourier series: Periodic functions, Euler's formulae, Dirichlet's condition, Even and odd functions, Half Range Fourier Sine and Cosine Series."
+    ],
+    "textbooks": [
+      "G. B. Thomas and R. L. Finney, \"Calculus and Analytic Geometry\", 14th Edition, Addison-Wesley, Pearson, 2018.",
+      "E. Kreyszig, \"Advanced Engineering Mathematics\", 8th Edition, John Wiley, 1999.",
+      "G. Strang, \"Introduction to Linear Algebra\", Wellesley-Cambridge Press, 2021.",
+      "R. K. Jain and S. R. K. Iyengar, \"Advanced Engineering Mathematics\", 3rd Edition, Narosa Publishing, 2007."
+    ],
+    "objectives": [
+      "To provide engineers and scientists with a strong foundation in essential mathematical principles.",
+      "To master differential calculus, integral calculus, sequences & series, Fourier series, and linear algebra for engineering problem solving."
+    ],
+    "outcomes": [
+      "CO1: Develop a solid grasp of basic principles of matrix theory and apply them to solve engineering systems.",
+      "CO2: Understand differential calculus of single and several variables with practical engineering optimizations.",
+      "CO3: Apply multiple integrals, Beta-Gamma functions, and geometric calculations.",
+      "CO4: Analyze convergence of sequences and series, and expand functions into Fourier series."
+    ]
+  },
+  "PH100": {
+    "code": "PH100",
+    "name": "Engineering Physics",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "3-0-0",
+    "credits": 3,
+    "modules": [
+      "Module 1: Wave Optics - Interference: Coherence, Division of wave front and amplitude, Young's double slit, Thin films, Newton's rings, Michelson interferometer; Diffraction: Fresnel and Fraunhofer diffraction, Single slit, Double slit, Diffraction grating, Resolving power; Polarization: Brewster's law, Double refraction, Nicol prism, Quarter and half-wave plates, Circular and elliptical polarization.",
+      "Module 2: Quantum Mechanics - Inadequacy of classical physics, Wave-particle duality, De Broglie hypothesis, Heisenberg uncertainty principle, Wave function and its physical interpretation, Born's interpretation; Time-dependent and time-independent Schrodinger wave equation; Particle in a 1D potential well, Quantum tunneling effect.",
+      "Module 3: Lasers & Fiber Optics - Einstein's coefficients, Population inversion, Optical resonator, Three-level and four-level laser systems, Ruby laser, He-Ne laser, Semiconductor diode laser; Optical fibers: Total internal reflection, Numerical aperture, Acceptance angle, Step-index and graded-index fibers, Attenuation and dispersion in fibers, Optical communication system.",
+      "Module 4: Electromagnetism & Dielectric Materials - Maxwell's equations in differential and integral forms, Electromagnetic wave propagation in free space and dielectric media, Poynting vector; Dielectric polarization, Clausius-Mossotti equation; Frequency dependence of dielectric constant, Ferroelectricity and piezoelectricity."
+    ],
+    "textbooks": [
+      "A. Ghatak, \"Optics\", 6th Edition, McGraw Hill Education, 2017.",
+      "D. J. Griffiths, \"Introduction to Quantum Mechanics\", 3rd Edition, Cambridge University Press, 2018.",
+      "M. N. Avadhanulu and P. G. Kshirsagar, \"A Textbook of Engineering Physics\", S. Chand Publishing, 2014.",
+      "D. J. Griffiths, \"Introduction to Electrodynamics\", 4th Edition, Cambridge University Press, 2017."
+    ],
+    "objectives": [
+      "To provide students with foundational physics principles required across modern engineering fields.",
+      "To introduce wave optics, quantum mechanical concepts, laser mechanisms, optical fibers, and Maxwell's electrodynamics."
+    ],
+    "outcomes": [
+      "CO1: Apply interference, diffraction, and polarization principles in optical instrumentation.",
+      "CO2: Solve Schrodinger equations for basic potential wells and understand quantum mechanical phenomena.",
+      "CO3: Analyze laser mechanisms, semiconductor lasers, and fiber-optic communication systems.",
+      "CO4: Formulate electromagnetic wave propagation using Maxwell's equations."
+    ]
+  },
+  "CS100": {
+    "code": "CS100",
+    "name": "Computer Programming and Problem Solving",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "3-0-0",
+    "credits": 3,
+    "modules": [
+      "Module 1: Introduction to Computing & Programming Fundamentals - Block diagram of a computer, CPU, Memory hierarchy, Compilers, Interpreters; Algorithms, Flowcharts, Pseudocode; Variables, Constants, Data types, Operators, Expressions, Operator precedence and associativity; Input/Output library functions in C.",
+      "Module 2: Control Structures & Arrays - Conditional statements: if, if-else, nested if-else, switch-case; Loops: while, do-while, for loops, break and continue statements; Arrays: 1D and 2D arrays, Matrix operations, String manipulation and string handling functions.",
+      "Module 3: Functions, Recursion & Pointers - Modular programming, Function definition, declaration, and prototypes; Call by value vs Call by reference; Recursive functions and call stack; Pointers: Concept, Pointer arithmetic, Pointers and arrays, Pointers to functions, Dynamic memory allocation (malloc, calloc, realloc, free).",
+      "Module 4: User-Defined Data Types & File Handling - Structures: Declaration, initialization, nested structures, array of structures, pointer to structure; Unions and Bit-fields; Enumerations (enum); File management: Text and binary files, file open modes, fprintf, fscanf, fread, fwrite, fseek, ftell, rewind, error handling."
+    ],
+    "textbooks": [
+      "Brian W. Kernighan and Dennis M. Ritchie, \"The C Programming Language\", 2nd Edition, Prentice Hall, 1988.",
+      "E. Balagurusamy, \"Programming in ANSI C\", 8th Edition, McGraw Hill Education, 2019.",
+      "Pradip Dey and Manas Ghosh, \"Computer Fundamentals and Programming in C\", 2nd Edition, Oxford University Press, 2013.",
+      "Yashavant Kanetkar, \"Let Us C\", 18th Edition, BPB Publications, 2021."
+    ],
+    "objectives": [
+      "To introduce procedural programming and computational problem-solving paradigms using C.",
+      "To master data structures, pointers, modular programming, memory management, and file operations."
+    ],
+    "outcomes": [
+      "CO1: Formulate algorithmic solutions for mathematical and computational tasks.",
+      "CO2: Implement modular and structured code using control structures, arrays, and strings.",
+      "CO3: Manage dynamic memory allocation and pointer-based operations efficiently.",
+      "CO4: Design programs utilizing structures, unions, and persistent file I/O."
+    ]
+  },
+  "EE100": {
+    "code": "EE100",
+    "name": "Basics of Electrical Engineering",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "2-0-0",
+    "credits": 2,
+    "modules": [
+      "Module 1: DC Circuit Analysis - Ohm's Law, Kirchhoff's Current and Voltage Laws (KCL, KVL); Mesh and Nodal analysis of resistive networks; Star-Delta and Delta-Star transformations; Network theorems: Superposition Theorem, Thevenin's Theorem, Norton's Theorem, Maximum Power Transfer Theorem.",
+      "Module 2: AC Circuit Analysis - Sinusoidal AC waveforms, Peak, Average, and RMS values, Form factor, Peak factor; Phasor representation; AC response in pure R, L, C, series R-L, R-C, and R-L-C circuits; Impedance, Admittance, Apparent, Active, and Reactive Power, Power Factor, Resonance in series and parallel RLC circuits.",
+      "Module 3: Three-Phase AC Systems & Magnetic Circuits - Generation of 3-phase voltages, Star (Y) and Delta (Δ) connections, Line and Phase voltage/current relationships in balanced systems, Active and Reactive power in balanced 3-phase systems, Two-wattmeter method of power measurement; Magnetic circuits, MMF, Flux, Reluctance, B-H loop, Faraday's laws of electromagnetic induction.",
+      "Module 4: Transformers & Electrical Machines - Working principle and construction of single-phase ideal and practical transformers, EMF equation, Equivalent circuit, Losses, Efficiency and Voltage Regulation; Overview of DC machines (Generator and Motor principles), Induction motors (working principle of 3-phase squirrel-cage motor) and Stepper motors."
+    ],
+    "textbooks": [
+      "D. P. Kothari and I. J. Nagrath, \"Basic Electrical Engineering\", 4th Edition, McGraw Hill, 2019.",
+      "Vincent Del Toro, \"Electrical Engineering Fundamentals\", 2nd Edition, Prentice Hall, 1989.",
+      "B. L. Theraja and A. K. Theraja, \"A Textbook of Electrical Technology: Volume I\", S. Chand, 2014.",
+      "L. S. Bobrow, \"Fundamentals of Electrical Engineering\", 2nd Edition, Oxford University Press, 2003."
+    ],
+    "objectives": [
+      "To introduce fundamental concepts of electrical circuit analysis, AC networks, magnetic circuits, and rotating machines.",
+      "To equip non-electrical and electrical engineers with core circuit design and electrical measurement competencies."
+    ],
+    "outcomes": [
+      "CO1: Apply KCL, KVL, and network theorems to simplify and analyze DC electrical networks.",
+      "CO2: Solve single-phase sinusoidal AC circuits and determine active, reactive, and apparent power.",
+      "CO3: Analyze 3-phase balanced power systems and measure power using two-wattmeter method.",
+      "CO4: Explain construction, equivalent circuits, and efficiency of transformers and electric motors."
+    ]
+  },
+  "ME100": {
+    "code": "ME100",
+    "name": "Engineering Mechanics",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "3-0-0",
+    "credits": 3,
+    "modules": [
+      "Module 1: Statics of Particles and Rigid Bodies - Fundamental concepts and principles of mechanics, Newton's laws; Force systems: Concurrent, coplanar, and spatial force systems, Resultant of forces, Lami's theorem; Free body diagrams, Equilibrium of rigid bodies in two and three dimensions; Support reactions.",
+      "Module 2: Trusses, Frames and Friction - Analysis of simple pin-jointed trusses: Method of Joints, Method of Sections; Friction: Laws of dry friction, Coefficient of friction, Angle of repose, Wedge friction, Ladder friction, Belt friction.",
+      "Module 3: Centroid, Center of Gravity & Moment of Inertia - Centroids of lines, areas, and composite figures; Center of gravity of bodies; Theorems of Pappus and Guldinus; Area Moment of Inertia: Parallel axis theorem, Perpendicular axis theorem, Moment of inertia of composite shapes, Polar moment of inertia, Radius of gyration; Mass moment of inertia.",
+      "Module 4: Dynamics: Kinematics & Kinetics of Particles - Rectilinear and curvilinear motion of particles; Normal and tangential acceleration; Newton's second law of motion, D'Alembert's principle, Work-Energy principle, Impulse and Momentum, Law of conservation of momentum, Direct central and oblique impact of elastic bodies.",
+      "Module 5: Kinetics of Rigid Bodies & Virtual Work - Plane kinematics and plane kinetics of rigid bodies; Translation, rotation about a fixed axis, General plane motion; Principle of Virtual Work and stability of equilibrium."
+    ],
+    "textbooks": [
+      "J. L. Meriam and L. G. Kraige, \"Engineering Mechanics: Statics and Dynamics\", 8th Edition, John Wiley, 2015.",
+      "F. P. Beer, E. R. Johnston, and E. R. Eisenberg, \"Vector Mechanics for Engineers: Statics and Dynamics\", 11th Edition, McGraw Hill, 2017.",
+      "I. H. Shames, \"Engineering Mechanics: Statics and Dynamics\", 4th Edition, Pearson Education, 2006.",
+      "S. Timoshenko and D. H. Young, \"Engineering Mechanics\", 5th Edition, McGraw Hill, 2013."
+    ],
+    "objectives": [
+      "To introduce principles of statics and dynamics of particles and rigid bodies.",
+      "To formulate free-body diagrams, analyze trusses and friction, and solve kinematic/kinetic equations of motion."
+    ],
+    "outcomes": [
+      "CO1: Construct accurate free-body diagrams and calculate reactions for statically determinate systems.",
+      "CO2: Analyze plane trusses using method of joints and method of sections.",
+      "CO3: Determine centroids, center of mass, and area/mass moments of inertia of structural sections.",
+      "CO4: Apply Newton's laws, Work-Energy principle, and Impulse-Momentum theorem to dynamical systems."
+    ]
+  },
+  "HU100": {
+    "code": "HU100",
+    "name": "Liberal Arts",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "0-0-2",
+    "credits": 1,
+    "modules": [
+      "Module 1: Introduction to Liberal Arts & Humanistic Inquiry - Significance of humanities, social sciences, and creative expression in technological education; Critical thinking, ethical reasoning, empathy, and social consciousness.",
+      "Module 2: Visual Arts, Photography and Cinema - Aesthetics and visual appreciation; Indian visual art traditions, modern painting movements; Fundamentals of cinematography, documentary critique, and visual storytelling.",
+      "Module 3: Music, Performing Arts and Theatre - Indian classical and folk music traditions; World music forms; Dramatic arts, street plays, theatrical improvisation, role-playing, and cultural storytelling.",
+      "Module 4: Literature, Creative Writing and Philosophy - Reading classic short stories, poetry, and philosophical essays; Critical analysis, creative non-fiction, storytelling, and reflective essays.",
+      "Module 5: Heritage, Culture and Environmental Humanities - Cultural heritage of India and Goa; Archaeological conservation; Intersections of technology, ecology, sustainability, and human societies."
+    ],
+    "textbooks": [
+      "Martha C. Nussbaum, \"Not for Profit: Why Democracy Needs the Humanities\", Princeton University Press, 2010.",
+      "E. H. Gombrich, \"The Story of Art\", 16th Edition, Phaidon Press, 1995.",
+      "Ananda K. Coomaraswamy, \"The Dance of Shiva: Essays on Indian Art and Culture\", Dover Publications, 2013.",
+      "Selections of contemporary literature, philosophical essays, and cinema studies."
+    ],
+    "objectives": [
+      "To broaden student perspectives beyond technical disciplines through engagement with literature, visual arts, music, philosophy, and cultural heritage.",
+      "To nurture creative imagination, emotional intelligence, ethical sensitivity, and interdisciplinary problem-solving."
+    ],
+    "outcomes": [
+      "CO1: Appreciate diverse forms of art, music, literature, and philosophical traditions.",
+      "CO2: Develop critical inquiry, aesthetic sensibility, and creative self-expression.",
+      "CO3: Reflect critically on the societal, cultural, and environmental impacts of technology.",
+      "CO4: Communicate creative and humanist ideas effectively in collaborative formats."
+    ]
+  },
+  "PH101": {
+    "code": "PH101",
+    "name": "Engineering Physics Lab",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "0-0-3",
+    "credits": 2,
+    "modules": [
+      "Module 1: Optics & Wave Phenomena Laboratory - 1. Determination of wavelength of sodium light using Newton's rings method; 2. Determination of wavelength of laser light using diffraction grating; 3. Determination of numerical aperture and optical attenuation in optical fiber; 4. Determination of Cauchy's constants of a glass prism using spectrometer; 5. Resolving power of telescope/grating.",
+      "Module 2: Modern Physics & Electromagnetism Laboratory - 6. Determination of Planck's constant using photoelectric cell; 7. Determination of energy bandgap of a semiconductor using reverse-biased p-n junction; 8. Measurement of magnetic field along the axis of current carrying circular coil (Stewart and Gee's experiment); 9. Determination of Hall coefficient and carrier concentration of semiconductor; 10. Study of B-H curve and hysteresis loss of ferromagnetic material."
+    ],
+    "textbooks": [
+      "C. L. Arora, \"Practical Physics\", S. Chand Publishing, 2010.",
+      "G. L. Squires, \"Practical Physics\", 4th Edition, Cambridge University Press, 2001.",
+      "Departmental Laboratory Instruction Manual for Engineering Physics Lab, NIT Goa."
+    ],
+    "objectives": [
+      "To provide hands-on experimental validation of key optical, electronic, magnetic, and quantum physical principles.",
+      "To develop rigorous laboratory measurement skills, error analysis, and experimental data interpretation."
+    ],
+    "outcomes": [
+      "CO1: Calibrate optical instruments and determine wavelengths, diffraction orders, and fiber parameters.",
+      "CO2: Measure fundamental physical constants such as Planck's constant and semiconductor band gaps.",
+      "CO3: Quantify electromagnetic fields, Hall coefficients, and magnetic hysteresis behavior.",
+      "CO4: Perform systematic uncertainty calculations and present scientific experiment reports."
+    ]
+  },
+  "CS101": {
+    "code": "CS101",
+    "name": "Computer Programming Lab",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "0-0-2",
+    "credits": 1,
+    "modules": [
+      "Module 1: Basic Constructs, Control Flow & Functions - 1. Programs using basic data types, arithmetic operators, and formatted I/O; 2. Programs on conditional statements (if, if-else, switch-case); 3. Iterative loops (for, while, do-while) for series summation and pattern generation; 4. Programs using modular functions, scope rules, and recursion (GCD, Fibonacci, Towers of Hanoi).",
+      "Module 2: Arrays, Pointers, Structures & File Systems - 5. Programs on 1D and 2D arrays (Matrix multiplication, transpose, search, sorting); 6. String manipulation programs without and with standard library functions; 7. Pointer arithmetic, pass-by-reference, and dynamic memory allocation (malloc, free); 8. Programs using structures, unions, and array of structures; 9. File reading, writing, and record handling; 10. Mini programming project with makefile."
+    ],
+    "textbooks": [
+      "Brian W. Kernighan and Dennis M. Ritchie, \"The C Programming Language\", 2nd Edition, Prentice Hall.",
+      "E. Balagurusamy, \"Programming in ANSI C\", 8th Edition, McGraw Hill Education.",
+      "Laboratory Guide on C Programming, Department of Computer Science & Engineering, NIT Goa."
+    ],
+    "objectives": [
+      "To gain practical fluency in writing, compiling, debugging, and testing structured C programs.",
+      "To implement algorithms for mathematical computations, matrix operations, sorting, pointer manipulation, and persistent storage."
+    ],
+    "outcomes": [
+      "CO1: Translate problem statements into executable C programs using appropriate control flow constructs.",
+      "CO2: Implement modular programs using functions, recursive methods, and multi-file structures.",
+      "CO3: Manage dynamic memory and manipulate pointer-based data structures safely.",
+      "CO4: Create applications with file input/output and record-oriented data management."
+    ]
+  },
+  "EE101": {
+    "code": "EE101",
+    "name": "Basics of Electrical Engineering Lab",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "0-0-2",
+    "credits": 1,
+    "modules": [
+      "Module 1: Equipment Familiarisation & Circuit Theorems - 1. Familiarisation with electrical measuring instruments (Ammeter, Voltmeter, Multimeter, Wattmeter, Rheostat, Autotransformer); 2. Experimental verification of Kirchhoff's Current Law (KCL) and Kirchhoff's Voltage Law (KVL); 3. Verification of Thevenin's and Norton's equivalent network theorems; 4. Verification of Superposition and Maximum Power Transfer theorems.",
+      "Module 2: AC Circuits & Electrical Machines - 5. Transient analysis of first-order R-L and R-C circuits; 6. Measurement of active, reactive power, and power factor in single-phase series R-L-C circuits; 7. Measurement of three-phase power using two-wattmeter method in balanced star/delta loads; 8. Determination of voltage regulation and efficiency of single-phase transformer by direct loading."
+    ],
+    "textbooks": [
+      "D. P. Kothari and I. J. Nagrath, \"Basic Electrical Engineering\", 4th Edition, McGraw Hill Education, 2019.",
+      "Vincent Del Toro, \"Electrical Engineering Fundamentals\", 2nd Edition, Prentice Hall, 1989.",
+      "Laboratory Manual for Basic Electrical Engineering, Department of EEE, NIT Goa."
+    ],
+    "objectives": [
+      "To familiarize students with electrical laboratory equipment, safety measures, components, and instruments.",
+      "To experimentally verify DC/AC network theorems and evaluate performance of single-phase transformers."
+    ],
+    "outcomes": [
+      "CO1: Operate basic electrical laboratory meters, power supplies, and load banks safely.",
+      "CO2: Verify Kirchhoff's laws and circuit theorems on physical electrical networks.",
+      "CO3: Measure electrical power and power factor in single-phase and three-phase circuits.",
+      "CO4: Determine efficiency and voltage regulation of single-phase power transformers."
+    ]
+  },
+  "ME101": {
+    "code": "ME101",
+    "name": "Engineering Drawing",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "1-0-3",
+    "credits": 3,
+    "modules": [
+      "Module 1: Drawing Instruments, Lines, Lettering & Scales - Drawing instruments and their uses, BIS conventions; Different types of lines, Lettering and dimensioning; Scales: Plain scales, Diagonal scales, Vernier scales; Basics of Orthographic Projection, First and Third angle projection systems.",
+      "Module 2: Projection of Points and Lines - Projection of points in all four quadrants; Projection of straight lines: Parallel to both planes, perpendicular to one plane, inclined to one and parallel to other, inclined to both reference planes; Determination of true length, true inclinations, and traces of lines.",
+      "Module 3: Projection of Planes & Solids - Projection of regular plane figures (triangle, square, pentagon, hexagon, circle) inclined to one or both planes; Projection of regular solids (prisms, pyramids, cylinders, cones) with axis inclined to reference planes; Auxiliary projections.",
+      "Module 4: Sections of Solids, Development of Surfaces & CAD - Section planes perpendicular to one plane and inclined to other, True shape of sections; Development of lateral surfaces of simple and truncated solids (parallel line, radial line methods); Isometric views and isometric projections; Introduction to 2D Computer-Aided Drafting (CAD) tools."
+    ],
+    "textbooks": [
+      "N. D. Bhatt, \"Engineering Drawing: Plane and Solid Geometry\", 53rd Edition, Charotar Publishing House, 2014.",
+      "K. Venugopal and V. Prabhu Raja, \"Engineering Graphics\", 5th Edition, New Age International, 2011.",
+      "D. A. Jolhe, \"Engineering Drawing with an Introduction to AutoCAD\", Tata McGraw Hill, 2008."
+    ],
+    "objectives": [
+      "To teach visualization of 3D engineering components and representation in standard 2D orthographic projections.",
+      "To cultivate precision engineering drafting skills using traditional instruments and modern CAD software."
+    ],
+    "outcomes": [
+      "CO1: Apply BIS drafting conventions, dimensioning, lettering, and scale constructions.",
+      "CO2: Draw projections of points, straight lines, and planar laminas with true inclinations and traces.",
+      "CO3: Construct projections of regular solids, sectional views, and surface developments.",
+      "CO4: Create isometric views and 2D engineering drawings using CAD drafting tools."
+    ]
+  },
+  "MA150": {
+    "code": "MA150",
+    "name": "Differential Equations and Vector Calculus",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "3-1-0",
+    "credits": 4,
+    "modules": [
+      "Module 1: First-Order Ordinary Differential Equations - Exact equations, Integrating factors; Linear and Bernoulli equations; Orthogonal trajectories; Equations solvable for p, y, x; Clairaut's equation; Applications to electric circuits, cooling laws, and population dynamics.",
+      "Module 2: Higher-Order Linear ODEs & Series Solutions - Linear differential equations of second and higher order with constant coefficients; Method of undetermined coefficients; Method of variation of parameters; Cauchy-Euler differential equations; System of simultaneous linear differential equations; Power series solutions about ordinary points; Legendre polynomials and Bessel functions.",
+      "Module 3: Partial Differential Equations - Formation of PDEs, First-order linear and non-linear PDEs; Lagrange's method, Charpit's method; Homogeneous and non-homogeneous linear PDEs with constant coefficients; Separation of variables method; One-dimensional wave equation, One-dimensional heat conduction equation, Two-dimensional Laplace equation.",
+      "Module 4: Vector Calculus & Field Integral Theorems - Vector functions of single variable: Velocity, acceleration, curvature, torsion; Gradient of a scalar field, directional derivatives; Divergence and curl of vector fields, physical interpretations; Solenoidal and irrotational fields; Line, Surface, and Volume integrals; Green's theorem in a plane, Gauss Divergence theorem, Stokes' theorem and engineering applications."
+    ],
+    "textbooks": [
+      "G. F. Simmons, \"Differential Equations with Applications and Historical Notes\", 3rd Edition, CRC Press, 2016.",
+      "E. Kreyszig, \"Advanced Engineering Mathematics\", 10th Edition, John Wiley & Sons, 2011.",
+      "R. K. Jain and S. R. K. Iyengar, \"Advanced Engineering Mathematics\", 5th Edition, Narosa Publishing, 2016.",
+      "Dennis G. Zill, \"Advanced Engineering Mathematics\", 6th Edition, Jones & Bartlett Learning, 2018."
+    ],
+    "objectives": [
+      "To provide rigorous mathematical foundations in ordinary and partial differential equations and vector field calculus.",
+      "To model and analyze physical systems governed by rate equations, wave equations, diffusion, and potential fields."
+    ],
+    "outcomes": [
+      "CO1: Solve first-order and higher-order linear ODEs using analytic and variation of parameters methods.",
+      "CO2: Solve boundary value problems in PDEs using method of separation of variables.",
+      "CO3: Compute gradient, divergence, and curl of physical vector fields.",
+      "CO4: Apply Green's, Gauss Divergence, and Stokes' theorems to line, surface, and volume integral problems."
+    ]
+  },
+  "CY150": {
+    "code": "CY150",
+    "name": "Engineering Chemistry",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "3-0-0",
+    "credits": 3,
+    "modules": [
+      "Module 1: Chemical Thermodynamics & Phase Equilibria - Laws of thermodynamics, entropy change in reversible and irreversible processes, Helmholtz and Gibbs free energy, Maxwell relations, Gibbs-Helmholtz equation; Chemical potential, Clausius-Clapeyron equation; Phase rule, Definitions of terms; One component systems (Water, Sulfur); Two component systems: Lead-Silver system, Eutectic mixtures, Solid solutions.",
+      "Module 2: Electrochemistry & Corrosion Science - Nernst equation, Electrochemical cells, EMF measurement, Standard electrodes (Calomel electrode, Glass electrode); Batteries: Lead-acid, Lithium-ion battery, Fuel cells (H2-O2 fuel cell); Corrosion: Dry and wet corrosion mechanisms, Galvanic, Pitting, and Stress corrosion; Factors affecting corrosion; Protective coatings, Cathodic protection (Sacrificial anode and Impressed current methods).",
+      "Module 3: Polymers, Composites & Nanomaterials - Classification of polymers, Polymerization mechanisms (Addition, Condensation, Coordination); Thermoplastics vs Thermosets; Conducting polymers (Polyaniline, Polypyrrole); Biodegradable polymers (PLA, PGA); Fiber-reinforced polymers (FRP); Nanomaterials: Carbon nanotubes (SWCNTs, MWCNTs), Graphene, Synthesis (Sol-gel, CVD) and engineering applications.",
+      "Module 4: Water Technology & Instrumental Analysis - Hardness of water (Temporary and Permanent), EDTA method, Boiler troubles: Scale, Sludge, Priming, Foaming, Caustic embrittlement; Water treatment: Zeolite process, Ion-exchange demineralization, Reverse Osmosis (RO); Principles and applications of UV-Visible spectroscopy, Fourier Transform Infrared spectroscopy (FTIR), and High Performance Liquid Chromatography (HPLC)."
+    ],
+    "textbooks": [
+      "P. C. Jain and Monika Jain, \"Engineering Chemistry\", 17th Edition, Dhanpat Rai Publishing, 2018.",
+      "S. S. Dara and S. S. Umare, \"A Textbook of Engineering Chemistry\", 12th Edition, S. Chand Publishing, 2014.",
+      "Shashi Chawla, \"A Text Book of Engineering Chemistry\", Dhanpat Rai & Co., 2013.",
+      "O. G. Palanna, \"Engineering Chemistry\", 2nd Edition, Tata McGraw Hill, 2017."
+    ],
+    "objectives": [
+      "To introduce fundamental concepts of chemical thermodynamics, electrochemistry, corrosion mitigation, advanced materials, and instrumental analysis.",
+      "To apply chemical engineering principles to water treatment, battery storage, and structural materials."
+    ],
+    "outcomes": [
+      "CO1: Apply phase diagrams and thermodynamics to predict alloy behavior and material phase stability.",
+      "CO2: Formulate electrochemical mechanisms of energy storage devices and design corrosion prevention schemes.",
+      "CO3: Select appropriate polymers, composites, and nanomaterials for structural and electronic applications.",
+      "CO4: Analyze water quality parameters and employ spectroscopic techniques for material characterization."
+    ]
+  },
+  "HU150": {
+    "code": "HU150",
+    "name": "Professional Communication",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "2-0-3",
+    "credits": 4,
+    "modules": [
+      "Module 1: Principles of Communication & LSRW Skills - Communication process, models, channels, barriers to effective communication, strategies to overcome barriers; Listening: Active vs passive listening, barriers to listening, taking lecture notes; Speaking: Phonetics, pronunciation, stress, intonation, fluency development.",
+      "Module 2: Reading & Vocabulary Enrichment - Techniques for reading: Skimming, scanning, intensive and extensive reading; Reading comprehension of scientific and technical texts; Vocabulary building: Word formation (affixes, prefixes, roots), Synonyms, Antonyms, Collocations, Idioms, Technical terminology.",
+      "Module 3: Technical Writing & Documentation - Paragraph writing, coherence and cohesion, transitional devices; Formal correspondence: Business letters, Email etiquette, Memo, Notices, Circulars; Technical reports: Structure, formal research reports, progress reports, feasibility studies; Technical proposals; Curriculum Vitae (CV) and resume writing with cover letters.",
+      "Module 4: Oral Presentations & Professional Interactions - Planning and structuring technical presentations, visual aids design, slide presentation hygiene, body language, overcoming stage fear; Group discussions: Dynamics, roles, leadership, negotiation skills; Interview techniques: Types of job interviews, mock interviews, answering behavioral and technical questions.",
+      "Module 5: Communication Lab Practice - Audio-visual lab sessions: Pronunciation practice, accent neutralization, impromptu speaking, elevator pitches, recorded mock presentations with peer feedback, business meetings simulation."
+    ],
+    "textbooks": [
+      "Meenakshi Raman and Sangeeta Sharma, \"Technical Communication: Principles and Practice\", 3rd Edition, Oxford University Press, 2015.",
+      "M. Ashraf Rizvi, \"Effective Technical Communication\", 2nd Edition, McGraw Hill Education, 2017.",
+      "Andrea J. Rutherfoord, \"Basic Communication Skills for Technology\", 2nd Edition, Pearson Education, 2007."
+    ],
+    "objectives": [
+      "To enhance students' English communication competency across Listening, Speaking, Reading, and Writing (LSRW).",
+      "To develop professional technical writing, presentation mastery, collaborative interpersonal skills, and interview readiness."
+    ],
+    "outcomes": [
+      "CO1: Communicate fluently and with accurate phonetic pronunciation in formal and interpersonal contexts.",
+      "CO2: Read and critically interpret complex scientific, technical, and analytical documents.",
+      "CO3: Draft professional business letters, technical reports, CVs, and proposals adhering to industry standards.",
+      "CO4: Deliver impactful technical presentations and participate constructively in group discussions and interviews."
+    ]
+  },
+  "EC150": {
+    "code": "EC150",
+    "name": "Basics of Electronics Engineering",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "2-0-0",
+    "credits": 2,
+    "modules": [
+      "Module 1: Semiconductor Diodes & Power Supplies - Intrinsic and extrinsic semiconductors, energy band diagrams; P-N junction diode: Forward and reverse bias characteristics, ideal vs practical diode, temperature effects; Zener diode: breakdown mechanisms (Avalanche and Zener), Zener diode as a voltage regulator; Diode applications: Half-wave and Full-wave rectifiers (Center-tapped and Bridge), Rectifier efficiency, Ripple factor, Capacitor filter circuits.",
+      "Module 2: Bipolar Junction Transistors (BJT) - Construction and physical operation of BJT, NPN and PNP configurations; Common Base (CB), Common Emitter (CE), Common Collector (CC) configurations, Input and output characteristics; Active, Saturation, and Cut-off regions; Current gain parameters (alpha, beta, gamma); DC load line and operating point (Q-point); BJT biasing circuits: Fixed bias, Collector-to-base bias, Voltage divider bias; BJT as a switch and as an amplifier.",
+      "Module 3: Field Effect Transistors (FET) & Operational Amplifiers - Junction Field Effect Transistor (JFET): Construction, drain and transfer characteristics; MOSFET: Depletion and Enhancement type MOSFETs, V-I characteristics; Introduction to Operational Amplifiers (Op-Amp): Ideal Op-Amp characteristics, Virtual ground concept; Inverting and non-inverting amplifier configurations, Voltage follower, Summing amplifier, Difference amplifier.",
+      "Module 4: Digital Electronics Fundamentals - Number systems: Binary, Octal, Decimal, Hexadecimal; Number conversions; Binary arithmetic; Logic gates: AND, OR, NOT, NAND, NOR, XOR, XNOR; Universal gates; Boolean algebra: Laws and theorems, De Morgan's laws, Boolean expression simplification; Introduction to Combinational logic: Half Adder and Full Adder."
+    ],
+    "textbooks": [
+      "Robert L. Boylestad and Louis Nashelsky, \"Electronic Devices and Circuit Theory\", 11th Edition, Pearson Education, 2013.",
+      "David A. Bell, \"Electronic Devices and Circuits\", 5th Edition, Oxford University Press, 2008.",
+      "M. Morris Mano and Michael D. Ciletti, \"Digital Design: With an Introduction to the Verilog HDL\", 5th Edition, Pearson, 2012.",
+      "D. Roy Choudhury and Shail B. Jain, \"Linear Integrated Circuits\", 5th Edition, New Age International, 2018."
+    ],
+    "objectives": [
+      "To introduce fundamental semiconductor devices, diode circuits, transistor configurations, operational amplifiers, and digital logic gates.",
+      "To provide a conceptual bridge between solid-state device physics and modern digital/analog electronic circuit applications."
+    ],
+    "outcomes": [
+      "CO1: Explain the operational physics and characteristics of semiconductor and Zener diodes in power supply rectification.",
+      "CO2: Analyze BJT and FET biasing, load-line configurations, and transistor amplifier operating points.",
+      "CO3: Design basic linear analog signal processing circuits using operational amplifiers.",
+      "CO4: Simplify Boolean algebra expressions and construct combinational logic arithmetic circuits."
+    ]
+  },
+  "ME150": {
+    "code": "ME150",
+    "name": "Basics of Mechanical and Civil Engineering",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "3-0-0",
+    "credits": 3,
+    "modules": [
+      "Module 1: Thermal Engineering & Energy Conversion (Part A: Mechanical) - Laws of thermodynamics, Open and closed systems, Concept of enthalpy and entropy; Steam generation: Boilers (Water tube and Fire tube boilers), Steam turbines; Internal Combustion (IC) Engines: 2-stroke and 4-stroke petrol and diesel engines, Otto and Diesel cycles, Working principles, Engine components, Indicator diagrams, Thermal efficiency.",
+      "Module 2: Manufacturing Processes & Machine Elements (Part A: Mechanical) - Casting processes: Sand casting, Pattern types, Moulding sand; Metal forming: Forging, Rolling, Extrusion; Metal joining: Welding (Arc welding, Gas welding), Soldering, Brazing; Machining operations: Lathe, Drilling, Milling machines; Power transmission elements: Belts, Ropes, Chains, and Gear drives, Velocity ratio.",
+      "Module 3: Civil Engineering Materials & Structural Systems (Part B: Civil) - Building materials: Bricks, Stones, Cement (OPC properties, manufacture), Mortar, Concrete (Ingredients, water-cement ratio, workability, curing, compressive strength), Reinforcing steel; Structural components of buildings: Substructure (shallow and deep foundations), Superstructure (columns, beams, slabs, lintels, roofs); Load bearing vs framed structures.",
+      "Module 4: Surveying & Environmental Infrastructure (Part B: Civil) - Surveying: Objectives, principles of surveying, Classification; Chain and Tape surveying, Compass surveying, Prismatic compass, Bearings, Local attraction; Levelling: Concepts, Dumpy level, Levelling staff, Reduced levels, Height of Instrument and Rise & Fall methods; Overview of water supply, sanitation, green buildings, and transportation infrastructure."
+    ],
+    "textbooks": [
+      "P. K. Nag, \"Basic and Applied Thermodynamics\", 2nd Edition, Tata McGraw Hill, 2010.",
+      "P. N. Rao, \"Manufacturing Technology: Foundry, Forming and Welding\", 4th Edition, McGraw Hill, 2013.",
+      "B. C. Punmia, Ashok K. Jain, and Arun K. Jain, \"Basic Civil Engineering\", Laxmi Publications, 2003.",
+      "S. Ramamrutham, \"Basic Civil Engineering\", Dhanpat Rai Publishing Co., 2013."
+    ],
+    "objectives": [
+      "To provide students with a foundational understanding of thermal systems, manufacturing processes, building materials, structural components, and surveying techniques.",
+      "To foster interdisciplinary comprehension of engineering systems combining mechanical prime movers and civil infrastructures."
+    ],
+    "outcomes": [
+      "CO1: Explain working principles of thermal boilers, IC engines, and refrigeration systems.",
+      "CO2: Describe primary manufacturing processes including casting, forming, machining, and welding.",
+      "CO3: Identify properties of building materials and understand load transfer in structural building components.",
+      "CO4: Apply linear and angular surveying principles to calculate bearings and ground elevation levels."
+    ]
+  },
+  "HU151": {
+    "code": "HU151",
+    "name": "Health & Happiness",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "2-0-0",
+    "credits": 2,
+    "modules": [
+      "Module 1: Holistic Health & Human Well-being - Concept of holistic health: Physical, mental, emotional, social, and spiritual dimensions; Understanding the self, self-awareness, and emotional regulation; Lifestyle diseases (Hypertension, Diabetes, Obesity), preventive health practices, circadian rhythms, sleep hygiene.",
+      "Module 2: Nutrition, Dietetics & Indian Knowledge Systems (IKS) - Nutritional science: Macronutrients and micronutrients, Balanced diet, Hydration; Traditional Indian dietary principles: Ahara, concepts of Satvik, Rajasik, and Tamasik foods; Seasonal dietary adjustments (Ritucharya); Gut-brain axis and dietary impact on mental health.",
+      "Module 3: Stress Management & Yogic Science - Stress: Causes, physiological and psychological manifestations, coping mechanisms; Principles and practices of Yoga: Asanas for physical flexibility and strength, Pranayama (breath regulation: Anulom-Vilom, Bhramari, Kapalabhati); Mindfulness, relaxation techniques, Yoga Nidra.",
+      "Module 4: Happiness, Positive Psychology & Social Harmony - Theories of happiness and subjective well-being; Gratitude, resilience, optimism, empathy, and active listening; Harmonious relationships: Family, peers, society, and nature; Value education, professional ethics, human dignity, and work-life balance."
+    ],
+    "textbooks": [
+      "B. K. S. Iyengar, \"Light on Yoga\", HarperCollins Publishers, 2006.",
+      "R. R. Gaur, R. Asthana, and G. P. Bagaria, \"A Foundation Course in Human Values and Professional Ethics\", Excel Books, 2010.",
+      "Swami Vivekananda, \"Raja Yoga\", Advaita Ashrama, Kolkata, 2011.",
+      "Martin Seligman, \"Flourish: A Visionary New Understanding of Happiness and Well-being\", Free Press, 2011."
+    ],
+    "objectives": [
+      "To instill holistic awareness of physical health, nutrition, mental well-being, yogic science, and emotional resilience.",
+      "To connect Indian Knowledge Systems (IKS) with modern psychological and physiological health paradigms."
+    ],
+    "outcomes": [
+      "CO1: Assess personal physical, nutritional, and emotional wellness habits objectively.",
+      "CO2: Implement yogic asanas, pranayama, and stress-reduction routines in daily student life.",
+      "CO3: Practice mindful lifestyle routines, balanced nutrition, and positive psychology for sustained happiness.",
+      "CO4: Foster empathetic interpersonal relationships, social harmony, and professional ethical commitments."
+    ]
+  },
+  "CY151": {
+    "code": "CY151",
+    "name": "Engineering Chemistry Lab",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "0-0-3",
+    "credits": 2,
+    "modules": [
+      "Module 1: Volumetric & Quantitative Chemical Analysis - 1. Determination of total, permanent, and temporary hardness of water sample by complexometric EDTA titration; 2. Determination of dissolved oxygen (DO) in water sample by Winkler's iodometric method; 3. Estimation of Iron in hematite ore by potassium dichromate redox titration; 4. Estimation of copper in brass alloy by iodometric titration; 5. Determination of percentage purity of commercial soda ash.",
+      "Module 2: Instrumental & Analytical Chemistry - 6. Conductometric titration of strong acid against strong base (HCl vs NaOH); 7. Determination of strength of weak acid using pH-metric titration; 8. Determination of viscosity of lubricating oil using Ostwald viscometer / Redwood viscometer; 9. Determination of flash and fire points of fuels using Pensky-Martens apparatus; 10. Colorimetric estimation of transition metal ions using UV-Visible spectrophotometer."
+    ],
+    "textbooks": [
+      "J. Mendham, R. C. Denney, J. D. Barnes, and M. Thomas, \"Vogel's Quantitative Chemical Analysis\", 6th Edition, Pearson, 2000.",
+      "Sunita Rattan, \"Experiments in Applied Chemistry\", S. K. Kataria & Sons, 2015.",
+      "Laboratory Manual for Engineering Chemistry, Department of Chemistry, NIT Goa."
+    ],
+    "objectives": [
+      "To train students in precision volumetric, complexometric, and redox quantitative chemical titrations.",
+      "To operate analytical instruments including pH meters, conductivity meters, viscometers, and spectrophotometers."
+    ],
+    "outcomes": [
+      "CO1: Quantify water hardness, dissolved oxygen, and mineral concentrations in environmental samples.",
+      "CO2: Perform conductometric and potentiometric acid-base titrations with accurate equivalence point detection.",
+      "CO3: Measure physical properties of lubricating oils and fuels including viscosity and flash/fire points.",
+      "CO4: Execute spectrophotometric estimations and maintain rigorous chemical laboratory safety standards."
+    ]
+  },
+  "EC151": {
+    "code": "EC151",
+    "name": "Basics of Electronics Engineering Lab",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "0-0-3",
+    "credits": 1,
+    "modules": [
+      "Module 1: Component Familiarisation & Diode Applications - 1. Identification and testing of active/passive electronic components (resistors, capacitors, inductors, diodes, transistors); 2. Operation of laboratory test equipment: Regulated DC Power Supply, Digital Multimeter, Function Generator, and Digital Storage Oscilloscope (DSO); 3. Measurement of AC/DC voltage, current, frequency, and phase; 4. V-I characteristics of P-N junction diode and Zener diode; 5. Design and testing of Half-wave and Full-wave bridge rectifiers with capacitor filters; 6. Zener diode voltage regulator circuit.",
+      "Module 2: Transistors, Op-Amps & Digital Logic - 7. Input and output characteristics of Bipolar Junction Transistor (BJT) in Common Emitter (CE) configuration; 8. Design of BJT as an electronic switch; 9. Operational Amplifier circuits: Inverting and Non-inverting amplifiers using IC 741, Voltage follower, Summing amplifier; 10. Verification of truth tables of basic logic gates (AND, OR, NOT, NAND, NOR, XOR); 11. Realization of basic logic gates using universal NAND/NOR gates; 12. Design and verification of Half Adder and Full Adder circuits."
+    ],
+    "textbooks": [
+      "Robert L. Boylestad and Louis Nashelsky, \"Electronic Devices and Circuit Theory\", 11th Edition, Pearson Education.",
+      "David A. Bell, \"Laboratory Manual for Electronic Devices and Circuits\", 4th Edition, Oxford University Press.",
+      "Laboratory Guide for Basics of Electronics Engineering, Department of ECE, NIT Goa."
+    ],
+    "objectives": [
+      "To provide hands-on experience in electronic testing equipment, breadboarding, device characterization, and circuit prototyping.",
+      "To experimentally verify characteristics of diodes, transistors, operational amplifiers, and digital logic circuits."
+    ],
+    "outcomes": [
+      "CO1: Operate oscilloscopes, function generators, multimeters, and DC power supplies safely.",
+      "CO2: Measure and plot V-I characteristics of semiconductor diodes, Zener regulators, and BJTs.",
+      "CO3: Construct inverting and non-inverting operational amplifier analog circuits.",
+      "CO4: Build combinational digital logic circuits using discrete ICs and universal gates."
+    ]
+  },
+  "ME151": {
+    "code": "ME151",
+    "name": "Workshop Practices",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "0-0-3",
+    "credits": 2,
+    "modules": [
+      "Module 1: Carpentry & Fitting Shop - 1. Carpentry: Use of hand tools (saws, jack planes, chisels, marking gauges); Construction of wood joints: Half-lap joint, Mortise and Tenon joint, Dovetail joint, planning and sawing exercises; 2. Fitting: Demonstration and practice with bench vices, files, hacksaws, try-squares, center punches; Production of stepped joints, V-joints, and square joints; Drilling, tapping, and reaming operations.",
+      "Module 2: Welding, Machining & Advanced Manufacturing - 3. Welding: Electric arc welding safety, preparation of joints, practice on Butt joint, Lap joint, and Tee joint; Oxy-acetylene gas welding and cutting demonstration; 4. Machine Shop: Demonstration of operations on Centre Lathe (facing, plain turning, step turning, taper turning, knurling, thread cutting), Drilling and Shaping machines; 5. Sheet Metal & Foundry: Development and fabrication of sheet metal tray/funnel; Demonstration of sand mould preparation and casting; 6. Overview of CNC machining and 3D printing."
+    ],
+    "textbooks": [
+      "S. K. Hajra Choudhury, A. K. Hajra Choudhury, and Nirjhar Roy, \"Elements of Workshop Technology: Vol. I & II\", Media Promoters & Publishers, 2012.",
+      "B. S. Raghuwanshi, \"A Course in Workshop Technology: Vol. I & II\", Dhanpat Rai & Co., 2015.",
+      "K. Venkat Reddy, \"Workshop Practice Manual\", 6th Edition, B. S. Publications, 2008."
+    ],
+    "objectives": [
+      "To provide practical workshop skills across carpentry, fitting, welding, sheet metal, and basic machine tool operations.",
+      "To develop mechanical fabrication safety awareness, dimensional measurement precision, and manufacturing craftsmanship."
+    ],
+    "outcomes": [
+      "CO1: Select and safely operate manual hand tools for wood working and precision metal fitting.",
+      "CO2: Fabricate timber joints and metallic fitting specimens adhering to engineering drawings and tolerances.",
+      "CO3: Execute manual metal arc welding joints and understand fusion joining techniques.",
+      "CO4: Explain machining operations on conventional machine tools and advanced manufacturing systems."
+    ]
+  },
+  "PE150": {
+    "code": "PE150",
+    "name": "Physical Education",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "1-0-2",
+    "credits": 0,
+    "modules": [
+      "Module 1: Fitness Fundamentals & Physical Conditioning - Definition, meaning, and components of physical fitness: Cardiovascular endurance, Muscular strength, Muscular endurance, Flexibility, Body composition; Warm-up exercises, Aerobic and anaerobic training, Calisthenics, Circuit training, Core stability exercises.",
+      "Module 2: Sports Skills, Rules & Team Dynamics - Rules, regulations, fundamental skills, court/field dimensions, and game strategies of major sports (Football, Basketball, Volleyball, Cricket, Badminton, Table Tennis, Athletics); Team spirit, leadership, fair play, sports ethics; Postural deformities and corrective exercises; First aid and sports injury management."
+    ],
+    "textbooks": [
+      "Charles A. Bucher, \"Foundations of Physical Education and Sport\", McGraw Hill, 1999.",
+      "M. L. Kamlesh, \"Physical Education: Facts and Foundations\", P. B. Publications, 2006.",
+      "Rules of Sports and Games, Ministry of Youth Affairs and Sports, Government of India."
+    ],
+    "objectives": [
+      "To promote physical fitness, motor skills development, active lifestyle habits, and team cooperation.",
+      "To teach sports rules, athletic conditioning, sportsmanship, and injury prevention."
+    ],
+    "outcomes": [
+      "CO1: Maintain personal cardiovascular endurance, muscular strength, and overall functional fitness.",
+      "CO2: Demonstrate proficiency in executing fundamental skills in selected sports and athletic events.",
+      "CO3: Adhere to fair play, teamwork, leadership, and emotional self-regulation during competitive games.",
+      "CO4: Apply first-aid principles and preventive strategies against physical fatigue and sports injuries."
+    ]
+  }
+}

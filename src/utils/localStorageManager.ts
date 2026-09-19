@@ -1,5 +1,5 @@
 /**
- * Local Data Storage Manager for NIT Goa Academic Portal
+ * Local Data Storage Manager for NIT Goa Timetable & Academic Resources
  * Guarantees 100% client-side privacy and offline data persistence.
  * Zero data sent to external servers.
  */
@@ -76,7 +76,7 @@ export function exportAllLocalData(): string {
   const backup: Record<string, any> = {
     _exportDate: new Date().toISOString(),
     _version: '3.4.0',
-    _portal: 'NIT Goa Academic Timetable & Attendance Portal',
+    _app: 'NIT Goa Academic Timetable & Attendance',
     _architect: 'Ayush Kumar',
     data: {},
   };

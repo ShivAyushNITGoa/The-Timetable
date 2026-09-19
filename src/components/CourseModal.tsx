@@ -1,7 +1,9 @@
 import React from 'react';
 import { COURSES, Course } from '../data/timetableData';
 import { getAllKnownCourses } from '../data/branchesData';
-import { X, BookOpen, Clock, MapPin, Award, User, Mail, Sparkles, CheckCircle2, Globe, FileText, ExternalLink, Calendar } from 'lucide-react';
+import { getOfficialCourseSyllabus } from '../data/officialSyllabusRegistry';
+import { X, BookOpen, Clock, MapPin, Award, User, Mail, Sparkles, CheckCircle2, Globe, FileText, ExternalLink, Calendar, Download, Bookmark } from 'lucide-react';
+import { EmbeddedPdfViewer } from './EmbeddedPdfViewer';
 
 interface CourseModalProps {
   courseCode: string | null;
@@ -21,15 +23,17 @@ export const CourseModal: React.FC<CourseModalProps> = ({
   if (!courseCode) return null;
 
   const allKnown = getAllKnownCourses();
-  const course: Course =
+  const officialSyllabus = getOfficialCourseSyllabus(courseCode);
+
+  const courseBase: Course =
     courses?.[courseCode] ||
     allKnown[courseCode] ||
     COURSES[courseCode] || {
       code: courseCode,
-      name: `Course ${courseCode}`,
-      type: 'Theory',
-      credits: 3,
-      ltp: '3-0-0',
+      name: officialSyllabus?.name || `Course ${courseCode}`,
+      type: (courseCode.includes('Lab') || officialSyllabus?.name.toLowerCase().includes('lab')) ? 'Lab' : 'Theory',
+      credits: officialSyllabus?.credits || 3,
+      ltp: officialSyllabus?.ltp || '3-0-0',
       teachingSlot: 'Core',
       examSlot: 'Core',
       coordinator: 'Faculty Coordinator',
@@ -39,7 +43,27 @@ export const CourseModal: React.FC<CourseModalProps> = ({
       notes: 'Course details retrieved from academic curriculum.',
     };
 
+  // Combine static and official registry details - Accredited official syllabus takes precedence
+  const effectiveCredits = officialSyllabus?.credits || courseBase.credits || 3;
+  const effectiveLtp = officialSyllabus?.ltp || (courseBase.ltp && courseBase.ltp !== '3-0-0' ? courseBase.ltp : '3-0-0');
+  const effectiveModules = (officialSyllabus?.modules && officialSyllabus.modules.length > 0) 
+    ? officialSyllabus.modules 
+    : (courseBase.modules || []);
+  const effectiveTextbooks = (officialSyllabus?.textbooks && officialSyllabus.textbooks.length > 0) 
+    ? officialSyllabus.textbooks 
+    : (courseBase.textbooks || []);
+
+  const course: Course = {
+    ...courseBase,
+    name: courseBase.name && !courseBase.name.startsWith('Course ') ? courseBase.name : (officialSyllabus?.name || courseBase.name),
+    credits: effectiveCredits,
+    ltp: effectiveLtp,
+    modules: effectiveModules,
+    textbooks: effectiveTextbooks,
+  };
+
   const isMinor = course.isMinor || courseCode === 'CS300M';
+  const [viewTab, setViewTab] = React.useState<'details' | 'pdf'>('details');
 
   return (
     <div 
@@ -47,7 +71,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
       onClick={onClose}
     >
       <div 
-        className="relative w-full max-w-lg bg-slate-900 border border-slate-700/80 rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh] animate-in slide-in-from-bottom duration-200"
+        className={`relative w-full ${viewTab === 'pdf' ? 'max-w-6xl h-[92vh] max-h-[96vh]' : 'max-w-lg max-h-[94vh]'} bg-slate-900 border border-slate-700/80 rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col transition-all duration-200 animate-in slide-in-from-bottom duration-200`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
@@ -61,9 +85,9 @@ export const CourseModal: React.FC<CourseModalProps> = ({
                     : course.category === 'core' 
                     ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30' 
                     : course.category === 'elective'
-                    ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
+                    ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30' 
                     : course.category === 'lab'
-                    ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                    ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' 
                     : 'bg-slate-700 text-slate-300'
                 }`}>
                   {isMinor ? 'CSE Minor Special' : course.type}
@@ -89,8 +113,55 @@ export const CourseModal: React.FC<CourseModalProps> = ({
           </div>
         </div>
 
+        {/* In-App Tab Selector (Overview vs Official Embedded PDF) */}
+        {officialSyllabus?.pdfPath && (
+          <div className="flex items-center gap-2 px-5 sm:px-6 py-2.5 bg-slate-900 border-b border-slate-800 shrink-0 flex-wrap">
+            <button
+              type="button"
+              onClick={() => setViewTab('details')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 active:scale-95 ${
+                viewTab === 'details'
+                  ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
+                  : 'bg-slate-800/80 text-slate-400 hover:text-slate-200 hover:bg-slate-800 border border-slate-700/60'
+              }`}
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>Course Details & Modules</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setViewTab('pdf')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 active:scale-95 ${
+                viewTab === 'pdf'
+                  ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
+                  : 'bg-slate-800/80 text-amber-300 hover:text-amber-200 hover:bg-slate-800 border border-amber-500/30'
+              }`}
+            >
+              <FileText className="w-3.5 h-3.5" />
+              <span>Official Embedded PDF Handbook</span>
+              <span className="text-[10px] px-1.5 py-0.2 rounded bg-amber-400/20 text-amber-300 font-mono hidden sm:inline">
+                Inside Webapp
+              </span>
+            </button>
+          </div>
+        )}
+
         {/* Modal Body */}
-        <div className="p-6 space-y-4 max-h-[70vh] overflow-y-auto">
+        {viewTab === 'pdf' && officialSyllabus?.pdfPath ? (
+          <div className="flex-1 w-full h-full min-h-0 flex flex-col overflow-hidden">
+            <EmbeddedPdfViewer
+              pdfUrl={officialSyllabus.pdfPath}
+              pdfFileName={officialSyllabus.pdfName}
+              title={`${course.code}: ${course.name} - NIT Goa Official Syllabus`}
+              sourceUrl={officialSyllabus.sourceUrl}
+              courseModules={officialSyllabus.modules}
+              courseCode={course.code}
+              onClose={() => setViewTab('details')}
+              className="rounded-none border-0 h-full"
+            />
+          </div>
+        ) : (
+          <div className="p-6 space-y-4 max-h-[70vh] overflow-y-auto">
           {isMinor && (
             <div className="p-3.5 bg-cyan-950/40 border border-cyan-500/30 rounded-xl flex items-start gap-3">
               <Sparkles className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
@@ -219,23 +290,112 @@ export const CourseModal: React.FC<CourseModalProps> = ({
             </div>
           </div>
 
+          {/* Official Accreditation Badge */}
+          {officialSyllabus && (
+            <div className="p-3.5 bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border border-amber-500/30 rounded-xl space-y-2.5">
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+                    <CheckCircle2 className="w-4 h-4" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-[11px] font-bold text-amber-400 uppercase tracking-wider">
+                      NIT Goa Accredited Syllabus
+                    </div>
+                    <div className="text-xs text-slate-300 truncate font-medium">
+                      {officialSyllabus.branch === 'COMMON' || officialSyllabus.pdfName.includes('FIRST')
+                        ? '1st Year Handbook (All Sections A, B, C, D)'
+                        : `${officialSyllabus.branch} Handbook (2nd, 3rd & 4th Years)`}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <button
+                    type="button"
+                    onClick={() => setViewTab('pdf')}
+                    className="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-xs"
+                    title="Read official embedded PDF handbook inside webapp"
+                  >
+                    <FileText className="w-3.5 h-3.5" />
+                    <span>Read Embedded PDF</span>
+                  </button>
+                  {officialSyllabus.sourceUrl && (
+                    <a
+                      href={officialSyllabus.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition"
+                      title="Open official PDF on NIT Goa website (nitgoa.ac.in)"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+                </div>
+              </div>
+              <div className="text-[11px] text-slate-400 border-t border-slate-800/80 pt-1.5 flex items-center justify-between">
+                <span className="font-mono text-slate-400">File: {officialSyllabus.pdfName}</span>
+                <span className="text-amber-300/80 font-mono">Credits: {effectiveCredits} | LTP: {effectiveLtp}</span>
+              </div>
+            </div>
+          )}
+
           {/* Syllabus Modules */}
           {course.modules && course.modules.length > 0 && (
             <div className="border-t border-slate-800 pt-4">
               <h4 className="text-xs font-semibold text-amber-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                <BookOpen className="w-3.5 h-3.5 text-amber-400" /> Syllabus Breakdown
+                <BookOpen className="w-3.5 h-3.5 text-amber-400" /> Syllabus Breakdown (Official Curriculum Scheme)
               </h4>
               <div className="space-y-2">
                 {course.modules.map((mod, idx) => (
-                  <div key={idx} className="p-2.5 rounded-lg bg-slate-800/50 border border-slate-800 text-xs text-slate-300 leading-relaxed">
-                    {mod}
+                  <div key={idx} className="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60 text-xs text-slate-200 leading-relaxed space-y-1">
+                    <div className="font-semibold text-amber-300 flex items-center gap-1.5 text-xs">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                      <span>{mod.includes(':') ? mod.split(':')[0] : `Unit / Module ${idx + 1}`}</span>
+                    </div>
+                    <div className="text-slate-300 pl-3">
+                      {mod.includes(':') ? mod.substring(mod.indexOf(':') + 1).trim() : mod}
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
           )}
 
-          {/* Textbooks & References */}
+          {/* Course Objectives */}
+          {officialSyllabus?.objectives && officialSyllabus.objectives.length > 0 && (
+            <div className="border-t border-slate-800 pt-4">
+              <h4 className="text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-cyan-400" /> Course Objectives
+              </h4>
+              <ul className="space-y-1.5 text-xs text-slate-300">
+                {officialSyllabus.objectives.map((obj, idx) => (
+                  <li key={idx} className="flex items-start gap-2 bg-slate-800/30 p-2 rounded-lg border border-slate-800/60">
+                    <span className="text-cyan-400 font-mono font-bold">•</span>
+                    <span>{obj}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Course Outcomes */}
+          {officialSyllabus?.outcomes && officialSyllabus.outcomes.length > 0 && (
+            <div className="border-t border-slate-800 pt-4">
+              <h4 className="text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Course Outcomes (COs)
+              </h4>
+              <ul className="space-y-1.5 text-xs text-slate-300">
+                {officialSyllabus.outcomes.map((co, idx) => (
+                  <li key={idx} className="flex items-start gap-2 bg-slate-800/30 p-2 rounded-lg border border-slate-800/60">
+                    <span className="text-emerald-400 font-mono font-bold">CO{idx + 1}:</span>
+                    <span>{co}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Textbooks */}
           {course.textbooks && course.textbooks.length > 0 && (
             <div className="border-t border-slate-800 pt-4">
               <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
@@ -401,6 +561,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
             </div>
           )}
         </div>
+      )}
 
         {/* Modal Footer */}
         <div className="p-4 bg-slate-800/80 border-t border-slate-800 flex items-center justify-between gap-2 shrink-0 pb-[max(1rem,env(safe-area-inset-bottom,0px))]">

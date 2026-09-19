@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MASTER_SLOT_TIMINGS, TimeSlot, Course, DayOfWeek } from '../data/timetableData';
-import { Sparkles, MapPin, Beaker, Info, LayoutGrid, Calendar, ChevronRight, Clock, User } from 'lucide-react';
+import { Sparkles, MapPin, Beaker, Info, LayoutGrid, Calendar, ChevronRight, Clock, User, Edit3, Plus } from 'lucide-react';
 
 interface WeeklyGridViewProps {
   schedule: Record<DayOfWeek, TimeSlot[]>;
@@ -10,6 +10,9 @@ interface WeeklyGridViewProps {
   onOpenCourseModal: (courseCode: string) => void;
   branch?: string;
   semester?: number;
+  isAdmin?: boolean;
+  onAdminEditSlot?: (slot: TimeSlot, day: DayOfWeek) => void;
+  onAdminAddSlot?: (day: DayOfWeek) => void;
 }
 
 export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
@@ -20,6 +23,9 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
   onOpenCourseModal,
   branch = 'EEE',
   semester = 5,
+  isAdmin = false,
+  onAdminEditSlot,
+  onAdminAddSlot,
 }) => {
   const days: DayOfWeek[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
@@ -190,7 +196,22 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                     className="p-3 rounded-2xl bg-slate-900/50 border border-dashed border-slate-800 text-slate-500 text-xs flex items-center justify-between"
                   >
                     <span>{slot.slotName || 'Study Slot'}</span>
-                    <span className="font-mono">{slot.startTime} – {slot.endTime}</span>
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono">{slot.startTime} – {slot.endTime}</span>
+                      {isAdmin && onAdminEditSlot && (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onAdminEditSlot(slot, selectedMobileDay);
+                          }}
+                          className="px-2 py-0.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-[10px] flex items-center gap-1 active:scale-95 transition"
+                        >
+                          <Edit3 className="w-3 h-3" />
+                          <span>Edit</span>
+                        </button>
+                      )}
+                    </div>
                   </div>
                 );
               }
@@ -227,7 +248,23 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                         <span>Faculty: {chosenOption?.faculty}</span>
                       </div>
                     </div>
-                    <ChevronRight className="w-5 h-5 text-slate-500 shrink-0" />
+                    <div className="flex items-center gap-2 shrink-0">
+                      {isAdmin && onAdminEditSlot && (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onAdminEditSlot(slot, selectedMobileDay);
+                          }}
+                          className="p-1.5 px-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold flex items-center gap-1 shadow-sm transition active:scale-95"
+                          title="Admin: Edit Slot & Syllabus"
+                        >
+                          <Edit3 className="w-3.5 h-3.5" />
+                          <span>Edit</span>
+                        </button>
+                      )}
+                      <ChevronRight className="w-5 h-5 text-slate-500 shrink-0" />
+                    </div>
                   </div>
                 );
               }
@@ -273,7 +310,23 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                         <span>Faculty: {labFaculty} ({selectedBatch.toUpperCase()})</span>
                       </div>
                     </div>
-                    <ChevronRight className="w-5 h-5 text-emerald-400 shrink-0" />
+                    <div className="flex items-center gap-2 shrink-0">
+                      {isAdmin && onAdminEditSlot && (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onAdminEditSlot(slot, selectedMobileDay);
+                          }}
+                          className="p-1.5 px-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold flex items-center gap-1 shadow-sm transition active:scale-95"
+                          title="Admin: Edit Slot & Syllabus"
+                        >
+                          <Edit3 className="w-3.5 h-3.5" />
+                          <span>Edit</span>
+                        </button>
+                      )}
+                      <ChevronRight className="w-5 h-5 text-emerald-400 shrink-0" />
+                    </div>
                   </div>
                 );
               }
@@ -321,11 +374,40 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                       </div>
                     )}
                   </div>
-                  <ChevronRight className="w-5 h-5 text-slate-400 shrink-0" />
+                  <div className="flex items-center gap-2 shrink-0">
+                    {isAdmin && onAdminEditSlot && (
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onAdminEditSlot(slot, selectedMobileDay);
+                        }}
+                        className="p-1.5 px-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold flex items-center gap-1 shadow-sm transition active:scale-95"
+                        title="Admin: Edit Slot & Syllabus"
+                      >
+                        <Edit3 className="w-3.5 h-3.5" />
+                        <span>Edit</span>
+                      </button>
+                    )}
+                    <ChevronRight className="w-5 h-5 text-slate-400 shrink-0" />
+                  </div>
                 </div>
               );
             })}
           </div>
+
+          {isAdmin && onAdminAddSlot && (
+            <div className="pt-2">
+              <button
+                type="button"
+                onClick={() => onAdminAddSlot(selectedMobileDay)}
+                className="w-full py-3 rounded-2xl bg-amber-500/15 hover:bg-amber-500/25 border border-dashed border-amber-500/40 text-amber-300 font-bold text-xs flex items-center justify-center gap-2 transition active:scale-98"
+              >
+                <Plus className="w-4 h-4" />
+                <span>+ Add Slot for {selectedMobileDay} (Admin)</span>
+              </button>
+            </div>
+          )}
         </div>
       )}
 
@@ -399,22 +481,22 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
 
                       {/* Period 1 (09:00 - 09:55) */}
                       <td className="p-1.5 sm:p-2 border-l border-slate-800 w-28 sm:w-36">
-                        {renderCell(getSlotForPeriod(day, 'p1'), courses, selectedElective, selectedBatch, onOpenCourseModal)}
+                        {renderCell(getSlotForPeriod(day, 'p1'), courses, selectedElective, selectedBatch, onOpenCourseModal, false, day, isAdmin, onAdminEditSlot, onAdminAddSlot)}
                       </td>
 
                       {/* Period 2 (10:00 - 10:55) */}
                       <td className="p-1.5 sm:p-2 border-l border-slate-800 w-28 sm:w-36">
-                        {renderCell(getSlotForPeriod(day, 'p2'), courses, selectedElective, selectedBatch, onOpenCourseModal)}
+                        {renderCell(getSlotForPeriod(day, 'p2'), courses, selectedElective, selectedBatch, onOpenCourseModal, false, day, isAdmin, onAdminEditSlot, onAdminAddSlot)}
                       </td>
 
                       {/* Period 3 (11:00 - 11:55) */}
                       <td className="p-1.5 sm:p-2 border-l border-slate-800 w-28 sm:w-36">
-                        {renderCell(getSlotForPeriod(day, 'p3'), courses, selectedElective, selectedBatch, onOpenCourseModal)}
+                        {renderCell(getSlotForPeriod(day, 'p3'), courses, selectedElective, selectedBatch, onOpenCourseModal, false, day, isAdmin, onAdminEditSlot, onAdminAddSlot)}
                       </td>
 
                       {/* Period 4 (12:00 - 12:55) */}
                       <td className="p-1.5 sm:p-2 border-l border-slate-800 w-28 sm:w-36">
-                        {renderCell(getSlotForPeriod(day, 'p4'), courses, selectedElective, selectedBatch, onOpenCourseModal)}
+                        {renderCell(getSlotForPeriod(day, 'p4'), courses, selectedElective, selectedBatch, onOpenCourseModal, false, day, isAdmin, onAdminEditSlot, onAdminAddSlot)}
                       </td>
 
                       {/* Lunch Break (13:00 - 14:00) */}
@@ -429,21 +511,21 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                       {/* Afternoon Sessions: If Lab spans P5, P6, P7 */}
                       {hasLabSession ? (
                         <td colSpan={3} className="p-1.5 sm:p-2 border-l border-slate-800">
-                          {renderCell(getSlotForPeriod(day, 'p5'), courses, selectedElective, selectedBatch, onOpenCourseModal, true)}
+                          {renderCell(getSlotForPeriod(day, 'p5'), courses, selectedElective, selectedBatch, onOpenCourseModal, true, day, isAdmin, onAdminEditSlot, onAdminAddSlot)}
                         </td>
                       ) : (
                         <>
                           {/* Period 5 (14:00 - 14:55) */}
                           <td className="p-1.5 sm:p-2 border-l border-slate-800 w-28 sm:w-36">
-                            {renderCell(getSlotForPeriod(day, 'p5'), courses, selectedElective, selectedBatch, onOpenCourseModal)}
+                            {renderCell(getSlotForPeriod(day, 'p5'), courses, selectedElective, selectedBatch, onOpenCourseModal, false, day, isAdmin, onAdminEditSlot, onAdminAddSlot)}
                           </td>
                           {/* Period 6 (15:00 - 15:55) */}
                           <td className="p-1.5 sm:p-2 border-l border-slate-800 w-28 sm:w-36">
-                            {renderCell(getSlotForPeriod(day, 'p6'), courses, selectedElective, selectedBatch, onOpenCourseModal)}
+                            {renderCell(getSlotForPeriod(day, 'p6'), courses, selectedElective, selectedBatch, onOpenCourseModal, false, day, isAdmin, onAdminEditSlot, onAdminAddSlot)}
                           </td>
                           {/* Period 7 (16:00 - 16:55) */}
                           <td className="p-1.5 sm:p-2 border-l border-slate-800 w-28 sm:w-36">
-                            {renderCell(getSlotForPeriod(day, 'p7'), courses, selectedElective, selectedBatch, onOpenCourseModal)}
+                            {renderCell(getSlotForPeriod(day, 'p7'), courses, selectedElective, selectedBatch, onOpenCourseModal, false, day, isAdmin, onAdminEditSlot, onAdminAddSlot)}
                           </td>
                         </>
                       )}
@@ -465,9 +547,26 @@ function renderCell(
   selectedElective: string,
   selectedBatch: string,
   onOpenCourseModal: (courseCode: string) => void,
-  isSpannedLab: boolean = false
+  isSpannedLab: boolean = false,
+  day: DayOfWeek = 'Monday',
+  isAdmin: boolean = false,
+  onAdminEditSlot?: (slot: TimeSlot, day: DayOfWeek) => void,
+  onAdminAddSlot?: (day: DayOfWeek) => void
 ) {
   if (!slot) {
+    if (isAdmin && onAdminAddSlot) {
+      return (
+        <button
+          type="button"
+          onClick={() => onAdminAddSlot(day)}
+          className="h-16 w-full rounded-xl bg-slate-900/60 hover:bg-amber-500/10 border border-dashed border-slate-800 hover:border-amber-500/40 text-[11px] text-slate-500 hover:text-amber-300 flex flex-col items-center justify-center gap-1 transition group"
+          title={`Admin: Add slot for ${day}`}
+        >
+          <Plus className="w-3.5 h-3.5 text-slate-500 group-hover:text-amber-400" />
+          <span className="text-[10px]">Add Slot</span>
+        </button>
+      );
+    }
     return (
       <div className="h-16 rounded-xl bg-slate-900/80 border border-slate-800/80 flex items-center justify-center text-[11px] text-slate-500 italic">
         Free
@@ -477,8 +576,23 @@ function renderCell(
 
   if (slot.isFree) {
     return (
-      <div className="h-16 rounded-xl bg-slate-900/90 border border-dashed border-slate-700/60 p-2 flex flex-col justify-center text-center">
-        <span className="text-[10px] font-semibold text-slate-300">{slot.slotName}</span>
+      <div className="h-16 rounded-xl bg-slate-900/90 border border-dashed border-slate-700/60 p-2 flex flex-col justify-between relative group">
+        <div className="flex items-center justify-between">
+          <span className="text-[10px] font-semibold text-slate-300">{slot.slotName}</span>
+          {isAdmin && onAdminEditSlot && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onAdminEditSlot(slot, day);
+              }}
+              className="p-1 rounded bg-amber-500 hover:bg-amber-400 text-slate-950 transition active:scale-90 shadow-xs"
+              title="Admin: Edit Slot"
+            >
+              <Edit3 className="w-2.5 h-2.5" />
+            </button>
+          )}
+        </div>
         <span className="text-[10px] text-slate-400">Free / Study</span>
       </div>
     );
@@ -499,9 +613,24 @@ function renderCell(
           <span className="text-[10px] px-1.5 py-0.2 rounded bg-indigo-500/20 text-indigo-300 font-semibold uppercase">
             Slot F
           </span>
-          <span className="text-[10px] text-slate-400 flex items-center gap-0.5">
-            <MapPin className="w-2.5 h-2.5 text-emerald-400" /> {slot.room}
-          </span>
+          <div className="flex items-center gap-1">
+            <span className="text-[10px] text-slate-400 flex items-center gap-0.5">
+              <MapPin className="w-2.5 h-2.5 text-emerald-400" /> {slot.room}
+            </span>
+            {isAdmin && onAdminEditSlot && (
+              <span
+                role="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onAdminEditSlot(slot, day);
+                }}
+                className="p-1 rounded bg-amber-500 hover:bg-amber-400 text-slate-950 transition active:scale-90 shadow-xs"
+                title="Admin: Edit Slot & Syllabus"
+              >
+                <Edit3 className="w-2.5 h-2.5" />
+              </span>
+            )}
+          </div>
         </div>
         <div>
           <div className="text-xs font-bold text-white group-hover:text-indigo-300 truncate">
@@ -543,9 +672,24 @@ function renderCell(
           <span className="text-[10px] px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 font-semibold flex items-center gap-1">
             <Beaker className="w-2.5 h-2.5" /> 3-Hour Practical (14:00 – 16:55)
           </span>
-          <span className="text-[10px] text-emerald-400 flex items-center gap-0.5">
-            <MapPin className="w-2.5 h-2.5" /> {room}
-          </span>
+          <div className="flex items-center gap-1">
+            <span className="text-[10px] text-emerald-400 flex items-center gap-0.5">
+              <MapPin className="w-2.5 h-2.5" /> {room}
+            </span>
+            {isAdmin && onAdminEditSlot && (
+              <span
+                role="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onAdminEditSlot(slot, day);
+                }}
+                className="p-1 rounded bg-amber-500 hover:bg-amber-400 text-slate-950 transition active:scale-90 shadow-xs"
+                title="Admin: Edit Slot & Syllabus"
+              >
+                <Edit3 className="w-2.5 h-2.5" />
+              </span>
+            )}
+          </div>
         </div>
         <div>
           <div className="text-xs font-bold text-white group-hover:text-emerald-300 truncate">
@@ -587,13 +731,28 @@ function renderCell(
           {isMinor && <Sparkles className="w-2.5 h-2.5 text-cyan-400" />}
           {slot.slotName}
         </span>
-        <span
-          className={`text-[10px] flex items-center gap-0.5 ${
-            isMinor ? 'text-cyan-300 font-semibold' : 'text-slate-400'
-          }`}
-        >
-          <MapPin className="w-2.5 h-2.5 text-emerald-400" /> {slot.room || course?.room}
-        </span>
+        <div className="flex items-center gap-1">
+          <span
+            className={`text-[10px] flex items-center gap-0.5 ${
+              isMinor ? 'text-cyan-300 font-semibold' : 'text-slate-400'
+            }`}
+          >
+            <MapPin className="w-2.5 h-2.5 text-emerald-400" /> {slot.room || course?.room}
+          </span>
+          {isAdmin && onAdminEditSlot && (
+            <span
+              role="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onAdminEditSlot(slot, day);
+              }}
+              className="p-1 rounded bg-amber-500 hover:bg-amber-400 text-slate-950 transition active:scale-90 shadow-xs"
+              title="Admin: Edit Slot & Syllabus"
+            >
+              <Edit3 className="w-2.5 h-2.5" />
+            </span>
+          )}
+        </div>
       </div>
       <div>
         <div

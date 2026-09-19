@@ -66,6 +66,7 @@ import {
   X,
 } from 'lucide-react';
 import { PwaInstallGuideModal } from './components/PwaInstallGuideModal';
+import { AdminSlotEditorModal } from './components/AdminSlotEditorModal';
 
 export default function App() {
   // Firebase Auth State
@@ -260,6 +261,44 @@ export default function App() {
   const [isPwaModalOpen, setIsPwaModalOpen] = useState(false);
   const [activeModalCourse, setActiveModalCourse] = useState<string | null>(null);
   const [scheduleTestCourseCode, setScheduleTestCourseCode] = useState<string | null>(null);
+
+  // Admin slot and syllabus editor modal state
+  const [slotEditorState, setSlotEditorState] = useState<{
+    isOpen: boolean;
+    slot: TimeSlot | null;
+    day: DayOfWeek;
+    branch: string;
+    semester: number;
+    firstYearSection?: 'A' | 'B' | 'C' | 'D';
+  }>({
+    isOpen: false,
+    slot: null,
+    day: 'Monday',
+    branch: 'EEE',
+    semester: 5,
+  });
+
+  const handleOpenAdminEditSlot = (slot: TimeSlot, day: DayOfWeek) => {
+    setSlotEditorState({
+      isOpen: true,
+      slot,
+      day,
+      branch: safeProfile.branch,
+      semester: safeProfile.semester,
+      firstYearSection: safeProfile.firstYearSection,
+    });
+  };
+
+  const handleOpenAdminAddSlot = (day: DayOfWeek) => {
+    setSlotEditorState({
+      isOpen: true,
+      slot: null,
+      day,
+      branch: safeProfile.branch,
+      semester: safeProfile.semester,
+      firstYearSection: safeProfile.firstYearSection,
+    });
+  };
 
   // Toast message
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -755,6 +794,9 @@ export default function App() {
               if (courseCode) setScheduleTestCourseCode(courseCode);
               setActiveTab('tests');
             }}
+            isAdmin={isAdmin}
+            onAdminEditSlot={handleOpenAdminEditSlot}
+            onAdminAddSlot={handleOpenAdminAddSlot}
           />
         )}
 
@@ -768,6 +810,9 @@ export default function App() {
             onOpenCourseModal={setActiveModalCourse}
             branch={safeProfile.branch}
             semester={safeProfile.semester}
+            isAdmin={isAdmin}
+            onAdminEditSlot={handleOpenAdminEditSlot}
+            onAdminAddSlot={handleOpenAdminAddSlot}
           />
         )}
 
@@ -923,6 +968,22 @@ export default function App() {
         }}
       />
 
+      {/* Admin Slot & Syllabus Quick Editor Modal */}
+      <AdminSlotEditorModal
+        isOpen={slotEditorState.isOpen}
+        onClose={() => setSlotEditorState((prev) => ({ ...prev, isOpen: false }))}
+        slot={slotEditorState.slot}
+        day={slotEditorState.day}
+        branch={slotEditorState.branch}
+        semester={slotEditorState.semester}
+        firstYearSection={slotEditorState.firstYearSection}
+        allCourses={effectiveCourses}
+        onSlotSaved={() => {
+          refreshAllOverrides();
+          showToast('Slot & syllabus updates saved and live synced to cloud!');
+        }}
+      />
+
       {/* Mobile Bottom Navigation Bar (Docked on < sm screens) */}
       <MobileBottomNav
         activeTab={activeTab}
@@ -971,7 +1032,7 @@ export default function App() {
                   National Institute of Technology Goa • राष्ट्रीय प्रौद्योगिकी संस्थान गोवा
                 </div>
                 <div className="text-[11px] text-slate-400 mt-0.5 break-words">
-                  B.Tech Timetable Portal • Cuncolim Campus
+                  B.Tech Timetable • Cuncolim Campus
                 </div>
               </div>
             </div>
@@ -1010,10 +1071,10 @@ export default function App() {
                 <div className="min-w-0">
                   <div className="flex items-center gap-1.5 flex-wrap">
                     <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
-                      Disclaimer
+                      Notice
                     </span>
                     <span className="text-xs sm:text-sm font-bold text-amber-200">
-                      This is not an official portal of NIT Goa
+                      Independent Student Project for NIT Goa
                     </span>
                   </div>
                   <p className="text-xs text-slate-300 mt-1 leading-relaxed">
@@ -1037,7 +1098,7 @@ export default function App() {
               <div className="flex items-center gap-2 flex-wrap justify-center sm:justify-start">
                 <div className="flex items-center gap-1.5 text-xs text-slate-400">
                   <Code className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
-                  <span>Architect and developer of this portal:</span>
+                  <span>Architect and developer:</span>
                 </div>
                 <span className="text-slate-100 font-bold text-xs bg-slate-800/90 px-2.5 py-1 rounded-lg border border-slate-700/80">
                   Ayush Kumar

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { COURSES, Course, EEE_SEMESTER_INFO } from '../data/timetableData';
 import { Search, Sparkles, BookOpen, User, Mail, MapPin, Award, CheckCircle2 } from 'lucide-react';
+import { getOfficialCourseSyllabus } from '../data/officialSyllabusRegistry';
 
 interface CoursesDirectoryProps {
   onOpenCourseModal: (courseCode: string) => void;
@@ -209,24 +210,40 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
                 </div>
 
                 {/* Research & Syllabus Highlights */}
-                <div className="mt-2.5 flex flex-wrap gap-1.5">
-                  {course.patents && course.patents.length > 0 && (
-                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
-                      <Sparkles className="w-2.5 h-2.5" /> Patent
-                    </span>
-                  )}
-                  {course.papers && course.papers.length > 0 && (
-                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-                      {course.papers.length} Publications
-                    </span>
-                  )}
-                  {course.modules && course.modules.length > 0 && (
-                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700/80 flex items-center gap-1">
-                      <BookOpen className="w-2.5 h-2.5 text-amber-400" />
-                      <span>{course.modules.length} Modules</span>
-                    </span>
-                  )}
-                </div>
+                {(() => {
+                  const official = getOfficialCourseSyllabus(course.code);
+                  const moduleCount = (official?.modules && official.modules.length > 0) ? official.modules.length : (course.modules?.length || 0);
+
+                  return (
+                    <div className="mt-2.5 flex flex-wrap gap-1.5">
+                      {official && (
+                        <span 
+                          className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-amber-500/15 text-amber-300 border border-amber-500/30 flex items-center gap-1"
+                          title={`Accredited by NIT Goa (${official.pdfName})`}
+                        >
+                          <CheckCircle2 className="w-2.5 h-2.5 text-amber-400" />
+                          <span>NIT Goa Accredited</span>
+                        </span>
+                      )}
+                      {course.patents && course.patents.length > 0 && (
+                        <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
+                          <Sparkles className="w-2.5 h-2.5" /> Patent
+                        </span>
+                      )}
+                      {course.papers && course.papers.length > 0 && (
+                        <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                          {course.papers.length} Publications
+                        </span>
+                      )}
+                      {moduleCount > 0 && (
+                        <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700/80 flex items-center gap-1">
+                          <BookOpen className="w-2.5 h-2.5 text-amber-400" />
+                          <span>{moduleCount} Modules</span>
+                        </span>
+                      )}
+                    </div>
+                  );
+                })()}
               </div>
 
               {/* Bottom Meta */}

@@ -80,7 +80,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
                 </span>
               </div>
               <h2 id="pwa-modal-title" className="text-base sm:text-xl font-extrabold text-white tracking-tight">
-                Install NIT Goa Portal Locally
+                Install NIT Goa Timetable Locally
               </h2>
               <p className="text-xs text-slate-400 mt-0.5 leading-normal">
                 Run directly on your device like a native app with zero delay and full offline access.
@@ -105,7 +105,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
             <span>What is a Progressive Web App?</span>
           </div>
           <p className="text-xs text-slate-300 leading-relaxed">
-            This portal is built as a certified <strong className="text-white">Progressive Web App (PWA)</strong>. It combines the versatility of the web with the high performance and standalone experience of a native application. It does not require downloading from the Google Play Store or Apple App Store.
+            This app is built as a certified <strong className="text-white">Progressive Web App (PWA)</strong>. It combines the versatility of the web with the high performance and standalone experience of a native application. It does not require downloading from the Google Play Store or Apple App Store.
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
             <div className="p-2 rounded-xl bg-slate-800/80 border border-slate-700/60 text-center">
@@ -167,7 +167,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
         {isStandalone && (
           <div className="p-3.5 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center gap-3 text-emerald-300 text-xs font-semibold">
             <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-            <span>You are currently running this portal as an installed standalone Progressive Web App!</span>
+            <span>You are currently running this app as an installed standalone Progressive Web App!</span>
           </div>
         )}
 
@@ -296,7 +296,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
               </div>
               <ol className="space-y-2 pl-4 list-decimal marker:text-cyan-400 leading-relaxed">
                 <li>
-                  Open this portal in <strong className="text-white">Apple Safari</strong> (iOS requires Safari to install PWAs to the home screen).
+                  Open this app in <strong className="text-white">Apple Safari</strong> (iOS requires Safari to install PWAs to the home screen).
                 </li>
                 <li>
                   Tap the <strong className="text-white">Share button</strong> (the square with an upward arrow <Share className="w-3.5 h-3.5 inline text-cyan-400" /> at the bottom toolbar).

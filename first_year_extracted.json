@@ -1,0 +1,570 @@
+{
+  "MA100": {
+    "code": "MA100",
+    "name": "Matrices and Advanced Calculus",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "3-1-0",
+    "credits": 4,
+    "modules": [
+      "Module 1: Matrices and Applications- Matrices: Matrix operations -addition, scalar multiplication, multiplication, transpose, adjoint and their properties; System of linear equations and Gaussian elimination, Determinants and their properties; Cramer's rule; Vector Space: Subspaces, Linear dependence/independence, Basis, Dimension, Standard Basis of R^n, Linear transformations, Matrix of a linear transformation, change of basis and similarity, rank-nullity theorem; Inner product spaces, Gram-Schmidt process, and Orthonormal bases, Eigenvalues and Eigenvectors, Characteristic polynomials, Diagonalization.",
+      "Module 2: Differential Calculus- Functions of single variable: Functions and transcendental Functions; Limits, Continuity and Differentiability; Mean value theorems, Taylor’s and Maclaurin’s theorems; Parametric equations and Polar coordinates. Functions of several variables: Partial differentiation; Total differentiation, Euler’s theorem and generalization; Change of variables, Jacobians; Maxima and inima, Lagrange’s method of Multipliers.",
+      "Module 3: Integral Calculus- Fundamental theorem of calculus; Improper integrals; Beta and Gamma functions; Applications of Integrals.",
+      "Module 4: Fourier Series: Infinite Series: Convergence of sequences and series, Power series; Fourier series: Periodic functions, Euler’s formulae, Dirichlet’s condition, Even and odd functions, Half Range Series."
+    ],
+    "textbooks": [
+      "1. G. B. Thomas and R. L. Finney, Calculus and Analytic Geometry (14th Edition), ISE Reprint, Addison-Wesley, Pearson, 2018.",
+      "2. E. Kreyszig, Advanced Engineering Mathematics (8th Edition), John Wiley,",
+      "3. G. Strang, Introduction to Linear Algebra, Wellesley, 2021.",
+      "4. G. Strang, Linear Algebra and Its Applications, Cengage, 2005 R. K Jain and S.R.K. Iyengar, Advanced Engineering Mathematics,3rd edition, Narosa publications, 2007."
+    ],
+    "objectives": [
+      "The aim of this course is to provide engineers and scientists with a strong foundation in essential mathematical principles. By focusing on key topics such as differential calculus, integral calculus, sequences & series, Fourier series, and linear algebra, students will develop a deep understanding of applied mathematics."
+    ],
+    "outcomes": [
+      "At the completion of this course, the student shall acquire knowledge and ability",
+      "CO1. Develop a solid grasp of the basic principles of matrix theory and effectively apply them to solve engineering problems.",
+      "CO2. Understanding of the significance of differential calculus and its wide- ranging applications.",
+      "CO3. Comprehend the fundamental concepts of integral calculus and its practical applications,",
+      "CO4. Apply appropriate techniques to test the convergence of sequences and series, as well as analyze Fourier series,"
+    ]
+  },
+  "PH100": {
+    "code": "PH100",
+    "name": "Engineering Physics",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "3-0-0",
+    "credits": 3,
+    "modules": [
+      "Module 1: Dual nature of particles and waves: Representation of a wave, Phase and Group velocities, Black body radiation, Electromagnetic radiation, Dual nature of light and the photoelectric effect, Properties of photons, Matter waves, de-Broglie principles, Davisson and Germer experiment (basic ideas) to show the existence of matter waves.",
+      "Module 2: Quantum Mechanics: Limitations of classical mechanics, The wave equation, State functions, Normalization of wave functions, Schrödinger equation, Time-dependent form, operators and expectation values, Time independent Schrödinger equation, Eigen values and Eigen functions, Applications of Schrödinger equation- Particle in an infinite and Finite potential well, tunnelling, Harmonic oscillator, Uncertainty principle, Energy and time form of the uncertainty principle, explanation of zero point energy.",
+      "Module 3: Concept of interference, Newton’s Rings. Fabry-Perot Interferometer and its application as a wavelength filter, Fraunhofer Class of diffraction at single, double and multiple slits diffraction at the circular aperture, Resolving Power, diffraction grating and its applications. Polarization Devices: Principles, working and applications of wave plates, Half-shade Polari meter, Photo elasticity and plane Polari scope. Lasers and Optical Fibers: Basics principles and Characteristics of laser light. Lasing action, construction and working of Three Level and Four Level Lasing Systems. PN Junction as a light source and Detector-Construction and working of LED and Laser Diode. Principle of Light Guidance in an optical fiber communication. Advantages of optical fibers over conventional systems",
+      "Module 4: Modern and Renewable Energy sources: Nuclear fission and fusion; Different Types of Nuclear Reactors-Thermal/Fast Neutron-Description and working of Gas Cooled, Boiling Water (BWR), Pressurised Water (PWR), Pressurised Heavy Water (PHWR) and Fast Neutron (FBR) Nuclear Reactors. Solar Cells: Solar spectrum, photovoltaic effect, structure and working principle of solar cell, I- V characteristics, power conversion efficiency, materials for PV, emerging PV technologies for alternative energy devices. Introduction to other Renewable Energy sources-Wind-Tidal-Geothermal systems"
+    ],
+    "textbooks": [
+      "1. David Halliday, Robert Resnick, & Walker Jearl, (2014). Fundamentals of Physics. Wiley Publications.",
+      "2. Arthur Beiser, Shobhit Mahajan, & S Rai Choudhury, (2017). Concepts of Modern Physics. Tata McGraw - Hill Education.",
+      "3. S. O. Kasap, (2012). Optoelectronics and Photonics-Principles and Practices. Pearson Publications.",
+      "4. Raymond A. Serway, & John W. Jewett, (2008). Physics for Scientists and Engineers with modern physics. Thomson Brooks/Cole publisher.",
+      "5. Ajoy Ghatak, (2021). Optics. McGraw Hills Education.",
+      "6. P. K Palaniswamy, (2017). Applied Physics. SCITECH publications",
+      "7. David Halliday, Robert Resnick, & Walker Jearl, (2014). Principles of Physics. Willey.",
+      "8. Hugh D. Young, Roger A. Freedman, & A Lewis Ford, (2015). University Physics with Modern Physics. Pearson Publisher.",
+      "9. Vaidyanathan G., (2013). Nuclear Reactor Engineering (principles and Concepts. S. Chand Publication",
+      "10. Thomas Schulenberg, (2022). The fourth generation of nuclear reactors: Fundamentals, Types, and Benefits. Springer Publication"
+    ],
+    "objectives": [
+      "To refurbish the understanding of fundamental Physics and provide concepts & application perspectives of modern physics"
+    ],
+    "outcomes": [
+      "At the completion of this course, the student shall acquire knowledge and ability.",
+      "CO1. Understands the basic concepts of Quantum Physics.",
+      "CO2. Apply the Quantum Mechanical Principles to solve the physical problems.",
+      "CO3. Apply the concepts of interference, diffraction, and polarization in Engineering Measurements.",
+      "CO4. Use of lasers and optical fibers in engineering and communication fields.",
+      "CO5. Understand the utility of renewable Energy Sources for engineering applications."
+    ]
+  },
+  "CS100": {
+    "code": "CS100",
+    "name": "Computer Programming and Problem Solving",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "3-0-0",
+    "credits": 3,
+    "modules": [
+      "Module 1: Introduction to Computers, Elements of Computing Systems, Overview of Systems Software. Getting Started: Problem-solving techniques – Basic algorithms, C standards. What is C, Getting Started with C, The C Character Set, Constants, Variables, and Keywords, Types of C Constants, Rules for Constructing Integer, Real and Character Constants. Types of C Variables, Rules for Constructing Variable Names, C Keywords. The First C Program: Compilation and Execution, Receiving Input. Algorithms and flowcharts. C Instructions: Type Declaration Instruction, Arithmetic Instruction, Integer and Float Conversions, Type Conversion in Assignments, Hierarchy of Operations, Associativity of Operators, and Control Instructions in C. The Decision Control Structure: The if Statement, The if-else Statement, Nested if-elses, Forms of if. Use of Logical Operators: The else if Clause, The ! Operator, the Conditional Operators. The Loop Control Structure: Loops: while Loop, for Loop, break statement, continue statement, do-while Loop. The Case Control Structure: Decisions using the switch, switch versus if-else Ladder, The goto Keyword.",
+      "Module 2: Functions & Pointers: Basics of Functions, Value Passing, Scope rules of Functions, calling convention, Advanced Features of Functions. Introduction to Pointers, Pointer Notation, Recursion, Recursion and Stack, Pointers to Functions, Functions returning pointers, Functions with variable number of arguments. Data Types Re-visited: Integers- long, short, signed, unsigned. Chars-signed, unsigned. Floats & Doubles. Storage Classes in C. The C Preprocessor: Features of C Preprocessors, Macro Expansion, File Inclusion, Conditional Compilation, #if and #elif Directives, The Build Process.",
+      "Module 3: Arrays: Basics of Arrays, Pointers & Arrays, Two-Dimensional Arrays, Array of Pointers, Three-Dimensional Arrays. Strings: Basics of Strings, Pointers & Strings, Standard Library String Functions, Dynamic Allocation of Memory, Two-Dimensional Array of Characters, Array of Pointers & Strings. Structures & Unions: Basics, Declaration, and Usage. Console Input and Output: Formatting output for functions in the printf () family, Formatting input for functions in the scanf () family, Escape sequences.",
+      "Module 4: Module File Processing: Opening and closing files, reading and writing sequential files, Using argc and argv. Operations on Bits: Bitwise Operators, Hexadecimal Numbering System, Relation between Binary and Hex. Mixed Features: Enumerated Data type, Typedef, Typecasting, Bit Fields, The volatile Qualifier. Books/"
+    ],
+    "textbooks": [],
+    "objectives": [
+      "The objective of the course is to make the students learn problem-solving by writing algorithms and implementing them using C Programming language. The course helps the students to write programs to solve computational problems."
+    ],
+    "outcomes": [
+      "At the completion of this course, the student will be able to:",
+      "CO1. Develop basic understanding of computers and the concept of algorithms.",
+      "CO2. Design algorithms for solving simple computational problems, including searching and sorting.",
+      "CO3. Examine the suitability of C programming features to solve specific problems."
+    ]
+  },
+  "EE100": {
+    "code": "EE100",
+    "name": "Basics of Electrical Engineering",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "2-0-0",
+    "credits": 2,
+    "modules": [
+      "Module 1: Introduction to power engineering: generation, transmission and distribution, sources of energy, renewable energy sources,",
+      "Module 2: Electric circuit elements and sources, network analysis and theorems, transient analysis,",
+      "Module 3: AC analysis of single phase systems, series and parallel circuits, resonance, real and reactive power, power factor, improvement in pf, AC analysis of symmetrical 3-phase systems, power and energy measurement in single phase and three phase systems, energy consumption of domestic loads, electricity tariff",
+      "Module 4: Magnetic circuits and mutual inductance, introduction to transformers, introduction to electromechanical energy conversion. Text Books: 1. Fitzgerald, D. E. Higginbotham, A. Grabel, Basic Electrical Engineering, 5th Edition, McGraw-Hill, 2009. 2. William H. Hayt Jr. , Jack E. Kemmerly, Steven M. Durbin, Engineering Circuit Analysis, 6th Edition,TMH, 2002 3. Edward Hughes, Electrical and Electronics Technology, 10th Edition, Pearson, 2008"
+    ],
+    "textbooks": [],
+    "objectives": [
+      "The objectives of studying this course are: to understand how electrical power system works, to analyze electrical and magnetic circuits, and also to understand the principle of operation of transformers and electromechanical energy conversion."
+    ],
+    "outcomes": [
+      "At the completion of this course, the student shall acquire knowledge and ability",
+      "CO1. to understand how electrical power is generated, transmitted and distributed.",
+      "CO2. to analyze and solve DC circuits and AC circuits.",
+      "CO3. to understand the concept of voltage, current, power and energy and their interrelations",
+      "CO4. to analyze and solve magnetic circuits",
+      "CO5. to understand the principle of operation of transformers and electromechanical energy conversion"
+    ]
+  },
+  "ME100": {
+    "code": "ME100",
+    "name": "Engineering Mechanics",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "3-0-0",
+    "credits": 3,
+    "modules": [
+      "Module 1: Fundamentals of Mechanics: Basic Concepts, Vector and Scalar Quantities, Newton's Laws, Elements of Vector Algebra, Force Systems: Fundamentals, Rectangular Components, Moment and Couple, Resultants. Equilibrium: Concept of Equilibrium, Free Body Diagrams, Equilibrium Conditions, Plane Trusses, Method of Joints and Sections.",
+      "Module 2: Distributed Forces: Center of Mass and Centroids of Areas, Moment of Inertia of Mass and Areas, Composite Areas. Friction: Characteristics of dry friction, Problems involving dry friction, Wedges. Virtual Work: Definition of Work, Principle of Virtual Work, Principle of Virtual Work for a System of Connected Rigid Bodies, Conservative Forces.",
+      "Module 3: Kinematics of Particles: Introduction, Rectilinear Motion, Plane Curvilinear Motion, Rectangular, Normal-Tangential, and Polar Coordinates.",
+      "Module 4: Kinetics of Particles: Introduction, Force, Mass, and Acceleration: Newton's Second Law, Rectilinear and Plane Curvilinear Motion, Work and Energy, Impulse and Momentum.",
+      "Module 5: Plane Kinematics of Rigid Bodies: Rotation, Absolute Motion, Relative Velocity, Instantaneous Center of Zero Velocity, Relative Acceleration, Motion Relative to Rotating Axes."
+    ],
+    "textbooks": [
+      "1. Hibbler, R. C. Engineering Mechanics - Statics and Dynamics, 14th Ed, Pearson Education,",
+      "2. Beer, F. P. & Johnston Jr, E. R. et al. Vector Mechanics for Engineers - Statics and Dynamics, 12th Ed, McGraw Hill, 2019.",
+      "3. Meriam, J. L, Kraige, L. G., Bolton, J. N. Engineering Mechanics – Statics, 8th Ed, Wiley,",
+      "4. Meriam, J. L, Kraige, L. G., Bolton, J. N. Engineering Mechanics – Dynamics, 9th Ed, Wiley, 2018.",
+      "5. Shames, I. H., Rao, G. K. M. Engineering Mechanics - Statics and Dynamics, 4th Ed, Pearson Ed., 2005. Timoshenko, S. P., Young, D. H., Rao, J. V., Patil, S. Engineering Mechanics, 5th Ed, McGraw Hill, 2017."
+    ],
+    "objectives": [
+      "The main objective of studying this course is to understand and apply the fundamental concepts of engineering mechanics including statics and dynamics."
+    ],
+    "outcomes": [
+      "At the completion of this course, the student shall acquire knowledge and ability",
+      "CO1. to describe force and force systems, moments, and equilibrium conditions in static systems",
+      "CO2. to understand"
+    ]
+  },
+  "HU100": {
+    "code": "HU100",
+    "name": "Liberal Arts",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "0-0-2",
+    "credits": 1,
+    "modules": [
+      "Module 1: Introduction to Natya Shashtra by Bharat Muni Natyashastra- Text- Origin of theatre- Scope and purpose-Description of the playhouse-Ten kinds of plays- Dharmi-Acting- Rasa & Bhav",
+      "Module 2: Select Playwrights of India and World-Their Seminal Works Kalidasa, William Shakespeare, Arthur Miller, Rabindranath Tagore, Girish Karnad, Habib Tanvir, Tendulkar",
+      "Module 3: Fundamentals of Acting Physical aspects of Acting & Exercises, Voice Modulation & Exercises, Speech & Diction & exercise, Process of Action & Character Portrayal or Characterization",
+      "Module 4: Introduction to stage craft: Set Design & Light Design Introduction to Set Design, Types of performance spaces, Creative Process of design, Introduction to Light design, Audio- Visual Techniques",
+      "Module 5: One Public Performance Any Contemporary Play maybe adopted: (Tughlaq by Girish Karnad)"
+    ],
+    "textbooks": [
+      "1. A Treastise on Ancient Indian Dramaturgy and Histrionics : Natyasastram Ascribed to Bharata Muni (2 Vol. set)",
+      "2. Felnagle, Richard. H., [1987], Beginning Acting, Prentice Hall, New Jersey",
+      "3. Funke, Lewis & Booth, John E., [1961], Actors Talk about Acting, Avon Book Division, New York",
+      "4. Hays, David, [1988], Light on The Subject, Seagull Books Calcutta",
+      "5. Dasgupta, G.N.,[1986], Guide to Stage Lighting, Annapurna Dasgupta, New Delhi",
+      "6. Campbell, Lily. B., [1970], Scenes and Machines on the English Stage during the Renaissance, New York Barnes and Noble Inc",
+      "7. Theatre Histories: An Introduction, Edited By Bruce McConachie, Tobin Nellhaus, Carol Fisher Sorgenfrei, Tamara Underiner"
+    ],
+    "objectives": [
+      "The main objective is to introduce students to performing arts and to develop situational communication and inculcate sense of Time Management and Team work"
+    ],
+    "outcomes": [
+      "At the completion of this course, the student shall acquire knowledge and ability",
+      "CO1. Students will have a fair understanding of Performing Arts",
+      "CO2. Students will be able to understand and apply Team Work & Time Management in Practical fields",
+      "CO3. Students will develop Communication Skill."
+    ]
+  },
+  "PH101": {
+    "code": "PH101",
+    "name": "Engineering Physics Lab",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "0-0-3",
+    "credits": 2,
+    "modules": [
+      "Lab Experiments (Part A): (8 Experiments will be conducted); 1. Hall Effect; 2. Photoelectric Effect; 3. Helmholtz Resonator; 4. Newton’s Rings Experiment; 5. Determination of Wavelength of He-Ne Laser using a Metal Scale as a Grating; 6. Determine the width of a single slit based on the Diffraction pattern",
+      "Lab Experiments (Part B): 7. Determination of wavelength of Sodium Light using a transparent diffraction Grating; 8. Determination of Optical absorption coefficient of materials using lasers; 9. I-V Characteristics of Zener Diode; 10. Determination of resonating frequency and bandwidth by LCR circuit.; 11. Measurement of the half-life of the radioactive source using GM Counter; 12. Determination of acceptance angle and numerical aperture of optical fiber Course Code Course Name L T P Credits"
+    ],
+    "textbooks": [],
+    "objectives": [],
+    "outcomes": []
+  },
+  "CS101": {
+    "code": "CS101",
+    "name": "Computer Programming Lab",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "0-0-2",
+    "credits": 1,
+    "modules": [],
+    "textbooks": [],
+    "objectives": [
+      "The objective of the course is to make the students implement the designed algorithms for computational problems using the C Programming language."
+    ],
+    "outcomes": [
+      "At the completion of this course, the student will be able to:",
+      "CO1. Demonstrate an ability to work in a UNIX/LINUX environment. -- 17 of 35 --",
+      "CO2. Demonstrate an ability to develop algorithmic solutions for simple computational problems.",
+      "CO3. Implement algorithmic solutions using the C programming language features.",
+      "CO4. Develop an application using C Programming language features."
+    ]
+  },
+  "EE101": {
+    "code": "EE101",
+    "name": "Course EE101",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "3-0-0",
+    "credits": 3,
+    "modules": [],
+    "textbooks": [],
+    "objectives": [
+      "To familiarise with equipments, and components used in electrical engineering and analyse simple circuits."
+    ],
+    "outcomes": [
+      "At the completion of this course, the student shall acquire knowledge and ability",
+      "CO1. to familiarize with different equipments, components, measuring instruments, and power supply systems used in electrical.",
+      "CO2. to investigate electrical circuits-and-systems behaviour during excitations",
+      "CO3. to analyse the operation and performance of a transformer"
+    ]
+  },
+  "ME101": {
+    "code": "ME101",
+    "name": "Engineering Drawing",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "1-0-3",
+    "credits": 3,
+    "modules": [],
+    "textbooks": [
+      "1. Bhatt, N. D., Engineering Drawing - Plane and Solid Geometry, 15th Ed, Charotar Publication, 2011.",
+      "2. Parthasarathy, N. S., Vela, M., Engineering drawing, Oxford University Press, 2015.",
+      "3. Gopalkrishna, K. R., Engineering Drawing (Volume I and II Combined), 27th Ed, Subhas Publication, 2017.",
+      "4. Shah, M. B., Rana, B. C., Engineering Drawing, 2nd Ed, Pearson Education, 2009.",
+      "5. Giesecke, F. E., Lockhart, H., Goodman, M., Johnson, C. M., Technical Drawing with Engineering Graphics, 16th Ed, Pearson Education, 2016.",
+      "6. Jensen, C., Helsel, J. D., and Short, D. R., Engineering Drawing and Design, 7th Ed, McGraw Hills, 2007.",
+      "7. Benton, B. C., and Omura, G., Mastering AutoCAD 2021 & AutoCAD LT 2021, 2nd Ed, Sybex, 2021.",
+      "8. Dhananjay A Jolhe, Engineering Drawing, McGraw Hill Education (India) Private Limited; 1st edition (1 July 2017) II Semester Sl. No."
+    ],
+    "objectives": [
+      "The main objective of studying this course is to understand the theoretical concepts of engineering drawing and draw various projections of points, lines, planes, and solids."
+    ],
+    "outcomes": [
+      "At the completion of this course, the student shall acquire knowledge and ability",
+      "CO1. to identify and understand the use of various geometrical instruments, concepts of orthographic projections, and conventions used in engineering drawing",
+      "CO2. to explain the different types of engineering drawings, types of lettering, dimensioning",
+      "CO3. to draw the orthographic and isometric projections of various geometric entities -- 19 of 35 --",
+      "CO4. to demonstrate the competency of computer aided drawing (CAD) software for drawing various orthographic projections"
+    ]
+  },
+  "MA150": {
+    "code": "MA150",
+    "name": "Differential Equations and Vector Calculus",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "3-1-0",
+    "credits": 4,
+    "modules": [
+      "Module 1: Vector Calculus: Double and Triple integrals; Scalar and Vector fields; Vector Differentiation; directional derivative - Gradient of scalar field; Divergence and Curl of a vector field - Laplacian - Line and surface integrals; Green’s theorem in plane; Gauss Divergence theorem; Stokes’ theorem.",
+      "Module 2: Ordinary Differential Equations and Applications:- First -order linear ODE: Introduction and motivation to differential equations, geometrical Interpretation of solution, equations reducible to separable form, exact equations, integrating factor, linear equations, orthogonal trajectories, Picard’s theorem for IVP (without proof) , examples on non-uniqueness. Second and higher order linear ODE: Linear dependence and Wronskians, linear ODE's with constant coefficients, the characteristic equations. Cauchy-Euler equations. Method of undetermined coefficients. Method of variation of parameters, Power series method.",
+      "Module 3: Laplace Transforms and Applications:- Laplace transform - Inverse Laplace transform - properties of Laplace transforms - Laplace transforms of unit step function, impulse function and periodic function - convolution theorem - Solution of ordinary differential equations with constant coefficients and system of linear differential equations with constant coefficients.",
+      "Module 4: Partial Differential Equations and Applications:- Introduction to PDE; basic concepts, second order PDE and classification, Solutions using separation of variables"
+    ],
+    "textbooks": [
+      "1. G. B. Thomas and R. L. Finney, Calculus and Analytic Geometry (14th Edition), ISE Reprint, Addison-Wesley, Pearson, 2018.",
+      "2. E. Kreyszig, Advanced Engineering Mathematics (8th Edition), John Wiley, 1999.",
+      "3. W. E. Boyce and R. DiPrima, Elementary Differential Equations (8th Edition), John Wiley (2005).",
+      "4. R. K Jain and S.R.K. Iyengar, Advanced Engineering Mathematics,3rdedition, Narosa publications (2007)"
+    ],
+    "objectives": [
+      "This course offers the essential foundation and relevant background knowledge needed to comprehend other significant engineering mathematics courses provided to engineers and scientists. It covers important topics in applied mathematics, including multiple integrals, vector calculus, ordinary and partial differential equations, as well as Laplace transforms."
+    ],
+    "outcomes": [
+      "At the completion of this course, the student shall acquire knowledge and ability",
+      "CO1. Develop a solid foundation in multiple integrals and vector calculus, enabling them to understand their significance in engineering such as Fluid Dynamics and Electromagnetic fields.",
+      "CO2. Gain proficiency in handling ordinary and partial differential equations through analytical methods and grasp their application in modelling.",
+      "CO3. To solve these equations effectively using Laplace transforms.,"
+    ]
+  },
+  "CY150": {
+    "code": "CY150",
+    "name": "Engineering Chemistry",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "3-0-0",
+    "credits": 3,
+    "modules": [
+      "Module 1: Electrochemistry and Corrosion: Review of concepts of electrode potential, EMF measurement and applications, Types of electrodes, Concentration cell: electrode and electrolyte concentration cell, concentration cell with and without transference, Corrosion: Dry corrosion and wet corrosion, mechanisms, Types of corrosion, Differential metal corrosion, differential aeration corrosion, intergranular, Pitting, Passivity, Polarization, Corrosion control methods: Chemical conversion coatings and organic coatings- Paints, enamels.",
+      "Module 2: Instrumental Methods of Analysis: Colorimetry, UV-visible spectroscopy, Infra-red spectroscopy, Magnetic resonance spectroscopy, Qualitative and quantitative analysis, Conductometry and Potentiometry",
+      "Module 3: Water Technology: The hardness of water, Boiler troubles, Internal and external treatments, Desalination, Sewage water analysis- Dissolved oxygen (OD), Biological oxygen demand, Chemical oxygen demand and their determination, Sewage water treatment",
+      "Module 4: Phase Rules: Definition of terms, phase components, degree of freedom, derivation of Gibbs phase rule, one-component system: H2O, CO2, Sulfur, Two-component system: Eutectic systems, reduced phase rule, Pb-Ag system, Compound Formation with congruent melting, Zn- Mg Alloy system, Copper-nickel alloy system, systems with incongruent melting, Na2SO4- H2O system, simple three-component systems.",
+      "Module 5: High Polymers: Basic definitions, Addition, Condensation and Coordination polymerization, Co-polymerisation, Molecular weights and their determinations, Methods of polymerization, Tg & Tm and factors affecting them, Teflon, PMMA and UF"
+    ],
+    "textbooks": [],
+    "objectives": [
+      "To refurbish the understanding of fundamental chemistry and to provide certain concepts and its application towards engineering."
+    ],
+    "outcomes": [
+      "At the completion of this course, the student shall acquire knowledge and ability.",
+      "CO1. Understand the basic concepts of chemistry in compliance with the requirements for the undergraduate engineering program",
+      "CO2. Familiarize with analytical instrumental methods",
+      "CO3. Awareness of the basics chemistry involved in electrochemical cells and corrosion",
+      "CO4. Knowledge on basics of polymer chemistry and advanced polymers",
+      "CO5. Understand the phase diagram of multi-component systems and its application."
+    ]
+  },
+  "HU150": {
+    "code": "HU150",
+    "name": "Professional Communication",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "2-0-3",
+    "credits": 4,
+    "modules": [
+      "Module 1: a. Definition & Process of Communication-Classification-Types of Verbal & Non- Verbal Communication, Proxemics, Chromatics, Haptics, Chronemics, Communication Network, Grapevine, Noise-Types & how to get rid of it. Feedback- Types, Process with examples, Listening-Types, Process and essentials for good listening",
+      "Module 2: Video Lecture (without subtitles) followed by the oral presentation of the content",
+      "Module 3: 7 Cs of Professional Communication (Principles) What are the 7Cs Professional Communication? Usage in communication: 1. Credibility, 2. Courtesy, 3. Clarity, 4. Correctness, 5. Consistency, 6. Concreteness, 7. Conciseness (added as per Suggestions)",
+      "Module 4: Different types of letters-Sales, Order, Inquiry, Notice, Memo, Agenda, Minutes, Circular",
+      "Module 5: Technical Presentation, GD & Debate"
+    ],
+    "textbooks": [
+      "1. Kaul, Asha. Effective Business Communication, Prentice Hall, New Delhi, 2007",
+      "2. Dhanvel, P.S. English & Soft Skills, Hyderabad: Orient Black Swan, 2010",
+      "3. High School Grammar, Wren & Martin, 2012",
+      "4. Fundamental Concepts of Language Teaching, H.H. Stern, OUP, 1983",
+      "5. Business Communication Essentials, Courtland L Bovee & John V Thill, 2006 (Activity Based Book)"
+    ],
+    "objectives": [
+      "It aims at developing the four skills of Language learning: LSRW skills and also aims at developing the skill of effective communication."
+    ],
+    "outcomes": [
+      "CO1.The students should be able to comprehend, speak and write in English language.",
+      "CO2. The students should be able to use Body Language",
+      "CO3. The students will be able to use Professional Etiquette"
+    ]
+  },
+  "EC150": {
+    "code": "EC150",
+    "name": "Basics of Electronics Engineering",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "2-0-0",
+    "credits": 2,
+    "modules": [
+      "Module 1: Fundamentals of Electronic Systems, diode circuit models and applications: Introduction to circuit models, rectifiers. Transistors:- Construction and operation of BJT and MOSFETs & introduction to various biasing schemes. Application of transistor as a basic building block of amplifier and switch.",
+      "Module 2: Introduction to Digital Electronics:- Review of number systems, logic gates, Boolean algebra, k-Map, design of digital logic circuits.",
+      "Module 3: Operational Amplifier (Op-amp) and application: - Op-amp: Introduction, Op-amp Characteristics. Inverting and Non-inverting amplifiers.",
+      "Module 4: Basic Principles of Communication System, Over view on analog modulation schemes (Amplitude, Frequency and Phase Modulation) along with associated modulation and demodulation circuits."
+    ],
+    "textbooks": [
+      "1. S. Sedra, and K. C. Smith, Microelectronic Circuits, Oxford University Press, 6th Edition,",
+      "2. Leach, Malvino, and Saha, Digital Principles and Applications, McGraw Hill Education, 8th Edition, 2014.",
+      "3. David. A. Bell, Electronic Devices and Circuits, Oxford University Press, 5th Edition, 2008.",
+      "4. L. Boylestad, and Louis Nashelsky, Electronic Devices and Circuit, Pearson, 11th Edition,",
+      "5. B Razavi, Microelectronics, Wiley India Pvt. Ltd, Student Edition, 2018.",
+      "6. John G Proakis, and Masoud Salehi, Communication Systems Engineering, Pearson Education,Prentice Hall International, 2nd Edition, 2002.",
+      "7. B. P. Lathi, Z. Ding, H. M. Gupta, Modern Analog and Digital Communication Systems, Oxford Publication, 4th Edition, 2017."
+    ],
+    "objectives": [
+      "1. To introduce Electronics Engineering in a nutshell",
+      "2. To explain the role of Electronics Engineering in all other engineering disciplines",
+      "3. To explain the basic building blocks of digital and analog electronic circuits",
+      "4. Understand the behavior and operation of several non-linear electronic devices: the operational amplifier, the PN junction diode, the field-effect transistor, and the bipolar junction transistor."
+    ],
+    "outcomes": [
+      "At the completion of this course, the student shall acquire knowledge and ability",
+      "CO1. Analyze different electronics circuits, transistor characteristics and amplifiers.",
+      "CO2. Simplify and realize Boolean expressions, analyze and implement logic circuits.",
+      "CO3. Analyze operational amplifier circuits.",
+      "CO4. Understanding communication principles and analyzing different modulation techniques."
+    ]
+  },
+  "ME150": {
+    "code": "ME150",
+    "name": "Basics of Mechanical and Civil Engineering",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "3-0-0",
+    "credits": 3,
+    "modules": [],
+    "textbooks": [
+      "1. Cengel, Y. A. and Boles, M. A., Thermodynamics: An Engineering Approach, McGraw Hill, 5th Ed., 2006.",
+      "2. Beer, F. P. & Johnston Jr, E. R. et al. Mechanics of Materials, 8th Ed, McGraw Hill,",
+      "3. Rattan, S. S., Theory of Machines, 5th Ed, McGraw Hill, 2019.",
+      "4. Hajra Choudhary, S. K., Hajra Choudhary, A. K. Roy, N., Elements of Workshop Technology. Vol. I and II, Media promoters and publishers Pvt Ltd, 2007.",
+      "5. Nag, P. K., Engineering Thermodynamics, Tata McGraw Hill, 3rd Ed., 2005.",
+      "6. Kalpakjian, S., Schmid, S. R., Manufacturing Engineering & Technology, 4th Ed, Pearson Education, 2000.",
+      "7. Groover, M. P., Introduction to Manufacturing Processes, Wiley, 2011.",
+      "8. Rao, P. N., Manufacturing Technology. Vol. I and II, 2nd Edition. TMH Education, 2006.",
+      "9. Groover, M. P., & Weiss, M., Industrial Robotics, Technology, Programming, and Applications, McGraw Hill, 1986",
+      "10. Famili, A.F., Dana S. Nau, D.S., Kim S.H., Artificial Intelligence Applications in Manufacturing, AAAI Press, 1992.",
+      "11. Misra, S., Roy, C., and Mukherjee, A., Introduction to Industrial Internet of Things and Industry 4.0, CRC Press, 2020.",
+      "12. Chen, W. F., & Liew, J. Y. R. (Eds), The Civil Engineering Handbook. 2nd Ed, CRC Press, 2002.",
+      "13. Chudley, R., & Greeno, R., Building Construction Handbook, Addison Wesley, 2020.",
+      "14. Kandya, A. A., Elements of Civil Engineering, 3rd Ed, Charotar Publishing House, 2017.",
+      "15. Mamlouk, M. S., & Zaniewski, J. P., Materials for Civil and Construction Engineering, Pearson.",
+      "16. Rangwala, S. C., & Dalal, K. B., Building Construction, Charotar Publishing House.",
+      "17. Shanmugam, G., Palanichamy, M. S., Basic Civil and Mechanical Engineering, McGraw Hill."
+    ],
+    "objectives": [
+      "The main objective of studying this course is to provide students with a strong foundation in the principles and concepts of Mechanical and Civil Engineering consisting of Thermodynamics, Mechanical Systems Design, Production Technology, surveying and building plans."
+    ],
+    "outcomes": [
+      "At the completion of this course, the student shall acquire knowledge and ability",
+      "CO1. to explain/desrcibe principles of Thermodynamics, including concepts such as energy, heat transfer, work, and the laws of Thermodynamics.",
+      "CO2. to solve problems based on principles and techniques involved in the analysis of mechanical systems including power transmission mechanisms.",
+      "CO3. to illustrate the basics of production technology, including conventional and non- conventional manufacturing techniques.",
+      "CO4. to explain/desrcibe various aspects of Civil Engineering, encompassing surveying and building plans."
+    ]
+  },
+  "HU151": {
+    "code": "HU151",
+    "name": "Health & Happiness",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "2-0-0",
+    "credits": 2,
+    "modules": [
+      "Module 1: Introduction to Food & Nutrition, Human Biology, Vital Parameters and Health Check, BMI Calculation, Nutrients, Water, Carbohydrates, Nutrients – Proteins – Structure & Classification, Lipids and Fats, Source of Fats and Oil, Fat Soluble Vitamins, Water Soluble Vitamins, Nutrients – Minerals, Food Groups, concept of Balanced Diet, Phytochemicals and health benefits, Spices and Health Benefits, Cooking Methods. Introduction to quality attributes of food, factors affecting it, methods of quality evaluation. Food Adulteration: Contaminants & Detection, Basic Food Laws and Regulations, Nutrition Labelling and Food Laws. Food Additives- application & safety aspects, Genetically Modified Foods, Issues in GM foods, Food Safety Tools. Food Contamination, Post Harvest Losses of Fruits, Vegetables & its Safety, Food safety Hazards, Expiry Date/Shelf Life.",
+      "Module 2: Health- definition, signs of health, Healthy lifestyle: Carcadian rhythm, early awakening, dantdhavan, nasya, gandusha, abhyanga, vyayam, urvartan, snan. selection of occupation, Sharira Manas prakriti. Aahar (Diet): ideal diet, Aahar varg: (groups of food): group of cerials, group of pulses, vegetables, fruits, milk and milk products, spices, sugar and jaggery, non- veg diet, cooked/processed food, effect of fast food and junk food on body, preservatives etc. Ahara vidhi:(how to eat), GI motility disorders. Timings of food, digestion, Carcadian rhythm related to digestion. Rutujacharya: 6 seasons, changes in body according to season, change in diet and regimen according to seasonal changes, diet and regimen for each season. Natural urges: diseases due to restrain of natural urges, urges to be with hold. Sleep:effects of good sleep and irregular sleeping habits. Mental health: Sadvrutta:- Rules of good conduct, measures to improve concentration, memory- meditation, tratak, yoga and yogic kriyas.",
+      "Module 3: Introduction to Hatha yoga-benfits, Basics of Yoga, Ashtang Yoga: yama, niyama, asana, pranayama, pratyahara, dharana, dhyana and Samadhi. Yogic exercises for eyes, Meditation asanas: Vajrasana and Padmasana etc.",
+      "Module 4: Introduction to Forward bending, Backward bending, Spinal twisting, inverted and Balancing asanas, Surya namaskara. Chandra namaskar, Introduction to Pranayama, Mudra, Bandha, Shatkarma. Yoga and Mental Health, Yoga Related Practical Work,"
+    ],
+    "textbooks": [
+      "1. “Food and Nutrition” course at SWAYAM By Dr. Asna Urooj, University of Mysore",
+      "2. N. Shakuntala Manay & M. Shadaksharaswamy. (2001). Food: facts and principles. New Age International.",
+      "3. Norman, N. Potter. (2013). Food science. Springer.",
+      "4. Saraswati, Swami Satyananda, and Janez Kristijan Hiti. (1996). Asana pranayama mudra bandha. Bihar, India: Yoga Publications Trust, 1996.",
+      "5. Krishnamacharya, Tirumalai. (1935). \"Yoga Makaranda.\" The Nectar of Yoga.",
+      "6. Iyengar, Bellur Krishnamukar Sundara. (1965). \"Light on yoga: the definitive guide to yoga practice.\"",
+      "7. Shankar, Sri Sri Ravi. Patanjali Yoga Sutras. Arktos, 2014.",
+      "8. Online resource: https://vikaspedia.in/health/ayush/"
+    ],
+    "objectives": [
+      "The main objective of studying this course is to give overview on importance of food, nutrition and yogic practices to understand holistic view of personality, health and wellness."
+    ],
+    "outcomes": [
+      "At the completion of this course, the student shall acquire knowledge and ability",
+      "CO1. To develop the attitude of fairness and team spirit",
+      "CO2. To promote good health, comradeship and spirit of healthy competition",
+      "CO3. To improve positive and deep impact on the holistic development of the personality",
+      "CO4. To spread a strong message of peace, friendship and understanding among the people."
+    ]
+  },
+  "CY151": {
+    "code": "CY151",
+    "name": "Engineering Chemistry Lab",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "0-0-3",
+    "credits": 2,
+    "modules": [
+      "Lab Experiments (Part A): 1) Estimation of Iron in Hematite; 2) Estimation of copper in brass; 3) Determination of pKa and Ka of a weak acid; 4) Conductometric titration of strong acids with Strong base; 5) Estimation of total chromium by colorimetry; 6) Verification of Nernst Equation; 7) Determination of molecular weight of the polymer by Viscometry; 8) Determination of COD in a given water sample; 9) Estimation of total hardness of water",
+      "Lab Experiments (Part B): 10) Estimation of chloride content in water; 11) Determination of percentage of composition by using Abbe’s refractometer; 12) Study of three component system; 13) Estimation of dissolved oxygen in the given water sample; 14) Estimation of N2 in ammonium fertilizer Note: Any 8 experiments have to be done References; 1) A. I. Vogel, Textbook of quantitative chemical analysis, Prentice Hall, 2000; 2) Laboratory Manual, Department of Applied Sciences, National Institute of Technology Goa; 3) S. Rattan, Experiments in applied chemistry, 3rd edition, S. K.Kataria &amp; Sons, 2011. Course Code Course Name L T P Credits"
+    ],
+    "textbooks": [
+      "1) A. I. Vogel, Textbook of quantitative chemical analysis, Prentice Hall, 2000",
+      "2) Laboratory Manual, Department of Applied Sciences, National Institute of Technology Goa",
+      "3) S. Rattan, Experiments in applied chemistry, 3rd edition, S. K.Kataria &amp; Sons, 2011."
+    ],
+    "objectives": [],
+    "outcomes": []
+  },
+  "EC151": {
+    "code": "EC151",
+    "name": "Course EC151",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "3-0-0",
+    "credits": 3,
+    "modules": [],
+    "textbooks": [],
+    "objectives": [],
+    "outcomes": []
+  },
+  "ME151": {
+    "code": "ME151",
+    "name": "Course ME151",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "3-0-0",
+    "credits": 3,
+    "modules": [],
+    "textbooks": [],
+    "objectives": [],
+    "outcomes": []
+  },
+  "PE150": {
+    "code": "PE150",
+    "name": "Physical Education",
+    "branch": "COMMON",
+    "pdfPath": "/syllabi/FIRST_YEAR_2025.pdf",
+    "pdfName": "FIRST YEAR 24july2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/FIRST%20YEAR%2024july2025.pdf",
+    "ltp": "1-0-2",
+    "credits": 0,
+    "modules": [
+      "Lab Experiments (Part A): (8 Experiments will be conducted); 1. Hall Effect; 2. Photoelectric Effect; 3. Helmholtz Resonator; 4. Newton’s Rings Experiment; 5. Determination of Wavelength of He-Ne Laser using a Metal Scale as a Grating; 6. Determine the width of a single slit based on the Diffraction pattern",
+      "Lab Experiments (Part B): 7. Determination of wavelength of Sodium Light using a transparent diffraction Grating; 8. Determination of Optical absorption coefficient of materials using lasers; 9. I-V Characteristics of Zener Diode; 10. Determination of resonating frequency and bandwidth by LCR circuit.; 11. Measurement of the half-life of the radioactive source using GM Counter; 12. Determination of acceptance angle and numerical aperture of optical fiber Course Code Course Name L T P Credits CS101 Computer Programming Lab 0 0 2 1 Course Objective The objective of the course is to make the students implement the designed algorithms for computational problems using the C Programming language."
+    ],
+    "textbooks": [
+      "1. G. B. Thomas and R. L. Finney, Calculus and Analytic Geometry (14th Edition), ISE Reprint, Addison-Wesley, Pearson, 2018.",
+      "2. E. Kreyszig, Advanced Engineering Mathematics (8th Edition), John Wiley,",
+      "3. G. Strang, Introduction to Linear Algebra, Wellesley, 2021.",
+      "4. G. Strang, Linear Algebra and Its Applications, Cengage, 2005 R. K Jain and S.R.K. Iyengar, Advanced Engineering Mathematics,3rd edition, Narosa publications, 2007."
+    ],
+    "objectives": [
+      "The aim of this course is to provide engineers and scientists with a strong foundation in essential mathematical principles. By focusing on key topics such as differential calculus, integral calculus, sequences & series, Fourier series, and linear algebra, students will develop a deep understanding of applied mathematics."
+    ],
+    "outcomes": [
+      "At the completion of this course, the student shall acquire knowledge and ability",
+      "CO1. Develop a solid grasp of the basic principles of matrix theory and effectively apply them to solve engineering problems.",
+      "CO2. Understanding of the significance of differential calculus and its wide- ranging applications.",
+      "CO3. Comprehend the fundamental concepts of integral calculus and its practical applications,",
+      "CO4. Apply appropriate techniques to test the convergence of sequences and series, as well as analyze Fourier series,"
+    ]
+  }
+}

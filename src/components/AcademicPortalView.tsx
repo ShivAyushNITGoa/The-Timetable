@@ -930,17 +930,17 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
                   <span className="text-xs text-slate-400">Student & Faculty Advisory</span>
                 </div>
                 <h3 className="text-sm sm:text-base font-bold text-white">
-                  This is <span className="text-amber-300 underline underline-offset-2">not an official portal</span> of NIT Goa
+                  Independent Student Project for NIT Goa
                 </h3>
                 <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                  This academic portal is an independent community project engineered to assist students with schedule management, attendance tracking, and syllabus reference. For any mistake, schedule discrepancies, or updates, please report them directly:
+                  This timetable application is an independent community project engineered to assist students with schedule management, attendance tracking, and syllabus reference. For any mistake, schedule discrepancies, or updates, please report them directly:
                 </p>
               </div>
             </div>
 
             <div className="flex flex-wrap sm:flex-col items-stretch gap-2 shrink-0 w-full sm:w-auto">
               <a
-                href="mailto:shivshivamxyz@gmail.com?subject=NIT%20Goa%20Timetable%20Portal%20Correction&body=Hi%20Ayush,%0D%0A%0D%0AI%20noticed%20the%20following%20discrepancy/correction%20in%20the%20portal:%0D%0A"
+                href="mailto:shivshivamxyz@gmail.com?subject=NIT%20Goa%20Timetable%20Correction&body=Hi%20Ayush,%0D%0A%0D%0AI%20noticed%20the%20following%20discrepancy/correction:%0D%0A"
                 className="w-full sm:w-auto min-h-[44px] px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 transition shadow-md shadow-amber-500/20 active:scale-95 text-center"
               >
                 <Mail className="w-4 h-4 shrink-0" />
@@ -1009,7 +1009,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
                 type="button"
                 onClick={onOpenPwaGuide}
                 className="px-4 py-2 rounded-xl bg-slate-800/90 hover:bg-slate-700/90 border border-slate-700/80 hover:border-cyan-500/50 text-center transition active:scale-95 group cursor-pointer"
-                title="This portal is a Progressive Web App (PWA). Click to open local install guide."
+                title="This application is a Progressive Web App (PWA). Click to open local install guide."
               >
                 <div className="flex items-center justify-center gap-1">
                   <span className="block text-xs font-bold text-[#9EB81E]">100% Offline</span>

@@ -192,17 +192,17 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
 
             {/* Mobile Top Actions */}
-            <div className="flex items-center gap-1.5 shrink-0">
+            <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
               {/* Admin Panel Button */}
               {isAdmin && onOpenAdmin && (
                 <button
                   type="button"
                   onClick={onOpenAdmin}
-                  className="min-h-[38px] px-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center gap-1 active:scale-95 transition shadow-xs"
-                  title="Academic Admin Panel"
+                  className="min-h-[38px] px-2 sm:px-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center gap-1 active:scale-95 transition shadow-xs"
+                  title="Admin Control Panel"
                 >
-                  <ShieldCheck className="w-4 h-4" />
-                  <span>Admin</span>
+                  <ShieldCheck className="w-4 h-4 shrink-0" />
+                  <span className="hidden min-[380px]:inline">Admin</span>
                 </button>
               )}
 
@@ -211,7 +211,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   type="button"
                   onClick={onOpenLanding}
-                  className="min-h-[38px] px-2.5 rounded-xl bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-xs font-semibold flex items-center justify-center active:scale-95 transition"
+                  className="min-h-[38px] min-w-[38px] px-2 rounded-xl bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-xs font-semibold flex items-center justify-center active:scale-95 transition"
                   title="About & PWA Download"
                 >
                   <Sparkles className="w-3.5 h-3.5" />
@@ -234,7 +234,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   type="button"
                   onClick={onSignOut}
-                  className="min-h-[38px] p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 flex items-center justify-center transition"
+                  className="min-h-[38px] min-w-[38px] p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 flex items-center justify-center transition"
                   title={`Signed in as ${currentUser.email}. Click to sign out.`}
                 >
                   <LogOut className="w-3.5 h-3.5" />
@@ -243,11 +243,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   type="button"
                   onClick={onSignIn}
-                  className="min-h-[38px] px-2.5 rounded-xl bg-white text-slate-900 font-bold text-xs flex items-center gap-1 transition"
+                  className="min-h-[38px] px-2 sm:px-2.5 rounded-xl bg-white text-slate-900 font-bold text-xs flex items-center gap-1 transition shadow-xs"
                   title="Sign In with Google"
                 >
-                  <LogIn className="w-3.5 h-3.5 text-indigo-600" />
-                  <span>Login</span>
+                  <LogIn className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+                  <span className="hidden min-[380px]:inline">Login</span>
                 </button>
               ) : null}
             </div>
@@ -353,15 +353,14 @@ export const Navbar: React.FC<NavbarProps> = ({
           )}
         </div>
 
-        {/* Desktop & Tablet Top Strip (>= sm screens): High-contrast, beautifully balanced */}
-        <div className="hidden sm:flex py-2.5 items-center justify-between gap-3 border-b border-slate-800/60">
-          <div className="flex items-center gap-3 min-w-0">
+        {/* Desktop & Tablet Top Strip (>= sm screens): Responsive, zero-overlap layout */}
+        <div className="hidden sm:flex py-2.5 items-center justify-between gap-x-3 gap-y-2 border-b border-slate-800/60 flex-wrap">
+          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
             {/* The GDevelopers Official Brand Logo */}
             <BrandLogo
               iconSize={36}
               showText={true}
               className="shrink-0 transition hover:opacity-95"
-              subtitle="Timetable Portal"
             />
 
             <div className="h-7 w-px bg-slate-800 shrink-0" />
@@ -370,7 +369,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               type="button"
               onClick={onOpenBranchSelector}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500/20 via-slate-800/90 to-slate-800 border border-amber-500/50 hover:border-amber-400 hover:from-amber-500/30 text-left transition shadow-sm group active:scale-[0.98] shrink-0"
+              className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-slate-800/90 hover:bg-slate-800 border border-amber-500/40 hover:border-amber-400 text-left transition shadow-sm group active:scale-[0.98] shrink-0"
               title="Click to switch Branch, Year, or Semester"
             >
               <span className="px-2 py-0.5 rounded-md text-xs font-black bg-amber-400 text-slate-950 tracking-wider shadow-xs shrink-0">
@@ -379,10 +378,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 
               <div className="flex flex-col">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-xs md:text-sm font-black text-amber-200 whitespace-nowrap">
+                  <span className="text-xs md:text-sm font-bold text-amber-200 whitespace-nowrap">
                     {safeProfile.semester <= 2
                       ? `Sem ${safeProfile.semester} (Sec ${safeProfile.firstYearSection || 'A'})`
-                      : `Semester ${safeProfile.semester} • Year ${safeProfile.year}`}
+                      : `Sem ${safeProfile.semester} • Year ${safeProfile.year}`}
                   </span>
                   {safeProfile.branch === 'EEE' && safeProfile.semester === 5 && safeProfile.hasMinor && (
                     <span className="px-1.5 py-0.2 rounded text-[10px] font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 shrink-0">
@@ -390,7 +389,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     </span>
                   )}
                 </div>
-                <span className="text-[11px] text-slate-300 font-medium truncate max-w-[130px] md:max-w-[200px] lg:max-w-[280px]">
+                <span className="text-[11px] text-slate-400 font-medium truncate max-w-[130px] md:max-w-[180px] lg:max-w-[240px]">
                   {safeProfile.semester <= 2
                     ? `${safeProfile.firstYearSection === 'A' || safeProfile.firstYearSection === 'B' ? 'Physics' : 'Chemistry'} Cycle`
                     : branchInfo.name}
@@ -404,8 +403,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
           </div>
 
-          {/* Quick Config Strip: Batch Selector & Action Buttons */}
-          <div className="flex items-center gap-2 shrink-0">
+          {/* Quick Config Strip: Batch Selector & Action Buttons (wraps cleanly when space is tight) */}
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 flex-wrap justify-end ml-auto">
             {/* Lab Batch Selector - Visible for all semesters with laboratory sessions */}
             <div className="flex items-center gap-1 bg-slate-800/90 p-1 rounded-xl border border-slate-700/80 text-xs">
               <span className="text-amber-300 px-1.5 font-bold hidden lg:inline">Lab Batch:</span>
@@ -503,7 +502,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 title="Open Administrator Control Panel"
               >
                 <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
-                <span>Admin Panel</span>
+                <span className="hidden xl:inline">Admin Panel</span>
+                <span className="xl:hidden">Admin</span>
               </button>
             )}
 
