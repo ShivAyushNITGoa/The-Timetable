@@ -1,12 +1,12 @@
 {
-  "projectId": "nifty-cursor-gjlsj",
-  "appId": "1:921048552456:web:830c3083f91688216b2dbd",
-  "apiKey": "AIzaSyCQQpjtwm-DyV7axjn9l6cprYAAiOo62Eo",
-  "authDomain": "nifty-cursor-gjlsj.firebaseapp.com",
+  "projectId": "nit-goa-timetable",
+  "appId": "1:312263012783:web:a484764c0a0ecb6d7d7f5a",
+  "apiKey": "AIzaSyBMJFPKmD3DNv6WT-GiRidgywRqS5r8ohQ",
+  "authDomain": "nit-goa-timetable.firebaseapp.com",
   "firestoreDatabaseId": "ai-studio-thetimetable-bbc64c6a-3ecd-43a7-992a-0f1184c7b5a4",
-  "storageBucket": "nifty-cursor-gjlsj.firebasestorage.app",
-  "messagingSenderId": "921048552456",
-  "measurementId": "",
+  "storageBucket": "nit-goa-timetable.firebasestorage.app",
+  "messagingSenderId": "312263012783",
+  "measurementId": "G-2E1YH0DYN3",
   "oAuthClientId": "921048552456-h6o1kpeplrhr06noe9hij9l0lhu0b79a.apps.googleusercontent.com",
   "recaptchaSiteKey": ""
 }
