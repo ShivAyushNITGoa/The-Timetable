@@ -743,8 +743,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         </div>
 
         <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 text-xs text-slate-400 space-y-2">
-          <div className="flex items-center gap-2 text-amber-300 font-bold uppercase tracking-wider text-[11px]">
-            <BookOpen className="w-4 h-4 text-amber-400" />
+          <div className="flex items-center gap-2 text-blue-300 font-bold uppercase tracking-wider text-[11px]">
+            <BookOpen className="w-4 h-4 text-blue-400" />
             <span>National Institute of Technology Goa • Academic Reference</span>
           </div>
           <p className="leading-relaxed">
@@ -754,7 +754,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               href="https://nitgoa.ac.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-amber-400 hover:underline inline-flex items-center gap-0.5 font-medium"
+              className="text-blue-400 hover:underline inline-flex items-center gap-0.5 font-medium"
             >
               nitgoa.ac.in
               <ExternalLink className="w-3 h-3" />

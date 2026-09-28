@@ -114,7 +114,7 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
         {/* Step 1: Select Engineering Branch */}
         <div className="space-y-3 mb-6">
           <label className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-            <Building2 className="w-3.5 h-3.5 text-amber-400" />
+            <Building2 className="w-3.5 h-3.5 text-blue-400" />
             1. Engineering Branch (Department)
           </label>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -127,7 +127,7 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
                   onClick={() => setSelectedBranch(branch.code)}
                   className={`p-3.5 rounded-2xl text-left border transition-all flex items-start justify-between gap-2 ${
                     isSelected
-                      ? 'bg-slate-800 border-amber-500 shadow-md shadow-amber-500/10 ring-1 ring-amber-500/50'
+                      ? 'bg-slate-800 border-blue-500 shadow-md shadow-blue-500/10 ring-1 ring-blue-500/50'
                       : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 hover:bg-slate-800/40'
                   }`}
                 >
@@ -145,7 +145,7 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
                     </div>
                   </div>
                   {isSelected && (
-                    <div className="w-5 h-5 rounded-full bg-amber-500 flex items-center justify-center text-slate-950 shrink-0">
+                    <div className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center text-white shrink-0">
                       <Check className="w-3 h-3 stroke-[3]" />
                     </div>
                   )}
@@ -285,7 +285,7 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
                 onClick={() => setLabBatch('batch1')}
                 className={`min-h-[44px] px-3.5 py-2 rounded-xl border text-xs font-bold transition active:scale-95 ${
                   labBatch === 'batch1'
-                    ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-xs'
+                    ? 'bg-blue-600 text-white border-blue-500 shadow-xs'
                     : 'bg-slate-900 border-slate-700 text-slate-400 hover:text-white'
                 }`}
               >
@@ -296,7 +296,7 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
                 onClick={() => setLabBatch('batch2')}
                 className={`min-h-[44px] px-3.5 py-2 rounded-xl border text-xs font-bold transition active:scale-95 ${
                   labBatch === 'batch2'
-                    ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-xs'
+                    ? 'bg-blue-600 text-white border-blue-500 shadow-xs'
                     : 'bg-slate-900 border-slate-700 text-slate-400 hover:text-white'
                 }`}
               >
@@ -333,7 +333,7 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
           <button
             type="button"
             onClick={handleSave}
-            className="min-h-[44px] px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-amber-500/20 transition flex items-center justify-center gap-2 active:scale-95"
+            className="min-h-[44px] px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs sm:text-sm shadow-lg shadow-blue-600/25 transition flex items-center justify-center gap-2 active:scale-95"
           >
             <Check className="w-4 h-4 stroke-[3] shrink-0" />
             <span className="truncate">

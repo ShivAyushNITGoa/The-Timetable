@@ -109,7 +109,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
             <div className="p-2 rounded-xl bg-slate-800/80 border border-slate-700/60 text-center">
-              <Zap className="w-4 h-4 text-amber-400 mx-auto mb-1" />
+              <Zap className="w-4 h-4 text-blue-400 mx-auto mb-1" />
               <span className="block text-[11px] font-bold text-white">Instant Launch</span>
               <span className="text-[9px] text-slate-400">Zero loading delay</span>
             </div>
@@ -133,9 +133,9 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
 
         {/* 1-Click Install Button (When Supported by Browser) */}
         {isInstallable && !isStandalone && (
-          <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="p-4 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex flex-col sm:flex-row items-center justify-between gap-3">
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+              <div className="w-9 h-9 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
                 <Download className="w-4 h-4" />
               </div>
               <div>
@@ -146,7 +146,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
             <button
               type="button"
               onClick={handleInstallClick}
-              className="w-full sm:w-auto min-h-[42px] px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 transition active:scale-95 shadow-md shadow-amber-500/20"
+              className="w-full sm:w-auto min-h-[42px] px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition active:scale-95 shadow-md shadow-blue-600/20"
             >
               {installSuccess ? (
                 <>
@@ -188,7 +188,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
               <span className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
                 <span>How to Install Locally:</span>
               </span>
-              <span className="text-[10px] text-amber-400/90 font-medium sm:hidden">
+              <span className="text-[10px] text-blue-400/90 font-medium sm:hidden">
                 Tap your device below
               </span>
             </div>
@@ -209,7 +209,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
                 onClick={() => setActivePlatform('android')}
                 className={`min-h-[44px] sm:min-h-[36px] px-2 sm:px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition active:scale-95 text-center cursor-pointer select-none ${
                   activePlatform === 'android'
-                    ? 'bg-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/25 ring-1 ring-amber-400'
+                    ? 'bg-blue-600 text-white font-bold shadow-md shadow-blue-600/25 ring-1 ring-blue-400'
                     : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50 active:bg-slate-700'
                 }`}
               >
@@ -226,7 +226,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
                 onClick={() => setActivePlatform('ios')}
                 className={`min-h-[44px] sm:min-h-[36px] px-2 sm:px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition active:scale-95 text-center cursor-pointer select-none ${
                   activePlatform === 'ios'
-                    ? 'bg-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/25 ring-1 ring-amber-400'
+                    ? 'bg-blue-600 text-white font-bold shadow-md shadow-blue-600/25 ring-1 ring-blue-400'
                     : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50 active:bg-slate-700'
                 }`}
               >
@@ -243,7 +243,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
                 onClick={() => setActivePlatform('desktop')}
                 className={`min-h-[44px] sm:min-h-[36px] px-2 sm:px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition active:scale-95 text-center cursor-pointer select-none ${
                   activePlatform === 'desktop'
-                    ? 'bg-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/25 ring-1 ring-amber-400'
+                    ? 'bg-blue-600 text-white font-bold shadow-md shadow-blue-600/25 ring-1 ring-blue-400'
                     : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50 active:bg-slate-700'
                 }`}
               >
@@ -265,7 +265,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
                 <Smartphone className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span>Android (Chrome, Edge, Samsung Internet, Brave):</span>
               </div>
-              <ol className="space-y-2 pl-4 list-decimal marker:text-amber-400 leading-relaxed">
+              <ol className="space-y-2 pl-4 list-decimal marker:text-blue-400 leading-relaxed">
                 <li>
                   Open this link in <strong className="text-white">Google Chrome</strong> or your preferred Android browser.
                 </li>
@@ -320,15 +320,15 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
               className="p-4 rounded-2xl bg-slate-800/60 border border-slate-700/70 space-y-2.5 text-xs text-slate-300 animate-in fade-in duration-150"
             >
               <div className="font-bold text-white flex items-center gap-1.5">
-                <Laptop className="w-4 h-4 text-amber-400 shrink-0" />
+                <Laptop className="w-4 h-4 text-blue-400 shrink-0" />
                 <span>Windows, Mac, or Linux (Chrome, Edge, Brave):</span>
               </div>
-              <ol className="space-y-2 pl-4 list-decimal marker:text-amber-400 leading-relaxed">
+              <ol className="space-y-2 pl-4 list-decimal marker:text-blue-400 leading-relaxed">
                 <li>
                   Open this page in <strong className="text-white">Google Chrome</strong> or <strong className="text-white">Microsoft Edge</strong>.
                 </li>
                 <li>
-                  Look at the right side of the address bar for the <strong className="text-white">Install icon</strong> (a small monitor icon or <Download className="w-3.5 h-3.5 inline text-amber-400" />).
+                  Look at the right side of the address bar for the <strong className="text-white">Install icon</strong> (a small monitor icon or <Download className="w-3.5 h-3.5 inline text-blue-400" />).
                 </li>
                 <li>
                   Or click the browser menu <strong className="text-white">(⋮)</strong> &gt; <strong className="text-white">"Save and share"</strong> &gt; <strong className="text-white">"Install NIT Goa Timetable"</strong>.

@@ -46,7 +46,7 @@ export const ExamScheduleView: React.FC<ExamScheduleViewProps> = ({
           </div>
 
           <div className="p-3 bg-slate-900/80 rounded-xl border border-slate-800 text-xs text-slate-300">
-            <span className="text-amber-400 font-semibold">Master Policy:</span> Slot G is designated for Minor courses, guaranteeing no clash with department slots A–F.
+            <span className="text-blue-400 font-semibold">Master Policy:</span> Slot G is designated for Minor courses, guaranteeing no clash with department slots A–F.
           </div>
         </div>
       </div>

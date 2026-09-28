@@ -52,7 +52,7 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 mb-1 flex-wrap">
-              <span className="text-xs px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-semibold border border-amber-500/30">
+              <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-600/20 text-blue-300 font-semibold border border-blue-500/30">
                 Academic Curriculum • {branch}
               </span>
               {branch === 'EEE' && semester === 5 && (
@@ -110,7 +110,7 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
               onClick={() => setFilter(tab.id as any)}
               className={`px-3 py-1.5 text-xs font-semibold rounded-lg whitespace-nowrap transition shrink-0 ${
                 filter === tab.id
-                  ? 'bg-amber-500 text-slate-950 shadow-xs'
+                  ? 'bg-blue-600 text-white shadow-xs font-bold'
                   : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
               }`}
             >
@@ -127,7 +127,7 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
             placeholder="Search code, faculty, room..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-slate-900 border border-slate-700/80 rounded-xl pl-9 pr-3.5 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-hidden focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition"
+            className="w-full bg-slate-900 border border-slate-700/80 rounded-xl pl-9 pr-3.5 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-hidden focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
           />
         </div>
       </div>
@@ -158,7 +158,7 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
                       isMinor
                         ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 flex items-center gap-1'
                         : course.category === 'core'
-                        ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                        ? 'bg-blue-600/20 text-blue-300 border border-blue-500/30'
                         : course.category === 'elective'
                         ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
                         : course.category === 'lab'
@@ -176,7 +176,7 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg font-bold text-white group-hover:text-amber-300 transition flex items-center gap-2">
+                <h3 className="text-lg font-bold text-white group-hover:text-blue-300 transition flex items-center gap-2">
                   <span>{course.code}</span>
                   <span className="text-slate-500 font-normal">|</span>
                   <span className={isMinor ? 'text-cyan-200' : 'text-slate-200'}>{course.name}</span>
@@ -191,7 +191,7 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
                     </span>
                   </div>
                   {course.facultyDesignation && (
-                    <div className="text-[11px] text-amber-400/90 pl-5.5 truncate">
+                    <div className="text-[11px] text-blue-300/90 pl-5.5 truncate">
                       {course.facultyDesignation}
                     </div>
                   )}
@@ -218,10 +218,10 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
                     <div className="mt-2.5 flex flex-wrap gap-1.5">
                       {official && (
                         <span 
-                          className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-amber-500/15 text-amber-300 border border-amber-500/30 flex items-center gap-1"
+                          className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-blue-600/15 text-blue-300 border border-blue-500/30 flex items-center gap-1"
                           title={`Accredited by NIT Goa (${official.pdfName})`}
                         >
-                          <CheckCircle2 className="w-2.5 h-2.5 text-amber-400" />
+                          <CheckCircle2 className="w-2.5 h-2.5 text-blue-400" />
                           <span>NIT Goa Accredited</span>
                         </span>
                       )}
@@ -237,7 +237,7 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
                       )}
                       {moduleCount > 0 && (
                         <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700/80 flex items-center gap-1">
-                          <BookOpen className="w-2.5 h-2.5 text-amber-400" />
+                          <BookOpen className="w-2.5 h-2.5 text-blue-400" />
                           <span>{moduleCount} Modules</span>
                         </span>
                       )}
@@ -257,7 +257,7 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
                     Exam: <strong className="text-indigo-300">Slot {course.examSlot}</strong>
                   </span>
                 </div>
-                <span className="text-xs text-amber-400 font-semibold group-hover:underline">
+                <span className="text-xs text-blue-400 font-semibold group-hover:underline">
                   View Details →
                 </span>
               </div>

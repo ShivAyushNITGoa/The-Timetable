@@ -67,8 +67,15 @@ import {
 } from 'lucide-react';
 import { PwaInstallGuideModal } from './components/PwaInstallGuideModal';
 import { AdminSlotEditorModal } from './components/AdminSlotEditorModal';
+import { ThemeSelectorModal } from './components/ThemeSelectorModal';
+import { initTheme } from './utils/theme';
 
 export default function App() {
+  // Theme initialization
+  useEffect(() => {
+    initTheme();
+  }, []);
+
   // Firebase Auth State
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
@@ -83,6 +90,7 @@ export default function App() {
   });
   const [showLandingPage, setShowLandingPage] = useState(false);
   const [isAdminModalOpen, setIsAdminModalOpen] = useState(false);
+  const [isThemeModalOpen, setIsThemeModalOpen] = useState(false);
 
   // Firestore Cloud Overrides & Announcements
   const [cloudScheduleOverride, setCloudScheduleOverride] = useState<Record<DayOfWeek, TimeSlot[]> | null>(null);
@@ -580,7 +588,7 @@ export default function App() {
   if (authLoading) {
     return (
       <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-6 text-slate-100">
-        <div className="w-10 h-10 rounded-2xl border-4 border-amber-500/20 border-t-amber-400 animate-spin mb-4" />
+        <div className="w-10 h-10 rounded-2xl border-4 border-blue-500/20 border-t-blue-500 animate-spin mb-4" />
         <p className="text-xs font-semibold text-slate-300">Loading NIT Goa Timetable...</p>
       </div>
     );
@@ -657,6 +665,7 @@ export default function App() {
         onSignOut={handleGoogleSignOut}
         onOpenAdmin={() => setIsAdminModalOpen(true)}
         onOpenLanding={() => setShowLandingPage(true)}
+        onOpenThemeSelector={() => setIsThemeModalOpen(true)}
       />
 
       {/* Universal Student Profile Context Strip (Hidden on mobile to preserve vertical screen estate) */}
@@ -690,7 +699,7 @@ export default function App() {
             )}
 
             {scheduleOverride && (
-              <span className="px-2 py-0.2 rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/30 font-semibold">
+              <span className="px-2 py-0.2 rounded-md bg-blue-500/20 text-blue-300 border border-blue-500/30 font-semibold">
                 Custom Schedule Active
               </span>
             )}
@@ -708,9 +717,9 @@ export default function App() {
               <button
                 type="button"
                 onClick={() => setIsAdminModalOpen(true)}
-                className="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[11px] font-bold hover:bg-amber-500/30 transition"
+                className="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-blue-500/20 text-blue-300 border border-blue-500/40 text-[11px] font-bold hover:bg-blue-500/30 transition"
               >
-                <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
+                <ShieldCheck className="w-3.5 h-3.5 text-blue-400" />
                 <span>Admin Privileges Active</span>
               </button>
             )}
@@ -718,19 +727,19 @@ export default function App() {
             {/* Quick Test reminder badge */}
             <button
               onClick={() => setActiveTab('tests')}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-amber-300 transition text-[11px] font-semibold border border-slate-700"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-blue-300 transition text-[11px] font-semibold border border-slate-700"
             >
-              <CalendarCheck className="w-3.5 h-3.5 text-amber-400" />
+              <CalendarCheck className="w-3.5 h-3.5 text-blue-400" />
               <span>{tests.length} Tests in Calendar</span>
             </button>
 
             {/* Change Profile CTA */}
             <button
               onClick={() => setIsBranchSelectorOpen(true)}
-              className="inline-flex items-center gap-1 text-slate-400 hover:text-amber-400 transition"
+              className="inline-flex items-center gap-1 text-slate-400 hover:text-blue-400 transition"
               title="Change your branch or academic year"
             >
-              <Building2 className="w-3.5 h-3.5 text-amber-400" />
+              <Building2 className="w-3.5 h-3.5 text-blue-400" />
               <span className="underline decoration-slate-700">Switch Branch / Year</span>
             </button>
           </div>
@@ -745,18 +754,18 @@ export default function App() {
           .map((ann) => (
             <div
               key={ann.id}
-              className="mb-4 p-4 rounded-2xl bg-gradient-to-r from-amber-500/15 via-slate-900 to-amber-950/30 border border-amber-500/40 flex items-start justify-between gap-3 shadow-md animate-in fade-in slide-in-from-top-2 duration-300"
+              className="mb-4 p-4 rounded-2xl bg-gradient-to-r from-blue-900/30 via-slate-900 to-indigo-950/40 border border-blue-500/30 flex items-start justify-between gap-3 shadow-md animate-in fade-in slide-in-from-top-2 duration-300"
             >
               <div className="flex items-start gap-3 min-w-0">
-                <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/30 text-amber-300 flex items-center justify-center shrink-0 mt-0.5">
-                  <Bell className="w-4 h-4 text-amber-400" />
+                <div className="w-8 h-8 rounded-xl bg-blue-500/20 border border-blue-500/30 text-blue-300 flex items-center justify-center shrink-0 mt-0.5">
+                  <Bell className="w-4 h-4 text-blue-400" />
                 </div>
                 <div className="min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-[10px] uppercase font-black tracking-wider px-2 py-0.5 rounded-md bg-amber-400 text-slate-950 shadow-xs">
+                    <span className="text-[10px] uppercase font-black tracking-wider px-2 py-0.5 rounded-md bg-blue-500 text-white shadow-xs">
                       Official Notice
                     </span>
-                    <h4 className="text-sm font-bold text-amber-200">{ann.title}</h4>
+                    <h4 className="text-sm font-bold text-blue-100">{ann.title}</h4>
                   </div>
                   <p className="text-xs text-slate-200 mt-1 leading-relaxed whitespace-pre-line">{ann.content}</p>
                   <span className="text-[10px] text-slate-400 mt-1.5 block">
@@ -1002,12 +1011,20 @@ export default function App() {
         onSignIn={handleGoogleSignIn}
         onSignOut={handleGoogleSignOut}
         onOpenLanding={() => setShowLandingPage(true)}
+        onOpenThemeSelector={() => setIsThemeModalOpen(true)}
+      />
+
+      {/* Theme Customizer Modal */}
+      <ThemeSelectorModal
+        isOpen={isThemeModalOpen}
+        onClose={() => setIsThemeModalOpen(false)}
+        onThemeChange={() => showToast('Theme palette updated!')}
       />
 
       {/* Floating Action Toast Notification (positioned cleanly above mobile nav) */}
       {toastMessage && (
-        <div className="fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] sm:bottom-6 right-4 sm:right-6 z-50 bg-slate-900/95 backdrop-blur-md border border-amber-500/40 text-slate-100 px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-200 max-w-[calc(100vw-2rem)]">
-          <CheckCircle className="w-5 h-5 text-amber-400 shrink-0" />
+        <div className="fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] sm:bottom-6 right-4 sm:right-6 z-50 bg-slate-900/95 backdrop-blur-md border border-blue-500/40 text-slate-100 px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-200 max-w-[calc(100vw-2rem)]">
+          <CheckCircle className="w-5 h-5 text-blue-400 shrink-0" />
           <span className="text-xs sm:text-sm font-medium truncate">{toastMessage}</span>
         </div>
       )}
@@ -1045,7 +1062,7 @@ export default function App() {
                 <span className="text-slate-300">Dr. Mini (Dean)</span> • <span className="text-slate-300">Dr. Suresh Mikkili (Timetable)</span>
               </div>
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-800/80 border border-slate-700/80 shrink-0">
-                <span className="w-2 h-2 rounded-full bg-[#9EB81E] animate-pulse"></span>
+                <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
                 <span className="text-slate-300 font-medium text-[11px]">Powered by The GDevelopers</span>
               </div>
 
@@ -1065,17 +1082,17 @@ export default function App() {
           {/* Credits & Official Disclaimer Strip (Responsive Mobile-First) */}
           <div className="pt-5 border-t border-slate-800/80 flex flex-col gap-3.5 w-full">
             {/* Unofficial Disclaimer & Correction Email Alert Card */}
-            <div className="w-full bg-amber-500/10 border border-amber-500/25 rounded-2xl p-4 sm:p-4.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 shadow-sm">
+            <div className="w-full bg-blue-950/40 border border-blue-500/25 rounded-2xl p-4 sm:p-4.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 shadow-sm">
               <div className="flex items-start gap-3 min-w-0">
-                <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 text-amber-400">
+                <div className="w-8 h-8 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 text-blue-400">
                   <AlertTriangle className="w-4 h-4" />
                 </div>
                 <div className="min-w-0">
                   <div className="flex items-center gap-1.5 flex-wrap">
-                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30">
                       Notice
                     </span>
-                    <span className="text-xs sm:text-sm font-bold text-amber-200">
+                    <span className="text-xs sm:text-sm font-bold text-blue-200">
                       Independent Student Project for NIT Goa
                     </span>
                   </div>
@@ -1088,7 +1105,7 @@ export default function App() {
               {/* Direct Mail Action Button (Optimized 44px+ touch target on mobile) */}
               <a
                 href="mailto:shivshivamxyz@gmail.com?subject=NIT%20Goa%20Timetable%20Correction"
-                className="w-full sm:w-auto min-h-[44px] px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 transition active:scale-95 shadow-md shadow-amber-500/15 shrink-0 text-center"
+                className="w-full sm:w-auto min-h-[44px] px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-bold text-xs flex items-center justify-center gap-2 transition active:scale-95 shadow-md shadow-blue-600/20 shrink-0 text-center"
               >
                 <Mail className="w-4 h-4 shrink-0" />
                 <span className="break-all">shivshivamxyz@gmail.com</span>

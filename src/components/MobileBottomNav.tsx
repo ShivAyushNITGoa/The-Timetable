@@ -21,6 +21,7 @@ import {
   LogOut,
   LogIn,
   Sparkles,
+  Palette,
 } from 'lucide-react';
 import { ActiveTab } from './Navbar';
 import { StudentProfile } from '../data/branchesData';
@@ -41,6 +42,7 @@ interface MobileBottomNavProps {
   onSignIn?: () => void;
   onSignOut?: () => void;
   onOpenLanding?: () => void;
+  onOpenThemeSelector?: () => void;
 }
 
 export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
@@ -58,6 +60,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
   onSignIn,
   onSignOut,
   onOpenLanding,
+  onOpenThemeSelector,
 }) => {
   const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false);
 
@@ -99,7 +102,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             {/* Quick Profile Summary & Switch */}
             <div className="p-3.5 rounded-2xl bg-slate-800/80 border border-slate-700/70 flex items-center justify-between gap-3">
               <div>
-                <div className="text-[11px] font-semibold text-amber-400 uppercase tracking-wider">
+                <div className="text-[11px] font-semibold text-blue-400 uppercase tracking-wider">
                   Active Department
                 </div>
                 <div className="text-sm font-bold text-white mt-0.5">
@@ -112,7 +115,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                   setIsMoreMenuOpen(false);
                   onOpenBranchSelector();
                 }}
-                className="px-3.5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold transition flex items-center gap-1.5 shadow-md active:scale-95 min-h-[44px]"
+                className="px-3.5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md active:scale-95 min-h-[44px]"
               >
                 <Building2 className="w-4 h-4" />
                 <span>Switch</span>
@@ -127,27 +130,27 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                   setIsMoreMenuOpen(false);
                   onOpenAdmin();
                 }}
-                className="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-bold text-xs flex items-center justify-between shadow-lg shadow-amber-500/20 active:scale-[0.98] transition border border-amber-400/50"
+                className="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs flex items-center justify-between shadow-lg shadow-blue-500/20 active:scale-[0.98] transition border border-blue-400/40"
               >
                 <div className="flex items-center gap-2.5">
-                  <div className="p-1.5 rounded-lg bg-slate-950 text-amber-400">
+                  <div className="p-1.5 rounded-lg bg-slate-950 text-blue-400">
                     <ShieldCheck className="w-4 h-4" />
                   </div>
                   <div className="text-left">
-                    <div className="font-black text-xs text-slate-950">Administrator Control Panel</div>
-                    <div className="text-[10px] text-slate-800 font-semibold">
+                    <div className="font-black text-xs text-white">Administrator Control Panel</div>
+                    <div className="text-[10px] text-blue-100 font-semibold">
                       Live sync timetable slots, syllabi & notices
                     </div>
                   </div>
                 </div>
-                <ChevronRight className="w-4 h-4 text-slate-950 opacity-80" />
+                <ChevronRight className="w-4 h-4 text-white opacity-90" />
               </button>
             )}
 
             {/* User Account & Cloud Sync Card */}
             <div className="p-3.5 rounded-2xl bg-slate-800/80 border border-slate-700/70 flex items-center justify-between gap-3">
               <div className="min-w-0">
-                <div className="flex items-center gap-1.5 text-amber-400 text-[11px] font-bold">
+                <div className="flex items-center gap-1.5 text-blue-400 text-[11px] font-bold">
                   <Cloud className="w-3.5 h-3.5" />
                   <span>Cloud & Offline Progress Sync</span>
                 </div>
@@ -199,11 +202,11 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                   onClick={() => handleSelectTab('day')}
                   className={`min-h-[44px] px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-2.5 transition active:scale-95 ${
                     activeTab === 'day'
-                      ? 'bg-amber-500 text-slate-950 font-bold shadow-xs'
+                      ? 'bg-blue-600 text-white font-bold shadow-xs'
                       : 'bg-slate-800/80 text-slate-200 hover:bg-slate-800 border border-slate-700/60'
                   }`}
                 >
-                  <Calendar className={`w-4 h-4 shrink-0 ${activeTab === 'day' ? 'text-slate-950' : 'text-amber-400'}`} />
+                  <Calendar className={`w-4 h-4 shrink-0 ${activeTab === 'day' ? 'text-white' : 'text-blue-400'}`} />
                   <span className="truncate">Day Schedule</span>
                 </button>
 
@@ -212,11 +215,11 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                   onClick={() => handleSelectTab('weekly')}
                   className={`min-h-[44px] px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-2.5 transition active:scale-95 ${
                     activeTab === 'weekly'
-                      ? 'bg-amber-500 text-slate-950 font-bold shadow-xs'
+                      ? 'bg-blue-600 text-white font-bold shadow-xs'
                       : 'bg-slate-800/80 text-slate-200 hover:bg-slate-800 border border-slate-700/60'
                   }`}
                 >
-                  <Grid className={`w-4 h-4 shrink-0 ${activeTab === 'weekly' ? 'text-slate-950' : 'text-amber-400'}`} />
+                  <Grid className={`w-4 h-4 shrink-0 ${activeTab === 'weekly' ? 'text-white' : 'text-blue-400'}`} />
                   <span className="truncate">Weekly Matrix</span>
                 </button>
 
@@ -225,12 +228,12 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                   onClick={() => handleSelectTab('tests')}
                   className={`min-h-[44px] px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-between gap-1.5 transition active:scale-95 ${
                     activeTab === 'tests'
-                      ? 'bg-amber-500 text-slate-950 font-bold shadow-xs'
+                      ? 'bg-blue-600 text-white font-bold shadow-xs'
                       : 'bg-slate-800/80 text-slate-200 hover:bg-slate-800 border border-slate-700/60'
                   }`}
                 >
                   <div className="flex items-center gap-2.5 min-w-0">
-                    <CalendarCheck className={`w-4 h-4 shrink-0 ${activeTab === 'tests' ? 'text-slate-950' : 'text-amber-400'}`} />
+                    <CalendarCheck className={`w-4 h-4 shrink-0 ${activeTab === 'tests' ? 'text-white' : 'text-blue-400'}`} />
                     <span className="truncate">Tests & Tasks</span>
                   </div>
                   {testCount > 0 && (
@@ -245,11 +248,11 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                   onClick={() => handleSelectTab('attendance')}
                   className={`min-h-[44px] px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-2.5 transition active:scale-95 ${
                     activeTab === 'attendance'
-                      ? 'bg-amber-500 text-slate-950 font-bold shadow-xs'
+                      ? 'bg-blue-600 text-white font-bold shadow-xs'
                       : 'bg-slate-800/80 text-slate-200 hover:bg-slate-800 border border-slate-700/60'
                   }`}
                 >
-                  <CheckSquare className={`w-4 h-4 shrink-0 ${activeTab === 'attendance' ? 'text-slate-950' : 'text-amber-400'}`} />
+                  <CheckSquare className={`w-4 h-4 shrink-0 ${activeTab === 'attendance' ? 'text-white' : 'text-blue-400'}`} />
                   <span className="truncate">Attendance</span>
                 </button>
               </div>
@@ -266,15 +269,15 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                 onClick={() => handleSelectTab('academic')}
                 className={`w-full min-h-[48px] px-4 py-3 rounded-2xl text-left font-semibold text-sm flex items-center justify-between transition active:scale-[0.98] ${
                   activeTab === 'academic'
-                    ? 'bg-amber-500 text-slate-950 font-bold'
+                    ? 'bg-blue-600 text-white font-bold shadow-md shadow-blue-600/20'
                     : 'bg-slate-800/50 text-slate-200 hover:bg-slate-800 border border-slate-800'
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <GraduationCap className={`w-5 h-5 ${activeTab === 'academic' ? 'text-slate-950' : 'text-amber-400'}`} />
+                  <GraduationCap className={`w-5 h-5 ${activeTab === 'academic' ? 'text-white' : 'text-blue-400'}`} />
                   <div>
                     <div>SGPA Calculator & Academic Hub</div>
-                    <div className={`text-[11px] font-normal ${activeTab === 'academic' ? 'text-slate-800' : 'text-slate-400'}`}>
+                    <div className={`text-[11px] font-normal ${activeTab === 'academic' ? 'text-blue-100' : 'text-slate-400'}`}>
                       Target GPA, campus labs & facilities
                     </div>
                   </div>
@@ -287,15 +290,15 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                 onClick={() => handleSelectTab('courses')}
                 className={`w-full min-h-[48px] px-4 py-3 rounded-2xl text-left font-semibold text-sm flex items-center justify-between transition active:scale-[0.98] ${
                   activeTab === 'courses'
-                    ? 'bg-amber-500 text-slate-950 font-bold'
+                    ? 'bg-blue-600 text-white font-bold shadow-md shadow-blue-600/20'
                     : 'bg-slate-800/50 text-slate-200 hover:bg-slate-800 border border-slate-800'
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <BookOpen className={`w-5 h-5 ${activeTab === 'courses' ? 'text-slate-950' : 'text-blue-400'}`} />
+                  <BookOpen className={`w-5 h-5 ${activeTab === 'courses' ? 'text-white' : 'text-blue-400'}`} />
                   <div>
                     <div>Courses & Faculty Roster</div>
-                    <div className={`text-[11px] font-normal ${activeTab === 'courses' ? 'text-slate-800' : 'text-slate-400'}`}>
+                    <div className={`text-[11px] font-normal ${activeTab === 'courses' ? 'text-blue-100' : 'text-slate-400'}`}>
                       Credits, textbooks, syllabi & coordinators
                     </div>
                   </div>
@@ -308,15 +311,15 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                 onClick={() => handleSelectTab('exams')}
                 className={`w-full min-h-[48px] px-4 py-3 rounded-2xl text-left font-semibold text-sm flex items-center justify-between transition active:scale-[0.98] ${
                   activeTab === 'exams'
-                    ? 'bg-amber-500 text-slate-950 font-bold'
+                    ? 'bg-blue-600 text-white font-bold shadow-md shadow-blue-600/20'
                     : 'bg-slate-800/50 text-slate-200 hover:bg-slate-800 border border-slate-800'
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <Award className={`w-5 h-5 ${activeTab === 'exams' ? 'text-slate-950' : 'text-purple-400'}`} />
+                  <Award className={`w-5 h-5 ${activeTab === 'exams' ? 'text-white' : 'text-indigo-400'}`} />
                   <div>
                     <div>Master Exam Slots</div>
-                    <div className={`text-[11px] font-normal ${activeTab === 'exams' ? 'text-slate-800' : 'text-slate-400'}`}>
+                    <div className={`text-[11px] font-normal ${activeTab === 'exams' ? 'text-blue-100' : 'text-slate-400'}`}>
                       Slot A–H timings & clash prevention
                     </div>
                   </div>
@@ -329,15 +332,15 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                 onClick={() => handleSelectTab('resources')}
                 className={`w-full min-h-[48px] px-4 py-3 rounded-2xl text-left font-semibold text-sm flex items-center justify-between transition active:scale-[0.98] ${
                   activeTab === 'resources'
-                    ? 'bg-amber-500 text-slate-950 font-bold'
+                    ? 'bg-blue-600 text-white font-bold shadow-md shadow-blue-600/20'
                     : 'bg-slate-800/50 text-slate-200 hover:bg-slate-800 border border-slate-800'
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <FileText className={`w-5 h-5 ${activeTab === 'resources' ? 'text-slate-950' : 'text-amber-400'}`} />
+                  <FileText className={`w-5 h-5 ${activeTab === 'resources' ? 'text-white' : 'text-blue-400'}`} />
                   <div>
                     <div>Official Resources & Syllabi</div>
-                    <div className={`text-[11px] font-normal ${activeTab === 'resources' ? 'text-slate-800' : 'text-slate-400'}`}>
+                    <div className={`text-[11px] font-normal ${activeTab === 'resources' ? 'text-blue-100' : 'text-slate-400'}`}>
                       Open timetables, syllabus books & ordinances
                     </div>
                   </div>
@@ -348,6 +351,20 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
 
             {/* Quick Actions */}
             <div className="pt-2 border-t border-slate-800 space-y-2">
+              {onOpenThemeSelector && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMoreMenuOpen(false);
+                    onOpenThemeSelector();
+                  }}
+                  className="w-full min-h-[44px] px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-blue-300 border border-slate-700 text-xs font-semibold flex items-center justify-center gap-2 transition active:scale-95"
+                >
+                  <Palette className="w-4 h-4 text-blue-400" />
+                  <span>Change Colour Theme Palette</span>
+                </button>
+              )}
+
               {onOpenCustomizer && (
                 <button
                   type="button"
@@ -357,7 +374,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                   }}
                   className="w-full min-h-[44px] px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center justify-center gap-2 transition active:scale-95"
                 >
-                  <Sliders className="w-4 h-4 text-amber-400" />
+                  <Sliders className="w-4 h-4 text-blue-400" />
                   <span>Customize Class Schedule</span>
                 </button>
               )}
@@ -368,9 +385,9 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                   setIsMoreMenuOpen(false);
                   onExportCalendar();
                 }}
-                className="w-full min-h-[44px] px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500/20 to-amber-600/20 text-amber-300 border border-amber-500/30 text-xs font-bold flex items-center justify-center gap-2 transition active:scale-95"
+                className="w-full min-h-[44px] px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold flex items-center justify-center gap-2 transition active:scale-95"
               >
-                <Download className="w-4 h-4 text-amber-400" />
+                <Download className="w-4 h-4 text-blue-400" />
                 <span>Export to Google/Apple Calendar (.ics)</span>
               </button>
 
@@ -393,9 +410,9 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                     setIsMoreMenuOpen(false);
                     onOpenLanding();
                   }}
-                  className="w-full min-h-[44px] px-4 py-2.5 rounded-xl bg-indigo-500/15 hover:bg-indigo-500/25 text-indigo-300 border border-indigo-500/30 text-xs font-bold flex items-center justify-center gap-2 transition active:scale-95"
+                  className="w-full min-h-[44px] px-4 py-2.5 rounded-xl bg-blue-600/15 hover:bg-blue-600/25 text-blue-300 border border-blue-500/30 text-xs font-bold flex items-center justify-center gap-2 transition active:scale-95"
                 >
-                  <Sparkles className="w-4 h-4 text-indigo-400" />
+                  <Sparkles className="w-4 h-4 text-blue-400" />
                   <span>About NIT Goa Timetable & PWA</span>
                 </button>
               )}
@@ -403,8 +420,8 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
 
             {/* Mobile Drawer Bottom Disclaimer & Developer */}
             <div className="pt-3 border-t border-slate-800 text-[11px] space-y-2">
-              <div className="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/25 text-slate-300">
-                <div className="flex items-center gap-1.5 text-amber-300 font-bold text-[10px] uppercase tracking-wide">
+              <div className="p-3 rounded-2xl bg-slate-800/80 border border-slate-700/80 text-slate-300">
+                <div className="flex items-center gap-1.5 text-blue-300 font-bold text-[10px] uppercase tracking-wide">
                   <span>ℹ️ Notice</span>
                 </div>
                 <p className="text-xs text-slate-300 mt-1">
@@ -412,7 +429,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                 </p>
                 <a
                   href="mailto:shivshivamxyz@gmail.com?subject=NIT%20Goa%20Timetable%20Correction"
-                  className="mt-2 min-h-[38px] px-3 py-1.5 rounded-xl bg-amber-500/20 text-amber-300 hover:text-white flex items-center gap-1.5 font-medium text-xs break-all border border-amber-500/30"
+                  className="mt-2 min-h-[38px] px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white flex items-center gap-1.5 font-medium text-xs break-all shadow-sm transition"
                 >
                   <Mail className="w-3.5 h-3.5 shrink-0" />
                   <span>shivshivamxyz@gmail.com</span>
@@ -442,7 +459,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             onClick={() => handleSelectTab('day')}
             className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1.5 px-0.5 active:scale-90 ${
               activeTab === 'day'
-                ? 'text-amber-400 font-bold bg-amber-500/15 shadow-xs'
+                ? 'text-blue-400 font-bold bg-blue-500/15 shadow-xs'
                 : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/50'
             }`}
           >
@@ -459,7 +476,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             onClick={() => handleSelectTab('weekly')}
             className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1.5 px-0.5 active:scale-90 ${
               activeTab === 'weekly'
-                ? 'text-amber-400 font-bold bg-amber-500/15 shadow-xs'
+                ? 'text-blue-400 font-bold bg-blue-500/15 shadow-xs'
                 : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/50'
             }`}
           >
@@ -476,7 +493,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             onClick={() => handleSelectTab('tests')}
             className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1.5 px-0.5 relative active:scale-90 ${
               activeTab === 'tests'
-                ? 'text-amber-400 font-bold bg-amber-500/15 shadow-xs'
+                ? 'text-blue-400 font-bold bg-blue-500/15 shadow-xs'
                 : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/50'
             }`}
           >
@@ -500,7 +517,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             onClick={() => handleSelectTab('attendance')}
             className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1.5 px-0.5 active:scale-90 ${
               activeTab === 'attendance'
-                ? 'text-amber-400 font-bold bg-amber-500/15 shadow-xs'
+                ? 'text-blue-400 font-bold bg-blue-500/15 shadow-xs'
                 : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/50'
             }`}
           >
@@ -521,18 +538,18 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             onClick={() => setIsMoreMenuOpen(true)}
             className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1.5 px-0.5 active:scale-90 relative ${
               isMoreTabActive || isMoreMenuOpen
-                ? 'text-amber-400 font-bold bg-amber-500/15 shadow-xs'
+                ? 'text-blue-400 font-bold bg-blue-500/15 shadow-xs'
                 : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/50'
             }`}
           >
             <div className="relative">
               <Menu className={`w-5 h-5 transition-transform ${isMoreTabActive || isMoreMenuOpen ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
               {isAdmin ? (
-                <span className="absolute -top-1.5 -right-2 px-1 py-0.2 bg-amber-400 text-slate-950 rounded-full text-[8px] font-black leading-none border border-slate-900 pointer-events-none shadow-xs">
+                <span className="absolute -top-1.5 -right-2 px-1 py-0.2 bg-blue-600 text-white rounded-full text-[8px] font-black leading-none border border-slate-900 pointer-events-none shadow-xs">
                   ADMIN
                 </span>
               ) : isMoreTabActive ? (
-                <span className="absolute -top-0.5 -right-1 w-2 h-2 rounded-full bg-amber-400 ring-2 ring-slate-900" />
+                <span className="absolute -top-0.5 -right-1 w-2 h-2 rounded-full bg-blue-500 ring-2 ring-slate-900" />
               ) : null}
             </div>
             <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">More</span>

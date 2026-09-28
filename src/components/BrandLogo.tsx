@@ -24,7 +24,13 @@ export const BrandIconSvg: React.FC<{
       className={`inline-block shrink-0 select-none ${rounded ? 'rounded-xl' : ''} ${className}`}
       aria-label="The GDevelopers Icon"
     >
-      <rect width="512" height="512" rx="104" fill="#b0b91a" />
+      <defs>
+        <linearGradient id="tgdBrandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#2563eb" />
+          <stop offset="100%" stopColor="#1e40af" />
+        </linearGradient>
+      </defs>
+      <rect width="512" height="512" rx="104" fill="url(#tgdBrandGrad)" />
       <path
         d="M 256 128 C 358.4 128, 384 192, 384 256 C 384 320, 358.4 384, 256 384 C 153.6 384, 128 320, 128 256 L 192 256 C 192 288, 204.8 320, 256 320 C 307.2 320, 320 288, 320 256 C 320 224, 307.2 192, 256 192 L 256 256 L 192 256 L 192 128 L 256 128 Z"
         fill="#FFFFFF"

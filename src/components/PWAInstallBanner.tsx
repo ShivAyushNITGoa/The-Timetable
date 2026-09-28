@@ -61,7 +61,7 @@ export const PWAInstallBanner: React.FC = () => {
 
   return (
     <>
-      <div className="bg-gradient-to-r from-amber-500/15 via-cyan-500/10 to-indigo-500/15 border-b border-amber-500/30 px-4 py-2.5">
+      <div className="bg-gradient-to-r from-blue-900/30 via-slate-900 to-indigo-950/30 border-b border-blue-500/30 px-4 py-2.5">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 text-xs sm:text-sm">
           <div className="flex items-center gap-2.5">
             <BrandIcon size={28} className="shrink-0 rounded-lg shadow-sm" />
@@ -74,7 +74,7 @@ export const PWAInstallBanner: React.FC = () => {
           <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={handleInstallClick}
-              className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-xs rounded-lg shadow-sm transition"
+              className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs rounded-lg shadow-sm transition"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Install App</span>
@@ -102,19 +102,19 @@ export const PWAInstallBanner: React.FC = () => {
             </button>
 
             <div className="mb-4 flex justify-center">
-              <BrandIcon size={64} className="rounded-2xl shadow-xl shadow-[#9EB81E]/20" />
+              <BrandIcon size={64} className="rounded-2xl shadow-xl shadow-blue-500/20" />
             </div>
 
             <h3 className="text-lg font-bold text-center text-white mb-2">
               Install to Home Screen
             </h3>
             <p className="text-xs text-slate-400 text-center mb-5">
-              Access your 5th Sem EEE + CS300M Minor schedule instantly, even when completely offline in lecture halls.
+              Access your official NIT Goa timetable instantly, even when completely offline in lecture halls.
             </p>
 
             <div className="space-y-3 text-xs bg-slate-800/60 p-4 rounded-xl border border-slate-800">
               <div className="flex items-center gap-3">
-                <div className="w-6 h-6 rounded-full bg-slate-700 flex items-center justify-center font-bold text-amber-400 shrink-0">
+                <div className="w-6 h-6 rounded-full bg-slate-700 flex items-center justify-center font-bold text-blue-400 shrink-0">
                   1
                 </div>
                 <div>
@@ -122,7 +122,7 @@ export const PWAInstallBanner: React.FC = () => {
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-6 h-6 rounded-full bg-slate-700 flex items-center justify-center font-bold text-amber-400 shrink-0">
+                <div className="w-6 h-6 rounded-full bg-slate-700 flex items-center justify-center font-bold text-blue-400 shrink-0">
                   2
                 </div>
                 <div>
@@ -130,7 +130,7 @@ export const PWAInstallBanner: React.FC = () => {
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-6 h-6 rounded-full bg-slate-700 flex items-center justify-center font-bold text-amber-400 shrink-0">
+                <div className="w-6 h-6 rounded-full bg-slate-700 flex items-center justify-center font-bold text-blue-400 shrink-0">
                   3
                 </div>
                 <div>

@@ -82,9 +82,9 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 sm:p-4 bg-slate-800/60 border border-slate-700/60 rounded-2xl text-xs">
         <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
           <span className="font-semibold text-slate-300 flex items-center gap-1.5">
-            <Info className="w-3.5 h-3.5 text-amber-400" /> Legend:
+            <Info className="w-3.5 h-3.5 text-blue-400" /> Legend:
           </span>
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/30 font-semibold">
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-600/20 text-blue-300 border border-blue-500/30 font-semibold">
             {branch} Sem {semester} Core
           </span>
           {branch === 'EEE' && semester === 5 && (
@@ -104,7 +104,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
             onClick={() => setMobileMode('cards')}
             className={`px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition min-h-[36px] sm:min-h-0 ${
               mobileMode === 'cards'
-                ? 'bg-amber-500 text-slate-950 shadow-xs'
+                ? 'bg-blue-600 text-white shadow-xs'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -116,7 +116,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
             onClick={() => setMobileMode('matrix')}
             className={`px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition min-h-[36px] sm:min-h-0 ${
               mobileMode === 'matrix'
-                ? 'bg-amber-500 text-slate-950 shadow-xs'
+                ? 'bg-blue-600 text-white shadow-xs'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -145,7 +145,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                   onClick={() => setSelectedMobileDay(day)}
                   className={`min-h-[44px] py-1.5 px-0.5 sm:px-1 rounded-xl sm:rounded-2xl border text-center transition flex flex-col items-center justify-center relative active:scale-95 ${
                     isSelected
-                      ? 'bg-amber-500 text-slate-950 font-bold border-amber-400 shadow-md shadow-amber-500/20'
+                      ? 'bg-blue-600 text-white font-bold border-blue-400 shadow-md shadow-blue-600/25'
                       : isWeekend
                       ? 'bg-slate-800/60 text-slate-300 border-slate-700/60 hover:bg-slate-700/80'
                       : 'bg-slate-800/80 text-slate-300 border-slate-700/70 hover:bg-slate-700/80'
@@ -155,7 +155,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                   {isToday ? (
                     <span
                       className={`text-[8px] sm:text-[9px] px-1 rounded uppercase tracking-wider font-extrabold ${
-                        isSelected ? 'bg-slate-950/20 text-slate-950' : 'text-amber-400'
+                        isSelected ? 'bg-slate-950/20 text-white' : 'text-blue-400'
                       }`}
                     >
                       Today
@@ -178,10 +178,10 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                 return (
                   <div
                     key={`lunch-${idx}`}
-                    className="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-between text-xs text-amber-300"
+                    className="p-3 rounded-2xl bg-slate-800/80 border border-slate-700/80 flex items-center justify-between text-xs text-slate-300"
                   >
                     <div className="flex items-center gap-2 font-semibold">
-                      <span className="w-2 h-2 rounded-full bg-amber-400" />
+                      <span className="w-2 h-2 rounded-full bg-blue-400" />
                       <span>Lunch Break & Rest</span>
                     </div>
                     <span className="font-mono text-slate-400">13:00 – 14:00</span>
@@ -205,7 +205,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                             e.stopPropagation();
                             onAdminEditSlot(slot, selectedMobileDay);
                           }}
-                          className="px-2 py-0.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-[10px] flex items-center gap-1 active:scale-95 transition"
+                          className="px-2 py-0.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-[10px] flex items-center gap-1 active:scale-95 transition"
                         >
                           <Edit3 className="w-3 h-3" />
                           <span>Edit</span>
@@ -256,7 +256,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                             e.stopPropagation();
                             onAdminEditSlot(slot, selectedMobileDay);
                           }}
-                          className="p-1.5 px-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold flex items-center gap-1 shadow-sm transition active:scale-95"
+                          className="p-1.5 px-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-1 shadow-sm transition active:scale-95"
                           title="Admin: Edit Slot & Syllabus"
                         >
                           <Edit3 className="w-3.5 h-3.5" />
@@ -318,7 +318,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                             e.stopPropagation();
                             onAdminEditSlot(slot, selectedMobileDay);
                           }}
-                          className="p-1.5 px-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold flex items-center gap-1 shadow-sm transition active:scale-95"
+                          className="p-1.5 px-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-1 shadow-sm transition active:scale-95"
                           title="Admin: Edit Slot & Syllabus"
                         >
                           <Edit3 className="w-3.5 h-3.5" />
@@ -351,7 +351,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                         className={`text-[10px] px-2 py-0.5 rounded-md font-bold uppercase ${
                           isMinor
                             ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 flex items-center gap-1'
-                            : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                            : 'bg-blue-600/20 text-blue-300 border border-blue-500/30'
                         }`}
                       >
                         {isMinor && <Sparkles className="w-3 h-3 text-cyan-400" />}
@@ -382,7 +382,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                           e.stopPropagation();
                           onAdminEditSlot(slot, selectedMobileDay);
                         }}
-                        className="p-1.5 px-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold flex items-center gap-1 shadow-sm transition active:scale-95"
+                        className="p-1.5 px-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-1 shadow-sm transition active:scale-95"
                         title="Admin: Edit Slot & Syllabus"
                       >
                         <Edit3 className="w-3.5 h-3.5" />
@@ -401,7 +401,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
               <button
                 type="button"
                 onClick={() => onAdminAddSlot(selectedMobileDay)}
-                className="w-full py-3 rounded-2xl bg-amber-500/15 hover:bg-amber-500/25 border border-dashed border-amber-500/40 text-amber-300 font-bold text-xs flex items-center justify-center gap-2 transition active:scale-98"
+                className="w-full py-3 rounded-2xl bg-blue-600/15 hover:bg-blue-600/25 border border-dashed border-blue-500/40 text-blue-300 font-bold text-xs flex items-center justify-center gap-2 transition active:scale-98"
               >
                 <Plus className="w-4 h-4" />
                 <span>+ Add Slot for {selectedMobileDay} (Admin)</span>
@@ -414,7 +414,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
       {/* FULL MATRIX GRID (WITH HORIZONTAL SCROLL & STICKY DAY COLUMN) */}
       {mobileMode === 'matrix' && (
         <div className="space-y-2">
-          <div className="text-[11px] text-amber-400 flex items-center justify-between px-1">
+          <div className="text-[11px] text-blue-400 flex items-center justify-between px-1">
             <span>← Swipe horizontally to view afternoon periods & labs →</span>
             <span className="text-slate-400 font-mono">8 Periods</span>
           </div>
@@ -431,7 +431,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                     <th
                       key={slot.id}
                       className={`p-2 sm:p-3 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-center border-l border-slate-700/60 ${
-                        slot.id === 'lunch' ? 'bg-slate-800/40 w-16 sm:w-24 text-amber-400' : 'text-slate-300'
+                        slot.id === 'lunch' ? 'bg-slate-800/40 w-16 sm:w-24 text-blue-300' : 'text-slate-300'
                       }`}
                     >
                       <div>{slot.label}</div>
@@ -451,7 +451,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                       key={day}
                       className={`transition-colors ${
                         isToday
-                          ? 'bg-slate-800/90 ring-1 ring-inset ring-amber-500/40'
+                          ? 'bg-slate-800/90 ring-1 ring-inset ring-blue-500/40'
                           : isWeekend
                           ? 'bg-slate-900/60 hover:bg-slate-800/40'
                           : 'hover:bg-slate-800/30'
@@ -461,7 +461,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                       <td
                         className={`px-1.5 py-2 sm:p-3.5 font-semibold text-xs sticky left-0 z-20 border-r border-slate-700/60 shadow-md w-14 sm:w-28 ${
                           isToday
-                            ? 'bg-slate-800 text-amber-300 font-bold border-l-2 sm:border-l-4 border-l-amber-400'
+                            ? 'bg-slate-800 text-blue-300 font-bold border-l-2 sm:border-l-4 border-l-blue-400'
                             : 'bg-slate-900 text-slate-200'
                         }`}
                       >
@@ -469,7 +469,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                           <span className="sm:hidden text-[11px] font-bold uppercase tracking-tight">{day.slice(0, 3)}</span>
                           <span className="hidden sm:inline">{day}</span>
                           {isToday && (
-                            <span className="text-[8px] sm:text-[9px] px-1 py-0.2 sm:py-0.5 bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded font-mono uppercase">
+                            <span className="text-[8px] sm:text-[9px] px-1 py-0.2 sm:py-0.5 bg-blue-500/20 text-blue-400 border border-blue-500/30 rounded font-mono uppercase">
                               Today
                             </span>
                           )}
@@ -501,8 +501,8 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
 
                       {/* Lunch Break (13:00 - 14:00) */}
                       <td className="p-1.5 sm:p-2 border-l border-slate-800 text-center bg-slate-950/40 w-16 sm:w-24">
-                        <div className="h-16 flex flex-col items-center justify-center text-amber-400/90 text-xs font-semibold gap-1">
-                          <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                        <div className="h-16 flex flex-col items-center justify-center text-blue-400/90 text-xs font-semibold gap-1">
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
                           <span className="text-[11px] sm:text-xs">Lunch</span>
                           <span className="text-[9px] sm:text-[10px] text-slate-500 font-mono">1–2 PM</span>
                         </div>
@@ -559,10 +559,10 @@ function renderCell(
         <button
           type="button"
           onClick={() => onAdminAddSlot(day)}
-          className="h-16 w-full rounded-xl bg-slate-900/60 hover:bg-amber-500/10 border border-dashed border-slate-800 hover:border-amber-500/40 text-[11px] text-slate-500 hover:text-amber-300 flex flex-col items-center justify-center gap-1 transition group"
+          className="h-16 w-full rounded-xl bg-slate-900/60 hover:bg-blue-500/10 border border-dashed border-slate-800 hover:border-blue-500/40 text-[11px] text-slate-500 hover:text-blue-300 flex flex-col items-center justify-center gap-1 transition group"
           title={`Admin: Add slot for ${day}`}
         >
-          <Plus className="w-3.5 h-3.5 text-slate-500 group-hover:text-amber-400" />
+          <Plus className="w-3.5 h-3.5 text-slate-500 group-hover:text-blue-400" />
           <span className="text-[10px]">Add Slot</span>
         </button>
       );
@@ -586,7 +586,7 @@ function renderCell(
                 e.stopPropagation();
                 onAdminEditSlot(slot, day);
               }}
-              className="p-1 rounded bg-amber-500 hover:bg-amber-400 text-slate-950 transition active:scale-90 shadow-xs"
+              className="p-1 rounded bg-blue-600 hover:bg-blue-500 text-white transition active:scale-90 shadow-xs"
               title="Admin: Edit Slot"
             >
               <Edit3 className="w-2.5 h-2.5" />
@@ -624,7 +624,7 @@ function renderCell(
                   e.stopPropagation();
                   onAdminEditSlot(slot, day);
                 }}
-                className="p-1 rounded bg-amber-500 hover:bg-amber-400 text-slate-950 transition active:scale-90 shadow-xs"
+                className="p-1 rounded bg-blue-600 hover:bg-blue-500 text-white transition active:scale-90 shadow-xs"
                 title="Admin: Edit Slot & Syllabus"
               >
                 <Edit3 className="w-2.5 h-2.5" />
@@ -683,7 +683,7 @@ function renderCell(
                   e.stopPropagation();
                   onAdminEditSlot(slot, day);
                 }}
-                className="p-1 rounded bg-amber-500 hover:bg-amber-400 text-slate-950 transition active:scale-90 shadow-xs"
+                className="p-1 rounded bg-blue-600 hover:bg-blue-500 text-white transition active:scale-90 shadow-xs"
                 title="Admin: Edit Slot & Syllabus"
               >
                 <Edit3 className="w-2.5 h-2.5" />
@@ -725,7 +725,7 @@ function renderCell(
               ? 'bg-cyan-500/30 text-cyan-200 border border-cyan-400/50 flex items-center gap-1 font-bold'
               : course?.category === 'mlc'
               ? 'bg-violet-500/20 text-violet-300'
-              : 'bg-amber-500/20 text-amber-300'
+              : 'bg-blue-600/20 text-blue-300'
           }`}
         >
           {isMinor && <Sparkles className="w-2.5 h-2.5 text-cyan-400" />}
@@ -746,7 +746,7 @@ function renderCell(
                 e.stopPropagation();
                 onAdminEditSlot(slot, day);
               }}
-              className="p-1 rounded bg-amber-500 hover:bg-amber-400 text-slate-950 transition active:scale-90 shadow-xs"
+              className="p-1 rounded bg-blue-600 hover:bg-blue-500 text-white transition active:scale-90 shadow-xs"
               title="Admin: Edit Slot & Syllabus"
             >
               <Edit3 className="w-2.5 h-2.5" />
@@ -757,7 +757,7 @@ function renderCell(
       <div>
         <div
           className={`text-xs font-bold truncate ${
-            isMinor ? 'text-cyan-200 group-hover:text-cyan-100' : 'text-white group-hover:text-amber-300'
+            isMinor ? 'text-cyan-200 group-hover:text-cyan-100' : 'text-white group-hover:text-blue-300'
           }`}
         >
           {course?.code || slot.courseCode}: {course?.name || slot.slotName}

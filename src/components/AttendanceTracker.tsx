@@ -149,7 +149,7 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
           </div>
 
           <div className="text-xs text-slate-300 bg-slate-900/80 p-3 rounded-xl border border-slate-800">
-            <span className="text-amber-400 font-semibold">Criteria:</span> Minimum <strong className="text-white">75.0%</strong> required to appear in End-Semester Examinations.
+            <span className="text-blue-400 font-semibold">Criteria:</span> Minimum <strong className="text-white">75.0%</strong> required to appear in End-Semester Examinations.
           </div>
         </div>
       </div>
@@ -182,7 +182,7 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
               <div className="flex items-start justify-between gap-2 mb-3">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className={`text-xs font-bold ${isMinor ? 'text-cyan-300' : 'text-amber-400'}`}>
+                    <span className={`text-xs font-bold ${isMinor ? 'text-cyan-300' : 'text-blue-400'}`}>
                       {code}
                     </span>
                     {isMinor && (
@@ -247,7 +247,7 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
               {/* Direct Edit Mode or Quick Action Buttons */}
               {editingCode === code ? (
                 <div className="pt-3 border-t border-slate-800/80 space-y-2 animate-in fade-in">
-                  <div className="text-[11px] font-bold text-amber-400 flex items-center justify-between">
+                  <div className="text-[11px] font-bold text-blue-400 flex items-center justify-between">
                     <span>Direct Edit Class Counts</span>
                     <span className="text-[10px] text-slate-400 font-normal">Attended ≤ Total</span>
                   </div>
@@ -259,7 +259,7 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
                         min="0"
                         value={editAttended}
                         onChange={(e) => setEditAttended(Math.max(0, parseInt(e.target.value) || 0))}
-                        className="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-amber-500 font-mono"
+                        className="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500 font-mono"
                       />
                     </div>
                     <div>
@@ -269,7 +269,7 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
                         min={editAttended}
                         value={editTotal}
                         onChange={(e) => setEditTotal(Math.max(0, parseInt(e.target.value) || 0))}
-                        className="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-amber-500 font-mono"
+                        className="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500 font-mono"
                       />
                     </div>
                   </div>
@@ -316,7 +316,7 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
                     <button
                       type="button"
                       onClick={() => startEditing(code)}
-                      className="min-h-[44px] min-w-[40px] px-2 flex items-center justify-center text-slate-400 hover:text-amber-300 rounded-xl hover:bg-slate-800 transition active:scale-95 border border-transparent hover:border-slate-700"
+                      className="min-h-[44px] min-w-[40px] px-2 flex items-center justify-center text-slate-400 hover:text-blue-300 rounded-xl hover:bg-slate-800 transition active:scale-95 border border-transparent hover:border-slate-700"
                       title="Directly edit attendance numbers"
                       aria-label={`Edit numbers for ${code}`}
                     >
