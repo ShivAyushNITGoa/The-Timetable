@@ -26,6 +26,7 @@ import {
 import { ActiveTab } from './Navbar';
 import { StudentProfile } from '../data/branchesData';
 import { User } from 'firebase/auth';
+import { useTheme } from '../utils/theme';
 
 interface MobileBottomNavProps {
   activeTab: ActiveTab;
@@ -62,6 +63,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
   onOpenLanding,
   onOpenThemeSelector,
 }) => {
+  const { config: themeConfig } = useTheme();
   const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false);
 
   const isMoreTabActive = ['courses', 'exams', 'academic', 'resources'].includes(activeTab);
@@ -358,10 +360,17 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                     setIsMoreMenuOpen(false);
                     onOpenThemeSelector();
                   }}
-                  className="w-full min-h-[44px] px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-blue-300 border border-slate-700 text-xs font-semibold flex items-center justify-center gap-2 transition active:scale-95"
+                  className="w-full min-h-[44px] px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold flex items-center justify-between transition active:scale-95 shadow-xs"
                 >
-                  <Palette className="w-4 h-4 text-blue-400" />
-                  <span>Change Colour Theme Palette</span>
+                  <div className="flex items-center gap-2.5">
+                    <span
+                      className="w-3.5 h-3.5 rounded-full shadow-xs ring-1 ring-white/20"
+                      style={{ backgroundColor: themeConfig.primaryColor }}
+                    />
+                    <Palette className="w-4 h-4 text-slate-400" />
+                    <span>Colour Theme: <strong className="text-white">{themeConfig.name}</strong></span>
+                  </div>
+                  <span className="text-[11px] text-slate-400 font-mono">Change ↻</span>
                 </button>
               )}
 

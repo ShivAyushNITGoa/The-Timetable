@@ -26,8 +26,8 @@ export const BrandIconSvg: React.FC<{
     >
       <defs>
         <linearGradient id="tgdBrandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#2563eb" />
-          <stop offset="100%" stopColor="#1e40af" />
+          <stop offset="0%" stopColor="#b0b91a" />
+          <stop offset="100%" stopColor="#9da415" />
         </linearGradient>
       </defs>
       <rect width="512" height="512" rx="104" fill="url(#tgdBrandGrad)" />

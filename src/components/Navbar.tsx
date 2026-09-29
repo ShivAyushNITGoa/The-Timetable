@@ -26,6 +26,7 @@ import {
 import { StudentProfile, DEFAULT_STUDENT_PROFILE, BRANCHES_LIST } from '../data/branchesData';
 import { BrandLogo, BrandIcon } from './BrandLogo';
 import { User } from 'firebase/auth';
+import { useTheme } from '../utils/theme';
 
 export type ActiveTab = 'day' | 'weekly' | 'courses' | 'tests' | 'attendance' | 'exams' | 'academic' | 'resources';
 
@@ -72,6 +73,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const safeProfile = profile && profile.branch ? profile : DEFAULT_STUDENT_PROFILE;
   const branchInfo = BRANCHES_LIST.find((b) => b.code === safeProfile.branch) || BRANCHES_LIST[0];
+  const { config: themeConfig } = useTheme();
 
   // Desktop/Tablet horizontal scroll controls
   const navRef = useRef<HTMLElement | null>(null);
@@ -201,11 +203,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   type="button"
                   onClick={onOpenThemeSelector}
-                  className="min-h-[38px] min-w-[38px] p-2 rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-blue-400 border border-slate-700 flex items-center justify-center active:scale-95 transition shadow-xs"
-                  title="Select Color Theme"
+                  className="min-h-[38px] min-w-[38px] p-2 rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 border border-slate-700 flex items-center justify-center active:scale-95 transition shadow-xs relative"
+                  title={`Current Theme: ${themeConfig.name}. Tap to change palette.`}
                   aria-label="Select Color Theme"
                 >
-                  <Palette className="w-4 h-4" />
+                  <Palette className="w-4 h-4" style={{ color: themeConfig.primaryColor }} />
+                  <span
+                    className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full ring-1 ring-slate-900 shadow-xs"
+                    style={{ backgroundColor: themeConfig.primaryColor }}
+                  />
                 </button>
               )}
 
@@ -500,11 +506,15 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 type="button"
                 onClick={onOpenThemeSelector}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-blue-300 border border-slate-700 text-xs font-semibold transition active:scale-95 shadow-xs shrink-0"
-                title="Select Color Theme Palette"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 hover:border-slate-600 text-xs font-semibold transition active:scale-95 shadow-xs shrink-0"
+                title={`Color Theme: ${themeConfig.name} (Click to change)`}
               >
-                <Palette className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                <span className="hidden xl:inline">Theme</span>
+                <span
+                  className="w-2.5 h-2.5 rounded-full shrink-0 shadow-xs ring-1 ring-white/20"
+                  style={{ backgroundColor: themeConfig.primaryColor }}
+                />
+                <Palette className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                <span className="hidden lg:inline">{themeConfig.name.replace('NIT Goa ', '')}</span>
               </button>
             )}
 
