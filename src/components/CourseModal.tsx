@@ -207,6 +207,11 @@ export const CourseModal: React.FC<CourseModalProps> = ({
         } bg-slate-900 overflow-hidden flex flex-col transition-all duration-200 animate-in slide-in-from-bottom duration-200`}
         onClick={(e) => e.stopPropagation()}
       >
+        {/* Mobile Drag Handle Indicator */}
+        {viewTab !== 'pdf' && (
+          <div className="sm:hidden w-12 h-1 bg-slate-600/70 rounded-full mx-auto my-2 shrink-0" />
+        )}
+
         {/* Modal Header */}
         {viewTab === 'pdf' ? (
           <div className="px-4 py-2.5 bg-slate-900/95 border-b border-slate-800 flex items-center justify-between gap-3 shrink-0">

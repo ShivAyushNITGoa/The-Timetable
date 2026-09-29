@@ -22,6 +22,7 @@ import {
   LogOut,
   User as UserIcon,
   Palette,
+  Search,
 } from 'lucide-react';
 import { StudentProfile, DEFAULT_STUDENT_PROFILE, BRANCHES_LIST } from '../data/branchesData';
 import { BrandLogo, BrandIcon } from './BrandLogo';
@@ -49,6 +50,7 @@ interface NavbarProps {
   onOpenAdmin?: () => void;
   onOpenLanding?: () => void;
   onOpenThemeSelector?: () => void;
+  onOpenCommandPalette?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -70,6 +72,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenAdmin,
   onOpenLanding,
   onOpenThemeSelector,
+  onOpenCommandPalette,
 }) => {
   const safeProfile = profile && profile.branch ? profile : DEFAULT_STUDENT_PROFILE;
   const branchInfo = BRANCHES_LIST.find((b) => b.code === safeProfile.branch) || BRANCHES_LIST[0];
@@ -198,6 +201,19 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Mobile Top Actions */}
             <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
+              {/* Quick Command Search */}
+              {onOpenCommandPalette && (
+                <button
+                  type="button"
+                  onClick={onOpenCommandPalette}
+                  className="min-h-[38px] min-w-[38px] p-2 rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 border border-slate-700 flex items-center justify-center active:scale-95 transition shadow-xs"
+                  title="Quick Command Search (Ctrl+K)"
+                  aria-label="Quick Search"
+                >
+                  <Search className="w-4 h-4 text-slate-300" />
+                </button>
+              )}
+
               {/* Theme Palette Switcher */}
               {onOpenThemeSelector && (
                 <button
@@ -488,6 +504,22 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
             )}
 
+            {/* Quick Command Search (Ctrl+K) */}
+            {onOpenCommandPalette && (
+              <button
+                type="button"
+                onClick={onOpenCommandPalette}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-800/90 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 hover:border-slate-600 text-xs font-medium transition active:scale-95 shadow-xs"
+                title="Search courses, venues & tools (Ctrl+K)"
+              >
+                <Search className="w-3.5 h-3.5 text-slate-400" />
+                <span className="hidden lg:inline">Search...</span>
+                <kbd className="hidden xl:inline-block px-1.5 py-0.2 rounded bg-slate-900 border border-slate-700 text-[10px] font-mono text-slate-400">
+                  ⌘K
+                </kbd>
+              </button>
+            )}
+
             {/* Calendar Export */}
             <button
               type="button"
@@ -621,9 +653,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={() => setActiveTab(tab.id)}
                   className={`min-h-[40px] px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 whitespace-nowrap transition-all duration-150 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 shrink-0 select-none ${
                     isActive
-                      ? 'bg-blue-600 text-white shadow-md shadow-blue-600/25 font-bold'
+                      ? 'text-white font-bold shadow-md'
                       : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/70'
                   }`}
+                  style={{
+                    backgroundColor: isActive ? themeConfig.primaryColor : undefined,
+                    boxShadow: isActive ? `0 4px 14px 0 ${themeConfig.primaryColor}40` : undefined,
+                  }}
                 >
                   <Icon className={`w-4 h-4 shrink-0 transition-transform ${isActive ? 'scale-110' : ''}`} />
                   <span className="hidden xl:inline">{tab.label}</span>

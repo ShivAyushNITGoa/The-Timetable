@@ -22,6 +22,7 @@ import {
   LogIn,
   Sparkles,
   Palette,
+  Search,
 } from 'lucide-react';
 import { ActiveTab } from './Navbar';
 import { StudentProfile } from '../data/branchesData';
@@ -44,6 +45,7 @@ interface MobileBottomNavProps {
   onSignOut?: () => void;
   onOpenLanding?: () => void;
   onOpenThemeSelector?: () => void;
+  onOpenCommandPalette?: () => void;
 }
 
 export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
@@ -62,6 +64,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
   onSignOut,
   onOpenLanding,
   onOpenThemeSelector,
+  onOpenCommandPalette,
 }) => {
   const { config: themeConfig } = useTheme();
   const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false);
@@ -195,6 +198,26 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
 
             {/* Quick Navigation: Primary Views */}
             <div className="space-y-1.5">
+              {/* Quick Search in Drawer */}
+              {onOpenCommandPalette && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMoreMenuOpen(false);
+                    onOpenCommandPalette();
+                  }}
+                  className="w-full min-h-[44px] px-3.5 py-2.5 rounded-2xl bg-slate-800/90 hover:bg-slate-800 text-white font-semibold text-xs border border-slate-700/80 flex items-center justify-between transition active:scale-98 shadow-sm mb-2"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <Search className="w-4 h-4 text-blue-400" style={{ color: themeConfig.primaryColor }} />
+                    <span>Quick Command Search</span>
+                  </div>
+                  <span className="text-[10px] font-mono text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-700">
+                    Ctrl + K
+                  </span>
+                </button>
+              )}
+
               <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-1">
                 Primary Views
               </div>
@@ -468,9 +491,13 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             onClick={() => handleSelectTab('day')}
             className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1.5 px-0.5 active:scale-90 ${
               activeTab === 'day'
-                ? 'text-blue-400 font-bold bg-blue-500/15 shadow-xs'
+                ? 'font-bold shadow-xs'
                 : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/50'
             }`}
+            style={{
+              color: activeTab === 'day' ? themeConfig.primaryColor : undefined,
+              backgroundColor: activeTab === 'day' ? `${themeConfig.primaryColor}20` : undefined,
+            }}
           >
             <Calendar className={`w-5 h-5 transition-transform ${activeTab === 'day' ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
             <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">Today</span>
@@ -485,9 +512,13 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             onClick={() => handleSelectTab('weekly')}
             className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1.5 px-0.5 active:scale-90 ${
               activeTab === 'weekly'
-                ? 'text-blue-400 font-bold bg-blue-500/15 shadow-xs'
+                ? 'font-bold shadow-xs'
                 : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/50'
             }`}
+            style={{
+              color: activeTab === 'weekly' ? themeConfig.primaryColor : undefined,
+              backgroundColor: activeTab === 'weekly' ? `${themeConfig.primaryColor}20` : undefined,
+            }}
           >
             <Grid className={`w-5 h-5 transition-transform ${activeTab === 'weekly' ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
             <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">Weekly</span>
@@ -502,9 +533,13 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             onClick={() => handleSelectTab('tests')}
             className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1.5 px-0.5 relative active:scale-90 ${
               activeTab === 'tests'
-                ? 'text-blue-400 font-bold bg-blue-500/15 shadow-xs'
+                ? 'font-bold shadow-xs'
                 : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/50'
             }`}
+            style={{
+              color: activeTab === 'tests' ? themeConfig.primaryColor : undefined,
+              backgroundColor: activeTab === 'tests' ? `${themeConfig.primaryColor}20` : undefined,
+            }}
           >
             <div className="relative">
               <CalendarCheck className={`w-5 h-5 transition-transform ${activeTab === 'tests' ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
@@ -526,9 +561,13 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             onClick={() => handleSelectTab('attendance')}
             className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1.5 px-0.5 active:scale-90 ${
               activeTab === 'attendance'
-                ? 'text-blue-400 font-bold bg-blue-500/15 shadow-xs'
+                ? 'font-bold shadow-xs'
                 : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/50'
             }`}
+            style={{
+              color: activeTab === 'attendance' ? themeConfig.primaryColor : undefined,
+              backgroundColor: activeTab === 'attendance' ? `${themeConfig.primaryColor}20` : undefined,
+            }}
           >
             <CheckSquare className={`w-5 h-5 transition-transform ${activeTab === 'attendance' ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
             <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">
@@ -547,9 +586,13 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             onClick={() => setIsMoreMenuOpen(true)}
             className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1.5 px-0.5 active:scale-90 relative ${
               isMoreTabActive || isMoreMenuOpen
-                ? 'text-blue-400 font-bold bg-blue-500/15 shadow-xs'
+                ? 'font-bold shadow-xs'
                 : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/50'
             }`}
+            style={{
+              color: isMoreTabActive || isMoreMenuOpen ? themeConfig.primaryColor : undefined,
+              backgroundColor: isMoreTabActive || isMoreMenuOpen ? `${themeConfig.primaryColor}20` : undefined,
+            }}
           >
             <div className="relative">
               <Menu className={`w-5 h-5 transition-transform ${isMoreTabActive || isMoreMenuOpen ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />

@@ -10,6 +10,8 @@ export type AppTheme =
   | 'amethyst' 
   | 'titanium';
 
+export type AppearanceMode = 'slate' | 'oled' | 'light';
+
 export interface ThemeConfig {
   id: AppTheme;
   name: string;
@@ -132,6 +134,7 @@ export const APP_THEMES: ThemeConfig[] = [
 ];
 
 const THEME_STORAGE_KEY = 'nit_goa_app_theme';
+const MODE_STORAGE_KEY = 'nit_goa_appearance_mode';
 
 const VALID_THEMES = new Set<AppTheme>([
   'sapphire',
@@ -143,6 +146,8 @@ const VALID_THEMES = new Set<AppTheme>([
   'amethyst',
   'titanium',
 ]);
+
+const VALID_MODES = new Set<AppearanceMode>(['slate', 'oled', 'light']);
 
 export function getActiveTheme(): AppTheme {
   try {
@@ -156,6 +161,18 @@ export function getActiveTheme(): AppTheme {
   return 'sapphire'; // Default professional theme
 }
 
+export function getAppearanceMode(): AppearanceMode {
+  try {
+    const saved = localStorage.getItem(MODE_STORAGE_KEY) as AppearanceMode;
+    if (saved && VALID_MODES.has(saved)) {
+      return saved;
+    }
+  } catch (e) {
+    console.error('Error reading appearance mode from storage:', e);
+  }
+  return 'slate'; // Default rich collegiate slate
+}
+
 export function setActiveTheme(theme: AppTheme): void {
   try {
     localStorage.setItem(THEME_STORAGE_KEY, theme);
@@ -166,14 +183,26 @@ export function setActiveTheme(theme: AppTheme): void {
   }
 }
 
-export function initTheme(): AppTheme {
-  const current = getActiveTheme();
+export function setAppearanceMode(mode: AppearanceMode): void {
   try {
-    document.documentElement.setAttribute('data-theme', current);
+    localStorage.setItem(MODE_STORAGE_KEY, mode);
+    document.documentElement.setAttribute('data-mode', mode);
+    window.dispatchEvent(new CustomEvent('nit_goa_mode_changed', { detail: { mode } }));
+  } catch (e) {
+    console.error('Error saving appearance mode to storage:', e);
+  }
+}
+
+export function initTheme(): { theme: AppTheme; mode: AppearanceMode } {
+  const currentTheme = getActiveTheme();
+  const currentMode = getAppearanceMode();
+  try {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    document.documentElement.setAttribute('data-mode', currentMode);
   } catch (e) {
     console.error('Error initializing theme on document:', e);
   }
-  return current;
+  return { theme: currentTheme, mode: currentMode };
 }
 
 export function getThemeConfig(themeId: AppTheme): ThemeConfig {
@@ -181,10 +210,11 @@ export function getThemeConfig(themeId: AppTheme): ThemeConfig {
 }
 
 /**
- * React hook to read and subscribe to theme changes in components
+ * React hook to read and subscribe to theme & appearance changes across components
  */
 export function useTheme() {
   const [theme, setThemeState] = useState<AppTheme>(getActiveTheme);
+  const [mode, setModeState] = useState<AppearanceMode>(getAppearanceMode);
 
   useEffect(() => {
     const handleThemeChange = (e: Event) => {
@@ -194,9 +224,18 @@ export function useTheme() {
       }
     };
 
+    const handleModeChange = (e: Event) => {
+      const customEvent = e as CustomEvent<{ mode: AppearanceMode }>;
+      if (customEvent.detail?.mode) {
+        setModeState(customEvent.detail.mode);
+      }
+    };
+
     window.addEventListener('nit_goa_theme_changed', handleThemeChange);
+    window.addEventListener('nit_goa_mode_changed', handleModeChange);
     return () => {
       window.removeEventListener('nit_goa_theme_changed', handleThemeChange);
+      window.removeEventListener('nit_goa_mode_changed', handleModeChange);
     };
   }, []);
 
@@ -205,11 +244,18 @@ export function useTheme() {
     setThemeState(newTheme);
   };
 
+  const changeMode = (newMode: AppearanceMode) => {
+    setAppearanceMode(newMode);
+    setModeState(newMode);
+  };
+
   const config = getThemeConfig(theme);
 
   return {
     theme,
     changeTheme,
+    mode,
+    changeMode,
     config,
     allThemes: APP_THEMES,
   };

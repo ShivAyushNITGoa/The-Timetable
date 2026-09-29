@@ -1,6 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Course } from '../data/timetableData';
-import { CheckCircle2, AlertTriangle, Sparkles, Plus, Minus, RotateCcw, ShieldCheck, Pencil, Check, X } from 'lucide-react';
+import {
+  CheckCircle2,
+  AlertTriangle,
+  Sparkles,
+  Plus,
+  Minus,
+  RotateCcw,
+  ShieldCheck,
+  Pencil,
+  Check,
+  X,
+  TrendingUp,
+  AlertCircle,
+} from 'lucide-react';
+import { useTheme } from '../utils/theme';
 
 interface AttendanceRecord {
   attended: number;
@@ -23,6 +37,7 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
   const safeBranch = (branch || 'EEE').toLowerCase();
   const safeSemester = semester ?? 5;
   const STORAGE_KEY = `nit_goa_attendance_${safeBranch}_sem${safeSemester}`;
+  const { config: themeConfig } = useTheme();
 
   // Initialize records from localStorage or defaults
   const [attendance, setAttendance] = useState<Record<string, AttendanceRecord>>(() => {
@@ -33,7 +48,6 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
       console.error(e);
     }
 
-    // Default starting state
     const initial: Record<string, AttendanceRecord> = {};
     Object.keys(courses).forEach((code) => {
       initial[code] = { attended: 0, total: 0 };
@@ -121,40 +135,126 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
     setEditingCode(null);
   };
 
-  // Filter out the unselected elective if relevant
+  // Filter out unselected elective
   const activeCodes = Object.keys(courses).filter((c) => {
     if (selectedElective === 'EE541' && c === 'EE545') return false;
     if (selectedElective === 'EE545' && c === 'EE541') return false;
     return true;
   });
 
+  // Calculate semester aggregates
+  const stats = useMemo(() => {
+    let totalAttended = 0;
+    let totalHeld = 0;
+    let coursesBelow75 = 0;
+    let coursesAbove75 = 0;
+
+    activeCodes.forEach((code) => {
+      const rec = attendance[code] || { attended: 0, total: 0 };
+      totalAttended += rec.attended;
+      totalHeld += rec.total;
+      if (rec.total > 0) {
+        const pct = (rec.attended / rec.total) * 100;
+        if (pct < 75) coursesBelow75++;
+        else coursesAbove75++;
+      }
+    });
+
+    const overallPct = totalHeld > 0 ? (totalAttended / totalHeld) * 100 : 100;
+    return {
+      totalAttended,
+      totalHeld,
+      coursesBelow75,
+      coursesAbove75,
+      overallPct,
+      isOverallSafe: overallPct >= 75,
+    };
+  }, [activeCodes, attendance]);
+
   return (
     <div className="space-y-6">
-      {/* Header Info */}
-      <div className="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-5">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      {/* Header Info Banner */}
+      <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
           <div>
-            <div className="flex items-center gap-2 mb-1">
+            <div className="flex items-center gap-2 mb-2 flex-wrap">
               <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-semibold border border-emerald-500/30 flex items-center gap-1">
                 <ShieldCheck className="w-3.5 h-3.5" />
                 NIT Goa 75% Rule Compliance ({branch} Sem {semester})
               </span>
+              <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 font-mono border border-slate-700">
+                Offline PWA Storage Active
+              </span>
             </div>
-            <h2 className="text-xl font-bold text-white tracking-tight">
+            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
               Subject-Wise Attendance Manager
             </h2>
             <p className="text-xs text-slate-400 mt-1">
-              Data is saved offline automatically in your PWA. Track classes to prevent attendance shortages.
+              Calculate safe bunk allowances and required makeup classes to guarantee end-sem exam eligibility.
             </p>
           </div>
 
-          <div className="text-xs text-slate-300 bg-slate-900/80 p-3 rounded-xl border border-slate-800">
-            <span className="text-blue-400 font-semibold">Criteria:</span> Minimum <strong className="text-white">75.0%</strong> required to appear in End-Semester Examinations.
+          {/* Quick Criteria Pill */}
+          <div className="text-xs text-slate-300 bg-slate-950/80 p-3.5 rounded-2xl border border-slate-800 shrink-0">
+            <div className="flex items-center gap-2 text-blue-400 font-bold mb-0.5" style={{ color: themeConfig.primaryColor }}>
+              <TrendingUp className="w-4 h-4" />
+              <span>NIT Goa Master Policy</span>
+            </div>
+            <p className="text-[11px] text-slate-400">
+              Minimum <strong className="text-white">75.0%</strong> required. Shortage below 75% results in grade penalty or exam debarment.
+            </p>
+          </div>
+        </div>
+
+        {/* Global Summary KPI Bar */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5 pt-4 border-t border-slate-800/80">
+          <div className="bg-slate-950/60 p-3 rounded-2xl border border-slate-800">
+            <span className="text-[11px] text-slate-400 block mb-0.5">Overall Percentage</span>
+            <div
+              className={`text-xl font-bold font-mono tabular-nums ${
+                stats.totalHeld === 0
+                  ? 'text-slate-400'
+                  : stats.isOverallSafe
+                  ? 'text-emerald-400'
+                  : 'text-rose-400'
+              }`}
+            >
+              {stats.totalHeld === 0 ? '100%' : `${stats.overallPct.toFixed(1)}%`}
+            </div>
+            <span className="text-[10px] text-slate-500 block mt-0.5">Across all subjects</span>
+          </div>
+
+          <div className="bg-slate-950/60 p-3 rounded-2xl border border-slate-800">
+            <span className="text-[11px] text-slate-400 block mb-0.5">Classes Attended</span>
+            <div className="text-xl font-bold font-mono text-white tabular-nums">
+              {stats.totalAttended} <span className="text-xs font-normal text-slate-400">/ {stats.totalHeld}</span>
+            </div>
+            <span className="text-[10px] text-slate-500 block mt-0.5">Total sessions logged</span>
+          </div>
+
+          <div className="bg-slate-950/60 p-3 rounded-2xl border border-slate-800">
+            <span className="text-[11px] text-slate-400 block mb-0.5">Safe Subjects</span>
+            <div className="text-xl font-bold font-mono text-emerald-400 tabular-nums">
+              {stats.coursesAbove75}
+            </div>
+            <span className="text-[10px] text-emerald-500/80 block mt-0.5">≥ 75% attendance</span>
+          </div>
+
+          <div className="bg-slate-950/60 p-3 rounded-2xl border border-slate-800">
+            <span className="text-[11px] text-slate-400 block mb-0.5">At Risk / Shortage</span>
+            <div
+              className={`text-xl font-bold font-mono tabular-nums ${
+                stats.coursesBelow75 > 0 ? 'text-rose-400 animate-pulse' : 'text-slate-400'
+              }`}
+            >
+              {stats.coursesBelow75}
+            </div>
+            <span className="text-[10px] text-slate-500 block mt-0.5">Need immediate attention</span>
           </div>
         </div>
       </div>
 
-      {/* Course Attendance List */}
+      {/* Course Attendance Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {activeCodes.map((code) => {
           const course = courses[code];
@@ -163,93 +263,127 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
           const isSafe = percentage >= 75;
           const isMinor = code === 'CS300M';
 
-          // Bunk / Makeup calculation
+          // Safe Bunk margin calculation:
+          // How many classes can be missed without dropping below 75%?
+          // (attended) / (total + x) >= 0.75  =>  attended >= 0.75 * total + 0.75 * x
+          // x <= (attended - 0.75 * total) / 0.75
           const safeBunks =
             record.total > 0 ? Math.floor((record.attended - 0.75 * record.total) / 0.75) : 0;
 
+          // Shortage makeup calculation:
+          // How many consecutive classes must be attended to reach 75%?
+          // (attended + y) / (total + y) >= 0.75  =>  attended + y >= 0.75 * total + 0.75 * y
+          // 0.25 * y >= 0.75 * total - attended  =>  y >= (3 * total - 4 * attended)
           const requiredClasses =
             record.total > 0 && !isSafe ? Math.ceil(3 * record.total - 4 * record.attended) : 0;
 
           return (
             <div
               key={code}
-              className={`p-4 sm:p-5 rounded-2xl border transition-all ${
+              className={`p-5 rounded-3xl border transition-all duration-150 ${
                 isMinor
-                  ? 'bg-gradient-to-br from-cyan-950/40 via-slate-900 to-slate-850 border-cyan-500/50'
-                  : 'bg-slate-800/50 border-slate-700/70'
+                  ? 'bg-gradient-to-br from-cyan-950/40 via-slate-900 to-slate-900 border-cyan-500/40 shadow-lg'
+                  : 'bg-slate-900/90 border-slate-800 hover:border-slate-700 shadow-md'
               }`}
             >
-              <div className="flex items-start justify-between gap-2 mb-3">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className={`text-xs font-bold ${isMinor ? 'text-cyan-300' : 'text-blue-400'}`}>
+              <div className="flex items-start justify-between gap-3 mb-3">
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2 mb-1 flex-wrap">
+                    <span className="text-xs font-mono font-bold text-blue-400" style={{ color: themeConfig.primaryColor }}>
                       {code}
                     </span>
+                    {course?.teachingSlot && (
+                      <span className="text-[10px] px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 border border-slate-700 font-mono">
+                        Slot {course.teachingSlot}
+                      </span>
+                    )}
                     {isMinor && (
                       <span className="text-[10px] px-2 py-0.2 bg-cyan-500/20 text-cyan-300 rounded-md font-semibold border border-cyan-500/30 flex items-center gap-1">
                         <Sparkles className="w-2.5 h-2.5" /> CSE Minor
                       </span>
                     )}
                   </div>
-                  <h4 className="text-sm font-semibold text-white mt-0.5 truncate max-w-[220px]">
+                  <h4 className="text-sm font-bold text-white truncate max-w-[240px]">
                     {course?.name || code}
                   </h4>
+                  <p className="text-[11px] text-slate-400 truncate mt-0.5">
+                    {course?.coordinator || 'Faculty Coordinator'}
+                  </p>
                 </div>
 
-                {/* Percentage Pill */}
-                <div className="text-right">
+                {/* Percentage Badge */}
+                <div className="text-right shrink-0">
                   <div
-                    className={`text-lg font-mono font-bold ${
+                    className={`text-xl font-mono font-black tabular-nums ${
                       record.total === 0 ? 'text-slate-400' : isSafe ? 'text-emerald-400' : 'text-rose-400'
                     }`}
                   >
                     {record.total === 0 ? '100%' : `${percentage.toFixed(1)}%`}
                   </div>
-                  <div className="text-[10px] text-slate-400">
+                  <div className="text-[10px] font-mono text-slate-400 tabular-nums">
                     {record.attended} / {record.total} attended
                   </div>
                 </div>
               </div>
 
               {/* Progress Bar */}
-              <div className="w-full bg-slate-950 rounded-full h-2 overflow-hidden mb-3 border border-slate-800">
+              <div className="w-full bg-slate-950 rounded-full h-2.5 overflow-hidden mb-3.5 border border-slate-800">
                 <div
-                  className={`h-full transition-all duration-300 ${
+                  className={`h-full transition-all duration-300 rounded-full ${
                     record.total === 0
-                      ? 'bg-slate-600 w-full'
+                      ? 'bg-slate-700 w-full'
                       : isSafe
-                      ? 'bg-emerald-500'
-                      : 'bg-rose-500'
+                      ? 'bg-emerald-500 shadow-xs shadow-emerald-500/30'
+                      : 'bg-rose-500 shadow-xs shadow-rose-500/30'
                   }`}
                   style={{ width: `${Math.min(100, Math.max(0, percentage))}%` }}
                 />
               </div>
 
-              {/* Status Note */}
-              <div className="text-xs mb-4 min-h-[22px] flex items-center">
+              {/* Smart Bunk / Shortage Indicator Box */}
+              <div className="rounded-2xl p-2.5 mb-4 text-xs">
                 {record.total === 0 ? (
-                  <span className="text-slate-500 text-[11px]">No classes logged yet</span>
+                  <div className="flex items-center gap-2 text-slate-400 text-[11px] bg-slate-950/60 p-2 rounded-xl border border-slate-800">
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-600" />
+                    <span>No classes conducted yet. Tap "+1 Present" as lectures start.</span>
+                  </div>
                 ) : isSafe ? (
-                  <span className="text-emerald-400 text-[11px] flex items-center gap-1.5 font-medium">
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                    {safeBunks > 0
-                      ? `On track: You can safely miss ${safeBunks} more ${safeBunks === 1 ? 'class' : 'classes'}`
-                      : 'On track: Exactly at cutoff (cannot miss next class)'}
-                  </span>
+                  <div className="flex items-center gap-2 text-emerald-300 text-[11px] bg-emerald-500/10 p-2 rounded-xl border border-emerald-500/25">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span className="font-medium">
+                      {safeBunks > 0 ? (
+                        <>
+                          Safe Margin: You can safely miss{' '}
+                          <strong className="text-white underline decoration-emerald-500/50">
+                            {safeBunks} more {safeBunks === 1 ? 'class' : 'classes'}
+                          </strong>{' '}
+                          and remain &ge; 75%.
+                        </>
+                      ) : (
+                        'Borderline: Exactly at 75.0% cutoff (do not miss the next lecture).'
+                      )}
+                    </span>
+                  </div>
                 ) : (
-                  <span className="text-rose-400 text-[11px] flex items-center gap-1.5 font-medium">
-                    <AlertTriangle className="w-3.5 h-3.5" />
-                    Shortage: Attend next {requiredClasses} {requiredClasses === 1 ? 'class' : 'classes'} consecutively to reach 75%
-                  </span>
+                  <div className="flex items-center gap-2 text-rose-300 text-[11px] bg-rose-500/10 p-2 rounded-xl border border-rose-500/25 animate-in fade-in">
+                    <AlertTriangle className="w-4 h-4 text-rose-400 shrink-0" />
+                    <span className="font-medium">
+                      Shortage Warning: Attend next{' '}
+                      <strong className="text-white underline decoration-rose-500/50">
+                        {requiredClasses} {requiredClasses === 1 ? 'class' : 'classes'}
+                      </strong>{' '}
+                      consecutively to reach 75%.
+                    </span>
+                  </div>
                 )}
               </div>
 
-              {/* Direct Edit Mode or Quick Action Buttons */}
+              {/* Direct Edit Mode vs Quick Action Buttons */}
               {editingCode === code ? (
-                <div className="pt-3 border-t border-slate-800/80 space-y-2 animate-in fade-in">
-                  <div className="text-[11px] font-bold text-blue-400 flex items-center justify-between">
-                    <span>Direct Edit Class Counts</span>
-                    <span className="text-[10px] text-slate-400 font-normal">Attended ≤ Total</span>
+                <div className="pt-3 border-t border-slate-800 space-y-2 animate-in fade-in">
+                  <div className="text-[11px] font-bold flex items-center justify-between text-blue-400" style={{ color: themeConfig.primaryColor }}>
+                    <span>Edit Attendance Counts</span>
+                    <span className="text-[10px] text-slate-400 font-normal">Attended &le; Total</span>
                   </div>
                   <div className="grid grid-cols-2 gap-2">
                     <div>
@@ -263,7 +397,7 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
                       />
                     </div>
                     <div>
-                      <label className="text-[10px] text-slate-400 block mb-0.5">Total Held</label>
+                      <label className="text-[10px] text-slate-400 block mb-0.5">Total Conducted</label>
                       <input
                         type="number"
                         min={editAttended}
@@ -277,7 +411,7 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
                     <button
                       type="button"
                       onClick={() => saveDirectAttendance(code)}
-                      className="flex-1 min-h-[36px] px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 transition"
+                      className="flex-1 min-h-[36px] px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95"
                     >
                       <Check className="w-3.5 h-3.5 stroke-[3]" />
                       <span>Save Numbers</span>
@@ -285,19 +419,19 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
                     <button
                       type="button"
                       onClick={() => setEditingCode(null)}
-                      className="min-h-[36px] px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition"
+                      className="min-h-[36px] px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition active:scale-95"
                     >
                       Cancel
                     </button>
                   </div>
                 </div>
               ) : (
-                <div className="flex items-center justify-between gap-2 pt-3 border-t border-slate-800/80">
+                <div className="flex items-center justify-between gap-2 pt-3 border-t border-slate-800">
                   <div className="flex items-center gap-2 flex-1">
                     <button
                       type="button"
                       onClick={() => markClassPresent(code)}
-                      className="min-h-[44px] flex-1 px-3 py-2.5 text-xs font-bold rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 active:bg-emerald-500/40 text-emerald-300 border border-emerald-500/30 transition flex items-center justify-center gap-1.5 active:scale-95"
+                      className="min-h-[44px] flex-1 px-3 py-2.5 text-xs font-bold rounded-2xl bg-emerald-500/20 hover:bg-emerald-500/30 active:bg-emerald-500/40 text-emerald-300 border border-emerald-500/30 transition flex items-center justify-center gap-1.5 active:scale-95 shadow-xs"
                     >
                       <Plus className="w-4 h-4 stroke-[2.5]" />
                       <span>Present (+1)</span>
@@ -305,7 +439,7 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
                     <button
                       type="button"
                       onClick={() => markClassAbsent(code)}
-                      className="min-h-[44px] flex-1 px-3 py-2.5 text-xs font-bold rounded-xl bg-rose-500/20 hover:bg-rose-500/30 active:bg-rose-500/40 text-rose-300 border border-rose-500/30 transition flex items-center justify-center gap-1.5 active:scale-95"
+                      className="min-h-[44px] flex-1 px-3 py-2.5 text-xs font-bold rounded-2xl bg-rose-500/20 hover:bg-rose-500/30 active:bg-rose-500/40 text-rose-300 border border-rose-500/30 transition flex items-center justify-center gap-1.5 active:scale-95 shadow-xs"
                     >
                       <Minus className="w-4 h-4 stroke-[2.5]" />
                       <span>Absent (+1)</span>
@@ -316,7 +450,7 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
                     <button
                       type="button"
                       onClick={() => startEditing(code)}
-                      className="min-h-[44px] min-w-[40px] px-2 flex items-center justify-center text-slate-400 hover:text-blue-300 rounded-xl hover:bg-slate-800 transition active:scale-95 border border-transparent hover:border-slate-700"
+                      className="min-h-[44px] min-w-[42px] px-2 flex items-center justify-center text-slate-400 hover:text-white rounded-2xl bg-slate-800/80 hover:bg-slate-800 transition active:scale-95 border border-slate-700/60"
                       title="Directly edit attendance numbers"
                       aria-label={`Edit numbers for ${code}`}
                     >
@@ -325,7 +459,7 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
                     <button
                       type="button"
                       onClick={() => resetCourse(code)}
-                      className="min-h-[44px] min-w-[40px] px-2 flex items-center justify-center text-slate-500 hover:text-rose-300 rounded-xl hover:bg-slate-800 transition active:scale-95"
+                      className="min-h-[44px] min-w-[42px] px-2 flex items-center justify-center text-slate-400 hover:text-rose-400 rounded-2xl bg-slate-800/80 hover:bg-slate-800 transition active:scale-95 border border-slate-700/60"
                       title="Reset counter"
                       aria-label={`Reset attendance counter for ${code}`}
                     >

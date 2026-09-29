@@ -15,6 +15,8 @@ import { MobileBottomNav } from './components/MobileBottomNav';
 import { BrandLogo } from './components/BrandLogo';
 import { LandingPage } from './components/LandingPage';
 import { AdminPanelModal } from './components/AdminPanelModal';
+import { CommandPaletteModal } from './components/CommandPaletteModal';
+import { NextClassLiveBanner } from './components/NextClassLiveBanner';
 import {
   StudentProfile,
   DEFAULT_STUDENT_PROFILE,
@@ -91,6 +93,19 @@ export default function App() {
   const [showLandingPage, setShowLandingPage] = useState(false);
   const [isAdminModalOpen, setIsAdminModalOpen] = useState(false);
   const [isThemeModalOpen, setIsThemeModalOpen] = useState(false);
+  const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
+
+  // Global Ctrl+K / Cmd+K listener for Command Palette
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setIsCommandPaletteOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   // Firestore Cloud Overrides & Announcements
   const [cloudScheduleOverride, setCloudScheduleOverride] = useState<Record<DayOfWeek, TimeSlot[]> | null>(null);
@@ -666,6 +681,7 @@ export default function App() {
         onOpenAdmin={() => setIsAdminModalOpen(true)}
         onOpenLanding={() => setShowLandingPage(true)}
         onOpenThemeSelector={() => setIsThemeModalOpen(true)}
+        onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
       />
 
       {/* Universal Student Profile Context Strip (Hidden on mobile to preserve vertical screen estate) */}
@@ -748,6 +764,19 @@ export default function App() {
 
       {/* Main Content Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-6 pb-[calc(7.5rem+env(safe-area-inset-bottom,0px))] sm:pb-8">
+        {/* Next Class / Ongoing Session Live Status Banner */}
+        <NextClassLiveBanner
+          schedule={effectiveSchedule}
+          courses={effectiveCourses}
+          selectedElective={selectedElective}
+          selectedBatch={selectedBatch}
+          onOpenCourseModal={setActiveModalCourse}
+          onNavigateToDay={(day) => {
+            setSelectedDay(day);
+            handleSetActiveTab('day');
+          }}
+        />
+
         {/* Active Institute Announcements Broadcast Banner */}
         {announcements
           .filter((a) => a.active && !dismissedAnnouncements.includes(a.id))
@@ -1012,6 +1041,7 @@ export default function App() {
         onSignOut={handleGoogleSignOut}
         onOpenLanding={() => setShowLandingPage(true)}
         onOpenThemeSelector={() => setIsThemeModalOpen(true)}
+        onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
       />
 
       {/* Theme Customizer Modal */}
@@ -1019,6 +1049,22 @@ export default function App() {
         isOpen={isThemeModalOpen}
         onClose={() => setIsThemeModalOpen(false)}
         onThemeChange={() => showToast('Theme palette updated!')}
+      />
+
+      {/* Quick Command Palette (Ctrl+K) */}
+      <CommandPaletteModal
+        isOpen={isCommandPaletteOpen}
+        onClose={() => setIsCommandPaletteOpen(false)}
+        courses={effectiveCourses}
+        onSelectCourse={(courseCode) => setActiveModalCourse(courseCode)}
+        onSelectTab={handleSetActiveTab}
+        onSelectDay={(day) => {
+          setSelectedDay(day);
+          handleSetActiveTab('day');
+        }}
+        onOpenThemeSelector={() => setIsThemeModalOpen(true)}
+        onExportCalendar={handleExportCalendar}
+        onOpenPwaGuide={() => setIsPwaModalOpen(true)}
       />
 
       {/* Floating Action Toast Notification (positioned cleanly above mobile nav) */}
