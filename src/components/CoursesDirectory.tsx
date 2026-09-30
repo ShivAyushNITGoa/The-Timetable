@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { COURSES, Course, EEE_SEMESTER_INFO } from '../data/timetableData';
-import { Search, Sparkles, BookOpen, User, Mail, MapPin, Award, CheckCircle2 } from 'lucide-react';
+import { Search, BookOpen, User, Mail, MapPin, Award, CheckCircle2 } from 'lucide-react';
 import { getOfficialCourseSyllabus } from '../data/officialSyllabusRegistry';
 
 interface CoursesDirectoryProps {
@@ -48,16 +48,16 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
   return (
     <div className="space-y-6">
       {/* Header Info Box */}
-      <div className="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-5">
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 mb-1 flex-wrap">
-              <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-600/20 text-blue-300 font-semibold border border-blue-500/30">
+              <span className="text-xs px-2.5 py-0.5 rounded-md bg-blue-600/20 text-blue-300 font-semibold border border-blue-500/30">
                 Academic Curriculum • {branch}
               </span>
               {branch === 'EEE' && semester === 5 && (
-                <span className="text-xs px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-semibold border border-cyan-500/30 flex items-center gap-1">
-                  <Sparkles className="w-3 h-3 text-cyan-400" />
+                <span className="text-xs px-2.5 py-0.5 rounded-md bg-blue-600/15 text-blue-300 font-semibold border border-blue-500/30 flex items-center gap-1.5">
+                  <BookOpen className="w-3 h-3 text-blue-400" />
                   CSE Minor Option
                 </span>
               )}
@@ -71,21 +71,21 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
           </div>
 
           <div className="flex items-center gap-3 text-xs">
-            <div className="p-3 bg-slate-900/80 rounded-xl border border-slate-800">
+            <div className="p-3 bg-slate-950 rounded-lg border border-slate-800">
               <div className="text-slate-400">Faculty Advisor</div>
               <div className="font-semibold text-white">{EEE_SEMESTER_INFO.facultyAdvisor.name}</div>
-              <a href={`mailto:${EEE_SEMESTER_INFO.facultyAdvisor.email}`} className="text-cyan-400 text-[11px] hover:underline">
+              <a href={`mailto:${EEE_SEMESTER_INFO.facultyAdvisor.email}`} className="text-blue-400 text-[11px] hover:underline">
                 {EEE_SEMESTER_INFO.facultyAdvisor.email}
               </a>
             </div>
 
             {branch === 'EEE' && semester === 5 && (
-              <div className="p-3 bg-cyan-950/40 rounded-xl border border-cyan-500/30">
-                <div className="text-cyan-300 flex items-center gap-1 font-semibold">
-                  <Sparkles className="w-3 h-3 text-cyan-400" /> Minor Coordinator
+              <div className="p-3 bg-slate-950 rounded-lg border border-slate-800">
+                <div className="text-blue-300 flex items-center gap-1.5 font-semibold">
+                  <BookOpen className="w-3 h-3 text-blue-400" /> Minor Coordinator
                 </div>
                 <div className="font-semibold text-white">{EEE_SEMESTER_INFO.minorAdvisor.name}</div>
-                <a href={`mailto:${EEE_SEMESTER_INFO.minorAdvisor.email}`} className="text-cyan-400 text-[11px] hover:underline">
+                <a href={`mailto:${EEE_SEMESTER_INFO.minorAdvisor.email}`} className="text-blue-400 text-[11px] hover:underline">
                   {EEE_SEMESTER_INFO.minorAdvisor.email}
                 </a>
               </div>
@@ -97,7 +97,7 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
       {/* Search and Filters */}
       <div className="w-full max-w-full min-w-0 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
         {/* Category Tabs */}
-        <div className="w-full sm:w-auto max-w-full min-w-0 flex items-center gap-1.5 p-1 bg-slate-900 rounded-xl border border-slate-800 overflow-x-auto scrollbar-none touch-pan-x">
+        <div className="w-full sm:w-auto max-w-full min-w-0 flex items-center gap-1.5 p-1 bg-slate-900 rounded-lg border border-slate-800 overflow-x-auto scrollbar-none touch-pan-x">
           {[
             { id: 'all', label: 'All Courses' },
             { id: 'core', label: 'Core Theory' },
@@ -108,7 +108,7 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
             <button
               key={tab.id}
               onClick={() => setFilter(tab.id as any)}
-              className={`px-3 py-1.5 text-xs font-semibold rounded-lg whitespace-nowrap transition shrink-0 ${
+              className={`px-3 py-1.5 text-xs font-semibold rounded-md whitespace-nowrap transition shrink-0 ${
                 filter === tab.id
                   ? 'bg-blue-600 text-white shadow-xs font-bold'
                   : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
@@ -127,7 +127,7 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
             placeholder="Search code, faculty, room..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-slate-900 border border-slate-700/80 rounded-xl pl-9 pr-3.5 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-hidden focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
+            className="w-full bg-slate-900 border border-slate-700/80 rounded-lg pl-9 pr-3.5 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-hidden focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
           />
         </div>
       </div>
@@ -142,12 +142,12 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
             <div
               key={course.code}
               onClick={() => onOpenCourseModal(course.code)}
-              className={`group p-5 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
+              className={`group p-4 sm:p-5 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
                 isMinor
-                  ? 'bg-gradient-to-br from-cyan-950/60 via-slate-900 to-indigo-950/40 border-cyan-500/50 shadow-lg shadow-cyan-500/10 hover:border-cyan-400 hover:-translate-y-0.5'
+                  ? 'bg-slate-900 border-blue-500/40 shadow-xs hover:border-blue-400'
                   : isCurrentElective
-                  ? 'bg-slate-800/80 border-indigo-500/50 hover:border-indigo-400 hover:-translate-y-0.5'
-                  : 'bg-slate-800/50 border-slate-700/70 hover:border-slate-600 hover:bg-slate-800 hover:-translate-y-0.5'
+                  ? 'bg-slate-850 border-blue-500/50 hover:border-blue-400'
+                  : 'bg-slate-900 border-slate-800 hover:border-slate-700'
               }`}
             >
               <div>
@@ -156,17 +156,16 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
                   <span
                     className={`px-2.5 py-0.5 text-xs font-semibold rounded-md ${
                       isMinor
-                        ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 flex items-center gap-1'
+                        ? 'bg-blue-600/15 text-blue-300 border border-blue-500/30'
                         : course.category === 'core'
                         ? 'bg-blue-600/20 text-blue-300 border border-blue-500/30'
                         : course.category === 'elective'
                         ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
                         : course.category === 'lab'
                         ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
-                        : 'bg-violet-500/20 text-violet-300 border border-violet-500/30'
+                        : 'bg-slate-800 text-slate-300 border border-slate-700'
                     }`}
                   >
-                    {isMinor && <Sparkles className="w-3 h-3 text-cyan-400" />}
                     {isMinor ? 'Minor (CSE)' : course.type}
                   </span>
 
@@ -179,7 +178,7 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
                 <h3 className="text-lg font-bold text-white group-hover:text-blue-300 transition flex items-center gap-2">
                   <span>{course.code}</span>
                   <span className="text-slate-500 font-normal">|</span>
-                  <span className={isMinor ? 'text-cyan-200' : 'text-slate-200'}>{course.name}</span>
+                  <span className="text-slate-200">{course.name}</span>
                 </h3>
 
                 {/* Faculty */}
@@ -196,8 +195,8 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
                     </div>
                   )}
                   {course.email && (
-                    <div className="text-[11px] text-cyan-400/90 pl-5.5 truncate flex items-center gap-1 mt-0.5 font-mono">
-                      <Mail className="w-2.5 h-2.5 text-cyan-500 shrink-0" />
+                    <div className="text-[11px] text-slate-400 pl-5.5 truncate flex items-center gap-1 mt-0.5 font-mono">
+                      <Mail className="w-2.5 h-2.5 text-slate-400 shrink-0" />
                       <span>{course.email}</span>
                     </div>
                   )}
@@ -227,7 +226,7 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
                       )}
                       {course.patents && course.patents.length > 0 && (
                         <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
-                          <Sparkles className="w-2.5 h-2.5" /> Patent
+                          <Award className="w-2.5 h-2.5" /> Patent
                         </span>
                       )}
                       {course.papers && course.papers.length > 0 && (

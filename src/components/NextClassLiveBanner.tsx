@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Clock, MapPin, Sparkles, ChevronRight, CheckCircle2, X } from 'lucide-react';
+import { Clock, MapPin, ChevronRight, CheckCircle2, X } from 'lucide-react';
 import { TimeSlot, Course, DayOfWeek } from '../data/timetableData';
 import { useTheme } from '../utils/theme';
 
@@ -110,20 +110,20 @@ export const NextClassLiveBanner: React.FC<NextClassLiveBannerProps> = ({
     return (
       <div className="max-w-7xl mx-auto px-3 sm:px-6 pt-2 pb-1">
         <div
-          className="rounded-2xl p-2.5 sm:px-4 sm:py-2.5 flex items-center justify-between gap-3 text-xs border shadow-md transition animate-in fade-in duration-200"
+          className="rounded-lg p-2.5 sm:px-4 sm:py-2 flex items-center justify-between gap-3 text-xs border shadow-xs transition animate-in fade-in duration-150"
           style={{
-            backgroundColor: `${themeConfig.primaryColor}15`,
-            borderColor: `${themeConfig.primaryColor}40`,
+            backgroundColor: `${themeConfig.primaryColor}12`,
+            borderColor: `${themeConfig.primaryColor}35`,
           }}
         >
           <div className="flex items-center gap-2.5 min-w-0">
             {/* Live pulsing badge */}
             <span
-              className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-white text-[11px] font-black uppercase tracking-wider shrink-0 shadow-xs"
+              className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-white text-[10px] font-bold uppercase tracking-wider shrink-0"
               style={{ backgroundColor: themeConfig.primaryColor }}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />
-              Live Now
+              Live
             </span>
 
             <div className="min-w-0 flex items-center gap-2 flex-wrap">
@@ -147,7 +147,7 @@ export const NextClassLiveBanner: React.FC<NextClassLiveBannerProps> = ({
               <button
                 type="button"
                 onClick={() => onOpenCourseModal(details.code)}
-                className="px-2.5 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs border border-slate-700 flex items-center gap-1 transition active:scale-95 shadow-xs"
+                className="px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs border border-slate-700 flex items-center gap-1 transition active:scale-95 shadow-xs"
               >
                 <span>Details</span>
                 <ChevronRight className="w-3.5 h-3.5" />
@@ -156,7 +156,7 @@ export const NextClassLiveBanner: React.FC<NextClassLiveBannerProps> = ({
             <button
               type="button"
               onClick={() => setIsDismissed(true)}
-              className="p-1 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800/80 transition"
+              className="p-1 text-slate-400 hover:text-white rounded-md hover:bg-slate-800/80 transition"
               aria-label="Dismiss banner"
             >
               <X className="w-3.5 h-3.5" />
@@ -174,22 +174,22 @@ export const NextClassLiveBanner: React.FC<NextClassLiveBannerProps> = ({
 
     return (
       <div className="max-w-7xl mx-auto px-3 sm:px-6 pt-2 pb-1">
-        <div className="rounded-2xl p-2.5 sm:px-4 sm:py-2 bg-slate-900/90 border border-slate-800 flex items-center justify-between gap-3 text-xs shadow-sm transition animate-in fade-in duration-200">
+        <div className="rounded-lg p-2.5 sm:px-4 sm:py-2 bg-slate-900/90 border border-slate-800 flex items-center justify-between gap-3 text-xs shadow-xs transition animate-in fade-in duration-150">
           <div className="flex items-center gap-2.5 min-w-0">
-            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700 font-bold text-[11px] shrink-0">
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700 font-bold text-[10px] shrink-0">
               <Clock className="w-3 h-3 text-blue-400" style={{ color: themeConfig.primaryColor }} />
               In {minsUntil}m
             </span>
 
             <div className="min-w-0 flex items-center gap-2 flex-wrap">
-              <span className="text-slate-400 text-xs">Next class:</span>
+              <span className="text-slate-400 text-xs">Next:</span>
               <span className="font-bold text-white truncate">
                 {details.code ? `${details.code} - ` : ''}{details.title}
               </span>
               <span className="text-slate-400 hidden sm:inline">•</span>
               <span className="text-slate-300 font-medium flex items-center gap-1 shrink-0">
                 <MapPin className="w-3 h-3 text-slate-400" />
-                {details.room} at {nextSlot.startTime}
+                {details.room} ({nextSlot.startTime})
               </span>
             </div>
           </div>
@@ -199,7 +199,7 @@ export const NextClassLiveBanner: React.FC<NextClassLiveBannerProps> = ({
               <button
                 type="button"
                 onClick={() => onOpenCourseModal(details.code)}
-                className="px-2.5 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-medium text-xs border border-slate-700 flex items-center gap-1 transition active:scale-95"
+                className="px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-medium text-xs border border-slate-700 flex items-center gap-1 transition active:scale-95"
               >
                 <span>View</span>
                 <ChevronRight className="w-3.5 h-3.5" />
@@ -208,7 +208,7 @@ export const NextClassLiveBanner: React.FC<NextClassLiveBannerProps> = ({
             <button
               type="button"
               onClick={() => setIsDismissed(true)}
-              className="p-1 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition"
+              className="p-1 text-slate-400 hover:text-white rounded-md hover:bg-slate-800 transition"
               aria-label="Dismiss banner"
             >
               <X className="w-3.5 h-3.5" />

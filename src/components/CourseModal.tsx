@@ -10,7 +10,6 @@ import {
   Award,
   User,
   Mail,
-  Sparkles,
   CheckCircle2,
   Globe,
   FileText,
@@ -196,20 +195,20 @@ export const CourseModal: React.FC<CourseModalProps> = ({
 
   return (
     <div 
-      className={`fixed inset-0 z-50 flex items-end sm:items-center justify-center ${viewTab === 'pdf' ? 'p-0 sm:p-3 md:p-4' : 'p-0 sm:p-4'} bg-black/80 backdrop-blur-xs transition-opacity animate-in fade-in duration-200`}
+      className={`fixed inset-0 z-50 flex items-end sm:items-center justify-center ${viewTab === 'pdf' ? 'p-0 sm:p-3 md:p-4' : 'p-0 sm:p-4'} bg-black/80 backdrop-blur-xs transition-opacity animate-in fade-in duration-150`}
       onClick={onClose}
     >
       <div 
         className={`relative w-full ${
           viewTab === 'pdf'
-            ? 'w-full h-full sm:h-[95vh] max-h-none sm:max-h-[96vh] sm:max-w-6xl rounded-none sm:rounded-2xl border-0 sm:border border-slate-700/80 shadow-2xl'
-            : 'max-w-lg max-h-[94vh] rounded-t-3xl sm:rounded-3xl border border-slate-700/80 shadow-2xl'
-        } bg-slate-900 overflow-hidden flex flex-col transition-all duration-200 animate-in slide-in-from-bottom duration-200`}
+            ? 'w-full h-full sm:h-[95vh] max-h-none sm:max-h-[96vh] sm:max-w-6xl rounded-none sm:rounded-lg border-0 sm:border border-slate-700/80 shadow-2xl'
+            : 'max-w-lg max-h-[94vh] rounded-t-xl sm:rounded-lg border border-slate-700/80 shadow-2xl'
+        } bg-slate-900 overflow-hidden flex flex-col transition-all duration-150 animate-in slide-in-from-bottom duration-150`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Mobile Drag Handle Indicator */}
         {viewTab !== 'pdf' && (
-          <div className="sm:hidden w-12 h-1 bg-slate-600/70 rounded-full mx-auto my-2 shrink-0" />
+          <div className="sm:hidden w-10 h-1 bg-slate-700 rounded-full mx-auto my-2 shrink-0" />
         )}
 
         {/* Modal Header */}
@@ -231,7 +230,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
               <button
                 type="button"
                 onClick={() => setViewTab('details')}
-                className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-slate-700 transition flex items-center gap-1.5 active:scale-95"
+                className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-slate-700 transition flex items-center gap-1.5 active:scale-95"
               >
                 <BookOpen className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">Overview Details</span>
@@ -240,7 +239,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
               <button 
                 type="button"
                 onClick={onClose}
-                className="p-1.5 text-slate-400 hover:text-white rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 transition active:scale-95 shrink-0"
+                className="p-1.5 text-slate-400 hover:text-white rounded-lg bg-slate-800/80 hover:bg-slate-800 border border-slate-700 transition active:scale-95 shrink-0"
                 aria-label="Close modal"
               >
                 <X className="w-4 h-4" />
@@ -248,13 +247,13 @@ export const CourseModal: React.FC<CourseModalProps> = ({
             </div>
           </div>
         ) : (
-          <div className={`p-5 sm:p-6 border-b shrink-0 ${isMinor ? 'bg-gradient-to-r from-cyan-950/80 via-slate-900 to-indigo-950/60 border-cyan-500/30' : 'bg-slate-800/60 border-slate-700/60'}`}>
+          <div className={`p-4 sm:p-5 border-b shrink-0 ${isMinor ? 'bg-slate-800/80 border-blue-500/30' : 'bg-slate-800/60 border-slate-700/60'}`}>
             <div className="flex items-start justify-between gap-4">
               <div>
                 <div className="flex items-center gap-2 mb-1.5 flex-wrap">
                   <span className={`px-2.5 py-0.5 text-xs font-semibold rounded-md uppercase tracking-wider ${
                     isMinor 
-                      ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-xs shadow-cyan-500/10' 
+                      ? 'bg-blue-600/15 text-blue-300 border border-blue-500/30' 
                       : course.category === 'core' 
                       ? 'bg-blue-600/20 text-blue-300 border border-blue-500/30' 
                       : course.category === 'elective'
@@ -272,16 +271,16 @@ export const CourseModal: React.FC<CourseModalProps> = ({
                 <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight flex items-center gap-2">
                   <span>{course.code}</span>
                   <span className="text-slate-400 font-normal">|</span>
-                  <span className={isMinor ? 'text-cyan-300' : 'text-slate-100'}>{course.name}</span>
+                  <span className="text-slate-100">{course.name}</span>
                 </h3>
               </div>
               <button 
                 type="button"
                 onClick={onClose}
-                className="min-h-[44px] min-w-[44px] flex items-center justify-center text-slate-400 hover:text-white rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 transition active:scale-95 shrink-0"
+                className="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-white rounded-lg bg-slate-800/80 hover:bg-slate-800 border border-slate-700 transition active:scale-95 shrink-0"
                 aria-label="Close modal"
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4" />
               </button>
             </div>
           </div>
@@ -333,10 +332,10 @@ export const CourseModal: React.FC<CourseModalProps> = ({
         ) : (
           <div className="p-6 space-y-4 max-h-[70vh] overflow-y-auto">
           {isMinor && (
-            <div className="p-3.5 bg-cyan-950/40 border border-cyan-500/30 rounded-xl flex items-start gap-3">
-              <Sparkles className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
-              <div className="text-xs text-cyan-200">
-                <strong className="text-cyan-300 font-semibold block text-sm mb-0.5">Computer Science Minor Course</strong>
+            <div className="p-3.5 bg-blue-950/25 border border-blue-500/30 rounded-lg flex items-start gap-3">
+              <BookOpen className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
+              <div className="text-xs text-slate-300">
+                <strong className="text-blue-300 font-semibold block text-sm mb-0.5">Computer Science Minor Course</strong>
                 This course is coordinated by the CSE Department specifically for students pursuing Minor in CSE. 
                 All classes are conducted during the dedicated Institute Minor Slot (Slot G).
               </div>
@@ -344,7 +343,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
           )}
 
           <div className="grid grid-cols-2 gap-3">
-            <div className="p-3 bg-slate-800/40 border border-slate-800 rounded-xl">
+            <div className="p-3 bg-slate-800/40 border border-slate-800 rounded-lg">
               <div className="text-xs text-slate-400 flex items-center gap-1.5 mb-1">
                 <Clock className="w-3.5 h-3.5 text-blue-400" />
                 Teaching Slot
@@ -354,7 +353,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
               </div>
             </div>
 
-            <div className="p-3 bg-slate-800/40 border border-slate-800 rounded-xl">
+            <div className="p-3 bg-slate-800/40 border border-slate-800 rounded-lg">
               <div className="text-xs text-slate-400 flex items-center gap-1.5 mb-1">
                 <Award className="w-3.5 h-3.5 text-indigo-400" />
                 Exam Slot
@@ -364,7 +363,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
               </div>
             </div>
 
-            <div className="p-3 bg-slate-800/40 border border-slate-800 rounded-xl col-span-2">
+            <div className="p-3 bg-slate-800/40 border border-slate-800 rounded-lg col-span-2">
               <div className="text-xs text-slate-400 flex items-center gap-1.5 mb-1">
                 <MapPin className="w-3.5 h-3.5 text-emerald-400" />
                 Classroom / Venue
@@ -374,7 +373,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
               </div>
             </div>
 
-            <div className="p-3.5 bg-slate-800/40 border border-slate-800 rounded-xl col-span-2 space-y-2">
+            <div className="p-3.5 bg-slate-800/40 border border-slate-800 rounded-lg col-span-2 space-y-2">
               <div className="flex items-center justify-between">
                 <div className="text-xs text-slate-400 flex items-center gap-1.5">
                   <User className="w-3.5 h-3.5 text-blue-400" />
@@ -386,7 +385,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
                       href={course.facultyWebsite} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-[11px] flex items-center gap-1 text-cyan-400 hover:text-cyan-300 hover:underline bg-cyan-950/40 px-2 py-0.5 rounded border border-cyan-800/40"
+                      className="text-[11px] flex items-center gap-1 text-blue-400 hover:text-blue-300 hover:underline bg-blue-950/40 px-2 py-0.5 rounded border border-blue-800/40"
                     >
                       <Globe className="w-3 h-3" /> Profile <ExternalLink className="w-2.5 h-2.5" />
                     </a>
@@ -417,7 +416,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
               {course.email && (
                 <div className="text-xs text-slate-400 flex items-center gap-1.5">
                   <Mail className="w-3.5 h-3.5 text-slate-400" />
-                  <a href={`mailto:${course.email}`} className="text-cyan-400 hover:underline font-mono">
+                  <a href={`mailto:${course.email}`} className="text-blue-400 hover:underline font-mono">
                     {course.email}
                   </a>
                 </div>
@@ -432,7 +431,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
               {course.patents && course.patents.length > 0 && (
                 <div className="p-2.5 rounded-lg bg-emerald-950/30 border border-emerald-800/40">
                   <div className="text-[11px] font-semibold text-emerald-400 flex items-center gap-1.5 mb-1">
-                    <Sparkles className="w-3 h-3" /> Granted Patent
+                    <Award className="w-3 h-3" /> Granted Patent
                   </div>
                   <ul className="text-[11px] text-emerald-200/90 space-y-1">
                     {course.patents.map((pat, pIdx) => (
@@ -534,13 +533,13 @@ export const CourseModal: React.FC<CourseModalProps> = ({
           {/* Course Objectives */}
           {officialSyllabus?.objectives && officialSyllabus.objectives.length > 0 && (
             <div className="border-t border-slate-800 pt-4">
-              <h4 className="text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-cyan-400" /> Course Objectives
+              <h4 className="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                <BookOpen className="w-3.5 h-3.5 text-blue-400" /> Course Objectives
               </h4>
               <ul className="space-y-1.5 text-xs text-slate-300">
                 {officialSyllabus.objectives.map((obj, idx) => (
                   <li key={idx} className="flex items-start gap-2 bg-slate-800/30 p-2 rounded-lg border border-slate-800/60">
-                    <span className="text-cyan-400 font-mono font-bold">•</span>
+                    <span className="text-blue-400 font-mono font-bold">•</span>
                     <span>{obj}</span>
                   </li>
                 ))}
@@ -726,7 +725,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
           </div>
 
           {/* Quick Attendance Card */}
-          <div className="p-4 bg-slate-800/50 border border-slate-700/70 rounded-2xl space-y-3">
+          <div className="p-4 bg-slate-800/50 border border-slate-700/70 rounded-xl space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <CheckSquare className="w-4 h-4 text-amber-400" />
@@ -829,7 +828,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
           </div>
 
           {/* Personal Course Tasks & Study Notes */}
-          <div className="p-4 bg-slate-800/50 border border-slate-700/70 rounded-2xl space-y-3">
+          <div className="p-4 bg-slate-800/50 border border-slate-700/70 rounded-xl space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Bookmark className="w-4 h-4 text-indigo-400" />
@@ -905,7 +904,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
           </div>
 
           {/* External Study Help & Tools for this Course */}
-          <div className="p-4 bg-slate-800/40 border border-slate-700/60 rounded-2xl space-y-3">
+          <div className="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Globe className="w-4 h-4 text-cyan-400" />
@@ -925,7 +924,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
                 href={`https://nptel.ac.in/courses?keyword=${encodeURIComponent(course.name)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-medium text-slate-200 hover:text-white flex items-center justify-between gap-1.5 transition group active:scale-95"
+                className="p-2.5 rounded-lg bg-slate-950 hover:bg-slate-800 border border-slate-800 text-xs font-medium text-slate-200 hover:text-white flex items-center justify-between gap-1.5 transition group active:scale-95"
                 title="Search NPTEL / SWAYAM video lectures by IIT & IISc faculty"
               >
                 <div className="truncate">
@@ -967,42 +966,42 @@ export const CourseModal: React.FC<CourseModalProps> = ({
                 href="https://www.vlab.co.in/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-medium text-slate-200 hover:text-white flex items-center justify-between gap-1.5 transition group active:scale-95"
+                className="p-2.5 rounded-lg bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-medium text-slate-200 hover:text-white flex items-center justify-between gap-1.5 transition group active:scale-95"
                 title="Virtual Labs interactive simulations (Ministry of Education)"
               >
                 <div className="truncate">
-                  <span className="text-[10px] text-cyan-400 block font-mono font-bold">MHRD / MoE</span>
+                  <span className="text-[10px] text-blue-400 block font-mono font-bold">MHRD / MoE</span>
                   <span className="truncate block font-semibold">Virtual Labs</span>
                 </div>
-                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-cyan-300 shrink-0" />
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-300 shrink-0" />
               </a>
 
               <a
                 href={`https://scholar.google.com/scholar?q=${encodeURIComponent(course.name)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-medium text-slate-200 hover:text-white flex items-center justify-between gap-1.5 transition group active:scale-95"
+                className="p-2.5 rounded-lg bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-medium text-slate-200 hover:text-white flex items-center justify-between gap-1.5 transition group active:scale-95"
                 title="Google Scholar citations and academic literature"
               >
                 <div className="truncate">
-                  <span className="text-[10px] text-indigo-400 block font-mono font-bold">Google</span>
+                  <span className="text-[10px] text-blue-400 block font-mono font-bold">Google</span>
                   <span className="truncate block font-semibold">Scholar Citations</span>
                 </div>
-                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-300 shrink-0" />
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-300 shrink-0" />
               </a>
 
               <a
                 href="https://www.overleaf.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-medium text-slate-200 hover:text-white flex items-center justify-between gap-1.5 transition group active:scale-95"
+                className="p-2.5 rounded-lg bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-medium text-slate-200 hover:text-white flex items-center justify-between gap-1.5 transition group active:scale-95"
                 title="Overleaf online collaborative LaTeX editor for lab records & reports"
               >
                 <div className="truncate">
-                  <span className="text-[10px] text-pink-400 block font-mono font-bold">Overleaf</span>
+                  <span className="text-[10px] text-slate-300 block font-mono font-bold">Overleaf</span>
                   <span className="truncate block font-semibold">LaTeX Reports</span>
                 </div>
-                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-pink-300 shrink-0" />
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-200 shrink-0" />
               </a>
             </div>
           </div>

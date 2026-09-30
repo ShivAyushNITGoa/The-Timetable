@@ -93,7 +93,7 @@ export const PWAInstallBanner: React.FC = () => {
       {/* iOS or Manual Instructions Modal */}
       {showIOSPrompt && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-xs">
-          <div className="bg-slate-900 border border-slate-700 rounded-2xl max-w-sm w-full p-6 text-slate-200 relative shadow-2xl">
+          <div className="bg-slate-900 border border-slate-700 rounded-xl max-w-sm w-full p-6 text-slate-200 relative shadow-2xl">
             <button
               onClick={() => setShowIOSPrompt(false)}
               className="absolute top-4 right-4 text-slate-400 hover:text-white"
@@ -102,7 +102,7 @@ export const PWAInstallBanner: React.FC = () => {
             </button>
 
             <div className="mb-4 flex justify-center">
-              <BrandIcon size={64} className="rounded-2xl shadow-xl shadow-blue-500/20" />
+              <BrandIcon size={64} className="rounded-xl shadow-lg shadow-blue-500/20" />
             </div>
 
             <h3 className="text-lg font-bold text-center text-white mb-2">
@@ -118,7 +118,7 @@ export const PWAInstallBanner: React.FC = () => {
                   1
                 </div>
                 <div>
-                  Tap the <strong className="text-white">Share</strong> button <Share className="w-3.5 h-3.5 inline mx-1 text-cyan-400" /> in browser bar.
+                  Tap the <strong className="text-white">Share</strong> button <Share className="w-3.5 h-3.5 inline mx-1 text-blue-400" /> in browser bar.
                 </div>
               </div>
               <div className="flex items-center gap-3">

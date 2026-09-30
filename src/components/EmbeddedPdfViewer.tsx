@@ -393,7 +393,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
       className={`${
         isFullscreen
           ? 'fixed inset-0 z-[9999] w-screen h-screen rounded-none'
-          : 'relative w-full h-full min-h-[540px] rounded-2xl'
+          : 'relative w-full h-full min-h-[540px] rounded-xl'
       } bg-slate-950 border border-slate-800 flex flex-col overflow-hidden shadow-2xl transition-all ${className}`}
     >
       {/* Top Header Bar */}
@@ -687,7 +687,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
         {/* Loading Spinner */}
         {loading && (
           <div className="absolute inset-0 z-20 bg-slate-950/80 backdrop-blur-xs flex flex-col items-center justify-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400">
+            <div className="w-10 h-10 rounded-lg bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400">
               <Loader2 className="w-6 h-6 animate-spin" />
             </div>
             <p className="text-sm font-semibold text-slate-200">Loading Official PDF Handbook...</p>
@@ -697,7 +697,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
 
         {/* Error State */}
         {error && (
-          <div className="max-w-md mx-auto my-12 p-6 rounded-2xl bg-slate-900 border border-blue-500/30 text-center space-y-3">
+          <div className="max-w-md mx-auto my-12 p-6 rounded-xl bg-slate-900 border border-slate-800 text-center space-y-3">
             <AlertCircle className="w-8 h-8 text-blue-400 mx-auto" />
             <h4 className="text-sm font-bold text-white">Browser Display Notice</h4>
             <p className="text-xs text-slate-300 leading-relaxed">{error}</p>
@@ -705,7 +705,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
               <a
                 href={pdfUrl}
                 download={pdfFileName}
-                className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs inline-flex items-center gap-1.5 transition"
+                className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs inline-flex items-center gap-1.5 transition"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Download PDF File</span>
@@ -713,7 +713,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
               <button
                 type="button"
                 onClick={() => setViewerMode('native')}
-                className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition border border-slate-700"
+                className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs transition border border-slate-700"
               >
                 Try Native Plugin
               </button>
@@ -731,12 +731,12 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
 
             {/* Quick Page Turning Navigation Bar right below canvas */}
             {numPages > 1 && (
-              <div className="w-full max-w-sm flex items-center justify-between gap-3 p-2.5 sm:p-3 bg-slate-900/95 border border-slate-800 rounded-2xl text-xs text-slate-300 backdrop-blur-md shadow-xl mb-6 shrink-0">
+              <div className="w-full max-w-sm flex items-center justify-between gap-3 p-2.5 sm:p-3 bg-slate-900/95 border border-slate-800 rounded-xl text-xs text-slate-300 backdrop-blur-md shadow-xl mb-6 shrink-0">
                 <button
                   type="button"
                   onClick={goToPrevPage}
                   disabled={currentPage <= 1 || loading}
-                  className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:hover:bg-slate-800 text-slate-200 font-semibold flex items-center gap-1.5 transition active:scale-95"
+                  className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:hover:bg-slate-800 text-slate-200 font-semibold flex items-center gap-1.5 transition active:scale-95"
                 >
                   <ChevronLeft className="w-4 h-4" />
                   <span>Previous</span>

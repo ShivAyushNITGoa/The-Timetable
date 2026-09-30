@@ -6,7 +6,6 @@ import {
   CheckSquare,
   Award,
   Download,
-  Sparkles,
   GraduationCap,
   CalendarCheck,
   ChevronDown,
@@ -206,7 +205,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   type="button"
                   onClick={onOpenCommandPalette}
-                  className="min-h-[38px] min-w-[38px] p-2 rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 border border-slate-700 flex items-center justify-center active:scale-95 transition shadow-xs"
+                  className="min-h-[38px] min-w-[38px] p-2 rounded-lg bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 border border-slate-700 flex items-center justify-center active:scale-95 transition shadow-xs"
                   title="Quick Command Search (Ctrl+K)"
                   aria-label="Quick Search"
                 >
@@ -219,7 +218,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   type="button"
                   onClick={onOpenThemeSelector}
-                  className="min-h-[38px] min-w-[38px] p-2 rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 border border-slate-700 flex items-center justify-center active:scale-95 transition shadow-xs relative"
+                  className="min-h-[38px] min-w-[38px] p-2 rounded-lg bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 border border-slate-700 flex items-center justify-center active:scale-95 transition shadow-xs relative"
                   title={`Current Theme: ${themeConfig.name}. Tap to change palette.`}
                   aria-label="Select Color Theme"
                 >
@@ -236,7 +235,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   type="button"
                   onClick={onOpenAdmin}
-                  className="min-h-[38px] px-2 sm:px-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1 active:scale-95 transition shadow-xs"
+                  className="min-h-[38px] px-2 sm:px-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1 active:scale-95 transition shadow-xs"
                   title="Admin Control Panel"
                 >
                   <ShieldCheck className="w-4 h-4 shrink-0" />
@@ -249,10 +248,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   type="button"
                   onClick={onOpenLanding}
-                  className="min-h-[38px] min-w-[38px] px-2 rounded-xl bg-blue-600/10 hover:bg-blue-600/20 text-blue-300 border border-blue-500/30 text-xs font-semibold flex items-center justify-center active:scale-95 transition"
+                  className="min-h-[38px] min-w-[38px] px-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs font-semibold flex items-center justify-center active:scale-95 transition shadow-xs"
                   title="About & PWA Download"
                 >
-                  <Sparkles className="w-3.5 h-3.5" />
+                  <Info className="w-4 h-4 text-blue-400" />
                 </button>
               )}
 
@@ -260,7 +259,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 type="button"
                 onClick={onExportCalendar}
-                className="min-h-[38px] min-w-[38px] p-2 rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-blue-400 border border-slate-700 flex items-center justify-center active:scale-95 transition shadow-xs"
+                className="min-h-[38px] min-w-[38px] p-2 rounded-lg bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-blue-400 border border-slate-700 flex items-center justify-center active:scale-95 transition shadow-xs"
                 title="Export Calendar (.ics)"
                 aria-label="Export Calendar (.ics)"
               >
@@ -310,7 +309,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       : `Semester ${safeProfile.semester} • Year ${safeProfile.year}`}
                   </span>
                   {safeProfile.branch === 'EEE' && safeProfile.semester === 5 && safeProfile.hasMinor && (
-                    <span className="px-1.5 py-0.2 rounded text-[10px] font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 shrink-0">
+                    <span className="px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-900/30 text-blue-300 border border-blue-500/30 shrink-0">
                       CS300M Minor
                     </span>
                   )}
@@ -407,7 +406,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               type="button"
               onClick={onOpenBranchSelector}
-              className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-slate-800/90 hover:bg-slate-800 border border-blue-500/30 hover:border-blue-400 text-left transition shadow-sm group active:scale-[0.98] shrink-0"
+              className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-800 border border-blue-500/30 hover:border-blue-400 text-left transition shadow-xs group active:scale-[0.98] shrink-0"
               title="Click to switch Branch, Year, or Semester"
             >
               <span className="px-2 py-0.5 rounded-md text-xs font-black bg-blue-600 text-white tracking-wider shadow-xs shrink-0">
@@ -422,7 +421,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       : `Sem ${safeProfile.semester} • Year ${safeProfile.year}`}
                   </span>
                   {safeProfile.branch === 'EEE' && safeProfile.semester === 5 && safeProfile.hasMinor && (
-                    <span className="px-1.5 py-0.2 rounded text-[10px] font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 shrink-0">
+                    <span className="px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-900/30 text-blue-300 border border-blue-500/30 shrink-0">
                       CS300M
                     </span>
                   )}
@@ -444,7 +443,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Quick Config Strip: Batch Selector & Action Buttons (wraps cleanly when space is tight) */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 flex-wrap justify-end ml-auto">
             {/* Lab Batch Selector - Visible for all semesters with laboratory sessions */}
-            <div className="flex items-center gap-1 bg-slate-800/90 p-1 rounded-xl border border-slate-700/80 text-xs">
+            <div className="flex items-center gap-1 bg-slate-800/90 p-1 rounded-lg border border-slate-700/80 text-xs">
               <span className="text-slate-300 px-1.5 font-bold hidden lg:inline">Lab Batch:</span>
               <span className="text-slate-300 px-1 font-bold lg:hidden">Batch:</span>
               <button
@@ -509,7 +508,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 type="button"
                 onClick={onOpenCommandPalette}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-800/90 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 hover:border-slate-600 text-xs font-medium transition active:scale-95 shadow-xs"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 hover:border-slate-600 text-xs font-medium transition active:scale-95 shadow-xs"
                 title="Search courses, venues & tools (Ctrl+K)"
               >
                 <Search className="w-3.5 h-3.5 text-slate-400" />
@@ -524,7 +523,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               type="button"
               onClick={onExportCalendar}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 text-xs font-semibold transition active:scale-95 shadow-xs"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 text-xs font-semibold transition active:scale-95 shadow-xs"
               title="Download .ics file with timetable & test dates for Google/Apple Calendar"
             >
               <Download className="w-3.5 h-3.5 text-blue-400 shrink-0" />
@@ -538,7 +537,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 type="button"
                 onClick={onOpenThemeSelector}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 hover:border-slate-600 text-xs font-semibold transition active:scale-95 shadow-xs shrink-0"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 hover:border-slate-600 text-xs font-semibold transition active:scale-95 shadow-xs shrink-0"
                 title={`Color Theme: ${themeConfig.name} (Click to change)`}
               >
                 <span
@@ -555,10 +554,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 type="button"
                 onClick={onOpenLanding}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-blue-600/10 hover:bg-blue-600/20 text-blue-300 border border-blue-500/30 text-xs font-semibold transition active:scale-95 shadow-xs shrink-0"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs font-semibold transition active:scale-95 shadow-xs shrink-0"
                 title="NIT Goa Info & PWA Download"
               >
-                <Sparkles className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                <Info className="w-3.5 h-3.5 text-blue-400 shrink-0" />
                 <span className="hidden xl:inline">About & Install</span>
                 <span className="xl:hidden">About</span>
               </button>
@@ -569,7 +568,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 type="button"
                 onClick={onOpenAdmin}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-bold transition active:scale-95 shadow-md shadow-blue-600/20 shrink-0"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition active:scale-95 shadow-xs shrink-0"
                 title="Open Administrator Control Panel"
               >
                 <ShieldCheck className="w-3.5 h-3.5 shrink-0" />

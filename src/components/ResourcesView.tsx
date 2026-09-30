@@ -15,7 +15,7 @@ import {
   ChevronRight,
   Eye,
   CheckCircle,
-  Sparkles,
+  Bookmark,
   Compass,
   FileCheck2,
   AlertTriangle,
@@ -166,15 +166,14 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-6">
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-slate-900 via-slate-900 to-amber-950/40 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
-        <div className="absolute right-0 top-0 translate-x-12 -translate-y-12 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 sm:p-7 shadow-md relative overflow-hidden">
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-bold tracking-wide uppercase">
-              <BookOpen className="w-3.5 h-3.5 text-amber-400" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-600/15 border border-blue-500/30 text-blue-300 text-xs font-bold tracking-wide uppercase">
+              <BookOpen className="w-3.5 h-3.5 text-blue-400" />
               <span>NIT Goa Official Academic Documents & Data Classification</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
               Resources & Classified Documents Repository
             </h1>
             <p className="text-sm text-slate-300 leading-relaxed">
@@ -184,7 +183,7 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
           </div>
 
           {/* Quick Stats Pill */}
-          <div className="flex items-center gap-3 bg-slate-950/70 border border-slate-800/90 rounded-2xl p-4 shrink-0">
+          <div className="flex items-center gap-3 bg-slate-950 border border-slate-800 rounded-xl p-4 shrink-0">
             <div className="text-center px-3 border-r border-slate-800">
               <div className="text-xl font-black text-amber-400">{NIT_GOA_RESOURCES.length}</div>
               <div className="text-[10px] text-slate-400 uppercase font-semibold">Institute Docs</div>
@@ -202,13 +201,13 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
       </div>
 
       {/* Primary Section Switcher: Authentic Institute Files vs. Classify My Webapp Data vs External Tools */}
-      <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-2 sm:p-2.5 flex flex-col md:flex-row items-stretch gap-2 shadow-lg">
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-2 sm:p-2.5 flex flex-col md:flex-row items-stretch gap-2 shadow-xs">
         <button
           type="button"
           onClick={() => setViewMode('institute')}
-          className={`w-full md:flex-1 py-3 px-3.5 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition active:scale-[0.98] ${
+          className={`w-full md:flex-1 py-2.5 px-3.5 rounded-lg text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition active:scale-[0.98] ${
             viewMode === 'institute'
-              ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20 font-black'
+              ? 'bg-blue-600 text-white shadow-xs font-bold'
               : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
           }`}
         >
@@ -219,15 +218,15 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
         <button
           type="button"
           onClick={() => setViewMode('classified')}
-          className={`w-full md:flex-1 py-3 px-3.5 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition active:scale-[0.98] ${
+          className={`w-full md:flex-1 py-2.5 px-3.5 rounded-lg text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition active:scale-[0.98] ${
             viewMode === 'classified'
-              ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20 font-black'
+              ? 'bg-blue-600 text-white shadow-xs'
               : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
           }`}
         >
           <FileCheck2 className="w-4 h-4 shrink-0" />
           <span>Classified Dossiers ({classifiedDocs.length})</span>
-          <span className="px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-mono border border-emerald-500/30">
+          <span className="px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 text-[10px] font-mono border border-slate-700">
             Live
           </span>
         </button>
@@ -235,15 +234,15 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
         <button
           type="button"
           onClick={() => setViewMode('tools')}
-          className={`w-full md:flex-1 py-3 px-3.5 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition active:scale-[0.98] ${
+          className={`w-full md:flex-1 py-2.5 px-3.5 rounded-lg text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition active:scale-[0.98] ${
             viewMode === 'tools'
-              ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20 font-black'
+              ? 'bg-blue-600 text-white shadow-xs'
               : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
           }`}
         >
           <Globe className="w-4 h-4 shrink-0" />
           <span>Student Tools & Help</span>
-          <span className="px-1.5 py-0.2 rounded-full bg-cyan-500/20 text-cyan-300 text-[10px] font-mono border border-cyan-500/30">
+          <span className="px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 text-[10px] font-mono border border-slate-700">
             35+ Sites
           </span>
         </button>
@@ -255,16 +254,16 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
       {viewMode === 'classified' && (
         <div className="space-y-6 animate-in fade-in duration-200">
           {/* Live Data Classification Banner */}
-          <div className="bg-slate-900/90 border border-emerald-500/30 rounded-2xl p-5 sm:p-6 shadow-lg space-y-4">
+          <div className="bg-slate-900 border border-slate-800 rounded-lg p-5 sm:p-6 shadow-xs space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex items-start sm:items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
-                  <FileCheck2 className="w-6 h-6" />
+                <div className="w-10 h-10 rounded-lg bg-blue-600/15 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0">
+                  <FileCheck2 className="w-5 h-5" />
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-white flex items-center gap-2">
                     <span>Official Document Classifier for Your Tracked Data</span>
-                    <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-mono border border-emerald-500/30">
+                    <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-xs font-mono border border-slate-700">
                       {safeProfile.branch} • Sem {safeProfile.semester}
                     </span>
                   </h3>
@@ -342,7 +341,7 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
               return (
                 <div
                   key={doc.id}
-                  className="bg-slate-900/90 border border-slate-800 hover:border-emerald-500/40 rounded-2xl p-5 shadow-lg flex flex-col justify-between transition-all duration-200 hover:-translate-y-0.5 group"
+                  className="bg-slate-900 border border-slate-800 hover:border-emerald-500/40 rounded-xl p-5 shadow-xs flex flex-col justify-between transition-all duration-150 hover:-translate-y-0.5 group"
                 >
                   <div className="space-y-3">
                     <div className="flex items-start justify-between gap-2">
@@ -416,16 +415,16 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
         <div className="space-y-6 animate-in fade-in duration-200">
           {/* Active Profile Personalized Quick Action Strip */}
           {safeProfile && (
-            <div className="bg-slate-900/90 border border-amber-500/30 rounded-2xl p-5 shadow-lg space-y-3">
+            <div className="bg-slate-900 border border-slate-800 rounded-lg p-5 shadow-xs space-y-3">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
-                    <Sparkles className="w-5 h-5" />
+                  <div className="w-9 h-9 rounded-lg bg-blue-600/15 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0">
+                    <Bookmark className="w-4 h-4" />
                   </div>
                   <div>
                     <h3 className="text-sm font-bold text-white flex items-center gap-2">
                       <span>Fast Access for Your Active Profile</span>
-                      <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[11px] font-mono border border-amber-500/30">
+                      <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700">
                         {safeProfile.branch} • Year {safeProfile.year} • Sem {safeProfile.semester}
                       </span>
                     </h3>
@@ -498,16 +497,16 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
           )}
 
           {/* Official 2025 NIT Goa Accredited Handbooks Showcase */}
-          <div className="bg-gradient-to-br from-slate-900 via-slate-900/90 to-indigo-950/40 border border-amber-500/40 rounded-2xl p-5 sm:p-6 shadow-xl space-y-4">
+          <div className="bg-slate-900 border border-slate-800 rounded-lg p-5 sm:p-6 shadow-xs space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-blue-600/15 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0">
                   <BookOpen className="w-5 h-5" />
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-white flex items-center gap-2">
                     <span>Official 2025 B.Tech Syllabus Handbooks (NIT Goa)</span>
-                    <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[11px] font-mono border border-emerald-500/40">
+                    <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700">
                       nitgoa.ac.in
                     </span>
                   </h3>
@@ -627,7 +626,7 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
           </div>
 
           {/* Filter & Search Bar */}
-          <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 sm:p-5 shadow-lg space-y-4">
+          <div className="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5 shadow-xs space-y-4">
             {/* Top Row: Search and Category Pills */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               {/* Search Box */}
@@ -805,7 +804,7 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
               return (
                 <div
                   key={doc.id}
-                  className="bg-slate-900/90 border border-slate-800 hover:border-amber-500/40 rounded-2xl p-5 shadow-lg flex flex-col justify-between transition-all duration-200 hover:-translate-y-0.5 group"
+                  className="bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-xl p-5 shadow-xs flex flex-col justify-between transition-all duration-150 hover:-translate-y-0.5 group"
                 >
                   {/* Card Header */}
                   <div className="space-y-3">
@@ -880,7 +879,7 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
 
           {/* Empty State */}
           {filteredDocuments.length === 0 && (
-            <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-12 text-center space-y-3">
+            <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-12 text-center space-y-3">
               <FileText className="w-10 h-10 text-slate-500 mx-auto" />
               <h3 className="text-base font-bold text-white">No documents matched your criteria</h3>
               <p className="text-xs text-slate-400 max-w-md mx-auto">

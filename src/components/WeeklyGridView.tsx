@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MASTER_SLOT_TIMINGS, TimeSlot, Course, DayOfWeek } from '../data/timetableData';
-import { Sparkles, MapPin, Beaker, Info, LayoutGrid, Calendar, ChevronRight, Clock, User, Edit3, Plus } from 'lucide-react';
+import { Bookmark, MapPin, Beaker, Info, LayoutGrid, Calendar, ChevronRight, Clock, User, Edit3, Plus } from 'lucide-react';
 
 interface WeeklyGridViewProps {
   schedule: Record<DayOfWeek, TimeSlot[]>;
@@ -79,7 +79,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
   return (
     <div className="space-y-4">
       {/* Legend & Responsive View Switcher */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 sm:p-4 bg-slate-800/60 border border-slate-700/60 rounded-2xl text-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 sm:p-4 bg-slate-800/60 border border-slate-700/60 rounded-xl text-xs">
         <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
           <span className="font-semibold text-slate-300 flex items-center gap-1.5">
             <Info className="w-3.5 h-3.5 text-blue-400" /> Legend:
@@ -88,8 +88,8 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
             {branch} Sem {semester} Core
           </span>
           {branch === 'EEE' && semester === 5 && (
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-cyan-950/80 text-cyan-300 border border-cyan-500/50 font-semibold shadow-xs">
-              <Sparkles className="w-3 h-3 text-cyan-400" /> CS300M Minor
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-950/60 text-blue-300 border border-blue-500/40 font-semibold shadow-xs">
+              CS300M Minor
             </span>
           )}
           <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
@@ -98,11 +98,11 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
         </div>
 
         {/* View Switcher: Day Cards vs Full Matrix (Ideal for Mobile) */}
-        <div className="flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-slate-700/80 shrink-0 self-start sm:self-auto">
+        <div className="flex items-center gap-1 bg-slate-900/90 p-1 rounded-lg border border-slate-700/80 shrink-0 self-start sm:self-auto">
           <button
             type="button"
             onClick={() => setMobileMode('cards')}
-            className={`px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition min-h-[36px] sm:min-h-0 ${
+            className={`px-3 py-1.5 rounded-md text-xs font-semibold flex items-center gap-1.5 transition min-h-[36px] sm:min-h-0 ${
               mobileMode === 'cards'
                 ? 'bg-blue-600 text-white shadow-xs'
                 : 'text-slate-400 hover:text-white'
@@ -114,7 +114,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
           <button
             type="button"
             onClick={() => setMobileMode('matrix')}
-            className={`px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition min-h-[36px] sm:min-h-0 ${
+            className={`px-3 py-1.5 rounded-md text-xs font-semibold flex items-center gap-1.5 transition min-h-[36px] sm:min-h-0 ${
               mobileMode === 'matrix'
                 ? 'bg-blue-600 text-white shadow-xs'
                 : 'text-slate-400 hover:text-white'
@@ -143,7 +143,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                   key={day}
                   type="button"
                   onClick={() => setSelectedMobileDay(day)}
-                  className={`min-h-[44px] py-1.5 px-0.5 sm:px-1 rounded-xl sm:rounded-2xl border text-center transition flex flex-col items-center justify-center relative active:scale-95 ${
+                  className={`min-h-[44px] py-1.5 px-0.5 sm:px-1 rounded-lg border text-center transition flex flex-col items-center justify-center relative active:scale-95 ${
                     isSelected
                       ? 'bg-blue-600 text-white font-bold border-blue-400 shadow-md shadow-blue-600/25'
                       : isWeekend
@@ -164,7 +164,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                     <span className="text-[8px] text-slate-500 font-medium">wknd</span>
                   ) : null}
                   {dayMinor && !isSelected && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 absolute top-1 right-1" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 absolute top-1 right-1" />
                   )}
                 </button>
               );
@@ -178,7 +178,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                 return (
                   <div
                     key={`lunch-${idx}`}
-                    className="p-3 rounded-2xl bg-slate-800/80 border border-slate-700/80 flex items-center justify-between text-xs text-slate-300"
+                    className="p-3 rounded-lg bg-slate-800/80 border border-slate-700/80 flex items-center justify-between text-xs text-slate-300"
                   >
                     <div className="flex items-center gap-2 font-semibold">
                       <span className="w-2 h-2 rounded-full bg-blue-400" />
@@ -193,7 +193,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                 return (
                   <div
                     key={`free-${idx}`}
-                    className="p-3 rounded-2xl bg-slate-900/50 border border-dashed border-slate-800 text-slate-500 text-xs flex items-center justify-between"
+                    className="p-3 rounded-lg bg-slate-900/50 border border-dashed border-slate-800 text-slate-500 text-xs flex items-center justify-between"
                   >
                     <span>{slot.slotName || 'Study Slot'}</span>
                     <div className="flex items-center gap-2">
@@ -226,11 +226,11 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                   <div
                     key={`elective-${idx}`}
                     onClick={() => onOpenCourseModal(code)}
-                    className="p-4 rounded-2xl bg-slate-800/80 border border-indigo-500/40 hover:border-indigo-400 transition cursor-pointer active:scale-[0.99] flex items-center justify-between gap-3 shadow-md"
+                    className="p-4 rounded-lg bg-slate-800/80 border border-slate-700/80 hover:border-slate-600 transition cursor-pointer active:scale-[0.99] flex items-center justify-between gap-3 shadow-sm"
                   >
                     <div className="space-y-1">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-[10px] px-2 py-0.5 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 font-bold uppercase">
+                        <span className="text-[10px] px-2 py-0.5 rounded-md bg-blue-600/20 text-blue-300 border border-blue-500/30 font-bold uppercase">
                           {slot.slotName}
                         </span>
                         <span className="text-xs font-mono text-slate-300 font-semibold flex items-center gap-1">
@@ -256,7 +256,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                             e.stopPropagation();
                             onAdminEditSlot(slot, selectedMobileDay);
                           }}
-                          className="p-1.5 px-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-1 shadow-sm transition active:scale-95"
+                          className="p-1.5 px-2.5 rounded-md bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-1 shadow-sm transition active:scale-95"
                           title="Admin: Edit Slot & Syllabus"
                         >
                           <Edit3 className="w-3.5 h-3.5" />
@@ -288,7 +288,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                   <div
                     key={`lab-${idx}`}
                     onClick={() => onOpenCourseModal(labCode)}
-                    className="p-4 rounded-2xl bg-emerald-950/30 border border-emerald-500/40 hover:border-emerald-400 transition cursor-pointer active:scale-[0.99] flex items-center justify-between gap-3 shadow-md"
+                    className="p-4 rounded-lg bg-emerald-950/20 border border-emerald-500/30 hover:border-emerald-500/50 transition cursor-pointer active:scale-[0.99] flex items-center justify-between gap-3 shadow-sm"
                   >
                     <div className="space-y-1">
                       <div className="flex items-center gap-2 flex-wrap">
@@ -318,7 +318,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                             e.stopPropagation();
                             onAdminEditSlot(slot, selectedMobileDay);
                           }}
-                          className="p-1.5 px-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-1 shadow-sm transition active:scale-95"
+                          className="p-1.5 px-2.5 rounded-md bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-1 shadow-sm transition active:scale-95"
                           title="Admin: Edit Slot & Syllabus"
                         >
                           <Edit3 className="w-3.5 h-3.5" />
@@ -339,9 +339,9 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                 <div
                   key={`std-${idx}`}
                   onClick={() => onOpenCourseModal(slot.courseCode)}
-                  className={`p-4 rounded-2xl border transition cursor-pointer active:scale-[0.99] flex items-center justify-between gap-3 shadow-md ${
+                  className={`p-4 rounded-lg border transition cursor-pointer active:scale-[0.99] flex items-center justify-between gap-3 shadow-sm ${
                     isMinor
-                      ? 'bg-cyan-950/40 border-cyan-500/50 hover:border-cyan-400'
+                      ? 'bg-blue-950/25 border-blue-500/40 hover:border-blue-400'
                       : 'bg-slate-800/80 border-slate-700/70 hover:border-slate-600'
                   }`}
                 >
@@ -350,11 +350,10 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                       <span
                         className={`text-[10px] px-2 py-0.5 rounded-md font-bold uppercase ${
                           isMinor
-                            ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 flex items-center gap-1'
+                            ? 'bg-blue-500/20 text-blue-300 border border-blue-500/40 flex items-center gap-1'
                             : 'bg-blue-600/20 text-blue-300 border border-blue-500/30'
                         }`}
                       >
-                        {isMinor && <Sparkles className="w-3 h-3 text-cyan-400" />}
                         {slot.slotName}
                       </span>
                       <span className="text-xs font-mono text-slate-300 font-semibold flex items-center gap-1">
@@ -382,7 +381,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                           e.stopPropagation();
                           onAdminEditSlot(slot, selectedMobileDay);
                         }}
-                        className="p-1.5 px-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-1 shadow-sm transition active:scale-95"
+                        className="p-1.5 px-2.5 rounded-md bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-1 shadow-sm transition active:scale-95"
                         title="Admin: Edit Slot & Syllabus"
                       >
                         <Edit3 className="w-3.5 h-3.5" />
@@ -401,7 +400,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
               <button
                 type="button"
                 onClick={() => onAdminAddSlot(selectedMobileDay)}
-                className="w-full py-3 rounded-2xl bg-blue-600/15 hover:bg-blue-600/25 border border-dashed border-blue-500/40 text-blue-300 font-bold text-xs flex items-center justify-center gap-2 transition active:scale-98"
+                className="w-full py-2.5 rounded-lg bg-blue-600/15 hover:bg-blue-600/25 border border-dashed border-blue-500/40 text-blue-300 font-semibold text-xs flex items-center justify-center gap-2 transition active:scale-98"
               >
                 <Plus className="w-4 h-4" />
                 <span>+ Add Slot for {selectedMobileDay} (Admin)</span>
@@ -419,7 +418,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
             <span className="text-slate-400 font-mono">8 Periods</span>
           </div>
 
-          <div className="overflow-x-auto rounded-2xl border border-slate-700/80 bg-slate-900 shadow-xl touch-pan-x">
+          <div className="overflow-x-auto rounded-xl border border-slate-700/80 bg-slate-900 shadow-xl touch-pan-x">
             <table className="w-full text-left border-collapse min-w-[760px] sm:min-w-[920px]">
               <thead>
                 <tr className="bg-slate-800/90 border-b border-slate-700">
@@ -710,11 +709,11 @@ function renderCell(
   return (
     <button
       onClick={() => onOpenCourseModal(slot.courseCode)}
-      className={`w-full text-left h-16 p-2 rounded-xl transition flex flex-col justify-between group active:scale-[0.98] ${
+      className={`w-full text-left h-16 p-2 rounded-lg transition flex flex-col justify-between group active:scale-[0.98] ${
         isMinor
-          ? 'bg-gradient-to-r from-cyan-950/80 to-slate-900 border-2 border-cyan-400/80 shadow-md shadow-cyan-500/15 hover:border-cyan-300 hover:scale-[1.02]'
+          ? 'bg-slate-800/90 border border-blue-500/50 hover:border-blue-400 shadow-xs'
           : course?.category === 'mlc'
-          ? 'bg-violet-950/40 hover:bg-violet-900/50 border border-violet-500/40'
+          ? 'bg-slate-800/90 border border-slate-700/80 hover:border-slate-600'
           : 'bg-slate-800/70 hover:bg-slate-800 border border-slate-700/70 hover:border-slate-600'
       }`}
     >
@@ -722,19 +721,19 @@ function renderCell(
         <span
           className={`text-[10px] px-1.5 py-0.2 rounded font-semibold ${
             isMinor
-              ? 'bg-cyan-500/30 text-cyan-200 border border-cyan-400/50 flex items-center gap-1 font-bold'
+              ? 'bg-blue-900/40 text-blue-200 border border-blue-400/40 flex items-center gap-1 font-bold'
               : course?.category === 'mlc'
-              ? 'bg-violet-500/20 text-violet-300'
+              ? 'bg-slate-700/60 text-slate-200'
               : 'bg-blue-600/20 text-blue-300'
           }`}
         >
-          {isMinor && <Sparkles className="w-2.5 h-2.5 text-cyan-400" />}
+          {isMinor && <Bookmark className="w-2.5 h-2.5 text-blue-300" />}
           {slot.slotName}
         </span>
         <div className="flex items-center gap-1">
           <span
             className={`text-[10px] flex items-center gap-0.5 ${
-              isMinor ? 'text-cyan-300 font-semibold' : 'text-slate-400'
+              isMinor ? 'text-blue-300 font-semibold' : 'text-slate-400'
             }`}
           >
             <MapPin className="w-2.5 h-2.5 text-emerald-400" /> {slot.room || course?.room}
@@ -757,7 +756,7 @@ function renderCell(
       <div>
         <div
           className={`text-xs font-bold truncate ${
-            isMinor ? 'text-cyan-200 group-hover:text-cyan-100' : 'text-white group-hover:text-blue-300'
+            isMinor ? 'text-blue-200 group-hover:text-blue-100' : 'text-white group-hover:text-blue-300'
           }`}
         >
           {course?.code || slot.courseCode}: {course?.name || slot.slotName}

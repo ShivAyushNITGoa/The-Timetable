@@ -14,7 +14,6 @@ import {
   MapPin,
   Clock,
   ArrowRight,
-  Sparkles,
   X,
   CornerDownLeft,
 } from 'lucide-react';
@@ -227,7 +226,7 @@ export const CommandPaletteModal: React.FC<CommandPaletteModalProps> = ({
         title: 'Install Offline PWA App',
         subtitle: 'Add to mobile home screen for 100% offline timetable access',
         badge: 'Install',
-        icon: Sparkles,
+        icon: Download,
         action: () => {
           onClose();
           onOpenPwaGuide();
@@ -309,11 +308,11 @@ export const CommandPaletteModal: React.FC<CommandPaletteModalProps> = ({
       onClick={onClose}
     >
       <div
-        className="w-full sm:max-w-2xl bg-slate-900 border border-slate-700/80 rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col max-h-[85vh] sm:max-h-[80vh] overflow-hidden animate-in slide-in-from-bottom sm:zoom-in-95 duration-200"
+        className="w-full sm:max-w-2xl bg-slate-900 border border-slate-700/80 rounded-t-xl sm:rounded-lg shadow-2xl flex flex-col max-h-[85vh] sm:max-h-[80vh] overflow-hidden animate-in slide-in-from-bottom sm:zoom-in-95 duration-150"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Mobile Pull Handle Bar */}
-        <div className="sm:hidden w-12 h-1 bg-slate-600/70 rounded-full mx-auto my-2.5 shrink-0" />
+        <div className="sm:hidden w-10 h-1 bg-slate-700 rounded-full mx-auto my-2 shrink-0" />
 
         {/* Search Header Bar */}
         <div className="relative px-4 py-3 sm:py-3.5 border-b border-slate-800 flex items-center gap-3 shrink-0">
@@ -339,7 +338,7 @@ export const CommandPaletteModal: React.FC<CommandPaletteModalProps> = ({
                 setSelectedIndex(0);
                 inputRef.current?.focus();
               }}
-              className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
+              className="p-1 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition"
             >
               <X className="w-4 h-4" />
             </button>
@@ -374,7 +373,7 @@ export const CommandPaletteModal: React.FC<CommandPaletteModalProps> = ({
                   type="button"
                   onClick={() => item.action()}
                   onMouseEnter={() => setSelectedIndex(index)}
-                  className={`w-full text-left p-3 rounded-2xl flex items-center justify-between gap-3 transition-colors ${
+                  className={`w-full text-left p-2.5 sm:p-3 rounded-lg flex items-center justify-between gap-3 transition-colors ${
                     isSelected
                       ? 'bg-slate-800/90 text-white'
                       : 'hover:bg-slate-800/50 text-slate-200'
@@ -385,7 +384,7 @@ export const CommandPaletteModal: React.FC<CommandPaletteModalProps> = ({
                 >
                   <div className="flex items-center gap-3 min-w-0">
                     <div
-                      className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                      className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
                         isSelected ? 'text-white' : 'bg-slate-800 text-slate-400'
                       }`}
                       style={{

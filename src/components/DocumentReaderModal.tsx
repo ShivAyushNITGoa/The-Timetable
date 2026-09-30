@@ -201,7 +201,7 @@ export const DocumentReaderModal: React.FC<DocumentReaderModalProps> = ({
       onClick={onClose}
     >
       <div
-        className={`bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl flex flex-col overflow-hidden text-slate-100 transition-all duration-200 ${
+        className={`bg-slate-900 border border-slate-700/80 rounded-xl shadow-2xl flex flex-col overflow-hidden text-slate-100 transition-all duration-200 ${
           isFullscreen
             ? 'w-full h-full rounded-none border-0 fixed inset-0'
             : 'w-full max-w-6xl max-h-[92vh] h-[92vh]'
@@ -212,12 +212,12 @@ export const DocumentReaderModal: React.FC<DocumentReaderModalProps> = ({
         <div className="bg-slate-900 px-4 py-3 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3 shrink-0">
           {/* Left: Document Badge & Title Summary */}
           <div className="flex items-center gap-3 min-w-0">
-            <div className="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+            <div className="w-9 h-9 rounded-lg bg-blue-600/15 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0">
               <FileText className="w-5 h-5" />
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-2">
-                <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-slate-800 border border-slate-700 text-amber-400">
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-slate-800 border border-slate-700 text-blue-400">
                   {document.category.toUpperCase()}
                 </span>
                 <span className="text-xs text-slate-400 font-mono hidden sm:inline truncate">
@@ -411,9 +411,9 @@ export const DocumentReaderModal: React.FC<DocumentReaderModalProps> = ({
                 key={idx}
                 type="button"
                 onClick={() => scrollToSection(idx)}
-                className={`px-2.5 py-1 rounded-full text-xs font-medium whitespace-nowrap transition shrink-0 ${
+                className={`px-2.5 py-1 rounded-md text-xs font-medium whitespace-nowrap transition shrink-0 ${
                   activeSectionIndex === idx
-                    ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
+                    ? 'bg-blue-600/20 text-blue-300 border border-blue-500/40'
                     : 'bg-slate-800/80 text-slate-400 hover:text-slate-200 border border-slate-800'
                 }`}
               >
@@ -425,7 +425,7 @@ export const DocumentReaderModal: React.FC<DocumentReaderModalProps> = ({
               href={document.externalOfficialUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-auto text-[11px] text-amber-400 hover:text-amber-300 flex items-center gap-1 shrink-0 whitespace-nowrap px-2 py-1 bg-amber-500/10 rounded-full border border-amber-500/20"
+              className="ml-auto text-[11px] text-blue-400 hover:text-blue-300 flex items-center gap-1 shrink-0 whitespace-nowrap px-2.5 py-1 bg-blue-900/20 rounded-md border border-blue-500/30"
             >
               <span>Official Website</span>
               <ExternalLink className="w-3 h-3" />
@@ -451,7 +451,7 @@ export const DocumentReaderModal: React.FC<DocumentReaderModalProps> = ({
             className="flex-1 overflow-y-auto p-4 sm:p-8 bg-slate-950 flex justify-center"
           >
           <div
-            className="w-full max-w-4xl bg-slate-900 border border-slate-800 rounded-xl p-6 sm:p-10 shadow-xl transition-all duration-150 relative print:bg-white print:text-black print:border-0 print:p-0"
+            className="w-full max-w-4xl bg-slate-900 border border-slate-800 rounded-lg p-6 sm:p-10 shadow-xl transition-all duration-150 relative print:bg-white print:text-black print:border-0 print:p-0"
             style={{ transform: `scale(${zoomLevel / 100})`, transformOrigin: 'top center' }}
           >
             {/* Official Academic Institute Header */}
@@ -460,7 +460,7 @@ export const DocumentReaderModal: React.FC<DocumentReaderModalProps> = ({
               <div className="text-[11px] sm:text-xs tracking-widest text-slate-400 uppercase font-semibold">
                 राष्ट्रीय प्रौद्योगिकी संस्थान गोवा
               </div>
-              <div className="text-sm sm:text-lg font-black text-amber-400 tracking-wide mt-1 uppercase print:text-black">
+              <div className="text-sm sm:text-lg font-black text-blue-400 tracking-wide mt-1 uppercase print:text-black">
                 NATIONAL INSTITUTE OF TECHNOLOGY GOA
               </div>
               <div className="text-xs text-slate-400 mt-0.5">
@@ -472,7 +472,7 @@ export const DocumentReaderModal: React.FC<DocumentReaderModalProps> = ({
 
               {/* Document Specific Title */}
               <div className="mt-5 pt-4 border-t border-slate-800/80">
-                <div className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500/15 text-amber-300 border border-amber-500/30 print:border-black print:text-black">
+                <div className="inline-block px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-blue-950/60 text-blue-300 border border-blue-500/40 print:border-black print:text-black">
                   {document.category.toUpperCase()} BULLETIN • {document.academicYear}
                 </div>
                 <h1 className="text-lg sm:text-2xl font-black text-white mt-2 leading-snug print:text-black">

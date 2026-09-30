@@ -16,7 +16,6 @@ import {
   ChevronRight,
   BookOpen,
   Award,
-  Sparkles,
   Tag,
   Check,
   X,
@@ -187,19 +186,19 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
   const getTypeBadgeStyle = (type: TestType) => {
     switch (type) {
       case 'Quiz':
-        return 'bg-amber-500/15 text-amber-300 border-amber-500/30';
+        return 'bg-blue-600/15 text-blue-300 border-blue-500/30';
       case 'Mid-Semester Exam':
         return 'bg-rose-500/15 text-rose-300 border-rose-500/30';
       case 'End-Semester Exam':
-        return 'bg-purple-500/15 text-purple-300 border-purple-500/30';
+        return 'bg-indigo-600/20 text-indigo-300 border-indigo-500/30';
       case 'Unit Test (T1/T2)':
-        return 'bg-indigo-500/15 text-indigo-300 border-indigo-500/30';
+        return 'bg-blue-500/15 text-blue-300 border-blue-500/30';
       case 'Lab Exam / Viva':
         return 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30';
       case 'Assignment / Project':
-        return 'bg-cyan-500/15 text-cyan-300 border-cyan-500/30';
+        return 'bg-slate-700/50 text-slate-300 border-slate-600/50';
       default:
-        return 'bg-slate-500/15 text-slate-300 border-slate-500/30';
+        return 'bg-slate-800 text-slate-300 border-slate-700';
     }
   };
 
@@ -391,11 +390,11 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
   return (
     <div className="space-y-6">
       {/* Top Banner / Actions Bar */}
-      <div className="bg-slate-800/60 border border-slate-700/60 rounded-3xl p-5 sm:p-6 shadow-xl">
+      <div className="bg-slate-800/60 border border-slate-700/60 rounded-xl p-5 sm:p-6 shadow-md">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 mb-1.5">
-              <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-600/20 text-blue-300 border border-blue-500/30 flex items-center gap-1.5">
+              <span className="px-2.5 py-0.5 rounded-md text-xs font-bold bg-blue-600/20 text-blue-300 border border-blue-500/30 flex items-center gap-1.5">
                 <CalendarIcon className="w-3.5 h-3.5" />
                 Continuous Assessment & Exam Calendar
               </span>
@@ -414,15 +413,15 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
           <div className="flex items-center gap-2.5 flex-wrap">
             <button
               onClick={() => setIsAddModalOpen(true)}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs sm:text-sm shadow-lg shadow-blue-600/25 transition transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs sm:text-sm shadow-xs transition active:scale-95"
             >
-              <Plus className="w-4 h-4 stroke-[3]" />
+              <Plus className="w-4 h-4 stroke-[2.5]" />
               <span>Add Test / Quiz</span>
             </button>
 
             <button
               onClick={() => downloadTestsICS(tests)}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 text-xs sm:text-sm font-semibold transition"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 text-xs sm:text-sm font-semibold transition active:scale-95"
               title="Download .ics file to sync tests with your phone or computer calendar"
             >
               <Download className="w-4 h-4 text-blue-400" />
@@ -458,7 +457,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
               <select
                 value={filterType}
                 onChange={(e) => setFilterType(e.target.value)}
-                className="w-full max-w-full min-w-0 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500 truncate"
+                className="w-full max-w-full min-w-0 bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500 truncate"
                 aria-label="Filter by test type"
               >
                 <option value="all">All Test Types</option>
@@ -476,7 +475,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
               <select
                 value={filterCourse}
                 onChange={(e) => setFilterCourse(e.target.value)}
-                className="w-full max-w-full min-w-0 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500 truncate"
+                className="w-full max-w-full min-w-0 bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500 truncate"
                 aria-label="Filter by course"
               >
                 <option value="all">All Registered Courses</option>
@@ -494,7 +493,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
       {/* Main Grid: Calendar on Left/Top, Upcoming Test Cards on Right/Bottom */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Calendar View Container (7 cols on lg) */}
-        <div className="lg:col-span-7 bg-slate-900/90 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl space-y-4">
+        <div className="lg:col-span-7 bg-slate-900/90 border border-slate-800 rounded-xl p-5 sm:p-6 shadow-md space-y-4">
           {/* Month Header Navigation */}
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2">
@@ -557,9 +556,9 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                   onClick={() => {
                     setSelectedDateStr(item.dateStr === selectedDateStr ? null : item.dateStr);
                   }}
-                  className={`min-h-[52px] sm:min-h-[72px] p-1 sm:p-2 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
+                  className={`min-h-[52px] sm:min-h-[72px] p-1 sm:p-2 rounded-lg border transition-all cursor-pointer flex flex-col justify-between ${
                     isSelected
-                      ? 'bg-blue-600/10 border-blue-500 shadow-md shadow-blue-500/10 ring-1 ring-blue-500'
+                      ? 'bg-blue-600/10 border-blue-500 shadow-sm ring-1 ring-blue-500'
                       : isToday
                       ? 'bg-slate-800 border-blue-500/50'
                       : 'bg-slate-950/40 border-slate-800/80 hover:border-slate-700 hover:bg-slate-800/40'
@@ -607,7 +606,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
 
           {/* Day selection prompt or details */}
           {selectedDateStr && (
-            <div className="mt-4 p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-3 animate-in fade-in duration-150">
+            <div className="mt-4 p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-3 animate-in fade-in duration-150">
               <div className="flex items-center justify-between gap-2">
                 <span className="text-xs font-bold text-white flex items-center gap-1.5">
                   <CalendarIcon className="w-3.5 h-3.5 text-blue-400" />
@@ -673,11 +672,11 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
 
         {/* Upcoming Tests & Timeline List (5 cols on lg) */}
         <div className="lg:col-span-5 space-y-4">
-          <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl space-y-4">
+          <div className="bg-slate-900/90 border border-slate-800 rounded-lg p-5 sm:p-6 shadow-xs space-y-4">
             <div className="flex items-center justify-between gap-2 border-b border-slate-800 pb-3">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-blue-600/20 text-blue-400 flex items-center justify-center font-bold">
-                  <Sparkles className="w-4 h-4" />
+                <div className="w-8 h-8 rounded-md bg-blue-600/15 text-blue-400 flex items-center justify-center font-bold">
+                  <CalendarIcon className="w-4 h-4" />
                 </div>
                 <div>
                   <h3 className="text-base sm:text-lg font-bold text-white leading-tight">
@@ -696,7 +695,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                   setSelectedDateStr(null);
                   setIsAddModalOpen(true);
                 }}
-                className="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-md shadow-blue-500/20 active:scale-95 transition"
+                className="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs flex items-center gap-1.5 shadow-xs active:scale-95 transition"
                 title="Schedule a new test or quiz"
               >
                 <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -705,15 +704,15 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
             </div>
 
             {/* Quick Agenda Control Bar / Hint */}
-            <div className="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 text-[11px] text-slate-400 flex items-center justify-between gap-2">
+            <div className="p-2.5 rounded-md bg-slate-950/60 border border-slate-800 text-[11px] text-slate-400 flex items-center justify-between gap-2">
               <span className="flex items-center gap-1.5 truncate">
-                <Sparkles className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                <CalendarIcon className="w-3.5 h-3.5 text-blue-400 shrink-0" />
                 <span>Tap any assessment to view syllabus & manage tasks • ✏️ Edit Test • 🗑️ Delete • ↻ Tap status to cycle</span>
               </span>
             </div>
 
             {filteredTests.length === 0 ? (
-              <div className="text-center py-10 px-4 space-y-3 bg-slate-950/40 rounded-2xl border border-slate-800">
+              <div className="text-center py-10 px-4 space-y-3 bg-slate-950/40 rounded-lg border border-slate-800">
                 <Award className="w-10 h-10 text-slate-600 mx-auto" />
                 <p className="text-sm font-medium text-slate-300">No upcoming tests matching filter.</p>
                 <p className="text-xs text-slate-500 max-w-xs mx-auto">
@@ -722,7 +721,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                 <button
                   type="button"
                   onClick={() => setIsAddModalOpen(true)}
-                  className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs inline-flex items-center gap-1.5 shadow-md transition active:scale-95"
+                  className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs inline-flex items-center gap-1.5 shadow-xs transition active:scale-95"
                 >
                   <Plus className="w-4 h-4 stroke-[2.5]" />
                   <span>Add First Test / Quiz</span>
@@ -738,7 +737,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                     <div
                       key={test.id}
                       onClick={() => setActiveTestDetail(test)}
-                      className={`p-4 rounded-2xl border transition-all cursor-pointer hover:-translate-y-0.5 ${
+                      className={`p-4 rounded-xl border transition-all cursor-pointer hover:-translate-y-0.5 ${
                         isUrgent
                           ? 'bg-rose-950/20 border-rose-500/40 hover:border-rose-400'
                           : 'bg-slate-950/50 border-slate-800 hover:border-slate-700 hover:bg-slate-800/50'
@@ -805,11 +804,11 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                             type="button"
                             onClick={(e) => handleCycleStatus(e, test)}
                             title="Click to cycle status: Not Started → In Progress → Prepared → Completed"
-                            className={`px-2 py-0.5 rounded-full text-[10px] font-semibold border transition hover:opacity-80 active:scale-95 cursor-pointer ${
+                            className={`px-2 py-0.5 rounded-md text-[10px] font-semibold border transition hover:opacity-80 active:scale-95 cursor-pointer ${
                               test.status === 'Completed'
                                 ? 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30'
                                 : test.status === 'Prepared'
-                                ? 'bg-cyan-500/15 text-cyan-300 border-cyan-500/30'
+                                ? 'bg-blue-600/20 text-blue-200 border-blue-500/40'
                                 : test.status === 'In Progress'
                                 ? 'bg-blue-500/15 text-blue-300 border-blue-500/30'
                                 : 'bg-slate-800 text-slate-400 border-slate-700'
@@ -854,11 +853,11 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
 
       {/* Test Detail / Checklist / Score Modal */}
       {activeTestDetail && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-slate-900 border border-slate-700 rounded-3xl max-w-lg w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto space-y-5">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xs animate-in fade-in duration-150">
+          <div className="bg-slate-900 border border-slate-700 rounded-xl max-w-lg w-full p-5 sm:p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto space-y-4">
             <button
               onClick={() => setActiveTestDetail(null)}
-              className="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition"
+              className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
             >
               <X className="w-5 h-5" />
             </button>
@@ -898,7 +897,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
             </div>
 
             {/* Logistics Info Card */}
-            <div className="grid grid-cols-2 gap-2 p-3.5 rounded-2xl bg-slate-950/60 border border-slate-800 text-xs">
+            <div className="grid grid-cols-2 gap-2 p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 text-xs">
               <div>
                 <span className="text-slate-500 block text-[10px] uppercase font-bold">Date & Time</span>
                 <span className="font-semibold text-slate-200">
@@ -1156,10 +1155,10 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
 
       {/* Delete Confirmation Modal (Safe and works in iframe) */}
       {testToDelete && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-150">
-          <div className="bg-slate-900 border border-slate-700 rounded-3xl max-w-sm w-full p-6 shadow-2xl space-y-4 text-center">
-            <div className="w-12 h-12 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center mx-auto">
-              <Trash2 className="w-6 h-6" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xs animate-in fade-in duration-150">
+          <div className="bg-slate-900 border border-slate-700 rounded-xl max-w-sm w-full p-5 sm:p-6 shadow-2xl space-y-4 text-center">
+            <div className="w-10 h-10 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center mx-auto">
+              <Trash2 className="w-5 h-5" />
             </div>
             <div>
               <h3 className="text-base font-bold text-white">Delete Test / Quiz?</h3>
@@ -1167,11 +1166,11 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                 Are you sure you want to remove <strong className="text-slate-200">"{testToDelete.title}"</strong> ({testToDelete.courseCode}) from your calendar? All associated tasks and checklist items will also be removed.
               </p>
             </div>
-            <div className="flex items-center justify-center gap-2 pt-2">
+            <div className="flex items-center justify-center gap-2 pt-1">
               <button
                 type="button"
                 onClick={() => setTestToDelete(null)}
-                className="flex-1 min-h-[42px] px-4 py-2 rounded-xl text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 text-xs font-semibold transition"
+                className="flex-1 min-h-[38px] px-3 py-1.5 rounded-lg text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 text-xs font-semibold transition"
               >
                 Cancel
               </button>
@@ -1184,7 +1183,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                   }
                   setTestToDelete(null);
                 }}
-                className="flex-1 min-h-[42px] px-4 py-2 rounded-xl text-white bg-rose-600 hover:bg-rose-500 text-xs font-bold transition shadow-lg shadow-rose-600/20"
+                className="flex-1 min-h-[38px] px-3 py-1.5 rounded-lg text-white bg-rose-600 hover:bg-rose-500 text-xs font-semibold transition shadow-xs"
               >
                 Yes, Delete
               </button>
@@ -1195,24 +1194,24 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
 
       {/* Edit Existing Test Modal */}
       {isEditModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-slate-900 border border-slate-700/90 rounded-3xl max-w-lg w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xs animate-in fade-in duration-150">
+          <div className="bg-slate-900 border border-slate-700/90 rounded-xl max-w-lg w-full p-5 sm:p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => {
                 setIsEditModalOpen(false);
                 setEditingTestId(null);
               }}
-              className="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition"
+              className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-2xl bg-blue-600/20 text-blue-400 flex items-center justify-center font-bold">
-                <Pencil className="w-5 h-5" />
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-9 h-9 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center font-bold">
+                <Pencil className="w-4 h-4" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white tracking-tight">Edit Test / Quiz</h3>
+                <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">Edit Test / Quiz</h3>
                 <p className="text-xs text-slate-400">Update course, date, time, venue, weightage, or topics.</p>
               </div>
             </div>
@@ -1404,21 +1403,21 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
 
       {/* Add New Test Modal */}
       {isAddModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-slate-900 border border-slate-700/90 rounded-3xl max-w-lg w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xs animate-in fade-in duration-150">
+          <div className="bg-slate-900 border border-slate-700/90 rounded-xl max-w-lg w-full p-5 sm:p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => setIsAddModalOpen(false)}
-              className="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition"
+              className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-2xl bg-blue-600/20 text-blue-400 flex items-center justify-center font-bold">
-                <CalendarIcon className="w-5 h-5" />
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-9 h-9 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center font-bold">
+                <CalendarIcon className="w-4 h-4" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white tracking-tight">Schedule New Test / Exam</h3>
+                <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">Schedule New Test / Exam</h3>
                 <p className="text-xs text-slate-400">Add surprise quizzes, unit tests, or lab viva slots.</p>
               </div>
             </div>

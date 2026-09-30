@@ -12,7 +12,7 @@ import {
   CheckCircle,
   AlertCircle,
   Beaker,
-  Sparkles,
+  Bookmark,
   Coffee,
   HelpCircle,
   ShieldCheck,
@@ -316,11 +316,11 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl bg-slate-900 border border-amber-500/40 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+      <div className="relative w-full max-w-2xl bg-slate-900 border border-slate-700/80 rounded-lg shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
         {/* Modal Header */}
-        <div className="px-5 py-4 bg-gradient-to-r from-slate-900 via-slate-850 to-slate-900 border-b border-slate-800 flex items-center justify-between shrink-0">
+        <div className="px-5 py-4 bg-slate-900 border-b border-slate-800 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-amber-500 text-slate-950 font-bold shadow-xs">
+            <div className="p-2 rounded-lg bg-blue-600 text-white font-bold shadow-xs">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
@@ -328,7 +328,7 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
                 <h3 className="font-bold text-white text-base sm:text-lg">
                   {isNewSlot ? 'Add New Timetable Slot' : `Edit Slot: ${slot?.slotName || 'Period'}`}
                 </h3>
-                <span className="text-[10px] px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/30 font-bold uppercase">
+                <span className="text-[10px] px-2 py-0.5 rounded-md bg-blue-900/30 text-blue-300 border border-blue-500/30 font-bold uppercase">
                   Admin Edit
                 </span>
               </div>
@@ -343,7 +343,7 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="p-2 text-slate-400 hover:text-white rounded-xl hover:bg-slate-800 transition shrink-0"
+            className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition shrink-0"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -517,7 +517,7 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
               </div>
 
               {/* Slot Flags / Checkboxes */}
-              <div className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-2.5">
+              <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-2.5">
                 <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
                   Slot Characteristics
                 </span>
@@ -570,9 +570,9 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
                           setSlotName('Free Period');
                         }
                       }}
-                      className="rounded bg-slate-800 border-slate-700 text-amber-500 focus:ring-0"
+                      className="rounded bg-slate-800 border-slate-700 text-blue-500 focus:ring-0"
                     />
-                    <Sparkles className="w-3.5 h-3.5 text-slate-400" />
+                    <Clock className="w-3.5 h-3.5 text-slate-400" />
                     <span>Free Period</span>
                   </label>
 
@@ -581,9 +581,9 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
                       type="checkbox"
                       checked={isMinor}
                       onChange={(e) => setIsMinor(e.target.checked)}
-                      className="rounded bg-slate-800 border-slate-700 text-amber-500 focus:ring-0"
+                      className="rounded bg-slate-800 border-slate-700 text-blue-500 focus:ring-0"
                     />
-                    <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+                    <Bookmark className="w-3.5 h-3.5 text-blue-400" />
                     <span>Minor Subject</span>
                   </label>
                 </div>
@@ -693,7 +693,7 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
               </div>
 
               {/* Syllabus Modules Manager */}
-              <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <BookOpen className="w-4 h-4 text-amber-400" />
@@ -755,7 +755,7 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
               </div>
 
               {/* Textbooks & References */}
-              <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-white">Recommended Reference Books</span>
                   <span className="text-[11px] text-slate-400">{textbooks.length} Books</span>

@@ -14,7 +14,6 @@ import {
   BookOpen, 
   ExternalLink, 
   ShieldAlert, 
-  Sparkles, 
   CheckCircle2, 
   Building2, 
   Info, 
@@ -272,15 +271,15 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
   return (
     <div className="space-y-6" id="academic-portal-container">
       {/* Header Overview */}
-      <div className="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-5" id="academic-header">
+      <div className="bg-slate-800/60 border border-slate-700/60 rounded-xl p-5" id="academic-header">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-xs px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-semibold border border-amber-500/30">
+              <span className="text-xs px-2.5 py-0.5 rounded-md bg-slate-700/50 text-slate-300 font-medium border border-slate-600/60">
                 Official NIT Goa Resources
               </span>
-              <span className="text-xs px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-semibold border border-cyan-500/30 flex items-center gap-1">
-                <Sparkles className="w-3 h-3 text-cyan-400" />
+              <span className="text-xs px-2.5 py-0.5 rounded-md bg-blue-600/15 text-blue-300 font-medium border border-blue-500/30 flex items-center gap-1.5">
+                <GraduationCap className="w-3.5 h-3.5 text-blue-400" />
                 Cuncolim Campus Directory
               </span>
             </div>
@@ -293,7 +292,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
           </div>
 
           {/* Sub-tab navigation */}
-          <div className="flex items-center gap-1.5 p-1 bg-slate-900 rounded-xl border border-slate-800 overflow-x-auto scrollbar-none w-full md:w-auto" id="subtab-navigation">
+          <div className="flex items-center gap-1.5 p-1 bg-slate-900 rounded-lg border border-slate-800 overflow-x-auto scrollbar-none w-full md:w-auto" id="subtab-navigation">
             <button
               id="subtab-faculty-btn"
               onClick={() => handleSubTabChange('faculty')}
@@ -406,7 +405,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
               <div
                 key={faculty.id}
                 id={`faculty-card-${faculty.id}`}
-                className="bg-slate-800/50 border border-slate-700/70 hover:border-slate-600 rounded-2xl p-5 flex flex-col justify-between transition-all"
+                className="bg-slate-800/50 border border-slate-700/70 hover:border-slate-600 rounded-xl p-5 flex flex-col justify-between transition-all"
               >
                 <div>
                   {/* Top line: Designation & Short Name badge */}
@@ -433,9 +432,9 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
                   <div className="mt-3 pt-3 border-t border-slate-800 flex flex-wrap items-center gap-2">
                     <a
                       href={`mailto:${faculty.email}`}
-                      className="text-xs px-2.5 py-1 rounded-lg bg-cyan-950/50 border border-cyan-800/60 text-cyan-300 hover:bg-cyan-900/60 transition flex items-center gap-1.5 font-mono"
+                      className="text-xs px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 border border-slate-700 text-blue-300 hover:text-blue-200 transition flex items-center gap-1.5 font-mono"
                     >
-                      <Mail className="w-3 h-3 text-cyan-400" />
+                      <Mail className="w-3 h-3 text-blue-400" />
                       <span>{faculty.email}</span>
                     </a>
 
@@ -503,9 +502,9 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
 
                   {/* Patents Section (if any) */}
                   {faculty.patents && faculty.patents.length > 0 && (
-                    <div className="mt-3.5 p-3 rounded-xl bg-emerald-950/20 border border-emerald-800/40">
+                    <div className="mt-3.5 p-3 rounded-lg bg-emerald-950/20 border border-emerald-800/40">
                       <div className="text-xs font-semibold text-emerald-400 flex items-center gap-1.5 mb-1.5">
-                        <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                        <Award className="w-3.5 h-3.5 text-emerald-400" />
                         <span>Granted Patents & Innovations</span>
                       </div>
                       <ul className="text-xs text-emerald-200/90 space-y-1">
@@ -583,10 +582,10 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
       {activeSubTab === 'calculator' && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6" id="sgpa-calculator-section">
           {/* Result Card */}
-          <div className="lg:col-span-1 bg-gradient-to-br from-amber-950/40 via-slate-900 to-slate-900 border border-amber-500/30 rounded-2xl p-6 flex flex-col justify-between">
+          <div className="lg:col-span-1 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800/80 border border-slate-700/80 rounded-xl p-6 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-2">
-                <div className="text-xs font-semibold text-amber-400 uppercase tracking-wider">
+                <div className="text-xs font-semibold text-blue-400 uppercase tracking-wider">
                   Projected 5th Sem SGPA
                 </div>
                 {gradedCourseCount > 0 && (
@@ -663,7 +662,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
                 {/* Cumulative CGPA Estimator (Optional) */}
                 <div className="mt-4 pt-4 border-t border-slate-800/80">
                   <div className="text-xs font-semibold text-slate-300 mb-2 flex items-center gap-1.5">
-                    <SlidersHorizontal className="w-3.5 h-3.5 text-cyan-400" />
+                    <SlidersHorizontal className="w-3.5 h-3.5 text-blue-400" />
                     <span>Cumulative CGPA Predictor</span>
                   </div>
                   <div className="grid grid-cols-2 gap-2">
@@ -674,7 +673,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
                         placeholder="e.g. 84"
                         value={prevCredits}
                         onChange={(e) => setPrevCredits(e.target.value)}
-                        className="w-full px-2 py-1 text-xs bg-slate-950 border border-slate-800 rounded text-white placeholder-slate-400 focus:outline-hidden focus:border-cyan-500 font-mono"
+                        className="w-full px-2 py-1 text-xs bg-slate-950 border border-slate-800 rounded text-white placeholder-slate-400 focus:outline-hidden focus:border-blue-500 font-mono"
                       />
                     </div>
                     <div>
@@ -685,15 +684,15 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
                         placeholder="e.g. 8.50"
                         value={prevCGPA}
                         onChange={(e) => setPrevCGPA(e.target.value)}
-                        className="w-full px-2 py-1 text-xs bg-slate-950 border border-slate-800 rounded text-white placeholder-slate-400 focus:outline-hidden focus:border-cyan-500 font-mono"
+                        className="w-full px-2 py-1 text-xs bg-slate-950 border border-slate-800 rounded text-white placeholder-slate-400 focus:outline-hidden focus:border-blue-500 font-mono"
                       />
                     </div>
                   </div>
 
                   {updatedCumulativeCGPA !== null && (
-                    <div className="mt-2.5 p-2 bg-cyan-950/30 border border-cyan-800/50 rounded-lg flex items-center justify-between text-xs">
-                      <span className="text-cyan-300">New Overall CGPA:</span>
-                      <span className="text-base font-bold font-mono text-cyan-300">
+                    <div className="mt-2.5 p-2 bg-blue-950/30 border border-blue-800/50 rounded-lg flex items-center justify-between text-xs">
+                      <span className="text-blue-300">New Overall CGPA:</span>
+                      <span className="text-base font-bold font-mono text-blue-300">
                         {updatedCumulativeCGPA.toFixed(2)}
                       </span>
                     </div>
@@ -708,7 +707,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
           </div>
 
           {/* Grade Selectors Table */}
-          <div className="lg:col-span-2 bg-slate-800/40 border border-slate-700/60 rounded-2xl p-5" id="grade-selection-table">
+          <div className="lg:col-span-2 bg-slate-800/40 border border-slate-700/60 rounded-xl p-5" id="grade-selection-table">
             <h3 className="text-sm font-bold text-white mb-1 flex items-center justify-between">
               <span>5th Sem Course Grade Targets</span>
               <span className="text-xs text-slate-400 font-normal">
@@ -730,9 +729,9 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
                   <div
                     key={code}
                     id={`grade-row-${code}`}
-                    className={`p-3 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${
+                    className={`p-3 rounded-lg border flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${
                       isMinor
-                        ? 'bg-cyan-950/30 border-cyan-500/40'
+                        ? 'bg-blue-950/20 border-blue-500/30'
                         : 'bg-slate-900/60 border-slate-800'
                     }`}
                   >
@@ -741,12 +740,12 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
                       onClick={() => onOpenCourseModal(code)}
                     >
                       <div className="flex items-center gap-2">
-                        <span className={`text-xs font-bold font-mono ${isMinor ? 'text-cyan-300' : 'text-amber-400'}`}>
+                        <span className={`text-xs font-bold font-mono ${isMinor ? 'text-blue-300' : 'text-blue-400'}`}>
                           {code}
                         </span>
                         <span className="text-xs text-slate-400">({course.credits} Credits)</span>
                         {isMinor && (
-                          <span className="text-[10px] px-1.5 py-0.2 bg-cyan-500/20 text-cyan-300 rounded font-semibold">
+                          <span className="text-[10px] px-1.5 py-0.2 bg-blue-500/20 text-blue-300 rounded font-semibold">
                             CSE Minor
                           </span>
                         )}
@@ -812,20 +811,20 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
             <div
               key={facility.id}
               id={`venue-${facility.id}`}
-              className="bg-slate-800/50 border border-slate-700/70 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-600 transition"
+              className="bg-slate-800/50 border border-slate-700/70 rounded-xl p-5 flex flex-col justify-between hover:border-slate-600 transition"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-2">
-                  <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-slate-700/60 text-slate-300">
+                  <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-md bg-slate-700/60 text-slate-300">
                     {facility.type}
                   </span>
-                  <span className="text-[11px] text-amber-400 font-medium">
+                  <span className="text-[11px] text-blue-400 font-medium">
                     {facility.block}
                   </span>
                 </div>
 
                 <h3 className="text-base font-bold text-white mb-2 flex items-center gap-2">
-                  <Building2 className="w-4 h-4 text-cyan-400 shrink-0" />
+                  <Building2 className="w-4 h-4 text-blue-400 shrink-0" />
                   {facility.name}
                 </h3>
 
@@ -883,10 +882,10 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
             {NIT_GOA_GRADING_RULES.ordinanceHighlights.map((item, index) => (
               <div
                 key={index}
-                className="bg-slate-800/50 border border-slate-700/70 rounded-2xl p-5"
+                className="bg-slate-800/50 border border-slate-700/70 rounded-xl p-5"
               >
-                <h4 className="text-sm font-bold text-amber-400 mb-2 flex items-center gap-2">
-                  <Info className="w-4 h-4 text-amber-400 shrink-0" />
+                <h4 className="text-sm font-bold text-blue-400 mb-2 flex items-center gap-2">
+                  <Info className="w-4 h-4 text-blue-400 shrink-0" />
                   {item.title}
                 </h4>
                 <p className="text-xs text-slate-300 leading-relaxed">
@@ -897,7 +896,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
           </div>
 
           {/* Official Letter Grade Table */}
-          <div className="bg-slate-800/40 border border-slate-700/60 rounded-2xl p-5">
+          <div className="bg-slate-800/40 border border-slate-700/60 rounded-xl p-5">
             <h4 className="text-sm font-bold text-white mb-3">
               Official NIT Goa 10-Point Letter Grading Scale
             </h4>
@@ -905,7 +904,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
               {NIT_GOA_GRADING_RULES.scale.map((item) => (
                 <div
                   key={item.grade}
-                  className="p-3 bg-slate-900/80 rounded-xl border border-slate-800 flex items-center justify-between"
+                  className="p-3 bg-slate-900/80 rounded-lg border border-slate-800 flex items-center justify-between"
                 >
                   <div className="flex items-center gap-3">
                     <span className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center justify-center font-bold font-mono text-sm">
@@ -934,34 +933,34 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
           />
 
           {/* Ayush Kumar & The GDevelopers Creator Card */}
-          <div className="p-6 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border border-[#9EB81E]/40 rounded-2xl shadow-xl shadow-[#9EB81E]/5 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="p-6 bg-slate-900/90 border border-slate-700/80 rounded-xl shadow-lg flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-left">
-              <BrandIcon size={56} className="shrink-0 rounded-2xl shadow-lg shadow-[#9EB81E]/20" />
+              <BrandIcon size={52} className="shrink-0 rounded-lg shadow-sm" />
               <div>
                 <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-1">
-                  <span className="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#9EB81E]/20 text-[#9EB81E] border border-[#9EB81E]/40">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-md bg-blue-600/15 text-blue-300 border border-blue-500/30">
                     Architect & Developer
                   </span>
                   <span className="text-xs text-slate-400 font-mono">v3.4 Production</span>
                 </div>
-                <h3 className="text-lg sm:text-xl font-extrabold text-white flex items-center justify-center sm:justify-start gap-2">
+                <h3 className="text-lg sm:text-xl font-bold text-white flex items-center justify-center sm:justify-start gap-2">
                   <span>Ayush Kumar</span>
                   <span className="text-slate-500 font-normal text-sm sm:text-base">•</span>
-                  <span className="text-[#9EB81E]">The GDevelopers</span>
+                  <span className="text-blue-400">The GDevelopers</span>
                 </h3>
                 <p className="text-xs text-slate-300 mt-1.5 max-w-xl leading-relaxed">
                   Architected and developed by <strong className="text-white font-semibold">Ayush Kumar</strong> with meticulous care for students and faculty across all NIT Goa engineering disciplines. Providing zero-latency offline access, automated attendance tracking, and calendar synchronization.
                 </p>
                 <div className="mt-3 flex flex-wrap items-center justify-center sm:justify-start gap-2">
-                  <span className="inline-flex items-center gap-1 text-[11px] font-medium text-slate-300 bg-slate-800/80 px-2.5 py-1 rounded-lg border border-slate-700/80">
-                    <User className="w-3 h-3 text-indigo-400" />
+                  <span className="inline-flex items-center gap-1 text-[11px] font-medium text-slate-300 bg-slate-800/80 px-2.5 py-1 rounded-md border border-slate-700/80">
+                    <User className="w-3 h-3 text-blue-400" />
                     Ayush Kumar (Lead Architect & Developer)
                   </span>
                   <a
                     href="mailto:shivshivamxyz@gmail.com"
-                    className="inline-flex items-center gap-1 text-[11px] font-medium text-amber-300 hover:text-white bg-slate-800/80 hover:bg-slate-700/80 px-2.5 py-1 rounded-lg border border-amber-500/30 transition"
+                    className="inline-flex items-center gap-1 text-[11px] font-medium text-blue-300 hover:text-white bg-slate-800/80 hover:bg-slate-700/80 px-2.5 py-1 rounded-md border border-blue-500/30 transition"
                   >
-                    <Mail className="w-3 h-3 text-amber-400" />
+                    <Mail className="w-3 h-3 text-blue-400" />
                     shivshivamxyz@gmail.com
                   </a>
                 </div>
@@ -971,33 +970,33 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
               <button
                 type="button"
                 onClick={onOpenPwaGuide}
-                className="px-4 py-2 rounded-xl bg-slate-800/90 hover:bg-slate-700/90 border border-slate-700/80 hover:border-cyan-500/50 text-center transition active:scale-95 group cursor-pointer"
+                className="px-4 py-2 rounded-lg bg-slate-800/90 hover:bg-slate-700/90 border border-slate-700/80 hover:border-blue-500/50 text-center transition active:scale-95 group cursor-pointer"
                 title="This application is a Progressive Web App (PWA). Click to open local install guide."
               >
                 <div className="flex items-center justify-center gap-1">
-                  <span className="block text-xs font-bold text-[#9EB81E]">100% Offline</span>
-                  <Info className="w-3 h-3 text-cyan-400 group-hover:scale-110 transition" />
+                  <span className="block text-xs font-semibold text-white">100% Offline</span>
+                  <Info className="w-3 h-3 text-blue-400 group-hover:scale-110 transition" />
                 </div>
-                <span className="text-[10px] text-cyan-300 font-medium">PWA Guide</span>
+                <span className="text-[10px] text-blue-300 font-medium">PWA Guide</span>
               </button>
-              <div className="px-4 py-2 rounded-xl bg-slate-800/90 border border-slate-700/80 text-center">
-                <span className="block text-xs font-bold text-cyan-400">All 5 Branches</span>
+              <div className="px-4 py-2 rounded-lg bg-slate-800/90 border border-slate-700/80 text-center">
+                <span className="block text-xs font-semibold text-blue-400">All 5 Branches</span>
                 <span className="text-[10px] text-slate-400">Sem 1 to 8</span>
               </div>
             </div>
           </div>
 
           {/* Client-Side Local Storage & Privacy Vault Card */}
-          <div className="p-6 bg-slate-900/90 border border-slate-700/80 rounded-2xl shadow-xl space-y-4" id="local-storage-vault-card">
+          <div className="p-6 bg-slate-900/90 border border-slate-700/80 rounded-xl shadow-lg space-y-4" id="local-storage-vault-card">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center shrink-0">
-                  <HardDrive className="w-5 h-5 text-cyan-400" />
+                <div className="w-9 h-9 rounded-lg bg-blue-600/10 border border-blue-500/30 flex items-center justify-center shrink-0">
+                  <HardDrive className="w-4 h-4 text-blue-400" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
                     <h3 className="text-base font-bold text-white">Local Data & Privacy Vault</h3>
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
+                    <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
                       <ShieldCheck className="w-3 h-3" />
                       100% On-Device
                     </span>
@@ -1010,33 +1009,33 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
 
               <div className="text-xs text-slate-400 font-mono bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 shrink-0 text-center sm:text-right">
                 <span className="text-slate-500 block text-[10px] uppercase font-sans">Storage Footprint</span>
-                <strong className="text-cyan-300">~{(storageStats.totalBytes / 1024).toFixed(1)} KB</strong> on device
+                <strong className="text-blue-300">~{(storageStats.totalBytes / 1024).toFixed(1)} KB</strong> on device
               </div>
             </div>
 
             {/* Storage Item Breakdown Chips */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
-              <div className="p-2.5 rounded-xl bg-slate-800/50 border border-slate-700/50 text-center">
+              <div className="p-2.5 rounded-lg bg-slate-800/50 border border-slate-700/50 text-center">
                 <span className="text-[10px] text-slate-400 block uppercase">Student Profile</span>
                 <span className="text-xs font-bold text-white">{storageStats.profileFound ? `${branch} • Sem ${semester}` : 'Default'}</span>
               </div>
-              <div className="p-2.5 rounded-xl bg-slate-800/50 border border-slate-700/50 text-center">
+              <div className="p-2.5 rounded-lg bg-slate-800/50 border border-slate-700/50 text-center">
                 <span className="text-[10px] text-slate-400 block uppercase">Schedule Tweaks</span>
-                <span className="text-xs font-bold text-amber-300">{storageStats.scheduleOverridesCount} Days Modified</span>
+                <span className="text-xs font-bold text-blue-300">{storageStats.scheduleOverridesCount} Days Modified</span>
               </div>
-              <div className="p-2.5 rounded-xl bg-slate-800/50 border border-slate-700/50 text-center">
+              <div className="p-2.5 rounded-lg bg-slate-800/50 border border-slate-700/50 text-center">
                 <span className="text-[10px] text-slate-400 block uppercase">Attendance Logs</span>
                 <span className="text-xs font-bold text-emerald-300">{storageStats.attendanceRecordsCount} Semesters Tracked</span>
               </div>
-              <div className="p-2.5 rounded-xl bg-slate-800/50 border border-slate-700/50 text-center">
+              <div className="p-2.5 rounded-lg bg-slate-800/50 border border-slate-700/50 text-center">
                 <span className="text-[10px] text-slate-400 block uppercase">Upcoming Tests</span>
-                <span className="text-xs font-bold text-indigo-300">{storageStats.testCount} Scheduled</span>
+                <span className="text-xs font-bold text-slate-200">{storageStats.testCount} Scheduled</span>
               </div>
             </div>
 
             {/* Storage status feedback message */}
             {storageMessage && (
-              <div className="px-3.5 py-2 rounded-xl bg-slate-800 border border-amber-500/40 text-amber-300 text-xs flex items-center justify-between gap-2">
+              <div className="px-3.5 py-2 rounded-lg bg-slate-800 border border-blue-500/40 text-blue-300 text-xs flex items-center justify-between gap-2">
                 <span>{storageMessage}</span>
                 <button
                   type="button"
@@ -1058,7 +1057,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
                     setStorageMessage('Exported complete local backup JSON file successfully!');
                     refreshStorageStats();
                   }}
-                  className="min-h-[44px] px-3.5 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95 shadow-md shadow-cyan-600/20"
+                  className="min-h-[44px] px-3.5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs flex items-center justify-center gap-1.5 transition active:scale-95 shadow-xs"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Download Backup (JSON)</span>
@@ -1067,9 +1066,9 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
                 <button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
-                  className="min-h-[44px] px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-xs flex items-center justify-center gap-1.5 transition active:scale-95"
+                  className="min-h-[44px] px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-xs flex items-center justify-center gap-1.5 transition active:scale-95"
                 >
-                  <Upload className="w-3.5 h-3.5 text-cyan-400" />
+                  <Upload className="w-3.5 h-3.5 text-blue-400" />
                   <span>Restore from Backup</span>
                 </button>
 

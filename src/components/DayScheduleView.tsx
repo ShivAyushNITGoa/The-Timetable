@@ -5,7 +5,7 @@ import {
   Clock,
   MapPin,
   User,
-  Sparkles,
+  Bookmark,
   AlertCircle,
   Coffee,
   Check,
@@ -250,9 +250,9 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
               key={day}
               type="button"
               onClick={() => onSelectDay(day)}
-              className={`min-h-[44px] sm:min-h-[48px] py-1.5 px-0.5 sm:px-4 sm:py-2.5 rounded-xl sm:rounded-2xl font-semibold text-xs sm:text-sm flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-0.5 sm:gap-2 transition-all active:scale-95 ${
+              className={`min-h-[44px] sm:min-h-[48px] py-1.5 px-0.5 sm:px-4 sm:py-2.5 rounded-lg font-semibold text-xs sm:text-sm flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-0.5 sm:gap-2 transition-all active:scale-95 ${
                 isSelected
-                  ? 'bg-blue-600 text-white font-bold shadow-md shadow-blue-600/25'
+                  ? 'bg-blue-600 text-white font-bold shadow-sm'
                   : isWeekend
                   ? 'bg-slate-800/60 hover:bg-slate-800 text-slate-300 border border-slate-700/50'
                   : 'bg-slate-800/80 hover:bg-slate-800 text-slate-300 border border-slate-700/60'
@@ -274,7 +274,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                 <span className="sm:hidden text-[8px] text-slate-500">wknd</span>
               ) : null}
               {dayMinor && !isSelected && (
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" title="Has CS300M Minor Class" />
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400" title="Has CS300M Minor Class" />
               )}
             </button>
           );
@@ -283,10 +283,10 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
       {/* Alert banner if test scheduled today */}
       {todaysTests.length > 0 && (
-        <div className="p-4 rounded-2xl bg-gradient-to-r from-rose-950/80 to-slate-900 border border-rose-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-in fade-in">
+        <div className="p-4 rounded-xl bg-slate-900 border border-rose-500/40 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-in fade-in">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-300 flex items-center justify-center font-bold shrink-0">
-              <CalendarCheck className="w-5 h-5" />
+            <div className="w-9 h-9 rounded-lg bg-rose-500/20 text-rose-300 flex items-center justify-center font-bold shrink-0">
+              <CalendarCheck className="w-4 h-4" />
             </div>
             <div>
               <div className="text-xs font-bold text-rose-300 uppercase tracking-wider">
@@ -302,7 +302,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
             <button
               type="button"
               onClick={onNavigateToTests}
-              className="px-3.5 py-1.5 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 text-rose-200 border border-rose-500/40 text-xs font-bold flex items-center gap-1.5 transition self-start sm:self-auto shrink-0"
+              className="px-3 py-1.5 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 text-rose-200 border border-rose-500/40 text-xs font-bold flex items-center gap-1.5 transition self-start sm:self-auto shrink-0"
             >
               <span>View Agenda & Tasks</span>
               <ChevronRight className="w-3.5 h-3.5" />
@@ -313,7 +313,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
       {/* Jump to Today banner when browsing another day */}
       {!isSelectedDayToday && (
-        <div className="p-3.5 rounded-2xl bg-blue-600/10 border border-blue-500/25 flex items-center justify-between gap-3">
+        <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-3">
           <div className="flex items-center gap-2.5 min-w-0">
             <Calendar className="w-4 h-4 text-blue-400 shrink-0" />
             <span className="text-xs text-slate-300">
@@ -323,7 +323,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
           <button
             type="button"
             onClick={() => onSelectDay(currentDayName as DayOfWeek)}
-            className="min-h-[40px] px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-sm shrink-0"
+            className="min-h-[38px] px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-xs shrink-0"
           >
             <span>Jump to Today ({currentDayName.slice(0, 3)})</span>
             <ChevronRight className="w-3.5 h-3.5" />
@@ -333,17 +333,17 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
       {/* Live Academic Status & Next Class Countdown Hero */}
       {isSelectedDayToday && (
-        <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800/90 to-slate-900 border border-slate-700/80 shadow-md space-y-3.5">
+        <div className="p-4 sm:p-5 rounded-xl bg-slate-900 border border-slate-800 shadow-sm space-y-3.5">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               <div
-                className={`w-11 h-11 rounded-xl flex items-center justify-center font-bold shrink-0 ${
+                className={`w-9 h-9 rounded-lg flex items-center justify-center font-bold shrink-0 ${
                   activeSlot
                     ? 'bg-blue-600/20 text-blue-300 border border-blue-500/40 animate-pulse'
-                    : 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
+                    : 'bg-slate-800 text-slate-300 border border-slate-700'
                 }`}
               >
-                {activeSlot ? <Clock className="w-5 h-5 text-blue-400" /> : <TrendingUp className="w-5 h-5 text-indigo-400" />}
+                {activeSlot ? <Clock className="w-4 h-4 text-blue-400" /> : <TrendingUp className="w-4 h-4 text-slate-400" />}
               </div>
               <div>
                 <div className="text-[11px] font-bold uppercase tracking-wider flex items-center gap-2">
@@ -433,7 +433,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
       )}
 
       {/* Day Header & Briefing Bar */}
-      <div className="bg-slate-800/50 border border-slate-700/60 rounded-2xl p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center justify-between w-full sm:w-auto gap-2">
           <div>
             <div className="flex items-center gap-2">
@@ -441,7 +441,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                 {selectedDay}'s Timetable
               </h2>
               {isSelectedDayToday && (
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 animate-pulse">
+                <span className="px-2 py-0.5 rounded-md text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
                   Live Today
                 </span>
               )}
@@ -456,7 +456,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
             <button
               type="button"
               onClick={goToPrevDay}
-              className="min-h-[44px] min-w-[44px] rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 hover:text-white flex items-center justify-center border border-slate-700/80 active:scale-95 transition shadow-xs"
+              className="min-h-[40px] min-w-[40px] rounded-lg bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 hover:text-white flex items-center justify-center border border-slate-700 active:scale-95 transition shadow-xs"
               aria-label="Previous day"
               title="Previous day"
             >
@@ -476,17 +476,17 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
         {/* Badges for Day & Customize / Test Buttons */}
         <div className="flex items-center gap-2 flex-wrap">
-          <div className="px-3 py-1.5 rounded-xl bg-slate-800 border border-slate-700 text-xs text-slate-300">
+          <div className="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-xs text-slate-300">
             <strong className="text-white">{totalClasses}</strong> Sessions
           </div>
           {hasMinor && (
-            <div className="px-3 py-1.5 rounded-xl bg-cyan-950/60 border border-cyan-500/40 text-xs text-cyan-300 flex items-center gap-1.5 shadow-xs">
-              <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+            <div className="px-2.5 py-1 rounded-md bg-blue-950/60 border border-blue-500/40 text-xs text-blue-300 flex items-center gap-1.5 shadow-xs">
+              <Bookmark className="w-3.5 h-3.5 text-blue-400" />
               <span>Includes <strong>CS300M Minor</strong></span>
             </div>
           )}
           {hasLab && (
-            <div className="px-3 py-1.5 rounded-xl bg-emerald-950/60 border border-emerald-500/30 text-xs text-emerald-300 flex items-center gap-1.5">
+            <div className="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-xs text-slate-300 flex items-center gap-1.5">
               <Beaker className="w-3.5 h-3.5 text-emerald-400" />
               <span>3-Hour Lab Session</span>
             </div>
@@ -587,12 +587,12 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
               <div
                 key={slot.id || `elective-${index}`}
                 onClick={() => onOpenCourseModal(chosenOption?.code || 'EE541')}
-                className={`group relative p-4 sm:p-5 rounded-2xl border transition-all cursor-pointer ${
+                className={`group relative p-4 sm:p-5 rounded-xl border transition-all cursor-pointer ${
                   active
-                    ? 'bg-gradient-to-r from-blue-600/15 via-slate-800/90 to-slate-800 border-blue-500/50 shadow-lg shadow-blue-500/10'
+                    ? 'bg-slate-850 border-blue-500/60 shadow-sm'
                     : passed
                     ? 'bg-slate-900/60 border-slate-800 opacity-70 hover:opacity-100 hover:border-slate-700'
-                    : 'bg-slate-800/70 border-slate-700/70 hover:border-slate-600 hover:bg-slate-800'
+                    : 'bg-slate-900 border-slate-800 hover:border-slate-700'
                 }`}
               >
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-3">
@@ -658,8 +658,8 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                       const courseTest = getCourseUpcomingTest(chosenOption?.code);
                       if (!courseTest) return null;
                       return (
-                        <div className="mt-2.5 inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-blue-500/15 border border-blue-500/30 text-xs text-blue-300">
-                          <Sparkles className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                        <div className="mt-2.5 inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-blue-500/15 border border-blue-500/30 text-xs text-blue-300">
+                          <Calendar className="w-3.5 h-3.5 text-blue-400 shrink-0" />
                           <span>{courseTest.type}: <strong>{courseTest.title}</strong> ({courseTest.date})</span>
                         </div>
                       );
@@ -727,12 +727,12 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
               <div
                 key={slot.id || `lab-${index}`}
                 onClick={() => onOpenCourseModal(currentLab.code)}
-                className={`group relative p-4 sm:p-5 rounded-2xl border transition-all cursor-pointer ${
+                className={`group relative p-4 sm:p-5 rounded-xl border transition-all cursor-pointer ${
                   active
-                    ? 'bg-gradient-to-r from-emerald-500/15 via-slate-800/90 to-slate-800 border-emerald-500/60 shadow-lg shadow-emerald-500/10'
+                    ? 'bg-slate-850 border-emerald-500/60 shadow-sm'
                     : passed
                     ? 'bg-slate-900/60 border-slate-800 opacity-70 hover:opacity-100 hover:border-slate-700'
-                    : 'bg-slate-800/70 border-emerald-500/30 hover:border-emerald-500/60 hover:bg-slate-800'
+                    : 'bg-slate-900 border-emerald-500/30 hover:border-emerald-500/60'
                 }`}
               >
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-3">
@@ -797,8 +797,8 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                       const labTest = getCourseUpcomingTest(currentLab.code);
                       if (!labTest) return null;
                       return (
-                        <div className="mt-2.5 inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-blue-500/15 border border-blue-500/30 text-xs text-blue-300">
-                          <Sparkles className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                        <div className="mt-2.5 inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-blue-500/15 border border-blue-500/30 text-xs text-blue-300">
+                          <Calendar className="w-3.5 h-3.5 text-blue-400 shrink-0" />
                           <span>{labTest.type}: <strong>{labTest.title}</strong> ({labTest.date})</span>
                           {onNavigateToTests && (
                             <button
@@ -877,14 +877,14 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
             <div
               key={slot.id || `slot-${index}`}
               onClick={() => onOpenCourseModal(slot.courseCode)}
-              className={`group relative p-4 sm:p-5 rounded-2xl border transition-all cursor-pointer ${
+              className={`group relative p-4 sm:p-5 rounded-xl border transition-all cursor-pointer ${
                 isMinor
-                  ? 'bg-gradient-to-r from-cyan-950/50 via-slate-800 to-indigo-950/40 border-cyan-500/50 shadow-md shadow-cyan-500/10 hover:border-cyan-400'
+                  ? 'bg-slate-900 border-blue-500/40 shadow-xs hover:border-blue-400'
                   : active
-                  ? 'bg-gradient-to-r from-blue-600/15 via-slate-800 to-slate-800 border-blue-500/50 shadow-lg shadow-blue-500/10'
+                  ? 'bg-slate-850 border-blue-500/60 shadow-sm'
                   : passed
                   ? 'bg-slate-900/60 border-slate-800 opacity-70 hover:opacity-100 hover:border-slate-700'
-                  : 'bg-slate-800/70 border-slate-700/70 hover:border-slate-600 hover:bg-slate-800'
+                  : 'bg-slate-900 border-slate-800 hover:border-slate-700'
               }`}
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-3">
@@ -893,15 +893,15 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                   <span
                     className={`px-2 py-0.5 rounded-md text-xs font-semibold ${
                       isMinor
-                        ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 flex items-center gap-1 shadow-xs'
+                        ? 'bg-blue-600/15 text-blue-300 border border-blue-500/30 flex items-center gap-1 shadow-xs'
                         : course?.category === 'lab' || slot.isLab
                         ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
                         : course?.category === 'mlc'
-                        ? 'bg-violet-500/20 text-violet-300 border border-violet-500/30'
+                        ? 'bg-slate-700/60 text-slate-300 border border-slate-600/50'
                         : 'bg-slate-700 text-slate-200'
                     }`}
                   >
-                    {isMinor && <Sparkles className="w-3 h-3 text-cyan-400" />}
+                    {isMinor && <BookOpen className="w-3 h-3 text-blue-400" />}
                     {slot.slotName}
                   </span>
                   <span className="font-mono text-xs text-slate-300 font-semibold whitespace-nowrap">
@@ -920,7 +920,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                     </span>
                   )}
 
-                  <div className={`flex items-center gap-1.5 text-xs font-medium min-w-0 ${isMinor ? 'text-cyan-300' : 'text-slate-300'}`}>
+                  <div className="flex items-center gap-1.5 text-xs font-medium min-w-0 text-slate-300">
                     <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                     <span className="truncate max-w-[180px] sm:max-w-[240px]">
                       Room {slot.room || course?.room}
@@ -934,7 +934,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                         e.stopPropagation();
                         onAdminEditSlot(slot, selectedDay);
                       }}
-                      className="shrink-0 px-2.5 py-1 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1 shadow-sm transition active:scale-95"
+                      className="shrink-0 px-2.5 py-1 rounded-md bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1 shadow-sm transition active:scale-95"
                       title="Admin: Edit Slot & Syllabus"
                     >
                       <Edit3 className="w-3 h-3" />
@@ -946,13 +946,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <h3
-                    className={`text-base sm:text-lg font-bold tracking-tight transition flex items-center gap-2 ${
-                      isMinor
-                        ? 'text-cyan-200 group-hover:text-cyan-100'
-                        : 'text-white group-hover:text-blue-400'
-                    }`}
-                  >
+                  <h3 className="text-base sm:text-lg font-bold tracking-tight transition flex items-center gap-2 text-white group-hover:text-blue-400">
                     <span>{course?.code || slot.courseCode}</span>
                     <span className="text-slate-500 font-normal">•</span>
                     <span>{course?.name || slot.slotName}</span>
@@ -968,8 +962,8 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                   )}
 
                   {isMinor && (
-                    <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-cyan-900/40 border border-cyan-500/30 text-[11px] text-cyan-200">
-                      <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+                    <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-950/40 border border-blue-500/30 text-[11px] text-blue-200">
+                      <BookOpen className="w-3.5 h-3.5 text-blue-400" />
                       <span>Special: CSE Minor Course • Coordinated by Dr. Pravati Swain</span>
                     </div>
                   )}
@@ -982,8 +976,8 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                     const regularTest = getCourseUpcomingTest(course?.code || slot.courseCode);
                     if (!regularTest) return null;
                     return (
-                      <div className="mt-2.5 inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-blue-500/15 border border-blue-500/30 text-xs text-blue-300">
-                        <Sparkles className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                      <div className="mt-2.5 inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-blue-500/15 border border-blue-500/30 text-xs text-blue-300">
+                        <Calendar className="w-3.5 h-3.5 text-blue-400 shrink-0" />
                         <span>{regularTest.type}: <strong>{regularTest.title}</strong> ({regularTest.date})</span>
                       </div>
                     );
@@ -1050,7 +1044,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
           <button
             type="button"
             onClick={() => onAdminAddSlot(selectedDay)}
-            className="w-full py-3.5 rounded-2xl bg-blue-600/15 hover:bg-blue-600/25 border border-dashed border-blue-500/40 text-blue-300 font-bold text-xs flex items-center justify-center gap-2 transition active:scale-98 shadow-sm"
+            className="w-full py-3 rounded-lg bg-blue-600/15 hover:bg-blue-600/25 border border-dashed border-blue-500/40 text-blue-300 font-semibold text-xs flex items-center justify-center gap-2 transition active:scale-98 shadow-xs"
           >
             <Plus className="w-4 h-4" />
             <span>+ Add Slot for {selectedDay} (Admin)</span>

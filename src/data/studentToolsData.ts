@@ -76,7 +76,7 @@ export const TOOL_CATEGORIES_CONFIG: {
     label: 'Free Student Developer Perks',
     shortLabel: 'Student Perks',
     description: 'Free professional software licenses, GitHub Copilot, cloud credits, and IDEs with student email.',
-    iconName: 'Sparkles',
+    iconName: 'GraduationCap',
   },
   {
     id: 'gate',

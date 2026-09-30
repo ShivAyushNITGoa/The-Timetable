@@ -20,7 +20,6 @@ import {
   Search,
   Filter,
   PlusCircle,
-  Sparkles,
 } from 'lucide-react';
 import { User } from 'firebase/auth';
 import {
@@ -434,7 +433,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
-      <div className="bg-slate-900 border border-slate-700 w-full max-w-5xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+      <div className="bg-slate-900 border border-slate-700 w-full max-w-5xl rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
         {/* Modal Top Header */}
         <div className="px-5 py-4 border-b border-slate-800 bg-slate-950/60 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -822,7 +821,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
               </div>
 
               {/* Course Selector & Save / Revert Actions */}
-              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+              <div className="p-4 rounded-lg bg-slate-950 border border-slate-800 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
                 <div className="flex-1">
                   <div className="flex items-center justify-between mb-1">
                     <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider">
@@ -830,7 +829,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                     </label>
                     {courseOverrides && courseOverrides[selectedCourseCode] && (
                       <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold flex items-center gap-1">
-                        <Sparkles size={10} /> Active Cloud Override
+                        <ShieldCheck size={10} /> Active Cloud Override
                       </span>
                     )}
                   </div>

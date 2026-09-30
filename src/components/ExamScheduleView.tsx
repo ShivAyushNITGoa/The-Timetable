@@ -1,6 +1,6 @@
 import React from 'react';
 import { Course } from '../data/timetableData';
-import { Award, Sparkles, Calendar, Clock, AlertCircle } from 'lucide-react';
+import { Award, BookOpen, Calendar, Clock, AlertCircle } from 'lucide-react';
 
 interface ExamScheduleViewProps {
   courses: Record<string, Course>;
@@ -28,11 +28,11 @@ export const ExamScheduleView: React.FC<ExamScheduleViewProps> = ({
   return (
     <div className="space-y-6">
       {/* Header Info */}
-      <div className="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-5">
+      <div className="bg-slate-900 border border-slate-800 rounded-lg p-5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-xs px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 font-semibold border border-indigo-500/30 flex items-center gap-1">
+              <span className="text-xs px-2.5 py-0.5 rounded-md bg-blue-600/20 text-blue-300 font-semibold border border-blue-500/30 flex items-center gap-1">
                 <Award className="w-3.5 h-3.5" />
                 Institute Slot-Wise Exam Scheme
               </span>
@@ -45,7 +45,7 @@ export const ExamScheduleView: React.FC<ExamScheduleViewProps> = ({
             </p>
           </div>
 
-          <div className="p-3 bg-slate-900/80 rounded-xl border border-slate-800 text-xs text-slate-300">
+          <div className="p-3 bg-slate-950 rounded-lg border border-slate-800 text-xs text-slate-300">
             <span className="text-blue-400 font-semibold">Master Policy:</span> Slot G is designated for Minor courses, guaranteeing no clash with department slots A–F.
           </div>
         </div>
@@ -60,17 +60,17 @@ export const ExamScheduleView: React.FC<ExamScheduleViewProps> = ({
             <div
               key={course.code}
               onClick={() => onOpenCourseModal(course.code)}
-              className={`p-4 sm:p-5 rounded-2xl border transition-all cursor-pointer hover:-translate-y-0.5 ${
+              className={`p-4 sm:p-5 rounded-lg border transition-all cursor-pointer hover:-translate-y-0.5 ${
                 isMinor
-                  ? 'bg-gradient-to-br from-cyan-950/60 via-slate-900 to-indigo-950/40 border-cyan-500/50 shadow-md shadow-cyan-500/10 hover:border-cyan-400'
-                  : 'bg-slate-800/50 border-slate-700/70 hover:border-slate-600 hover:bg-slate-800'
+                  ? 'bg-slate-900 border-blue-500/40 shadow-xs hover:border-blue-400'
+                  : 'bg-slate-900 border-slate-800 hover:border-slate-700'
               }`}
             >
               <div className="flex items-center justify-between gap-2 mb-2">
                 <span
                   className={`px-2.5 py-0.5 text-xs font-bold rounded-md ${
                     isMinor
-                      ? 'bg-cyan-500/30 text-cyan-200 border border-cyan-400/50 shadow-xs'
+                      ? 'bg-blue-600/20 text-blue-200 border border-blue-400/40 shadow-xs'
                       : 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
                   }`}
                 >
@@ -83,7 +83,7 @@ export const ExamScheduleView: React.FC<ExamScheduleViewProps> = ({
               </div>
 
               <div className="mt-2">
-                <h3 className={`text-base font-bold flex items-center gap-2 ${isMinor ? 'text-cyan-200' : 'text-white'}`}>
+                <h3 className="text-base font-bold flex items-center gap-2 text-white">
                   <span>{course.code}</span>
                   <span className="text-slate-500">•</span>
                   <span>{course.name}</span>
@@ -97,8 +97,8 @@ export const ExamScheduleView: React.FC<ExamScheduleViewProps> = ({
               </div>
 
               {isMinor && (
-                <div className="mt-3 p-2 rounded-lg bg-cyan-950/40 border border-cyan-500/30 text-[11px] text-cyan-200 flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                <div className="mt-3 p-2 rounded-lg bg-blue-950/30 border border-blue-500/30 text-[11px] text-blue-200 flex items-center gap-1.5">
+                  <BookOpen className="w-3.5 h-3.5 text-blue-400 shrink-0" />
                   <span>Exam conducted in Minor Slot G by CSE Department</span>
                 </div>
               )}

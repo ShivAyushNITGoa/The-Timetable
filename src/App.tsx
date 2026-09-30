@@ -52,7 +52,7 @@ import {
   saveUserCloudData,
 } from './services/firestoreSync';
 import {
-  Sparkles,
+  Bookmark,
   CalendarCheck,
   Building2,
   CheckCircle,
@@ -603,7 +603,7 @@ export default function App() {
   if (authLoading) {
     return (
       <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-6 text-slate-100">
-        <div className="w-10 h-10 rounded-2xl border-4 border-blue-500/20 border-t-blue-500 animate-spin mb-4" />
+        <div className="w-10 h-10 rounded-xl border-4 border-blue-500/20 border-t-blue-500 animate-spin mb-4" />
         <p className="text-xs font-semibold text-slate-300">Loading NIT Goa Timetable...</p>
       </div>
     );
@@ -707,8 +707,8 @@ export default function App() {
             {safeProfile.branch === 'EEE' && safeProfile.semester === 5 && safeProfile.hasMinor && (
               <>
                 <span className="text-slate-600">•</span>
-                <span className="text-cyan-300 font-semibold flex items-center gap-1">
-                  <Sparkles className="w-3 h-3 text-cyan-400" />
+                <span className="text-blue-300 font-semibold flex items-center gap-1">
+                  <Bookmark className="w-3 h-3 text-blue-400" />
                   CS300M (CSE Minor) Active
                 </span>
               </>
@@ -783,20 +783,20 @@ export default function App() {
           .map((ann) => (
             <div
               key={ann.id}
-              className="mb-4 p-4 rounded-2xl bg-gradient-to-r from-blue-900/30 via-slate-900 to-indigo-950/40 border border-blue-500/30 flex items-start justify-between gap-3 shadow-md animate-in fade-in slide-in-from-top-2 duration-300"
+              className="mb-4 p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-start justify-between gap-3 shadow-xs animate-in fade-in slide-in-from-top-2 duration-300"
             >
               <div className="flex items-start gap-3 min-w-0">
-                <div className="w-8 h-8 rounded-xl bg-blue-500/20 border border-blue-500/30 text-blue-300 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-300 flex items-center justify-center shrink-0 mt-0.5">
                   <Bell className="w-4 h-4 text-blue-400" />
                 </div>
                 <div className="min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-[10px] uppercase font-black tracking-wider px-2 py-0.5 rounded-md bg-blue-500 text-white shadow-xs">
+                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-blue-600 text-white shadow-xs">
                       Official Notice
                     </span>
-                    <h4 className="text-sm font-bold text-blue-100">{ann.title}</h4>
+                    <h4 className="text-sm font-bold text-slate-100">{ann.title}</h4>
                   </div>
-                  <p className="text-xs text-slate-200 mt-1 leading-relaxed whitespace-pre-line">{ann.content}</p>
+                  <p className="text-xs text-slate-300 mt-1 leading-relaxed whitespace-pre-line">{ann.content}</p>
                   <span className="text-[10px] text-slate-400 mt-1.5 block">
                     Posted by <strong className="text-slate-300">{ann.author}</strong> • Real-time Institute Broadcast
                   </span>
@@ -1128,17 +1128,17 @@ export default function App() {
           {/* Credits & Official Disclaimer Strip (Responsive Mobile-First) */}
           <div className="pt-5 border-t border-slate-800/80 flex flex-col gap-3.5 w-full">
             {/* Unofficial Disclaimer & Correction Email Alert Card */}
-            <div className="w-full bg-blue-950/40 border border-blue-500/25 rounded-2xl p-4 sm:p-4.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 shadow-sm">
+            <div className="w-full bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-4.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 shadow-xs">
               <div className="flex items-start gap-3 min-w-0">
-                <div className="w-8 h-8 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 text-blue-400">
+                <div className="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-500/30 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 text-blue-400">
                   <AlertTriangle className="w-4 h-4" />
                 </div>
                 <div className="min-w-0">
                   <div className="flex items-center gap-1.5 flex-wrap">
-                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30">
+                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-blue-500/20 text-blue-300 border border-blue-500/30">
                       Notice
                     </span>
-                    <span className="text-xs sm:text-sm font-bold text-blue-200">
+                    <span className="text-xs sm:text-sm font-bold text-slate-200">
                       Independent Student Project for NIT Goa
                     </span>
                   </div>

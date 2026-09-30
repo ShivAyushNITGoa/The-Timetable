@@ -13,7 +13,6 @@ import {
   PlusSquare,
   Monitor,
   HardDrive,
-  Sparkles,
 } from 'lucide-react';
 import { BrandIcon } from './BrandLogo';
 import { usePWAInstall } from '../hooks/usePWAInstall';
@@ -61,25 +60,25 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
       aria-labelledby="pwa-modal-title"
     >
       <div
-        className="bg-slate-900 border border-slate-700/80 rounded-3xl max-w-xl w-full p-4 sm:p-6 sm:p-7 shadow-2xl space-y-4 sm:space-y-5 animate-in fade-in zoom-in-95 duration-200 text-slate-100 max-h-[92vh] overflow-y-auto scrollbar-thin"
+        className="bg-slate-900 border border-slate-700/80 rounded-lg max-w-xl w-full p-4 sm:p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150 text-slate-100 max-h-[92vh] overflow-y-auto scrollbar-thin"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header with Brand & Close Button */}
-        <div className="flex items-start justify-between gap-3 pb-4 border-b border-slate-800">
+        <div className="flex items-start justify-between gap-3 pb-3.5 border-b border-slate-800">
           <div className="flex items-center gap-3">
-            <BrandIcon size={44} className="rounded-2xl shadow-md ring-1 ring-white/10 shrink-0" />
+            <BrandIcon size={40} className="rounded-lg shadow-xs ring-1 ring-white/10 shrink-0" />
             <div>
               <div className="flex items-center gap-2 mb-1 flex-wrap">
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 flex items-center gap-1">
-                  <Sparkles className="w-3 h-3 text-cyan-400" />
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-blue-900/30 text-blue-300 border border-blue-500/30 flex items-center gap-1">
+                  <Download className="w-3 h-3 text-blue-400" />
                   Progressive Web App (PWA)
                 </span>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1">
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1">
                   <ShieldCheck className="w-3 h-3 text-emerald-400" />
                   100% Offline
                 </span>
               </div>
-              <h2 id="pwa-modal-title" className="text-base sm:text-xl font-extrabold text-white tracking-tight">
+              <h2 id="pwa-modal-title" className="text-base sm:text-lg font-bold text-white tracking-tight">
                 Install NIT Goa Timetable Locally
               </h2>
               <p className="text-xs text-slate-400 mt-0.5 leading-normal">
@@ -91,7 +90,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="w-10 h-10 min-h-[44px] min-w-[44px] rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition shrink-0 active:scale-95 cursor-pointer"
+            className="w-10 h-10 min-h-[44px] min-w-[44px] rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition shrink-0 active:scale-95 cursor-pointer"
             aria-label="Close dialog"
           >
             <X className="w-5 h-5" />
@@ -99,31 +98,31 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
         </div>
 
         {/* What is a PWA? Informational Card */}
-        <div className="p-4 rounded-2xl bg-gradient-to-r from-cyan-950/40 via-slate-800/60 to-slate-900 border border-cyan-500/30 space-y-2">
-          <div className="flex items-center gap-2 text-cyan-300 font-bold text-xs">
-            <Info className="w-4 h-4 text-cyan-400 shrink-0" />
+        <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
+          <div className="flex items-center gap-2 text-blue-300 font-bold text-xs">
+            <Info className="w-4 h-4 text-blue-400 shrink-0" />
             <span>What is a Progressive Web App?</span>
           </div>
           <p className="text-xs text-slate-300 leading-relaxed">
             This app is built as a certified <strong className="text-white">Progressive Web App (PWA)</strong>. It combines the versatility of the web with the high performance and standalone experience of a native application. It does not require downloading from the Google Play Store or Apple App Store.
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
-            <div className="p-2 rounded-xl bg-slate-800/80 border border-slate-700/60 text-center">
+            <div className="p-2 rounded-lg bg-slate-800/80 border border-slate-700/60 text-center">
               <Zap className="w-4 h-4 text-blue-400 mx-auto mb-1" />
               <span className="block text-[11px] font-bold text-white">Instant Launch</span>
               <span className="text-[9px] text-slate-400">Zero loading delay</span>
             </div>
-            <div className="p-2 rounded-xl bg-slate-800/80 border border-slate-700/60 text-center">
+            <div className="p-2 rounded-lg bg-slate-800/80 border border-slate-700/60 text-center">
               <WifiOff className="w-4 h-4 text-emerald-400 mx-auto mb-1" />
               <span className="block text-[11px] font-bold text-white">Works Offline</span>
               <span className="text-[9px] text-slate-400">No internet required</span>
             </div>
-            <div className="p-2 rounded-xl bg-slate-800/80 border border-slate-700/60 text-center">
+            <div className="p-2 rounded-lg bg-slate-800/80 border border-slate-700/60 text-center">
               <HardDrive className="w-4 h-4 text-cyan-400 mx-auto mb-1" />
               <span className="block text-[11px] font-bold text-white">Local Storage</span>
               <span className="text-[9px] text-slate-400">Private on your device</span>
             </div>
-            <div className="p-2 rounded-xl bg-slate-800/80 border border-slate-700/60 text-center">
+            <div className="p-2 rounded-lg bg-slate-800/80 border border-slate-700/60 text-center">
               <Monitor className="w-4 h-4 text-indigo-400 mx-auto mb-1" />
               <span className="block text-[11px] font-bold text-white">No Address Bar</span>
               <span className="text-[9px] text-slate-400">Clean fullscreen app</span>
@@ -133,9 +132,9 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
 
         {/* 1-Click Install Button (When Supported by Browser) */}
         {isInstallable && !isStandalone && (
-          <div className="p-4 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
+              <div className="w-9 h-9 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
                 <Download className="w-4 h-4" />
               </div>
               <div>
@@ -146,7 +145,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
             <button
               type="button"
               onClick={handleInstallClick}
-              className="w-full sm:w-auto min-h-[42px] px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition active:scale-95 shadow-md shadow-blue-600/20"
+              className="w-full sm:w-auto min-h-[40px] px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition active:scale-95 shadow-xs"
             >
               {installSuccess ? (
                 <>
@@ -165,7 +164,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
 
         {/* Standalone Status Indicator */}
         {isStandalone && (
-          <div className="p-3.5 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center gap-3 text-emerald-300 text-xs font-semibold">
+          <div className="p-3.5 rounded-xl bg-slate-900 border border-emerald-500/30 flex items-center gap-3 text-emerald-300 text-xs font-semibold">
             <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
             <span>You are currently running this app as an installed standalone Progressive Web App!</span>
           </div>
@@ -198,7 +197,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
               id="pwa-device-selector"
               role="tablist"
               aria-label="Device platforms for local installation guide"
-              className="grid grid-cols-3 gap-1 p-1 bg-slate-800/95 rounded-2xl border border-slate-700/80 w-full sm:w-auto shadow-inner"
+              className="grid grid-cols-3 gap-1 p-1 bg-slate-900 rounded-lg border border-slate-800 w-full sm:w-auto shadow-inner"
             >
               <button
                 type="button"
@@ -259,7 +258,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
               id="pwa-guide-android"
               role="tabpanel"
               aria-labelledby="pwa-tab-android"
-              className="p-4 rounded-2xl bg-slate-800/60 border border-slate-700/70 space-y-2.5 text-xs text-slate-300 animate-in fade-in duration-150"
+              className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2.5 text-xs text-slate-300 animate-in fade-in duration-150"
             >
               <div className="font-bold text-white flex items-center gap-1.5">
                 <Smartphone className="w-4 h-4 text-emerald-400 shrink-0" />
@@ -288,7 +287,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
               id="pwa-guide-ios"
               role="tabpanel"
               aria-labelledby="pwa-tab-ios"
-              className="p-4 rounded-2xl bg-slate-800/60 border border-slate-700/70 space-y-2.5 text-xs text-slate-300 animate-in fade-in duration-150"
+              className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2.5 text-xs text-slate-300 animate-in fade-in duration-150"
             >
               <div className="font-bold text-white flex items-center gap-1.5">
                 <Share className="w-4 h-4 text-cyan-400 shrink-0" />
@@ -317,7 +316,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
               id="pwa-guide-desktop"
               role="tabpanel"
               aria-labelledby="pwa-tab-desktop"
-              className="p-4 rounded-2xl bg-slate-800/60 border border-slate-700/70 space-y-2.5 text-xs text-slate-300 animate-in fade-in duration-150"
+              className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2.5 text-xs text-slate-300 animate-in fade-in duration-150"
             >
               <div className="font-bold text-white flex items-center gap-1.5">
                 <Laptop className="w-4 h-4 text-blue-400 shrink-0" />

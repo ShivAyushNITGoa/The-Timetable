@@ -2,20 +2,15 @@ import { useState, useEffect } from 'react';
 
 export type AppTheme = 
   | 'sapphire' 
-  | 'indigo' 
-  | 'emerald' 
-  | 'cyan' 
-  | 'amber' 
-  | 'crimson' 
-  | 'amethyst' 
-  | 'titanium';
+  | 'slate' 
+  | 'crimson';
 
 export type AppearanceMode = 'slate' | 'oled' | 'light';
 
 export interface ThemeConfig {
   id: AppTheme;
   name: string;
-  category: 'Collegiate' | 'Tech' | 'Natural' | 'Executive';
+  institution: string;
   description: string;
   primaryColor: string;
   secondaryColor: string;
@@ -26,139 +21,80 @@ export interface ThemeConfig {
   textClass: string;
 }
 
+/**
+ * 3 Curated Academic Standards:
+ * Minimal, high-legibility institutional colors for higher education
+ */
 export const APP_THEMES: ThemeConfig[] = [
   {
     id: 'sapphire',
-    name: 'NIT Goa Sapphire',
-    category: 'Collegiate',
-    description: 'Collegiate sapphire blue & deep navy — crisp, authoritative & official',
+    name: 'NIT Goa Navy',
+    institution: 'Collegiate Navy & Royal Blue',
+    description: 'Official institute navy — authoritative, high-contrast, structured and distraction-free',
     primaryColor: '#2563eb',
     secondaryColor: '#1d4ed8',
     accentBadge: 'bg-blue-600',
-    previewClass: 'from-blue-600 to-indigo-700',
+    previewClass: 'from-blue-700 to-slate-900',
     borderClass: 'border-blue-500/30',
     bgLightClass: 'bg-blue-600/10',
     textClass: 'text-blue-400',
   },
   {
-    id: 'indigo',
-    name: 'Electric Indigo',
-    category: 'Tech',
-    description: 'High-tech violet & indigo — modern engineering & futuristic design',
-    primaryColor: '#4f46e5',
-    secondaryColor: '#4338ca',
-    accentBadge: 'bg-indigo-600',
-    previewClass: 'from-indigo-600 to-violet-700',
-    borderClass: 'border-indigo-500/30',
-    bgLightClass: 'bg-indigo-600/10',
-    textClass: 'text-indigo-400',
-  },
-  {
-    id: 'emerald',
-    name: 'Academic Emerald',
-    category: 'Natural',
-    description: 'Botanical collegiate emerald & forest slate — focused & harmonious',
-    primaryColor: '#059669',
-    secondaryColor: '#047857',
-    accentBadge: 'bg-emerald-600',
-    previewClass: 'from-emerald-600 to-teal-700',
-    borderClass: 'border-emerald-500/30',
-    bgLightClass: 'bg-emerald-600/10',
-    textClass: 'text-emerald-400',
-  },
-  {
-    id: 'cyan',
-    name: 'Oceanic Cyan',
-    category: 'Tech',
-    description: 'Vibrant Goa coastal cyan & marine teal — clean, breezy & high contrast',
-    primaryColor: '#0891b2',
-    secondaryColor: '#0e7490',
-    accentBadge: 'bg-cyan-600',
-    previewClass: 'from-cyan-500 to-blue-600',
-    borderClass: 'border-cyan-500/30',
-    bgLightClass: 'bg-cyan-600/10',
-    textClass: 'text-cyan-400',
-  },
-  {
-    id: 'amber',
-    name: 'Golden Amber',
-    category: 'Collegiate',
-    description: 'Warm harvest bronze & solar amber — energetic, prestigious & inviting',
-    primaryColor: '#d97706',
-    secondaryColor: '#b45309',
-    accentBadge: 'bg-amber-600',
-    previewClass: 'from-amber-500 to-orange-600',
-    borderClass: 'border-amber-500/30',
-    bgLightClass: 'bg-amber-600/10',
-    textClass: 'text-amber-400',
-  },
-  {
-    id: 'crimson',
-    name: 'Obsidian Crimson',
-    category: 'Collegiate',
-    description: 'Distinguished cardinal red & velvet ruby — bold, executive & regal',
-    primaryColor: '#dc2626',
-    secondaryColor: '#b91c1c',
-    accentBadge: 'bg-rose-600',
-    previewClass: 'from-rose-600 to-red-700',
-    borderClass: 'border-rose-500/30',
-    bgLightClass: 'bg-rose-600/10',
-    textClass: 'text-rose-400',
-  },
-  {
-    id: 'amethyst',
-    name: 'Royal Amethyst',
-    category: 'Tech',
-    description: 'Deep scholar purple & ultraviolet — creative, sleek & distinguished',
-    primaryColor: '#7c3aed',
-    secondaryColor: '#6d28d9',
-    accentBadge: 'bg-purple-600',
-    previewClass: 'from-purple-600 to-fuchsia-700',
-    borderClass: 'border-purple-500/30',
-    bgLightClass: 'bg-purple-600/10',
-    textClass: 'text-purple-400',
-  },
-  {
-    id: 'titanium',
-    name: 'Executive Titanium',
-    category: 'Executive',
-    description: 'Precision monochrome steel & obsidian slate — distraction-free minimalism',
+    id: 'slate',
+    name: 'Cambridge Slate',
+    institution: 'Scholarly Steel & Graphite',
+    description: 'Calm monochrome steel — optimized for long study sessions, catalog reading and reading comfort',
     primaryColor: '#64748b',
     secondaryColor: '#475569',
     accentBadge: 'bg-slate-600',
-    previewClass: 'from-slate-600 to-zinc-700',
+    previewClass: 'from-slate-600 to-zinc-800',
     borderClass: 'border-slate-500/30',
     bgLightClass: 'bg-slate-600/10',
     textClass: 'text-slate-300',
+  },
+  {
+    id: 'crimson',
+    name: 'Oxford Burgundy',
+    institution: 'Traditional University Wine',
+    description: 'Distinguished collegiate wine & deep cardinal — classic academic heritage and focus',
+    primaryColor: '#b91c1c',
+    secondaryColor: '#991b1b',
+    accentBadge: 'bg-rose-700',
+    previewClass: 'from-red-800 to-rose-950',
+    borderClass: 'border-rose-500/30',
+    bgLightClass: 'bg-rose-600/10',
+    textClass: 'text-rose-400',
   },
 ];
 
 const THEME_STORAGE_KEY = 'nit_goa_app_theme';
 const MODE_STORAGE_KEY = 'nit_goa_appearance_mode';
 
-const VALID_THEMES = new Set<AppTheme>([
-  'sapphire',
-  'indigo',
-  'emerald',
-  'cyan',
-  'amber',
-  'crimson',
-  'amethyst',
-  'titanium',
-]);
+const THEME_FALLBACK_MAP: Record<string, AppTheme> = {
+  sapphire: 'sapphire',
+  slate: 'slate',
+  crimson: 'crimson',
+  // Graceful migration mappings
+  emerald: 'slate',
+  titanium: 'slate',
+  indigo: 'sapphire',
+  cyan: 'sapphire',
+  amber: 'crimson',
+  amethyst: 'sapphire',
+};
 
 const VALID_MODES = new Set<AppearanceMode>(['slate', 'oled', 'light']);
 
 export function getActiveTheme(): AppTheme {
   try {
-    const saved = localStorage.getItem(THEME_STORAGE_KEY) as AppTheme;
-    if (saved && VALID_THEMES.has(saved)) {
-      return saved;
+    const saved = localStorage.getItem(THEME_STORAGE_KEY);
+    if (saved && THEME_FALLBACK_MAP[saved]) {
+      return THEME_FALLBACK_MAP[saved];
     }
   } catch (e) {
     console.error('Error reading theme from storage:', e);
   }
-  return 'sapphire'; // Default professional theme
+  return 'sapphire'; // Default professional NIT Goa theme
 }
 
 export function getAppearanceMode(): AppearanceMode {
