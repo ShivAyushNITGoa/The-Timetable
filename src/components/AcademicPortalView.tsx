@@ -28,6 +28,7 @@ import {
   RotateCcw,
   SlidersHorizontal,
   Award,
+  GraduationCap,
   HardDrive,
   Download,
   Upload,
@@ -298,7 +299,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
               onClick={() => handleSubTabChange('faculty')}
               className={`min-h-[40px] sm:min-h-0 px-3.5 py-2 sm:py-1.5 text-xs font-semibold rounded-lg transition flex items-center gap-1.5 whitespace-nowrap active:scale-95 ${
                 activeSubTab === 'faculty'
-                  ? 'bg-amber-500 text-slate-950 shadow-xs'
+                  ? 'bg-blue-600 text-white shadow-xs'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -311,7 +312,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
               onClick={() => handleSubTabChange('calculator')}
               className={`min-h-[40px] sm:min-h-0 px-3.5 py-2 sm:py-1.5 text-xs font-semibold rounded-lg transition flex items-center gap-1.5 whitespace-nowrap active:scale-95 ${
                 activeSubTab === 'calculator'
-                  ? 'bg-amber-500 text-slate-950 shadow-xs'
+                  ? 'bg-blue-600 text-white shadow-xs'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -324,7 +325,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
               onClick={() => handleSubTabChange('venues')}
               className={`min-h-[40px] sm:min-h-0 px-3.5 py-2 sm:py-1.5 text-xs font-semibold rounded-lg transition flex items-center gap-1.5 whitespace-nowrap active:scale-95 ${
                 activeSubTab === 'venues'
-                  ? 'bg-amber-500 text-slate-950 shadow-xs'
+                  ? 'bg-blue-600 text-white shadow-xs'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -337,7 +338,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
               onClick={() => handleSubTabChange('ordinances')}
               className={`min-h-[40px] sm:min-h-0 px-3.5 py-2 sm:py-1.5 text-xs font-semibold rounded-lg transition flex items-center gap-1.5 whitespace-nowrap active:scale-95 ${
                 activeSubTab === 'ordinances'
-                  ? 'bg-amber-500 text-slate-950 shadow-xs'
+                  ? 'bg-blue-600 text-white shadow-xs'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -350,17 +351,17 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
               onClick={() => handleSubTabChange('portals')}
               className={`min-h-[40px] sm:min-h-0 px-3.5 py-2 sm:py-1.5 text-xs font-semibold rounded-lg transition flex items-center gap-1.5 whitespace-nowrap active:scale-95 ${
                 activeSubTab === 'portals'
-                  ? 'bg-amber-500 text-slate-950 shadow-xs'
+                  ? 'bg-blue-600 text-white shadow-xs'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
               <Globe className="w-3.5 h-3.5" />
               <span>Student Tools & Portals</span>
               <span
-                className={`text-[10px] font-bold font-mono px-1.5 py-0.2 rounded-full ${
+                className={`text-[10px] font-bold font-mono px-1.5 py-0.2 rounded ${
                   activeSubTab === 'portals'
-                    ? 'bg-slate-950/20 text-slate-950'
-                    : 'bg-amber-500/20 text-amber-300'
+                    ? 'bg-blue-700 text-white'
+                    : 'bg-slate-800 text-slate-300'
                 }`}
               >
                 35+

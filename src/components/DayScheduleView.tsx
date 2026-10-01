@@ -6,6 +6,7 @@ import {
   MapPin,
   User,
   Bookmark,
+  BookOpen,
   AlertCircle,
   Coffee,
   Check,

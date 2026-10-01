@@ -356,9 +356,9 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
             <button
               type="button"
               onClick={() => setActiveTab('slot')}
-              className={`pb-2.5 px-3 text-xs font-bold border-b-2 transition flex items-center gap-1.5 ${
+              className={`pb-2.5 px-3 text-xs font-semibold border-b-2 transition flex items-center gap-1.5 ${
                 activeTab === 'slot'
-                  ? 'border-amber-400 text-amber-300'
+                  ? 'border-blue-500 text-blue-300'
                   : 'border-transparent text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -368,16 +368,16 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
             <button
               type="button"
               onClick={() => setActiveTab('syllabus')}
-              className={`pb-2.5 px-3 text-xs font-bold border-b-2 transition flex items-center gap-1.5 ${
+              className={`pb-2.5 px-3 text-xs font-semibold border-b-2 transition flex items-center gap-1.5 ${
                 activeTab === 'syllabus'
-                  ? 'border-amber-400 text-amber-300'
+                  ? 'border-blue-500 text-blue-300'
                   : 'border-transparent text-slate-400 hover:text-slate-200'
               }`}
             >
               <BookOpen className="w-3.5 h-3.5" />
               <span>2. Course Syllabus & Faculty</span>
               {modules.length > 0 && (
-                <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-slate-800 text-amber-300 font-mono">
+                <span className="text-[10px] px-1.5 py-0.2 rounded bg-slate-800 text-blue-300 font-mono">
                   {modules.length} modules
                 </span>
               )}

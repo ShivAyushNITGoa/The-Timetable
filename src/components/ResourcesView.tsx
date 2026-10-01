@@ -183,17 +183,17 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
           </div>
 
           {/* Quick Stats Pill */}
-          <div className="flex items-center gap-3 bg-slate-950 border border-slate-800 rounded-xl p-4 shrink-0">
+          <div className="flex items-center gap-3 bg-slate-950 border border-slate-800 rounded-lg p-4 shrink-0">
             <div className="text-center px-3 border-r border-slate-800">
-              <div className="text-xl font-black text-amber-400">{NIT_GOA_RESOURCES.length}</div>
+              <div className="text-xl font-bold text-blue-400">{NIT_GOA_RESOURCES.length}</div>
               <div className="text-[10px] text-slate-400 uppercase font-semibold">Institute Docs</div>
             </div>
             <div className="text-center px-3 border-r border-slate-800">
-              <div className="text-xl font-black text-emerald-400">{classifiedDocs.length}</div>
+              <div className="text-xl font-bold text-emerald-400">{classifiedDocs.length}</div>
               <div className="text-[10px] text-slate-400 uppercase font-semibold">Classified Forms</div>
             </div>
             <div className="text-center px-3">
-              <div className="text-xl font-black text-cyan-400">5</div>
+              <div className="text-xl font-bold text-slate-200">5</div>
               <div className="text-[10px] text-slate-400 uppercase font-semibold">B.Tech Depts</div>
             </div>
           </div>
@@ -201,7 +201,7 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
       </div>
 
       {/* Primary Section Switcher: Authentic Institute Files vs. Classify My Webapp Data vs External Tools */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-2 sm:p-2.5 flex flex-col md:flex-row items-stretch gap-2 shadow-xs">
+      <div className="bg-slate-900 border border-slate-800 rounded-lg p-2 sm:p-2.5 flex flex-col md:flex-row items-stretch gap-2 shadow-xs">
         <button
           type="button"
           onClick={() => setViewMode('institute')}
@@ -288,9 +288,9 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
 
             {/* Quick Live KPI Badges */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-              <div className="bg-slate-950/60 border border-slate-800 rounded-xl p-3">
+              <div className="bg-slate-950/60 border border-slate-800 rounded-lg p-3">
                 <div className="text-[11px] text-slate-400 font-semibold uppercase">Overall Attendance</div>
-                <div className="text-lg font-black text-amber-400 mt-0.5 flex items-center gap-1.5">
+                <div className="text-lg font-bold text-amber-400 mt-0.5 flex items-center gap-1.5">
                   <span>{webappStats.attendancePct}%</span>
                   {Number(webappStats.attendancePct) >= 75 ? (
                     <span className="text-[10px] text-emerald-400 font-normal">Eligible</span>
@@ -303,9 +303,9 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                 </div>
               </div>
 
-              <div className="bg-slate-950/60 border border-slate-800 rounded-xl p-3">
+              <div className="bg-slate-950/60 border border-slate-800 rounded-lg p-3">
                 <div className="text-[11px] text-slate-400 font-semibold uppercase">Enrolled Courses</div>
-                <div className="text-lg font-black text-white mt-0.5">
+                <div className="text-lg font-bold text-white mt-0.5">
                   {webappStats.courseCount} Subjects
                 </div>
                 <div className="text-[10px] text-slate-500 mt-0.5">
@@ -313,9 +313,9 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                 </div>
               </div>
 
-              <div className="bg-slate-950/60 border border-slate-800 rounded-xl p-3">
+              <div className="bg-slate-950/60 border border-slate-800 rounded-lg p-3">
                 <div className="text-[11px] text-slate-400 font-semibold uppercase">Scheduled Tests</div>
-                <div className="text-lg font-black text-cyan-400 mt-0.5">
+                <div className="text-lg font-bold text-blue-400 mt-0.5">
                   {webappStats.testCount} Evaluations
                 </div>
                 <div className="text-[10px] text-slate-500 mt-0.5">
@@ -323,7 +323,7 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                 </div>
               </div>
 
-              <div className="bg-slate-950/60 border border-slate-800 rounded-xl p-3">
+              <div className="bg-slate-950/60 border border-slate-800 rounded-lg p-3">
                 <div className="text-[11px] text-slate-400 font-semibold uppercase">Candidate Profile</div>
                 <div className="text-sm font-bold text-slate-200 mt-0.5 truncate">
                   {safeProfile.studentName || 'B.Tech Student'}
@@ -440,18 +440,18 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                   <button
                     type="button"
                     onClick={() => setActiveDocument(activeBranchDoc)}
-                    className="p-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-amber-500/50 text-left transition group flex items-center justify-between"
+                    className="p-3 rounded-lg bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-blue-500/50 text-left transition group flex items-center justify-between"
                   >
                     <div className="flex items-center gap-3 min-w-0">
-                      <Calendar className="w-4 h-4 text-amber-400 shrink-0" />
+                      <Calendar className="w-4 h-4 text-blue-400 shrink-0" />
                       <div className="truncate">
-                        <div className="text-xs font-bold text-slate-200 group-hover:text-amber-300 truncate">
+                        <div className="text-xs font-semibold text-slate-200 group-hover:text-blue-300 truncate">
                           {activeBranchDoc.shortTitle}
                         </div>
                         <div className="text-[11px] text-slate-400 truncate">Official Class Timetable</div>
                       </div>
                     </div>
-                    <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-amber-400 shrink-0 ml-2" />
+                    <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-blue-400 shrink-0 ml-2" />
                   </button>
                 )}
 
@@ -459,18 +459,18 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                   <button
                     type="button"
                     onClick={() => setActiveDocument(activeSyllabusDoc)}
-                    className="p-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-amber-500/50 text-left transition group flex items-center justify-between"
+                    className="p-3 rounded-lg bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-blue-500/50 text-left transition group flex items-center justify-between"
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       <BookOpen className="w-4 h-4 text-emerald-400 shrink-0" />
                       <div className="truncate">
-                        <div className="text-xs font-bold text-slate-200 group-hover:text-emerald-300 truncate">
+                        <div className="text-xs font-semibold text-slate-200 group-hover:text-blue-300 truncate">
                           {activeSyllabusDoc.shortTitle}
                         </div>
                         <div className="text-[11px] text-slate-400 truncate">Complete Syllabus Book</div>
                       </div>
                     </div>
-                    <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-emerald-400 shrink-0 ml-2" />
+                    <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-blue-400 shrink-0 ml-2" />
                   </button>
                 )}
 
@@ -478,18 +478,18 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                   <button
                     type="button"
                     onClick={() => setActiveDocument(activeSchemeDoc)}
-                    className="p-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-amber-500/50 text-left transition group flex items-center justify-between"
+                    className="p-3 rounded-lg bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-blue-500/50 text-left transition group flex items-center justify-between"
                   >
                     <div className="flex items-center gap-3 min-w-0">
-                      <Layers className="w-4 h-4 text-cyan-400 shrink-0" />
+                      <Layers className="w-4 h-4 text-blue-400 shrink-0" />
                       <div className="truncate">
-                        <div className="text-xs font-bold text-slate-200 group-hover:text-cyan-300 truncate">
+                        <div className="text-xs font-semibold text-slate-200 group-hover:text-blue-300 truncate">
                           {activeSchemeDoc.shortTitle}
                         </div>
                         <div className="text-[11px] text-slate-400 truncate">Curriculum Scheme & Credits</div>
                       </div>
                     </div>
-                    <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 shrink-0 ml-2" />
+                    <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-blue-400 shrink-0 ml-2" />
                   </button>
                 )}
               </div>
@@ -526,7 +526,6 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                   pdfUrl: '/syllabi/EEE2025.pdf',
                   docId: 'syl-eee-official-2025',
                   officialUrl: 'https://nitgoa.ac.in/uploads/EEE2025.pdf',
-                  color: 'from-amber-500/20 to-amber-600/10 border-amber-500/40 text-amber-300',
                 },
                 {
                   code: 'ECE',
@@ -535,7 +534,6 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                   pdfUrl: '/syllabi/ECE2025.pdf',
                   docId: 'syl-ece-official-2025',
                   officialUrl: 'https://nitgoa.ac.in/uploads/ECE2025.pdf',
-                  color: 'from-indigo-500/20 to-indigo-600/10 border-indigo-500/40 text-indigo-300',
                 },
                 {
                   code: 'CSE',
@@ -544,7 +542,6 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                   pdfUrl: '/syllabi/CSE2025.pdf',
                   docId: 'syl-cse-official-2025',
                   officialUrl: 'https://nitgoa.ac.in/uploads/CSE2025.pdf',
-                  color: 'from-cyan-500/20 to-cyan-600/10 border-cyan-500/40 text-cyan-300',
                 },
                 {
                   code: 'ME / MCE',
@@ -553,7 +550,6 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                   pdfUrl: '/syllabi/MCE2025.pdf',
                   docId: 'syl-me-official-2025',
                   officialUrl: 'https://nitgoa.ac.in/uploads/MCE2025.pdf',
-                  color: 'from-rose-500/20 to-rose-600/10 border-rose-500/40 text-rose-300',
                 },
                 {
                   code: 'CVE',
@@ -562,19 +558,18 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                   pdfUrl: '/syllabi/CVE2025.pdf',
                   docId: 'syl-cve-official-2025',
                   officialUrl: 'https://nitgoa.ac.in/uploads/CVE2025.pdf',
-                  color: 'from-emerald-500/20 to-emerald-600/10 border-emerald-500/40 text-emerald-300',
                 },
               ].map((item) => {
                 const targetDoc = NIT_GOA_RESOURCES.find((d) => d.id === item.docId);
                 return (
                   <div
                     key={item.code}
-                    className={`p-3.5 rounded-xl bg-gradient-to-b ${item.color} border flex flex-col justify-between space-y-3`}
+                    className="p-3.5 rounded-lg bg-slate-800/80 border border-slate-700 hover:border-slate-600 transition flex flex-col justify-between space-y-3"
                   >
                     <div>
                       <div className="flex items-center justify-between">
-                        <span className="font-black text-sm tracking-wide text-white">{item.code}</span>
-                        <span className="text-[10px] font-semibold uppercase px-1.5 py-0.5 rounded bg-slate-950/60 text-slate-300">
+                        <span className="font-bold text-sm tracking-wide text-blue-400">{item.code}</span>
+                        <span className="text-[10px] font-semibold uppercase px-1.5 py-0.5 rounded bg-slate-900 text-slate-300 border border-slate-700">
                           2025
                         </span>
                       </div>
@@ -593,7 +588,7 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                             window.open(item.pdfUrl, '_blank');
                           }
                         }}
-                        className="w-full py-1.5 px-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-[11px] flex items-center justify-center gap-1 transition active:scale-95 shadow-xs"
+                        className="w-full py-1.5 px-2 rounded-md bg-blue-600 hover:bg-blue-500 text-white font-semibold text-[11px] flex items-center justify-center gap-1 transition active:scale-95 shadow-xs"
                       >
                         <Eye className="w-3.5 h-3.5" />
                         <span>Read PDF</span>
@@ -777,7 +772,7 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                   icon: BookOpen,
                 },
                 curriculum: {
-                  badge: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/30',
+                  badge: 'bg-blue-500/10 text-blue-300 border-blue-500/30',
                   text: 'Curriculum Scheme',
                   icon: Layers,
                 },

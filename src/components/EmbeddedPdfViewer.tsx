@@ -408,7 +408,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
               <span className="text-xs sm:text-sm font-bold text-white truncate max-w-[180px] sm:max-w-md">
                 {title}
               </span>
-              <span className="hidden sm:inline-block text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-slate-800 text-blue-300 border border-slate-700">
+              <span className="hidden sm:inline-block text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-slate-800 text-blue-300 border border-slate-700">
                 Official PDF
               </span>
             </div>
@@ -580,7 +580,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
                   setShowSearch(true);
                   handleSearch();
                 }}
-                className="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 text-[11px] font-medium whitespace-nowrap transition shrink-0"
+                className="px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 text-[11px] font-medium whitespace-nowrap transition shrink-0"
                 title={mod}
               >
                 {modLabel}

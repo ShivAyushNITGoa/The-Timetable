@@ -12,6 +12,7 @@ import {
   Calendar,
   Grid,
   BookOpen,
+  GraduationCap,
   CheckSquare,
   Award,
   ArrowRight,

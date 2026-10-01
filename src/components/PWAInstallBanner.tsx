@@ -93,7 +93,7 @@ export const PWAInstallBanner: React.FC = () => {
       {/* iOS or Manual Instructions Modal */}
       {showIOSPrompt && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-xs">
-          <div className="bg-slate-900 border border-slate-700 rounded-xl max-w-sm w-full p-6 text-slate-200 relative shadow-2xl">
+          <div className="bg-slate-900 border border-slate-700 rounded-lg max-w-sm w-full p-6 text-slate-200 relative shadow-2xl">
             <button
               onClick={() => setShowIOSPrompt(false)}
               className="absolute top-4 right-4 text-slate-400 hover:text-white"
@@ -102,7 +102,7 @@ export const PWAInstallBanner: React.FC = () => {
             </button>
 
             <div className="mb-4 flex justify-center">
-              <BrandIcon size={64} className="rounded-xl shadow-lg shadow-blue-500/20" />
+              <BrandIcon size={64} className="rounded-lg shadow-md" />
             </div>
 
             <h3 className="text-lg font-bold text-center text-white mb-2">
@@ -112,7 +112,7 @@ export const PWAInstallBanner: React.FC = () => {
               Access your official NIT Goa timetable instantly, even when completely offline in lecture halls.
             </p>
 
-            <div className="space-y-3 text-xs bg-slate-800/60 p-4 rounded-xl border border-slate-800">
+            <div className="space-y-3 text-xs bg-slate-800/60 p-4 rounded-lg border border-slate-800">
               <div className="flex items-center gap-3">
                 <div className="w-6 h-6 rounded-full bg-slate-700 flex items-center justify-center font-bold text-blue-400 shrink-0">
                   1
@@ -141,7 +141,7 @@ export const PWAInstallBanner: React.FC = () => {
 
             <button
               onClick={() => setShowIOSPrompt(false)}
-              className="w-full mt-5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs rounded-xl border border-slate-700 transition"
+              className="w-full mt-5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs rounded-lg border border-slate-700 transition"
             >
               Got it
             </button>

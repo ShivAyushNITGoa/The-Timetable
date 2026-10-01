@@ -650,14 +650,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                   data-tab={tab.id}
                   type="button"
                   onClick={() => setActiveTab(tab.id)}
-                  className={`min-h-[40px] px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 whitespace-nowrap transition-all duration-150 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 shrink-0 select-none ${
+                  className={`min-h-[40px] px-3.5 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 whitespace-nowrap transition-all duration-150 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 shrink-0 select-none ${
                     isActive
-                      ? 'text-white font-bold shadow-md'
+                      ? 'text-white font-bold shadow-xs'
                       : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/70'
                   }`}
                   style={{
                     backgroundColor: isActive ? themeConfig.primaryColor : undefined,
-                    boxShadow: isActive ? `0 4px 14px 0 ${themeConfig.primaryColor}40` : undefined,
                   }}
                 >
                   <Icon className={`w-4 h-4 shrink-0 transition-transform ${isActive ? 'scale-110' : ''}`} />
@@ -667,7 +666,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                   {tab.badge !== undefined && tab.badge > 0 && (
                     <span
-                      className={`text-[10px] px-1.5 py-0.2 rounded-full font-black leading-tight ${
+                      className={`text-[10px] px-1.5 py-0.2 rounded font-black leading-tight ${
                         isActive
                           ? 'bg-slate-900 text-white'
                           : 'bg-rose-500 text-white'
