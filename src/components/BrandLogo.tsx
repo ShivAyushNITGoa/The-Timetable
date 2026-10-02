@@ -89,30 +89,21 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   showText = true,
   subtitle,
 }) => {
-  const [logoError, setLogoError] = useState(false);
-
   if (!showText) {
     return <BrandIcon size={iconSize} className={className} />;
   }
 
   return (
     <div
-      className={`inline-flex flex-wrap sm:flex-nowrap items-center justify-center sm:justify-start gap-2 sm:gap-2.5 select-none max-w-full ${className}`}
+      className={`inline-flex flex-wrap sm:flex-nowrap items-center justify-center sm:justify-start gap-2 select-none max-w-full ${className}`}
     >
-      <img
-        src={logoError ? '/logo.png?v=2' : '/logo.svg?v=2'}
-        alt="The GDevelopers"
-        style={{ height: `${iconSize}px`, width: 'auto' }}
-        className="object-contain shrink-0 max-h-[36px] sm:max-h-[44px] max-w-[170px] sm:max-w-[220px] w-auto"
-        onError={() => {
-          if (!logoError) {
-            setLogoError(true);
-          }
-        }}
-        referrerPolicy="no-referrer"
-      />
+      <BrandIconSvg size={iconSize} rounded={true} />
+      <div className="flex items-center gap-1 text-slate-900 tracking-tight leading-none select-none font-bold text-base sm:text-lg">
+        <span className="text-[#b0b91a]">The</span>
+        <span className="text-slate-900 font-black">GDevelopers</span>
+      </div>
       {subtitle && (
-        <span className="text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700/60 text-center max-w-full break-words">
+        <span className="text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 border border-slate-200 text-center max-w-full break-words shadow-2xs">
           {subtitle}
         </span>
       )}

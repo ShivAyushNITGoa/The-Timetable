@@ -88,11 +88,25 @@ export const ThemeSelectorModal: React.FC<ThemeSelectorModalProps> = ({
           <div className="grid grid-cols-3 gap-2">
             <button
               type="button"
+              onClick={() => changeMode('light')}
+              className={`p-2.5 rounded-md border flex flex-col items-center gap-1 transition active:scale-98 ${
+                mode === 'light'
+                  ? 'bg-blue-50 border-blue-400 text-blue-900 shadow-xs'
+                  : 'bg-slate-800/40 border-slate-700/60 text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <Sun className="w-4 h-4 text-amber-500" />
+              <span className="text-xs font-semibold">Academic Light</span>
+              <span className="text-[10px] text-slate-500 hidden sm:inline">Professional</span>
+            </button>
+
+            <button
+              type="button"
               onClick={() => changeMode('slate')}
               className={`p-2.5 rounded-md border flex flex-col items-center gap-1 transition active:scale-98 ${
                 mode === 'slate'
                   ? 'bg-slate-800 border-blue-500/50 text-white shadow-xs'
-                  : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:text-slate-200'
+                  : 'bg-slate-800/40 border-slate-700/60 text-slate-400 hover:text-slate-200'
               }`}
             >
               <Moon className="w-4 h-4 text-blue-400" />
@@ -106,26 +120,12 @@ export const ThemeSelectorModal: React.FC<ThemeSelectorModalProps> = ({
               className={`p-2.5 rounded-md border flex flex-col items-center gap-1 transition active:scale-98 ${
                 mode === 'oled'
                   ? 'bg-black border-slate-600 text-white shadow-xs'
-                  : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:text-slate-200'
+                  : 'bg-slate-800/40 border-slate-700/60 text-slate-400 hover:text-slate-200'
               }`}
             >
               <Smartphone className="w-4 h-4 text-slate-300" />
               <span className="text-xs font-semibold">OLED Black</span>
               <span className="text-[10px] text-slate-500 hidden sm:inline">Pure Dark</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => changeMode('light')}
-              className={`p-2.5 rounded-md border flex flex-col items-center gap-1 transition active:scale-98 ${
-                mode === 'light'
-                  ? 'bg-slate-100 border-slate-300 text-slate-900 shadow-xs'
-                  : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              <Sun className="w-4 h-4 text-amber-500" />
-              <span className="text-xs font-semibold">Academic Light</span>
-              <span className="text-[10px] text-slate-500 hidden sm:inline">Classroom</span>
             </button>
           </div>
         </div>

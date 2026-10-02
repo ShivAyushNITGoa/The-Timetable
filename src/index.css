@@ -116,53 +116,320 @@ body::before {
   background-color: #0f0f10 !important;
 }
 
+/* =========================================================================
+   Academic Light Theme (Inspired by hardware-silicon-engineering-tracker.vercel.app)
+   Professional, high-contrast, scholarly and clean with subtle borders
+   ========================================================================= */
+
 [data-mode="light"] {
   color-scheme: light;
+  --theme-primary-light: #eff6ff;
+  --theme-primary-border: #bfdbfe;
+  --theme-primary-text: #1d4ed8;
+  --theme-primary-glow: transparent;
 }
 
-[data-mode="light"] body,
-[data-mode="light"] #root,
-[data-mode="light"] .bg-slate-950 {
+[data-mode="light"] body {
   background-color: #f8fafc !important;
   color: #0f172a !important;
 }
 
+[data-mode="light"] body::before {
+  display: none !important;
+}
+
+/* Canvas & Global Backdrops */
+[data-mode="light"] #root,
+[data-mode="light"] .bg-slate-950,
+[data-mode="light"] .bg-slate-950\/95,
+[data-mode="light"] .bg-slate-950\/90,
+[data-mode="light"] .bg-slate-950\/80,
+[data-mode="light"] .bg-slate-950\/70,
+[data-mode="light"] .bg-slate-950\/60,
+[data-mode="light"] .bg-\[\#0a0f1d\] {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+/* Gradients in light mode */
+[data-mode="light"] .bg-gradient-to-b.from-slate-900,
+[data-mode="light"] .from-slate-900.via-slate-950,
+[data-mode="light"] section.bg-gradient-to-b {
+  background-image: linear-gradient(to bottom, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%) !important;
+  background-color: #f8fafc !important;
+}
+
+[data-mode="light"] .bg-gradient-to-r.from-blue-400.via-sky-300.to-indigo-300 {
+  background-image: linear-gradient(to right, #1d4ed8, #2563eb, #4338ca) !important;
+}
+
+[data-mode="light"] .bg-gradient-to-r.from-slate-900 {
+  background-image: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0.8), transparent) !important;
+}
+
+[data-mode="light"] .bg-gradient-to-l.from-slate-900 {
+  background-image: linear-gradient(to left, #ffffff, rgba(255, 255, 255, 0.8), transparent) !important;
+}
+
+/* Primary Cards, Modals, Navbar, and Tables */
 [data-mode="light"] .bg-slate-900,
 [data-mode="light"] .bg-slate-900\/95,
 [data-mode="light"] .bg-slate-900\/90,
-[data-mode="light"] .bg-slate-900\/80 {
+[data-mode="light"] .bg-slate-900\/85,
+[data-mode="light"] .bg-slate-900\/80,
+[data-mode="light"] .bg-slate-900\/70,
+[data-mode="light"] .bg-slate-900\/60,
+[data-mode="light"] .bg-slate-900\/50,
+[data-mode="light"] .bg-slate-900\/40 {
   background-color: #ffffff !important;
   border-color: #e2e8f0 !important;
 }
 
+/* Secondary Panels, Table Headers, Inset Boxes, and Search Bars */
+[data-mode="light"] .bg-slate-850,
 [data-mode="light"] .bg-slate-800,
+[data-mode="light"] .bg-slate-800\/95,
 [data-mode="light"] .bg-slate-800\/90,
 [data-mode="light"] .bg-slate-800\/80,
 [data-mode="light"] .bg-slate-800\/70,
 [data-mode="light"] .bg-slate-800\/60,
-[data-mode="light"] .bg-slate-800\/50 {
+[data-mode="light"] .bg-slate-800\/50,
+[data-mode="light"] .bg-slate-800\/40,
+[data-mode="light"] .bg-slate-800\/30,
+[data-mode="light"] .bg-slate-700\/50,
+[data-mode="light"] .bg-slate-700\/60 {
   background-color: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Hover States on Secondary Items */
+[data-mode="light"] .hover\:bg-slate-800:hover,
+[data-mode="light"] .hover\:bg-slate-800\/70:hover,
+[data-mode="light"] .hover\:bg-slate-800\/60:hover,
+[data-mode="light"] .hover\:bg-slate-750:hover,
+[data-mode="light"] .hover\:bg-slate-700:hover {
+  background-color: #e2e8f0 !important;
+}
+
+/* Sticky Day Matrix Headers & Columns */
+[data-mode="light"] th.bg-slate-800,
+[data-mode="light"] th.bg-slate-800\/90 {
+  background-color: #f1f5f9 !important;
+}
+[data-mode="light"] td.bg-slate-900,
+[data-mode="light"] td.bg-slate-800 {
+  background-color: #ffffff !important;
+}
+
+/* Structural Borders & Dividers */
+[data-mode="light"] .border-slate-800,
+[data-mode="light"] .border-slate-800\/90,
+[data-mode="light"] .border-slate-800\/80,
+[data-mode="light"] .border-slate-800\/60,
+[data-mode="light"] .border-slate-800\/40,
+[data-mode="light"] .border-slate-750,
+[data-mode="light"] .border-slate-700,
+[data-mode="light"] .border-slate-700\/90,
+[data-mode="light"] .border-slate-700\/80,
+[data-mode="light"] .border-slate-700\/70,
+[data-mode="light"] .border-slate-700\/60,
+[data-mode="light"] .border-slate-700\/50,
+[data-mode="light"] .border-slate-600,
+[data-mode="light"] .border-slate-600\/60 {
+  border-color: #e2e8f0 !important;
+}
+
+[data-mode="light"] .hover\:border-slate-700:hover,
+[data-mode="light"] .hover\:border-slate-600:hover {
   border-color: #cbd5e1 !important;
 }
 
+[data-mode="light"] .divide-slate-800 > :not([hidden]) ~ :not([hidden]),
+[data-mode="light"] .divide-slate-700 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #e2e8f0 !important;
+}
+
+/* Typography Hierarchy */
 [data-mode="light"] .text-white {
   color: #0f172a !important;
 }
 
-[data-mode="light"] .text-slate-200,
-[data-mode="light"] .text-slate-300 {
+[data-mode="light"] .text-slate-100 {
+  color: #0f172a !important;
+}
+
+[data-mode="light"] .text-slate-200 {
   color: #1e293b !important;
 }
 
-[data-mode="light"] .text-slate-400 {
-  color: #475569 !important;
+[data-mode="light"] .text-slate-300 {
+  color: #334155 !important;
 }
 
-[data-mode="light"] .border-slate-800,
-[data-mode="light"] .border-slate-700,
-[data-mode="light"] .border-slate-700\/80,
-[data-mode="light"] .border-slate-700\/60 {
-  border-color: #e2e8f0 !important;
+[data-mode="light"] .text-slate-400 {
+  color: #64748b !important;
+}
+
+[data-mode="light"] .text-slate-500 {
+  color: #64748b !important;
+}
+
+[data-mode="light"] .text-slate-600 {
+  color: #94a3b8 !important;
+}
+
+/* Form Inputs, Selects, and Textareas */
+[data-mode="light"] input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="reset"]),
+[data-mode="light"] select,
+[data-mode="light"] textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+[data-mode="light"] input::placeholder,
+[data-mode="light"] textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+[data-mode="light"] input:focus,
+[data-mode="light"] select:focus,
+[data-mode="light"] textarea:focus {
+  border-color: #0f172a !important;
+  outline: none !important;
+}
+
+/* Modal and dialog backdrops */
+[data-mode="light"] .bg-slate-950\/80,
+[data-mode="light"] .bg-slate-950\/70,
+[data-mode="light"] .bg-black\/80,
+[data-mode="light"] .bg-black\/75,
+[data-mode="light"] .bg-black\/70 {
+  background-color: rgba(15, 23, 42, 0.45) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+/* Professional Academic Badges & Status Chips */
+[data-mode="light"] .bg-blue-500\/10,
+[data-mode="light"] .bg-blue-500\/15,
+[data-mode="light"] .bg-blue-500\/20,
+[data-mode="light"] .bg-blue-600\/10,
+[data-mode="light"] .bg-blue-600\/15,
+[data-mode="light"] .bg-blue-600\/20,
+[data-mode="light"] .bg-blue-900\/30,
+[data-mode="light"] .bg-blue-900\/40 {
+  background-color: #eff6ff !important;
+  border-color: #bfdbfe !important;
+}
+
+[data-mode="light"] .text-blue-400,
+[data-mode="light"] .text-blue-300,
+[data-mode="light"] .text-blue-200 {
+  color: #1d4ed8 !important;
+}
+
+[data-mode="light"] .bg-emerald-500\/10,
+[data-mode="light"] .bg-emerald-500\/15,
+[data-mode="light"] .bg-emerald-500\/20,
+[data-mode="light"] .bg-emerald-600\/15,
+[data-mode="light"] .bg-emerald-950\/20,
+[data-mode="light"] .bg-emerald-950\/40 {
+  background-color: #ecfdf5 !important;
+  border-color: #a7f3d0 !important;
+}
+
+[data-mode="light"] .text-emerald-400,
+[data-mode="light"] .text-emerald-300 {
+  color: #047857 !important;
+}
+
+[data-mode="light"] .bg-amber-500\/10,
+[data-mode="light"] .bg-amber-500\/15,
+[data-mode="light"] .bg-amber-500\/20,
+[data-mode="light"] .bg-amber-950\/20 {
+  background-color: #fffbeb !important;
+  border-color: #fde68a !important;
+}
+
+[data-mode="light"] .text-amber-400,
+[data-mode="light"] .text-amber-300 {
+  color: #b45309 !important;
+}
+
+[data-mode="light"] .bg-rose-500\/10,
+[data-mode="light"] .bg-rose-500\/15,
+[data-mode="light"] .bg-rose-500\/20 {
+  background-color: #fff1f2 !important;
+  border-color: #fecdd3 !important;
+}
+
+[data-mode="light"] .text-rose-400,
+[data-mode="light"] .text-rose-300 {
+  color: #be123c !important;
+}
+
+[data-mode="light"] .bg-indigo-500\/10,
+[data-mode="light"] .bg-indigo-500\/15,
+[data-mode="light"] .bg-indigo-500\/20,
+[data-mode="light"] .bg-indigo-950\/40 {
+  background-color: #eef2ff !important;
+  border-color: #c7d2fe !important;
+}
+
+[data-mode="light"] .text-indigo-400,
+[data-mode="light"] .text-indigo-300 {
+  color: #4338ca !important;
+}
+
+/* Saturated Action Buttons: Keep Crisp White Text */
+[data-mode="light"] .bg-blue-600,
+[data-mode="light"] .bg-blue-500,
+[data-mode="light"] .bg-blue-700,
+[data-mode="light"] .bg-emerald-600,
+[data-mode="light"] .bg-emerald-500,
+[data-mode="light"] .bg-rose-600,
+[data-mode="light"] .bg-rose-500,
+[data-mode="light"] [data-tab].text-white {
+  color: #ffffff !important;
+}
+
+[data-mode="light"] .bg-blue-600 *,
+[data-mode="light"] .bg-blue-500 *,
+[data-mode="light"] .bg-blue-700 *,
+[data-mode="light"] .bg-emerald-600 *,
+[data-mode="light"] .bg-rose-600 *,
+[data-mode="light"] [data-tab].text-white * {
+  color: inherit !important;
+}
+
+/* Google Sign In & Secondary Action Buttons in Light Mode */
+[data-mode="light"] .bg-white.text-slate-900,
+[data-mode="light"] .bg-white.text-slate-950 {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+}
+[data-mode="light"] .bg-white.text-slate-900:hover,
+[data-mode="light"] .bg-white.text-slate-950:hover {
+  background-color: #f8fafc !important;
+}
+
+/* Refined Institutional Shadows in Light Mode */
+[data-mode="light"] .shadow-xs,
+[data-mode="light"] .shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+[data-mode="light"] .shadow-md {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05) !important;
+}
+[data-mode="light"] .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -4px rgba(0, 0, 0, 0.04) !important;
+}
+[data-mode="light"] .shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.07), 0 8px 10px -6px rgba(0, 0, 0, 0.04) !important;
+}
+[data-mode="light"] .shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15) !important;
 }
 
 /* Tabular Numerals for clean academic schedules & timers */

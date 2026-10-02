@@ -68,7 +68,7 @@ export const APP_THEMES: ThemeConfig[] = [
 ];
 
 const THEME_STORAGE_KEY = 'nit_goa_app_theme';
-const MODE_STORAGE_KEY = 'nit_goa_appearance_mode';
+const MODE_STORAGE_KEY = 'nit_goa_appearance_mode_v3';
 
 const THEME_FALLBACK_MAP: Record<string, AppTheme> = {
   sapphire: 'sapphire',
@@ -106,7 +106,7 @@ export function getAppearanceMode(): AppearanceMode {
   } catch (e) {
     console.error('Error reading appearance mode from storage:', e);
   }
-  return 'slate'; // Default rich collegiate slate
+  return 'light'; // Default professional light theme as hardware-silicon-engineering-tracker.vercel.app
 }
 
 export function setActiveTheme(theme: AppTheme): void {

@@ -602,9 +602,9 @@ export default function App() {
   // If Firebase Auth is still restoring state, show initial clean loader
   if (authLoading) {
     return (
-      <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-6 text-slate-100">
-        <div className="w-10 h-10 rounded-lg border-4 border-blue-500/20 border-t-blue-500 animate-spin mb-4" />
-        <p className="text-xs font-semibold text-slate-300">Loading NIT Goa Timetable...</p>
+      <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-6 text-slate-900">
+        <div className="w-10 h-10 rounded-lg border-4 border-blue-600/20 border-t-blue-600 animate-spin mb-4" />
+        <p className="text-xs font-semibold text-slate-600">Loading NIT Goa Timetable...</p>
       </div>
     );
   }
@@ -660,7 +660,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans">
       {/* Main Navigation Header with Branch Switcher & Test Tab */}
       <Navbar
         activeTab={activeTab}
@@ -685,13 +685,13 @@ export default function App() {
       />
 
       {/* Universal Student Profile Context Strip (Hidden on mobile to preserve vertical screen estate) */}
-      <div className="hidden sm:block bg-slate-900/70 border-b border-slate-800">
+      <div className="hidden sm:block bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2 flex flex-wrap items-center justify-between gap-3 text-xs">
-          <div className="flex items-center gap-2 text-slate-300 flex-wrap">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+          <div className="flex items-center gap-2 text-slate-600 flex-wrap">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
             <span>
               Active Curriculum:{' '}
-              <strong className="text-white">
+              <strong className="text-slate-900">
                 {safeProfile.semester <= 2
                   ? `B.Tech 1st Year (Section ${safeProfile.firstYearSection || 'A'}) • Sem ${safeProfile.semester} (${
                       (safeProfile.firstYearSection === 'C' || safeProfile.firstYearSection === 'D')
@@ -706,36 +706,36 @@ export default function App() {
 
             {safeProfile.branch === 'EEE' && safeProfile.semester === 5 && safeProfile.hasMinor && (
               <>
-                <span className="text-slate-600">•</span>
-                <span className="text-blue-300 font-semibold flex items-center gap-1">
-                  <Bookmark className="w-3 h-3 text-blue-400" />
+                <span className="text-slate-300">•</span>
+                <span className="text-blue-700 font-semibold flex items-center gap-1 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
+                  <Bookmark className="w-3 h-3 text-blue-600" />
                   CS300M (CSE Minor) Active
                 </span>
               </>
             )}
 
             {scheduleOverride && (
-              <span className="px-2 py-0.2 rounded-md bg-blue-500/20 text-blue-300 border border-blue-500/30 font-semibold">
+              <span className="px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-semibold shadow-2xs">
                 Custom Schedule Active
               </span>
             )}
 
             {cloudScheduleOverride && !scheduleOverride && (
-              <span className="px-2 py-0.2 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 font-semibold">
+              <span className="px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700 border border-indigo-200 font-semibold shadow-2xs">
                 Cloud Sync Active
               </span>
             )}
           </div>
 
-          <div className="flex items-center gap-3 text-slate-400">
+          <div className="flex items-center gap-3 text-slate-500">
             {/* Admin quick indicator if logged in as ashivamone@gmail.com */}
             {isAdmin && (
               <button
                 type="button"
                 onClick={() => setIsAdminModalOpen(true)}
-                className="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-blue-500/20 text-blue-300 border border-blue-500/40 text-[11px] font-bold hover:bg-blue-500/30 transition"
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 text-[11px] font-bold hover:bg-blue-100 transition shadow-2xs"
               >
-                <ShieldCheck className="w-3.5 h-3.5 text-blue-400" />
+                <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
                 <span>Admin Privileges Active</span>
               </button>
             )}
@@ -743,20 +743,20 @@ export default function App() {
             {/* Quick Test reminder badge */}
             <button
               onClick={() => setActiveTab('tests')}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-blue-300 transition text-[11px] font-semibold border border-slate-700"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white hover:bg-slate-50 text-slate-700 transition text-[11px] font-semibold border border-slate-200 shadow-2xs"
             >
-              <CalendarCheck className="w-3.5 h-3.5 text-blue-400" />
+              <CalendarCheck className="w-3.5 h-3.5 text-blue-600" />
               <span>{tests.length} Tests in Calendar</span>
             </button>
 
             {/* Change Profile CTA */}
             <button
               onClick={() => setIsBranchSelectorOpen(true)}
-              className="inline-flex items-center gap-1 text-slate-400 hover:text-blue-400 transition"
+              className="inline-flex items-center gap-1 text-slate-600 hover:text-blue-600 transition"
               title="Change your branch or academic year"
             >
-              <Building2 className="w-3.5 h-3.5 text-blue-400" />
-              <span className="underline decoration-slate-700">Switch Branch / Year</span>
+              <Building2 className="w-3.5 h-3.5 text-blue-600" />
+              <span className="underline decoration-slate-300">Switch Branch / Year</span>
             </button>
           </div>
         </div>
@@ -783,29 +783,29 @@ export default function App() {
           .map((ann) => (
             <div
               key={ann.id}
-              className="mb-4 p-4 rounded-lg bg-slate-900 border border-slate-800 flex items-start justify-between gap-3 shadow-xs animate-in fade-in slide-in-from-top-2 duration-300"
+              className="mb-4 p-4 rounded-lg bg-white border border-slate-200 flex items-start justify-between gap-3 shadow-xs animate-in fade-in slide-in-from-top-2 duration-300"
             >
               <div className="flex items-start gap-3 min-w-0">
-                <div className="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-300 flex items-center justify-center shrink-0 mt-0.5">
-                  <Bell className="w-4 h-4 text-blue-400" />
+                <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-200 text-blue-600 flex items-center justify-center shrink-0 mt-0.5">
+                  <Bell className="w-4 h-4 text-blue-600" />
                 </div>
                 <div className="min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-blue-600 text-white shadow-xs">
+                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-blue-600 text-white shadow-2xs">
                       Official Notice
                     </span>
-                    <h4 className="text-sm font-bold text-slate-100">{ann.title}</h4>
+                    <h4 className="text-sm font-bold text-slate-900">{ann.title}</h4>
                   </div>
-                  <p className="text-xs text-slate-300 mt-1 leading-relaxed whitespace-pre-line">{ann.content}</p>
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed whitespace-pre-line">{ann.content}</p>
                   <span className="text-[10px] text-slate-400 mt-1.5 block">
-                    Posted by <strong className="text-slate-300">{ann.author}</strong> • Real-time Institute Broadcast
+                    Posted by <strong className="text-slate-700">{ann.author}</strong> • Real-time Institute Broadcast
                   </span>
                 </div>
               </div>
               <button
                 type="button"
                 onClick={() => setDismissedAnnouncements((prev) => [...prev, ann.id])}
-                className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition shrink-0"
+                className="text-slate-400 hover:text-slate-700 p-1 rounded-lg hover:bg-slate-100 transition shrink-0"
                 title="Dismiss Notice"
               >
                 <X className="w-4 h-4" />
@@ -1069,14 +1069,14 @@ export default function App() {
 
       {/* Floating Action Toast Notification (positioned cleanly above mobile nav) */}
       {toastMessage && (
-        <div className="fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] sm:bottom-6 right-4 sm:right-6 z-50 bg-slate-900/95 backdrop-blur-md border border-blue-500/40 text-slate-100 px-4 py-3 rounded-lg shadow-2xl flex items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-200 max-w-[calc(100vw-2rem)]">
-          <CheckCircle className="w-5 h-5 text-blue-400 shrink-0" />
-          <span className="text-xs sm:text-sm font-medium truncate">{toastMessage}</span>
+        <div className="fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] sm:bottom-6 right-4 sm:right-6 z-50 bg-white/95 backdrop-blur-md border border-slate-200 text-slate-900 px-4 py-3 rounded-lg shadow-xl flex items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-200 max-w-[calc(100vw-2rem)]">
+          <CheckCircle className="w-5 h-5 text-blue-600 shrink-0" />
+          <span className="text-xs sm:text-sm font-medium truncate text-slate-900">{toastMessage}</span>
         </div>
       )}
 
       {/* Institutional Footer */}
-      <footer className="mt-auto border-t border-slate-800 bg-slate-900/90 py-8 text-xs text-slate-400 pb-[calc(7.5rem+env(safe-area-inset-bottom,0px))] sm:pb-8 overflow-hidden w-full">
+      <footer className="mt-auto border-t border-slate-200 bg-white py-8 text-xs text-slate-600 pb-[calc(7.5rem+env(safe-area-inset-bottom,0px))] sm:pb-8 overflow-hidden w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col gap-6 w-full">
           {/* Main Footer Row */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 w-full">
@@ -1085,64 +1085,64 @@ export default function App() {
               <BrandLogo
                 iconSize={36}
                 showText={true}
-                variant="dark"
+                variant="light"
                 subtitle="Engineering Student Solutions"
                 className="justify-center sm:justify-start max-w-full"
               />
 
-              <div className="h-10 w-px bg-slate-800 hidden sm:block shrink-0" />
+              <div className="h-10 w-px bg-slate-200 hidden sm:block shrink-0" />
 
               <div className="max-w-full">
-                <div className="text-slate-200 font-semibold break-words">
+                <div className="text-slate-800 font-semibold break-words">
                   National Institute of Technology Goa • राष्ट्रीय प्रौद्योगिकी संस्थान गोवा
                 </div>
-                <div className="text-[11px] text-slate-400 mt-0.5 break-words">
+                <div className="text-[11px] text-slate-500 mt-0.5 break-words">
                   B.Tech Timetable • Cuncolim Campus
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-[11px] text-slate-400 max-w-full">
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-[11px] text-slate-500 max-w-full">
               <div className="text-center sm:text-right">
-                <span className="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Academics</span>
-                <span className="text-slate-300">Dr. Mini (Dean)</span> • <span className="text-slate-300">Dr. Suresh Mikkili (Timetable)</span>
+                <span className="text-slate-400 block text-[10px] uppercase font-bold tracking-wider">Academics</span>
+                <span className="text-slate-700">Dr. Mini (Dean)</span> • <span className="text-slate-700">Dr. Suresh Mikkili (Timetable)</span>
               </div>
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/80 shrink-0">
-                <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-                <span className="text-slate-300 font-medium text-[11px]">Powered by The GDevelopers</span>
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 shrink-0">
+                <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                <span className="text-slate-700 font-medium text-[11px]">Powered by The GDevelopers</span>
               </div>
 
               {/* Small PWA i-button in Footer */}
               <button
                 type="button"
                 onClick={() => setIsPwaModalOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 text-blue-300 border border-blue-500/30 text-[11px] font-semibold transition active:scale-95 shrink-0"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 text-[11px] font-semibold transition active:scale-95 shrink-0"
                 title="This is a Progressive Web App. Click for offline installation guide."
               >
-                <Info className="w-3.5 h-3.5 text-blue-400" />
+                <Info className="w-3.5 h-3.5 text-blue-600" />
                 <span>PWA • Install Locally</span>
               </button>
             </div>
           </div>
 
           {/* Credits & Official Disclaimer Strip (Responsive Mobile-First) */}
-          <div className="pt-5 border-t border-slate-800/80 flex flex-col gap-3.5 w-full">
+          <div className="pt-5 border-t border-slate-200 flex flex-col gap-3.5 w-full">
             {/* Unofficial Disclaimer & Correction Email Alert Card */}
-            <div className="w-full bg-slate-900 border border-slate-800 rounded-lg p-4 sm:p-4.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 shadow-xs">
+            <div className="w-full bg-white border border-slate-200 rounded-lg p-4 sm:p-4.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 shadow-2xs">
               <div className="flex items-start gap-3 min-w-0">
-                <div className="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-500/30 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 text-blue-400">
+                <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 text-blue-600">
                   <AlertTriangle className="w-4 h-4" />
                 </div>
                 <div className="min-w-0">
                   <div className="flex items-center gap-1.5 flex-wrap">
-                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-blue-500/20 text-blue-300 border border-blue-500/30">
+                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-200">
                       Notice
                     </span>
-                    <span className="text-xs sm:text-sm font-bold text-slate-200">
+                    <span className="text-xs sm:text-sm font-bold text-slate-800">
                       Independent Student Project for NIT Goa
                     </span>
                   </div>
-                  <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">
                     Report any mistake or schedule correction on email:
                   </p>
                 </div>
@@ -1151,7 +1151,7 @@ export default function App() {
               {/* Direct Mail Action Button (Optimized 44px+ touch target on mobile) */}
               <a
                 href="mailto:shivshivamxyz@gmail.com?subject=NIT%20Goa%20Timetable%20Correction"
-                className="w-full sm:w-auto min-h-[44px] px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-bold text-xs flex items-center justify-center gap-2 transition active:scale-95 shadow-md shadow-blue-600/20 shrink-0 text-center"
+                className="w-full sm:w-auto min-h-[44px] px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold text-xs flex items-center justify-center gap-2 transition active:scale-95 shadow-xs shrink-0 text-center"
               >
                 <Mail className="w-4 h-4 shrink-0" />
                 <span className="break-all">shivshivamxyz@gmail.com</span>
@@ -1161,11 +1161,11 @@ export default function App() {
             {/* Architect & Developer Attribution Bar */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-2.5 text-center sm:text-left px-1">
               <div className="flex items-center gap-2 flex-wrap justify-center sm:justify-start">
-                <div className="flex items-center gap-1.5 text-xs text-slate-400">
-                  <Code className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                <div className="flex items-center gap-1.5 text-xs text-slate-500">
+                  <Code className="w-3.5 h-3.5 text-blue-600 shrink-0" />
                   <span>Architect and developer:</span>
                 </div>
-                <span className="text-slate-100 font-bold text-xs bg-slate-800/90 px-2.5 py-1 rounded-lg border border-slate-700/80">
+                <span className="text-slate-900 font-bold text-xs bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200">
                   Ayush Kumar
                 </span>
               </div>
