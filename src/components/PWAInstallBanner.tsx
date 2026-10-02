@@ -61,10 +61,10 @@ export const PWAInstallBanner: React.FC = () => {
 
   return (
     <>
-      <div className="bg-gradient-to-r from-blue-900/30 via-slate-900 to-indigo-950/30 border-b border-blue-500/30 px-4 py-2.5">
+      <div className="bg-slate-900 border-b border-slate-800 px-4 py-2.5">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 text-xs sm:text-sm">
           <div className="flex items-center gap-2.5">
-            <BrandIcon size={28} className="shrink-0 rounded-lg shadow-sm" />
+            <BrandIcon size={28} className="shrink-0 rounded-md shadow-xs" />
             <div>
               <span className="font-semibold text-slate-100">Install Timetable by The GDevelopers</span>
               <span className="hidden md:inline text-slate-400 ml-1.5">— Works offline anytime without internet connection.</span>
@@ -74,7 +74,7 @@ export const PWAInstallBanner: React.FC = () => {
           <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={handleInstallClick}
-              className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs rounded-lg shadow-sm transition"
+              className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs rounded-md shadow-xs transition"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Install App</span>

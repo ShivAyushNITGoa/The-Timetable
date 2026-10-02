@@ -284,7 +284,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
       {/* Alert banner if test scheduled today */}
       {todaysTests.length > 0 && (
-        <div className="p-4 rounded-xl bg-slate-900 border border-rose-500/40 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-in fade-in">
+        <div className="p-4 rounded-lg bg-slate-900 border border-rose-500/40 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-in fade-in">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg bg-rose-500/20 text-rose-300 flex items-center justify-center font-bold shrink-0">
               <CalendarCheck className="w-4 h-4" />
@@ -314,7 +314,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
       {/* Jump to Today banner when browsing another day */}
       {!isSelectedDayToday && (
-        <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-3">
+        <div className="p-3.5 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-between gap-3">
           <div className="flex items-center gap-2.5 min-w-0">
             <Calendar className="w-4 h-4 text-blue-400 shrink-0" />
             <span className="text-xs text-slate-300">
@@ -334,7 +334,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
       {/* Live Academic Status & Next Class Countdown Hero */}
       {isSelectedDayToday && (
-        <div className="p-4 sm:p-5 rounded-xl bg-slate-900 border border-slate-800 shadow-sm space-y-3.5">
+        <div className="p-4 sm:p-5 rounded-lg bg-slate-900 border border-slate-800 shadow-xs space-y-3.5">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               <div
@@ -354,8 +354,8 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                       Class Happening Right Now
                     </span>
                   ) : nextSlot ? (
-                    <span className="text-cyan-300 flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5 text-cyan-400" />
+                    <span className="text-blue-300 flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5 text-blue-400" />
                       Next Upcoming Session
                     </span>
                   ) : (
@@ -392,7 +392,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
               <button
                 type="button"
                 onClick={handleRequestNotifications}
-                className={`min-h-[38px] px-3 py-1.5 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition active:scale-95 ${
+                className={`min-h-[38px] px-3 py-1.5 rounded-lg border text-xs font-semibold flex items-center gap-1.5 transition active:scale-95 ${
                   notificationActive
                     ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-300'
                     : 'bg-slate-800 hover:bg-slate-700 border-slate-700 text-slate-300'
@@ -416,9 +416,9 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
               <span className="font-bold text-white">
                 {completedClassesToday} of {totalClasses} classes completed
               </span>
-              <div className="w-24 h-2 bg-slate-800 rounded-full overflow-hidden inline-block">
+              <div className="w-24 h-2 bg-slate-800 rounded overflow-hidden inline-block">
                 <div
-                  className="h-full bg-gradient-to-r from-blue-600 to-indigo-500 transition-all duration-500"
+                  className="h-full bg-blue-600 transition-all duration-500"
                   style={{ width: `${totalClasses > 0 ? (completedClassesToday / totalClasses) * 100 : 0}%` }}
                 />
               </div>
@@ -434,7 +434,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
       )}
 
       {/* Day Header & Briefing Bar */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-slate-900 border border-slate-800 rounded-lg p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center justify-between w-full sm:w-auto gap-2">
           <div>
             <div className="flex items-center gap-2">
@@ -466,7 +466,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
             <button
               type="button"
               onClick={goToNextDay}
-              className="min-h-[44px] min-w-[44px] rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 hover:text-white flex items-center justify-center border border-slate-700/80 active:scale-95 transition shadow-xs"
+              className="min-h-[40px] min-w-[40px] rounded-lg bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 hover:text-white flex items-center justify-center border border-slate-700/80 active:scale-95 transition shadow-xs"
               aria-label="Next day"
               title="Next day"
             >
@@ -496,7 +496,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
           {onOpenCustomizer && (
             <button
               onClick={onOpenCustomizer}
-              className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs text-blue-300 border border-blue-500/30 font-semibold flex items-center gap-1.5 transition active:scale-95"
+              className="px-3 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-xs text-blue-300 border border-slate-700 font-semibold flex items-center gap-1.5 transition active:scale-95 shadow-xs"
               title="Customize timing or add extra slots to this day"
             >
               <Edit3 className="w-3.5 h-3.5" />
@@ -507,7 +507,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
           {isAdmin && onAdminAddSlot && (
             <button
               onClick={() => onAdminAddSlot(selectedDay)}
-              className="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-sm"
+              className="px-3 py-1.5 rounded-md bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-xs"
               title="Admin: Add a new slot to this day"
             >
               <Plus className="w-3.5 h-3.5" />
@@ -528,7 +528,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
             return (
               <div
                 key={slot.id || `lunch-${index}`}
-                className="py-3 px-4 rounded-xl bg-slate-800/30 border border-dashed border-slate-700/60 flex items-center justify-between text-slate-400 text-xs sm:text-sm"
+                className="py-3 px-4 rounded-lg bg-slate-800/30 border border-dashed border-slate-700/60 flex items-center justify-between text-slate-400 text-xs sm:text-sm"
               >
                 <div className="flex items-center gap-2.5">
                   <Coffee className="w-4 h-4 text-blue-400" />
@@ -547,7 +547,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
             return (
               <div
                 key={slot.id || `free-${index}`}
-                className="py-3.5 px-4 rounded-xl bg-slate-800/20 border border-dashed border-slate-700/40 flex items-center justify-between text-slate-400 text-xs sm:text-sm"
+                className="py-3.5 px-4 rounded-lg bg-slate-800/20 border border-dashed border-slate-700/40 flex items-center justify-between text-slate-400 text-xs sm:text-sm"
               >
                 <div className="flex items-center gap-2.5">
                   <span className="w-2 h-2 rounded-full bg-slate-500" />
@@ -588,9 +588,9 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
               <div
                 key={slot.id || `elective-${index}`}
                 onClick={() => onOpenCourseModal(chosenOption?.code || 'EE541')}
-                className={`group relative p-4 sm:p-5 rounded-xl border transition-all cursor-pointer ${
+                className={`group relative p-4 sm:p-5 rounded-lg border transition-all cursor-pointer ${
                   active
-                    ? 'bg-slate-850 border-blue-500/60 shadow-sm'
+                    ? 'bg-slate-850 border-blue-500/60 shadow-xs'
                     : passed
                     ? 'bg-slate-900/60 border-slate-800 opacity-70 hover:opacity-100 hover:border-slate-700'
                     : 'bg-slate-900 border-slate-800 hover:border-slate-700'
@@ -728,9 +728,9 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
               <div
                 key={slot.id || `lab-${index}`}
                 onClick={() => onOpenCourseModal(currentLab.code)}
-                className={`group relative p-4 sm:p-5 rounded-xl border transition-all cursor-pointer ${
+                className={`group relative p-4 sm:p-5 rounded-lg border transition-all cursor-pointer ${
                   active
-                    ? 'bg-slate-850 border-emerald-500/60 shadow-sm'
+                    ? 'bg-slate-850 border-emerald-500/60 shadow-xs'
                     : passed
                     ? 'bg-slate-900/60 border-slate-800 opacity-70 hover:opacity-100 hover:border-slate-700'
                     : 'bg-slate-900 border-emerald-500/30 hover:border-emerald-500/60'
@@ -878,11 +878,11 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
             <div
               key={slot.id || `slot-${index}`}
               onClick={() => onOpenCourseModal(slot.courseCode)}
-              className={`group relative p-4 sm:p-5 rounded-xl border transition-all cursor-pointer ${
+              className={`group relative p-4 sm:p-5 rounded-lg border transition-all cursor-pointer ${
                 isMinor
                   ? 'bg-slate-900 border-blue-500/40 shadow-xs hover:border-blue-400'
                   : active
-                  ? 'bg-slate-850 border-blue-500/60 shadow-sm'
+                  ? 'bg-slate-850 border-blue-500/60 shadow-xs'
                   : passed
                   ? 'bg-slate-900/60 border-slate-800 opacity-70 hover:opacity-100 hover:border-slate-700'
                   : 'bg-slate-900 border-slate-800 hover:border-slate-700'

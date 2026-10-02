@@ -1,236 +1,132 @@
-# Hardware & Silicon Engineering Tracker — Theme, Colors, Style, UI & UX Design System
+# NIT Goa Academic Timetable & Student Portal — UI & UX Design System
 
-> **Application**: Hardware & Silicon Engineering Tracker by Ayush Kumar  
+> **Application**: The Timetable — NIT Goa Academic Timetable & Student Portal  
 > **Brand & Engineering Core**: Powered by **The GDevelopers**  
-> **Target Audience**: VLSI Engineers, Silicon Designers, Embedded Firmware Architects, and ECE/EEE Students  
-> **Architecture**: React 19 + TypeScript + Tailwind CSS v4 + Local-First Architecture with Firebase Cloud Sync
+> **Target Audience**: Undergraduate & Postgraduate Engineering Students, Faculty, and Academic Administrators at NIT Goa  
+> **Tech Stack**: React 19 + TypeScript + Tailwind CSS v4 + Local-First Architecture with Firebase Firestore Cloud Sync + PWA Offline Support  
 
 ---
 
 ## 1. Executive Summary & Design Vision
 
-The **Hardware & Silicon Engineering Tracker** is engineered as an **Operating System for Semiconductor and Hardware Careers**, not merely a generic checklist or documentation viewer. 
+**The Timetable** is engineered as an **authoritative, real-time academic operating system** for the National Institute of Technology Goa. It combines daily and weekly schedule matrix navigation, 75% attendance threshold monitoring, continuous evaluation tracking, SGPA simulation, official syllabus readers, and student portal access into a single, cohesive interface.
 
-Traditional educational platforms suffer from low-density layouts, excessive whitespace, and distracting decorative flourishes. In contrast, this application adopts a **"Mission Control / Chip Design CAD Cockpit"** aesthetic:
-- **Maximum Information Density**: High-density layouts where complex multi-variable state (milestones, exit gates, toolchains, timing analysis questions, company recruitment pipelines) is viewable with minimal scrolling.
-- **Cognitive Clarity Over Flash**: Visual elements prioritize hierarchy, sharp borders, legible typography, and semantic color-coding to emulate professional EDA (Electronic Design Automation) software such as Cadence Virtuoso, Synopsys Design Compiler, and Vivado.
-- **Zero-Latency Local-First UX**: Immediate UI responsiveness powered by optimistic in-memory and `localStorage` mutations, backed by asynchronous Firebase Firestore cloud telemetry.
-
----
-
-## 2. Visual Theme & Style Principles
-
-### 2.1 The "Silicon OS" Aesthetic
-- **Canvas Base**: Ultra-clean neutral background (`bg-neutral-50`) paired with pristine crisp white technical cards (`bg-white`).
-- **Precision Dark Surfaces**: High-contrast dark charcoal and slate elements (`bg-neutral-900` / `neutral-950`) used for terminal commands, RTL code blocks, system tooltips, and top-level identity badges.
-- **Accent Selection**: Custom glowing cyan highlight (`selection:bg-cyan-500/20 selection:text-cyan-300`) reminiscent of silicon wafer cleanroom illumination and digital oscilloscopes.
-
-### 2.2 Anti-AI-Slop & Anti-Pill Discipline
-- **Zero Floating Pastel Blobs**: Eliminates meaningless blurry gradient orbs, giant bubbly pills, and decorative AI filler.
-- **Structural Grid & Border Strokes**: Every component is bounded by purposeful `border border-neutral-200/80` or `border-neutral-300` edges. This provides crisp, tactile visual separation across multi-pane layouts.
-- **Micro-Shadows**: Restrained elevation relying exclusively on Tailwind v4 `shadow-2xs` and `shadow-xs`. Hover states subtly deepen the border (`hover:border-neutral-400`) and slightly scale cards rather than casting fuzzy drop shadows.
+### Core Design Values:
+- **Authoritative & Scholarly**: Replaces casual, overly colorful consumer app tropes with a structured, collegiate, dignified aesthetic appropriate for a national institute of technology.
+- **High Information Density**: Class schedules, room allocations, instructor details, time slots, and attendance margins are viewable at a glance with minimal panning or unnecessary scrolling.
+- **Zero-Latency Local-First Execution**: Routine student interactions (marking attendance, customizing elective slots, filtering courses, calculating SGPA) update in memory and `localStorage` in under 1ms, asynchronously synchronizing with Firebase Firestore when online.
+- **Distraction-Free Focus**: High-contrast dark workspace (`bg-slate-950` / `bg-slate-900`) designed for all-day use in lecture halls, computer labs, and late-night study sessions.
 
 ---
 
-## 3. Color Palette & Semantic Color System
+## 2. Geometry & Corner Radius System
 
-The color palette is deliberately calibrated for technical legibility and semantic consistency across all 18+ application modules.
+Following institutional design standards, all playful, overly rounded bubble shapes have been eliminated:
 
-### 3.1 Primary Neutral Spectrum
-| Color Token | Tailwind Class | Hex Equivalent | Usage & Semantic Role |
-| :--- | :--- | :--- | :--- |
-| **Neutral 50** | `bg-neutral-50` | `#fafafa` | Global application workspace background |
-| **Neutral 100** | `bg-neutral-100` | `#f5f5f5` | Hover backgrounds, input fills, subtle dividers |
-| **Neutral 200** | `border-neutral-200` | `#e5e5e5` | Primary structural borders, card framing |
-| **Neutral 400** | `text-neutral-400` | `#a3a3a3` | Micro-labels, disabled icons, hotkey badges |
-| **Neutral 500** | `text-neutral-500` | `#737373` | Secondary metadata, timestamps, category headers |
-| **Neutral 700** | `text-neutral-700` | `#404040` | Body text, interactive button labels |
-| **Neutral 900** | `text-neutral-900` | `#171717` | Primary headings, KPI figures, active nav text |
-| **Neutral 950** | `bg-neutral-950` | `#0a0a0a` | Dark code blocks, shell commands, PWA splash base |
-
----
-
-### 3.2 Domain-Specific Semantic Accents
-Each major domain and status in the tracker is assigned a distinct, predictable accent family:
-
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                        SEMANTIC ACCENT MATRIX                          │
-├───────────────────┬───────────────────┬────────────────────────────────┤
-│ Accent Family     │ Primary Tokens    │ Application Domain             │
-├───────────────────┼───────────────────┼────────────────────────────────┤
-│ 🔵 Cyan / Teal    │ cyan-50, 500, 700 │ Core Hardware / Silicon Tracks │
-│ 🟢 Emerald / Mint │ emerald-50, 600   │ Completed Exit Gates & Live DB │
-│ 🟡 Amber / Gold   │ amber-50, 600, 800│ EDA Tools & In-Progress Drills │
-│ 🟣 Indigo / Violet│ indigo-50, 600, 700│ 18-Volume Encyclopedia Theory   │
-│ 🟣 Purple / Orchid│ purple-50, 600, 900│ Super Admin & Cohort Telemetry │
-│ 🔴 Rose / Crimson │ rose-50, 600, 700 │ Exit Gate Blockers & Sign Out  │
-│ 🔘 Slate / Zinc   │ slate-100, 700, 900│ RTL Waveforms, VHDL & Verilog  │
-└───────────────────┴───────────────────┴────────────────────────────────┘
-```
-
-#### Detailed Accent Role Breakdown:
-1. **Tech Cyan (`#06b6d4` / `cyan-600`) — The Silicon Engine**
-   - Applied to active navigation items, primary progress gauges, interactive chips, and The GDevelopers OS badges.
-   - Represents digital logic, semiconductors, and silicon architecture.
-2. **Precision Emerald (`#059669` / `emerald-600`) — Mastery & Online State**
-   - Marks 100% completed subtopics, passed Sunday exit gates, verified company applications, and live Firebase cloud synchronization.
-   - Communicates verified progress and success without visual noise.
-3. **Hardware Amber (`#d97706` / `amber-600`) — Toolchain & Active Work**
-   - Highlights in-progress toolchain setups (Vivado, Questa, Verilator, cocotb), active whiteboard drills, and academic elective selections.
-4. **Academic Indigo (`#4f46e5` / `indigo-600`) — Deep Knowledge**
-   - Anchors the 18-Volume Semiconductor Encyclopedia (336 technical documents), academic fellowship cards, and deep semiconductor physics references.
-5. **Super Admin Purple (`#9333ea` / `purple-600`) — Privileged Intelligence**
-   - Exclusive badge styling for the `AdminUserTrackerView`, cohort telemetry tables, user activity timelines, and administrative user controls.
-6. **Critical Rose (`#e11d48` / `rose-600`) — Blockers & Destructive Actions**
-   - Used for hard exit gates (must-pass criteria before advancing weeks), unmastered interview drill resets, and Google account sign-out actions.
-
----
-
-## 4. Typography System
-
-The application leverages high-performance system font hierarchies configured with OpenType tabular glyphs for technical precision.
-
-### 4.1 Font Configuration
-```css
-/* Enabled in src/index.css */
-body {
-  @apply bg-neutral-50 text-neutral-900 antialiased;
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-}
-```
-- **Contextual Alternates & Character Variants**: `cv02`, `cv03`, `cv04`, `cv11` ensure clean separation of ambiguous characters (e.g., distinguishing uppercase `I`, lowercase `l`, and digit `1`), essential when displaying hardware registers, bus widths, and Verilog wire names.
-- **Monospace Stack**: `font-mono` (JetBrains Mono / Fira Code / Consolas fallback) applied to:
-  - Verilog / SystemVerilog / VHDL / C++ code listings
-  - SDC timing constraints & clock period declarations
-  - User emails and telemetry timestamps
-  - Terminal commands and tool installation scripts
-
-### 4.2 Typographic Hierarchy Table
-| Level | Tailwind Classes | Sample Usage |
+### 2.1 Corner Radius Hierarchy
+| Element Type | Tailwind Class | Usage & Specifications |
 | :--- | :--- | :--- |
-| **Hero Metric / KPI** | `text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900` | Percentage completed, total companies in pipeline |
-| **Module Title** | `text-lg sm:text-xl font-bold text-neutral-900` | "Curriculum Breakdown & 15 Subtopics", "Whiteboard Drills" |
-| **Section Header** | `text-sm sm:text-base font-bold text-neutral-800` | Track cards, tool categories, academic semester plans |
-| **Meta Category** | `text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-neutral-400` | "FOUNDATIONAL CORE", "SUNDAY EXIT GATE", "18 VOLUMES" |
-| **Standard Body** | `text-xs sm:text-sm text-neutral-600 leading-relaxed` | Technical descriptions, interview drill explanations |
-| **Dense Tag / Badge** | `text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded-md` | "NIT Goa Plan", "ATS Resume", "MNC Assessment" |
-| **Code & Shell** | `font-mono text-xs text-neutral-200 bg-neutral-900 px-2 py-1 rounded` | `make sim MODULE=alu_top TESTBENCH=cocotb` |
+| **Workspace Modals & Sheets** | `rounded-lg` / `rounded-t-xl sm:rounded-lg` | Dialog containers, syllabus reader panels, mobile bottom drawers |
+| **Content Cards & Panels** | `rounded-lg` (`8px`) | Lecture period cards, test cards, handbook cards, profile summary strips |
+| **Interactive Buttons** | `rounded-lg` or `rounded-md` (`6px - 8px`) | Primary actions ("Read PDF", "Switch Branch", "Mark Attendance", "Export") |
+| **Input Controls & Dropdowns** | `rounded-md` (`6px`) | Filter inputs, date pickers, grade selects, search bars |
+| **Status Tags & Micro-Badges** | `rounded` or `rounded-md` (`4px - 6px`) | Course codes, room numbers (`L-101`), batch indicators (`Batch 1`), cycle tags |
+| **Progress Tracks & Bars** | `rounded-sm` / `rounded` | Attendance gauges, evaluation progress indicators |
+
+### 2.2 Anti-Pill Discipline
+- **No Floating Capsule Pills**: Status badges and category filters are rendered as clean, rectangular micro-tags (`rounded-md` or `rounded px-2 py-0.5`) with subtle borders, rather than bubbly `rounded-full` capsules.
+- **Strictly Circular Only When Functional**: `rounded-full` is reserved exclusively for numerical step badges (e.g., `1`, `2`, `3` in installation instructions), notification count dots, or small status indicator pings.
 
 ---
 
-## 5. UI Architecture & Structural Components
+## 3. Color Palette & Semantic Color Roles
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                        APPLICATION LAYOUT TREE                         │
-├────────────────────────────────────────────────────────────────────────┤
-│ [Top App Header: Sticky (49px)]                                        │
-│  ├─ Brand Logo (The GDevelopers)                                       │
-│  ├─ Live Progress Meter (Curriculum % & Exit Gates)                    │
-│  ├─ Global Command Palette Trigger (Ctrl+K)                           │
-│  ├─ User Authentication Status & Cloud Sync Telemetry                  │
-│  └─ Direct Logout Button & Fullscreen Toggle                           │
-├───────────────────┬────────────────────────────────────────────────────┤
-│ [Left Nav Sidebar]│ [Active Workspace Viewport: Scrollable (100vh - 49px)]  │
-│  • Expand /       │  ├─ Command Center (Dashboard Overview)            │
-│    Collapse       │  ├─ Career Prep Roadmaps (10 Tracks)               │
-│    (w-64 / w-16)  │  ├─ ECE & EEE Career Matrix & Prep Roadmaps        │
-│  • 18 Nav Tabs    │  ├─ NIT Goa EEE → VLSI Strategy & Report Export    │
-│  • Hotkey: Ctrl+B │  ├─ 18-Volume Semiconductor Encyclopedia           │
-│  • Bottom Account │  ├─ 20-Week Master Plan & Sunday Gates             │
-│    Card & Logout  │  ├─ EDA Toolchains, Flagship Projects & Interview  │
-│                   │  └─ ATS Resume Generator & 10 Core Rules           │
-└───────────────────┴────────────────────────────────────────────────────┘
-```
+The color system is anchored around **NIT Goa Collegiate Navy**, neutral structural slates, and predictable academic status colors.
 
-### 5.1 Top Navigation Header
-- **Fixed Height**: Compact `49px` sticky bar (`top-0 z-30`) keeping viewport real estate maximized for technical content.
-- **Glassmorphic Precision**: High-opacity white background (`bg-white/95 backdrop-blur-md`) with bottom boundary border (`border-b border-neutral-200`).
-- **Interactive Quick-Actions**:
-  - Global Search / Command Palette shortcut trigger (`Cmd/Ctrl + K`)
-  - Direct quick-switch to Technical Interview Drills
-  - Fullscreen toggle button (`Maximize2` / `Minimize2`)
-  - Live Google Avatar with multi-option dropdown (Role badge, Cloud Telemetry state, Manual Sync button, Admin Portal shortcut, and Sign Out)
-  - Explicit header **Logout button** with instant confirmation and hover animation.
-
-### 5.2 Responsive Dual Navigation
-1. **Desktop Collapsible Sidebar (`md:flex`)**:
-   - Smoothly toggles between **expanded mode** (`w-64` with category headers, text labels, and count badges) and **compact icon mode** (`w-16` with hovering tooltips).
-   - Global keyboard shortcut `Ctrl+B` or `Cmd+B` for rapid toggle.
-   - Sticky full-height container with independent vertical scrolling.
-   - Pinned bottom account card displaying active Google profile, email, authentication badge, and quick logout.
-2. **Mobile Flyout Drawer (`< md`)**:
-   - Off-canvas slide-over drawer triggered by the hamburger icon.
-   - Backdrop overlay (`bg-black/50 backdrop-blur-xs`) that blocks touch-through.
-   - Groups 18 navigation destinations into logical sections: *Command Center*, *Academic Strategy*, *Technical Mastery*, *Career & Industry*, and *Administrative*.
-
-### 5.3 Card & Panel Design Pattern
-- **Base Style**:
-  ```tsx
-  className="bg-white p-4 sm:p-5 rounded-xl border border-neutral-200 shadow-2xs hover:border-neutral-400 hover:shadow-xs transition-all"
-  ```
-- **Internal Rhythm**: Clear header with category tag and domain icon, followed by primary metric, progress indicator, and actionable hover footer (`group-hover:translate-x-1`).
-
-### 5.4 Modals, Drawers & Dialogs
-- **Universal College Selector Modal**: Searchable, filterable dialog with tier badges (Tier-1, Tier-2, Tier-3) and stream alignment (ECE, EEE, EIE).
-- **Classification Dossier Modal**: Deep-dive popup for frontend vs. backend VLSI job roles, complete with salary ranges, required EDA proficiencies, and day-to-day duties.
-- **Command Palette (`Ctrl+K`)**: Fast fuzzy-search modal allowing immediate keyword jumping to any curriculum topic, tool, or encyclopedia chapter.
-- **PWA Installation Modal**: Explains offline caching benefits and provides a single-click installation prompt.
-
----
-
-## 6. User Experience (UX) Engineering
-
-### 6.1 Local-First Architecture with Optimistic Updates
-- Every task completion, interview drill reveal, tool checkmark, and semester elective selection writes directly to browser storage (`localStorage`) in **under 1 millisecond**.
-- No loading spinners for routine tracking actions.
-- The UI reflects updates immediately, guaranteeing seamless offline and low-connectivity operation.
-
-### 6.2 Cloud Telemetry & Non-Intrusive Sync
-- Automatically synchronizes student progress to Firebase Firestore whenever online.
-- Visual connection status indicator (`Connected (Live)` in Emerald) keeps the user informed without intrusive toast popups.
-- Super Admin portal provides cohort analytics without degrading client-side rendering speed.
-
-### 6.3 Resilient Authentication & Error Recovery
-- **Graceful Popup Management**: Intentionally handled `auth/popup-closed-by-user` and `auth/cancelled-popup-request` exceptions so accidental clicks or popup closures never trigger console errors or red crash screens.
-- **Non-Modal Error Banners**: If a genuine authentication or network issue arises, a clean, dismissible banner appears at the workspace top with clear resolution instructions.
-
-### 6.4 Active Recall & Learning Ergonomics
-- **Interview Whiteboard Drills**: Questions display in "Exam Mode" with blurred or hidden answers. Users test themselves before clicking "Reveal Answer" (`Eye` / `EyeOff` toggle).
-- **Mastery Tiers**: Users mark questions as *Needs Review*, *Practiced*, or *Mastered*, color-coding the question list and driving overall readiness percentages.
-- **Custom Question Builder**: Users can add real interview drill questions received from MNC interviewers (Intel, Qualcomm, NVIDIA, TI, AMD), saving them to persistent local storage.
-
----
-
-## 7. Responsive Breakpoints & Accessibility
-
-| Breakpoint | Screen Width | Layout & UX Behavior |
+### 3.1 Structural Neutrals
+| Token | Tailwind Class | Semantic Application |
 | :--- | :--- | :--- |
-| **Mobile (`xs` / `sm`)** | `< 640px` | Single-column stack, bottom-sheet style menus, full-width touch targets ($44\times44\text{px}$ touch targets), mobile slide-over drawer navigation. |
-| **Tablet (`md`)** | `640px - 1024px` | Two-column grid layouts, compact icon sidebar option, streamlined header. |
-| **Desktop (`lg` / `xl`)** | `1024px - 1536px` | Full multi-column dashboard, sticky left sidebar, live progress pill visible in header, dual-pane document viewers for the Encyclopedia. |
-| **Ultrawide (`2xl`)** | `> 1536px` | Balanced max-width wrappers (`max-w-7xl` / `max-w-8xl`) preventing stretched lines of text and maintaining reading ergonomics. |
+| **Canvas Background** | `bg-slate-950` (`#020617`) | Global page background, high-contrast viewport backdrop |
+| **Card Surface** | `bg-slate-900` (`#0f172a`) | Primary card containers, modal headers, navigation bar |
+| **Secondary Surface** | `bg-slate-850` / `bg-slate-800` | Sub-panels, table headers, hovered button states |
+| **Subtle Divider** | `border-slate-800` (`#1e293b`) | Structural section borders, timetable grid cell boundaries |
+| **Focused Divider** | `border-slate-700` (`#334155`) | Card hover outlines, active modal borders |
+| **Primary Typography** | `text-white` / `text-slate-100` | Course names, active slot titles, modal headers |
+| **Secondary Typography** | `text-slate-300` / `text-slate-400` | Faculty names, room codes, timestamps, descriptive copy |
+| **Muted Metadata** | `text-slate-500` | Micro-labels, shortcuts, credit notes |
 
-### 7.1 Accessibility (a11y) Conformance
-- **Contrast Ratios**: All text tokens on `neutral-50` and `white` exceed WCAG AA standards (4.5:1 for body text, 7:1 for headings).
-- **Reduced Motion**: Transitions respect `motion-reduce:transition-none` defaults.
-- **Keyboard Navigation**: Full tab index traversal across all input fields, buttons, modal dismiss triggers (`Escape`), and Command Palette (`Ctrl+K`).
-- **Semantic HTML**: Proper `<header>`, `<aside>`, `<nav>`, `<main>`, `<article>`, and `<footer>` landmarks for screen readers.
+### 3.2 Academic Semantic Accents
+| Accent | Tailwind Token | Semantic Domain in App |
+| :--- | :--- | :--- |
+| **Collegiate Navy & Royal Blue** | `bg-blue-600`, `text-blue-400`, `border-blue-500/40` | Active navigation tabs, primary action buttons, active lecture periods, NIT Goa branding |
+| **Academic Emerald** | `bg-emerald-500/15`, `text-emerald-400`, `border-emerald-500/30` | Attendance eligibility ($\ge 75\%$), passed evaluations, live database connection status |
+| **Critical Warning Rose** | `bg-rose-500/15`, `text-rose-400`, `border-rose-500/30` | Attendance shortage alert ($< 75\%$), test countdowns under 24 hours, destructive deletes |
+| **Curricular Indigo** | `bg-indigo-500/15`, `text-indigo-400`, `border-indigo-500/30` | Minor courses (`CS300M`), elective tracks, curriculum schemes |
+| **Caution Amber** | `bg-amber-500/15`, `text-amber-400`, `border-amber-500/30` | Approaching attendance danger zone ($75\% - 78\%$), unsaved timetable drafts |
 
 ---
 
-## 8. Summary Checklist for Extending the Design System
+## 4. Typography & Layout Density
 
-When building new features, views, or components for this application, adhere to the following rules:
-1. **Background**: Always use `bg-neutral-50` for root viewports and `bg-white` for content cards.
-2. **Borders**: Enforce `border border-neutral-200/80` with `rounded-xl` for cards and `rounded-lg` for interactive buttons.
-3. **Typography**: Use `text-neutral-900` for headings, `text-neutral-600` for descriptions, and `font-mono` for chip pins, code, and timestamps.
-4. **Color Semantics**:
-   - Use **Cyan** for hardware tracks & brand accents.
-   - Use **Emerald** for pass gates, completion, and live cloud sync.
-   - Use **Amber** for tools and active preparation.
-   - Use **Indigo** for theoretical encyclopedia articles.
-   - Use **Rose** for critical exit gates and sign-out buttons.
-5. **No AI Pill Slop**: Avoid giant pastel badges or pill buttons. Use crisp, compact micro-tags with uppercase category headers.
-6. **Local-First Always**: Read from and write to local state/storage first; trigger asynchronous cloud synchronization in the background.
+### 4.1 Typography Standards
+- **Font Stack**: Clean system sans-serif (`Inter`, system UI font fallback) with high-contrast text rendering (`antialiased`).
+- **Monospace Stack**: `font-mono` applied to:
+  - Course codes (`EE300`, `CS300M`, `EC201`)
+  - Class timing ranges (`09:00 - 10:00`, `14:00 - 17:00`)
+  - Room identifiers (`L-204`, `VLSI Lab`, `EEE Sem Hall`)
+  - SGPA / CGPA calculations (`8.84`, `9.12`)
+  - Local storage footprint metrics (`~14.2 KB`)
+- **Visual Weight**: Titles use `font-bold` (`font-weight: 700`) or `font-semibold` (`600`). Overly bold or playful display typography (`font-black`) is replaced with balanced typographic hierarchy.
+
+### 4.2 Information-Dense Layouts
+1. **Weekly Timetable Matrix (`WeeklyGridView`)**:
+   - Day columns (Mon–Fri) cross-referenced against 8 standard instructional periods (09:00 to 17:00).
+   - Lunch break (13:00–14:00) cleanly anchored with distinct styling.
+   - Lab slots (3-hour blocks) clearly distinguished without breaking matrix grid alignment.
+2. **Day View (`DayScheduleView`)**:
+   - Linear chronological progression showing the active class banner, remaining duration countdown, and immediate upcoming class.
+   - Quick attendance toggles inline with each slot.
+3. **Attendance Dashboard (`AttendanceTracker`)**:
+   - Course-by-course breakdown calculating safe skips remaining before breaching the mandatory 75% NIT Goa Senate threshold.
+   - Immediate class deficit calculation ("Need to attend 3 more consecutive classes to reach 75%").
+
+---
+
+## 5. Iconography Guidelines
+
+- **Semantic Role Only**: Decorative flourish icons (such as playful stars or sparkle badges) are strictly avoided. Every icon must represent a functional domain:
+  - `BookOpen`: Syllabus books, course outlines, academic reading
+  - `GraduationCap`: Official degree tracks, Senate guidelines, student profiles
+  - `Award`: Granted patents, university accreditations, verified honors
+  - `Calendar` / `CalendarCheck`: Class schedules, test dates, academic calendars
+  - `Clock`: Time ranges, slot durations, upcoming period countdowns
+  - `MapPin`: Physical lecture halls, engineering laboratories, seminar venues
+  - `User` / `Mail`: Faculty profiles, course coordinators, department emails
+  - `Download` / `Upload`: Backup export/import, offline JSON sync
+  - `Building2`: Institute departments (EEE, ECE, CSE, CVE, MCE) and campus facilities
+
+---
+
+## 6. Curated Institutional Theme Options
+
+The application supports three dignified, high-readability colorways tailored for academic focus:
+
+1. **NIT Goa Navy (`sapphire`) — Default**:
+   - High-contrast institutional blue (`#2563eb`), slate dark surfaces, and cyan highlights for current-period indicators.
+2. **Cambridge Slate (`slate`)**:
+   - Monochromatic steel and graphite palette (`#64748b`) designed for maximum eye comfort during extended reading and schedule review.
+3. **Oxford Burgundy (`crimson`)**:
+   - Traditional collegiate wine (`#b91c1c`) offering a classic university heritage atmosphere.
+
+---
+
+## 7. Responsiveness & Offline-First (PWA) UX
+
+- **Mobile Viewport Optimization**:
+  - Compact top header (`48px`) with department switcher and active semester badge.
+  - Ergonomic bottom navigation bar (`MobileBottomNav`) with high-touch targets ($\ge 44\text{px}$) and safe-area padding (`pb-[env(safe-area-inset-bottom)]`).
+- **Complete Offline Independence**:
+  - Full PWA Service Worker caching ensuring instant timetable lookups inside physical classrooms with poor network coverage.
+  - Zero spinner blocking on core navigation or attendance updates.
+- **Admin Control Panel**:
+  - Restricted administrative role verification (`ashivamone@gmail.com`) for updating syllabus revisions and cloud schedule broadcasts directly to all students.

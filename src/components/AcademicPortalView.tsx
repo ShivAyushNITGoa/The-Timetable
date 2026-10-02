@@ -272,7 +272,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
   return (
     <div className="space-y-6" id="academic-portal-container">
       {/* Header Overview */}
-      <div className="bg-slate-800/60 border border-slate-700/60 rounded-xl p-5" id="academic-header">
+      <div className="bg-slate-800/60 border border-slate-700/60 rounded-lg p-5" id="academic-header">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 mb-1">
@@ -375,7 +375,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
       {activeSubTab === 'faculty' && (
         <div className="space-y-6" id="faculty-directory-section">
           {/* Search bar & statistics */}
-          <div className="flex flex-col sm:flex-row gap-3 items-center justify-between bg-slate-800/40 p-4 rounded-xl border border-slate-700/60">
+          <div className="flex flex-col sm:flex-row gap-3 items-center justify-between bg-slate-800/40 p-4 rounded-lg border border-slate-700/60">
             <div className="relative w-full sm:w-96">
               <Search className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
               <input
@@ -406,7 +406,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
               <div
                 key={faculty.id}
                 id={`faculty-card-${faculty.id}`}
-                className="bg-slate-800/50 border border-slate-700/70 hover:border-slate-600 rounded-xl p-5 flex flex-col justify-between transition-all"
+                className="bg-slate-800/50 border border-slate-700/70 hover:border-slate-600 rounded-lg p-5 flex flex-col justify-between transition-all"
               >
                 <div>
                   {/* Top line: Designation & Short Name badge */}
@@ -520,7 +520,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
 
                   {/* Books Section (if any) */}
                   {faculty.books && faculty.books.length > 0 && (
-                    <div className="mt-3 p-3 rounded-xl bg-amber-950/20 border border-amber-800/40">
+                    <div className="mt-3 p-3 rounded-lg bg-amber-950/20 border border-amber-800/40">
                       <div className="text-xs font-semibold text-amber-400 flex items-center gap-1.5 mb-1.5">
                         <BookOpen className="w-3.5 h-3.5 text-amber-400" />
                         <span>Authored Books & Textbooks</span>
@@ -537,7 +537,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
 
                   {/* Prominent Research Papers */}
                   {faculty.prominentPapers && faculty.prominentPapers.length > 0 && (
-                    <div className="mt-3.5 p-3 rounded-xl bg-slate-900/70 border border-slate-800 space-y-1.5">
+                    <div className="mt-3.5 p-3 rounded-lg bg-slate-900/70 border border-slate-800 space-y-1.5">
                       <div className="text-xs font-semibold text-indigo-300 flex items-center gap-1.5">
                         <FileText className="w-3.5 h-3.5 text-indigo-400" />
                         <span>Prominent Research Publications</span>
@@ -583,7 +583,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
       {activeSubTab === 'calculator' && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6" id="sgpa-calculator-section">
           {/* Result Card */}
-          <div className="lg:col-span-1 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800/80 border border-slate-700/80 rounded-xl p-6 flex flex-col justify-between">
+          <div className="lg:col-span-1 bg-slate-900 border border-slate-800 rounded-lg p-5 sm:p-6 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-2">
                 <div className="text-xs font-semibold text-blue-400 uppercase tracking-wider">
@@ -708,7 +708,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
           </div>
 
           {/* Grade Selectors Table */}
-          <div className="lg:col-span-2 bg-slate-800/40 border border-slate-700/60 rounded-xl p-5" id="grade-selection-table">
+          <div className="lg:col-span-2 bg-slate-800/40 border border-slate-700/60 rounded-lg p-5" id="grade-selection-table">
             <h3 className="text-sm font-bold text-white mb-1 flex items-center justify-between">
               <span>5th Sem Course Grade Targets</span>
               <span className="text-xs text-slate-400 font-normal">
@@ -812,7 +812,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
             <div
               key={facility.id}
               id={`venue-${facility.id}`}
-              className="bg-slate-800/50 border border-slate-700/70 rounded-xl p-5 flex flex-col justify-between hover:border-slate-600 transition"
+              className="bg-slate-800/50 border border-slate-700/70 rounded-lg p-5 flex flex-col justify-between hover:border-slate-600 transition"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-2">
@@ -883,7 +883,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
             {NIT_GOA_GRADING_RULES.ordinanceHighlights.map((item, index) => (
               <div
                 key={index}
-                className="bg-slate-800/50 border border-slate-700/70 rounded-xl p-5"
+                className="bg-slate-800/50 border border-slate-700/70 rounded-lg p-5"
               >
                 <h4 className="text-sm font-bold text-blue-400 mb-2 flex items-center gap-2">
                   <Info className="w-4 h-4 text-blue-400 shrink-0" />
@@ -897,7 +897,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
           </div>
 
           {/* Official Letter Grade Table */}
-          <div className="bg-slate-800/40 border border-slate-700/60 rounded-xl p-5">
+          <div className="bg-slate-800/40 border border-slate-700/60 rounded-lg p-5">
             <h4 className="text-sm font-bold text-white mb-3">
               Official NIT Goa 10-Point Letter Grading Scale
             </h4>
@@ -934,7 +934,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
           />
 
           {/* Ayush Kumar & The GDevelopers Creator Card */}
-          <div className="p-6 bg-slate-900/90 border border-slate-700/80 rounded-xl shadow-lg flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="p-6 bg-slate-900/90 border border-slate-700/80 rounded-lg shadow-lg flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-left">
               <BrandIcon size={52} className="shrink-0 rounded-lg shadow-sm" />
               <div>
@@ -988,7 +988,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
           </div>
 
           {/* Client-Side Local Storage & Privacy Vault Card */}
-          <div className="p-6 bg-slate-900/90 border border-slate-700/80 rounded-xl shadow-lg space-y-4" id="local-storage-vault-card">
+          <div className="p-6 bg-slate-900/90 border border-slate-700/80 rounded-lg shadow-lg space-y-4" id="local-storage-vault-card">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
               <div className="flex items-center gap-3">
                 <div className="w-9 h-9 rounded-lg bg-blue-600/10 border border-blue-500/30 flex items-center justify-center shrink-0">
@@ -1116,7 +1116,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
                   refreshStorageStats();
                   setTimeout(() => window.location.reload(), 600);
                 }}
-                className={`min-h-[44px] px-3 py-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition active:scale-95 w-full sm:w-auto ${
+                className={`min-h-[44px] px-3 py-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition active:scale-95 w-full sm:w-auto ${
                   confirmClearData
                     ? 'bg-rose-600 hover:bg-rose-500 text-white border border-rose-400 shadow-md shadow-rose-900/30 animate-pulse'
                     : 'bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/30'

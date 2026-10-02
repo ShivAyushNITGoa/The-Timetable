@@ -174,7 +174,7 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
   return (
     <div className="space-y-6">
       {/* Header Info Banner */}
-      <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-5 sm:p-6 shadow-md">
+      <div className="bg-slate-900/90 border border-slate-800 rounded-lg p-5 sm:p-6 shadow-md">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
           <div>
             <div className="flex items-center gap-2 mb-2 flex-wrap">
@@ -195,7 +195,7 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
           </div>
 
           {/* Quick Criteria Pill */}
-          <div className="text-xs text-slate-300 bg-slate-950/80 p-3.5 rounded-xl border border-slate-800 shrink-0">
+          <div className="text-xs text-slate-300 bg-slate-950/80 p-3.5 rounded-lg border border-slate-800 shrink-0">
             <div className="flex items-center gap-2 text-blue-400 font-bold mb-0.5" style={{ color: themeConfig.primaryColor }}>
               <TrendingUp className="w-4 h-4" />
               <span>NIT Goa Master Policy</span>

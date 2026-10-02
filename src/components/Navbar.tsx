@@ -185,7 +185,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex items-center justify-between gap-2">
             {/* Brand & NIT Goa Tag */}
             <div className="flex items-center gap-2 min-w-0">
-              <BrandIcon size={32} className="rounded-xl shadow-sm shrink-0 ring-1 ring-white/10" />
+              <BrandIcon size={32} className="rounded-lg shadow-sm shrink-0 ring-1 ring-white/10" />
               <div className="min-w-0">
                 <div className="flex items-center gap-1 leading-none">
                   <span className="text-sm font-bold text-white tracking-tight whitespace-nowrap">NIT Goa</span>
@@ -271,7 +271,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   type="button"
                   onClick={onSignOut}
-                  className="min-h-[38px] min-w-[38px] p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 flex items-center justify-center transition"
+                  className="min-h-[38px] min-w-[38px] p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 flex items-center justify-center transition"
                   title={`Signed in as ${currentUser.email}. Click to sign out.`}
                 >
                   <LogOut className="w-3.5 h-3.5" />
@@ -280,7 +280,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   type="button"
                   onClick={onSignIn}
-                  className="min-h-[38px] px-2 sm:px-2.5 rounded-xl bg-white text-slate-900 font-bold text-xs flex items-center gap-1 transition shadow-xs"
+                  className="min-h-[38px] px-2 sm:px-2.5 rounded-lg bg-white text-slate-900 font-bold text-xs flex items-center gap-1 transition shadow-xs"
                   title="Sign In with Google"
                 >
                   <LogIn className="w-3.5 h-3.5 text-blue-600 shrink-0" />
@@ -294,7 +294,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             type="button"
             onClick={onOpenBranchSelector}
-            className="w-full mt-2 px-3.5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600/15 via-slate-800 to-slate-800/95 border border-blue-500/40 hover:border-blue-400 active:border-blue-300 flex items-center justify-between gap-2.5 transition active:scale-[0.99] text-left shadow-md group"
+            className="w-full mt-2 px-3.5 py-2.5 rounded-lg bg-slate-850 hover:bg-slate-800 border border-slate-750 hover:border-slate-700 flex items-center justify-between gap-2.5 transition active:scale-[0.99] text-left shadow-xs group"
             aria-label="Switch Branch, Year, or Semester"
           >
             <div className="flex items-center gap-2.5 min-w-0">
@@ -332,7 +332,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Mobile Elective & Lab Batch Strip (Always visible when semester has batches) */}
         <div className="sm:hidden pb-2 pt-1 border-t border-slate-800/60 flex items-center justify-between gap-1.5 text-xs flex-wrap">
           {/* Lab Batch Selector */}
-          <div className="flex items-center gap-1 bg-slate-800/90 p-1 rounded-xl border border-slate-700/80">
+          <div className="flex items-center gap-1 bg-slate-800/90 p-1 rounded-lg border border-slate-700/80">
             <span className="text-[10px] text-blue-300 font-bold px-1.5">Lab Batch:</span>
             <button
               type="button"
@@ -360,7 +360,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Elective Selector (when EEE Sem 5 is active) */}
           {safeProfile.branch === 'EEE' && safeProfile.semester === 5 && (
-            <div className="flex items-center gap-1 bg-slate-800/90 p-1 rounded-xl border border-slate-700/80">
+            <div className="flex items-center gap-1 bg-slate-800/90 p-1 rounded-lg border border-slate-700/80">
               <span className="text-[10px] text-slate-400 font-semibold px-1">Elective:</span>
               <button
                 type="button"
@@ -474,7 +474,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Elective Selector (when EEE Sem 5 is active) */}
             {safeProfile.branch === 'EEE' && safeProfile.semester === 5 && (
-              <div className="flex items-center gap-1 bg-slate-800/90 p-1 rounded-xl border border-slate-700/80 text-xs">
+              <div className="flex items-center gap-1 bg-slate-800/90 p-1 rounded-lg border border-slate-700/80 text-xs">
                 <span className="text-slate-400 px-1 font-medium hidden xl:inline">Elective:</span>
                 <button
                   type="button"
@@ -601,7 +601,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 type="button"
                 onClick={onSignIn}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-900 text-xs font-bold transition active:scale-95 shadow-xs shrink-0"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-slate-100 text-slate-900 text-xs font-bold transition active:scale-95 shadow-xs shrink-0"
               >
                 <svg className="w-3.5 h-3.5" viewBox="0 0 24 24">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />

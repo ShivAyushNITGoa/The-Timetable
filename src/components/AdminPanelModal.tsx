@@ -433,7 +433,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
-      <div className="bg-slate-900 border border-slate-700 w-full max-w-5xl rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+      <div className="bg-slate-900 border border-slate-700 w-full max-w-5xl rounded-lg shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
         {/* Modal Top Header */}
         <div className="px-5 py-4 border-b border-slate-800 bg-slate-950/60 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -513,7 +513,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
 
         {/* Status Toast / Banner */}
         {saveStatus && (
-          <div className="mx-5 mt-4 p-3 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs flex items-center justify-between">
+          <div className="mx-5 mt-4 p-3 rounded-lg bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Info size={16} />
               <span>{saveStatus}</span>
@@ -530,7 +530,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
           {activeTab === 'timetable' && (
             <div className="space-y-6">
               {/* Selector Bar */}
-              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 grid grid-cols-1 sm:grid-cols-4 gap-3">
+              <div className="p-4 rounded-lg bg-slate-950 border border-slate-800 grid grid-cols-1 sm:grid-cols-4 gap-3">
                 <div>
                   <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">
                     Semester
@@ -646,7 +646,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                   (editingSchedule[selectedDay] || []).map((slot, index) => (
                     <div
                       key={slot.id || index}
-                      className="p-3.5 rounded-xl bg-slate-950 border border-slate-800/90 grid grid-cols-1 md:grid-cols-12 gap-3 items-center"
+                      className="p-3.5 rounded-lg bg-slate-950 border border-slate-800/90 grid grid-cols-1 md:grid-cols-12 gap-3 items-center"
                     >
                       <div className="md:col-span-2">
                         <label className="block text-[10px] text-slate-500 font-semibold mb-0.5">Timing</label>
@@ -731,7 +731,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
           {activeTab === 'syllabus' && (
             <div className="space-y-6">
               {/* Course Catalog Search & Filter Controls */}
-              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-3">
+              <div className="p-4 rounded-lg bg-slate-950 border border-slate-800 space-y-3">
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
                   {/* Search Bar */}
                   <div className="relative flex-1">
@@ -883,7 +883,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
               </div>
 
               {/* Course Form Details */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-5 rounded-xl bg-slate-950 border border-slate-800">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-5 rounded-lg bg-slate-950 border border-slate-800">
                 <div>
                   <label className="block text-[11px] text-slate-400 font-semibold mb-1">Course Code</label>
                   <input
@@ -1015,7 +1015,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
               </div>
 
               {/* Modules List */}
-              <div className="p-5 rounded-xl bg-slate-950 border border-slate-800 space-y-3">
+              <div className="p-5 rounded-lg bg-slate-950 border border-slate-800 space-y-3">
                 <div className="flex items-center justify-between">
                   <h3 className="text-xs font-bold text-white uppercase tracking-wider">
                     Syllabus Modules ({(editingCourse.modules || []).length})
@@ -1072,7 +1072,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
               </div>
 
               {/* Textbooks List */}
-              <div className="p-5 rounded-xl bg-slate-950 border border-slate-800 space-y-3">
+              <div className="p-5 rounded-lg bg-slate-950 border border-slate-800 space-y-3">
                 <h3 className="text-xs font-bold text-white uppercase tracking-wider">
                   Prescribed Textbooks & References ({(editingCourse.textbooks || []).length})
                 </h3>
@@ -1132,7 +1132,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
           {activeTab === 'announcements' && (
             <div className="space-y-6">
               {/* Post New Announcement */}
-              <form onSubmit={handlePostAnnouncement} className="p-5 rounded-xl bg-slate-950 border border-slate-800 space-y-4">
+              <form onSubmit={handlePostAnnouncement} className="p-5 rounded-lg bg-slate-950 border border-slate-800 space-y-4">
                 <h3 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
                   <Bell size={14} className="text-amber-400" />
                   Broadcast Live Academic Notice
@@ -1197,14 +1197,14 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                 </h3>
 
                 {announcements.length === 0 ? (
-                  <div className="p-8 text-center text-slate-500 text-xs bg-slate-950 rounded-xl border border-slate-800">
+                  <div className="p-8 text-center text-slate-500 text-xs bg-slate-950 rounded-lg border border-slate-800">
                     No announcements published yet. Post one above to show on student screens.
                   </div>
                 ) : (
                   announcements.map((ann) => (
                     <div
                       key={ann.id}
-                      className={`p-4 rounded-xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${
+                      className={`p-4 rounded-lg border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${
                         ann.active
                           ? 'bg-slate-950 border-slate-800'
                           : 'bg-slate-950/40 border-slate-800/40 opacity-60'
@@ -1263,7 +1263,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
           {/* TAB 4: DIAGNOSTICS */}
           {activeTab === 'diagnostics' && (
             <div className="space-y-6">
-              <div className="p-5 rounded-xl bg-slate-950 border border-slate-800 space-y-4">
+              <div className="p-5 rounded-lg bg-slate-950 border border-slate-800 space-y-4">
                 <h3 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
                   <ShieldCheck size={16} className="text-emerald-400" />
                   Cloud Firebase Security & Storage Status

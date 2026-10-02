@@ -164,7 +164,7 @@ export const StudentToolsHub: React.FC<StudentToolsHubProps> = ({
   return (
     <div className="space-y-6" id="student-tools-hub">
       {/* Hero Banner: Student Resource & External Help Gateway */}
-      <div className="p-5 sm:p-6 bg-slate-900 border border-slate-800 rounded-xl shadow-md flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5">
+      <div className="p-5 sm:p-6 bg-slate-900 border border-slate-800 rounded-lg shadow-md flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5">
         <div className="flex items-start gap-4">
           <div className="w-10 h-10 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center shrink-0 shadow-xs mt-0.5">
             <Globe className="w-5 h-5 text-blue-400" />
@@ -211,7 +211,7 @@ export const StudentToolsHub: React.FC<StudentToolsHubProps> = ({
       </div>
 
       {/* Emergency Student Helplines Notice Ribbon */}
-      <div className="p-3.5 sm:p-4 rounded-xl bg-slate-900 border border-rose-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+      <div className="p-3.5 sm:p-4 rounded-lg bg-slate-900 border border-rose-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-lg bg-rose-500/20 border border-rose-500/40 flex items-center justify-center shrink-0">
             <Phone className="w-4 h-4 text-rose-400" />
@@ -249,7 +249,7 @@ export const StudentToolsHub: React.FC<StudentToolsHubProps> = ({
       </div>
 
       {/* Search & Filter Controls */}
-      <div className="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+      <div className="p-4 bg-slate-900 border border-slate-800 rounded-lg space-y-3">
         <div className="flex flex-col sm:flex-row gap-3 items-center justify-between">
           <div className="relative w-full sm:w-96">
             <Search className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
@@ -275,9 +275,9 @@ export const StudentToolsHub: React.FC<StudentToolsHubProps> = ({
             <button
               type="button"
               onClick={() => setOnlyPopular(!onlyPopular)}
-              className={`min-h-[38px] px-3 py-1.5 rounded-xl border text-xs font-bold flex items-center gap-1.5 transition active:scale-95 ${
+              className={`min-h-[38px] px-3 py-1.5 rounded-lg border text-xs font-bold flex items-center gap-1.5 transition active:scale-95 ${
                 onlyPopular
-                  ? 'bg-blue-600 text-white border-blue-500 shadow-sm'
+                  ? 'bg-blue-600 text-white border-blue-500 shadow-xs'
                   : 'bg-slate-900/80 hover:bg-slate-800 text-slate-300 border-slate-700'
               }`}
             >
@@ -331,9 +331,9 @@ export const StudentToolsHub: React.FC<StudentToolsHubProps> = ({
               key={cat.id}
               type="button"
               onClick={() => setSelectedCategory(cat.id)}
-              className={`min-h-[40px] px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-2 whitespace-nowrap transition shrink-0 active:scale-95 ${
+              className={`min-h-[40px] px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-2 whitespace-nowrap transition shrink-0 active:scale-95 ${
                 isSelected
-                  ? 'bg-blue-600 text-white font-bold shadow-md shadow-blue-600/20'
+                  ? 'bg-blue-600 text-white font-bold shadow-xs'
                   : 'bg-slate-800/60 hover:bg-slate-800 text-slate-300 border border-slate-700/60'
               }`}
             >
@@ -353,7 +353,7 @@ export const StudentToolsHub: React.FC<StudentToolsHubProps> = ({
 
       {/* Pinned / Starred Quick Access Tray (if in 'all' view and pins exist) */}
       {selectedCategory === 'all' && !searchQuery && pinnedTools.length > 0 && (
-        <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2.5">
+        <div className="p-4 rounded-lg bg-slate-900 border border-slate-800 space-y-2.5">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Bookmark className="w-4 h-4 text-blue-400" />
@@ -371,7 +371,7 @@ export const StudentToolsHub: React.FC<StudentToolsHubProps> = ({
                 href={tool.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/70 hover:border-blue-500/50 transition flex items-center justify-between gap-2 group"
+                className="p-2.5 rounded-lg bg-slate-800/80 hover:bg-slate-800 border border-slate-700/70 hover:border-blue-500/50 transition flex items-center justify-between gap-2 group"
               >
                 <div className="min-w-0 flex-1">
                   <span className="text-[10px] text-slate-400 block truncate font-mono">{tool.badge}</span>
@@ -396,7 +396,7 @@ export const StudentToolsHub: React.FC<StudentToolsHubProps> = ({
             return (
               <div
                 key={tool.id}
-                className="group p-4 sm:p-5 bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-xl transition-all flex flex-col justify-between hover:shadow-md relative"
+                className="group p-4 sm:p-5 bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-lg transition-all flex flex-col justify-between hover:shadow-md relative"
               >
                 <div>
                   {/* Top Bar: Badge, Popular Star & Pin Action */}
@@ -446,7 +446,7 @@ export const StudentToolsHub: React.FC<StudentToolsHubProps> = ({
 
                   {/* Special Notes / Helplines Info if present */}
                   {tool.notes && (
-                    <div className="mt-2.5 p-2 rounded-xl bg-slate-900/80 border border-slate-800 text-[11px] text-blue-300 font-medium">
+                    <div className="mt-2.5 p-2 rounded-lg bg-slate-900/80 border border-slate-800 text-[11px] text-blue-300 font-medium">
                       {tool.notes}
                     </div>
                   )}
@@ -489,7 +489,7 @@ export const StudentToolsHub: React.FC<StudentToolsHubProps> = ({
                       href={tool.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="min-h-[34px] px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-sm shadow-blue-600/15"
+                      className="min-h-[34px] px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-xs"
                       title={`Open ${tool.name} in a new tab`}
                     >
                       <span>Visit</span>
@@ -502,7 +502,7 @@ export const StudentToolsHub: React.FC<StudentToolsHubProps> = ({
           })}
         </div>
       ) : (
-        <div className="p-12 text-center bg-slate-900/60 rounded-xl border border-slate-800">
+        <div className="p-12 text-center bg-slate-900/60 rounded-lg border border-slate-800">
           <Globe className="w-10 h-10 text-slate-500 mx-auto mb-3" />
           <h3 className="text-base font-bold text-white">No tools match your filter</h3>
           <p className="text-xs text-slate-400 mt-1 max-w-sm mx-auto">
@@ -523,7 +523,7 @@ export const StudentToolsHub: React.FC<StudentToolsHubProps> = ({
       )}
 
       {/* Official Notice & Disclaimer Card */}
-      <div className="p-5 bg-slate-900 border border-slate-800 rounded-xl shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="p-5 bg-slate-900 border border-slate-800 rounded-lg shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-start gap-3.5">
           <div className="w-9 h-9 rounded-lg bg-blue-500/20 border border-blue-500/30 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
             <ShieldAlert className="w-4 h-4 text-blue-400" />
@@ -547,7 +547,7 @@ export const StudentToolsHub: React.FC<StudentToolsHubProps> = ({
         <div className="flex flex-wrap sm:flex-col items-stretch gap-2 shrink-0 w-full sm:w-auto">
           <a
             href="mailto:shivshivamxyz@gmail.com?subject=Suggest%20Student%20Tool%20or%20Portal&body=Hi%20Ayush,%0D%0A%0D%0AI%20would%20like%20to%20suggest%20the%20following%20tool/portal%20for%20NIT%20Goa%20students:%0D%0A"
-            className="w-full sm:w-auto min-h-[42px] px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition shadow-md shadow-blue-600/20 active:scale-95 text-center"
+            className="w-full sm:w-auto min-h-[42px] px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition shadow-md shadow-blue-600/20 active:scale-95 text-center"
           >
             <Mail className="w-4 h-4 shrink-0" />
             <span>Suggest a Tool / Report Link</span>

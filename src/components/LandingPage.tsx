@@ -83,12 +83,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-amber-500 selection:text-slate-950 pb-20">
+    <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-blue-600 selection:text-white pb-20">
       {/* Top Header Bar */}
       <header className="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <BrandIcon size={36} className="rounded-xl shadow-md ring-1 ring-white/10 shrink-0" />
+            <BrandIcon size={36} className="rounded-lg shadow-md ring-1 ring-white/10 shrink-0" />
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-bold tracking-tight text-white text-base sm:text-lg">NIT Goa Timetable</span>
@@ -119,10 +119,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   <button
                     type="button"
                     onClick={onOpenAdminPanel}
-                    className="min-h-[40px] inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 text-xs font-bold transition active:scale-95 shadow-md shadow-amber-500/15 shrink-0"
+                    className="min-h-[38px] inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-slate-800 hover:bg-slate-750 text-slate-200 border border-slate-700 text-xs font-semibold transition active:scale-95 shadow-xs shrink-0"
                     title="Open Administrator Control Panel"
                   >
-                    <ShieldCheck className="w-4 h-4 shrink-0" />
+                    <ShieldCheck className="w-4 h-4 shrink-0 text-blue-400" />
                     <span>Admin Panel</span>
                   </button>
                 )}
@@ -130,7 +130,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                 <button
                   type="button"
                   onClick={onContinueToTimetable}
-                  className="min-h-[40px] inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs sm:text-sm font-bold transition active:scale-95 shadow-md shadow-amber-500/15"
+                  className="min-h-[38px] inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold transition active:scale-95 shadow-xs"
                 >
                   <span>Open App</span>
                   <ArrowRight className="w-4 h-4" />
@@ -140,7 +140,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   type="button"
                   onClick={onSignOut}
                   title="Sign Out"
-                  className="min-h-[40px] min-w-[40px] p-2 text-slate-400 hover:text-white rounded-xl hover:bg-slate-800 transition flex items-center justify-center border border-slate-800"
+                  className="min-h-[38px] min-w-[38px] p-2 text-slate-400 hover:text-white rounded-md hover:bg-slate-800 transition flex items-center justify-center border border-slate-800"
                   aria-label="Sign Out"
                 >
                   <LogOut className="w-4 h-4" />
@@ -151,7 +151,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                 type="button"
                 onClick={handleSignInClick}
                 disabled={authLoading || signingIn}
-                className="min-h-[42px] inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-950 text-xs sm:text-sm font-bold transition shadow-md active:scale-95"
+                className="min-h-[38px] inline-flex items-center gap-2 px-4 py-1.5 rounded-md bg-white hover:bg-slate-100 text-slate-950 text-xs sm:text-sm font-semibold transition shadow-xs active:scale-95"
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24">
                   <path
@@ -256,7 +256,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <button
                 type="button"
                 onClick={onContinueToTimetable}
-                className="w-full sm:w-auto min-h-[46px] inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm transition shadow-md shadow-blue-600/20 active:scale-95"
+                className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition shadow-xs active:scale-98"
               >
                 <span>Open Timetable</span>
                 <ArrowRight className="w-5 h-5" />
@@ -441,7 +441,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
           {/* Quick Install Banner */}
           {isInstallable && (
-            <div className="mb-6 p-4 rounded-xl bg-slate-900 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="mb-6 p-4 rounded-lg bg-slate-900 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 rounded-lg bg-blue-600 text-white">
                   <Download className="w-5 h-5" />
@@ -468,9 +468,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <button
                 type="button"
                 onClick={() => setActivePlatform('android')}
-                className={`min-h-[40px] flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition active:scale-95 ${
+                className={`min-h-[40px] flex items-center gap-2 px-4 py-2 rounded-md text-xs font-bold transition active:scale-95 ${
                   activePlatform === 'android'
-                    ? 'bg-amber-500 text-slate-950 shadow-md'
+                    ? 'bg-blue-600 text-white shadow-xs'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
@@ -480,9 +480,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <button
                 type="button"
                 onClick={() => setActivePlatform('ios')}
-                className={`min-h-[40px] flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition active:scale-95 ${
+                className={`min-h-[40px] flex items-center gap-2 px-4 py-2 rounded-md text-xs font-bold transition active:scale-95 ${
                   activePlatform === 'ios'
-                    ? 'bg-amber-500 text-slate-950 shadow-md'
+                    ? 'bg-blue-600 text-white shadow-xs'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
@@ -492,9 +492,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <button
                 type="button"
                 onClick={() => setActivePlatform('desktop')}
-                className={`min-h-[40px] flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition active:scale-95 ${
+                className={`min-h-[40px] flex items-center gap-2 px-4 py-2 rounded-md text-xs font-bold transition active:scale-95 ${
                   activePlatform === 'desktop'
-                    ? 'bg-amber-500 text-slate-950 shadow-md'
+                    ? 'bg-blue-600 text-white shadow-xs'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
@@ -621,7 +621,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          <div className="p-5 sm:p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition">
+          <div className="p-5 sm:p-6 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition">
             <div className="p-2.5 rounded-lg bg-blue-500/20 text-blue-400 w-fit mb-4">
               <Calendar className="w-5 h-5" />
             </div>
@@ -632,7 +632,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             </p>
           </div>
 
-          <div className="p-5 sm:p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition">
+          <div className="p-5 sm:p-6 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition">
             <div className="p-2.5 rounded-lg bg-emerald-500/20 text-emerald-400 w-fit mb-4">
               <CheckSquare className="w-5 h-5" />
             </div>
@@ -643,7 +643,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             </p>
           </div>
 
-          <div className="p-5 sm:p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition">
+          <div className="p-5 sm:p-6 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition">
             <div className="p-2.5 rounded-lg bg-blue-500/20 text-blue-400 w-fit mb-4">
               <BookOpen className="w-5 h-5" />
             </div>
@@ -654,7 +654,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             </p>
           </div>
 
-          <div className="p-5 sm:p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition">
+          <div className="p-5 sm:p-6 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition">
             <div className="p-2.5 rounded-lg bg-slate-700/50 text-slate-300 w-fit mb-4">
               <Award className="w-5 h-5" />
             </div>
@@ -665,7 +665,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             </p>
           </div>
 
-          <div className="p-5 sm:p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition">
+          <div className="p-5 sm:p-6 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition">
             <div className="p-2.5 rounded-lg bg-slate-700/50 text-slate-300 w-fit mb-4">
               <Calendar className="w-5 h-5" />
             </div>
@@ -676,7 +676,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             </p>
           </div>
 
-          <div className="p-5 sm:p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition">
+          <div className="p-5 sm:p-6 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition">
             <div className="p-2.5 rounded-lg bg-amber-500/20 text-amber-400 w-fit mb-4">
               <ShieldCheck className="w-5 h-5" />
             </div>
@@ -692,7 +692,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       {/* Institutional Footer */}
       <footer className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-4">
         {/* Unofficial Disclaimer & Correction Email Alert Card */}
-        <div className="w-full bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-4.5 flex flex-col gap-3 sm:gap-3.5 shadow-xs text-left">
+        <div className="w-full bg-slate-900 border border-slate-800 rounded-lg p-4 sm:p-4.5 flex flex-col gap-3 sm:gap-3.5 shadow-xs text-left">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
             <div className="flex items-start gap-3 min-w-0">
               <div className="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-500/30 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 text-blue-400">
@@ -741,7 +741,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           </div>
         </div>
 
-        <div className="p-5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-400 space-y-2">
+        <div className="p-5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-400 space-y-2">
           <div className="flex items-center gap-2 text-blue-300 font-bold uppercase tracking-wider text-[11px]">
             <BookOpen className="w-4 h-4 text-blue-400" />
             <span>National Institute of Technology Goa • Academic Reference</span>

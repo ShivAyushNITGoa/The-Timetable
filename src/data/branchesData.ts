@@ -52,8 +52,8 @@ export const BRANCHES_LIST: BranchInfo[] = [
     name: 'Computer Science',
     fullName: 'Computer Science and Engineering',
     department: 'Department of Computer Science & Engineering',
-    iconColor: 'text-cyan-400',
-    badgeBg: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/30',
+    iconColor: 'text-blue-400',
+    badgeBg: 'bg-blue-500/10 text-blue-300 border-blue-500/30',
     headOfDepartment: 'Dr. Pravati Swain',
   },
   {
@@ -70,8 +70,8 @@ export const BRANCHES_LIST: BranchInfo[] = [
     name: 'Mechanical Engg.',
     fullName: 'Mechanical Engineering',
     department: 'Department of Mechanical Engineering',
-    iconColor: 'text-orange-400',
-    badgeBg: 'bg-orange-500/10 text-orange-300 border-orange-500/30',
+    iconColor: 'text-slate-300',
+    badgeBg: 'bg-slate-800 text-slate-300 border-slate-700/80',
     headOfDepartment: 'Dr. Sachin D. Kore',
   },
   {
@@ -79,8 +79,8 @@ export const BRANCHES_LIST: BranchInfo[] = [
     name: 'Civil Engineering',
     fullName: 'Civil Engineering',
     department: 'Department of Civil Engineering',
-    iconColor: 'text-blue-400',
-    badgeBg: 'bg-blue-500/10 text-blue-300 border-blue-500/30',
+    iconColor: 'text-indigo-400',
+    badgeBg: 'bg-indigo-500/10 text-indigo-300 border-indigo-500/30',
     headOfDepartment: 'Dr. Harikumar M.',
   },
 ];

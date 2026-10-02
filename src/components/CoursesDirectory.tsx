@@ -48,7 +48,7 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
   return (
     <div className="space-y-6">
       {/* Header Info Box */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
+      <div className="bg-slate-900 border border-slate-800 rounded-lg p-5">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 mb-1 flex-wrap">
@@ -142,7 +142,7 @@ export const CoursesDirectory: React.FC<CoursesDirectoryProps> = ({
             <div
               key={course.code}
               onClick={() => onOpenCourseModal(course.code)}
-              className={`group p-4 sm:p-5 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
+              className={`group p-4 sm:p-5 rounded-lg border transition-all cursor-pointer flex flex-col justify-between ${
                 isMinor
                   ? 'bg-slate-900 border-blue-500/40 shadow-xs hover:border-blue-400'
                   : isCurrentElective

@@ -166,7 +166,7 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-6">
       {/* Header Banner */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 sm:p-7 shadow-md relative overflow-hidden">
+      <div className="bg-slate-900 border border-slate-800 rounded-lg p-6 sm:p-7 shadow-md relative overflow-hidden">
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-600/15 border border-blue-500/30 text-blue-300 text-xs font-bold tracking-wide uppercase">
@@ -278,7 +278,7 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                 <button
                   type="button"
                   onClick={() => setActiveDocument(classifiedDocs[0])}
-                  className="px-3.5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center gap-2 transition active:scale-95 shadow-md"
+                  className="px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-2 transition active:scale-95 shadow-xs"
                 >
                   <Eye className="w-4 h-4" />
                   <span>Open Primary Audit (Form AT-04)</span>
@@ -341,11 +341,11 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
               return (
                 <div
                   key={doc.id}
-                  className="bg-slate-900 border border-slate-800 hover:border-emerald-500/40 rounded-xl p-5 shadow-xs flex flex-col justify-between transition-all duration-150 hover:-translate-y-0.5 group"
+                  className="bg-slate-900 border border-slate-800 hover:border-emerald-500/40 rounded-lg p-5 shadow-xs flex flex-col justify-between transition-all duration-150 hover:-translate-y-0.5 group"
                 >
                   <div className="space-y-3">
                     <div className="flex items-start justify-between gap-2">
-                      <span className="px-2.5 py-1 rounded-lg text-[11px] font-bold uppercase tracking-wide border flex items-center gap-1.5 bg-emerald-500/10 text-emerald-400 border-emerald-500/30">
+                      <span className="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wide border flex items-center gap-1.5 bg-emerald-500/10 text-emerald-400 border-emerald-500/30">
                         <FileCheck2 className="w-3.5 h-3.5" />
                         <span>Classified NIT Goa Form</span>
                       </span>
@@ -385,7 +385,7 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                     <button
                       type="button"
                       onClick={() => setActiveDocument(doc)}
-                      className="flex-1 min-h-[40px] px-3.5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95 shadow-md"
+                      className="flex-1 min-h-[40px] px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95 shadow-xs"
                     >
                       <Eye className="w-4 h-4" />
                       <span>Open Classified Form</span>
@@ -395,7 +395,7 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                       href={doc.externalOfficialUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center border border-slate-700 transition"
+                      className="w-10 h-10 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center border border-slate-700 transition"
                       title="View Official NIT Goa Statutory Ordinance"
                     >
                       <ExternalLink className="w-4 h-4" />
@@ -621,7 +621,7 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
           </div>
 
           {/* Filter & Search Bar */}
-          <div className="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5 shadow-xs space-y-4">
+          <div className="bg-slate-900 border border-slate-800 rounded-lg p-4 sm:p-5 shadow-xs space-y-4">
             {/* Top Row: Search and Category Pills */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               {/* Search Box */}
@@ -632,7 +632,7 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search authentic files by branch, course title, code (e.g. CS200, Room 51, Holidays, Bus, Fee)..."
-                  className="w-full bg-slate-950/80 border border-slate-700 rounded-xl pl-10 pr-4 py-2.5 text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500 transition"
+                  className="w-full bg-slate-950/80 border border-slate-700 rounded-md pl-10 pr-4 py-2.5 text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500 transition"
                 />
                 {searchQuery && (
                   <button
@@ -660,9 +660,9 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                     key={tab.key}
                     type="button"
                     onClick={() => setSelectedCategory(tab.key as any)}
-                    className={`px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition min-h-[42px] sm:min-h-[38px] flex items-center active:scale-95 ${
+                    className={`px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition min-h-[40px] sm:min-h-[36px] flex items-center active:scale-95 ${
                       selectedCategory === tab.key
-                        ? 'bg-amber-500 text-slate-950 shadow-sm font-bold'
+                        ? 'bg-blue-600 text-white shadow-xs font-bold'
                         : 'bg-slate-800 text-slate-300 hover:bg-slate-700 active:bg-slate-750'
                     }`}
                   >
@@ -777,7 +777,7 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                   icon: Layers,
                 },
                 calendar: {
-                  badge: 'bg-purple-500/10 text-purple-400 border-purple-500/30',
+                  badge: 'bg-blue-500/15 text-blue-400 border-blue-500/30',
                   text: 'Academic Calendar',
                   icon: Calendar,
                 },
@@ -799,13 +799,13 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
               return (
                 <div
                   key={doc.id}
-                  className="bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-xl p-5 shadow-xs flex flex-col justify-between transition-all duration-150 hover:-translate-y-0.5 group"
+                  className="bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-lg p-5 shadow-xs flex flex-col justify-between transition-all duration-150 hover:-translate-y-0.5 group"
                 >
                   {/* Card Header */}
                   <div className="space-y-3">
                     <div className="flex items-start justify-between gap-2">
                       <span
-                        className={`px-2.5 py-1 rounded-lg text-[11px] font-bold uppercase tracking-wide border flex items-center gap-1.5 ${catInfo.badge}`}
+                        className={`px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wide border flex items-center gap-1.5 ${catInfo.badge}`}
                       >
                         <CategoryIcon className="w-3.5 h-3.5" />
                         <span>{catInfo.text}</span>
@@ -816,7 +816,7 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                     </div>
 
                     <div>
-                      <h3 className="text-base font-bold text-white group-hover:text-amber-300 transition-colors line-clamp-2 leading-snug">
+                      <h3 className="text-base font-bold text-white group-hover:text-blue-300 transition-colors line-clamp-2 leading-snug">
                         {doc.title}
                       </h3>
                       <div className="text-[11px] text-slate-400 font-mono mt-1">
@@ -851,7 +851,7 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                     <button
                       type="button"
                       onClick={() => setActiveDocument(doc)}
-                      className="flex-1 min-h-[40px] px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95 shadow-md whitespace-nowrap"
+                      className="flex-1 min-h-[40px] px-3.5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95 shadow-xs whitespace-nowrap"
                     >
                       <Eye className="w-4 h-4 shrink-0" />
                       <span>Read Embedded PDF</span>
@@ -861,7 +861,7 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                       href={doc.externalOfficialUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center border border-slate-700 transition shrink-0"
+                      className="w-10 h-10 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center border border-slate-700 transition shrink-0"
                       title="Open official PDF on NIT Goa website"
                     >
                       <ExternalLink className="w-4 h-4 shrink-0" />
@@ -874,7 +874,7 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
 
           {/* Empty State */}
           {filteredDocuments.length === 0 && (
-            <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-12 text-center space-y-3">
+            <div className="bg-slate-900/60 border border-slate-800 rounded-lg p-12 text-center space-y-3">
               <FileText className="w-10 h-10 text-slate-500 mx-auto" />
               <h3 className="text-base font-bold text-white">No documents matched your criteria</h3>
               <p className="text-xs text-slate-400 max-w-md mx-auto">
@@ -888,7 +888,7 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                   setSelectedYear('ALL');
                   setSearchQuery('');
                 }}
-                className="px-4 py-2 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs hover:bg-amber-400 transition"
+                className="px-4 py-2 rounded-lg bg-blue-600 text-white font-bold text-xs hover:bg-blue-500 transition"
               >
                 Clear all filters
               </button>

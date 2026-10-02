@@ -21,7 +21,7 @@ export const BrandIconSvg: React.FC<{
       viewBox="0 0 512 512"
       width={size}
       height={size}
-      className={`inline-block shrink-0 select-none ${rounded ? 'rounded-xl' : ''} ${className}`}
+      className={`inline-block shrink-0 select-none ${rounded ? 'rounded-lg' : ''} ${className}`}
       aria-label="The GDevelopers Icon"
     >
       <defs>
@@ -61,7 +61,7 @@ export const BrandIcon: React.FC<BrandIconProps> = ({
       src={imgError ? '/icon.svg?v=2' : '/icon.png?v=2'}
       alt="The GDevelopers Icon"
       style={sizeStyle}
-      className={`inline-block shrink-0 object-contain ${rounded ? 'rounded-xl' : ''} ${className}`}
+      className={`inline-block shrink-0 object-contain ${rounded ? 'rounded-lg' : ''} ${className}`}
       onError={() => {
         if (!imgError) {
           setImgError(true);

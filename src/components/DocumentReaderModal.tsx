@@ -201,7 +201,7 @@ export const DocumentReaderModal: React.FC<DocumentReaderModalProps> = ({
       onClick={onClose}
     >
       <div
-        className={`bg-slate-900 border border-slate-700/80 rounded-xl shadow-2xl flex flex-col overflow-hidden text-slate-100 transition-all duration-200 ${
+        className={`bg-slate-900 border border-slate-700/80 rounded-lg shadow-2xl flex flex-col overflow-hidden text-slate-100 transition-all duration-200 ${
           isFullscreen
             ? 'w-full h-full rounded-none border-0 fixed inset-0'
             : 'w-full max-w-6xl max-h-[92vh] h-[92vh]'
@@ -350,7 +350,7 @@ export const DocumentReaderModal: React.FC<DocumentReaderModalProps> = ({
         {/* Sub-header / Mode switcher when PDF is available */}
         {document.pdfUrl && (
           <div className="bg-slate-900/90 px-4 py-2 border-b border-slate-800 flex items-center justify-between gap-3 shrink-0">
-            <div className="flex items-center gap-1.5 p-1 bg-slate-950 rounded-xl border border-slate-800">
+            <div className="flex items-center gap-1.5 p-1 bg-slate-950 rounded-lg border border-slate-800">
               <button
                 type="button"
                 onClick={() => setActiveTab('pdf')}
@@ -484,7 +484,7 @@ export const DocumentReaderModal: React.FC<DocumentReaderModalProps> = ({
               </div>
 
               {/* Official Metadata Grid */}
-              <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-2 text-left bg-slate-950/70 border border-slate-800 rounded-xl p-3 text-xs">
+              <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-2 text-left bg-slate-950/70 border border-slate-800 rounded-lg p-3 text-xs">
                 <div>
                   <div className="text-[10px] text-slate-400 uppercase font-semibold">Ref Number</div>
                   <div className="font-mono text-slate-200 mt-0.5 font-bold truncate">
@@ -554,7 +554,7 @@ export const DocumentReaderModal: React.FC<DocumentReaderModalProps> = ({
 
                     {/* Table Render (if present) */}
                     {section.table && (
-                      <div className="mt-4 overflow-x-auto rounded-xl border border-slate-800 bg-slate-950/40">
+                      <div className="mt-4 overflow-x-auto rounded-lg border border-slate-800 bg-slate-950/40">
                         <table className="w-full text-left text-xs border-collapse">
                           <thead>
                             <tr className="bg-slate-800/80 text-slate-300 border-b border-slate-700">

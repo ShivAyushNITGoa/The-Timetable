@@ -87,7 +87,7 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xs animate-in fade-in duration-150">
-      <div className="bg-slate-900 border border-slate-700/80 rounded-xl max-w-xl w-full p-5 sm:p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <div className="bg-slate-900 border border-slate-700/80 rounded-lg max-w-xl w-full p-5 sm:p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -99,7 +99,7 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
 
         {/* Modal Header */}
         <div className="flex items-center gap-3.5 mb-5">
-          <BrandIcon size={44} className="shrink-0 rounded-xl shadow-md shadow-[#9EB81E]/15" />
+          <BrandIcon size={44} className="shrink-0 rounded-lg shadow-md shadow-[#9EB81E]/15" />
           <div>
             <div className="flex items-center gap-2">
               <span className="text-[10px] uppercase font-bold text-[#9EB81E] tracking-wider">The GDevelopers Hub</span>

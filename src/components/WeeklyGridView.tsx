@@ -79,7 +79,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
   return (
     <div className="space-y-4">
       {/* Legend & Responsive View Switcher */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 sm:p-4 bg-slate-800/60 border border-slate-700/60 rounded-xl text-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 sm:p-4 bg-slate-800/60 border border-slate-700/60 rounded-lg text-xs">
         <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
           <span className="font-semibold text-slate-300 flex items-center gap-1.5">
             <Info className="w-3.5 h-3.5 text-blue-400" /> Legend:
@@ -418,7 +418,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
             <span className="text-slate-400 font-mono">8 Periods</span>
           </div>
 
-          <div className="overflow-x-auto rounded-xl border border-slate-700/80 bg-slate-900 shadow-xl touch-pan-x">
+          <div className="overflow-x-auto rounded-lg border border-slate-700/80 bg-slate-900 shadow-xl touch-pan-x">
             <table className="w-full text-left border-collapse min-w-[760px] sm:min-w-[920px]">
               <thead>
                 <tr className="bg-slate-800/90 border-b border-slate-700">
@@ -558,7 +558,7 @@ function renderCell(
         <button
           type="button"
           onClick={() => onAdminAddSlot(day)}
-          className="h-16 w-full rounded-xl bg-slate-900/60 hover:bg-blue-500/10 border border-dashed border-slate-800 hover:border-blue-500/40 text-[11px] text-slate-500 hover:text-blue-300 flex flex-col items-center justify-center gap-1 transition group"
+          className="h-16 w-full rounded-lg bg-slate-900/60 hover:bg-blue-500/10 border border-dashed border-slate-800 hover:border-blue-500/40 text-[11px] text-slate-500 hover:text-blue-300 flex flex-col items-center justify-center gap-1 transition group"
           title={`Admin: Add slot for ${day}`}
         >
           <Plus className="w-3.5 h-3.5 text-slate-500 group-hover:text-blue-400" />
@@ -567,7 +567,7 @@ function renderCell(
       );
     }
     return (
-      <div className="h-16 rounded-xl bg-slate-900/80 border border-slate-800/80 flex items-center justify-center text-[11px] text-slate-500 italic">
+      <div className="h-16 rounded-lg bg-slate-900/80 border border-slate-800/80 flex items-center justify-center text-[11px] text-slate-500 italic">
         Free
       </div>
     );
@@ -575,7 +575,7 @@ function renderCell(
 
   if (slot.isFree) {
     return (
-      <div className="h-16 rounded-xl bg-slate-900/90 border border-dashed border-slate-700/60 p-2 flex flex-col justify-between relative group">
+      <div className="h-16 rounded-lg bg-slate-900/90 border border-dashed border-slate-700/60 p-2 flex flex-col justify-between relative group">
         <div className="flex items-center justify-between">
           <span className="text-[10px] font-semibold text-slate-300">{slot.slotName}</span>
           {isAdmin && onAdminEditSlot && (
@@ -606,7 +606,7 @@ function renderCell(
     return (
       <button
         onClick={() => onOpenCourseModal(code)}
-        className="w-full text-left h-16 p-2 rounded-xl bg-indigo-950/40 hover:bg-indigo-900/50 border border-indigo-500/40 transition flex flex-col justify-between group active:scale-[0.98]"
+        className="w-full text-left h-16 p-2 rounded-lg bg-indigo-950/40 hover:bg-indigo-900/50 border border-indigo-500/40 transition flex flex-col justify-between group active:scale-[0.98]"
       >
         <div className="flex items-center justify-between w-full">
           <span className="text-[10px] px-1.5 py-0.2 rounded bg-indigo-500/20 text-indigo-300 font-semibold uppercase">
@@ -665,7 +665,7 @@ function renderCell(
     return (
       <button
         onClick={() => onOpenCourseModal(labCode)}
-        className="w-full text-left p-2.5 rounded-xl bg-emerald-950/40 hover:bg-emerald-900/50 border border-emerald-500/40 transition flex flex-col justify-between group h-16 active:scale-[0.98]"
+        className="w-full text-left p-2.5 rounded-lg bg-emerald-950/40 hover:bg-emerald-900/50 border border-emerald-500/40 transition flex flex-col justify-between group h-16 active:scale-[0.98]"
       >
         <div className="flex items-center justify-between w-full">
           <span className="text-[10px] px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 font-semibold flex items-center gap-1">

@@ -603,7 +603,7 @@ export default function App() {
   if (authLoading) {
     return (
       <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-6 text-slate-100">
-        <div className="w-10 h-10 rounded-xl border-4 border-blue-500/20 border-t-blue-500 animate-spin mb-4" />
+        <div className="w-10 h-10 rounded-lg border-4 border-blue-500/20 border-t-blue-500 animate-spin mb-4" />
         <p className="text-xs font-semibold text-slate-300">Loading NIT Goa Timetable...</p>
       </div>
     );
@@ -783,7 +783,7 @@ export default function App() {
           .map((ann) => (
             <div
               key={ann.id}
-              className="mb-4 p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-start justify-between gap-3 shadow-xs animate-in fade-in slide-in-from-top-2 duration-300"
+              className="mb-4 p-4 rounded-lg bg-slate-900 border border-slate-800 flex items-start justify-between gap-3 shadow-xs animate-in fade-in slide-in-from-top-2 duration-300"
             >
               <div className="flex items-start gap-3 min-w-0">
                 <div className="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-300 flex items-center justify-center shrink-0 mt-0.5">
@@ -1069,7 +1069,7 @@ export default function App() {
 
       {/* Floating Action Toast Notification (positioned cleanly above mobile nav) */}
       {toastMessage && (
-        <div className="fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] sm:bottom-6 right-4 sm:right-6 z-50 bg-slate-900/95 backdrop-blur-md border border-blue-500/40 text-slate-100 px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-200 max-w-[calc(100vw-2rem)]">
+        <div className="fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] sm:bottom-6 right-4 sm:right-6 z-50 bg-slate-900/95 backdrop-blur-md border border-blue-500/40 text-slate-100 px-4 py-3 rounded-lg shadow-2xl flex items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-200 max-w-[calc(100vw-2rem)]">
           <CheckCircle className="w-5 h-5 text-blue-400 shrink-0" />
           <span className="text-xs sm:text-sm font-medium truncate">{toastMessage}</span>
         </div>
@@ -1107,7 +1107,7 @@ export default function App() {
                 <span className="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Academics</span>
                 <span className="text-slate-300">Dr. Mini (Dean)</span> • <span className="text-slate-300">Dr. Suresh Mikkili (Timetable)</span>
               </div>
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-800/80 border border-slate-700/80 shrink-0">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/80 shrink-0">
                 <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
                 <span className="text-slate-300 font-medium text-[11px]">Powered by The GDevelopers</span>
               </div>
@@ -1116,10 +1116,10 @@ export default function App() {
               <button
                 type="button"
                 onClick={() => setIsPwaModalOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-[11px] font-semibold transition active:scale-95 shrink-0"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 text-blue-300 border border-blue-500/30 text-[11px] font-semibold transition active:scale-95 shrink-0"
                 title="This is a Progressive Web App. Click for offline installation guide."
               >
-                <Info className="w-3.5 h-3.5 text-cyan-400" />
+                <Info className="w-3.5 h-3.5 text-blue-400" />
                 <span>PWA • Install Locally</span>
               </button>
             </div>
@@ -1128,7 +1128,7 @@ export default function App() {
           {/* Credits & Official Disclaimer Strip (Responsive Mobile-First) */}
           <div className="pt-5 border-t border-slate-800/80 flex flex-col gap-3.5 w-full">
             {/* Unofficial Disclaimer & Correction Email Alert Card */}
-            <div className="w-full bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-4.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 shadow-xs">
+            <div className="w-full bg-slate-900 border border-slate-800 rounded-lg p-4 sm:p-4.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 shadow-xs">
               <div className="flex items-start gap-3 min-w-0">
                 <div className="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-500/30 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 text-blue-400">
                   <AlertTriangle className="w-4 h-4" />
@@ -1151,7 +1151,7 @@ export default function App() {
               {/* Direct Mail Action Button (Optimized 44px+ touch target on mobile) */}
               <a
                 href="mailto:shivshivamxyz@gmail.com?subject=NIT%20Goa%20Timetable%20Correction"
-                className="w-full sm:w-auto min-h-[44px] px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-bold text-xs flex items-center justify-center gap-2 transition active:scale-95 shadow-md shadow-blue-600/20 shrink-0 text-center"
+                className="w-full sm:w-auto min-h-[44px] px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-bold text-xs flex items-center justify-center gap-2 transition active:scale-95 shadow-md shadow-blue-600/20 shrink-0 text-center"
               >
                 <Mail className="w-4 h-4 shrink-0" />
                 <span className="break-all">shivshivamxyz@gmail.com</span>

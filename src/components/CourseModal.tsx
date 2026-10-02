@@ -292,9 +292,9 @@ export const CourseModal: React.FC<CourseModalProps> = ({
             <button
               type="button"
               onClick={() => setViewTab('details')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 active:scale-95 ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 active:scale-95 ${
                 viewTab === 'details'
-                  ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
+                  ? 'bg-blue-600 text-white shadow-xs'
                   : 'bg-slate-800/80 text-slate-400 hover:text-slate-200 hover:bg-slate-800 border border-slate-700/60'
               }`}
             >
@@ -304,7 +304,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
             <button
               type="button"
               onClick={() => setViewTab('pdf')}
-              className="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 active:scale-95 bg-slate-800/80 text-blue-300 hover:text-blue-200 hover:bg-slate-800 border border-blue-500/30"
+              className="px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 active:scale-95 bg-slate-800/80 text-blue-300 hover:text-blue-200 hover:bg-slate-800 border border-blue-500/30"
             >
               <FileText className="w-3.5 h-3.5" />
               <span>Official Embedded PDF Handbook</span>
@@ -461,10 +461,10 @@ export const CourseModal: React.FC<CourseModalProps> = ({
 
           {/* Official Accreditation Badge */}
           {officialSyllabus && (
-            <div className="p-3.5 bg-gradient-to-r from-blue-900/20 via-slate-900 to-indigo-950/30 border border-blue-500/30 rounded-xl space-y-3">
+            <div className="p-3.5 bg-slate-850/80 border border-slate-750 rounded-lg space-y-3">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div className="flex items-start sm:items-center gap-2.5 min-w-0">
-                  <div className="w-8 h-8 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
+                  <div className="w-8 h-8 rounded-lg bg-blue-600/15 text-blue-400 border border-blue-500/30 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
                     <CheckCircle2 className="w-4 h-4" />
                   </div>
                   <div className="min-w-0">
@@ -482,7 +482,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
                   <button
                     type="button"
                     onClick={() => setViewTab('pdf')}
-                    className="flex-1 sm:flex-initial px-3.5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95 shadow-xs whitespace-nowrap"
+                    className="flex-1 sm:flex-initial px-3.5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs flex items-center justify-center gap-1.5 transition active:scale-95 shadow-xs whitespace-nowrap"
                     title="Read official embedded PDF handbook inside webapp"
                   >
                     <FileText className="w-3.5 h-3.5 shrink-0" />
@@ -516,7 +516,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
               </h4>
               <div className="space-y-2">
                 {course.modules.map((mod, idx) => (
-                  <div key={idx} className="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60 text-xs text-slate-200 leading-relaxed space-y-1">
+                  <div key={idx} className="p-3 rounded-lg bg-slate-800/60 border border-slate-700/60 text-xs text-slate-200 leading-relaxed space-y-1">
                     <div className="font-semibold text-blue-300 flex items-center gap-1.5 text-xs">
                       <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
                       <span>{mod.includes(':') ? mod.split(':')[0] : `Unit / Module ${idx + 1}`}</span>
@@ -591,15 +591,15 @@ export const CourseModal: React.FC<CourseModalProps> = ({
                 <>
                   <div className="flex items-center justify-between p-2 rounded-lg bg-slate-800/60 text-slate-300">
                     <span className="font-medium text-white">Tuesday</span>
-                    <span className="text-cyan-300">12:00 – 12:55 (Room 74/75)</span>
+                    <span className="text-blue-300">12:00 – 12:55 (Room 74/75)</span>
                   </div>
                   <div className="flex items-center justify-between p-2 rounded-lg bg-slate-800/60 text-slate-300">
                     <span className="font-medium text-white">Wednesday</span>
-                    <span className="text-cyan-300">14:00 – 14:55 (Room 56/57)</span>
+                    <span className="text-blue-300">14:00 – 14:55 (Room 56/57)</span>
                   </div>
                   <div className="flex items-center justify-between p-2 rounded-lg bg-slate-800/60 text-slate-300">
                     <span className="font-medium text-white">Friday</span>
-                    <span className="text-cyan-300">14:00 – 14:55 (Room 56/57)</span>
+                    <span className="text-blue-300">14:00 – 14:55 (Room 56/57)</span>
                   </div>
                 </>
               )}
@@ -725,10 +725,10 @@ export const CourseModal: React.FC<CourseModalProps> = ({
           </div>
 
           {/* Quick Attendance Card */}
-          <div className="p-4 bg-slate-800/50 border border-slate-700/70 rounded-xl space-y-3">
+          <div className="p-4 bg-slate-800/50 border border-slate-700/70 rounded-lg space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <CheckSquare className="w-4 h-4 text-amber-400" />
+                <CheckSquare className="w-4 h-4 text-blue-400" />
                 <h4 className="text-sm font-bold text-white">Course Attendance</h4>
               </div>
               <span
@@ -771,7 +771,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
             </div>
 
             {/* Attendance Insight / Bunk Advice */}
-            <div className="text-xs p-2 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300 flex items-center gap-2">
+            <div className="text-xs p-2 rounded-lg bg-slate-900/60 border border-slate-800 text-slate-300 flex items-center gap-2">
               {attendancePct === null ? (
                 <span>Log your attendances below to track your 75% eligibility.</span>
               ) : attendancePct >= 75 ? (
@@ -797,7 +797,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
                 <button
                   type="button"
                   onClick={() => updateAttendance(attendance.attended + 1, attendance.total + 1)}
-                  className="px-3 py-1.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 active:bg-emerald-500/40 text-emerald-300 border border-emerald-500/40 text-xs font-bold flex items-center gap-1 transition active:scale-95"
+                  className="px-3 py-1.5 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 active:bg-emerald-500/40 text-emerald-300 border border-emerald-500/40 text-xs font-bold flex items-center gap-1 transition active:scale-95"
                   title="Record 1 class attended"
                 >
                   <Check className="w-3.5 h-3.5" />
@@ -806,7 +806,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
                 <button
                   type="button"
                   onClick={() => updateAttendance(attendance.attended, attendance.total + 1)}
-                  className="px-3 py-1.5 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 active:bg-rose-500/40 text-rose-300 border border-rose-500/40 text-xs font-bold flex items-center gap-1 transition active:scale-95"
+                  className="px-3 py-1.5 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 active:bg-rose-500/40 text-rose-300 border border-rose-500/40 text-xs font-bold flex items-center gap-1 transition active:scale-95"
                   title="Record 1 class missed"
                 >
                   <X className="w-3.5 h-3.5" />
@@ -828,7 +828,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
           </div>
 
           {/* Personal Course Tasks & Study Notes */}
-          <div className="p-4 bg-slate-800/50 border border-slate-700/70 rounded-xl space-y-3">
+          <div className="p-4 bg-slate-800/50 border border-slate-700/70 rounded-lg space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Bookmark className="w-4 h-4 text-indigo-400" />
@@ -846,12 +846,12 @@ export const CourseModal: React.FC<CourseModalProps> = ({
                 value={newTaskInput}
                 onChange={(e) => setNewTaskInput(e.target.value)}
                 placeholder="Add assignment, viva prep, or reminder..."
-                className="flex-1 bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-hidden focus:border-blue-500"
+                className="flex-1 bg-slate-900/90 border border-slate-700 rounded-md px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-hidden focus:border-blue-500"
               />
               <button
                 type="submit"
                 disabled={!newTaskInput.trim()}
-                className="px-3 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white font-bold text-xs flex items-center gap-1 transition active:scale-95 shrink-0"
+                className="px-3 py-2 rounded-md bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white font-bold text-xs flex items-center gap-1 transition active:scale-95 shrink-0"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>Add</span>
@@ -864,7 +864,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
                 {tasks.map((task) => (
                   <div
                     key={task.id}
-                    className="p-2 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2 text-xs"
+                    className="p-2 rounded-lg bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2 text-xs"
                   >
                     <button
                       type="button"
@@ -904,10 +904,10 @@ export const CourseModal: React.FC<CourseModalProps> = ({
           </div>
 
           {/* External Study Help & Tools for this Course */}
-          <div className="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+          <div className="p-4 bg-slate-900 border border-slate-800 rounded-lg space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Globe className="w-4 h-4 text-cyan-400" />
+                <Globe className="w-4 h-4 text-blue-400" />
                 <h4 className="text-xs font-bold text-white uppercase tracking-wider">
                   Course Study Help & External Tools
                 </h4>
@@ -938,7 +938,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
                 href={`https://ieeexplore.ieee.org/search/searchresult.jsp?newsearch=true&queryText=${encodeURIComponent(course.name)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-medium text-slate-200 hover:text-white flex items-center justify-between gap-1.5 transition group active:scale-95"
+                className="p-2.5 rounded-lg bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-medium text-slate-200 hover:text-white flex items-center justify-between gap-1.5 transition group active:scale-95"
                 title="Search IEEE Xplore digital library publications"
               >
                 <div className="truncate">
@@ -952,7 +952,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
                 href={`https://www.wolframalpha.com/input?i=${encodeURIComponent(course.name)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-medium text-slate-200 hover:text-white flex items-center justify-between gap-1.5 transition group active:scale-95"
+                className="p-2.5 rounded-lg bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-medium text-slate-200 hover:text-white flex items-center justify-between gap-1.5 transition group active:scale-95"
                 title="Wolfram Alpha computational knowledge engine"
               >
                 <div className="truncate">
@@ -1028,7 +1028,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
                     onScheduleTest(course.code);
                     onClose();
                   }}
-                  className="min-h-[44px] flex-1 sm:flex-initial px-4 py-2.5 text-xs font-semibold rounded-xl bg-blue-600/15 hover:bg-blue-600/25 text-blue-300 border border-blue-500/30 transition flex items-center justify-center gap-1.5 active:scale-95"
+                  className="min-h-[44px] flex-1 sm:flex-initial px-4 py-2.5 text-xs font-semibold rounded-lg bg-blue-600/15 hover:bg-blue-600/25 text-blue-300 border border-blue-500/30 transition flex items-center justify-center gap-1.5 active:scale-95"
                 >
                   <Calendar className="w-4 h-4 text-blue-400" />
                   <span>Schedule Test</span>
@@ -1041,7 +1041,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
                     onTrackAttendance(course.code);
                     onClose();
                   }}
-                  className="min-h-[44px] flex-1 sm:flex-initial px-4 py-2.5 text-xs font-semibold rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center justify-center gap-1.5 active:scale-95"
+                  className="min-h-[44px] flex-1 sm:flex-initial px-4 py-2.5 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center justify-center gap-1.5 active:scale-95"
                 >
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                   <span>Track Attendance</span>
@@ -1050,7 +1050,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
               <button
                 type="button"
                 onClick={onClose}
-                className="min-h-[44px] px-6 py-2.5 text-xs font-bold rounded-xl bg-blue-600 hover:bg-blue-500 text-white transition shadow-md active:scale-95"
+                className="min-h-[44px] px-6 py-2.5 text-xs font-bold rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition shadow-xs active:scale-95"
               >
                 Close
               </button>

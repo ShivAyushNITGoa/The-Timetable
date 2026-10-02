@@ -84,7 +84,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
           onClick={() => setIsMoreMenuOpen(false)}
         >
           <div
-            className="bg-slate-900 border-t border-slate-700/80 rounded-t-3xl p-5 pb-[max(1.75rem,env(safe-area-inset-bottom,0px))] max-h-[85vh] overflow-y-auto shadow-2xl space-y-4 animate-in slide-in-from-bottom duration-300"
+            className="bg-slate-900 border-t border-slate-700/80 rounded-t-xl p-5 pb-[max(1.75rem,env(safe-area-inset-bottom,0px))] max-h-[85vh] overflow-y-auto shadow-2xl space-y-4 animate-in slide-in-from-bottom duration-300"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Sheet Handle & Header */}
@@ -224,7 +224,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                 <button
                   type="button"
                   onClick={() => handleSelectTab('day')}
-                  className={`min-h-[44px] px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-2.5 transition active:scale-95 ${
+                  className={`min-h-[44px] px-3 py-2 rounded-lg text-xs font-bold flex items-center gap-2.5 transition active:scale-95 ${
                     activeTab === 'day'
                       ? 'bg-blue-600 text-white font-bold shadow-xs'
                       : 'bg-slate-800/80 text-slate-200 hover:bg-slate-800 border border-slate-700/60'
@@ -382,7 +382,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                     setIsMoreMenuOpen(false);
                     onOpenThemeSelector();
                   }}
-                  className="w-full min-h-[44px] px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold flex items-center justify-between transition active:scale-95 shadow-xs"
+                  className="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold flex items-center justify-between transition active:scale-95 shadow-xs"
                 >
                   <div className="flex items-center gap-2.5">
                     <span
@@ -403,7 +403,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                     setIsMoreMenuOpen(false);
                     onOpenCustomizer();
                   }}
-                  className="w-full min-h-[44px] px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center justify-center gap-2 transition active:scale-95"
+                  className="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center justify-center gap-2 transition active:scale-95"
                 >
                   <Sliders className="w-4 h-4 text-blue-400" />
                   <span>Customize Class Schedule</span>
@@ -488,7 +488,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             aria-selected={activeTab === 'day'}
             aria-label="Today Schedule"
             onClick={() => handleSelectTab('day')}
-            className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1.5 px-0.5 active:scale-90 ${
+            className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-lg transition-all duration-150 py-1.5 px-0.5 active:scale-90 ${
               activeTab === 'day'
                 ? 'font-bold shadow-xs'
                 : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/50'
@@ -509,7 +509,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             aria-selected={activeTab === 'weekly'}
             aria-label="Weekly Timetable Matrix"
             onClick={() => handleSelectTab('weekly')}
-            className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1.5 px-0.5 active:scale-90 ${
+            className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-lg transition-all duration-150 py-1.5 px-0.5 active:scale-90 ${
               activeTab === 'weekly'
                 ? 'font-bold shadow-xs'
                 : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/50'
@@ -530,7 +530,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             aria-selected={activeTab === 'tests'}
             aria-label={`Tests and Tasks Planner${testCount > 0 ? `, ${testCount} tests scheduled` : ''}`}
             onClick={() => handleSelectTab('tests')}
-            className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1.5 px-0.5 relative active:scale-90 ${
+            className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-lg transition-all duration-150 py-1.5 px-0.5 relative active:scale-90 ${
               activeTab === 'tests'
                 ? 'font-bold shadow-xs'
                 : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/50'
@@ -558,7 +558,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             aria-selected={activeTab === 'attendance'}
             aria-label="75 Percent Attendance Tracker"
             onClick={() => handleSelectTab('attendance')}
-            className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1.5 px-0.5 active:scale-90 ${
+            className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-lg transition-all duration-150 py-1.5 px-0.5 active:scale-90 ${
               activeTab === 'attendance'
                 ? 'font-bold shadow-xs'
                 : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/50'
@@ -583,7 +583,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             aria-expanded={isMoreMenuOpen}
             aria-label="More navigation options and menu"
             onClick={() => setIsMoreMenuOpen(true)}
-            className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-xl transition-all duration-150 py-1.5 px-0.5 active:scale-90 relative ${
+            className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-lg transition-all duration-150 py-1.5 px-0.5 active:scale-90 relative ${
               isMoreTabActive || isMoreMenuOpen
                 ? 'font-bold shadow-xs'
                 : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/50'

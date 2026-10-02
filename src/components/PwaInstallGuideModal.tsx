@@ -98,7 +98,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
         </div>
 
         {/* What is a PWA? Informational Card */}
-        <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
+        <div className="p-4 rounded-lg bg-slate-900 border border-slate-800 space-y-2">
           <div className="flex items-center gap-2 text-blue-300 font-bold text-xs">
             <Info className="w-4 h-4 text-blue-400 shrink-0" />
             <span>What is a Progressive Web App?</span>
@@ -118,7 +118,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
               <span className="text-[9px] text-slate-400">No internet required</span>
             </div>
             <div className="p-2 rounded-lg bg-slate-800/80 border border-slate-700/60 text-center">
-              <HardDrive className="w-4 h-4 text-cyan-400 mx-auto mb-1" />
+              <HardDrive className="w-4 h-4 text-blue-400 mx-auto mb-1" />
               <span className="block text-[11px] font-bold text-white">Local Storage</span>
               <span className="text-[9px] text-slate-400">Private on your device</span>
             </div>
@@ -132,7 +132,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
 
         {/* 1-Click Install Button (When Supported by Browser) */}
         {isInstallable && !isStandalone && (
-          <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="p-4 rounded-lg bg-slate-900 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
             <div className="flex items-center gap-2.5">
               <div className="w-9 h-9 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
                 <Download className="w-4 h-4" />
@@ -164,7 +164,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
 
         {/* Standalone Status Indicator */}
         {isStandalone && (
-          <div className="p-3.5 rounded-xl bg-slate-900 border border-emerald-500/30 flex items-center gap-3 text-emerald-300 text-xs font-semibold">
+          <div className="p-3.5 rounded-lg bg-slate-900 border border-emerald-500/30 flex items-center gap-3 text-emerald-300 text-xs font-semibold">
             <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
             <span>You are currently running this app as an installed standalone Progressive Web App!</span>
           </div>
@@ -172,7 +172,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
 
         {/* Iframe Notice for AI Studio Preview */}
         {isInsideIframe && !isStandalone && (
-          <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700/80 text-slate-400 text-xs flex items-start gap-2.5">
+          <div className="p-3 rounded-lg bg-slate-800/80 border border-slate-700/80 text-slate-400 text-xs flex items-start gap-2.5">
             <Info className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
             <div className="leading-relaxed">
               <strong className="text-slate-300">Preview Mode Note:</strong> If testing in an embedded browser preview, open the app URL directly in a full browser tab to trigger the native browser install prompt or follow the quick steps below.
@@ -206,9 +206,9 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
                 aria-selected={activePlatform === 'android'}
                 aria-controls="pwa-guide-android"
                 onClick={() => setActivePlatform('android')}
-                className={`min-h-[44px] sm:min-h-[36px] px-2 sm:px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition active:scale-95 text-center cursor-pointer select-none ${
+                className={`min-h-[44px] sm:min-h-[36px] px-2 sm:px-3.5 py-2 rounded-md text-xs font-semibold flex items-center justify-center gap-1.5 transition active:scale-95 text-center cursor-pointer select-none ${
                   activePlatform === 'android'
-                    ? 'bg-blue-600 text-white font-bold shadow-md shadow-blue-600/25 ring-1 ring-blue-400'
+                    ? 'bg-blue-600 text-white font-bold shadow-xs'
                     : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50 active:bg-slate-700'
                 }`}
               >
@@ -223,9 +223,9 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
                 aria-selected={activePlatform === 'ios'}
                 aria-controls="pwa-guide-ios"
                 onClick={() => setActivePlatform('ios')}
-                className={`min-h-[44px] sm:min-h-[36px] px-2 sm:px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition active:scale-95 text-center cursor-pointer select-none ${
+                className={`min-h-[44px] sm:min-h-[36px] px-2 sm:px-3.5 py-2 rounded-md text-xs font-semibold flex items-center justify-center gap-1.5 transition active:scale-95 text-center cursor-pointer select-none ${
                   activePlatform === 'ios'
-                    ? 'bg-blue-600 text-white font-bold shadow-md shadow-blue-600/25 ring-1 ring-blue-400'
+                    ? 'bg-blue-600 text-white font-bold shadow-xs'
                     : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50 active:bg-slate-700'
                 }`}
               >
@@ -240,9 +240,9 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
                 aria-selected={activePlatform === 'desktop'}
                 aria-controls="pwa-guide-desktop"
                 onClick={() => setActivePlatform('desktop')}
-                className={`min-h-[44px] sm:min-h-[36px] px-2 sm:px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition active:scale-95 text-center cursor-pointer select-none ${
+                className={`min-h-[44px] sm:min-h-[36px] px-2 sm:px-3.5 py-2 rounded-md text-xs font-semibold flex items-center justify-center gap-1.5 transition active:scale-95 text-center cursor-pointer select-none ${
                   activePlatform === 'desktop'
-                    ? 'bg-blue-600 text-white font-bold shadow-md shadow-blue-600/25 ring-1 ring-blue-400'
+                    ? 'bg-blue-600 text-white font-bold shadow-xs'
                     : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50 active:bg-slate-700'
                 }`}
               >
@@ -258,7 +258,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
               id="pwa-guide-android"
               role="tabpanel"
               aria-labelledby="pwa-tab-android"
-              className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2.5 text-xs text-slate-300 animate-in fade-in duration-150"
+              className="p-4 rounded-lg bg-slate-900 border border-slate-800 space-y-2.5 text-xs text-slate-300 animate-in fade-in duration-150"
             >
               <div className="font-bold text-white flex items-center gap-1.5">
                 <Smartphone className="w-4 h-4 text-emerald-400 shrink-0" />
@@ -287,18 +287,18 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
               id="pwa-guide-ios"
               role="tabpanel"
               aria-labelledby="pwa-tab-ios"
-              className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2.5 text-xs text-slate-300 animate-in fade-in duration-150"
+              className="p-4 rounded-lg bg-slate-900 border border-slate-800 space-y-2.5 text-xs text-slate-300 animate-in fade-in duration-150"
             >
               <div className="font-bold text-white flex items-center gap-1.5">
-                <Share className="w-4 h-4 text-cyan-400 shrink-0" />
+                <Share className="w-4 h-4 text-blue-400 shrink-0" />
                 <span>iPhone / iPad (Apple Safari):</span>
               </div>
-              <ol className="space-y-2 pl-4 list-decimal marker:text-cyan-400 leading-relaxed">
+              <ol className="space-y-2 pl-4 list-decimal marker:text-blue-400 leading-relaxed">
                 <li>
                   Open this app in <strong className="text-white">Apple Safari</strong> (iOS requires Safari to install PWAs to the home screen).
                 </li>
                 <li>
-                  Tap the <strong className="text-white">Share button</strong> (the square with an upward arrow <Share className="w-3.5 h-3.5 inline text-cyan-400" /> at the bottom toolbar).
+                  Tap the <strong className="text-white">Share button</strong> (the square with an upward arrow <Share className="w-3.5 h-3.5 inline text-blue-400" /> at the bottom toolbar).
                 </li>
                 <li>
                   Scroll down the share menu options and tap <strong className="text-white flex-inline items-center gap-1">"Add to Home Screen" <PlusSquare className="w-3.5 h-3.5 inline text-slate-300" /></strong>.
@@ -316,7 +316,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
               id="pwa-guide-desktop"
               role="tabpanel"
               aria-labelledby="pwa-tab-desktop"
-              className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2.5 text-xs text-slate-300 animate-in fade-in duration-150"
+              className="p-4 rounded-lg bg-slate-900 border border-slate-800 space-y-2.5 text-xs text-slate-300 animate-in fade-in duration-150"
             >
               <div className="font-bold text-white flex items-center gap-1.5">
                 <Laptop className="w-4 h-4 text-blue-400 shrink-0" />
@@ -348,7 +348,7 @@ export const PwaInstallGuideModal: React.FC<PwaInstallGuideModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="min-h-[44px] px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition active:scale-95 cursor-pointer"
+            className="min-h-[40px] px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition active:scale-95 cursor-pointer"
           >
             Got it, Close
           </button>
