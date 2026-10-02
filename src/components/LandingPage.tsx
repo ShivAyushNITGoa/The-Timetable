@@ -292,56 +292,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             </p>
           )}
 
-          {/* Unofficial Disclaimer & Correction Email Alert Card */}
-          <div className="mt-6 max-w-3xl mx-auto w-full bg-slate-900 border border-slate-800 rounded-lg p-4 sm:p-4.5 flex flex-col gap-3 sm:gap-3.5 shadow-xs text-left">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
-              <div className="flex items-start gap-3 min-w-0">
-                <div className="w-8 h-8 rounded-md bg-blue-600/15 border border-blue-500/30 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 text-blue-400">
-                  <AlertTriangle className="w-4 h-4" />
-                </div>
-                <div className="min-w-0">
-                  <div className="flex items-center gap-1.5 flex-wrap">
-                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
-                      Notice
-                    </span>
-                    <span className="text-xs sm:text-sm font-bold text-slate-200">
-                      Independent Student Portal for NIT Goa
-                    </span>
-                  </div>
-                  <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                    This is an independent academic tool for NIT Goa. Report schedule corrections via email:
-                  </p>
-                </div>
-              </div>
-
-              {/* Direct Mail Action Button */}
-              <a
-                href="mailto:shivshivamxyz@gmail.com?subject=NIT%20Goa%20Timetable%20Correction"
-                className="w-full sm:w-auto min-h-[40px] px-3.5 py-2 rounded-md bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-semibold text-xs flex items-center justify-center gap-2 transition active:scale-98 shadow-xs shrink-0 text-center"
-              >
-                <Mail className="w-3.5 h-3.5 shrink-0" />
-                <span className="break-all">shivshivamxyz@gmail.com</span>
-              </a>
-            </div>
-
-            {/* Architect & Developer Attribution Bar */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-2.5 text-center sm:text-left px-1 pt-3 border-t border-slate-800 w-full">
-              <div className="flex items-center gap-2 flex-wrap justify-center sm:justify-start">
-                <div className="flex items-center gap-1.5 text-xs text-slate-400">
-                  <Code className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                  <span>Architect and developer:</span>
-                </div>
-                <span className="text-slate-200 font-semibold text-xs bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700">
-                  Ayush Kumar
-                </span>
-              </div>
-
-              <div className="text-[11px] text-slate-400">
-                Cuncolim Campus • All B.Tech Branches & Years
-              </div>
-            </div>
-          </div>
-
           {/* Quick Metrics & Highlights */}
           <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto text-left">
             <div className="p-3.5 rounded-lg bg-slate-900 border border-slate-800">
