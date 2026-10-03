@@ -186,30 +186,30 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
   const getTypeBadgeStyle = (type: TestType) => {
     switch (type) {
       case 'Quiz':
-        return 'bg-blue-600/15 text-blue-300 border-blue-500/30';
+        return 'bg-blue-50 text-blue-700 border-blue-200';
       case 'Mid-Semester Exam':
-        return 'bg-rose-500/15 text-rose-300 border-rose-500/30';
+        return 'bg-rose-50 text-rose-700 border-rose-200';
       case 'End-Semester Exam':
-        return 'bg-indigo-600/20 text-indigo-300 border-indigo-500/30';
+        return 'bg-indigo-50 text-indigo-700 border-indigo-200';
       case 'Unit Test (T1/T2)':
-        return 'bg-blue-500/15 text-blue-300 border-blue-500/30';
+        return 'bg-purple-50 text-purple-700 border-purple-200';
       case 'Lab Exam / Viva':
-        return 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30';
+        return 'bg-emerald-50 text-emerald-700 border-emerald-200';
       case 'Assignment / Project':
-        return 'bg-slate-700/50 text-slate-300 border-slate-600/50';
+        return 'bg-slate-100 text-slate-700 border-slate-200';
       default:
-        return 'bg-slate-800 text-slate-300 border-slate-700';
+        return 'bg-slate-100 text-slate-700 border-slate-200';
     }
   };
 
   const getPriorityStyle = (priority: TestPriority) => {
     switch (priority) {
       case 'High':
-        return 'text-rose-400 bg-rose-500/10 border-rose-500/20';
+        return 'text-rose-700 bg-rose-50 border-rose-200';
       case 'Medium':
-        return 'text-amber-400 bg-amber-500/10 border-amber-500/20';
+        return 'text-amber-700 bg-amber-50 border-amber-200';
       case 'Low':
-        return 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20';
+        return 'text-emerald-700 bg-emerald-50 border-emerald-200';
     }
   };
 
@@ -390,22 +390,22 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
   return (
     <div className="space-y-6">
       {/* Top Banner / Actions Bar */}
-      <div className="bg-slate-800/60 border border-slate-700/60 rounded-lg p-5 sm:p-6 shadow-md">
+      <div className="bg-white border border-slate-200 rounded-lg p-5 sm:p-6 shadow-2xs">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 mb-1.5">
-              <span className="px-2.5 py-0.5 rounded-md text-xs font-bold bg-blue-600/20 text-blue-300 border border-blue-500/30 flex items-center gap-1.5">
-                <CalendarIcon className="w-3.5 h-3.5" />
+              <span className="px-2.5 py-0.5 rounded-md text-xs font-bold bg-blue-100 text-blue-800 border border-blue-200 flex items-center gap-1.5">
+                <CalendarIcon className="w-3.5 h-3.5 text-blue-600" />
                 Continuous Assessment & Exam Calendar
               </span>
-              <span className="text-xs text-slate-400 font-mono">
+              <span className="text-xs text-slate-500 font-mono">
                 {filteredTests.length} Tests Scheduled
               </span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
               Tests, Tasks & Assessment Planner
             </h2>
-            <p className="text-xs text-slate-400 mt-1 max-w-2xl">
+            <p className="text-xs text-slate-600 mt-1 max-w-2xl">
               Schedule surprise quizzes, mid-sem exam slots, practical lab vivas, and assignment deadlines with preparation task checklists. Sync directly to Google Calendar or Apple Calendar with alarms.
             </p>
           </div>
@@ -413,7 +413,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
           <div className="flex items-center gap-2.5 flex-wrap">
             <button
               onClick={() => setIsAddModalOpen(true)}
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs sm:text-sm shadow-xs transition active:scale-95"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs sm:text-sm shadow-2xs transition active:scale-95"
             >
               <Plus className="w-4 h-4 stroke-[2.5]" />
               <span>Add Test / Quiz</span>
@@ -421,21 +421,21 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
 
             <button
               onClick={() => downloadTestsICS(tests)}
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 text-xs sm:text-sm font-semibold transition active:scale-95"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-xs sm:text-sm font-semibold transition active:scale-95 shadow-2xs"
               title="Download .ics file to sync tests with your phone or computer calendar"
             >
-              <Download className="w-4 h-4 text-blue-400" />
+              <Download className="w-4 h-4 text-blue-600" />
               <span>Export Tests (.ics)</span>
             </button>
           </div>
         </div>
 
         {/* Filter Controls Strip */}
-        <div className="mt-4 pt-3.5 border-t border-slate-700/60 w-full max-w-full min-w-0 space-y-2.5">
-          <div className="flex items-center justify-between gap-2 text-xs text-slate-400">
+        <div className="mt-4 pt-3.5 border-t border-slate-200 w-full max-w-full min-w-0 space-y-2.5">
+          <div className="flex items-center justify-between gap-2 text-xs text-slate-500">
             <div className="flex items-center gap-1.5">
-              <Filter className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-              <span className="font-semibold text-slate-300">Filter Schedule:</span>
+              <Filter className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+              <span className="font-semibold text-slate-700">Filter Schedule:</span>
             </div>
             {(filterType !== 'all' || filterCourse !== 'all') && (
               <button
@@ -444,7 +444,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                   setFilterType('all');
                   setFilterCourse('all');
                 }}
-                className="text-xs text-blue-400 hover:text-blue-300 hover:underline font-semibold"
+                className="text-xs text-blue-700 hover:underline font-semibold"
               >
                 Reset Filters
               </button>
@@ -457,7 +457,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
               <select
                 value={filterType}
                 onChange={(e) => setFilterType(e.target.value)}
-                className="w-full max-w-full min-w-0 bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500 truncate"
+                className="w-full max-w-full min-w-0 bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-blue-600 shadow-2xs truncate"
                 aria-label="Filter by test type"
               >
                 <option value="all">All Test Types</option>
@@ -475,7 +475,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
               <select
                 value={filterCourse}
                 onChange={(e) => setFilterCourse(e.target.value)}
-                className="w-full max-w-full min-w-0 bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500 truncate"
+                className="w-full max-w-full min-w-0 bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-blue-600 shadow-2xs truncate"
                 aria-label="Filter by course"
               >
                 <option value="all">All Registered Courses</option>
@@ -493,16 +493,16 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
       {/* Main Grid: Calendar on Left/Top, Upcoming Test Cards on Right/Bottom */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Calendar View Container (7 cols on lg) */}
-        <div className="lg:col-span-7 bg-slate-900/90 border border-slate-800 rounded-lg p-5 sm:p-6 shadow-md space-y-4">
+        <div className="lg:col-span-7 bg-white border border-slate-200 rounded-lg p-5 sm:p-6 shadow-2xs space-y-4">
           {/* Month Header Navigation */}
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+              <h3 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
                 {monthNames[currentMonth]} {currentYear}
               </h3>
               <button
                 onClick={handleToday}
-                className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-[11px] font-semibold text-blue-400 border border-slate-700 transition"
+                className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-[11px] font-semibold text-blue-700 border border-slate-200 transition"
               >
                 Today
               </button>
@@ -511,14 +511,14 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
             <div className="flex items-center gap-1">
               <button
                 onClick={handlePrevMonth}
-                className="p-2 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition"
+                className="p-2 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 transition"
                 aria-label="Previous Month"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <button
                 onClick={handleNextMonth}
-                className="p-2 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition"
+                className="p-2 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 transition"
                 aria-label="Next Month"
               >
                 <ChevronRight className="w-4 h-4" />
@@ -527,7 +527,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
           </div>
 
           {/* Day of Week Headers */}
-          <div className="grid grid-cols-7 gap-1 text-center font-bold text-[11px] text-slate-400 uppercase tracking-wider py-1 border-b border-slate-800">
+          <div className="grid grid-cols-7 gap-1 text-center font-bold text-[11px] text-slate-500 uppercase tracking-wider py-1 border-b border-slate-200">
             <span>Sun</span>
             <span>Mon</span>
             <span>Tue</span>
@@ -541,7 +541,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
           <div className="grid grid-cols-7 gap-1 sm:gap-2">
             {/* Empty slots for month start offset */}
             {Array.from({ length: calendarDays.firstDayIndex }).map((_, i) => (
-              <div key={`empty-${i}`} className="min-h-[52px] sm:min-h-[72px] rounded-lg bg-slate-950/20 opacity-30" />
+              <div key={`empty-${i}`} className="min-h-[52px] sm:min-h-[72px] rounded-lg bg-slate-50/50" />
             ))}
 
             {/* Actual month days */}
@@ -558,10 +558,10 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                   }}
                   className={`min-h-[52px] sm:min-h-[72px] p-1 sm:p-2 rounded-lg border transition-all cursor-pointer flex flex-col justify-between ${
                     isSelected
-                      ? 'bg-blue-600/10 border-blue-500 shadow-sm ring-1 ring-blue-500'
+                      ? 'bg-blue-50 border-blue-500 shadow-2xs ring-1 ring-blue-500'
                       : isToday
-                      ? 'bg-slate-800 border-blue-500/50'
-                      : 'bg-slate-950/40 border-slate-800/80 hover:border-slate-700 hover:bg-slate-800/40'
+                      ? 'bg-blue-50/50 border-blue-400'
+                      : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/60 shadow-2xs'
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -569,7 +569,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                       className={`text-xs font-bold leading-none ${
                         isToday
                           ? 'w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center font-black'
-                          : 'text-slate-300'
+                          : 'text-slate-700'
                       }`}
                     >
                       {item.dayNumber}
@@ -594,7 +594,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                       </div>
                     ))}
                     {dayTests.length > 2 && (
-                      <div className="text-[9px] text-slate-400 font-mono pl-0.5">
+                      <div className="text-[9px] text-slate-500 font-mono pl-0.5">
                         +{dayTests.length - 2} more
                       </div>
                     )}
@@ -606,10 +606,10 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
 
           {/* Day selection prompt or details */}
           {selectedDateStr && (
-            <div className="mt-4 p-4 rounded-lg bg-slate-950/80 border border-slate-800 space-y-3 animate-in fade-in duration-150">
+            <div className="mt-4 p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-3 animate-in fade-in duration-150">
               <div className="flex items-center justify-between gap-2">
-                <span className="text-xs font-bold text-white flex items-center gap-1.5">
-                  <CalendarIcon className="w-3.5 h-3.5 text-blue-400" />
+                <span className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                  <CalendarIcon className="w-3.5 h-3.5 text-blue-600" />
                   Tests on {selectedDateStr}:
                 </span>
                 <button
@@ -617,7 +617,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                     setNewDate(selectedDateStr);
                     setIsAddModalOpen(true);
                   }}
-                  className="text-xs text-blue-400 hover:underline flex items-center gap-1 font-semibold"
+                  className="text-xs text-blue-700 hover:underline flex items-center gap-1 font-semibold"
                 >
                   <Plus className="w-3 h-3" />
                   Add test on this day
@@ -625,30 +625,30 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
               </div>
 
               {testsForSelectedDate.length === 0 ? (
-                <p className="text-xs text-slate-400">No tests scheduled on this date.</p>
+                <p className="text-xs text-slate-500">No tests scheduled on this date.</p>
               ) : (
                 <div className="space-y-2">
                   {testsForSelectedDate.map((test) => (
                     <div
                       key={test.id}
                       onClick={() => setActiveTestDetail(test)}
-                      className="p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+                      className="p-3 rounded-lg bg-white border border-slate-200 hover:border-slate-300 shadow-2xs cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition"
                     >
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <span className="text-xs font-bold text-white">{test.courseCode}</span>
+                          <span className="text-xs font-bold text-slate-900">{test.courseCode}</span>
                           <span className={`text-[10px] px-2 py-0.5 rounded-md border font-semibold ${getTypeBadgeStyle(test.type)}`}>
                             {test.type}
                           </span>
                           {test.checklist && test.checklist.length > 0 && (
-                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 flex items-center gap-1 border border-slate-700">
-                              <ListTodo className="w-3 h-3 text-blue-400" />
+                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 flex items-center gap-1 border border-slate-200">
+                              <ListTodo className="w-3 h-3 text-blue-600" />
                               {test.checklist.filter(c => c.done).length}/{test.checklist.length} tasks
                             </span>
                           )}
                         </div>
-                        <div className="text-xs text-slate-300 font-medium mt-1 truncate">{test.title}</div>
-                        <div className="text-[11px] text-slate-400 flex items-center gap-3 mt-1">
+                        <div className="text-xs text-slate-800 font-medium mt-1 truncate">{test.title}</div>
+                        <div className="text-[11px] text-slate-500 flex items-center gap-3 mt-1">
                           <span className="flex items-center gap-1">
                             <Clock className="w-3 h-3" /> {test.startTime} - {test.endTime}
                           </span>
@@ -658,9 +658,9 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-1 shrink-0 self-end sm:self-center text-slate-400 group-hover:text-blue-400 text-xs font-semibold transition">
-                        <span className="hidden sm:inline text-[11px] text-slate-400 group-hover:text-blue-300">Tasks & Details</span>
-                        <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-blue-400" />
+                      <div className="flex items-center gap-1 shrink-0 self-end sm:self-center text-slate-500 group-hover:text-blue-700 text-xs font-semibold transition">
+                        <span className="hidden sm:inline text-[11px] text-slate-500 group-hover:text-blue-700">Tasks & Details</span>
+                        <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-blue-700" />
                       </div>
                     </div>
                   ))}
@@ -672,17 +672,17 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
 
         {/* Upcoming Tests & Timeline List (5 cols on lg) */}
         <div className="lg:col-span-5 space-y-4">
-          <div className="bg-slate-900/90 border border-slate-800 rounded-lg p-5 sm:p-6 shadow-xs space-y-4">
-            <div className="flex items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <div className="bg-white border border-slate-200 rounded-lg p-5 sm:p-6 shadow-2xs space-y-4">
+            <div className="flex items-center justify-between gap-2 border-b border-slate-200 pb-3">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-md bg-blue-600/15 text-blue-400 flex items-center justify-center font-bold">
+                <div className="w-8 h-8 rounded-md bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
                   <CalendarIcon className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="text-base sm:text-lg font-bold text-white leading-tight">
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-tight">
                     Upcoming Test Agenda
                   </h3>
-                  <span className="text-[11px] text-slate-400 font-mono">
+                  <span className="text-[11px] text-slate-500 font-mono">
                     {filteredTests.length} {filteredTests.length === 1 ? 'assessment' : 'assessments'} listed
                   </span>
                 </div>
@@ -695,7 +695,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                   setSelectedDateStr(null);
                   setIsAddModalOpen(true);
                 }}
-                className="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs flex items-center gap-1.5 shadow-xs active:scale-95 transition"
+                className="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs flex items-center gap-1.5 shadow-2xs active:scale-95 transition"
                 title="Schedule a new test or quiz"
               >
                 <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -704,24 +704,24 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
             </div>
 
             {/* Quick Agenda Control Bar / Hint */}
-            <div className="p-2.5 rounded-md bg-slate-950/60 border border-slate-800 text-[11px] text-slate-400 flex items-center justify-between gap-2">
+            <div className="p-2.5 rounded-md bg-slate-50 border border-slate-200 text-[11px] text-slate-600 flex items-center justify-between gap-2">
               <span className="flex items-center gap-1.5 truncate">
-                <CalendarIcon className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                <CalendarIcon className="w-3.5 h-3.5 text-blue-600 shrink-0" />
                 <span>Tap any assessment to view syllabus & manage tasks • ✏️ Edit Test • 🗑️ Delete • ↻ Tap status to cycle</span>
               </span>
             </div>
 
             {filteredTests.length === 0 ? (
-              <div className="text-center py-10 px-4 space-y-3 bg-slate-950/40 rounded-lg border border-slate-800">
-                <Award className="w-10 h-10 text-slate-600 mx-auto" />
-                <p className="text-sm font-medium text-slate-300">No upcoming tests matching filter.</p>
+              <div className="text-center py-10 px-4 space-y-3 bg-slate-50 rounded-lg border border-slate-200">
+                <Award className="w-10 h-10 text-slate-400 mx-auto" />
+                <p className="text-sm font-medium text-slate-700">No upcoming tests matching filter.</p>
                 <p className="text-xs text-slate-500 max-w-xs mx-auto">
                   Click below to schedule your upcoming unit test, quiz, or lab exam.
                 </p>
                 <button
                   type="button"
                   onClick={() => setIsAddModalOpen(true)}
-                  className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs inline-flex items-center gap-1.5 shadow-xs transition active:scale-95"
+                  className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs inline-flex items-center gap-1.5 shadow-2xs transition active:scale-95"
                 >
                   <Plus className="w-4 h-4 stroke-[2.5]" />
                   <span>Add First Test / Quiz</span>
@@ -737,16 +737,16 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                     <div
                       key={test.id}
                       onClick={() => setActiveTestDetail(test)}
-                      className={`p-4 rounded-lg border transition-all cursor-pointer hover:-translate-y-0.5 ${
+                      className={`p-4 rounded-lg border transition-all cursor-pointer hover:-translate-y-0.5 shadow-2xs ${
                         isUrgent
-                          ? 'bg-rose-950/20 border-rose-500/40 hover:border-rose-400'
-                          : 'bg-slate-950/50 border-slate-800 hover:border-slate-700 hover:bg-slate-800/50'
+                          ? 'bg-rose-50 border-rose-300 hover:border-rose-400'
+                          : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/60'
                       }`}
                     >
                       <div className="flex items-start justify-between gap-2">
                         <div>
                           <div className="flex items-center gap-1.5 flex-wrap">
-                            <span className="text-xs font-mono font-bold text-blue-400">
+                            <span className="text-xs font-mono font-bold text-blue-700">
                               {test.courseCode}
                             </span>
                             <span className={`text-[10px] px-2 py-0.5 rounded-md border font-semibold ${getTypeBadgeStyle(test.type)}`}>
@@ -756,10 +756,10 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                               {test.priority}
                             </span>
                           </div>
-                          <h4 className="text-sm font-bold text-white mt-1.5">
+                          <h4 className="text-sm font-bold text-slate-900 mt-1.5">
                             {test.title}
                           </h4>
-                          <p className="text-[11px] text-slate-400 line-clamp-1 mt-0.5">
+                          <p className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
                             {test.courseName}
                           </p>
                         </div>
@@ -768,8 +768,8 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                         <span
                           className={`text-[11px] font-bold px-2.5 py-1 rounded-md border shrink-0 ${
                             isUrgent
-                              ? 'bg-rose-500/20 text-rose-300 border-rose-500/40 animate-pulse'
-                              : 'bg-slate-800 text-slate-300 border-slate-700'
+                              ? 'bg-rose-100 text-rose-800 border-rose-300 animate-pulse'
+                              : 'bg-slate-100 text-slate-700 border-slate-200'
                           }`}
                         >
                           {countdown}
@@ -777,9 +777,9 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                       </div>
 
                       {/* Date & Room Details */}
-                      <div className="mt-3 pt-2.5 border-t border-slate-800/80 flex flex-wrap items-center justify-between text-xs text-slate-400 gap-2">
-                        <span className="flex items-center gap-1 text-slate-300 font-medium">
-                          <CalendarIcon className="w-3.5 h-3.5 text-blue-400" />
+                      <div className="mt-3 pt-2.5 border-t border-slate-200 flex flex-wrap items-center justify-between text-xs text-slate-500 gap-2">
+                        <span className="flex items-center gap-1 text-slate-700 font-medium">
+                          <CalendarIcon className="w-3.5 h-3.5 text-blue-600" />
                           {test.date}
                         </span>
                         <span className="flex items-center gap-1">
@@ -795,8 +795,8 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                       {/* Weightage & Prep Status & Tasks */}
                       <div className="mt-2.5 flex flex-wrap items-center justify-between text-xs gap-2">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <span className="text-slate-400">
-                            Weight: <strong className="text-slate-200">{test.weightageMarks || 20} Marks</strong>
+                          <span className="text-slate-500">
+                            Weight: <strong className="text-slate-900">{test.weightageMarks || 20} Marks</strong>
                           </span>
 
                           {/* Interactive Status Cycler Button */}
@@ -806,20 +806,20 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                             title="Click to cycle status: Not Started → In Progress → Prepared → Completed"
                             className={`px-2 py-0.5 rounded-md text-[10px] font-semibold border transition hover:opacity-80 active:scale-95 cursor-pointer ${
                               test.status === 'Completed'
-                                ? 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30'
+                                ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
                                 : test.status === 'Prepared'
-                                ? 'bg-blue-600/20 text-blue-200 border-blue-500/40'
+                                ? 'bg-blue-100 text-blue-800 border-blue-300'
                                 : test.status === 'In Progress'
-                                ? 'bg-blue-500/15 text-blue-300 border-blue-500/30'
-                                : 'bg-slate-800 text-slate-400 border-slate-700'
+                                ? 'bg-blue-50 text-blue-700 border-blue-200'
+                                : 'bg-slate-100 text-slate-700 border-slate-200'
                             }`}
                           >
                             {test.status} ↻
                           </button>
 
                           {test.checklist && test.checklist.length > 0 && (
-                            <span className="px-2 py-0.5 rounded-md text-[10px] font-medium bg-slate-800/80 text-slate-300 border border-slate-700 flex items-center gap-1">
-                              <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                            <span className="px-2 py-0.5 rounded-md text-[10px] font-medium bg-slate-100 text-slate-700 border border-slate-200 flex items-center gap-1">
+                              <CheckCircle2 className="w-3 h-3 text-emerald-600" />
                               {test.checklist.filter(c => c.done).length}/{test.checklist.length} Tasks
                             </span>
                           )}
@@ -833,10 +833,10 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                               e.stopPropagation();
                               setActiveTestDetail(test);
                             }}
-                            className="p-1.5 sm:px-3 sm:py-1 rounded-md text-slate-200 hover:text-blue-300 bg-slate-800/90 hover:bg-slate-700 border border-slate-700 flex items-center gap-1.5 transition text-xs font-semibold active:scale-95 shadow-xs"
+                            className="p-1.5 sm:px-3 sm:py-1 rounded-md text-slate-700 hover:text-blue-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 flex items-center gap-1.5 transition text-xs font-semibold active:scale-95 shadow-2xs"
                             title="Open preparation tasks and test details"
                           >
-                            <ListTodo className="w-3.5 h-3.5 text-blue-400" />
+                            <ListTodo className="w-3.5 h-3.5 text-blue-600" />
                             <span className="hidden sm:inline">Tasks & Details</span>
                             <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
                           </button>
@@ -853,11 +853,11 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
 
       {/* Test Detail / Checklist / Score Modal */}
       {activeTestDetail && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="bg-slate-900 border border-slate-700 rounded-lg max-w-lg w-full p-5 sm:p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto space-y-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-150">
+          <div className="bg-white border border-slate-200 rounded-lg max-w-lg w-full p-5 sm:p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto space-y-4">
             <button
               onClick={() => setActiveTestDetail(null)}
-              className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
+              className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition"
             >
               <X className="w-5 h-5" />
             </button>
@@ -866,7 +866,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
             <div className="flex items-start justify-between gap-3 pr-8">
               <div>
                 <div className="flex items-center gap-2 flex-wrap mb-1">
-                  <span className="text-xs font-mono font-bold text-blue-400">
+                  <span className="text-xs font-mono font-bold text-blue-700">
                     {activeTestDetail.courseCode}
                   </span>
                   <span className={`text-[10px] px-2.5 py-0.5 rounded-md border font-semibold ${getTypeBadgeStyle(activeTestDetail.type)}`}>
@@ -877,10 +877,10 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                   </span>
                 </div>
 
-                <h3 className="text-lg font-bold text-white tracking-tight">
+                <h3 className="text-lg font-bold text-slate-900 tracking-tight">
                   {activeTestDetail.title}
                 </h3>
-                <p className="text-xs text-slate-400 mt-0.5">
+                <p className="text-xs text-slate-500 mt-0.5">
                   {activeTestDetail.courseName}
                 </p>
               </div>
@@ -888,7 +888,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
               <button
                 type="button"
                 onClick={() => handleOpenEditModal(activeTestDetail)}
-                className="px-3 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-blue-400 border border-slate-700 flex items-center gap-1.5 text-xs font-semibold shrink-0 transition hover:border-blue-500/50"
+                className="px-3 py-1.5 rounded-md bg-slate-50 hover:bg-slate-100 text-blue-700 border border-slate-200 flex items-center gap-1.5 text-xs font-semibold shrink-0 transition hover:border-blue-300 shadow-2xs"
                 title="Edit test parameters"
               >
                 <Pencil className="w-3.5 h-3.5" />
@@ -897,35 +897,35 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
             </div>
 
             {/* Logistics Info Card */}
-            <div className="grid grid-cols-2 gap-2 p-3.5 rounded-lg bg-slate-950/60 border border-slate-800 text-xs">
+            <div className="grid grid-cols-2 gap-2 p-3.5 rounded-lg bg-slate-50 border border-slate-200 text-xs">
               <div>
                 <span className="text-slate-500 block text-[10px] uppercase font-bold">Date & Time</span>
-                <span className="font-semibold text-slate-200">
+                <span className="font-semibold text-slate-800">
                   {activeTestDetail.date} ({activeTestDetail.startTime} - {activeTestDetail.endTime})
                 </span>
               </div>
               <div>
                 <span className="text-slate-500 block text-[10px] uppercase font-bold">Venue / Room</span>
-                <span className="font-semibold text-slate-200">{activeTestDetail.room}</span>
+                <span className="font-semibold text-slate-800">{activeTestDetail.room}</span>
               </div>
               <div className="mt-1">
                 <span className="text-slate-500 block text-[10px] uppercase font-bold">Weightage</span>
-                <span className="font-semibold text-blue-400">{activeTestDetail.weightageMarks || 20} Marks</span>
+                <span className="font-semibold text-blue-700">{activeTestDetail.weightageMarks || 20} Marks</span>
               </div>
               <div className="mt-1">
                 <span className="text-slate-500 block text-[10px] uppercase font-bold">Countdown</span>
-                <span className="font-semibold text-rose-400">{getCountdownText(activeTestDetail.date)}</span>
+                <span className="font-semibold text-rose-700">{getCountdownText(activeTestDetail.date)}</span>
               </div>
             </div>
 
             {/* Syllabus & Coverage */}
             {activeTestDetail.syllabus && (
               <div className="space-y-1.5">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-                  <FileText className="w-3.5 h-3.5 text-blue-400" />
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+                  <FileText className="w-3.5 h-3.5 text-blue-600" />
                   Syllabus / Modules Covered
                 </h4>
-                <div className="p-3 rounded-lg bg-slate-950/40 border border-slate-800 text-xs text-slate-300 leading-relaxed">
+                <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-700 leading-relaxed">
                   {activeTestDetail.syllabus}
                 </div>
               </div>
@@ -934,12 +934,12 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
             {/* Preparation Tasks & Checklist */}
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                   Preparation Tasks & Checklist
                 </h4>
                 {activeTestDetail.checklist && activeTestDetail.checklist.length > 0 && (
-                  <span className="text-[11px] font-semibold text-slate-400">
+                  <span className="text-[11px] font-semibold text-slate-500">
                     {activeTestDetail.checklist.filter((i) => i.done).length} / {activeTestDetail.checklist.length} done
                   </span>
                 )}
@@ -947,7 +947,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
 
               {/* Progress bar */}
               {activeTestDetail.checklist && activeTestDetail.checklist.length > 0 && (
-                <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                <div className="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
                   <div
                     className="bg-emerald-500 h-full rounded-full transition-all duration-300"
                     style={{
@@ -963,14 +963,14 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
 
               <div className="space-y-1.5 max-h-48 overflow-y-auto">
                 {(!activeTestDetail.checklist || activeTestDetail.checklist.length === 0) ? (
-                  <div className="p-3 text-center text-xs text-slate-500 rounded-md bg-slate-950/40 border border-slate-800/60">
+                  <div className="p-3 text-center text-xs text-slate-500 rounded-md bg-slate-50 border border-slate-200">
                     No tasks added yet. Add a study topic or revision task below!
                   </div>
                 ) : (
                   activeTestDetail.checklist.map((item) => (
                     <div
                       key={item.id}
-                      className="flex items-center justify-between gap-2 p-2 rounded-md bg-slate-950/60 border border-slate-800/80 hover:bg-slate-800/40 text-xs group transition"
+                      className="flex items-center justify-between gap-2 p-2 rounded-md bg-slate-50 border border-slate-200 hover:bg-slate-100/60 text-xs group transition"
                     >
                       {editingTaskId === item.id ? (
                         <div className="flex items-center gap-1.5 flex-1">
@@ -983,12 +983,12 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                               if (e.key === 'Escape') setEditingTaskId(null);
                             }}
                             autoFocus
-                            className="flex-1 bg-slate-900 border border-blue-500/80 rounded-lg px-2 py-1 text-xs text-white focus:outline-none"
+                            className="flex-1 bg-white border border-blue-500 rounded-lg px-2 py-1 text-xs text-slate-900 focus:outline-none shadow-2xs"
                           />
                           <button
                             type="button"
                             onClick={() => handleSaveEditTask(activeTestDetail, item.id)}
-                            className="p-1.5 rounded-lg bg-blue-600 text-white hover:bg-blue-500 font-bold"
+                            className="p-1.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 font-bold"
                             title="Save task"
                           >
                             <Check className="w-3.5 h-3.5" />
@@ -996,7 +996,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                           <button
                             type="button"
                             onClick={() => setEditingTaskId(null)}
-                            className="p-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white"
+                            className="p-1.5 rounded-lg bg-slate-100 text-slate-500 hover:text-slate-800"
                             title="Cancel"
                           >
                             <X className="w-3.5 h-3.5" />
@@ -1011,13 +1011,13 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                             <div
                               className={`w-4 h-4 rounded-md flex items-center justify-center border transition shrink-0 ${
                                 item.done
-                                   ? 'bg-emerald-500 border-emerald-500 text-slate-950'
-                                  : 'border-slate-600 bg-slate-900 group-hover:border-slate-500'
+                                   ? 'bg-emerald-600 border-emerald-600 text-white'
+                                  : 'border-slate-300 bg-white group-hover:border-slate-400'
                               }`}
                             >
                               {item.done && <Check className="w-3 h-3 stroke-[3]" />}
                             </div>
-                            <span className={`break-words ${item.done ? 'line-through text-slate-500' : 'text-slate-200'}`}>
+                            <span className={`break-words ${item.done ? 'line-through text-slate-400' : 'text-slate-800'}`}>
                               {item.text}
                             </span>
                           </div>
@@ -1029,7 +1029,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                                 e.stopPropagation();
                                 handleStartEditTask(item.id, item.text);
                               }}
-                              className="p-1 rounded-lg text-slate-400 hover:text-blue-400 hover:bg-slate-800 transition"
+                              className="p-1 rounded-lg text-slate-400 hover:text-blue-700 hover:bg-slate-200 transition"
                               title="Edit task"
                               aria-label="Edit task"
                             >
@@ -1041,7 +1041,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                                 e.stopPropagation();
                                 handleDeleteChecklistItem(activeTestDetail, item.id);
                               }}
-                              className="p-1 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-slate-800 transition"
+                              className="p-1 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-slate-200 transition"
                               title="Delete task"
                               aria-label="Delete task"
                             >
@@ -1063,13 +1063,13 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                   value={newChecklistText}
                   onChange={(e) => setNewChecklistText(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleAddChecklistItem(activeTestDetail)}
-                  className="flex-1 bg-slate-950 border border-slate-800 rounded-md px-3 py-2 text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-blue-500"
+                  className="flex-1 bg-white border border-slate-300 rounded-md px-3 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-blue-600 shadow-2xs"
                 />
                 <button
                   type="button"
                   onClick={() => handleAddChecklistItem(activeTestDetail)}
                   disabled={!newChecklistText.trim()}
-                  className="px-3.5 py-2 rounded-md bg-blue-600 hover:bg-blue-500 disabled:opacity-40 disabled:hover:bg-blue-600 text-xs font-semibold text-white transition flex items-center gap-1 shrink-0 shadow-xs"
+                  className="px-3.5 py-2 rounded-md bg-blue-600 hover:bg-blue-700 disabled:opacity-40 disabled:hover:bg-blue-600 text-xs font-semibold text-white transition flex items-center gap-1 shrink-0 shadow-2xs"
                   title="Add task to preparation checklist"
                   aria-label="Add task"
                 >
@@ -1080,13 +1080,13 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
             </div>
 
             {/* Preparation Status & Marks Recorded */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-slate-800">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-slate-200">
               <div>
-                <label className="text-[11px] font-bold text-slate-400 block mb-1">Status:</label>
+                <label className="text-[11px] font-bold text-slate-600 block mb-1">Status:</label>
                 <select
                   value={activeTestDetail.status}
                   onChange={(e) => handleUpdateStatus(activeTestDetail, e.target.value as PrepStatus)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-md px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500"
+                  className="w-full bg-white border border-slate-300 rounded-md px-2.5 py-1.5 text-xs text-slate-900 focus:outline-none focus:border-blue-600 shadow-2xs"
                 >
                   <option value="Not Started">Not Started</option>
                   <option value="In Progress">In Progress</option>
@@ -1096,7 +1096,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
               </div>
 
               <div>
-                <label className="text-[11px] font-bold text-slate-400 block mb-1">
+                <label className="text-[11px] font-bold text-slate-600 block mb-1">
                   Marks Obtained (out of {activeTestDetail.weightageMarks || 20}):
                 </label>
                 <input
@@ -1109,13 +1109,13 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                       e.target.value === '' ? undefined : Number(e.target.value)
                     )
                   }
-                  className="w-full bg-slate-950 border border-slate-800 rounded-md px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500"
+                  className="w-full bg-white border border-slate-300 rounded-md px-2.5 py-1.5 text-xs text-slate-900 focus:outline-none focus:border-blue-600 shadow-2xs"
                 />
               </div>
             </div>
 
             {/* Actions: Edit, Delete test & close */}
-            <div className="flex items-center justify-between pt-3 pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] border-t border-slate-800 text-xs gap-2 flex-wrap">
+            <div className="flex items-center justify-between pt-3 pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] border-t border-slate-200 text-xs gap-2 flex-wrap">
               <div className="flex items-center gap-2">
                 <button
                   type="button"
@@ -1124,7 +1124,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                     setActiveTestDetail(null);
                     handleOpenEditModal(current);
                   }}
-                  className="min-h-[40px] px-3.5 py-2 rounded-md text-blue-300 hover:text-blue-200 hover:bg-blue-500/10 border border-blue-500/30 flex items-center gap-1.5 font-semibold transition active:scale-95"
+                  className="min-h-[40px] px-3.5 py-2 rounded-md text-blue-700 hover:text-blue-800 hover:bg-blue-50 border border-blue-200 flex items-center gap-1.5 font-semibold transition active:scale-95 shadow-2xs"
                   title="Edit test date, time, venue, or syllabus"
                 >
                   <Pencil className="w-4 h-4" />
@@ -1133,7 +1133,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                 <button
                   type="button"
                   onClick={() => setTestToDelete(activeTestDetail)}
-                  className="min-h-[40px] px-3.5 py-2 rounded-md text-rose-400 hover:text-rose-300 hover:bg-rose-500/10 border border-transparent hover:border-rose-500/20 flex items-center gap-1.5 font-semibold transition active:scale-95"
+                  className="min-h-[40px] px-3.5 py-2 rounded-md text-rose-700 hover:text-rose-800 hover:bg-rose-50 border border-rose-200 flex items-center gap-1.5 font-semibold transition active:scale-95 shadow-2xs"
                   title="Delete this test"
                 >
                   <Trash2 className="w-4 h-4" />
@@ -1144,7 +1144,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
               <button
                 type="button"
                 onClick={() => setActiveTestDetail(null)}
-                className="min-h-[40px] px-5 py-2 rounded-md bg-blue-600 text-white font-semibold hover:bg-blue-500 transition active:scale-95 shadow-xs ml-auto"
+                className="min-h-[40px] px-5 py-2 rounded-md bg-blue-600 text-white font-semibold hover:bg-blue-700 transition active:scale-95 shadow-2xs ml-auto"
               >
                 Done
               </button>
@@ -1155,22 +1155,22 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
 
       {/* Delete Confirmation Modal (Safe and works in iframe) */}
       {testToDelete && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="bg-slate-900 border border-slate-700 rounded-lg max-w-sm w-full p-5 sm:p-6 shadow-2xl space-y-4 text-center">
-            <div className="w-10 h-10 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center mx-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-150">
+          <div className="bg-white border border-slate-200 rounded-lg max-w-sm w-full p-5 sm:p-6 shadow-xl space-y-4 text-center">
+            <div className="w-10 h-10 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center mx-auto border border-rose-100">
               <Trash2 className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-white">Delete Test / Quiz?</h3>
-              <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">
-                Are you sure you want to remove <strong className="text-slate-200">"{testToDelete.title}"</strong> ({testToDelete.courseCode}) from your calendar? All associated tasks and checklist items will also be removed.
+              <h3 className="text-base font-bold text-slate-900">Delete Test / Quiz?</h3>
+              <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">
+                Are you sure you want to remove <strong className="text-slate-700">"{testToDelete.title}"</strong> ({testToDelete.courseCode}) from your calendar? All associated tasks and checklist items will also be removed.
               </p>
             </div>
             <div className="flex items-center justify-center gap-2 pt-1">
               <button
                 type="button"
                 onClick={() => setTestToDelete(null)}
-                className="flex-1 min-h-[38px] px-3 py-1.5 rounded-lg text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 text-xs font-semibold transition"
+                className="flex-1 min-h-[38px] px-3 py-1.5 rounded-lg text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 text-xs font-semibold transition"
               >
                 Cancel
               </button>
@@ -1194,32 +1194,32 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
 
       {/* Edit Existing Test Modal */}
       {isEditModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="bg-slate-900 border border-slate-700/90 rounded-lg max-w-lg w-full p-5 sm:p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-150">
+          <div className="bg-white border border-slate-200 rounded-lg max-w-lg w-full p-5 sm:p-6 shadow-xl relative max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => {
                 setIsEditModalOpen(false);
                 setEditingTestId(null);
               }}
-              className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
+              className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition"
             >
               <X className="w-5 h-5" />
             </button>
 
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-9 h-9 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center font-bold">
+              <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold border border-blue-100">
                 <Pencil className="w-4 h-4" />
               </div>
               <div>
-                <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">Edit Test / Quiz</h3>
-                <p className="text-xs text-slate-400">Update course, date, time, venue, weightage, or topics.</p>
+                <h3 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight">Edit Test / Quiz</h3>
+                <p className="text-xs text-slate-500">Update course, date, time, venue, weightage, or topics.</p>
               </div>
             </div>
 
             <form onSubmit={handleSaveEditedTest} className="space-y-4 text-xs">
               {/* Course Selection */}
               <div>
-                <label className="block text-slate-300 font-bold mb-1">Select Registered Course *</label>
+                <label className="block text-slate-700 font-bold mb-1">Select Registered Course *</label>
                 <select
                   value={editCourseCode}
                   onChange={(e) => {
@@ -1227,7 +1227,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                     const course = courses[e.target.value];
                     if (course?.room && !editRoom) setEditRoom(course.room);
                   }}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:border-blue-500 font-medium"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-2 text-slate-800 focus:outline-none focus:border-blue-600 font-medium"
                 >
                   {Object.keys(courses).map((code) => (
                     <option key={code} value={code}>
@@ -1240,11 +1240,11 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
               {/* Test Type & Title */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-bold mb-1">Assessment Type *</label>
+                  <label className="block text-slate-700 font-bold mb-1">Assessment Type *</label>
                   <select
                     value={editType}
                     onChange={(e) => setEditType(e.target.value as TestType)}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-2 text-slate-800 focus:outline-none focus:border-blue-600"
                   >
                     <option value="Quiz">Surprise / Scheduled Quiz</option>
                     <option value="Unit Test (T1/T2)">Unit Test (T1 or T2)</option>
@@ -1256,13 +1256,13 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-bold mb-1">Title / Topic *</label>
+                  <label className="block text-slate-700 font-bold mb-1">Title / Topic *</label>
                   <input
                     type="text"
                     required
                     value={editTitle}
                     onChange={(e) => setEditTitle(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-white border border-slate-200 rounded-md px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-600"
                   />
                 </div>
               </div>
@@ -1270,24 +1270,24 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
               {/* Date & Room */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-bold mb-1">Date *</label>
+                  <label className="block text-slate-700 font-bold mb-1">Date *</label>
                   <input
                     type="date"
                     required
                     value={editDate}
                     onChange={(e) => setEditDate(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-white border border-slate-200 rounded-md px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-600"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-bold mb-1">Room / Venue *</label>
+                  <label className="block text-slate-700 font-bold mb-1">Room / Venue *</label>
                   <input
                     type="text"
                     required
                     value={editRoom}
                     onChange={(e) => setEditRoom(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-white border border-slate-200 rounded-md px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-600"
                   />
                 </div>
               </div>
@@ -1295,21 +1295,21 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
               {/* Time Slots */}
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-bold mb-1">Start Time</label>
+                  <label className="block text-slate-700 font-bold mb-1">Start Time</label>
                   <input
                     type="time"
                     value={editStartTime}
                     onChange={(e) => setEditStartTime(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-white border border-slate-200 rounded-md px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-600"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-300 font-bold mb-1">End Time</label>
+                  <label className="block text-slate-700 font-bold mb-1">End Time</label>
                   <input
                     type="time"
                     value={editEndTime}
                     onChange={(e) => setEditEndTime(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-white border border-slate-200 rounded-md px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-600"
                   />
                 </div>
               </div>
@@ -1317,21 +1317,21 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
               {/* Weightage & Priority */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-bold mb-1">Weightage (Marks)</label>
+                  <label className="block text-slate-700 font-bold mb-1">Weightage (Marks)</label>
                   <input
                     type="number"
                     value={editWeightage}
                     onChange={(e) => setEditWeightage(Number(e.target.value))}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-white border border-slate-200 rounded-md px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-600"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-bold mb-1">Priority</label>
+                  <label className="block text-slate-700 font-bold mb-1">Priority</label>
                   <select
                     value={editPriority}
                     onChange={(e) => setEditPriority(e.target.value as TestPriority)}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-2 text-slate-800 focus:outline-none focus:border-blue-600"
                   >
                     <option value="High">High Priority</option>
                     <option value="Medium">Medium Priority</option>
@@ -1340,11 +1340,11 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-bold mb-1">Status</label>
+                  <label className="block text-slate-700 font-bold mb-1">Status</label>
                   <select
                     value={editStatus}
                     onChange={(e) => setEditStatus(e.target.value as PrepStatus)}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-2 text-slate-800 focus:outline-none focus:border-blue-600"
                   >
                     <option value="Not Started">Not Started</option>
                     <option value="In Progress">In Progress</option>
@@ -1356,42 +1356,42 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
 
               {/* Syllabus */}
               <div>
-                <label className="block text-slate-300 font-bold mb-1">Syllabus & Key Topics</label>
+                <label className="block text-slate-700 font-bold mb-1">Syllabus & Key Topics</label>
                 <textarea
                   rows={2}
                   value={editSyllabus}
                   onChange={(e) => setEditSyllabus(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-md p-2.5 text-slate-100 focus:outline-none focus:border-blue-500 resize-none"
+                  className="w-full bg-white border border-slate-200 rounded-md p-2.5 text-slate-900 focus:outline-none focus:border-blue-600 resize-none"
                 />
               </div>
 
               {/* Notes */}
               <div>
-                <label className="block text-slate-300 font-bold mb-1">Notes / Instructions</label>
+                <label className="block text-slate-700 font-bold mb-1">Notes / Instructions</label>
                 <input
                   type="text"
                   value={editNotes}
                   onChange={(e) => setEditNotes(e.target.value)}
                   placeholder="e.g. Scientific calculators allowed, open notes"
-                  className="w-full bg-slate-950 border border-slate-700 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:border-blue-500"
+                  className="w-full bg-white border border-slate-200 rounded-md px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-600"
                 />
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center justify-end gap-2 sm:gap-3 pt-3 pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] border-t border-slate-800">
+              <div className="flex items-center justify-end gap-2 sm:gap-3 pt-3 pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] border-t border-slate-200">
                 <button
                   type="button"
                   onClick={() => {
                     setIsEditModalOpen(false);
                     setEditingTestId(null);
                   }}
-                  className="flex-1 sm:flex-initial min-h-[44px] px-4 py-2.5 rounded-lg text-slate-300 hover:text-white bg-slate-800/70 sm:bg-transparent transition active:scale-95 text-xs font-semibold"
+                  className="flex-1 sm:flex-initial min-h-[44px] px-4 py-2.5 rounded-lg text-slate-600 hover:text-slate-900 bg-slate-100 sm:bg-transparent hover:bg-slate-100 transition active:scale-95 text-xs font-semibold"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 sm:flex-initial min-h-[44px] px-6 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm shadow-md shadow-blue-500/20 transition active:scale-95 text-center"
+                  className="flex-1 sm:flex-initial min-h-[44px] px-6 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm shadow-xs transition active:scale-95 text-center"
                 >
                   Save Changes
                 </button>
@@ -1403,29 +1403,29 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
 
       {/* Add New Test Modal */}
       {isAddModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="bg-slate-900 border border-slate-700/90 rounded-lg max-w-lg w-full p-5 sm:p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-150">
+          <div className="bg-white border border-slate-200 rounded-lg max-w-lg w-full p-5 sm:p-6 shadow-xl relative max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => setIsAddModalOpen(false)}
-              className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
+              className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition"
             >
               <X className="w-5 h-5" />
             </button>
 
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-9 h-9 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center font-bold">
+              <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold border border-blue-100">
                 <CalendarIcon className="w-4 h-4" />
               </div>
               <div>
-                <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">Schedule New Test / Exam</h3>
-                <p className="text-xs text-slate-400">Add surprise quizzes, unit tests, or lab viva slots.</p>
+                <h3 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight">Schedule New Test / Exam</h3>
+                <p className="text-xs text-slate-500">Add surprise quizzes, unit tests, or lab viva slots.</p>
               </div>
             </div>
 
             <form onSubmit={handleCreateTest} className="space-y-4 text-xs">
               {/* Course Selection */}
               <div>
-                <label className="block text-slate-300 font-bold mb-1">Select Registered Course *</label>
+                <label className="block text-slate-700 font-bold mb-1">Select Registered Course *</label>
                 <select
                   value={newCourseCode}
                   onChange={(e) => {
@@ -1433,7 +1433,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                     const course = courses[e.target.value];
                     if (course?.room) setNewRoom(course.room);
                   }}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:border-blue-500 font-medium"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-2 text-slate-800 focus:outline-none focus:border-blue-600 font-medium"
                 >
                   {Object.keys(courses).map((code) => (
                     <option key={code} value={code}>
@@ -1446,11 +1446,11 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
               {/* Test Type & Title */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-bold mb-1">Assessment Type *</label>
+                  <label className="block text-slate-700 font-bold mb-1">Assessment Type *</label>
                   <select
                     value={newType}
                     onChange={(e) => setNewType(e.target.value as TestType)}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-2 text-slate-800 focus:outline-none focus:border-blue-600"
                   >
                     <option value="Quiz">Surprise / Scheduled Quiz</option>
                     <option value="Unit Test (T1/T2)">Unit Test (T1 or T2)</option>
@@ -1462,14 +1462,14 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-bold mb-1">Title / Topic *</label>
+                  <label className="block text-slate-700 font-bold mb-1">Title / Topic *</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. Quiz 2: Buck Converters"
                     value={newTitle}
                     onChange={(e) => setNewTitle(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-white border border-slate-200 rounded-md px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-600"
                   />
                 </div>
               </div>
@@ -1477,25 +1477,25 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
               {/* Date & Room */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-bold mb-1">Date *</label>
+                  <label className="block text-slate-700 font-bold mb-1">Date *</label>
                   <input
                     type="date"
                     required
                     value={newDate}
                     onChange={(e) => setNewDate(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-white border border-slate-200 rounded-md px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-600"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-bold mb-1">Room / Venue *</label>
+                  <label className="block text-slate-700 font-bold mb-1">Room / Venue *</label>
                   <input
                     type="text"
                     required
                     value={newRoom}
                     onChange={(e) => setNewRoom(e.target.value)}
                     placeholder="e.g. LH 51/52"
-                    className="w-full bg-slate-950 border border-slate-700 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-white border border-slate-200 rounded-md px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-600"
                   />
                 </div>
               </div>
@@ -1503,21 +1503,21 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
               {/* Time Slots */}
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-bold mb-1">Start Time</label>
+                  <label className="block text-slate-700 font-bold mb-1">Start Time</label>
                   <input
                     type="time"
                     value={newStartTime}
                     onChange={(e) => setNewStartTime(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-white border border-slate-200 rounded-md px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-600"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-300 font-bold mb-1">End Time</label>
+                  <label className="block text-slate-700 font-bold mb-1">End Time</label>
                   <input
                     type="time"
                     value={newEndTime}
                     onChange={(e) => setNewEndTime(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-white border border-slate-200 rounded-md px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-600"
                   />
                 </div>
               </div>
@@ -1525,21 +1525,21 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
               {/* Weightage & Priority */}
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-bold mb-1">Total Marks / Weight</label>
+                  <label className="block text-slate-700 font-bold mb-1">Total Marks / Weight</label>
                   <input
                     type="number"
                     value={newWeightage}
                     onChange={(e) => setNewWeightage(Number(e.target.value))}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-white border border-slate-200 rounded-md px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-600"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-bold mb-1">Priority</label>
+                  <label className="block text-slate-700 font-bold mb-1">Priority</label>
                   <select
                     value={newPriority}
                     onChange={(e) => setNewPriority(e.target.value as TestPriority)}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-2 text-slate-800 focus:outline-none focus:border-blue-600"
                   >
                     <option value="High">High Priority</option>
                     <option value="Medium">Medium Priority</option>
@@ -1550,28 +1550,28 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
 
               {/* Syllabus */}
               <div>
-                <label className="block text-slate-300 font-bold mb-1">Syllabus & Key Topics (Optional)</label>
+                <label className="block text-slate-700 font-bold mb-1">Syllabus & Key Topics (Optional)</label>
                 <textarea
                   rows={2}
                   placeholder="e.g. Modules 1 & 2: SCR characteristics, Gate triggering, Buck converter..."
                   value={newSyllabus}
                   onChange={(e) => setNewSyllabus(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-md p-2.5 text-slate-100 focus:outline-none focus:border-blue-500 resize-none"
+                  className="w-full bg-white border border-slate-200 rounded-md p-2.5 text-slate-900 focus:outline-none focus:border-blue-600 resize-none"
                 />
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center justify-end gap-2 sm:gap-3 pt-3 pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] border-t border-slate-800">
+              <div className="flex items-center justify-end gap-2 sm:gap-3 pt-3 pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] border-t border-slate-200">
                 <button
                   type="button"
                   onClick={() => setIsAddModalOpen(false)}
-                  className="flex-1 sm:flex-initial min-h-[44px] px-4 py-2.5 rounded-lg text-slate-300 hover:text-white bg-slate-800/70 sm:bg-transparent transition active:scale-95 text-xs font-semibold"
+                  className="flex-1 sm:flex-initial min-h-[44px] px-4 py-2.5 rounded-lg text-slate-600 hover:text-slate-900 bg-slate-100 sm:bg-transparent hover:bg-slate-100 transition active:scale-95 text-xs font-semibold"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 sm:flex-initial min-h-[44px] px-6 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm shadow-md shadow-blue-500/20 transition active:scale-95 text-center"
+                  className="flex-1 sm:flex-initial min-h-[44px] px-6 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm shadow-xs transition active:scale-95 text-center"
                 >
                   Save Test
                 </button>

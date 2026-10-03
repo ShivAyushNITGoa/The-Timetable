@@ -144,24 +144,24 @@ export const ScheduleCustomizerModal: React.FC<ScheduleCustomizerModalProps> = (
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xs animate-in fade-in duration-150">
-      <div className="bg-slate-900 border border-slate-700 rounded-lg max-w-xl w-full p-5 sm:p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto space-y-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-150">
+      <div className="bg-white border border-slate-200 rounded-lg max-w-xl w-full p-5 sm:p-6 shadow-xl relative max-h-[90vh] overflow-y-auto space-y-4">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
+          className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition"
         >
           <X className="w-5 h-5" />
         </button>
 
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center font-bold">
+          <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold border border-blue-100">
             <Edit3 className="w-4 h-4" />
           </div>
           <div>
-            <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">
+            <h3 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight">
               Customize {activeDay} Schedule
             </h3>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-500">
               Rearrange periods, change classrooms, or add remedial & tutorial classes.
             </p>
           </div>
@@ -169,14 +169,14 @@ export const ScheduleCustomizerModal: React.FC<ScheduleCustomizerModalProps> = (
 
         {/* Existing Slots List */}
         <div className="space-y-2.5">
-          <div className="flex items-center justify-between text-xs font-bold text-slate-400 uppercase tracking-wider">
+          <div className="flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-wider">
             <span>Scheduled Periods ({editingSlots.length})</span>
             <button
               onClick={() => {
                 setIsAddingNew(true);
                 setEditingSlotIndex(null);
               }}
-              className="text-blue-400 hover:text-blue-300 flex items-center gap-1 normal-case font-semibold"
+              className="text-blue-600 hover:text-blue-700 flex items-center gap-1 normal-case font-semibold"
             >
               <Plus className="w-3.5 h-3.5" />
               Add Extra Slot
@@ -187,20 +187,20 @@ export const ScheduleCustomizerModal: React.FC<ScheduleCustomizerModalProps> = (
             {editingSlots.map((slot, index) => (
               <div
                 key={slot.id || index}
-                className="p-3 rounded-lg bg-slate-950/70 border border-slate-800 flex items-center justify-between gap-3 text-xs"
+                className="p-3 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-between gap-3 text-xs"
               >
                 <div className="flex items-center gap-3">
-                  <div className="font-mono text-slate-400 font-medium">
+                  <div className="font-mono text-slate-500 font-medium">
                     {slot.startTime} - {slot.endTime}
                   </div>
                   <div>
-                    <div className="font-bold text-white flex items-center gap-2">
+                    <div className="font-bold text-slate-900 flex items-center gap-2">
                       <span>{slot.courseCode || slot.slotName}</span>
-                      <span className="text-[10px] text-slate-400 font-normal">
+                      <span className="text-[10px] text-slate-500 font-normal">
                         ({slot.slotName})
                       </span>
                     </div>
-                    <div className="text-[11px] text-slate-400">
+                    <div className="text-[11px] text-slate-500">
                       Room: {slot.room} {slot.notes && `• ${slot.notes}`}
                     </div>
                   </div>
@@ -210,7 +210,7 @@ export const ScheduleCustomizerModal: React.FC<ScheduleCustomizerModalProps> = (
                   <button
                     type="button"
                     onClick={() => handleStartEditSlot(index)}
-                    className="p-1.5 rounded-md text-slate-400 hover:text-blue-300 hover:bg-slate-800 transition"
+                    className="p-1.5 rounded-md text-slate-500 hover:text-blue-600 hover:bg-slate-200 transition"
                     title="Edit slot details"
                   >
                     <Pencil className="w-4 h-4" />
@@ -218,7 +218,7 @@ export const ScheduleCustomizerModal: React.FC<ScheduleCustomizerModalProps> = (
                   <button
                     type="button"
                     onClick={() => handleRemoveSlot(index)}
-                    className="p-1.5 rounded-md text-rose-400 hover:bg-rose-500/15 hover:text-rose-300 transition"
+                    className="p-1.5 rounded-md text-rose-500 hover:bg-rose-50 hover:text-rose-600 transition"
                     title="Remove slot"
                   >
                     <Trash2 className="w-4 h-4" />
@@ -233,9 +233,9 @@ export const ScheduleCustomizerModal: React.FC<ScheduleCustomizerModalProps> = (
         {editingSlotIndex !== null && (
           <form
             onSubmit={handleSaveEditedSlot}
-            className="p-4 rounded-lg bg-slate-950 border border-blue-500/50 space-y-3 animate-in fade-in"
+            className="p-4 rounded-lg bg-slate-50 border border-blue-200 space-y-3 animate-in fade-in"
           >
-            <div className="text-xs font-bold text-blue-300 flex items-center justify-between">
+            <div className="text-xs font-bold text-blue-700 flex items-center justify-between">
               <span className="flex items-center gap-1.5">
                 <Pencil className="w-3.5 h-3.5" />
                 Edit Scheduled Slot
@@ -243,7 +243,7 @@ export const ScheduleCustomizerModal: React.FC<ScheduleCustomizerModalProps> = (
               <button
                 type="button"
                 onClick={() => setEditingSlotIndex(null)}
-                className="text-slate-400 hover:text-white text-xs"
+                className="text-slate-500 hover:text-slate-800 text-xs"
               >
                 Cancel
               </button>
@@ -251,22 +251,22 @@ export const ScheduleCustomizerModal: React.FC<ScheduleCustomizerModalProps> = (
 
             <div className="grid grid-cols-2 gap-2 text-xs">
               <div>
-                <label className="text-slate-400 block mb-1">Start Time</label>
+                <label className="text-slate-600 block mb-1">Start Time</label>
                 <input
                   type="time"
                   value={editStartTime}
                   onChange={(e) => setEditStartTime(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-white"
+                  className="w-full bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-slate-900 focus:border-blue-600"
                   required
                 />
               </div>
               <div>
-                <label className="text-slate-400 block mb-1">End Time</label>
+                <label className="text-slate-600 block mb-1">End Time</label>
                 <input
                   type="time"
                   value={editEndTime}
                   onChange={(e) => setEditEndTime(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-white"
+                  className="w-full bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-slate-900 focus:border-blue-600"
                   required
                 />
               </div>
@@ -274,11 +274,11 @@ export const ScheduleCustomizerModal: React.FC<ScheduleCustomizerModalProps> = (
 
             <div className="grid grid-cols-2 gap-2 text-xs">
               <div className="min-w-0">
-                <label className="text-slate-400 block mb-1">Course Code</label>
+                <label className="text-slate-600 block mb-1">Course Code</label>
                 <select
                   value={editCourseCode}
                   onChange={(e) => setEditCourseCode(e.target.value)}
-                  className="w-full min-w-0 truncate bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-white"
+                  className="w-full min-w-0 truncate bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-slate-900 focus:border-blue-600"
                 >
                   {Object.keys(courses).map((code) => (
                     <option key={code} value={code}>
@@ -292,23 +292,23 @@ export const ScheduleCustomizerModal: React.FC<ScheduleCustomizerModalProps> = (
               </div>
 
               <div>
-                <label className="text-slate-400 block mb-1">Room / Venue</label>
+                <label className="text-slate-600 block mb-1">Room / Venue</label>
                 <input
                   type="text"
                   value={editRoom}
                   onChange={(e) => setEditRoom(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-white"
+                  className="w-full bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-slate-900 focus:border-blue-600"
                 />
               </div>
             </div>
 
             <div className="text-xs">
-              <label className="text-slate-400 block mb-1">Label / Notes</label>
+              <label className="text-slate-600 block mb-1">Label / Notes</label>
               <input
                 type="text"
                 value={editNotes}
                 onChange={(e) => setEditNotes(e.target.value)}
-                className="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-white"
+                className="w-full bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-slate-900 focus:border-blue-600"
                 placeholder="e.g. Remedial or tutorial batch"
               />
             </div>
@@ -317,13 +317,13 @@ export const ScheduleCustomizerModal: React.FC<ScheduleCustomizerModalProps> = (
               <button
                 type="button"
                 onClick={() => setEditingSlotIndex(null)}
-                className="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 text-xs font-semibold"
+                className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="px-4 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-xs"
+                className="px-4 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-xs"
               >
                 <Check className="w-3.5 h-3.5 stroke-[2.5]" />
                 Update Slot
@@ -336,14 +336,14 @@ export const ScheduleCustomizerModal: React.FC<ScheduleCustomizerModalProps> = (
         {isAddingNew && (
           <form
             onSubmit={handleAddSlot}
-            className="p-4 rounded-lg bg-slate-950 border border-blue-500/40 space-y-3 animate-in fade-in"
+            className="p-4 rounded-lg bg-slate-50 border border-blue-200 space-y-3 animate-in fade-in"
           >
-            <div className="text-xs font-bold text-blue-300 flex items-center justify-between">
+            <div className="text-xs font-bold text-blue-700 flex items-center justify-between">
               <span>Add Custom Slot</span>
               <button
                 type="button"
                 onClick={() => setIsAddingNew(false)}
-                className="text-slate-400 hover:text-white text-xs"
+                className="text-slate-500 hover:text-slate-800 text-xs"
               >
                 Cancel
               </button>
@@ -351,32 +351,32 @@ export const ScheduleCustomizerModal: React.FC<ScheduleCustomizerModalProps> = (
 
             <div className="grid grid-cols-2 gap-2 text-xs">
               <div>
-                <label className="text-slate-400 block mb-1">Start Time</label>
+                <label className="text-slate-600 block mb-1">Start Time</label>
                 <input
                   type="time"
                   value={newStartTime}
                   onChange={(e) => setNewStartTime(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-white"
+                  className="w-full bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-slate-900 focus:border-blue-600"
                 />
               </div>
               <div>
-                <label className="text-slate-400 block mb-1">End Time</label>
+                <label className="text-slate-600 block mb-1">End Time</label>
                 <input
                   type="time"
                   value={newEndTime}
                   onChange={(e) => setNewEndTime(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-white"
+                  className="w-full bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-slate-900 focus:border-blue-600"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-2 text-xs">
               <div className="min-w-0">
-                <label className="text-slate-400 block mb-1">Course Code</label>
+                <label className="text-slate-600 block mb-1">Course Code</label>
                 <select
                   value={newCourseCode}
                   onChange={(e) => setNewCourseCode(e.target.value)}
-                  className="w-full min-w-0 truncate bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-white"
+                  className="w-full min-w-0 truncate bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-slate-900 focus:border-blue-600"
                 >
                   {Object.keys(courses).map((code) => (
                     <option key={code} value={code}>
@@ -390,31 +390,31 @@ export const ScheduleCustomizerModal: React.FC<ScheduleCustomizerModalProps> = (
               </div>
 
               <div>
-                <label className="text-slate-400 block mb-1">Room / Venue</label>
+                <label className="text-slate-600 block mb-1">Room / Venue</label>
                 <input
                   type="text"
                   value={newRoom}
                   onChange={(e) => setNewRoom(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-white"
+                  className="w-full bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-slate-900 focus:border-blue-600"
                 />
               </div>
             </div>
 
             <div className="text-xs">
-              <label className="text-slate-400 block mb-1">Label / Notes</label>
+              <label className="text-slate-600 block mb-1">Label / Notes</label>
               <input
                 type="text"
                 placeholder="e.g. Remedial lecture by Dr. Sreeraj"
                 value={newNotes}
                 onChange={(e) => setNewNotes(e.target.value)}
-                className="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-white"
+                className="w-full bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-slate-900 focus:border-blue-600"
               />
             </div>
 
             <div className="flex justify-end pt-1">
               <button
                 type="submit"
-                className="px-4 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition active:scale-95 shadow-xs"
+                className="px-4 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition active:scale-95 shadow-xs"
               >
                 Insert Slot
               </button>
@@ -423,7 +423,7 @@ export const ScheduleCustomizerModal: React.FC<ScheduleCustomizerModalProps> = (
         )}
 
         {/* Modal footer */}
-        <div className="flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-3 pt-3 pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] border-t border-slate-800 text-xs">
+        <div className="flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-3 pt-3 pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] border-t border-slate-200 text-xs">
           <button
             type="button"
             onClick={() => {
@@ -431,7 +431,7 @@ export const ScheduleCustomizerModal: React.FC<ScheduleCustomizerModalProps> = (
                 handleReset();
               }
             }}
-            className="text-slate-400 hover:text-white py-2 text-center sm:text-left transition"
+            className="text-slate-500 hover:text-slate-800 py-2 text-center sm:text-left transition font-medium"
           >
             Reset to Institute Defaults
           </button>
@@ -440,14 +440,14 @@ export const ScheduleCustomizerModal: React.FC<ScheduleCustomizerModalProps> = (
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 sm:flex-initial min-h-[44px] px-4 py-2.5 rounded-lg text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-700 transition active:scale-95"
+              className="flex-1 sm:flex-initial min-h-[44px] px-4 py-2.5 rounded-lg text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 transition active:scale-95 font-semibold"
             >
               Cancel
             </button>
             <button
               type="button"
               onClick={handleSave}
-              className="flex-1 sm:flex-initial min-h-[44px] px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold shadow-md shadow-blue-600/20 transition active:scale-95 text-center"
+              className="flex-1 sm:flex-initial min-h-[44px] px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-xs transition active:scale-95 text-center"
             >
               Save Schedule
             </button>

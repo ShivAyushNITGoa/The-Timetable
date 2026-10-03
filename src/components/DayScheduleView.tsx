@@ -253,10 +253,10 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
               onClick={() => onSelectDay(day)}
               className={`min-h-[44px] sm:min-h-[48px] py-1.5 px-0.5 sm:px-4 sm:py-2.5 rounded-lg font-semibold text-xs sm:text-sm flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-0.5 sm:gap-2 transition-all active:scale-95 ${
                 isSelected
-                  ? 'bg-blue-600 text-white font-bold shadow-sm'
+                  ? 'bg-blue-600 text-white font-bold shadow-xs'
                   : isWeekend
-                  ? 'bg-slate-800/60 hover:bg-slate-800 text-slate-300 border border-slate-700/50'
-                  : 'bg-slate-800/80 hover:bg-slate-800 text-slate-300 border border-slate-700/60'
+                  ? 'bg-slate-50 hover:bg-slate-100 text-slate-500 border border-slate-200'
+                  : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200'
               }`}
             >
               <span className="hidden sm:inline">{day}</span>
@@ -265,17 +265,17 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                 <span
                   className={`text-[8px] sm:text-[10px] px-1 sm:px-1.5 py-0.2 sm:py-0.5 rounded-md font-bold uppercase tracking-wider ${
                     isSelected
-                      ? 'bg-slate-900/40 text-blue-200'
-                      : 'bg-blue-500/20 text-blue-300 border border-blue-500/30'
+                      ? 'bg-white/20 text-white'
+                      : 'bg-blue-50 text-blue-700 border border-blue-200'
                   }`}
                 >
                   Today
                 </span>
               ) : isWeekend ? (
-                <span className="sm:hidden text-[8px] text-slate-500">wknd</span>
+                <span className="sm:hidden text-[8px] text-slate-400">wknd</span>
               ) : null}
               {dayMinor && !isSelected && (
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-400" title="Has CS300M Minor Class" />
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-500" title="Has CS300M Minor Class" />
               )}
             </button>
           );
@@ -284,16 +284,16 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
       {/* Alert banner if test scheduled today */}
       {todaysTests.length > 0 && (
-        <div className="p-4 rounded-lg bg-slate-900 border border-rose-500/40 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-in fade-in">
+        <div className="p-4 rounded-lg bg-rose-50 border border-rose-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-in fade-in">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-rose-500/20 text-rose-300 flex items-center justify-center font-bold shrink-0">
+            <div className="w-9 h-9 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center font-bold shrink-0">
               <CalendarCheck className="w-4 h-4" />
             </div>
             <div>
-              <div className="text-xs font-bold text-rose-300 uppercase tracking-wider">
+              <div className="text-xs font-bold text-rose-800 uppercase tracking-wider">
                 ⚡ Scheduled Test / Exam Today!
               </div>
-              <div className="text-sm font-bold text-white mt-0.5">
+              <div className="text-sm font-bold text-slate-900 mt-0.5">
                 {todaysTests.map((t) => `${t.courseCode}: ${t.title} (${t.startTime} in ${t.room})`).join(' • ')}
               </div>
             </div>
@@ -303,7 +303,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
             <button
               type="button"
               onClick={onNavigateToTests}
-              className="px-3 py-1.5 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 text-rose-200 border border-rose-500/40 text-xs font-bold flex items-center gap-1.5 transition self-start sm:self-auto shrink-0"
+              className="px-3 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold flex items-center gap-1.5 transition self-start sm:self-auto shrink-0 shadow-xs active:scale-95"
             >
               <span>View Agenda & Tasks</span>
               <ChevronRight className="w-3.5 h-3.5" />
@@ -314,17 +314,17 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
       {/* Jump to Today banner when browsing another day */}
       {!isSelectedDayToday && (
-        <div className="p-3.5 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-between gap-3">
+        <div className="p-3.5 rounded-lg bg-white border border-slate-200 shadow-2xs flex items-center justify-between gap-3">
           <div className="flex items-center gap-2.5 min-w-0">
-            <Calendar className="w-4 h-4 text-blue-400 shrink-0" />
-            <span className="text-xs text-slate-300">
+            <Calendar className="w-4 h-4 text-blue-600 shrink-0" />
+            <span className="text-xs text-slate-600">
               Viewing <strong>{selectedDay}</strong>'s schedule. Today is <strong>{currentDayName}</strong>.
             </span>
           </div>
           <button
             type="button"
             onClick={() => onSelectDay(currentDayName as DayOfWeek)}
-            className="min-h-[38px] px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-xs shrink-0"
+            className="min-h-[38px] px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-xs shrink-0"
           >
             <span>Jump to Today ({currentDayName.slice(0, 3)})</span>
             <ChevronRight className="w-3.5 h-3.5" />
@@ -334,38 +334,38 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
       {/* Live Academic Status & Next Class Countdown Hero */}
       {isSelectedDayToday && (
-        <div className="p-4 sm:p-5 rounded-lg bg-slate-900 border border-slate-800 shadow-xs space-y-3.5">
+        <div className="p-4 sm:p-5 rounded-lg bg-white border border-slate-200 shadow-2xs space-y-3.5">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               <div
                 className={`w-9 h-9 rounded-lg flex items-center justify-center font-bold shrink-0 ${
                   activeSlot
-                    ? 'bg-blue-600/20 text-blue-300 border border-blue-500/40 animate-pulse'
-                    : 'bg-slate-800 text-slate-300 border border-slate-700'
+                    ? 'bg-blue-50 text-blue-700 border border-blue-200 animate-pulse'
+                    : 'bg-slate-100 text-slate-600 border border-slate-200'
                 }`}
               >
-                {activeSlot ? <Clock className="w-4 h-4 text-blue-400" /> : <TrendingUp className="w-4 h-4 text-slate-400" />}
+                {activeSlot ? <Clock className="w-4 h-4 text-blue-600" /> : <TrendingUp className="w-4 h-4 text-slate-500" />}
               </div>
               <div>
                 <div className="text-[11px] font-bold uppercase tracking-wider flex items-center gap-2">
                   {activeSlot ? (
-                    <span className="text-blue-400 flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-blue-400 animate-ping inline-block" />
+                    <span className="text-blue-700 flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-blue-600 animate-ping inline-block" />
                       Class Happening Right Now
                     </span>
                   ) : nextSlot ? (
-                    <span className="text-blue-300 flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5 text-blue-400" />
+                    <span className="text-blue-700 flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5 text-blue-600" />
                       Next Upcoming Session
                     </span>
                   ) : (
-                    <span className="text-emerald-400 flex items-center gap-1.5">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                    <span className="text-emerald-700 flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                       All Scheduled Lectures Done
                     </span>
                   )}
                 </div>
-                <div className="text-sm sm:text-base font-bold text-white mt-0.5">
+                <div className="text-sm sm:text-base font-bold text-slate-900 mt-0.5">
                   {activeSlot ? (
                     <span>
                       {courses[activeSlot.courseCode]?.name || activeSlot.slotName} ({activeSlot.courseCode}) •{' '}
@@ -377,7 +377,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                     <span>
                       {courses[nextSlot.courseCode]?.name || nextSlot.slotName} ({nextSlot.courseCode}) at {nextSlot.startTime}{' '}
                       {minutesUntilNext !== null && (
-                        <span className="text-blue-300 font-semibold">(Starts in {minutesUntilNext} mins)</span>
+                        <span className="text-blue-700 font-semibold">(Starts in {minutesUntilNext} mins)</span>
                       )}
                     </span>
                   ) : (
@@ -394,15 +394,15 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                 onClick={handleRequestNotifications}
                 className={`min-h-[38px] px-3 py-1.5 rounded-lg border text-xs font-semibold flex items-center gap-1.5 transition active:scale-95 ${
                   notificationActive
-                    ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-300'
-                    : 'bg-slate-800 hover:bg-slate-700 border-slate-700 text-slate-300'
+                    ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
+                    : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-700'
                 }`}
                 title="Enable web alerts before your classes"
               >
                 {notificationActive ? (
-                  <BellRing className="w-3.5 h-3.5 text-emerald-400" />
+                  <BellRing className="w-3.5 h-3.5 text-emerald-600" />
                 ) : (
-                  <Bell className="w-3.5 h-3.5 text-slate-400" />
+                  <Bell className="w-3.5 h-3.5 text-slate-500" />
                 )}
                 <span>{notificationActive ? 'Class Alerts Active' : 'Enable Class Alerts'}</span>
               </button>
@@ -410,13 +410,13 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
           </div>
 
           {/* Daily Progress & Breaks */}
-          <div className="pt-2.5 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs text-slate-400">
+          <div className="pt-2.5 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs text-slate-500">
             <div className="flex items-center gap-2.5">
-              <span className="text-slate-300 font-medium">Daily Progress:</span>
-              <span className="font-bold text-white">
+              <span className="text-slate-600 font-medium">Daily Progress:</span>
+              <span className="font-bold text-slate-900">
                 {completedClassesToday} of {totalClasses} classes completed
               </span>
-              <div className="w-24 h-2 bg-slate-800 rounded overflow-hidden inline-block">
+              <div className="w-24 h-2 bg-slate-100 rounded overflow-hidden inline-block">
                 <div
                   className="h-full bg-blue-600 transition-all duration-500"
                   style={{ width: `${totalClasses > 0 ? (completedClassesToday / totalClasses) * 100 : 0}%` }}
@@ -424,8 +424,8 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
               </div>
             </div>
             {freeSlots.length > 0 && (
-              <div className="flex items-center gap-1.5 text-[11px] text-slate-400">
-                <Coffee className="w-3.5 h-3.5 text-blue-400/90" />
+              <div className="flex items-center gap-1.5 text-[11px] text-slate-500">
+                <Coffee className="w-3.5 h-3.5 text-blue-600" />
                 <span>Free/Break slots: {freeSlots.map((s) => s.startTime + '–' + s.endTime).join(', ')}</span>
               </div>
             )}
@@ -434,20 +434,20 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
       )}
 
       {/* Day Header & Briefing Bar */}
-      <div className="bg-slate-900 border border-slate-800 rounded-lg p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-white border border-slate-200 rounded-lg p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4 shadow-2xs">
         <div className="flex items-center justify-between w-full sm:w-auto gap-2">
           <div>
             <div className="flex items-center gap-2">
-              <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
                 {selectedDay}'s Timetable
               </h2>
               {isSelectedDayToday && (
-                <span className="px-2 py-0.5 rounded-md text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                <span className="px-2 py-0.5 rounded-md text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
                   Live Today
                 </span>
               )}
             </div>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-slate-500 mt-1">
               {branch} Semester {semester} • NIT Goa Campus
             </p>
           </div>
@@ -457,7 +457,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
             <button
               type="button"
               onClick={goToPrevDay}
-              className="min-h-[40px] min-w-[40px] rounded-lg bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 hover:text-white flex items-center justify-center border border-slate-700 active:scale-95 transition shadow-xs"
+              className="min-h-[40px] min-w-[40px] rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center border border-slate-200 active:scale-95 transition shadow-xs"
               aria-label="Previous day"
               title="Previous day"
             >
@@ -466,7 +466,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
             <button
               type="button"
               onClick={goToNextDay}
-              className="min-h-[40px] min-w-[40px] rounded-lg bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 hover:text-white flex items-center justify-center border border-slate-700/80 active:scale-95 transition shadow-xs"
+              className="min-h-[40px] min-w-[40px] rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center border border-slate-200 active:scale-95 transition shadow-xs"
               aria-label="Next day"
               title="Next day"
             >
@@ -477,18 +477,18 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
         {/* Badges for Day & Customize / Test Buttons */}
         <div className="flex items-center gap-2 flex-wrap">
-          <div className="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-xs text-slate-300">
-            <strong className="text-white">{totalClasses}</strong> Sessions
+          <div className="px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-xs text-slate-700">
+            <strong className="text-slate-900">{totalClasses}</strong> Sessions
           </div>
           {hasMinor && (
-            <div className="px-2.5 py-1 rounded-md bg-blue-950/60 border border-blue-500/40 text-xs text-blue-300 flex items-center gap-1.5 shadow-xs">
-              <Bookmark className="w-3.5 h-3.5 text-blue-400" />
+            <div className="px-2.5 py-1 rounded-md bg-blue-50 border border-blue-200 text-xs text-blue-800 flex items-center gap-1.5 shadow-2xs">
+              <Bookmark className="w-3.5 h-3.5 text-blue-600" />
               <span>Includes <strong>CS300M Minor</strong></span>
             </div>
           )}
           {hasLab && (
-            <div className="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-xs text-slate-300 flex items-center gap-1.5">
-              <Beaker className="w-3.5 h-3.5 text-emerald-400" />
+            <div className="px-2.5 py-1 rounded-md bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 flex items-center gap-1.5">
+              <Beaker className="w-3.5 h-3.5 text-emerald-600" />
               <span>3-Hour Lab Session</span>
             </div>
           )}
@@ -496,7 +496,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
           {onOpenCustomizer && (
             <button
               onClick={onOpenCustomizer}
-              className="px-3 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-xs text-blue-300 border border-slate-700 font-semibold flex items-center gap-1.5 transition active:scale-95 shadow-xs"
+              className="px-3 py-1.5 rounded-md bg-white hover:bg-slate-50 text-xs text-blue-700 border border-slate-200 font-semibold flex items-center gap-1.5 transition active:scale-95 shadow-2xs"
               title="Customize timing or add extra slots to this day"
             >
               <Edit3 className="w-3.5 h-3.5" />
@@ -507,7 +507,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
           {isAdmin && onAdminAddSlot && (
             <button
               onClick={() => onAdminAddSlot(selectedDay)}
-              className="px-3 py-1.5 rounded-md bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-xs"
+              className="px-3 py-1.5 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-xs"
               title="Admin: Add a new slot to this day"
             >
               <Plus className="w-3.5 h-3.5" />
@@ -528,14 +528,14 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
             return (
               <div
                 key={slot.id || `lunch-${index}`}
-                className="py-3 px-4 rounded-lg bg-slate-800/30 border border-dashed border-slate-700/60 flex items-center justify-between text-slate-400 text-xs sm:text-sm"
+                className="py-3 px-4 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-between text-slate-600 text-xs sm:text-sm"
               >
                 <div className="flex items-center gap-2.5">
-                  <Coffee className="w-4 h-4 text-blue-400" />
-                  <span className="font-semibold text-slate-300">LUNCH BREAK</span>
+                  <Coffee className="w-4 h-4 text-blue-600" />
+                  <span className="font-semibold text-slate-800">LUNCH BREAK</span>
                   <span className="text-slate-500">• Institute Dining / Refreshment</span>
                 </div>
-                <div className="font-mono text-xs text-slate-400">
+                <div className="font-mono text-xs text-slate-500">
                   {slot.startTime} – {slot.endTime}
                 </div>
               </div>
@@ -547,26 +547,26 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
             return (
               <div
                 key={slot.id || `free-${index}`}
-                className="py-3.5 px-4 rounded-lg bg-slate-800/20 border border-dashed border-slate-700/40 flex items-center justify-between text-slate-400 text-xs sm:text-sm"
+                className="py-3.5 px-4 rounded-lg bg-slate-50/70 border border-dashed border-slate-200 flex items-center justify-between text-slate-600 text-xs sm:text-sm"
               >
                 <div className="flex items-center gap-2.5">
-                  <span className="w-2 h-2 rounded-full bg-slate-500" />
+                  <span className="w-2 h-2 rounded-full bg-slate-400" />
                   <div>
-                    <span className="font-semibold text-slate-300">{slot.slotName}</span>
+                    <span className="font-semibold text-slate-800">{slot.slotName}</span>
                     <span className="text-slate-500 text-xs block sm:inline sm:ml-2">
                       {slot.notes || 'Open Slot — Self-Study / Library Period'}
                     </span>
                   </div>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <div className="font-mono text-xs text-slate-400 shrink-0">
+                  <div className="font-mono text-xs text-slate-500 shrink-0">
                     {slot.startTime} – {slot.endTime}
                   </div>
                   {isAdmin && onAdminEditSlot && (
                     <button
                       type="button"
                       onClick={() => onAdminEditSlot(slot, selectedDay)}
-                      className="px-2.5 py-1 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1 shadow-sm transition active:scale-95"
+                      className="px-2.5 py-1 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center gap-1 shadow-xs transition active:scale-95"
                     >
                       <Edit3 className="w-3 h-3" />
                       <span>Edit</span>
@@ -588,23 +588,23 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
               <div
                 key={slot.id || `elective-${index}`}
                 onClick={() => onOpenCourseModal(chosenOption?.code || 'EE541')}
-                className={`group relative p-4 sm:p-5 rounded-lg border transition-all cursor-pointer ${
+                className={`group relative p-4 sm:p-5 rounded-lg border transition-all cursor-pointer shadow-2xs ${
                   active
-                    ? 'bg-slate-850 border-blue-500/60 shadow-xs'
+                    ? 'bg-blue-50/30 border-blue-500 ring-2 ring-blue-500/20'
                     : passed
-                    ? 'bg-slate-900/60 border-slate-800 opacity-70 hover:opacity-100 hover:border-slate-700'
-                    : 'bg-slate-900 border-slate-800 hover:border-slate-700'
+                    ? 'bg-slate-50/60 border-slate-200 opacity-75 hover:opacity-100 hover:border-slate-300'
+                    : 'bg-white border-slate-200 hover:border-slate-300'
                 }`}
               >
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-3">
                   <div className="flex items-center gap-2 flex-wrap min-w-0">
-                    <span className="px-2 py-0.5 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-xs font-semibold">
+                    <span className="px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700 border border-indigo-200 text-xs font-semibold">
                       {slot.slotName}
                     </span>
-                    <span className="font-mono text-xs text-slate-300 font-semibold whitespace-nowrap">
+                    <span className="font-mono text-xs text-slate-700 font-semibold whitespace-nowrap">
                       {slot.startTime} – {slot.endTime}
                     </span>
-                    <span className="text-xs text-slate-400 whitespace-nowrap">(55 mins)</span>
+                    <span className="text-xs text-slate-500 whitespace-nowrap">(55 mins)</span>
                   </div>
 
                   <div className="flex flex-wrap items-center justify-start md:justify-end gap-2 min-w-0">
@@ -614,8 +614,8 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                       </span>
                     )}
 
-                    <div className="flex items-center gap-1.5 text-xs text-slate-400 min-w-0">
-                      <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <div className="flex items-center gap-1.5 text-xs text-slate-600 min-w-0">
+                      <MapPin className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                       <span className="truncate max-w-[180px] sm:max-w-[240px]">Room {slot.room}</span>
                     </div>
 
@@ -626,7 +626,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                           e.stopPropagation();
                           onAdminEditSlot(slot, selectedDay);
                         }}
-                        className="shrink-0 px-2.5 py-1 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1 shadow-sm transition active:scale-95"
+                        className="shrink-0 px-2.5 py-1 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center gap-1 shadow-xs transition active:scale-95"
                         title="Admin: Edit Slot & Syllabus"
                       >
                         <Edit3 className="w-3 h-3" />
@@ -638,20 +638,20 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-blue-400 transition flex items-center gap-2">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-700 transition flex items-center gap-2">
                       <span>{chosenOption?.code}</span>
-                      <span className="text-slate-500 font-normal">•</span>
+                      <span className="text-slate-400 font-normal">•</span>
                       <span>{chosenOption?.name}</span>
                     </h3>
-                    <p className="text-xs text-slate-300 mt-1 flex items-center gap-2">
-                      <User className="w-3.5 h-3.5 text-blue-400" />
+                    <p className="text-xs text-slate-600 mt-1 flex items-center gap-2">
+                      <User className="w-3.5 h-3.5 text-blue-600" />
                       <span>
-                        Coordinator: <strong className="text-slate-200">{courseDetails?.coordinator || chosenOption?.faculty}</strong>
+                        Coordinator: <strong className="text-slate-800">{courseDetails?.coordinator || chosenOption?.faculty}</strong>
                       </span>
                     </p>
                     {otherOption && (
-                      <p className="text-[11px] text-slate-400 mt-2 bg-slate-900/60 px-2.5 py-1 rounded-lg inline-block border border-slate-800">
-                        Elective Choice Active: <span className="text-indigo-300 font-semibold">{chosenOption?.code}</span> (Parallel: {otherOption.code})
+                      <p className="text-[11px] text-slate-600 mt-2 bg-slate-50 px-2.5 py-1 rounded-lg inline-block border border-slate-200">
+                        Elective Choice Active: <span className="text-indigo-700 font-semibold">{chosenOption?.code}</span> (Parallel: {otherOption.code})
                       </p>
                     )}
 
@@ -659,32 +659,32 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                       const courseTest = getCourseUpcomingTest(chosenOption?.code);
                       if (!courseTest) return null;
                       return (
-                        <div className="mt-2.5 inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-blue-500/15 border border-blue-500/30 text-xs text-blue-300">
-                          <Calendar className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                        <div className="mt-2.5 inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-blue-50 border border-blue-200 text-xs text-blue-700">
+                          <Calendar className="w-3.5 h-3.5 text-blue-600 shrink-0" />
                           <span>{courseTest.type}: <strong>{courseTest.title}</strong> ({courseTest.date})</span>
                         </div>
                       );
                     })()}
                   </div>
-                  <ChevronRight className="w-5 h-5 text-slate-500 group-hover:text-white transition shrink-0 self-center" />
+                  <ChevronRight className="w-5 h-5 text-slate-400 group-hover:text-slate-700 transition shrink-0 self-center" />
                 </div>
 
                 {/* Inline Attendance Action & Status Bar */}
                 {chosenOption?.code && (
                   <div
-                    className="mt-3.5 pt-3 border-t border-slate-700/60 flex items-center justify-between gap-2 flex-wrap"
+                    className="mt-3.5 pt-3 border-t border-slate-100 flex items-center justify-between gap-2 flex-wrap"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="flex items-center gap-2">
-                      <CheckSquare className="w-3.5 h-3.5 text-blue-400" />
-                      <span className="text-xs text-slate-300 font-medium">Attendance:</span>
+                      <CheckSquare className="w-3.5 h-3.5 text-blue-600" />
+                      <span className="text-xs text-slate-600 font-medium">Attendance:</span>
                       {(() => {
                         const rec = attendanceRecords[chosenOption.code] || { attended: 0, total: 0 };
                         const pct = rec.total > 0 ? Math.round((rec.attended / rec.total) * 100) : null;
                         return (
                           <span
                             className={`text-xs font-bold font-mono ${
-                              pct === null ? 'text-slate-400' : pct >= 75 ? 'text-emerald-400' : 'text-rose-400'
+                              pct === null ? 'text-slate-400' : pct >= 75 ? 'text-emerald-700' : 'text-rose-700'
                             }`}
                           >
                             {pct !== null ? `${pct}% (${rec.attended}/${rec.total})` : 'Not logged yet'}
@@ -697,19 +697,19 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                       <button
                         type="button"
                         onClick={(e) => handleLogAttendance(chosenOption.code, true, e)}
-                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 active:bg-emerald-500/40 text-emerald-300 border border-emerald-500/40 text-xs font-bold flex items-center gap-1 transition active:scale-95"
+                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold flex items-center gap-1 transition active:scale-95 shadow-2xs"
                         title={`Mark +1 Present for ${chosenOption.code}`}
                       >
-                        <Check className="w-3 h-3 text-emerald-400" />
+                        <Check className="w-3 h-3 text-emerald-600" />
                         <span>+ Present</span>
                       </button>
                       <button
                         type="button"
                         onClick={(e) => handleLogAttendance(chosenOption.code, false, e)}
-                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 active:bg-rose-500/40 text-rose-300 border border-rose-500/40 text-xs font-bold flex items-center gap-1 transition active:scale-95"
+                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-800 border border-rose-200 text-xs font-bold flex items-center gap-1 transition active:scale-95 shadow-2xs"
                         title={`Mark +1 Absent for ${chosenOption.code}`}
                       >
-                        <X className="w-3 h-3 text-rose-400" />
+                        <X className="w-3 h-3 text-rose-600" />
                         <span>+ Absent</span>
                       </button>
                     </div>
@@ -728,34 +728,34 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
               <div
                 key={slot.id || `lab-${index}`}
                 onClick={() => onOpenCourseModal(currentLab.code)}
-                className={`group relative p-4 sm:p-5 rounded-lg border transition-all cursor-pointer ${
+                className={`group relative p-4 sm:p-5 rounded-lg border transition-all cursor-pointer shadow-2xs ${
                   active
-                    ? 'bg-slate-850 border-emerald-500/60 shadow-xs'
+                    ? 'bg-emerald-50/40 border-emerald-500 ring-2 ring-emerald-500/20'
                     : passed
-                    ? 'bg-slate-900/60 border-slate-800 opacity-70 hover:opacity-100 hover:border-slate-700'
-                    : 'bg-slate-900 border-emerald-500/30 hover:border-emerald-500/60'
+                    ? 'bg-slate-50/60 border-slate-200 opacity-75 hover:opacity-100 hover:border-slate-300'
+                    : 'bg-emerald-50/30 border-emerald-200 hover:border-emerald-300'
                 }`}
               >
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-3">
                   <div className="flex items-center gap-2 flex-wrap min-w-0">
-                    <span className="px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-xs font-semibold flex items-center gap-1">
+                    <span className="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-semibold flex items-center gap-1">
                       <Beaker className="w-3 h-3" />
                       {slot.slotName}
                     </span>
-                    <span className="font-mono text-xs text-slate-300 font-semibold whitespace-nowrap">
+                    <span className="font-mono text-xs text-slate-700 font-semibold whitespace-nowrap">
                       {slot.startTime} – {slot.endTime}
                     </span>
-                    <span className="text-xs text-slate-400 whitespace-nowrap">(2 Hrs 55 Mins)</span>
+                    <span className="text-xs text-slate-500 whitespace-nowrap">(2 Hrs 55 Mins)</span>
                   </div>
 
                   <div className="flex flex-wrap items-center justify-start md:justify-end gap-2 min-w-0">
                     {active && (
-                      <span className="shrink-0 whitespace-nowrap px-2.5 py-1 rounded-md bg-emerald-500 text-slate-950 font-extrabold text-[9px] sm:text-[10px] tracking-wider uppercase animate-pulse shadow-sm">
+                      <span className="shrink-0 whitespace-nowrap px-2.5 py-1 rounded-md bg-emerald-600 text-white font-extrabold text-[9px] sm:text-[10px] tracking-wider uppercase animate-pulse shadow-sm">
                         HAPPENING NOW
                       </span>
                     )}
 
-                    <div className="flex items-center gap-1.5 text-xs text-emerald-400 min-w-0">
+                    <div className="flex items-center gap-1.5 text-xs text-emerald-700 min-w-0">
                       <MapPin className="w-3.5 h-3.5 shrink-0" />
                       <span className="truncate max-w-[180px] sm:max-w-[240px]">{slot.room}</span>
                     </div>
@@ -767,7 +767,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                           e.stopPropagation();
                           onAdminEditSlot(slot, selectedDay);
                         }}
-                        className="shrink-0 px-2.5 py-1 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1 shadow-sm transition active:scale-95"
+                        className="shrink-0 px-2.5 py-1 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center gap-1 shadow-xs transition active:scale-95"
                         title="Admin: Edit Slot & Syllabus"
                       >
                         <Edit3 className="w-3 h-3" />
@@ -779,27 +779,27 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-emerald-400 transition flex items-center gap-2">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-emerald-700 transition flex items-center gap-2">
                       <span>{currentLab.code}</span>
-                      <span className="text-slate-500 font-normal">•</span>
+                      <span className="text-slate-400 font-normal">•</span>
                       <span>{currentLab.name}</span>
                     </h3>
-                    <p className="text-xs text-slate-300 mt-1 flex items-center gap-2">
-                      <User className="w-3.5 h-3.5 text-blue-400" />
+                    <p className="text-xs text-slate-600 mt-1 flex items-center gap-2">
+                      <User className="w-3.5 h-3.5 text-blue-600" />
                       <span>
-                        Faculty: <strong className="text-slate-200">{currentLab.faculty}</strong>
+                        Faculty: <strong className="text-slate-800">{currentLab.faculty}</strong>
                       </span>
                     </p>
-                    <p className="text-[11px] text-slate-400 mt-2 bg-slate-900/60 px-2.5 py-1 rounded-lg inline-block border border-slate-800">
-                      Batch Selection: <strong className="text-emerald-300">{selectedBatch === 'batch1' ? 'Batch 1' : 'Batch 2'}</strong> • Alternate batch: {alternateLab.code}
+                    <p className="text-[11px] text-slate-600 mt-2 bg-slate-50 px-2.5 py-1 rounded-lg inline-block border border-slate-200">
+                      Batch Selection: <strong className="text-emerald-800">{selectedBatch === 'batch1' ? 'Batch 1' : 'Batch 2'}</strong> • Alternate batch: {alternateLab.code}
                     </p>
 
                     {(() => {
                       const labTest = getCourseUpcomingTest(currentLab.code);
                       if (!labTest) return null;
                       return (
-                        <div className="mt-2.5 inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-blue-500/15 border border-blue-500/30 text-xs text-blue-300">
-                          <Calendar className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                        <div className="mt-2.5 inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-blue-50 border border-blue-200 text-xs text-blue-700">
+                          <Calendar className="w-3.5 h-3.5 text-blue-600 shrink-0" />
                           <span>{labTest.type}: <strong>{labTest.title}</strong> ({labTest.date})</span>
                           {onNavigateToTests && (
                             <button
@@ -808,7 +808,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                                 e.stopPropagation();
                                 onNavigateToTests();
                               }}
-                              className="ml-1 text-[11px] underline font-bold hover:text-white"
+                              className="ml-1 text-[11px] underline font-bold hover:text-blue-900"
                             >
                               Agenda
                             </button>
@@ -817,25 +817,25 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                       );
                     })()}
                   </div>
-                  <ChevronRight className="w-5 h-5 text-slate-500 group-hover:text-white transition shrink-0 self-center" />
+                  <ChevronRight className="w-5 h-5 text-slate-400 group-hover:text-slate-700 transition shrink-0 self-center" />
                 </div>
 
                 {/* Inline Attendance Action & Status Bar */}
                 {currentLab?.code && (
                   <div
-                    className="mt-3.5 pt-3 border-t border-slate-700/60 flex items-center justify-between gap-2 flex-wrap"
+                    className="mt-3.5 pt-3 border-t border-slate-100 flex items-center justify-between gap-2 flex-wrap"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="flex items-center gap-2">
-                      <CheckSquare className="w-3.5 h-3.5 text-emerald-400" />
-                      <span className="text-xs text-slate-300 font-medium">Lab Attendance:</span>
+                      <CheckSquare className="w-3.5 h-3.5 text-emerald-600" />
+                      <span className="text-xs text-slate-600 font-medium">Lab Attendance:</span>
                       {(() => {
                         const rec = attendanceRecords[currentLab.code] || { attended: 0, total: 0 };
                         const pct = rec.total > 0 ? Math.round((rec.attended / rec.total) * 100) : null;
                         return (
                           <span
                             className={`text-xs font-bold font-mono ${
-                              pct === null ? 'text-slate-400' : pct >= 75 ? 'text-emerald-400' : 'text-rose-400'
+                              pct === null ? 'text-slate-400' : pct >= 75 ? 'text-emerald-700' : 'text-rose-700'
                             }`}
                           >
                             {pct !== null ? `${pct}% (${rec.attended}/${rec.total})` : 'Not logged yet'}
@@ -848,19 +848,19 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                       <button
                         type="button"
                         onClick={(e) => handleLogAttendance(currentLab.code, true, e)}
-                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 active:bg-emerald-500/40 text-emerald-300 border border-emerald-500/40 text-xs font-bold flex items-center gap-1 transition active:scale-95"
+                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 active:bg-emerald-200 text-emerald-800 border border-emerald-200 text-xs font-bold flex items-center gap-1 transition active:scale-95 shadow-2xs"
                         title={`Mark +1 Present for ${currentLab.code}`}
                       >
-                        <Check className="w-3 h-3 text-emerald-400" />
+                        <Check className="w-3 h-3 text-emerald-600" />
                         <span>+ Present</span>
                       </button>
                       <button
                         type="button"
                         onClick={(e) => handleLogAttendance(currentLab.code, false, e)}
-                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 active:bg-rose-500/40 text-rose-300 border border-rose-500/40 text-xs font-bold flex items-center gap-1 transition active:scale-95"
+                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 active:bg-rose-200 text-rose-800 border border-rose-200 text-xs font-bold flex items-center gap-1 transition active:scale-95 shadow-2xs"
                         title={`Mark +1 Absent for ${currentLab.code}`}
                       >
-                        <X className="w-3 h-3 text-rose-400" />
+                        <X className="w-3 h-3 text-rose-600" />
                         <span>+ Absent</span>
                       </button>
                     </div>
@@ -878,14 +878,14 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
             <div
               key={slot.id || `slot-${index}`}
               onClick={() => onOpenCourseModal(slot.courseCode)}
-              className={`group relative p-4 sm:p-5 rounded-lg border transition-all cursor-pointer ${
+              className={`group relative p-4 sm:p-5 rounded-lg border transition-all cursor-pointer shadow-2xs ${
                 isMinor
-                  ? 'bg-slate-900 border-blue-500/40 shadow-xs hover:border-blue-400'
+                  ? 'bg-blue-50/40 border-blue-200 hover:border-blue-300'
                   : active
-                  ? 'bg-slate-850 border-blue-500/60 shadow-xs'
+                  ? 'bg-blue-50/30 border-blue-500 ring-2 ring-blue-500/20'
                   : passed
-                  ? 'bg-slate-900/60 border-slate-800 opacity-70 hover:opacity-100 hover:border-slate-700'
-                  : 'bg-slate-900 border-slate-800 hover:border-slate-700'
+                  ? 'bg-slate-50/60 border-slate-200 opacity-75 hover:opacity-100 hover:border-slate-300'
+                  : 'bg-white border-slate-200 hover:border-slate-300'
               }`}
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-3">
@@ -894,21 +894,21 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                   <span
                     className={`px-2 py-0.5 rounded-md text-xs font-semibold ${
                       isMinor
-                        ? 'bg-blue-600/15 text-blue-300 border border-blue-500/30 flex items-center gap-1 shadow-xs'
+                        ? 'bg-blue-100 text-blue-800 border border-blue-200 flex items-center gap-1 shadow-2xs'
                         : course?.category === 'lab' || slot.isLab
-                        ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                        ? 'bg-emerald-100 text-emerald-800 border border-emerald-200'
                         : course?.category === 'mlc'
-                        ? 'bg-slate-700/60 text-slate-300 border border-slate-600/50'
-                        : 'bg-slate-700 text-slate-200'
+                        ? 'bg-slate-100 text-slate-700 border border-slate-200'
+                        : 'bg-blue-50 text-blue-700 border border-blue-200'
                     }`}
                   >
-                    {isMinor && <BookOpen className="w-3 h-3 text-blue-400" />}
+                    {isMinor && <BookOpen className="w-3 h-3 text-blue-600" />}
                     {slot.slotName}
                   </span>
-                  <span className="font-mono text-xs text-slate-300 font-semibold whitespace-nowrap">
+                  <span className="font-mono text-xs text-slate-700 font-semibold whitespace-nowrap">
                     {slot.startTime} – {slot.endTime}
                   </span>
-                  <span className="text-xs text-slate-400 whitespace-nowrap">
+                  <span className="text-xs text-slate-500 whitespace-nowrap">
                     ({slot.isLab ? '2 Hrs 55 Mins' : '55 Mins'})
                   </span>
                 </div>
@@ -921,8 +921,8 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                     </span>
                   )}
 
-                  <div className="flex items-center gap-1.5 text-xs font-medium min-w-0 text-slate-300">
-                    <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <div className="flex items-center gap-1.5 text-xs font-medium min-w-0 text-slate-600">
+                    <MapPin className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                     <span className="truncate max-w-[180px] sm:max-w-[240px]">
                       Room {slot.room || course?.room}
                     </span>
@@ -935,7 +935,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                         e.stopPropagation();
                         onAdminEditSlot(slot, selectedDay);
                       }}
-                      className="shrink-0 px-2.5 py-1 rounded-md bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1 shadow-sm transition active:scale-95"
+                      className="shrink-0 px-2.5 py-1 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center gap-1 shadow-xs transition active:scale-95"
                       title="Admin: Edit Slot & Syllabus"
                     >
                       <Edit3 className="w-3 h-3" />
@@ -947,56 +947,56 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <h3 className="text-base sm:text-lg font-bold tracking-tight transition flex items-center gap-2 text-white group-hover:text-blue-400">
+                  <h3 className="text-base sm:text-lg font-bold tracking-tight transition flex items-center gap-2 text-slate-900 group-hover:text-blue-700">
                     <span>{course?.code || slot.courseCode}</span>
-                    <span className="text-slate-500 font-normal">•</span>
+                    <span className="text-slate-400 font-normal">•</span>
                     <span>{course?.name || slot.slotName}</span>
                   </h3>
 
                   {course?.coordinator && (
-                    <p className="text-xs text-slate-300 mt-1 flex items-center gap-2">
-                      <User className="w-3.5 h-3.5 text-blue-400" />
+                    <p className="text-xs text-slate-600 mt-1 flex items-center gap-2">
+                      <User className="w-3.5 h-3.5 text-blue-600" />
                       <span>
-                        Coordinator: <strong className="text-slate-200">{course.coordinator} ({course.shortName})</strong>
+                        Coordinator: <strong className="text-slate-800">{course.coordinator} ({course.shortName})</strong>
                       </span>
                     </p>
                   )}
 
                   {isMinor && (
-                    <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-950/40 border border-blue-500/30 text-[11px] text-blue-200">
-                      <BookOpen className="w-3.5 h-3.5 text-blue-400" />
+                    <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-50 border border-blue-200 text-[11px] text-blue-800">
+                      <BookOpen className="w-3.5 h-3.5 text-blue-600" />
                       <span>Special: CSE Minor Course • Coordinated by Dr. Pravati Swain</span>
                     </div>
                   )}
 
                   {slot.notes && !isMinor && (
-                    <p className="text-[11px] text-slate-400 mt-1.5 italic">{slot.notes}</p>
+                    <p className="text-[11px] text-slate-500 mt-1.5 italic">{slot.notes}</p>
                   )}
 
                   {(() => {
                     const regularTest = getCourseUpcomingTest(course?.code || slot.courseCode);
                     if (!regularTest) return null;
                     return (
-                      <div className="mt-2.5 inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-blue-500/15 border border-blue-500/30 text-xs text-blue-300">
-                        <Calendar className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                      <div className="mt-2.5 inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-blue-50 border border-blue-200 text-xs text-blue-700">
+                        <Calendar className="w-3.5 h-3.5 text-blue-600 shrink-0" />
                         <span>{regularTest.type}: <strong>{regularTest.title}</strong> ({regularTest.date})</span>
                       </div>
                     );
                   })()}
                 </div>
 
-                <ChevronRight className="w-5 h-5 text-slate-500 group-hover:text-white transition shrink-0 self-center" />
+                <ChevronRight className="w-5 h-5 text-slate-400 group-hover:text-slate-700 transition shrink-0 self-center" />
               </div>
 
               {/* Inline Attendance Action & Status Bar */}
               {(course?.code || slot.courseCode) && (
                 <div
-                  className="mt-3.5 pt-3 border-t border-slate-700/60 flex items-center justify-between gap-2 flex-wrap"
+                  className="mt-3.5 pt-3 border-t border-slate-100 flex items-center justify-between gap-2 flex-wrap"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <div className="flex items-center gap-2">
-                    <CheckSquare className="w-3.5 h-3.5 text-blue-400" />
-                    <span className="text-xs text-slate-300 font-medium">Attendance:</span>
+                    <CheckSquare className="w-3.5 h-3.5 text-blue-600" />
+                    <span className="text-xs text-slate-600 font-medium">Attendance:</span>
                     {(() => {
                       const code = course?.code || slot.courseCode;
                       const rec = attendanceRecords[code] || { attended: 0, total: 0 };
@@ -1004,7 +1004,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                       return (
                         <span
                           className={`text-xs font-bold font-mono ${
-                            pct === null ? 'text-slate-400' : pct >= 75 ? 'text-emerald-400' : 'text-rose-400'
+                            pct === null ? 'text-slate-400' : pct >= 75 ? 'text-emerald-700' : 'text-rose-700'
                           }`}
                         >
                           {pct !== null ? `${pct}% (${rec.attended}/${rec.total})` : 'Not logged yet'}
@@ -1017,19 +1017,19 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                     <button
                       type="button"
                       onClick={(e) => handleLogAttendance(course?.code || slot.courseCode, true, e)}
-                      className="min-h-[34px] px-2.5 py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 active:bg-emerald-500/40 text-emerald-300 border border-emerald-500/40 text-xs font-bold flex items-center gap-1 transition active:scale-95"
+                      className="min-h-[34px] px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 active:bg-emerald-200 text-emerald-800 border border-emerald-200 text-xs font-bold flex items-center gap-1 transition active:scale-95 shadow-2xs"
                       title={`Mark +1 Present for ${course?.code || slot.courseCode}`}
                     >
-                      <Check className="w-3 h-3 text-emerald-400" />
+                      <Check className="w-3 h-3 text-emerald-600" />
                       <span>+ Present</span>
                     </button>
                     <button
                       type="button"
                       onClick={(e) => handleLogAttendance(course?.code || slot.courseCode, false, e)}
-                      className="min-h-[34px] px-2.5 py-1 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 active:bg-rose-500/40 text-rose-300 border border-rose-500/40 text-xs font-bold flex items-center gap-1 transition active:scale-95"
+                      className="min-h-[34px] px-2.5 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 active:bg-rose-200 text-rose-800 border border-rose-200 text-xs font-bold flex items-center gap-1 transition active:scale-95 shadow-2xs"
                       title={`Mark +1 Absent for ${course?.code || slot.courseCode}`}
                     >
-                      <X className="w-3 h-3 text-rose-400" />
+                      <X className="w-3 h-3 text-rose-600" />
                       <span>+ Absent</span>
                     </button>
                   </div>
@@ -1045,7 +1045,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
           <button
             type="button"
             onClick={() => onAdminAddSlot(selectedDay)}
-            className="w-full py-3 rounded-lg bg-blue-600/15 hover:bg-blue-600/25 border border-dashed border-blue-500/40 text-blue-300 font-semibold text-xs flex items-center justify-center gap-2 transition active:scale-98 shadow-xs"
+            className="w-full py-3 rounded-lg bg-blue-50 hover:bg-blue-100 border border-dashed border-blue-300 text-blue-700 font-semibold text-xs flex items-center justify-center gap-2 transition active:scale-98 shadow-2xs"
           >
             <Plus className="w-4 h-4" />
             <span>+ Add Slot for {selectedDay} (Admin)</span>

@@ -394,25 +394,25 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
         isFullscreen
           ? 'fixed inset-0 z-[9999] w-screen h-screen rounded-none'
           : 'relative w-full h-full min-h-[540px] rounded-lg'
-      } bg-slate-950 border border-slate-800 flex flex-col overflow-hidden shadow-2xl transition-all ${className}`}
+      } bg-white border border-slate-200 flex flex-col overflow-hidden shadow-xl transition-all ${className}`}
     >
       {/* Top Header Bar */}
-      <div className="bg-slate-900 px-4 py-2.5 sm:py-3 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 shrink-0">
+      <div className="bg-white px-4 py-2.5 sm:py-3 border-b border-slate-200 flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 shrink-0">
         {/* Title & Document Badge */}
         <div className="flex items-center gap-2.5 min-w-0">
-          <div className="w-8 h-8 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center shrink-0 border border-blue-500/30">
+          <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-200">
             <BookOpen className="w-4 h-4" />
           </div>
           <div className="min-w-0">
             <div className="flex items-center gap-2">
-              <span className="text-xs sm:text-sm font-bold text-white truncate max-w-[180px] sm:max-w-md">
+              <span className="text-xs sm:text-sm font-bold text-slate-900 truncate max-w-[180px] sm:max-w-md">
                 {title}
               </span>
-              <span className="hidden sm:inline-block text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-slate-800 text-blue-300 border border-slate-700">
+              <span className="hidden sm:inline-block text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">
                 Official PDF
               </span>
             </div>
-            <p className="text-[11px] text-slate-400 truncate max-w-[200px] sm:max-w-sm">
+            <p className="text-[11px] text-slate-500 truncate max-w-[200px] sm:max-w-sm">
               {pdfFileName} • Permanent Campus Handbooks
             </p>
           </div>
@@ -427,7 +427,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
             className={`min-h-[36px] px-2.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition ${
               showSearch
                 ? 'bg-blue-600 text-white font-bold'
-                : 'bg-slate-800/80 hover:bg-slate-800 text-slate-300 border border-slate-700'
+                : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200'
             }`}
             title="Search text in PDF"
           >
@@ -436,14 +436,14 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
           </button>
 
           {/* Viewer Mode Toggle (Canvas vs Native) */}
-          <div className="hidden sm:flex items-center p-0.5 bg-slate-950 rounded-lg border border-slate-800 text-[11px]">
+          <div className="hidden sm:flex items-center p-0.5 bg-slate-100 rounded-lg border border-slate-200 text-[11px]">
             <button
               type="button"
               onClick={() => setViewerMode('canvas')}
               className={`px-2.5 py-1 rounded-lg font-bold transition ${
                 viewerMode === 'canvas'
-                  ? 'bg-blue-600 text-white shadow-xs'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-white text-slate-900 shadow-2xs'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
               title="HTML5 Canvas Engine (Interactive zoom, pan & jump)"
             >
@@ -454,8 +454,8 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
               onClick={() => setViewerMode('native')}
               className={`px-2.5 py-1 rounded-lg font-bold transition ${
                 viewerMode === 'native'
-                  ? 'bg-blue-600 text-white shadow-xs'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-white text-slate-900 shadow-2xs'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
               title="Native Browser PDF Plugin"
             >
@@ -468,7 +468,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
             href={pdfUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="min-h-[36px] px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold flex items-center gap-1.5 border border-slate-700 transition"
+            className="min-h-[36px] px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold flex items-center gap-1.5 border border-slate-200 transition"
             title="Open original file in new browser tab"
           >
             <ExternalLink className="w-3.5 h-3.5" />
@@ -479,7 +479,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
           <a
             href={pdfUrl}
             download={pdfFileName}
-            className="min-h-[36px] px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 active:bg-emerald-600 text-slate-950 text-xs font-bold flex items-center gap-1.5 transition shadow-xs"
+            className="min-h-[36px] px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-xs font-bold flex items-center gap-1.5 transition shadow-xs"
             title="Download PDF to device"
           >
             <Download className="w-3.5 h-3.5" />
@@ -490,7 +490,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
           <button
             type="button"
             onClick={toggleFullscreen}
-            className="min-h-[36px] p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition"
+            className="min-h-[36px] p-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition"
             title={isFullscreen ? 'Exit Fullscreen' : 'Expand to Fullscreen Container'}
           >
             {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
@@ -500,7 +500,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="min-h-[36px] p-2 rounded-lg bg-slate-800 hover:bg-rose-500/20 text-slate-400 hover:text-rose-400 border border-slate-700 transition ml-0.5"
+              className="min-h-[36px] p-2 rounded-lg bg-slate-100 hover:bg-rose-50 text-slate-500 hover:text-rose-600 border border-slate-200 transition ml-0.5"
               aria-label="Close"
             >
               <X className="w-4 h-4" />
@@ -511,7 +511,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
 
       {/* Search Bar Drawer */}
       {showSearch && (
-        <div className="bg-slate-900/95 px-4 py-2.5 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs shrink-0 animate-in slide-in-from-top-1">
+        <div className="bg-slate-50 px-4 py-2.5 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs shrink-0 animate-in slide-in-from-top-1">
           <form onSubmit={handleSearch} className="flex items-center gap-2 flex-1 max-w-md">
             <div className="relative flex-1">
               <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -520,27 +520,27 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search course code or topic in handbook..."
-                className="w-full pl-9 pr-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-slate-100 placeholder-slate-500 text-xs focus:outline-hidden focus:border-blue-500"
+                className="w-full pl-9 pr-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-900 placeholder-slate-400 text-xs focus:outline-hidden focus:border-blue-600"
               />
             </div>
             <button
               type="submit"
               disabled={searching || !searchQuery.trim()}
-              className="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs disabled:opacity-50 transition"
+              className="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs disabled:opacity-50 transition"
             >
               {searching ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : 'Search'}
             </button>
           </form>
 
           {searchMatches.length > 0 && (
-            <div className="flex items-center gap-2 text-slate-300">
+            <div className="flex items-center gap-2 text-slate-700">
               <span className="text-[11px] font-mono">
                 Match {currentMatchIndex + 1} of {searchMatches.length} (Page {searchMatches[currentMatchIndex]})
               </span>
               <button
                 type="button"
                 onClick={prevMatch}
-                className="p-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700"
+                className="p-1 rounded-lg bg-white hover:bg-slate-100 text-slate-700 border border-slate-200"
                 title="Previous match"
               >
                 <ChevronLeft className="w-3.5 h-3.5" />
@@ -548,7 +548,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
               <button
                 type="button"
                 onClick={nextMatch}
-                className="p-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700"
+                className="p-1 rounded-lg bg-white hover:bg-slate-100 text-slate-700 border border-slate-200"
                 title="Next match"
               >
                 <ChevronRight className="w-3.5 h-3.5" />
@@ -557,15 +557,15 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
           )}
 
           {searchMatches.length === 0 && !searching && searchQuery && (
-            <span className="text-[11px] text-slate-400 italic">No matches found in document</span>
+            <span className="text-[11px] text-slate-500 italic">No matches found in document</span>
           )}
         </div>
       )}
 
       {/* Course Modules Quick Strip */}
       {courseModules && courseModules.length > 0 && (
-        <div className="bg-slate-950 px-4 py-2 border-b border-slate-800/80 flex items-center gap-2 overflow-x-auto text-xs shrink-0 no-scrollbar">
-          <span className="text-[11px] font-semibold text-blue-400 flex items-center gap-1 shrink-0">
+        <div className="bg-slate-50 px-4 py-2 border-b border-slate-200 flex items-center gap-2 overflow-x-auto text-xs shrink-0 no-scrollbar">
+          <span className="text-[11px] font-semibold text-blue-700 flex items-center gap-1 shrink-0">
             <Layers className="w-3.5 h-3.5" />
             <span>Modules:</span>
           </span>
@@ -580,7 +580,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
                   setShowSearch(true);
                   handleSearch();
                 }}
-                className="px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 text-[11px] font-medium whitespace-nowrap transition shrink-0"
+                className="px-2.5 py-1 rounded-md bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-[11px] font-medium whitespace-nowrap transition shrink-0 shadow-2xs"
                 title={mod}
               >
                 {modLabel}
@@ -592,36 +592,36 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
 
       {/* Canvas Controls Toolbar (Active in Canvas Mode) */}
       {viewerMode === 'canvas' && (
-        <div className="bg-slate-900/95 px-4 py-2 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3 shrink-0 text-xs">
+        <div className="bg-white px-4 py-2 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3 shrink-0 text-xs">
           {/* Page Navigation */}
           <div className="flex items-center gap-1.5 sm:gap-2">
             <button
               type="button"
               onClick={goToPrevPage}
               disabled={currentPage <= 1 || loading}
-              className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:hover:bg-slate-800 text-slate-300 border border-slate-700 transition active:scale-95"
+              className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 disabled:opacity-40 disabled:hover:bg-slate-100 text-slate-700 border border-slate-200 transition active:scale-95"
               title="Previous Page"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
 
             <form onSubmit={handleJumpSubmit} className="flex items-center gap-1.5">
-              <span className="text-slate-400 text-xs hidden sm:inline">Page</span>
+              <span className="text-slate-500 text-xs hidden sm:inline">Page</span>
               <input
                 type="text"
                 value={jumpPageInput}
                 onChange={(e) => setJumpPageInput(e.target.value)}
                 onBlur={handleJumpSubmit}
-                className="w-12 text-center py-1 rounded-lg bg-slate-950 border border-slate-700 text-white font-mono text-xs focus:outline-hidden focus:border-blue-500"
+                className="w-12 text-center py-1 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 font-mono text-xs focus:outline-hidden focus:border-blue-600"
               />
-              <span className="text-slate-400 text-xs">of {numPages || '...'}</span>
+              <span className="text-slate-500 text-xs">of {numPages || '...'}</span>
             </form>
 
             <button
               type="button"
               onClick={goToNextPage}
               disabled={currentPage >= numPages || loading}
-              className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:hover:bg-slate-800 text-slate-300 border border-slate-700 transition active:scale-95"
+              className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 disabled:opacity-40 disabled:hover:bg-slate-100 text-slate-700 border border-slate-200 transition active:scale-95"
               title="Next Page"
             >
               <ChevronRight className="w-4 h-4" />
@@ -634,7 +634,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
               type="button"
               onClick={zoomOut}
               disabled={scale <= 0.45 || loading}
-              className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-slate-300 border border-slate-700 transition active:scale-95"
+              className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 disabled:opacity-40 text-slate-700 border border-slate-200 transition active:scale-95"
               title="Zoom Out"
             >
               <ZoomOut className="w-4 h-4" />
@@ -643,7 +643,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
             <button
               type="button"
               onClick={resetZoom}
-              className="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-mono font-medium border border-slate-700 transition"
+              className="px-2 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-mono font-medium border border-slate-200 transition"
               title="Reset Zoom to 100%"
             >
               {Math.round(scale * 100)}%
@@ -653,7 +653,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
               type="button"
               onClick={zoomIn}
               disabled={scale >= 3.0 || loading}
-              className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-slate-300 border border-slate-700 transition active:scale-95"
+              className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 disabled:opacity-40 text-slate-700 border border-slate-200 transition active:scale-95"
               title="Zoom In"
             >
               <ZoomIn className="w-4 h-4" />
@@ -662,7 +662,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
             <button
               type="button"
               onClick={() => fitWidth()}
-              className="px-2.5 py-1 rounded-lg bg-blue-600/15 hover:bg-blue-600/25 text-blue-300 border border-blue-500/30 text-xs font-semibold transition active:scale-95"
+              className="px-2.5 py-1 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 text-xs font-semibold transition active:scale-95"
               title="Auto-Fit Page to Window Width"
             >
               Fit Width
@@ -680,32 +680,32 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
         onMouseUp={handleMouseUpOrLeave}
         onMouseLeave={handleMouseUpOrLeave}
         tabIndex={0}
-        className={`flex-1 w-full h-full min-h-0 relative bg-slate-950 overflow-y-auto overflow-x-auto select-text scroll-smooth focus:outline-hidden ${
+        className={`flex-1 w-full h-full min-h-0 relative bg-slate-200/60 overflow-y-auto overflow-x-auto select-text scroll-smooth focus:outline-hidden ${
           isPanning ? 'cursor-grabbing' : 'cursor-default'
         }`}
       >
         {/* Loading Spinner */}
         {loading && (
-          <div className="absolute inset-0 z-20 bg-slate-950/80 backdrop-blur-xs flex flex-col items-center justify-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400">
+          <div className="absolute inset-0 z-20 bg-white/80 backdrop-blur-xs flex flex-col items-center justify-center gap-3">
+            <div className="w-10 h-10 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600">
               <Loader2 className="w-6 h-6 animate-spin" />
             </div>
-            <p className="text-sm font-semibold text-slate-200">Loading Official PDF Handbook...</p>
-            <p className="text-xs text-slate-400">Rendering high-resolution curriculum handbook pages</p>
+            <p className="text-sm font-semibold text-slate-800">Loading Official PDF Handbook...</p>
+            <p className="text-xs text-slate-500">Rendering high-resolution curriculum handbook pages</p>
           </div>
         )}
 
         {/* Error State */}
         {error && (
-          <div className="max-w-md mx-auto my-12 p-6 rounded-lg bg-slate-900 border border-slate-800 text-center space-y-3">
-            <AlertCircle className="w-8 h-8 text-blue-400 mx-auto" />
-            <h4 className="text-sm font-bold text-white">Browser Display Notice</h4>
-            <p className="text-xs text-slate-300 leading-relaxed">{error}</p>
+          <div className="max-w-md mx-auto my-12 p-6 rounded-lg bg-white border border-slate-200 text-center space-y-3 shadow-md">
+            <AlertCircle className="w-8 h-8 text-blue-600 mx-auto" />
+            <h4 className="text-sm font-bold text-slate-900">Browser Display Notice</h4>
+            <p className="text-xs text-slate-600 leading-relaxed">{error}</p>
             <div className="pt-2 flex items-center justify-center gap-3">
               <a
                 href={pdfUrl}
                 download={pdfFileName}
-                className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs inline-flex items-center gap-1.5 transition"
+                className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs inline-flex items-center gap-1.5 transition"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Download PDF File</span>
@@ -713,7 +713,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
               <button
                 type="button"
                 onClick={() => setViewerMode('native')}
-                className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs transition border border-slate-700"
+                className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs transition border border-slate-200"
               >
                 Try Native Plugin
               </button>
@@ -725,36 +725,36 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
         {viewerMode === 'canvas' && !error && (
           <div className="w-full min-h-full flex flex-col items-center justify-start p-2 sm:p-5">
             {/* Canvas wrapper card */}
-            <div className="shadow-2xl rounded-lg overflow-hidden border border-slate-700/80 bg-white mb-6">
+            <div className="shadow-md rounded-lg overflow-hidden border border-slate-300 bg-white mb-6">
               <canvas ref={canvasRef} className="block select-none" />
             </div>
 
             {/* Quick Page Turning Navigation Bar right below canvas */}
             {numPages > 1 && (
-              <div className="w-full max-w-sm flex items-center justify-between gap-3 p-2.5 sm:p-3 bg-slate-900/95 border border-slate-800 rounded-lg text-xs text-slate-300 backdrop-blur-md shadow-xl mb-6 shrink-0">
+              <div className="w-full max-w-sm flex items-center justify-between gap-3 p-2.5 sm:p-3 bg-white border border-slate-200 rounded-lg text-xs text-slate-700 shadow-lg mb-6 shrink-0">
                 <button
                   type="button"
                   onClick={goToPrevPage}
                   disabled={currentPage <= 1 || loading}
-                  className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:hover:bg-slate-800 text-slate-200 font-semibold flex items-center gap-1.5 transition active:scale-95"
+                  className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 disabled:opacity-40 disabled:hover:bg-slate-100 text-slate-700 font-semibold flex items-center gap-1.5 transition active:scale-95 border border-slate-200"
                 >
                   <ChevronLeft className="w-4 h-4" />
                   <span>Previous</span>
                 </button>
 
                 <div className="flex items-center gap-1 font-mono text-xs">
-                  <span className="text-slate-400">Page</span>
-                  <span className="text-white font-bold px-1.5 py-0.5 rounded bg-slate-950 border border-slate-800">
+                  <span className="text-slate-500">Page</span>
+                  <span className="text-slate-900 font-bold px-1.5 py-0.5 rounded bg-slate-50 border border-slate-200">
                     {currentPage}
                   </span>
-                  <span className="text-slate-400">of {numPages}</span>
+                  <span className="text-slate-500">of {numPages}</span>
                 </div>
 
                 <button
                   type="button"
                   onClick={goToNextPage}
                   disabled={currentPage >= numPages || loading}
-                  className="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 disabled:opacity-40 text-white font-bold flex items-center gap-1.5 transition shadow-sm active:scale-95"
+                  className="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 disabled:opacity-40 text-white font-bold flex items-center gap-1.5 transition shadow-xs active:scale-95"
                 >
                   <span>Next</span>
                   <ChevronRight className="w-4 h-4" />
@@ -770,27 +770,27 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
             <object
               data={`${pdfUrl}#toolbar=1&navpanes=1`}
               type="application/pdf"
-              className="w-full h-full flex-1 rounded-lg border border-slate-800 bg-slate-900 shadow-inner min-h-[500px]"
+              className="w-full h-full flex-1 rounded-lg border border-slate-200 bg-white shadow-inner min-h-[500px]"
             >
               {/* Fallback inside object tag if browser lacks native plugin */}
-              <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center space-y-3 bg-slate-900 rounded-lg">
-                <FileText className="w-10 h-10 text-blue-400" />
-                <h4 className="text-base font-bold text-white">Embedded PDF Reader</h4>
-                <p className="text-xs text-slate-300 max-w-md leading-relaxed">
+              <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center space-y-3 bg-white border border-slate-200 rounded-lg">
+                <FileText className="w-10 h-10 text-blue-600" />
+                <h4 className="text-base font-bold text-slate-900">Embedded PDF Reader</h4>
+                <p className="text-xs text-slate-600 max-w-md leading-relaxed">
                   Your current browser configuration or sandbox blocks the native PDF plugin. Switch back to Canvas View or download the official handbook.
                 </p>
                 <div className="flex items-center gap-3 pt-2">
                   <button
                     type="button"
                     onClick={() => setViewerMode('canvas')}
-                    className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs"
+                    className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs"
                   >
                     Switch to Canvas View
                   </button>
                   <a
                     href={pdfUrl}
                     download={pdfFileName}
-                    className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs border border-slate-700 inline-flex items-center gap-1.5"
+                    className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs border border-slate-200 inline-flex items-center gap-1.5"
                   >
                     <Download className="w-3.5 h-3.5" />
                     <span>Download File</span>
@@ -803,9 +803,9 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
       </div>
 
       {/* Bottom Footer Info Strip */}
-      <div className="bg-slate-900/90 px-4 py-2 border-t border-slate-800 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-400 shrink-0">
+      <div className="bg-white px-4 py-2 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500 shrink-0">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
           <span>Official NIT Goa 2025 Handbooks & Syllabus</span>
         </div>
         <div className="flex items-center gap-3 ml-auto">
@@ -814,7 +814,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
               href={sourceUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-400 hover:underline inline-flex items-center gap-1"
+              className="text-blue-600 hover:underline inline-flex items-center gap-1"
             >
               <span>Verify on nitgoa.ac.in</span>
               <ExternalLink className="w-3 h-3" />

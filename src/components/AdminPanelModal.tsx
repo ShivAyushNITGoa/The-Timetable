@@ -432,45 +432,45 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
-      <div className="bg-slate-900 border border-slate-700 w-full max-w-5xl rounded-lg shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+    <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
+      <div className="bg-white border border-slate-200 w-full max-w-5xl rounded-lg shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
         {/* Modal Top Header */}
-        <div className="px-5 py-4 border-b border-slate-800 bg-slate-950/60 flex items-center justify-between">
+        <div className="px-5 py-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/30">
+            <div className="p-2 rounded-lg bg-amber-50 text-amber-700 border border-amber-200">
               <ShieldCheck size={20} />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="text-base font-bold text-white tracking-tight">
+                <h2 className="text-base font-bold text-slate-900 tracking-tight">
                   Academic Administrator Control Panel
                 </h2>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold border border-amber-500/30">
+                <span className="text-[10px] px-2 py-0.5 rounded bg-amber-50 text-amber-700 font-bold border border-amber-200">
                   SUPERUSER
                 </span>
               </div>
-              <p className="text-xs text-slate-400">
-                Verified Admin: <span className="text-slate-200 font-mono">{currentUser?.email}</span>
+              <p className="text-xs text-slate-500">
+                Verified Admin: <span className="text-slate-700 font-mono">{currentUser?.email}</span>
               </p>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition"
           >
             <X size={18} />
           </button>
         </div>
 
         {/* Tab Navigation */}
-        <div className="px-5 border-b border-slate-800 bg-slate-900 flex items-center gap-2 overflow-x-auto">
+        <div className="px-5 border-b border-slate-200 bg-white flex items-center gap-2 overflow-x-auto">
           <button
             onClick={() => setActiveTab('timetable')}
             className={`flex items-center gap-2 px-3.5 py-3 text-xs font-semibold border-b-2 transition whitespace-nowrap ${
               activeTab === 'timetable'
-                ? 'border-indigo-500 text-white'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-indigo-600 text-indigo-700 font-bold'
+                : 'border-transparent text-slate-500 hover:text-slate-800'
             }`}
           >
             <Calendar size={15} />
@@ -480,8 +480,8 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
             onClick={() => setActiveTab('syllabus')}
             className={`flex items-center gap-2 px-3.5 py-3 text-xs font-semibold border-b-2 transition whitespace-nowrap ${
               activeTab === 'syllabus'
-                ? 'border-indigo-500 text-white'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-indigo-600 text-indigo-700 font-bold'
+                : 'border-transparent text-slate-500 hover:text-slate-800'
             }`}
           >
             <BookOpen size={15} />
@@ -491,8 +491,8 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
             onClick={() => setActiveTab('announcements')}
             className={`flex items-center gap-2 px-3.5 py-3 text-xs font-semibold border-b-2 transition whitespace-nowrap ${
               activeTab === 'announcements'
-                ? 'border-indigo-500 text-white'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-indigo-600 text-indigo-700 font-bold'
+                : 'border-transparent text-slate-500 hover:text-slate-800'
             }`}
           >
             <Bell size={15} />
@@ -502,8 +502,8 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
             onClick={() => setActiveTab('diagnostics')}
             className={`flex items-center gap-2 px-3.5 py-3 text-xs font-semibold border-b-2 transition whitespace-nowrap ${
               activeTab === 'diagnostics'
-                ? 'border-indigo-500 text-white'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-indigo-600 text-indigo-700 font-bold'
+                : 'border-transparent text-slate-500 hover:text-slate-800'
             }`}
           >
             <ShieldCheck size={15} />
@@ -513,19 +513,19 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
 
         {/* Status Toast / Banner */}
         {saveStatus && (
-          <div className="mx-5 mt-4 p-3 rounded-lg bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs flex items-center justify-between">
+          <div className="mx-5 mt-4 p-3 rounded-lg bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Info size={16} />
               <span>{saveStatus}</span>
             </div>
-            <button onClick={() => setSaveStatus(null)} className="text-slate-400 hover:text-white">
+            <button onClick={() => setSaveStatus(null)} className="text-slate-400 hover:text-slate-700">
               <X size={14} />
             </button>
           </div>
         )}
 
         {/* Modal Scrollable Body */}
-        <div className="p-5 overflow-y-auto flex-1 text-slate-200">
+        <div className="p-5 overflow-y-auto flex-1 text-slate-800">
           {/* TAB 1: TIMETABLE EDITOR */}
           {activeTab === 'timetable' && (
             <div className="space-y-6">

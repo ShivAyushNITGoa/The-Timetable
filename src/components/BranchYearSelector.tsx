@@ -86,12 +86,12 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
   const activeBranchInfo = BRANCHES_LIST.find((b) => b.code === selectedBranch) || BRANCHES_LIST[0];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xs animate-in fade-in duration-150">
-      <div className="bg-slate-900 border border-slate-700/80 rounded-lg max-w-xl w-full p-5 sm:p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-150">
+      <div className="bg-white border border-slate-200 rounded-lg max-w-xl w-full p-5 sm:p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
+          className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition"
           aria-label="Close"
         >
           <X className="w-5 h-5" />
@@ -99,13 +99,13 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
 
         {/* Modal Header */}
         <div className="flex items-center gap-3.5 mb-5">
-          <BrandIcon size={44} className="shrink-0 rounded-lg shadow-md shadow-[#9EB81E]/15" />
+          <BrandIcon size={44} className="shrink-0 rounded-lg shadow-sm" />
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-[10px] uppercase font-bold text-[#9EB81E] tracking-wider">The GDevelopers Hub</span>
+              <span className="text-[10px] uppercase font-bold text-blue-700 tracking-wider">The GDevelopers Hub</span>
             </div>
-            <h2 className="text-lg sm:text-xl font-bold text-white tracking-tight">Select Branch & Academic Year</h2>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <h2 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">Select Branch & Academic Year</h2>
+            <p className="text-xs text-slate-600 mt-0.5">
               Switch curriculum, slot schedules, and room allocations across all NIT Goa programs.
             </p>
           </div>
@@ -113,8 +113,8 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
 
         {/* Step 1: Select Engineering Branch */}
         <div className="space-y-2.5 mb-5">
-          <label className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-            <Building2 className="w-3.5 h-3.5 text-blue-400" />
+          <label className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+            <Building2 className="w-3.5 h-3.5 text-blue-600" />
             1. Engineering Branch (Department)
           </label>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -127,8 +127,8 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
                   onClick={() => setSelectedBranch(branch.code)}
                   className={`p-3 rounded-lg text-left border transition-all flex items-start justify-between gap-2 ${
                     isSelected
-                      ? 'bg-slate-800 border-blue-500 shadow-xs ring-1 ring-blue-500/50'
-                      : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 hover:bg-slate-800/40'
+                      ? 'bg-blue-50 border-blue-400 text-blue-900 shadow-xs ring-1 ring-blue-300'
+                      : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50'
                   }`}
                 >
                   <div>
@@ -136,11 +136,11 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
                       <span className={`font-mono font-bold text-sm ${branch.iconColor}`}>
                         {branch.code}
                       </span>
-                      <span className="text-xs font-semibold text-slate-200">
+                      <span className="text-xs font-semibold text-slate-800">
                         {branch.name}
                       </span>
                     </div>
-                    <div className="text-[11px] text-slate-400 mt-0.5 line-clamp-1">
+                    <div className="text-[11px] text-slate-500 mt-0.5 line-clamp-1">
                       {branch.fullName}
                     </div>
                   </div>
@@ -157,8 +157,8 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
 
         {/* Step 2: Select Year of Study */}
         <div className="space-y-2.5 mb-5">
-          <label className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-            <Layers className="w-3.5 h-3.5 text-indigo-400" />
+          <label className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+            <Layers className="w-3.5 h-3.5 text-indigo-600" />
             2. Year of Study
           </label>
           <div className="grid grid-cols-4 gap-2">
@@ -172,8 +172,8 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
                   onClick={() => handleYearChange(year)}
                   className={`min-h-[48px] py-2 px-2 rounded-lg border text-center transition-all flex flex-col items-center justify-center active:scale-95 ${
                     isSelected
-                      ? 'bg-indigo-600/30 border-indigo-400 text-indigo-100 font-bold shadow-xs ring-1 ring-indigo-400'
-                      : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700'
+                      ? 'bg-indigo-50 border-indigo-400 text-indigo-900 font-bold shadow-xs ring-1 ring-indigo-300'
+                      : 'bg-white border-slate-200 text-slate-600 hover:text-slate-900 hover:border-slate-300'
                   }`}
                 >
                   <div className="text-sm font-bold">{yearName}</div>
@@ -186,8 +186,8 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
 
         {/* Step 3: Select Active Semester */}
         <div className="space-y-2.5 mb-5">
-          <label className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-            <BookOpen className="w-3.5 h-3.5 text-emerald-400" />
+          <label className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+            <BookOpen className="w-3.5 h-3.5 text-emerald-600" />
             3. Semester (Odd / Even)
           </label>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -201,18 +201,18 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
                   onClick={() => setSelectedSemester(sem)}
                   className={`min-h-[48px] p-2.5 rounded-lg border text-left transition-all flex items-center justify-between active:scale-[0.99] ${
                     isSelected
-                      ? 'bg-emerald-600/25 border-emerald-500 text-emerald-100 font-bold shadow-xs ring-1 ring-emerald-400'
-                      : 'bg-slate-950/60 border-slate-800 text-slate-300 hover:border-slate-700'
+                      ? 'bg-emerald-50 border-emerald-400 text-emerald-900 font-bold shadow-xs ring-1 ring-emerald-300'
+                      : 'bg-white border-slate-200 text-slate-700 hover:border-slate-300'
                   }`}
                 >
                   <div>
                     <div className="text-sm font-bold">Semester {sem}</div>
-                    <div className="text-[11px] text-slate-400">
+                    <div className="text-[11px] text-slate-500">
                       {isOdd ? 'Odd Semester (July–Dec)' : 'Even Semester (Jan–May)'}
                     </div>
                   </div>
                   {isSelected && (
-                    <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center text-slate-950 shrink-0">
+                    <div className="w-5 h-5 rounded-full bg-emerald-600 flex items-center justify-center text-white shrink-0">
                       <Check className="w-3 h-3 stroke-[3]" />
                     </div>
                   )}
@@ -224,17 +224,17 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
 
         {/* Step 4 (For 1st Year only): 4 Sections (Sections A, B, C, D) */}
         {isFirstYear && (
-          <div className="space-y-2.5 mb-5 p-3.5 rounded-lg bg-slate-900 border border-slate-800">
+          <div className="space-y-2.5 mb-5 p-3.5 rounded-lg bg-slate-50 border border-slate-200">
             <div className="flex items-start gap-2.5">
-              <Users className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+              <Users className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
               <div>
-                <div className="text-xs font-bold uppercase tracking-wider text-slate-200">
+                <div className="text-xs font-bold uppercase tracking-wider text-slate-800">
                   1st Year Academic Section (NIT Goa Common Cycle)
                 </div>
-                <p className="text-[11px] text-slate-300 mt-1 leading-relaxed">
+                <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
                   In 1st Year, courses are section-wise rather than branch-wise.
-                  <strong className="text-blue-300"> Sections A & B</strong> have the same course, and
-                  <strong className="text-blue-300"> Sections C & D</strong> have the same course — they switch cycles between Semester 1 and Semester 2. After 1st year, students follow their respective branch syllabus.
+                  <strong className="text-blue-700"> Sections A & B</strong> have the same course, and
+                  <strong className="text-blue-700"> Sections C & D</strong> have the same course — they switch cycles between Semester 1 and Semester 2. After 1st year, students follow their respective branch syllabus.
                 </p>
               </div>
             </div>
@@ -251,20 +251,20 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
                     onClick={() => setSelectedSection(sec)}
                     className={`p-2.5 rounded-lg border text-left transition-all ${
                       isSelected
-                        ? 'bg-blue-600/20 border-blue-400 text-white font-bold ring-1 ring-blue-400 shadow-xs'
-                        : 'bg-slate-900/80 border-slate-800 text-slate-300 hover:border-slate-700'
+                        ? 'bg-blue-50 border-blue-400 text-blue-900 font-bold ring-1 ring-blue-300 shadow-xs'
+                        : 'bg-white border-slate-200 text-slate-700 hover:border-slate-300'
                     }`}
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-sm font-bold">Section {sec}</span>
                       {isSelected && (
-                        <div className="w-4 h-4 rounded-full bg-blue-400 text-slate-950 flex items-center justify-center">
+                        <div className="w-4 h-4 rounded-full bg-blue-600 text-white flex items-center justify-center">
                           <Check className="w-2.5 h-2.5 stroke-[3]" />
                         </div>
                       )}
                     </div>
-                    <div className="text-[10px] text-slate-400 mt-1">Room {room}</div>
-                    <div className="text-[10px] font-medium text-blue-300 mt-0.5">
+                    <div className="text-[10px] text-slate-500 mt-1">Room {room}</div>
+                    <div className="text-[10px] font-medium text-blue-700 mt-0.5">
                       {cycle}
                     </div>
                   </button>
@@ -275,18 +275,18 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
         )}
 
         {/* Optional: Lab Batch & CSE Minor toggle for EEE 5 */}
-        <div className="p-3.5 bg-slate-950/60 border border-slate-800 rounded-lg space-y-2.5 mb-5">
-          <div className="text-xs font-semibold text-slate-300">Preferences & Section:</div>
+        <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-lg space-y-2.5 mb-5">
+          <div className="text-xs font-semibold text-slate-700">Preferences & Section:</div>
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-2 text-xs flex-wrap">
-              <span className="text-slate-400">Lab Batch:</span>
+              <span className="text-slate-600">Lab Batch:</span>
               <button
                 type="button"
                 onClick={() => setLabBatch('batch1')}
                 className={`min-h-[38px] px-3 py-1.5 rounded-md border text-xs font-semibold transition active:scale-95 ${
                   labBatch === 'batch1'
-                    ? 'bg-blue-600 text-white border-blue-500 shadow-xs'
-                    : 'bg-slate-900 border-slate-700 text-slate-400 hover:text-white'
+                    ? 'bg-blue-600 text-white border-blue-600 shadow-xs'
+                    : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-100'
                 }`}
               >
                 Batch 1 (Roll 1-30)
@@ -296,8 +296,8 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
                 onClick={() => setLabBatch('batch2')}
                 className={`min-h-[38px] px-3 py-1.5 rounded-md border text-xs font-semibold transition active:scale-95 ${
                   labBatch === 'batch2'
-                    ? 'bg-blue-600 text-white border-blue-500 shadow-xs'
-                    : 'bg-slate-900 border-slate-700 text-slate-400 hover:text-white'
+                    ? 'bg-blue-600 text-white border-blue-600 shadow-xs'
+                    : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-100'
                 }`}
               >
                 Batch 2 (Roll 31+)
@@ -305,15 +305,15 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
             </div>
 
             {selectedBranch === 'EEE' && selectedSemester === 5 && (
-              <label className="flex items-center gap-2 cursor-pointer text-xs text-blue-300 font-medium min-h-[38px]">
+              <label className="flex items-center gap-2 cursor-pointer text-xs text-blue-700 font-medium min-h-[38px]">
                 <input
                   type="checkbox"
                   checked={hasMinor}
                   onChange={(e) => setHasMinor(e.target.checked)}
-                  className="rounded border-slate-700 bg-slate-800 text-blue-500 focus:ring-blue-500 w-4 h-4"
+                  className="rounded border-slate-300 bg-white text-blue-600 focus:ring-blue-500 w-4 h-4"
                 />
                 <span className="flex items-center gap-1.5">
-                  <BookOpen className="w-3.5 h-3.5 text-blue-400" />
+                  <BookOpen className="w-3.5 h-3.5 text-blue-600" />
                   CS300M (CSE Minor) Active
                 </span>
               </label>
@@ -322,18 +322,18 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
         </div>
 
         {/* Action Buttons - Sticky on mobile */}
-        <div className="sticky bottom-0 bg-slate-900/95 backdrop-blur-md pt-3 pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] border-t border-slate-800 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-2 sm:gap-2.5">
+        <div className="sticky bottom-0 bg-white/95 backdrop-blur-md pt-3 pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] border-t border-slate-100 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-2 sm:gap-2.5">
           <button
             type="button"
             onClick={onClose}
-            className="min-h-[40px] px-4 py-2 rounded-lg text-slate-300 hover:text-white text-xs font-medium transition active:scale-95 text-center bg-slate-800/60 sm:bg-transparent"
+            className="min-h-[40px] px-4 py-2 rounded-lg text-slate-600 hover:text-slate-900 text-xs font-medium transition active:scale-95 text-center bg-slate-100 sm:bg-transparent"
           >
             Cancel
           </button>
           <button
             type="button"
             onClick={handleSave}
-            className="min-h-[40px] px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs sm:text-sm shadow-xs transition flex items-center justify-center gap-2 active:scale-95"
+            className="min-h-[40px] px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs sm:text-sm shadow-xs transition flex items-center justify-center gap-2 active:scale-95"
           >
             <Check className="w-4 h-4 stroke-[3] shrink-0" />
             <span className="truncate">

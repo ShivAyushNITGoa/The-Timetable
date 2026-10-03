@@ -585,22 +585,22 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             onClick={() => setIsMoreMenuOpen(true)}
             className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-lg transition-all duration-150 py-1.5 px-0.5 active:scale-90 relative ${
               isMoreTabActive || isMoreMenuOpen
-                ? 'font-bold shadow-xs'
-                : 'text-slate-400 hover:text-slate-200 active:bg-slate-800/50'
+                ? 'font-bold shadow-2xs'
+                : 'text-slate-500 hover:text-slate-900 active:bg-slate-100'
             }`}
             style={{
               color: isMoreTabActive || isMoreMenuOpen ? themeConfig.primaryColor : undefined,
-              backgroundColor: isMoreTabActive || isMoreMenuOpen ? `${themeConfig.primaryColor}20` : undefined,
+              backgroundColor: isMoreTabActive || isMoreMenuOpen ? `${themeConfig.primaryColor}14` : undefined,
             }}
           >
             <div className="relative">
               <Menu className={`w-5 h-5 transition-transform ${isMoreTabActive || isMoreMenuOpen ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
               {isAdmin ? (
-                <span className="absolute -top-1.5 -right-2 px-1 py-0.2 bg-blue-600 text-white rounded-full text-[8px] font-black leading-none border border-slate-900 pointer-events-none shadow-xs">
+                <span className="absolute -top-1.5 -right-2 px-1 py-0.2 bg-blue-600 text-white rounded-full text-[8px] font-black leading-none border border-white pointer-events-none shadow-xs">
                   ADMIN
                 </span>
               ) : isMoreTabActive ? (
-                <span className="absolute -top-0.5 -right-1 w-2 h-2 rounded-full bg-blue-500 ring-2 ring-slate-900" />
+                <span className="absolute -top-0.5 -right-1 w-2 h-2 rounded-full bg-blue-500 ring-2 ring-white" />
               ) : null}
             </div>
             <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">More</span>
