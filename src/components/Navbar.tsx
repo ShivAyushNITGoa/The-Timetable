@@ -213,29 +213,12 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </button>
               )}
 
-              {/* Theme Palette Switcher */}
-              {onOpenThemeSelector && (
-                <button
-                  type="button"
-                  onClick={onOpenThemeSelector}
-                  className="min-h-[38px] min-w-[38px] p-2 rounded-lg bg-white hover:bg-slate-50 active:bg-slate-100 text-slate-700 border border-slate-200 flex items-center justify-center active:scale-95 transition shadow-2xs relative"
-                  title={`Current Theme: ${themeConfig.name}. Tap to change palette.`}
-                  aria-label="Select Color Theme"
-                >
-                  <Palette className="w-4 h-4" style={{ color: themeConfig.primaryColor }} />
-                  <span
-                    className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full ring-1 ring-white shadow-2xs"
-                    style={{ backgroundColor: themeConfig.primaryColor }}
-                  />
-                </button>
-              )}
-
               {/* Admin Panel Button */}
               {isAdmin && onOpenAdmin && (
                 <button
                   type="button"
                   onClick={onOpenAdmin}
-                  className="min-h-[38px] px-2 sm:px-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center gap-1 active:scale-95 transition shadow-2xs"
+                  className="min-h-[38px] px-2.5 sm:px-3 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs flex items-center gap-1 active:scale-95 transition shadow-2xs"
                   title="Admin Control Panel"
                 >
                   <ShieldCheck className="w-4 h-4 shrink-0" />
@@ -251,7 +234,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   className="min-h-[38px] min-w-[38px] px-2 rounded-lg bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-xs font-semibold flex items-center justify-center active:scale-95 transition shadow-2xs"
                   title="About & PWA Download"
                 >
-                  <Info className="w-4 h-4 text-blue-600" />
+                  <Info className="w-4 h-4 text-slate-600" />
                 </button>
               )}
 
@@ -259,11 +242,11 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 type="button"
                 onClick={onExportCalendar}
-                className="min-h-[38px] min-w-[38px] p-2 rounded-lg bg-white hover:bg-slate-50 active:bg-slate-100 text-blue-600 border border-slate-200 flex items-center justify-center active:scale-95 transition shadow-2xs"
+                className="min-h-[38px] min-w-[38px] p-2 rounded-lg bg-white hover:bg-slate-50 active:bg-slate-100 text-slate-700 border border-slate-200 flex items-center justify-center active:scale-95 transition shadow-2xs"
                 title="Export Calendar (.ics)"
                 aria-label="Export Calendar (.ics)"
               >
-                <Download className="w-4 h-4" />
+                <Download className="w-4 h-4 text-slate-600" />
               </button>
 
               {/* User Sign In / Out */}
@@ -283,7 +266,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   className="min-h-[38px] px-2 sm:px-2.5 rounded-lg bg-white text-slate-800 border border-slate-300 font-bold text-xs flex items-center gap-1 transition shadow-2xs hover:bg-slate-50"
                   title="Sign In with Google"
                 >
-                  <LogIn className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                  <LogIn className="w-3.5 h-3.5 text-slate-700 shrink-0" />
                   <span className="hidden min-[380px]:inline">Login</span>
                 </button>
               ) : null}
@@ -298,18 +281,18 @@ export const Navbar: React.FC<NavbarProps> = ({
             aria-label="Switch Branch, Year, or Semester"
           >
             <div className="flex items-center gap-2.5 min-w-0">
-              <span className="px-2.5 py-1 rounded-lg text-xs font-black bg-blue-600 text-white tracking-wider shadow-xs shrink-0">
+              <span className="px-2.5 py-1 rounded-md text-xs font-bold bg-slate-900 text-white tracking-wider shadow-2xs shrink-0">
                 {safeProfile.branch}
               </span>
               <div className="min-w-0">
                 <div className="flex items-center gap-1.5 flex-wrap">
-                  <span className="text-xs font-black text-slate-900">
+                  <span className="text-xs font-bold text-slate-900">
                     {safeProfile.semester <= 2
                       ? `Sem ${safeProfile.semester} • Section ${safeProfile.firstYearSection || 'A'}`
                       : `Semester ${safeProfile.semester} • Year ${safeProfile.year}`}
                   </span>
                   {safeProfile.branch === 'EEE' && safeProfile.semester === 5 && safeProfile.hasMinor && (
-                    <span className="px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200 shrink-0">
+                    <span className="px-1.5 py-0.2 rounded text-[10px] font-semibold bg-slate-100 text-slate-800 border border-slate-200 shrink-0">
                       CS300M Minor
                     </span>
                   )}
@@ -322,9 +305,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
             </div>
 
-            <div className="flex items-center gap-1 text-xs font-bold text-white bg-blue-600 group-hover:bg-blue-700 px-2.5 py-1.5 rounded-lg shrink-0 transition shadow-xs">
+            <div className="flex items-center gap-1 text-xs font-semibold text-slate-700 bg-slate-100 group-hover:bg-slate-200 px-2.5 py-1.5 rounded-md border border-slate-200 shrink-0 transition">
               <span>Change</span>
-              <ChevronDown className="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform" />
+              <ChevronDown className="w-3.5 h-3.5 text-slate-500 group-hover:translate-y-0.5 transition-transform" />
             </div>
           </button>
         </div>
@@ -332,14 +315,14 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Mobile Elective & Lab Batch Strip (Always visible when semester has batches) */}
         <div className="sm:hidden pb-2 pt-1 border-t border-slate-200 flex items-center justify-between gap-1.5 text-xs flex-wrap">
           {/* Lab Batch Selector */}
-          <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200">
-            <span className="text-[10px] text-blue-700 font-bold px-1.5">Lab Batch:</span>
+          <div className="flex items-center gap-1 bg-slate-100 p-0.5 rounded-lg border border-slate-200">
+            <span className="text-[10px] text-slate-700 font-bold px-1.5">Lab:</span>
             <button
               type="button"
               onClick={() => setSelectedBatch('batch1')}
-              className={`min-h-[32px] px-3 py-0.5 rounded-lg font-bold text-xs transition active:scale-95 ${
+              className={`min-h-[30px] px-3 py-0.5 rounded-md font-semibold text-xs transition active:scale-95 ${
                 selectedBatch === 'batch1'
-                  ? 'bg-blue-600 text-white shadow-xs'
+                  ? 'bg-slate-900 text-white shadow-2xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -348,9 +331,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               type="button"
               onClick={() => setSelectedBatch('batch2')}
-              className={`min-h-[32px] px-3 py-0.5 rounded-lg font-bold text-xs transition active:scale-95 ${
+              className={`min-h-[30px] px-3 py-0.5 rounded-md font-semibold text-xs transition active:scale-95 ${
                 selectedBatch === 'batch2'
-                  ? 'bg-blue-600 text-white shadow-xs'
+                  ? 'bg-slate-900 text-white shadow-2xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -360,14 +343,14 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Elective Selector (when EEE Sem 5 is active) */}
           {safeProfile.branch === 'EEE' && safeProfile.semester === 5 && (
-            <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200">
+            <div className="flex items-center gap-1 bg-slate-100 p-0.5 rounded-lg border border-slate-200">
               <span className="text-[10px] text-slate-500 font-semibold px-1">Elective:</span>
               <button
                 type="button"
                 onClick={() => setSelectedElective('EE541')}
-                className={`min-h-[32px] px-2.5 py-0.5 rounded-lg font-bold text-xs transition active:scale-95 ${
+                className={`min-h-[30px] px-2.5 py-0.5 rounded-md font-semibold text-xs transition active:scale-95 ${
                   selectedElective === 'EE541'
-                    ? 'bg-blue-600 text-white shadow-xs'
+                    ? 'bg-slate-900 text-white shadow-2xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
                 title="EE541 Embedded Systems Design"
@@ -377,9 +360,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 type="button"
                 onClick={() => setSelectedElective('EE545')}
-                className={`min-h-[32px] px-2.5 py-0.5 rounded-lg font-bold text-xs transition active:scale-95 ${
+                className={`min-h-[30px] px-2.5 py-0.5 rounded-md font-semibold text-xs transition active:scale-95 ${
                   selectedElective === 'EE545'
-                    ? 'bg-blue-600 text-white shadow-xs'
+                    ? 'bg-slate-900 text-white shadow-2xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
                 title="EE545 FPGA based Digital Design"
@@ -410,7 +393,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300 text-left transition shadow-2xs group active:scale-[0.98] shrink-0"
               title="Click to switch Branch, Year, or Semester"
             >
-              <span className="px-2 py-0.5 rounded-md text-xs font-black bg-blue-600 text-white tracking-wider shadow-xs shrink-0">
+              <span className="px-2 py-0.5 rounded-md text-xs font-bold bg-slate-900 text-white tracking-wider shadow-2xs shrink-0">
                 {safeProfile.branch}
               </span>
 
@@ -422,7 +405,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       : `Sem ${safeProfile.semester} • Year ${safeProfile.year}`}
                   </span>
                   {safeProfile.branch === 'EEE' && safeProfile.semester === 5 && safeProfile.hasMinor && (
-                    <span className="px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200 shrink-0">
+                    <span className="px-1.5 py-0.2 rounded text-[10px] font-semibold bg-slate-100 text-slate-800 border border-slate-200 shrink-0">
                       CS300M
                     </span>
                   )}
@@ -434,9 +417,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </span>
               </div>
 
-              <div className="flex items-center text-[11px] font-bold text-white bg-blue-600 group-hover:bg-blue-700 px-2 py-1 rounded-lg ml-1 shrink-0 transition shadow-xs">
+              <div className="flex items-center text-[11px] font-semibold text-slate-700 bg-slate-100 group-hover:bg-slate-200 px-2 py-1 rounded-md border border-slate-200 ml-1 shrink-0 transition">
                 <span>Switch</span>
-                <ChevronDown className="w-3.5 h-3.5 ml-0.5 group-hover:translate-y-0.5 transition-transform" />
+                <ChevronDown className="w-3.5 h-3.5 ml-0.5 text-slate-500 group-hover:translate-y-0.5 transition-transform" />
               </div>
             </button>
           </div>
@@ -444,15 +427,15 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Quick Config Strip: Batch Selector & Action Buttons (wraps cleanly when space is tight) */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 flex-wrap justify-end ml-auto">
             {/* Lab Batch Selector - Visible for all semesters with laboratory sessions */}
-            <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200 text-xs">
+            <div className="flex items-center gap-1 bg-slate-100 p-0.5 rounded-lg border border-slate-200 text-xs">
               <span className="text-slate-700 px-1.5 font-bold hidden lg:inline">Lab Batch:</span>
               <span className="text-slate-700 px-1 font-bold lg:hidden">Batch:</span>
               <button
                 type="button"
                 onClick={() => setSelectedBatch('batch1')}
-                className={`px-2.5 py-1 rounded-lg font-bold transition text-xs active:scale-95 ${
+                className={`px-2.5 py-1 rounded-md font-semibold transition text-xs active:scale-95 ${
                   selectedBatch === 'batch1'
-                    ? 'bg-blue-600 text-white shadow-xs'
+                    ? 'bg-slate-900 text-white shadow-2xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
                 title="Select Batch 1 for laboratory sessions"
@@ -462,9 +445,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 type="button"
                 onClick={() => setSelectedBatch('batch2')}
-                className={`px-2.5 py-1 rounded-lg font-bold transition text-xs active:scale-95 ${
+                className={`px-2.5 py-1 rounded-md font-semibold transition text-xs active:scale-95 ${
                   selectedBatch === 'batch2'
-                    ? 'bg-blue-600 text-white shadow-xs'
+                    ? 'bg-slate-900 text-white shadow-2xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
                 title="Select Batch 2 for laboratory sessions"
@@ -475,14 +458,14 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Elective Selector (when EEE Sem 5 is active) */}
             {safeProfile.branch === 'EEE' && safeProfile.semester === 5 && (
-              <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200 text-xs">
+              <div className="flex items-center gap-1 bg-slate-100 p-0.5 rounded-lg border border-slate-200 text-xs">
                 <span className="text-slate-500 px-1 font-medium hidden xl:inline">Elective:</span>
                 <button
                   type="button"
                   onClick={() => setSelectedElective('EE541')}
-                  className={`px-2 py-1 rounded-lg font-semibold transition text-xs active:scale-95 ${
+                  className={`px-2 py-1 rounded-md font-semibold transition text-xs active:scale-95 ${
                     selectedElective === 'EE541'
-                      ? 'bg-blue-600 text-white shadow-xs'
+                      ? 'bg-slate-900 text-white shadow-2xs'
                       : 'text-slate-600 hover:text-slate-900'
                   }`}
                   title="EE541: Embedded Systems Design"
@@ -492,9 +475,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   type="button"
                   onClick={() => setSelectedElective('EE545')}
-                  className={`px-2 py-1 rounded-lg font-semibold transition text-xs active:scale-95 ${
+                  className={`px-2 py-1 rounded-md font-semibold transition text-xs active:scale-95 ${
                     selectedElective === 'EE545'
-                      ? 'bg-blue-600 text-white shadow-xs'
+                      ? 'bg-slate-900 text-white shadow-2xs'
                       : 'text-slate-600 hover:text-slate-900'
                   }`}
                   title="EE545: FPGA based Digital Design"
@@ -527,28 +510,11 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 border border-slate-200 text-xs font-semibold transition active:scale-95 shadow-2xs"
               title="Download .ics file with timetable & test dates for Google/Apple Calendar"
             >
-              <Download className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+              <Download className="w-3.5 h-3.5 text-slate-600 shrink-0" />
               <span className="hidden xl:inline">Export Calendar (.ics)</span>
               <span className="hidden md:inline xl:hidden">Export (.ics)</span>
               <span className="md:hidden">Export</span>
             </button>
-
-            {/* Theme Selector Button */}
-            {onOpenThemeSelector && (
-              <button
-                type="button"
-                onClick={onOpenThemeSelector}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 border border-slate-200 text-xs font-semibold transition active:scale-95 shadow-2xs shrink-0"
-                title={`Color Theme: ${themeConfig.name} (Click to change)`}
-              >
-                <span
-                  className="w-2.5 h-2.5 rounded-full shrink-0 shadow-2xs ring-1 ring-slate-300"
-                  style={{ backgroundColor: themeConfig.primaryColor }}
-                />
-                <Palette className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-                <span className="hidden lg:inline">{themeConfig.name.replace('NIT Goa ', '')}</span>
-              </button>
-            )}
 
             {/* About & PWA Guide */}
             {onOpenLanding && (
@@ -558,7 +524,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 border border-slate-200 text-xs font-semibold transition active:scale-95 shadow-2xs shrink-0"
                 title="NIT Goa Info & PWA Download"
               >
-                <Info className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                <Info className="w-3.5 h-3.5 text-slate-600 shrink-0" />
                 <span className="hidden xl:inline">About & Install</span>
                 <span className="xl:hidden">About</span>
               </button>
@@ -569,7 +535,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 type="button"
                 onClick={onOpenAdmin}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition active:scale-95 shadow-xs shrink-0"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition active:scale-95 shadow-xs shrink-0"
                 title="Open Administrator Control Panel"
               >
                 <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
@@ -626,7 +592,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 border border-slate-200 shadow-md flex items-center justify-center transition active:scale-90"
               aria-label="Scroll navigation tabs left"
             >
-              <ChevronLeft className="w-4 h-4 text-blue-600" />
+              <ChevronLeft className="w-4 h-4 text-slate-600" />
             </button>
           )}
 
@@ -651,14 +617,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                   data-tab={tab.id}
                   type="button"
                   onClick={() => setActiveTab(tab.id)}
-                  className={`min-h-[40px] px-3.5 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 whitespace-nowrap transition-all duration-150 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 shrink-0 select-none ${
+                  className={`min-h-[40px] px-3.5 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 whitespace-nowrap transition-all duration-150 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 shrink-0 select-none ${
                     isActive
-                      ? 'text-white font-bold shadow-xs'
+                      ? 'bg-slate-900 text-white font-bold shadow-xs'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                   }`}
-                  style={{
-                    backgroundColor: isActive ? themeConfig.primaryColor : undefined,
-                  }}
                 >
                   <Icon className={`w-4 h-4 shrink-0 transition-transform ${isActive ? 'scale-110' : ''}`} />
                   <span className="hidden xl:inline">{tab.label}</span>
@@ -669,7 +632,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <span
                       className={`text-[10px] px-1.5 py-0.2 rounded font-black leading-tight ${
                         isActive
-                          ? 'bg-slate-900 text-white'
+                          ? 'bg-white text-slate-900'
                           : 'bg-rose-600 text-white'
                       }`}
                     >
@@ -694,7 +657,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 border border-slate-200 shadow-md flex items-center justify-center transition active:scale-90"
               aria-label="Scroll navigation tabs right"
             >
-              <ChevronRight className="w-4 h-4 text-blue-600" />
+              <ChevronRight className="w-4 h-4 text-slate-600" />
             </button>
           )}
         </div>

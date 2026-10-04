@@ -1,64 +1,16 @@
 @import "tailwindcss";
 
 :root,
-[data-theme="sapphire"] {
-  --theme-primary: #2563eb;
-  --theme-primary-hover: #1d4ed8;
-  --theme-primary-light: rgba(37, 99, 235, 0.12);
-  --theme-primary-border: rgba(59, 130, 246, 0.30);
-  --theme-primary-text: #60a5fa;
-  --theme-primary-glow: rgba(37, 99, 235, 0.18);
-  --theme-gradient-start: #2563eb;
-  --theme-gradient-end: #1d4ed8;
-}
-
-[data-theme="slate"],
-[data-theme="titanium"],
-[data-theme="emerald"] {
-  --theme-primary: #64748b;
-  --theme-primary-hover: #475569;
-  --theme-primary-light: rgba(100, 116, 139, 0.14);
-  --theme-primary-border: rgba(148, 163, 184, 0.30);
-  --theme-primary-text: #cbd5e1;
-  --theme-primary-glow: rgba(100, 116, 139, 0.18);
-  --theme-gradient-start: #64748b;
-  --theme-gradient-end: #334155;
-}
-
-[data-theme="crimson"] {
-  --theme-primary: #b91c1c;
-  --theme-primary-hover: #991b1b;
-  --theme-primary-light: rgba(185, 28, 28, 0.12);
-  --theme-primary-border: rgba(239, 68, 68, 0.30);
-  --theme-primary-text: #f87171;
-  --theme-primary-glow: rgba(185, 28, 28, 0.18);
-  --theme-gradient-start: #b91c1c;
-  --theme-gradient-end: #7f1d1d;
-}
-
-/* Fallback aliases */
-[data-theme="indigo"],
-[data-theme="cyan"],
-[data-theme="amethyst"] {
-  --theme-primary: #2563eb;
-  --theme-primary-hover: #1d4ed8;
-  --theme-primary-light: rgba(37, 99, 235, 0.12);
-  --theme-primary-border: rgba(59, 130, 246, 0.30);
-  --theme-primary-text: #60a5fa;
-  --theme-primary-glow: rgba(37, 99, 235, 0.18);
-  --theme-gradient-start: #2563eb;
-  --theme-gradient-end: #1d4ed8;
-}
-
-[data-theme="amber"] {
-  --theme-primary: #b91c1c;
-  --theme-primary-hover: #991b1b;
-  --theme-primary-light: rgba(185, 28, 28, 0.12);
-  --theme-primary-border: rgba(239, 68, 68, 0.30);
-  --theme-primary-text: #f87171;
-  --theme-primary-glow: rgba(185, 28, 28, 0.18);
-  --theme-gradient-start: #b91c1c;
-  --theme-gradient-end: #7f1d1d;
+[data-theme="sapphire"],
+[data-mode="light"] {
+  --theme-primary: #1e3a8a;
+  --theme-primary-hover: #172554;
+  --theme-primary-light: #eff6ff;
+  --theme-primary-border: #cbd5e1;
+  --theme-primary-text: #0f172a;
+  --theme-primary-glow: transparent;
+  --theme-gradient-start: #1e3a8a;
+  --theme-gradient-end: #0f172a;
 }
 
 html,

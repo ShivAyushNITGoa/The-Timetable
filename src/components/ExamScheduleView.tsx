@@ -70,8 +70,8 @@ export const ExamScheduleView: React.FC<ExamScheduleViewProps> = ({
                 <span
                   className={`px-2.5 py-0.5 text-xs font-bold rounded-md ${
                     isMinor
-                      ? 'bg-blue-50 text-blue-700 border border-blue-200 shadow-2xs'
-                      : 'bg-indigo-50 text-indigo-700 border border-indigo-200'
+                      ? 'bg-blue-50 text-blue-900 border border-blue-200 shadow-2xs'
+                      : 'bg-slate-100 text-slate-800 border border-slate-200'
                   }`}
                 >
                   Exam Slot {course.examSlot || 'A'}

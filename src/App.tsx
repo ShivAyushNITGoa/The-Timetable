@@ -69,7 +69,6 @@ import {
 } from 'lucide-react';
 import { PwaInstallGuideModal } from './components/PwaInstallGuideModal';
 import { AdminSlotEditorModal } from './components/AdminSlotEditorModal';
-import { ThemeSelectorModal } from './components/ThemeSelectorModal';
 import { initTheme } from './utils/theme';
 
 export default function App() {
@@ -92,7 +91,6 @@ export default function App() {
   });
   const [showLandingPage, setShowLandingPage] = useState(false);
   const [isAdminModalOpen, setIsAdminModalOpen] = useState(false);
-  const [isThemeModalOpen, setIsThemeModalOpen] = useState(false);
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
 
   // Global Ctrl+K / Cmd+K listener for Command Palette
@@ -680,7 +678,6 @@ export default function App() {
         onSignOut={handleGoogleSignOut}
         onOpenAdmin={() => setIsAdminModalOpen(true)}
         onOpenLanding={() => setShowLandingPage(true)}
-        onOpenThemeSelector={() => setIsThemeModalOpen(true)}
         onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
       />
 
@@ -721,7 +718,7 @@ export default function App() {
             )}
 
             {cloudScheduleOverride && !scheduleOverride && (
-              <span className="px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700 border border-indigo-200 font-semibold shadow-2xs">
+              <span className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-800 border border-slate-200 font-semibold shadow-2xs">
                 Cloud Sync Active
               </span>
             )}
@@ -1040,15 +1037,7 @@ export default function App() {
         onSignIn={handleGoogleSignIn}
         onSignOut={handleGoogleSignOut}
         onOpenLanding={() => setShowLandingPage(true)}
-        onOpenThemeSelector={() => setIsThemeModalOpen(true)}
         onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
-      />
-
-      {/* Theme Customizer Modal */}
-      <ThemeSelectorModal
-        isOpen={isThemeModalOpen}
-        onClose={() => setIsThemeModalOpen(false)}
-        onThemeChange={() => showToast('Theme palette updated!')}
       />
 
       {/* Quick Command Palette (Ctrl+K) */}
@@ -1062,7 +1051,6 @@ export default function App() {
           setSelectedDay(day);
           handleSetActiveTab('day');
         }}
-        onOpenThemeSelector={() => setIsThemeModalOpen(true)}
         onExportCalendar={handleExportCalendar}
         onOpenPwaGuide={() => setIsPwaModalOpen(true)}
       />

@@ -26,8 +26,8 @@ export const BrandIconSvg: React.FC<{
     >
       <defs>
         <linearGradient id="tgdBrandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#b0b91a" />
-          <stop offset="100%" stopColor="#9da415" />
+          <stop offset="0%" stopColor="#1e3a8a" />
+          <stop offset="100%" stopColor="#0f172a" />
         </linearGradient>
       </defs>
       <rect width="512" height="512" rx="104" fill="url(#tgdBrandGrad)" />
@@ -99,7 +99,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
     >
       <BrandIconSvg size={iconSize} rounded={true} />
       <div className="flex items-center gap-1 text-slate-900 tracking-tight leading-none select-none font-bold text-base sm:text-lg">
-        <span className="text-[#b0b91a]">The</span>
+        <span className="text-blue-900">The</span>
         <span className="text-slate-900 font-black">GDevelopers</span>
       </div>
       {subtitle && (

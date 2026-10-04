@@ -178,8 +178,8 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
           <div>
             <div className="flex items-center gap-2 mb-2 flex-wrap">
-              <span className="text-xs px-2.5 py-0.5 rounded-md bg-emerald-100 text-emerald-800 font-semibold border border-emerald-200 flex items-center gap-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+              <span className="text-xs px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-800 font-semibold border border-slate-200 flex items-center gap-1">
+                <ShieldCheck className="w-3.5 h-3.5 text-slate-700" />
                 NIT Goa 75% Rule Compliance ({branch} Sem {semester})
               </span>
               <span className="text-xs px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-700 font-mono border border-slate-200">
@@ -196,8 +196,8 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
 
           {/* Quick Criteria Pill */}
           <div className="text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 shrink-0">
-            <div className="flex items-center gap-2 text-blue-700 font-bold mb-0.5">
-              <TrendingUp className="w-4 h-4 text-blue-600" />
+            <div className="flex items-center gap-2 text-slate-900 font-bold mb-0.5">
+              <TrendingUp className="w-4 h-4 text-slate-700" />
               <span>NIT Goa Master Policy</span>
             </div>
             <p className="text-[11px] text-slate-600">
@@ -215,8 +215,8 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
                 stats.totalHeld === 0
                   ? 'text-slate-500'
                   : stats.isOverallSafe
-                  ? 'text-emerald-700'
-                  : 'text-rose-700'
+                  ? 'text-slate-900'
+                  : 'text-slate-900 font-black'
               }`}
             >
               {stats.totalHeld === 0 ? '100%' : `${stats.overallPct.toFixed(1)}%`}
@@ -234,22 +234,22 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
 
           <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
             <span className="text-[11px] text-slate-500 block mb-0.5">Safe Subjects</span>
-            <div className="text-xl font-bold font-mono text-emerald-700 tabular-nums">
+            <div className="text-xl font-bold font-mono text-slate-900 tabular-nums">
               {stats.coursesAbove75}
             </div>
-            <span className="text-[10px] text-emerald-700 block mt-0.5">≥ 75% attendance</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">&ge; 75% attendance</span>
           </div>
 
           <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
             <span className="text-[11px] text-slate-500 block mb-0.5">At Risk / Shortage</span>
             <div
               className={`text-xl font-bold font-mono tabular-nums ${
-                stats.coursesBelow75 > 0 ? 'text-rose-700 font-black animate-pulse' : 'text-slate-500'
+                stats.coursesBelow75 > 0 ? 'text-slate-900 font-black' : 'text-slate-500'
               }`}
             >
               {stats.coursesBelow75}
             </div>
-            <span className="text-[10px] text-slate-500 block mt-0.5">Need immediate attention</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">Need attention (&lt;75%)</span>
           </div>
         </div>
       </div>
@@ -403,7 +403,7 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
                     <button
                       type="button"
                       onClick={() => saveDirectAttendance(code)}
-                      className="flex-1 min-h-[36px] px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs flex items-center justify-center gap-1.5 transition active:scale-95 shadow-2xs"
+                      className="flex-1 min-h-[36px] px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs flex items-center justify-center gap-1.5 transition active:scale-95 shadow-2xs"
                     >
                       <Check className="w-3.5 h-3.5 stroke-[2.5]" />
                       <span>Save Numbers</span>
@@ -423,7 +423,7 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
                     <button
                       type="button"
                       onClick={() => markClassPresent(code)}
-                      className="min-h-[40px] flex-1 px-3 py-2 text-xs font-semibold rounded-lg bg-emerald-100 hover:bg-emerald-200 active:bg-emerald-300 text-emerald-800 border border-emerald-300 transition flex items-center justify-center gap-1.5 active:scale-98 shadow-2xs"
+                      className="min-h-[40px] flex-1 px-3 py-2 text-xs font-semibold rounded-lg bg-slate-900 hover:bg-slate-800 text-white border border-slate-900 transition flex items-center justify-center gap-1.5 active:scale-98 shadow-2xs"
                     >
                       <Plus className="w-4 h-4 stroke-[2.5]" />
                       <span>Present (+1)</span>
@@ -431,7 +431,7 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
                     <button
                       type="button"
                       onClick={() => markClassAbsent(code)}
-                      className="min-h-[40px] flex-1 px-3 py-2 text-xs font-semibold rounded-lg bg-rose-100 hover:bg-rose-200 active:bg-rose-300 text-rose-800 border border-rose-300 transition flex items-center justify-center gap-1.5 active:scale-98 shadow-2xs"
+                      className="min-h-[40px] flex-1 px-3 py-2 text-xs font-semibold rounded-lg bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 transition flex items-center justify-center gap-1.5 active:scale-98 shadow-2xs"
                     >
                       <Minus className="w-4 h-4 stroke-[2.5]" />
                       <span>Absent (+1)</span>

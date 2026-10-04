@@ -375,27 +375,6 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
 
             {/* Quick Actions */}
             <div className="pt-2 border-t border-slate-200 space-y-2">
-              {onOpenThemeSelector && (
-                <button
-                  type="button"
-                  onClick={() => {
-                    setIsMoreMenuOpen(false);
-                    onOpenThemeSelector();
-                  }}
-                  className="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 text-xs font-semibold flex items-center justify-between transition active:scale-95 shadow-2xs"
-                >
-                  <div className="flex items-center gap-2.5">
-                    <span
-                      className="w-3.5 h-3.5 rounded-full shadow-2xs ring-1 ring-slate-300"
-                      style={{ backgroundColor: themeConfig.primaryColor }}
-                    />
-                    <Palette className="w-4 h-4 text-slate-500" />
-                    <span>Colour Theme: <strong className="text-slate-900">{themeConfig.name}</strong></span>
-                  </div>
-                  <span className="text-[11px] text-slate-500 font-mono">Change ↻</span>
-                </button>
-              )}
-
               {onOpenCustomizer && (
                 <button
                   type="button"
@@ -405,7 +384,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                   }}
                   className="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 text-xs font-semibold flex items-center justify-center gap-2 transition active:scale-95 shadow-2xs"
                 >
-                  <Sliders className="w-4 h-4 text-blue-600" />
+                  <Sliders className="w-4 h-4 text-slate-600" />
                   <span>Customize Class Schedule</span>
                 </button>
               )}
@@ -418,7 +397,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                 }}
                 className="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 text-xs font-semibold flex items-center justify-center gap-2 transition active:scale-95 shadow-2xs"
               >
-                <Download className="w-4 h-4 text-blue-600" />
+                <Download className="w-4 h-4 text-slate-600" />
                 <span>Export to Google/Apple Calendar (.ics)</span>
               </button>
 
@@ -490,13 +469,9 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             onClick={() => handleSelectTab('day')}
             className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-lg transition-all duration-150 py-1.5 px-0.5 active:scale-90 ${
               activeTab === 'day'
-                ? 'font-bold shadow-2xs'
-                : 'text-slate-500 hover:text-slate-900 active:bg-slate-100'
+                ? 'text-slate-900 bg-slate-100 font-bold shadow-2xs'
+                : 'text-slate-500 hover:text-slate-900 active:bg-slate-50'
             }`}
-            style={{
-              color: activeTab === 'day' ? themeConfig.primaryColor : undefined,
-              backgroundColor: activeTab === 'day' ? `${themeConfig.primaryColor}14` : undefined,
-            }}
           >
             <Calendar className={`w-5 h-5 transition-transform ${activeTab === 'day' ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
             <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">Today</span>
@@ -511,13 +486,9 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             onClick={() => handleSelectTab('weekly')}
             className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-lg transition-all duration-150 py-1.5 px-0.5 active:scale-90 ${
               activeTab === 'weekly'
-                ? 'font-bold shadow-2xs'
-                : 'text-slate-500 hover:text-slate-900 active:bg-slate-100'
+                ? 'text-slate-900 bg-slate-100 font-bold shadow-2xs'
+                : 'text-slate-500 hover:text-slate-900 active:bg-slate-50'
             }`}
-            style={{
-              color: activeTab === 'weekly' ? themeConfig.primaryColor : undefined,
-              backgroundColor: activeTab === 'weekly' ? `${themeConfig.primaryColor}14` : undefined,
-            }}
           >
             <Grid className={`w-5 h-5 transition-transform ${activeTab === 'weekly' ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
             <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">Weekly</span>
@@ -532,13 +503,9 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             onClick={() => handleSelectTab('tests')}
             className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-lg transition-all duration-150 py-1.5 px-0.5 relative active:scale-90 ${
               activeTab === 'tests'
-                ? 'font-bold shadow-2xs'
-                : 'text-slate-500 hover:text-slate-900 active:bg-slate-100'
+                ? 'text-slate-900 bg-slate-100 font-bold shadow-2xs'
+                : 'text-slate-500 hover:text-slate-900 active:bg-slate-50'
             }`}
-            style={{
-              color: activeTab === 'tests' ? themeConfig.primaryColor : undefined,
-              backgroundColor: activeTab === 'tests' ? `${themeConfig.primaryColor}14` : undefined,
-            }}
           >
             <div className="relative">
               <CalendarCheck className={`w-5 h-5 transition-transform ${activeTab === 'tests' ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
@@ -560,13 +527,9 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             onClick={() => handleSelectTab('attendance')}
             className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-lg transition-all duration-150 py-1.5 px-0.5 active:scale-90 ${
               activeTab === 'attendance'
-                ? 'font-bold shadow-2xs'
-                : 'text-slate-500 hover:text-slate-900 active:bg-slate-100'
+                ? 'text-slate-900 bg-slate-100 font-bold shadow-2xs'
+                : 'text-slate-500 hover:text-slate-900 active:bg-slate-50'
             }`}
-            style={{
-              color: activeTab === 'attendance' ? themeConfig.primaryColor : undefined,
-              backgroundColor: activeTab === 'attendance' ? `${themeConfig.primaryColor}14` : undefined,
-            }}
           >
             <CheckSquare className={`w-5 h-5 transition-transform ${activeTab === 'attendance' ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
             <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">
@@ -585,22 +548,18 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             onClick={() => setIsMoreMenuOpen(true)}
             className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-lg transition-all duration-150 py-1.5 px-0.5 active:scale-90 relative ${
               isMoreTabActive || isMoreMenuOpen
-                ? 'font-bold shadow-2xs'
-                : 'text-slate-500 hover:text-slate-900 active:bg-slate-100'
+                ? 'text-slate-900 bg-slate-100 font-bold shadow-2xs'
+                : 'text-slate-500 hover:text-slate-900 active:bg-slate-50'
             }`}
-            style={{
-              color: isMoreTabActive || isMoreMenuOpen ? themeConfig.primaryColor : undefined,
-              backgroundColor: isMoreTabActive || isMoreMenuOpen ? `${themeConfig.primaryColor}14` : undefined,
-            }}
           >
             <div className="relative">
               <Menu className={`w-5 h-5 transition-transform ${isMoreTabActive || isMoreMenuOpen ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
               {isAdmin ? (
-                <span className="absolute -top-1.5 -right-2 px-1 py-0.2 bg-blue-600 text-white rounded-full text-[8px] font-black leading-none border border-white pointer-events-none shadow-xs">
+                <span className="absolute -top-1.5 -right-2 px-1 py-0.2 bg-slate-900 text-white rounded-full text-[8px] font-black leading-none border border-white pointer-events-none shadow-xs">
                   ADMIN
                 </span>
               ) : isMoreTabActive ? (
-                <span className="absolute -top-0.5 -right-1 w-2 h-2 rounded-full bg-blue-500 ring-2 ring-white" />
+                <span className="absolute -top-0.5 -right-1 w-2 h-2 rounded-full bg-slate-900 ring-2 ring-white" />
               ) : null}
             </div>
             <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">More</span>

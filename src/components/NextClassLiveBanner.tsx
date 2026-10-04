@@ -110,12 +110,12 @@ export const NextClassLiveBanner: React.FC<NextClassLiveBannerProps> = ({
     return (
       <div className="max-w-7xl mx-auto px-3 sm:px-6 pt-2 pb-1">
         <div
-          className="rounded-lg p-2.5 sm:px-4 sm:py-2 flex items-center justify-between gap-3 text-xs border shadow-2xs transition animate-in fade-in duration-150 bg-blue-50/70 border-blue-200"
+          className="rounded-lg p-2.5 sm:px-4 sm:py-2 flex items-center justify-between gap-3 text-xs border border-slate-200 bg-white shadow-2xs transition animate-in fade-in duration-150"
         >
           <div className="flex items-center gap-2.5 min-w-0">
             {/* Live pulsing badge */}
             <span
-              className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-white text-[10px] font-bold uppercase tracking-wider shrink-0 bg-blue-600 shadow-2xs"
+              className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-white text-[10px] font-bold uppercase tracking-wider shrink-0 bg-slate-900 shadow-2xs"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />
               Live
@@ -127,11 +127,11 @@ export const NextClassLiveBanner: React.FC<NextClassLiveBannerProps> = ({
               </span>
               <span className="text-slate-300 hidden md:inline">•</span>
               <span className="text-slate-600 font-medium flex items-center gap-1 shrink-0">
-                <MapPin className="w-3 h-3 text-blue-600" />
+                <MapPin className="w-3 h-3 text-slate-500" />
                 {details.room}
               </span>
               <span className="text-slate-300 hidden sm:inline">•</span>
-              <span className="font-mono font-bold text-blue-700 tabular-nums">
+              <span className="font-mono font-bold text-slate-900 tabular-nums">
                 {remainingMins}m remaining
               </span>
             </div>
@@ -151,7 +151,7 @@ export const NextClassLiveBanner: React.FC<NextClassLiveBannerProps> = ({
             <button
               type="button"
               onClick={() => setIsDismissed(true)}
-              className="p-1 text-slate-400 hover:text-slate-700 rounded-md hover:bg-blue-100/50 transition"
+              className="p-1 text-slate-400 hover:text-slate-700 rounded-md hover:bg-slate-100 transition"
               aria-label="Dismiss banner"
             >
               <X className="w-3.5 h-3.5" />
@@ -171,8 +171,8 @@ export const NextClassLiveBanner: React.FC<NextClassLiveBannerProps> = ({
       <div className="max-w-7xl mx-auto px-3 sm:px-6 pt-2 pb-1">
         <div className="rounded-lg p-2.5 sm:px-4 sm:py-2 bg-white border border-slate-200 flex items-center justify-between gap-3 text-xs shadow-2xs transition animate-in fade-in duration-150">
           <div className="flex items-center gap-2.5 min-w-0">
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-bold text-[10px] shrink-0">
-              <Clock className="w-3 h-3 text-blue-600" />
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-100 text-slate-800 border border-slate-200 font-bold text-[10px] shrink-0">
+              <Clock className="w-3 h-3 text-slate-500" />
               In {minsUntil}m
             </span>
 

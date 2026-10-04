@@ -28,7 +28,7 @@ interface CommandPaletteModalProps {
   onSelectCourse: (courseCode: string) => void;
   onSelectTab: (tab: ActiveTab) => void;
   onSelectDay: (day: any) => void;
-  onOpenThemeSelector: () => void;
+  onOpenThemeSelector?: () => void;
   onExportCalendar: () => void;
   onOpenPwaGuide?: () => void;
 }
@@ -192,19 +192,22 @@ export const CommandPaletteModal: React.FC<CommandPaletteModalProps> = ({
     });
 
     // 3. Quick Actions
-    items.push(
-      {
+    if (onOpenThemeSelector) {
+      items.push({
         id: 'action-theme',
         category: 'Action',
         title: 'Color Themes & Appearance Mode',
-        subtitle: 'Switch between NIT Goa Sapphire, Emerald, Indigo, OLED Black, etc.',
+        subtitle: 'Curated University Palette',
         badge: 'Customization',
         icon: Palette,
         action: () => {
           onClose();
           onOpenThemeSelector();
         },
-      },
+      });
+    }
+
+    items.push(
       {
         id: 'action-export',
         category: 'Action',
@@ -304,19 +307,19 @@ export const CommandPaletteModal: React.FC<CommandPaletteModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 animate-in fade-in duration-150"
+      className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4 animate-in fade-in duration-150"
       onClick={onClose}
     >
       <div
-        className="w-full sm:max-w-2xl bg-slate-900 border border-slate-700/80 rounded-t-xl sm:rounded-lg shadow-2xl flex flex-col max-h-[85vh] sm:max-h-[80vh] overflow-hidden animate-in slide-in-from-bottom sm:zoom-in-95 duration-150"
+        className="w-full sm:max-w-2xl bg-white border border-slate-200 rounded-t-xl sm:rounded-lg shadow-2xl flex flex-col max-h-[85vh] sm:max-h-[80vh] overflow-hidden animate-in slide-in-from-bottom sm:zoom-in-95 duration-150"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Mobile Pull Handle Bar */}
-        <div className="sm:hidden w-10 h-1 bg-slate-700 rounded-full mx-auto my-2 shrink-0" />
+        <div className="sm:hidden w-10 h-1 bg-slate-300 rounded-full mx-auto my-2 shrink-0" />
 
         {/* Search Header Bar */}
-        <div className="relative px-4 py-3 sm:py-3.5 border-b border-slate-800 flex items-center gap-3 shrink-0">
-          <Search className="w-5 h-5 text-slate-400 shrink-0" style={{ color: themeConfig.primaryColor }} />
+        <div className="relative px-4 py-3 sm:py-3.5 border-b border-slate-200 flex items-center gap-3 shrink-0">
+          <Search className="w-5 h-5 text-slate-500 shrink-0" />
           <input
             ref={inputRef}
             type="text"
@@ -327,7 +330,7 @@ export const CommandPaletteModal: React.FC<CommandPaletteModalProps> = ({
             }}
             onKeyDown={handleKeyDown}
             placeholder="Type course, faculty, slot, room, or jump to tab..."
-            className="w-full bg-transparent text-sm sm:text-base text-white placeholder-slate-400 focus:outline-none"
+            className="w-full bg-transparent text-sm sm:text-base text-slate-900 placeholder-slate-400 focus:outline-none"
             aria-label="Quick Command Search"
           />
           {query ? (
@@ -338,12 +341,12 @@ export const CommandPaletteModal: React.FC<CommandPaletteModalProps> = ({
                 setSelectedIndex(0);
                 inputRef.current?.focus();
               }}
-              className="p-1 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition"
+              className="p-1 rounded-md text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition"
             >
               <X className="w-4 h-4" />
             </button>
           ) : (
-            <div className="hidden sm:flex items-center gap-1 text-[11px] font-mono text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700">
+            <div className="hidden sm:flex items-center gap-1 text-[11px] font-mono text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
               <span>ESC</span>
             </div>
           )}
@@ -352,14 +355,14 @@ export const CommandPaletteModal: React.FC<CommandPaletteModalProps> = ({
         {/* Search Results List */}
         <div
           ref={listRef}
-          className="flex-1 overflow-y-auto p-2 space-y-1 divide-y divide-slate-800/40"
+          className="flex-1 overflow-y-auto p-2 space-y-1 divide-y divide-slate-100"
           role="listbox"
         >
           {filteredItems.length === 0 ? (
             <div className="py-12 px-4 text-center">
-              <Search className="w-8 h-8 text-slate-600 mx-auto mb-2 opacity-50" />
-              <p className="text-sm font-semibold text-slate-300">No matching results found</p>
-              <p className="text-xs text-slate-400 mt-1">Try searching for a course code like "CS201", "Slot G", or "Attendance"</p>
+              <Search className="w-8 h-8 text-slate-400 mx-auto mb-2 opacity-50" />
+              <p className="text-sm font-semibold text-slate-800">No matching results found</p>
+              <p className="text-xs text-slate-500 mt-1">Try searching for a course code like "CS201", "Slot G", or "Attendance"</p>
             </div>
           ) : (
             filteredItems.map((item, index) => {
@@ -375,21 +378,18 @@ export const CommandPaletteModal: React.FC<CommandPaletteModalProps> = ({
                   onMouseEnter={() => setSelectedIndex(index)}
                   className={`w-full text-left p-2.5 sm:p-3 rounded-lg flex items-center justify-between gap-3 transition-colors ${
                     isSelected
-                      ? 'bg-slate-800/90 text-white'
-                      : 'hover:bg-slate-800/50 text-slate-200'
+                      ? 'bg-slate-100 text-slate-900'
+                      : 'hover:bg-slate-50 text-slate-700'
                   }`}
                   style={{
-                    borderLeft: isSelected ? `3px solid ${themeConfig.primaryColor}` : '3px solid transparent',
+                    borderLeft: isSelected ? '3px solid #0f172a' : '3px solid transparent',
                   }}
                 >
                   <div className="flex items-center gap-3 min-w-0">
                     <div
                       className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
-                        isSelected ? 'text-white' : 'bg-slate-800 text-slate-400'
+                        isSelected ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-600'
                       }`}
-                      style={{
-                        backgroundColor: isSelected ? themeConfig.primaryColor : undefined,
-                      }}
                     >
                       <Icon className="w-4 h-4" />
                     </div>
@@ -400,12 +400,12 @@ export const CommandPaletteModal: React.FC<CommandPaletteModalProps> = ({
                           {item.title}
                         </span>
                         {item.badge && (
-                          <span className="text-[10px] uppercase font-mono font-bold px-1.5 py-0.2 rounded bg-slate-800 text-slate-400 border border-slate-700/80">
+                          <span className="text-[10px] uppercase font-mono font-bold px-1.5 py-0.2 rounded bg-slate-100 text-slate-600 border border-slate-200">
                             {item.badge}
                           </span>
                         )}
                       </div>
-                      <p className="text-xs text-slate-400 truncate mt-0.5">
+                      <p className="text-xs text-slate-500 truncate mt-0.5">
                         {item.subtitle}
                       </p>
                     </div>
@@ -413,12 +413,12 @@ export const CommandPaletteModal: React.FC<CommandPaletteModalProps> = ({
 
                   <div className="shrink-0 flex items-center gap-1.5 text-xs text-slate-500">
                     {isSelected && (
-                      <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono text-slate-400">
+                      <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono text-slate-600">
                         <span>Select</span>
                         <CornerDownLeft className="w-3 h-3" />
                       </span>
                     )}
-                    <ArrowRight className={`w-3.5 h-3.5 transition-transform ${isSelected ? 'translate-x-0.5 text-white' : ''}`} />
+                    <ArrowRight className={`w-3.5 h-3.5 transition-transform ${isSelected ? 'translate-x-0.5 text-slate-900' : ''}`} />
                   </div>
                 </button>
               );
@@ -427,19 +427,19 @@ export const CommandPaletteModal: React.FC<CommandPaletteModalProps> = ({
         </div>
 
         {/* Footer Keyboard Hints */}
-        <div className="hidden sm:flex items-center justify-between px-4 py-2 bg-slate-950/60 border-t border-slate-800 text-[11px] text-slate-400">
+        <div className="hidden sm:flex items-center justify-between px-4 py-2.5 bg-slate-50 border-t border-slate-200 text-[11px] text-slate-500">
           <div className="flex items-center gap-3">
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono text-[10px]">↑</kbd>
-              <kbd className="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono text-[10px]">↓</kbd>
+              <kbd className="px-1.5 py-0.5 rounded bg-white border border-slate-300 font-mono text-[10px] text-slate-700">↑</kbd>
+              <kbd className="px-1.5 py-0.5 rounded bg-white border border-slate-300 font-mono text-[10px] text-slate-700">↓</kbd>
               <span>Navigate</span>
             </span>
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono text-[10px]">↵</kbd>
+              <kbd className="px-1.5 py-0.5 rounded bg-white border border-slate-300 font-mono text-[10px] text-slate-700">↵</kbd>
               <span>Open</span>
             </span>
           </div>
-          <span className="text-[11px] text-slate-400">
+          <span className="text-[11px] text-slate-500">
             NIT Goa Academic Directory
           </span>
         </div>
