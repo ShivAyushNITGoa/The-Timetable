@@ -684,7 +684,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                         return (
                           <span
                             className={`text-xs font-bold font-mono ${
-                              pct === null ? 'text-slate-400' : 'text-slate-900'
+                              pct === null ? 'text-slate-400' : pct >= 75 ? 'text-emerald-700' : 'text-rose-700'
                             }`}
                           >
                             {pct !== null ? `${pct}% (${rec.attended}/${rec.total})` : 'Not logged yet'}
@@ -697,19 +697,19 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                       <button
                         type="button"
                         onClick={(e) => handleLogAttendance(chosenOption.code, true, e)}
-                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-white border border-slate-900 text-xs font-semibold flex items-center gap-1 transition active:scale-95 shadow-2xs"
+                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-semibold flex items-center gap-1 transition active:scale-95 shadow-2xs"
                         title={`Mark +1 Present for ${chosenOption.code}`}
                       >
-                        <Check className="w-3 h-3 stroke-[2.5]" />
+                        <Check className="w-3 h-3 text-emerald-600 stroke-[2.5]" />
                         <span>+ Present</span>
                       </button>
                       <button
                         type="button"
                         onClick={(e) => handleLogAttendance(chosenOption.code, false, e)}
-                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 text-xs font-semibold flex items-center gap-1 transition active:scale-95 shadow-2xs"
+                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-800 border border-rose-200 text-xs font-semibold flex items-center gap-1 transition active:scale-95 shadow-2xs"
                         title={`Mark +1 Absent for ${chosenOption.code}`}
                       >
-                        <X className="w-3 h-3 stroke-[2.5]" />
+                        <X className="w-3 h-3 text-rose-600 stroke-[2.5]" />
                         <span>+ Absent</span>
                       </button>
                     </div>
@@ -835,7 +835,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                         return (
                           <span
                             className={`text-xs font-bold font-mono ${
-                              pct === null ? 'text-slate-400' : 'text-slate-900'
+                              pct === null ? 'text-slate-400' : pct >= 75 ? 'text-emerald-700' : 'text-rose-700'
                             }`}
                           >
                             {pct !== null ? `${pct}% (${rec.attended}/${rec.total})` : 'Not logged yet'}
@@ -848,19 +848,19 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                       <button
                         type="button"
                         onClick={(e) => handleLogAttendance(currentLab.code, true, e)}
-                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-white border border-slate-900 text-xs font-semibold flex items-center gap-1 transition active:scale-95 shadow-2xs"
+                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-semibold flex items-center gap-1 transition active:scale-95 shadow-2xs"
                         title={`Mark +1 Present for ${currentLab.code}`}
                       >
-                        <Check className="w-3 h-3 stroke-[2.5]" />
+                        <Check className="w-3 h-3 text-emerald-600 stroke-[2.5]" />
                         <span>+ Present</span>
                       </button>
                       <button
                         type="button"
                         onClick={(e) => handleLogAttendance(currentLab.code, false, e)}
-                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 text-xs font-semibold flex items-center gap-1 transition active:scale-95 shadow-2xs"
+                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-800 border border-rose-200 text-xs font-semibold flex items-center gap-1 transition active:scale-95 shadow-2xs"
                         title={`Mark +1 Absent for ${currentLab.code}`}
                       >
-                        <X className="w-3 h-3 stroke-[2.5]" />
+                        <X className="w-3 h-3 text-rose-600 stroke-[2.5]" />
                         <span>+ Absent</span>
                       </button>
                     </div>
@@ -998,7 +998,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                       return (
                         <span
                           className={`text-xs font-bold font-mono ${
-                            pct === null ? 'text-slate-400' : 'text-slate-900'
+                            pct === null ? 'text-slate-400' : pct >= 75 ? 'text-emerald-700' : 'text-rose-700'
                           }`}
                         >
                           {pct !== null ? `${pct}% (${rec.attended}/${rec.total})` : 'Not logged yet'}
@@ -1011,19 +1011,19 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                     <button
                       type="button"
                       onClick={(e) => handleLogAttendance(course?.code || slot.courseCode, true, e)}
-                      className="min-h-[34px] px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-white border border-slate-900 text-xs font-semibold flex items-center gap-1 transition active:scale-95 shadow-2xs"
+                      className="min-h-[34px] px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-semibold flex items-center gap-1 transition active:scale-95 shadow-2xs"
                       title={`Mark +1 Present for ${course?.code || slot.courseCode}`}
                     >
-                      <Check className="w-3 h-3 stroke-[2.5]" />
+                      <Check className="w-3 h-3 text-emerald-600 stroke-[2.5]" />
                       <span>+ Present</span>
                     </button>
                     <button
                       type="button"
                       onClick={(e) => handleLogAttendance(course?.code || slot.courseCode, false, e)}
-                      className="min-h-[34px] px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 text-xs font-semibold flex items-center gap-1 transition active:scale-95 shadow-2xs"
+                      className="min-h-[34px] px-2.5 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-800 border border-rose-200 text-xs font-semibold flex items-center gap-1 transition active:scale-95 shadow-2xs"
                       title={`Mark +1 Absent for ${course?.code || slot.courseCode}`}
                     >
-                      <X className="w-3 h-3 stroke-[2.5]" />
+                      <X className="w-3 h-3 text-rose-600 stroke-[2.5]" />
                       <span>+ Absent</span>
                     </button>
                   </div>

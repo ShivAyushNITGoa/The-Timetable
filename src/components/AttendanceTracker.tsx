@@ -423,17 +423,17 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
                     <button
                       type="button"
                       onClick={() => markClassPresent(code)}
-                      className="min-h-[40px] flex-1 px-3 py-2 text-xs font-semibold rounded-lg bg-slate-900 hover:bg-slate-800 text-white border border-slate-900 transition flex items-center justify-center gap-1.5 active:scale-98 shadow-2xs"
+                      className="min-h-[40px] flex-1 px-3 py-2 text-xs font-semibold rounded-lg bg-emerald-100 hover:bg-emerald-200 active:bg-emerald-300 text-emerald-800 border border-emerald-300 transition flex items-center justify-center gap-1.5 active:scale-98 shadow-2xs"
                     >
-                      <Plus className="w-4 h-4 stroke-[2.5]" />
+                      <Plus className="w-4 h-4 text-emerald-700 stroke-[2.5]" />
                       <span>Present (+1)</span>
                     </button>
                     <button
                       type="button"
                       onClick={() => markClassAbsent(code)}
-                      className="min-h-[40px] flex-1 px-3 py-2 text-xs font-semibold rounded-lg bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 transition flex items-center justify-center gap-1.5 active:scale-98 shadow-2xs"
+                      className="min-h-[40px] flex-1 px-3 py-2 text-xs font-semibold rounded-lg bg-rose-100 hover:bg-rose-200 active:bg-rose-300 text-rose-800 border border-rose-300 transition flex items-center justify-center gap-1.5 active:scale-98 shadow-2xs"
                     >
-                      <Minus className="w-4 h-4 stroke-[2.5]" />
+                      <Minus className="w-4 h-4 text-rose-700 stroke-[2.5]" />
                       <span>Absent (+1)</span>
                     </button>
                   </div>

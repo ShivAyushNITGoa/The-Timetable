@@ -941,7 +941,7 @@ export const AcademicPortalView: React.FC<AcademicPortalViewProps> = ({
                 <h3 className="text-lg sm:text-xl font-bold text-slate-900 flex items-center justify-center sm:justify-start gap-2">
                   <span>Ayush Kumar</span>
                   <span className="text-slate-400 font-normal text-sm sm:text-base">•</span>
-                  <span className="text-blue-900">The GDevelopers</span>
+                  <span className="text-[#b0b91a]">The GDevelopers</span>
                 </h3>
                 <p className="text-xs text-slate-600 mt-1.5 max-w-xl leading-relaxed">
                   Architected and developed by <strong className="text-slate-900 font-semibold">Ayush Kumar</strong> with meticulous care for students and faculty across all NIT Goa engineering disciplines. Providing zero-latency offline access, automated attendance tracking, and calendar synchronization.
