@@ -272,10 +272,13 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                   Today
                 </span>
               ) : isWeekend ? (
-                <span className="sm:hidden text-[8px] text-slate-400">wknd</span>
+                <span className={`sm:hidden text-[8px] font-medium ${isSelected ? 'text-slate-200' : 'text-slate-400'}`}>wknd</span>
               ) : null}
-              {dayMinor && !isSelected && (
-                <span className="w-1.5 h-1.5 rounded-full bg-slate-700" title="Has CS300M Minor Class" />
+              {dayMinor && (
+                <span
+                  className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-amber-300' : 'bg-slate-700'}`}
+                  title="Has CS300M Minor Class"
+                />
               )}
             </button>
           );

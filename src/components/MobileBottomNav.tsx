@@ -293,15 +293,17 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                 onClick={() => handleSelectTab('academic')}
                 className={`w-full min-h-[46px] px-3.5 py-2.5 rounded-lg text-left font-semibold text-sm flex items-center justify-between transition active:scale-[0.98] ${
                   activeTab === 'academic'
-                    ? 'bg-blue-600 text-white font-bold shadow-xs'
+                    ? 'bg-slate-900 text-white font-bold shadow-xs'
                     : 'bg-white text-slate-800 hover:bg-slate-50 border border-slate-200 shadow-2xs'
                 }`}
               >
                 <div className="flex items-center gap-3">
                   <GraduationCap className={`w-5 h-5 ${activeTab === 'academic' ? 'text-white' : 'text-blue-600'}`} />
                   <div>
-                    <div className="text-slate-900 font-bold">SGPA Calculator & Academic Hub</div>
-                    <div className={`text-[11px] font-normal ${activeTab === 'academic' ? 'text-blue-100' : 'text-slate-500'}`}>
+                    <div className={`${activeTab === 'academic' ? 'text-white' : 'text-slate-900'} font-bold`}>
+                      SGPA Calculator & Academic Hub
+                    </div>
+                    <div className={`text-[11px] font-normal ${activeTab === 'academic' ? 'text-slate-200' : 'text-slate-500'}`}>
                       Target GPA, campus labs & facilities
                     </div>
                   </div>
@@ -314,15 +316,17 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                 onClick={() => handleSelectTab('courses')}
                 className={`w-full min-h-[46px] px-3.5 py-2.5 rounded-lg text-left font-semibold text-sm flex items-center justify-between transition active:scale-[0.98] ${
                   activeTab === 'courses'
-                    ? 'bg-blue-600 text-white font-bold shadow-xs'
+                    ? 'bg-slate-900 text-white font-bold shadow-xs'
                     : 'bg-white text-slate-800 hover:bg-slate-50 border border-slate-200 shadow-2xs'
                 }`}
               >
                 <div className="flex items-center gap-3">
                   <BookOpen className={`w-5 h-5 ${activeTab === 'courses' ? 'text-white' : 'text-blue-600'}`} />
                   <div>
-                    <div className="text-slate-900 font-bold">Courses & Faculty Roster</div>
-                    <div className={`text-[11px] font-normal ${activeTab === 'courses' ? 'text-blue-100' : 'text-slate-500'}`}>
+                    <div className={`${activeTab === 'courses' ? 'text-white' : 'text-slate-900'} font-bold`}>
+                      Courses & Faculty Roster
+                    </div>
+                    <div className={`text-[11px] font-normal ${activeTab === 'courses' ? 'text-slate-200' : 'text-slate-500'}`}>
                       Credits, textbooks, syllabi & coordinators
                     </div>
                   </div>
@@ -335,15 +339,17 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                 onClick={() => handleSelectTab('exams')}
                 className={`w-full min-h-[46px] px-3.5 py-2.5 rounded-lg text-left font-semibold text-sm flex items-center justify-between transition active:scale-[0.98] ${
                   activeTab === 'exams'
-                    ? 'bg-blue-600 text-white font-bold shadow-xs'
+                    ? 'bg-slate-900 text-white font-bold shadow-xs'
                     : 'bg-white text-slate-800 hover:bg-slate-50 border border-slate-200 shadow-2xs'
                 }`}
               >
                 <div className="flex items-center gap-3">
                   <Award className={`w-5 h-5 ${activeTab === 'exams' ? 'text-white' : 'text-blue-600'}`} />
                   <div>
-                    <div className="text-slate-900 font-bold">Master Exam Slots</div>
-                    <div className={`text-[11px] font-normal ${activeTab === 'exams' ? 'text-blue-100' : 'text-slate-500'}`}>
+                    <div className={`${activeTab === 'exams' ? 'text-white' : 'text-slate-900'} font-bold`}>
+                      Master Exam Slots
+                    </div>
+                    <div className={`text-[11px] font-normal ${activeTab === 'exams' ? 'text-slate-200' : 'text-slate-500'}`}>
                       Slot A–H timings & clash prevention
                     </div>
                   </div>
@@ -356,15 +362,17 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                 onClick={() => handleSelectTab('resources')}
                 className={`w-full min-h-[46px] px-3.5 py-2.5 rounded-lg text-left font-semibold text-sm flex items-center justify-between transition active:scale-[0.98] ${
                   activeTab === 'resources'
-                    ? 'bg-blue-600 text-white font-bold shadow-xs'
+                    ? 'bg-slate-900 text-white font-bold shadow-xs'
                     : 'bg-white text-slate-800 hover:bg-slate-50 border border-slate-200 shadow-2xs'
                 }`}
               >
                 <div className="flex items-center gap-3">
                   <FileText className={`w-5 h-5 ${activeTab === 'resources' ? 'text-white' : 'text-blue-600'}`} />
                   <div>
-                    <div className="text-slate-900 font-bold">Official Resources & Syllabi</div>
-                    <div className={`text-[11px] font-normal ${activeTab === 'resources' ? 'text-blue-100' : 'text-slate-500'}`}>
+                    <div className={`${activeTab === 'resources' ? 'text-white' : 'text-slate-900'} font-bold`}>
+                      Official Resources & Syllabi
+                    </div>
+                    <div className={`text-[11px] font-normal ${activeTab === 'resources' ? 'text-slate-200' : 'text-slate-500'}`}>
                       Open timetables, syllabus books & ordinances
                     </div>
                   </div>
@@ -469,12 +477,12 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             onClick={() => handleSelectTab('day')}
             className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-lg transition-all duration-150 py-1.5 px-0.5 active:scale-90 ${
               activeTab === 'day'
-                ? 'text-slate-900 bg-slate-100 font-bold shadow-2xs'
-                : 'text-slate-500 hover:text-slate-900 active:bg-slate-50'
+                ? 'bg-slate-900 text-white font-bold shadow-xs'
+                : 'text-slate-600 hover:text-slate-900 active:bg-slate-100'
             }`}
           >
-            <Calendar className={`w-5 h-5 transition-transform ${activeTab === 'day' ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
-            <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">Today</span>
+            <Calendar className={`w-5 h-5 transition-transform ${activeTab === 'day' ? 'scale-110 stroke-[2.5] text-white' : 'stroke-[1.75]'}`} />
+            <span className={`text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap ${activeTab === 'day' ? 'text-white font-bold' : ''}`}>Today</span>
           </button>
 
           {/* Weekly Matrix Tab */}
@@ -486,12 +494,12 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             onClick={() => handleSelectTab('weekly')}
             className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-lg transition-all duration-150 py-1.5 px-0.5 active:scale-90 ${
               activeTab === 'weekly'
-                ? 'text-slate-900 bg-slate-100 font-bold shadow-2xs'
-                : 'text-slate-500 hover:text-slate-900 active:bg-slate-50'
+                ? 'bg-slate-900 text-white font-bold shadow-xs'
+                : 'text-slate-600 hover:text-slate-900 active:bg-slate-100'
             }`}
           >
-            <Grid className={`w-5 h-5 transition-transform ${activeTab === 'weekly' ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
-            <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">Weekly</span>
+            <Grid className={`w-5 h-5 transition-transform ${activeTab === 'weekly' ? 'scale-110 stroke-[2.5] text-white' : 'stroke-[1.75]'}`} />
+            <span className={`text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap ${activeTab === 'weekly' ? 'text-white font-bold' : ''}`}>Weekly</span>
           </button>
 
           {/* Tests & Quizzes Tab with Badge */}
@@ -503,19 +511,21 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             onClick={() => handleSelectTab('tests')}
             className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-lg transition-all duration-150 py-1.5 px-0.5 relative active:scale-90 ${
               activeTab === 'tests'
-                ? 'text-slate-900 bg-slate-100 font-bold shadow-2xs'
-                : 'text-slate-500 hover:text-slate-900 active:bg-slate-50'
+                ? 'bg-slate-900 text-white font-bold shadow-xs'
+                : 'text-slate-600 hover:text-slate-900 active:bg-slate-100'
             }`}
           >
             <div className="relative">
-              <CalendarCheck className={`w-5 h-5 transition-transform ${activeTab === 'tests' ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
+              <CalendarCheck className={`w-5 h-5 transition-transform ${activeTab === 'tests' ? 'scale-110 stroke-[2.5] text-white' : 'stroke-[1.75]'}`} />
               {testCount > 0 && (
-                <span className="absolute -top-1 -right-2 px-1.5 py-0.2 bg-rose-600 text-white rounded-full text-[9px] font-black leading-tight border border-white pointer-events-none">
+                <span className={`absolute -top-1 -right-2 px-1.5 py-0.2 rounded-full text-[9px] font-black leading-tight border pointer-events-none ${
+                  activeTab === 'tests' ? 'bg-white text-slate-900 border-white' : 'bg-rose-600 text-white border-white'
+                }`}>
                   {testCount}
                 </span>
               )}
             </div>
-            <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">Tests</span>
+            <span className={`text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap ${activeTab === 'tests' ? 'text-white font-bold' : ''}`}>Tests</span>
           </button>
 
           {/* Attendance Tracker Tab */}
@@ -527,12 +537,12 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             onClick={() => handleSelectTab('attendance')}
             className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-lg transition-all duration-150 py-1.5 px-0.5 active:scale-90 ${
               activeTab === 'attendance'
-                ? 'text-slate-900 bg-slate-100 font-bold shadow-2xs'
-                : 'text-slate-500 hover:text-slate-900 active:bg-slate-50'
+                ? 'bg-slate-900 text-white font-bold shadow-xs'
+                : 'text-slate-600 hover:text-slate-900 active:bg-slate-100'
             }`}
           >
-            <CheckSquare className={`w-5 h-5 transition-transform ${activeTab === 'attendance' ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
-            <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">
+            <CheckSquare className={`w-5 h-5 transition-transform ${activeTab === 'attendance' ? 'scale-110 stroke-[2.5] text-white' : 'stroke-[1.75]'}`} />
+            <span className={`text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap ${activeTab === 'attendance' ? 'text-white font-bold' : ''}`}>
               <span className="hidden min-[360px]:inline">Attendance</span>
               <span className="min-[360px]:hidden">Attend</span>
             </span>
@@ -548,21 +558,21 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             onClick={() => setIsMoreMenuOpen(true)}
             className={`min-h-[48px] w-full flex flex-col items-center justify-center rounded-lg transition-all duration-150 py-1.5 px-0.5 active:scale-90 relative ${
               isMoreTabActive || isMoreMenuOpen
-                ? 'text-slate-900 bg-slate-100 font-bold shadow-2xs'
-                : 'text-slate-500 hover:text-slate-900 active:bg-slate-50'
+                ? 'bg-slate-900 text-white font-bold shadow-xs'
+                : 'text-slate-600 hover:text-slate-900 active:bg-slate-100'
             }`}
           >
             <div className="relative">
-              <Menu className={`w-5 h-5 transition-transform ${isMoreTabActive || isMoreMenuOpen ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'}`} />
+              <Menu className={`w-5 h-5 transition-transform ${isMoreTabActive || isMoreMenuOpen ? 'scale-110 stroke-[2.5] text-white' : 'stroke-[1.75]'}`} />
               {isAdmin ? (
-                <span className="absolute -top-1.5 -right-2 px-1 py-0.2 bg-slate-900 text-white rounded-full text-[8px] font-black leading-none border border-white pointer-events-none shadow-xs">
+                <span className="absolute -top-1.5 -right-2 px-1 py-0.2 bg-white text-slate-900 rounded-full text-[8px] font-black leading-none border border-slate-200 pointer-events-none shadow-xs">
                   ADMIN
                 </span>
               ) : isMoreTabActive ? (
-                <span className="absolute -top-0.5 -right-1 w-2 h-2 rounded-full bg-slate-900 ring-2 ring-white" />
+                <span className="absolute -top-0.5 -right-1 w-2 h-2 rounded-full bg-white ring-2 ring-slate-900" />
               ) : null}
             </div>
-            <span className="text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap">More</span>
+            <span className={`text-[10px] mt-0.5 tracking-tight truncate whitespace-nowrap ${isMoreTabActive || isMoreMenuOpen ? 'text-white font-bold' : ''}`}>More</span>
           </button>
         </div>
       </nav>

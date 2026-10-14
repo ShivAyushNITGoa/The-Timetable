@@ -161,10 +161,10 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                       Today
                     </span>
                   ) : isWeekend ? (
-                    <span className="text-[8px] text-slate-400 font-medium">wknd</span>
+                    <span className={`text-[8px] font-medium ${isSelected ? 'text-slate-200' : 'text-slate-400'}`}>wknd</span>
                   ) : null}
-                  {dayMinor && !isSelected && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-slate-500 absolute top-1 right-1" />
+                  {dayMinor && (
+                    <span className={`w-1.5 h-1.5 rounded-full absolute top-1 right-1 ${isSelected ? 'bg-amber-300' : 'bg-slate-500'}`} />
                   )}
                 </button>
               );

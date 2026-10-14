@@ -695,8 +695,8 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                     onClick={() => setSelectedBranch(b.code as BranchFilter)}
                     className={`px-2.5 py-1 rounded-lg text-xs font-medium transition ${
                       selectedBranch === b.code
-                        ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold'
-                        : 'bg-slate-800/60 text-slate-400 hover:text-slate-200 border border-slate-800'
+                        ? 'bg-amber-400 text-slate-950 border border-amber-300 font-bold shadow-xs'
+                        : 'bg-slate-800 text-slate-300 hover:text-white border border-slate-700'
                     }`}
                   >
                     {b.label}
@@ -723,8 +723,8 @@ export const ResourcesView: React.FC<ResourcesViewProps> = ({
                     onClick={() => setSelectedYear(y.val as YearFilter)}
                     className={`px-2.5 py-1 rounded-lg text-xs font-medium transition ${
                       selectedYear === y.val
-                        ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold'
-                        : 'bg-slate-800/60 text-slate-400 hover:text-slate-200 border border-slate-800'
+                        ? 'bg-amber-400 text-slate-950 border border-amber-300 font-bold shadow-xs'
+                        : 'bg-slate-800 text-slate-300 hover:text-white border border-slate-700'
                     }`}
                   >
                     {y.label}

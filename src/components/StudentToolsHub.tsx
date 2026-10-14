@@ -103,26 +103,27 @@ export const StudentToolsHub: React.FC<StudentToolsHubProps> = ({
     return STUDENT_EXTERNAL_TOOLS.filter((tool) => pinnedToolIds.includes(tool.id));
   }, [pinnedToolIds]);
 
-  const getCategoryIcon = (catId: ToolCategory) => {
+  const getCategoryIcon = (catId: ToolCategory, isSelected: boolean = false) => {
+    const iconClass = `w-4 h-4 ${isSelected ? 'text-white' : 'text-slate-700'}`;
     switch (catId) {
       case 'nitgoa':
-        return <Building2 className="w-4 h-4 text-blue-900" />;
+        return <Building2 className={`w-4 h-4 ${isSelected ? 'text-white' : 'text-blue-800'}`} />;
       case 'national':
-        return <BookOpen className="w-4 h-4 text-slate-700" />;
+        return <BookOpen className={iconClass} />;
       case 'simulation':
-        return <Cpu className="w-4 h-4 text-blue-900" />;
+        return <Cpu className={`w-4 h-4 ${isSelected ? 'text-white' : 'text-blue-800'}`} />;
       case 'research':
-        return <FileText className="w-4 h-4 text-blue-900" />;
+        return <FileText className={`w-4 h-4 ${isSelected ? 'text-white' : 'text-blue-800'}`} />;
       case 'coding':
-        return <Terminal className="w-4 h-4 text-slate-700" />;
+        return <Terminal className={iconClass} />;
       case 'student_perks':
-        return <GraduationCap className="w-4 h-4 text-slate-700" />;
+        return <GraduationCap className={iconClass} />;
       case 'gate':
-        return <GraduationCap className="w-4 h-4 text-blue-900" />;
+        return <GraduationCap className={`w-4 h-4 ${isSelected ? 'text-white' : 'text-blue-800'}`} />;
       case 'support':
-        return <HeartHandshake className="w-4 h-4 text-slate-700" />;
+        return <HeartHandshake className={iconClass} />;
       default:
-        return <Globe className="w-4 h-4 text-slate-700" />;
+        return <Globe className={iconClass} />;
     }
   };
 
@@ -337,11 +338,11 @@ export const StudentToolsHub: React.FC<StudentToolsHubProps> = ({
                   : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200'
               }`}
             >
-              {getCategoryIcon(cat.id)}
+              {getCategoryIcon(cat.id, isSelected)}
               <span>{cat.shortLabel}</span>
               <span
                 className={`text-[10px] px-1.5 py-0.2 rounded-md font-mono font-bold ${
-                  isSelected ? 'bg-slate-800 text-white' : 'bg-slate-100 text-slate-600'
+                  isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
                 }`}
               >
                 {count}

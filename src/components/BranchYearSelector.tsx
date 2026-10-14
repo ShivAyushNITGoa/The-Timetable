@@ -140,14 +140,16 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
                         {branch.name}
                       </span>
                     </div>
-                    <div className={`text-[11px] mt-0.5 line-clamp-1 ${isSelected ? 'text-slate-300' : 'text-slate-500'}`}>
+                    <div className={`text-[11px] mt-0.5 line-clamp-1 ${isSelected ? 'text-slate-200 font-medium' : 'text-slate-500'}`}>
                       {branch.fullName}
                     </div>
                   </div>
-                  {isSelected && (
+                  {isSelected ? (
                     <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center text-slate-900 shrink-0">
                       <Check className="w-3 h-3 stroke-[3]" />
                     </div>
+                  ) : (
+                    <div className="w-5 h-5 rounded-full border border-slate-300 flex items-center justify-center shrink-0" />
                   )}
                 </button>
               );
@@ -177,7 +179,7 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
                   }`}
                 >
                   <div className="text-sm font-bold">{yearName}</div>
-                  <div className={`text-[10px] mt-0.5 ${isSelected ? 'text-slate-300' : 'text-slate-500'}`}>Year {year}</div>
+                  <div className={`text-[10px] mt-0.5 ${isSelected ? 'text-slate-200 font-medium' : 'text-slate-500'}`}>Year {year}</div>
                 </button>
               );
             })}
@@ -207,14 +209,16 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
                 >
                   <div>
                     <div className="text-sm font-bold">Semester {sem}</div>
-                    <div className={`text-[11px] ${isSelected ? 'text-slate-300' : 'text-slate-500'}`}>
+                    <div className={`text-[11px] ${isSelected ? 'text-slate-200 font-medium' : 'text-slate-500'}`}>
                       {isOdd ? 'Odd Semester (July–Dec)' : 'Even Semester (Jan–May)'}
                     </div>
                   </div>
-                  {isSelected && (
+                  {isSelected ? (
                     <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center text-slate-900 shrink-0">
                       <Check className="w-3 h-3 stroke-[3]" />
                     </div>
+                  ) : (
+                    <div className="w-5 h-5 rounded-full border border-slate-300 flex items-center justify-center shrink-0" />
                   )}
                 </button>
               );
@@ -257,14 +261,16 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-sm font-bold">Section {sec}</span>
-                      {isSelected && (
+                      {isSelected ? (
                         <div className="w-4 h-4 rounded-full bg-white text-slate-900 flex items-center justify-center">
                           <Check className="w-2.5 h-2.5 stroke-[3]" />
                         </div>
+                      ) : (
+                        <div className="w-4 h-4 rounded-full border border-slate-300 flex items-center justify-center" />
                       )}
                     </div>
-                    <div className={`text-[10px] mt-1 ${isSelected ? 'text-slate-300' : 'text-slate-500'}`}>Room {room}</div>
-                    <div className={`text-[10px] font-medium mt-0.5 ${isSelected ? 'text-slate-300' : 'text-slate-600'}`}>
+                    <div className={`text-[10px] mt-1 ${isSelected ? 'text-slate-200 font-medium' : 'text-slate-500'}`}>Room {room}</div>
+                    <div className={`text-[10px] font-medium mt-0.5 ${isSelected ? 'text-slate-200' : 'text-slate-600'}`}>
                       {cycle}
                     </div>
                   </button>

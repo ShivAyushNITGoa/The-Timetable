@@ -215,8 +215,8 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
                 stats.totalHeld === 0
                   ? 'text-slate-500'
                   : stats.isOverallSafe
-                  ? 'text-slate-900'
-                  : 'text-slate-900 font-black'
+                  ? 'text-emerald-700'
+                  : 'text-rose-700 font-black'
               }`}
             >
               {stats.totalHeld === 0 ? '100%' : `${stats.overallPct.toFixed(1)}%`}
@@ -234,7 +234,7 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
 
           <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
             <span className="text-[11px] text-slate-500 block mb-0.5">Safe Subjects</span>
-            <div className="text-xl font-bold font-mono text-slate-900 tabular-nums">
+            <div className="text-xl font-bold font-mono text-emerald-700 tabular-nums">
               {stats.coursesAbove75}
             </div>
             <span className="text-[10px] text-slate-500 block mt-0.5">&ge; 75% attendance</span>
@@ -244,7 +244,7 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
             <span className="text-[11px] text-slate-500 block mb-0.5">At Risk / Shortage</span>
             <div
               className={`text-xl font-bold font-mono tabular-nums ${
-                stats.coursesBelow75 > 0 ? 'text-slate-900 font-black' : 'text-slate-500'
+                stats.coursesBelow75 > 0 ? 'text-rose-700 font-black' : 'text-slate-500'
               }`}
             >
               {stats.coursesBelow75}

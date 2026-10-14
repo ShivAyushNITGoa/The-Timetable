@@ -131,17 +131,22 @@ export default function App() {
 
   const isAdmin = isUserAdmin(currentUser);
 
-  const [activeTab, setActiveTab] = useState<ActiveTab>(() => {
-    try {
-      const saved = localStorage.getItem('nit_goa_active_tab') as ActiveTab;
-      if (saved && ['day', 'weekly', 'courses', 'tests', 'attendance', 'exams', 'academic', 'resources'].includes(saved)) {
-        return saved;
-      }
-    } catch (e) {
-      console.error(e);
-    }
-    return 'day';
-  });
+  const getTodayDayOfWeek = (): DayOfWeek => {
+    const day = new Date().getDay();
+    const daysMap: Record<number, DayOfWeek> = {
+      0: 'Sunday',
+      1: 'Monday',
+      2: 'Tuesday',
+      3: 'Wednesday',
+      4: 'Thursday',
+      5: 'Friday',
+      6: 'Saturday',
+    };
+    return daysMap[day] || 'Monday';
+  };
+
+  // Requirement: When user opens the app, it must go to the current day timetable in day schedule section
+  const [activeTab, setActiveTab] = useState<ActiveTab>('day');
 
   const handleSetActiveTab = (tab: ActiveTab) => {
     setActiveTab(tab);
@@ -180,29 +185,14 @@ export default function App() {
     safeProfile.firstYearSection
   );
 
-  // Determine default day based on saved day or today's date
-  const [selectedDay, setSelectedDay] = useState<DayOfWeek>(() => {
-    try {
-      const saved = localStorage.getItem('nit_goa_selected_day') as DayOfWeek;
-      const validDays: DayOfWeek[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-      if (saved && validDays.includes(saved)) {
-        return saved;
-      }
-    } catch (e) {
-      console.error(e);
-    }
-    const day = new Date().getDay();
-    const daysMap: Record<number, DayOfWeek> = {
-      0: 'Sunday',
-      1: 'Monday',
-      2: 'Tuesday',
-      3: 'Wednesday',
-      4: 'Thursday',
-      5: 'Friday',
-      6: 'Saturday',
-    };
-    return daysMap[day] || 'Monday';
-  });
+  // Requirement: Initialize directly to today's timetable
+  const [selectedDay, setSelectedDay] = useState<DayOfWeek>(getTodayDayOfWeek);
+
+  // Ensure on mount that we always land on today's schedule in Day view
+  useEffect(() => {
+    setActiveTab('day');
+    setSelectedDay(getTodayDayOfWeek());
+  }, []);
 
   const handleSelectDay = (day: DayOfWeek) => {
     setSelectedDay(day);
@@ -607,8 +597,8 @@ export default function App() {
     );
   }
 
-  // 1. Gated Landing Page: If user is not logged in, or explicitly opened About/Landing
-  if (!currentUser || showLandingPage) {
+  // Show Landing Page when user clicks About & Install from top bar
+  if (showLandingPage) {
     return (
       <>
         <LandingPage
@@ -616,7 +606,11 @@ export default function App() {
           isAdmin={isAdmin}
           onSignIn={handleGoogleSignIn}
           onSignOut={handleGoogleSignOut}
-          onContinueToTimetable={() => setShowLandingPage(false)}
+          onContinueToTimetable={() => {
+            setShowLandingPage(false);
+            setActiveTab('day');
+            setSelectedDay(getTodayDayOfWeek());
+          }}
           onOpenAdminPanel={() => setIsAdminModalOpen(true)}
           authLoading={authLoading}
         />
