@@ -123,16 +123,19 @@ body::before {
   background-image: linear-gradient(to left, #ffffff, rgba(255, 255, 255, 0.8), transparent) !important;
 }
 
-/* Primary Cards, Modals, Navbar, and Tables */
-[data-mode="light"] .bg-slate-900,
-[data-mode="light"] .bg-slate-900\/95,
-[data-mode="light"] .bg-slate-900\/90,
-[data-mode="light"] .bg-slate-900\/85,
-[data-mode="light"] .bg-slate-900\/80,
-[data-mode="light"] .bg-slate-900\/70,
-[data-mode="light"] .bg-slate-900\/60,
-[data-mode="light"] .bg-slate-900\/50,
-[data-mode="light"] .bg-slate-900\/40 {
+/* Primary Cards, Panels, Modals, and Structural Containers (excludes buttons, tabs, badges, and backdrops) */
+[data-mode="light"] div.bg-slate-900:not(button):not([role="tab"]):not([data-tab]):not(.active-nav-tab):not(.tab-badge):not(.text-white):not([data-keep-dark]),
+[data-mode="light"] div.bg-slate-900\/95:not(button):not([role="tab"]):not([data-tab]):not(.active-nav-tab),
+[data-mode="light"] div.bg-slate-900\/90:not(button):not([role="tab"]):not([data-tab]):not(.active-nav-tab),
+[data-mode="light"] div.bg-slate-900\/85:not(button):not([role="tab"]):not([data-tab]):not(.active-nav-tab),
+[data-mode="light"] div.bg-slate-900\/80:not(button):not([role="tab"]):not([data-tab]):not(.active-nav-tab),
+[data-mode="light"] div.bg-slate-900\/70:not(button):not([role="tab"]):not([data-tab]):not(.active-nav-tab),
+[data-mode="light"] div.bg-slate-900\/60:not(button):not([role="tab"]):not([data-tab]):not(.active-nav-tab),
+[data-mode="light"] div.bg-slate-900\/50:not(button):not([role="tab"]):not([data-tab]):not(.active-nav-tab):not(.fixed):not(.backdrop-blur-xs),
+[data-mode="light"] section.bg-slate-900,
+[data-mode="light"] article.bg-slate-900,
+[data-mode="light"] header.bg-slate-900,
+[data-mode="light"] footer.bg-slate-900 {
   background-color: #ffffff !important;
   border-color: #e2e8f0 !important;
 }
@@ -256,7 +259,9 @@ body::before {
 [data-mode="light"] .bg-slate-950\/70,
 [data-mode="light"] .bg-black\/80,
 [data-mode="light"] .bg-black\/75,
-[data-mode="light"] .bg-black\/70 {
+[data-mode="light"] .bg-black\/70,
+[data-mode="light"] .bg-slate-900\/40,
+[data-mode="light"] .bg-slate-900\/50 {
   background-color: rgba(15, 23, 42, 0.45) !important;
   backdrop-filter: blur(4px) !important;
 }
@@ -333,6 +338,11 @@ body::before {
   color: #4338ca !important;
 }
 
+/* =========================================================================
+   Active Navigation Tabs, Primary Buttons, Action Pills & Dark Badges
+   Guarantees solid high-contrast dark (#0f172a) with crisp white text & icons
+   ========================================================================= */
+
 /* Saturated Action Buttons: Keep Crisp White Text */
 [data-mode="light"] .bg-blue-600,
 [data-mode="light"] .bg-blue-500,
@@ -340,8 +350,7 @@ body::before {
 [data-mode="light"] .bg-emerald-600,
 [data-mode="light"] .bg-emerald-500,
 [data-mode="light"] .bg-rose-600,
-[data-mode="light"] .bg-rose-500,
-[data-mode="light"] [data-tab].text-white {
+[data-mode="light"] .bg-rose-500 {
   color: #ffffff !important;
 }
 
@@ -349,9 +358,53 @@ body::before {
 [data-mode="light"] .bg-blue-500 *,
 [data-mode="light"] .bg-blue-700 *,
 [data-mode="light"] .bg-emerald-600 *,
-[data-mode="light"] .bg-rose-600 *,
-[data-mode="light"] [data-tab].text-white * {
+[data-mode="light"] .bg-rose-600 * {
   color: inherit !important;
+}
+
+/* Institutional Solid Dark Buttons, Active Tabs & Selected Pills */
+[data-mode="light"] button.bg-slate-900,
+[data-mode="light"] a.bg-slate-900,
+[data-mode="light"] [role="tab"].bg-slate-900,
+[data-mode="light"] [data-tab].bg-slate-900,
+[data-mode="light"] .active-nav-tab,
+[data-mode="light"] button[data-active="true"],
+[data-mode="light"] [role="tab"][aria-selected="true"],
+[data-mode="light"] span.bg-slate-900,
+[data-mode="light"] .bg-slate-900.text-white {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+  border-color: #0f172a !important;
+}
+
+[data-mode="light"] button.bg-slate-900:hover,
+[data-mode="light"] a.bg-slate-900:hover,
+[data-mode="light"] .hover\:bg-slate-800:hover {
+  background-color: #1e293b !important;
+  color: #ffffff !important;
+}
+
+/* Crisp white text and SVG icons inside dark buttons/tabs */
+[data-mode="light"] button.bg-slate-900 *:not(.tab-badge):not(.badge-content):not(.no-override-white),
+[data-mode="light"] a.bg-slate-900 *:not(.tab-badge):not(.badge-content):not(.no-override-white),
+[data-mode="light"] [role="tab"].bg-slate-900 *:not(.tab-badge):not(.badge-content):not(.no-override-white),
+[data-mode="light"] [data-tab].bg-slate-900 *:not(.tab-badge):not(.badge-content):not(.no-override-white),
+[data-mode="light"] .active-nav-tab *:not(.tab-badge):not(.badge-content):not(.no-override-white),
+[data-mode="light"] button[data-active="true"] *:not(.tab-badge):not(.badge-content):not(.no-override-white),
+[data-mode="light"] [role="tab"][aria-selected="true"] *:not(.tab-badge):not(.badge-content):not(.no-override-white),
+[data-mode="light"] span.bg-slate-900 *:not(.tab-badge):not(.badge-content):not(.no-override-white),
+[data-mode="light"] .bg-slate-900.text-white *:not(.tab-badge):not(.badge-content):not(.no-override-white) {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Numerical count badge inside active navigation tab (e.g. test count "1") */
+[data-mode="light"] .active-nav-tab .tab-badge,
+[data-mode="light"] [data-tab].bg-slate-900 .tab-badge,
+[data-mode="light"] [role="tab"].bg-slate-900 .tab-badge,
+[data-mode="light"] button[data-active="true"] .tab-badge {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
 }
 
 /* Google Sign In & Secondary Action Buttons in Light Mode */

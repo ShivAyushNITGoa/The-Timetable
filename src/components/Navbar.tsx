@@ -615,25 +615,26 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   key={tab.id}
                   data-tab={tab.id}
+                  data-active={isActive ? 'true' : 'false'}
                   type="button"
                   onClick={() => setActiveTab(tab.id)}
                   className={`min-h-[40px] px-3.5 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 whitespace-nowrap transition-all duration-150 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 shrink-0 select-none ${
                     isActive
-                      ? 'bg-slate-900 text-white font-bold shadow-xs'
+                      ? 'bg-slate-900 text-white font-bold shadow-xs active-nav-tab ring-1 ring-slate-900'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 shrink-0 transition-transform ${isActive ? 'scale-110' : ''}`} />
-                  <span className="hidden xl:inline">{tab.label}</span>
-                  <span className="hidden md:inline xl:hidden">{tab.medLabel}</span>
-                  <span className="md:hidden">{tab.shortLabel}</span>
+                  <Icon className={`w-4 h-4 shrink-0 transition-transform ${isActive ? 'scale-110 text-white' : 'text-slate-500'}`} />
+                  <span className={`hidden xl:inline ${isActive ? 'text-white font-bold' : ''}`}>{tab.label}</span>
+                  <span className={`hidden md:inline xl:hidden ${isActive ? 'text-white font-bold' : ''}`}>{tab.medLabel}</span>
+                  <span className={`md:hidden ${isActive ? 'text-white font-bold' : ''}`}>{tab.shortLabel}</span>
 
                   {tab.badge !== undefined && tab.badge > 0 && (
                     <span
-                      className={`text-[10px] px-1.5 py-0.2 rounded font-black leading-tight ${
+                      className={`tab-badge text-[10px] px-1.5 py-0.2 rounded font-black leading-tight ${
                         isActive
-                          ? 'bg-white text-slate-900'
-                          : 'bg-rose-600 text-white'
+                          ? 'bg-white text-slate-900 shadow-2xs font-bold'
+                          : 'bg-rose-600 text-white font-bold'
                       }`}
                     >
                       {tab.badge}
