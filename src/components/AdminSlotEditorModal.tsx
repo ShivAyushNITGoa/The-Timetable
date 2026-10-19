@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { TimeSlot, Course, DayOfWeek } from '../data/timetableData';
+import { getOfficialCourseSyllabus } from '../data/officialSyllabusRegistry';
 import {
   X,
   Clock,
@@ -125,16 +126,23 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
       setIsMinor(Boolean(slot.isMinor));
       setNotes(slot.notes || '');
 
-      // Load matching course details
+      // Load matching course details from known courses or official curriculum registry
       const c = allCourses[slot.courseCode];
-      if (c) {
-        setCourseName(c.name || '');
-        setCoordinator(c.coordinator || '');
-        setCredits(c.credits ?? 3);
-        setLtp(c.ltp || '3-0-0');
-        setCategory(c.category || (slot.isLab ? 'lab' : 'core'));
-        setModules(c.modules ? [...c.modules] : []);
-        setTextbooks(c.textbooks ? [...c.textbooks] : []);
+      const official = getOfficialCourseSyllabus(slot.courseCode);
+      if (c || official) {
+        setCourseName(c?.name || official?.name || slot.slotName || '');
+        setCoordinator(c?.coordinator || 'Department Faculty');
+        setCredits(official?.credits || c?.credits || 3);
+        setLtp(official?.ltp || c?.ltp || '3-0-0');
+        setCategory(c?.category || (slot.isLab ? 'lab' : 'core'));
+        const effectiveMods = (official?.modules && official.modules.length > 0)
+          ? official.modules
+          : (c?.modules || []);
+        const effectiveBooks = (official?.textbooks && official.textbooks.length > 0)
+          ? official.textbooks
+          : (c?.textbooks || []);
+        setModules([...effectiveMods]);
+        setTextbooks([...effectiveBooks]);
       } else {
         setCourseName(slot.slotName || '');
         setCoordinator('');
@@ -170,18 +178,25 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
   const handleCourseCodeSelect = (selectedCode: string) => {
     setCourseCode(selectedCode);
     const existing = allCourses[selectedCode];
-    if (existing) {
-      if (!courseName) setCourseName(existing.name || '');
-      if (!coordinator) setCoordinator(existing.coordinator || '');
-      if (existing.room && (!room || room === 'Room 18')) setRoom(existing.room);
-      setCredits(existing.credits ?? 3);
-      setLtp(existing.ltp || '3-0-0');
-      setCategory(existing.category || 'core');
-      if (existing.modules && existing.modules.length > 0) {
-        setModules([...existing.modules]);
+    const official = getOfficialCourseSyllabus(selectedCode);
+    if (existing || official) {
+      if (!courseName) setCourseName(existing?.name || official?.name || '');
+      if (!coordinator) setCoordinator(existing?.coordinator || 'Department Faculty');
+      if (existing?.room && (!room || room === 'Room 18')) setRoom(existing.room);
+      setCredits(official?.credits || existing?.credits || 3);
+      setLtp(official?.ltp || existing?.ltp || '3-0-0');
+      setCategory(existing?.category || 'core');
+      const effectiveMods = (official?.modules && official.modules.length > 0)
+        ? official.modules
+        : (existing?.modules || []);
+      const effectiveBooks = (official?.textbooks && official.textbooks.length > 0)
+        ? official.textbooks
+        : (existing?.textbooks || []);
+      if (effectiveMods.length > 0) {
+        setModules([...effectiveMods]);
       }
-      if (existing.textbooks && existing.textbooks.length > 0) {
-        setTextbooks([...existing.textbooks]);
+      if (effectiveBooks.length > 0) {
+        setTextbooks([...effectiveBooks]);
       }
     }
   };

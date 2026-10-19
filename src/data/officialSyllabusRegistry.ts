@@ -28,28 +28,28 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-1-0",
     "credits": 4,
     "modules": [
-        "Module 1: Matrices and Applications - Matrix operations, addition, scalar multiplication, transpose, adjoint and properties; System of linear equations and Gaussian elimination; Determinants and properties; Cramer's rule; Vector Space: Subspaces, Linear dependence/independence, Basis, Dimension, Standard Basis of R^n, Linear transformations, Matrix of a linear transformation, change of basis and similarity, rank-nullity theorem; Inner product spaces, Gram-Schmidt process, Orthonormal bases, Eigenvalues and Eigenvectors, Characteristic polynomials, Diagonalization.",
-        "Module 2: Differential Calculus - Functions of single variable: Functions and transcendental Functions; Limits, Continuity and Differentiability; Mean value theorems, Taylor's and Maclaurin's theorems; Parametric equations and Polar coordinates. Functions of several variables: Partial differentiation; Total differentiation, Euler's theorem and generalization; Change of variables, Jacobians; Maxima and minima, Lagrange's method of Multipliers.",
-        "Module 3: Integral Calculus - Fundamental theorem of calculus; Improper integrals; Beta and Gamma functions; Applications of Integrals: Arc length, Surface area and volume of revolution; Multiple integrals: Double and triple integrals, Change of order of integration, Change of variables to polar, cylindrical and spherical coordinates.",
-        "Module 4: Fourier Series & Infinite Series - Convergence of sequences and series, Power series, Ratio test, Root test, Alternating series; Fourier series: Periodic functions, Euler's formulae, Dirichlet's condition, Even and odd functions, Half Range Fourier Sine and Cosine Series."
+      "Module 1: Matrices and Applications - Matrix operations, addition, scalar multiplication, transpose, adjoint and properties; System of linear equations and Gaussian elimination; Determinants and properties; Cramer's rule; Vector Space: Subspaces, Linear dependence/independence, Basis, Dimension, Standard Basis of R^n, Linear transformations, Matrix of a linear transformation, change of basis and similarity, rank-nullity theorem; Inner product spaces, Gram-Schmidt process, Orthonormal bases, Eigenvalues and Eigenvectors, Characteristic polynomials, Diagonalization.",
+      "Module 2: Differential Calculus - Functions of single variable: Functions and transcendental Functions; Limits, Continuity and Differentiability; Mean value theorems, Taylor's and Maclaurin's theorems; Parametric equations and Polar coordinates. Functions of several variables: Partial differentiation; Total differentiation, Euler's theorem and generalization; Change of variables, Jacobians; Maxima and minima, Lagrange's method of Multipliers.",
+      "Module 3: Integral Calculus - Fundamental theorem of calculus; Improper integrals; Beta and Gamma functions; Applications of Integrals: Arc length, Surface area and volume of revolution; Multiple integrals: Double and triple integrals, Change of order of integration, Change of variables to polar, cylindrical and spherical coordinates.",
+      "Module 4: Fourier Series & Infinite Series - Convergence of sequences and series, Power series, Ratio test, Root test, Alternating series; Fourier series: Periodic functions, Euler's formulae, Dirichlet's condition, Even and odd functions, Half Range Fourier Sine and Cosine Series."
     ],
     "textbooks": [
-        "G. B. Thomas and R. L. Finney, \"Calculus and Analytic Geometry\", 14th Edition, Addison-Wesley, Pearson, 2018.",
-        "E. Kreyszig, \"Advanced Engineering Mathematics\", 8th Edition, John Wiley, 1999.",
-        "G. Strang, \"Introduction to Linear Algebra\", Wellesley-Cambridge Press, 2021.",
-        "R. K. Jain and S. R. K. Iyengar, \"Advanced Engineering Mathematics\", 3rd Edition, Narosa Publishing, 2007."
+      "G. B. Thomas and R. L. Finney, \"Calculus and Analytic Geometry\", 14th Edition, Addison-Wesley, Pearson, 2018.",
+      "E. Kreyszig, \"Advanced Engineering Mathematics\", 8th Edition, John Wiley, 1999.",
+      "G. Strang, \"Introduction to Linear Algebra\", Wellesley-Cambridge Press, 2021.",
+      "R. K. Jain and S. R. K. Iyengar, \"Advanced Engineering Mathematics\", 3rd Edition, Narosa Publishing, 2007."
     ],
     "objectives": [
-        "To provide engineers and scientists with a strong foundation in essential mathematical principles.",
-        "To master differential calculus, integral calculus, sequences & series, Fourier series, and linear algebra for engineering problem solving."
+      "To provide engineers and scientists with a strong foundation in essential mathematical principles.",
+      "To master differential calculus, integral calculus, sequences & series, Fourier series, and linear algebra for engineering problem solving."
     ],
     "outcomes": [
-        "CO1: Develop a solid grasp of basic principles of matrix theory and apply them to solve engineering systems.",
-        "CO2: Understand differential calculus of single and several variables with practical engineering optimizations.",
-        "CO3: Apply multiple integrals, Beta-Gamma functions, and geometric calculations.",
-        "CO4: Analyze convergence of sequences and series, and expand functions into Fourier series."
+      "CO1: Develop a solid grasp of basic principles of matrix theory and apply them to solve engineering systems.",
+      "CO2: Understand differential calculus of single and several variables with practical engineering optimizations.",
+      "CO3: Apply multiple integrals, Beta-Gamma functions, and geometric calculations.",
+      "CO4: Analyze convergence of sequences and series, and expand functions into Fourier series."
     ]
-},
+  },
   "PH100": {
     "code": "PH100",
     "name": "Engineering Physics",
@@ -60,28 +60,28 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Wave Optics - Interference: Coherence, Division of wave front and amplitude, Young's double slit, Thin films, Newton's rings, Michelson interferometer; Diffraction: Fresnel and Fraunhofer diffraction, Single slit, Double slit, Diffraction grating, Resolving power; Polarization: Brewster's law, Double refraction, Nicol prism, Quarter and half-wave plates, Circular and elliptical polarization.",
-        "Module 2: Quantum Mechanics - Inadequacy of classical physics, Wave-particle duality, De Broglie hypothesis, Heisenberg uncertainty principle, Wave function and its physical interpretation, Born's interpretation; Time-dependent and time-independent Schrodinger wave equation; Particle in a 1D potential well, Quantum tunneling effect.",
-        "Module 3: Lasers & Fiber Optics - Einstein's coefficients, Population inversion, Optical resonator, Three-level and four-level laser systems, Ruby laser, He-Ne laser, Semiconductor diode laser; Optical fibers: Total internal reflection, Numerical aperture, Acceptance angle, Step-index and graded-index fibers, Attenuation and dispersion in fibers, Optical communication system.",
-        "Module 4: Electromagnetism & Dielectric Materials - Maxwell's equations in differential and integral forms, Electromagnetic wave propagation in free space and dielectric media, Poynting vector; Dielectric polarization, Clausius-Mossotti equation; Frequency dependence of dielectric constant, Ferroelectricity and piezoelectricity."
+      "Module 1: Wave Optics - Interference: Coherence, Division of wave front and amplitude, Young's double slit, Thin films, Newton's rings, Michelson interferometer; Diffraction: Fresnel and Fraunhofer diffraction, Single slit, Double slit, Diffraction grating, Resolving power; Polarization: Brewster's law, Double refraction, Nicol prism, Quarter and half-wave plates, Circular and elliptical polarization.",
+      "Module 2: Quantum Mechanics - Inadequacy of classical physics, Wave-particle duality, De Broglie hypothesis, Heisenberg uncertainty principle, Wave function and its physical interpretation, Born's interpretation; Time-dependent and time-independent Schrodinger wave equation; Particle in a 1D potential well, Quantum tunneling effect.",
+      "Module 3: Lasers & Fiber Optics - Einstein's coefficients, Population inversion, Optical resonator, Three-level and four-level laser systems, Ruby laser, He-Ne laser, Semiconductor diode laser; Optical fibers: Total internal reflection, Numerical aperture, Acceptance angle, Step-index and graded-index fibers, Attenuation and dispersion in fibers, Optical communication system.",
+      "Module 4: Electromagnetism & Dielectric Materials - Maxwell's equations in differential and integral forms, Electromagnetic wave propagation in free space and dielectric media, Poynting vector; Dielectric polarization, Clausius-Mossotti equation; Frequency dependence of dielectric constant, Ferroelectricity and piezoelectricity."
     ],
     "textbooks": [
-        "A. Ghatak, \"Optics\", 6th Edition, McGraw Hill Education, 2017.",
-        "D. J. Griffiths, \"Introduction to Quantum Mechanics\", 3rd Edition, Cambridge University Press, 2018.",
-        "M. N. Avadhanulu and P. G. Kshirsagar, \"A Textbook of Engineering Physics\", S. Chand Publishing, 2014.",
-        "D. J. Griffiths, \"Introduction to Electrodynamics\", 4th Edition, Cambridge University Press, 2017."
+      "A. Ghatak, \"Optics\", 6th Edition, McGraw Hill Education, 2017.",
+      "D. J. Griffiths, \"Introduction to Quantum Mechanics\", 3rd Edition, Cambridge University Press, 2018.",
+      "M. N. Avadhanulu and P. G. Kshirsagar, \"A Textbook of Engineering Physics\", S. Chand Publishing, 2014.",
+      "D. J. Griffiths, \"Introduction to Electrodynamics\", 4th Edition, Cambridge University Press, 2017."
     ],
     "objectives": [
-        "To provide students with foundational physics principles required across modern engineering fields.",
-        "To introduce wave optics, quantum mechanical concepts, laser mechanisms, optical fibers, and Maxwell's electrodynamics."
+      "To provide students with foundational physics principles required across modern engineering fields.",
+      "To introduce wave optics, quantum mechanical concepts, laser mechanisms, optical fibers, and Maxwell's electrodynamics."
     ],
     "outcomes": [
-        "CO1: Apply interference, diffraction, and polarization principles in optical instrumentation.",
-        "CO2: Solve Schrodinger equations for basic potential wells and understand quantum mechanical phenomena.",
-        "CO3: Analyze laser mechanisms, semiconductor lasers, and fiber-optic communication systems.",
-        "CO4: Formulate electromagnetic wave propagation using Maxwell's equations."
+      "CO1: Apply interference, diffraction, and polarization principles in optical instrumentation.",
+      "CO2: Solve Schrodinger equations for basic potential wells and understand quantum mechanical phenomena.",
+      "CO3: Analyze laser mechanisms, semiconductor lasers, and fiber-optic communication systems.",
+      "CO4: Formulate electromagnetic wave propagation using Maxwell's equations."
     ]
-},
+  },
   "CS100": {
     "code": "CS100",
     "name": "Computer Programming and Problem Solving",
@@ -92,28 +92,28 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Introduction to Computing & Programming Fundamentals - Block diagram of a computer, CPU, Memory hierarchy, Compilers, Interpreters; Algorithms, Flowcharts, Pseudocode; Variables, Constants, Data types, Operators, Expressions, Operator precedence and associativity; Input/Output library functions in C.",
-        "Module 2: Control Structures & Arrays - Conditional statements: if, if-else, nested if-else, switch-case; Loops: while, do-while, for loops, break and continue statements; Arrays: 1D and 2D arrays, Matrix operations, String manipulation and string handling functions.",
-        "Module 3: Functions, Recursion & Pointers - Modular programming, Function definition, declaration, and prototypes; Call by value vs Call by reference; Recursive functions and call stack; Pointers: Concept, Pointer arithmetic, Pointers and arrays, Pointers to functions, Dynamic memory allocation (malloc, calloc, realloc, free).",
-        "Module 4: User-Defined Data Types & File Handling - Structures: Declaration, initialization, nested structures, array of structures, pointer to structure; Unions and Bit-fields; Enumerations (enum); File management: Text and binary files, file open modes, fprintf, fscanf, fread, fwrite, fseek, ftell, rewind, error handling."
+      "Module 1: Introduction to Computing & Programming Fundamentals - Block diagram of a computer, CPU, Memory hierarchy, Compilers, Interpreters; Algorithms, Flowcharts, Pseudocode; Variables, Constants, Data types, Operators, Expressions, Operator precedence and associativity; Input/Output library functions in C.",
+      "Module 2: Control Structures & Arrays - Conditional statements: if, if-else, nested if-else, switch-case; Loops: while, do-while, for loops, break and continue statements; Arrays: 1D and 2D arrays, Matrix operations, String manipulation and string handling functions.",
+      "Module 3: Functions, Recursion & Pointers - Modular programming, Function definition, declaration, and prototypes; Call by value vs Call by reference; Recursive functions and call stack; Pointers: Concept, Pointer arithmetic, Pointers and arrays, Pointers to functions, Dynamic memory allocation (malloc, calloc, realloc, free).",
+      "Module 4: User-Defined Data Types & File Handling - Structures: Declaration, initialization, nested structures, array of structures, pointer to structure; Unions and Bit-fields; Enumerations (enum); File management: Text and binary files, file open modes, fprintf, fscanf, fread, fwrite, fseek, ftell, rewind, error handling."
     ],
     "textbooks": [
-        "Brian W. Kernighan and Dennis M. Ritchie, \"The C Programming Language\", 2nd Edition, Prentice Hall, 1988.",
-        "E. Balagurusamy, \"Programming in ANSI C\", 8th Edition, McGraw Hill Education, 2019.",
-        "Pradip Dey and Manas Ghosh, \"Computer Fundamentals and Programming in C\", 2nd Edition, Oxford University Press, 2013.",
-        "Yashavant Kanetkar, \"Let Us C\", 18th Edition, BPB Publications, 2021."
+      "Brian W. Kernighan and Dennis M. Ritchie, \"The C Programming Language\", 2nd Edition, Prentice Hall, 1988.",
+      "E. Balagurusamy, \"Programming in ANSI C\", 8th Edition, McGraw Hill Education, 2019.",
+      "Pradip Dey and Manas Ghosh, \"Computer Fundamentals and Programming in C\", 2nd Edition, Oxford University Press, 2013.",
+      "Yashavant Kanetkar, \"Let Us C\", 18th Edition, BPB Publications, 2021."
     ],
     "objectives": [
-        "To introduce procedural programming and computational problem-solving paradigms using C.",
-        "To master data structures, pointers, modular programming, memory management, and file operations."
+      "To introduce procedural programming and computational problem-solving paradigms using C.",
+      "To master data structures, pointers, modular programming, memory management, and file operations."
     ],
     "outcomes": [
-        "CO1: Formulate algorithmic solutions for mathematical and computational tasks.",
-        "CO2: Implement modular and structured code using control structures, arrays, and strings.",
-        "CO3: Manage dynamic memory allocation and pointer-based operations efficiently.",
-        "CO4: Design programs utilizing structures, unions, and persistent file I/O."
+      "CO1: Formulate algorithmic solutions for mathematical and computational tasks.",
+      "CO2: Implement modular and structured code using control structures, arrays, and strings.",
+      "CO3: Manage dynamic memory allocation and pointer-based operations efficiently.",
+      "CO4: Design programs utilizing structures, unions, and persistent file I/O."
     ]
-},
+  },
   "EE100": {
     "code": "EE100",
     "name": "Basics of Electrical Engineering",
@@ -124,28 +124,28 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "2-0-0",
     "credits": 2,
     "modules": [
-        "Module 1: DC Circuit Analysis - Ohm's Law, Kirchhoff's Current and Voltage Laws (KCL, KVL); Mesh and Nodal analysis of resistive networks; Star-Delta and Delta-Star transformations; Network theorems: Superposition Theorem, Thevenin's Theorem, Norton's Theorem, Maximum Power Transfer Theorem.",
-        "Module 2: AC Circuit Analysis - Sinusoidal AC waveforms, Peak, Average, and RMS values, Form factor, Peak factor; Phasor representation; AC response in pure R, L, C, series R-L, R-C, and R-L-C circuits; Impedance, Admittance, Apparent, Active, and Reactive Power, Power Factor, Resonance in series and parallel RLC circuits.",
-        "Module 3: Three-Phase AC Systems & Magnetic Circuits - Generation of 3-phase voltages, Star (Y) and Delta (Δ) connections, Line and Phase voltage/current relationships in balanced systems, Active and Reactive power in balanced 3-phase systems, Two-wattmeter method of power measurement; Magnetic circuits, MMF, Flux, Reluctance, B-H loop, Faraday's laws of electromagnetic induction.",
-        "Module 4: Transformers & Electrical Machines - Working principle and construction of single-phase ideal and practical transformers, EMF equation, Equivalent circuit, Losses, Efficiency and Voltage Regulation; Overview of DC machines (Generator and Motor principles), Induction motors (working principle of 3-phase squirrel-cage motor) and Stepper motors."
+      "Module 1: DC Circuit Analysis - Ohm's Law, Kirchhoff's Current and Voltage Laws (KCL, KVL); Mesh and Nodal analysis of resistive networks; Star-Delta and Delta-Star transformations; Network theorems: Superposition Theorem, Thevenin's Theorem, Norton's Theorem, Maximum Power Transfer Theorem.",
+      "Module 2: AC Circuit Analysis - Sinusoidal AC waveforms, Peak, Average, and RMS values, Form factor, Peak factor; Phasor representation; AC response in pure R, L, C, series R-L, R-C, and R-L-C circuits; Impedance, Admittance, Apparent, Active, and Reactive Power, Power Factor, Resonance in series and parallel RLC circuits.",
+      "Module 3: Three-Phase AC Systems & Magnetic Circuits - Generation of 3-phase voltages, Star (Y) and Delta (Δ) connections, Line and Phase voltage/current relationships in balanced systems, Active and Reactive power in balanced 3-phase systems, Two-wattmeter method of power measurement; Magnetic circuits, MMF, Flux, Reluctance, B-H loop, Faraday's laws of electromagnetic induction.",
+      "Module 4: Transformers & Electrical Machines - Working principle and construction of single-phase ideal and practical transformers, EMF equation, Equivalent circuit, Losses, Efficiency and Voltage Regulation; Overview of DC machines (Generator and Motor principles), Induction motors (working principle of 3-phase squirrel-cage motor) and Stepper motors."
     ],
     "textbooks": [
-        "D. P. Kothari and I. J. Nagrath, \"Basic Electrical Engineering\", 4th Edition, McGraw Hill, 2019.",
-        "Vincent Del Toro, \"Electrical Engineering Fundamentals\", 2nd Edition, Prentice Hall, 1989.",
-        "B. L. Theraja and A. K. Theraja, \"A Textbook of Electrical Technology: Volume I\", S. Chand, 2014.",
-        "L. S. Bobrow, \"Fundamentals of Electrical Engineering\", 2nd Edition, Oxford University Press, 2003."
+      "D. P. Kothari and I. J. Nagrath, \"Basic Electrical Engineering\", 4th Edition, McGraw Hill, 2019.",
+      "Vincent Del Toro, \"Electrical Engineering Fundamentals\", 2nd Edition, Prentice Hall, 1989.",
+      "B. L. Theraja and A. K. Theraja, \"A Textbook of Electrical Technology: Volume I\", S. Chand, 2014.",
+      "L. S. Bobrow, \"Fundamentals of Electrical Engineering\", 2nd Edition, Oxford University Press, 2003."
     ],
     "objectives": [
-        "To introduce fundamental concepts of electrical circuit analysis, AC networks, magnetic circuits, and rotating machines.",
-        "To equip non-electrical and electrical engineers with core circuit design and electrical measurement competencies."
+      "To introduce fundamental concepts of electrical circuit analysis, AC networks, magnetic circuits, and rotating machines.",
+      "To equip non-electrical and electrical engineers with core circuit design and electrical measurement competencies."
     ],
     "outcomes": [
-        "CO1: Apply KCL, KVL, and network theorems to simplify and analyze DC electrical networks.",
-        "CO2: Solve single-phase sinusoidal AC circuits and determine active, reactive, and apparent power.",
-        "CO3: Analyze 3-phase balanced power systems and measure power using two-wattmeter method.",
-        "CO4: Explain construction, equivalent circuits, and efficiency of transformers and electric motors."
+      "CO1: Apply KCL, KVL, and network theorems to simplify and analyze DC electrical networks.",
+      "CO2: Solve single-phase sinusoidal AC circuits and determine active, reactive, and apparent power.",
+      "CO3: Analyze 3-phase balanced power systems and measure power using two-wattmeter method.",
+      "CO4: Explain construction, equivalent circuits, and efficiency of transformers and electric motors."
     ]
-},
+  },
   "ME100": {
     "code": "ME100",
     "name": "Engineering Mechanics",
@@ -156,29 +156,29 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Statics of Particles and Rigid Bodies - Fundamental concepts and principles of mechanics, Newton's laws; Force systems: Concurrent, coplanar, and spatial force systems, Resultant of forces, Lami's theorem; Free body diagrams, Equilibrium of rigid bodies in two and three dimensions; Support reactions.",
-        "Module 2: Trusses, Frames and Friction - Analysis of simple pin-jointed trusses: Method of Joints, Method of Sections; Friction: Laws of dry friction, Coefficient of friction, Angle of repose, Wedge friction, Ladder friction, Belt friction.",
-        "Module 3: Centroid, Center of Gravity & Moment of Inertia - Centroids of lines, areas, and composite figures; Center of gravity of bodies; Theorems of Pappus and Guldinus; Area Moment of Inertia: Parallel axis theorem, Perpendicular axis theorem, Moment of inertia of composite shapes, Polar moment of inertia, Radius of gyration; Mass moment of inertia.",
-        "Module 4: Dynamics: Kinematics & Kinetics of Particles - Rectilinear and curvilinear motion of particles; Normal and tangential acceleration; Newton's second law of motion, D'Alembert's principle, Work-Energy principle, Impulse and Momentum, Law of conservation of momentum, Direct central and oblique impact of elastic bodies.",
-        "Module 5: Kinetics of Rigid Bodies & Virtual Work - Plane kinematics and plane kinetics of rigid bodies; Translation, rotation about a fixed axis, General plane motion; Principle of Virtual Work and stability of equilibrium."
+      "Module 1: Statics of Particles and Rigid Bodies - Fundamental concepts and principles of mechanics, Newton's laws; Force systems: Concurrent, coplanar, and spatial force systems, Resultant of forces, Lami's theorem; Free body diagrams, Equilibrium of rigid bodies in two and three dimensions; Support reactions.",
+      "Module 2: Trusses, Frames and Friction - Analysis of simple pin-jointed trusses: Method of Joints, Method of Sections; Friction: Laws of dry friction, Coefficient of friction, Angle of repose, Wedge friction, Ladder friction, Belt friction.",
+      "Module 3: Centroid, Center of Gravity & Moment of Inertia - Centroids of lines, areas, and composite figures; Center of gravity of bodies; Theorems of Pappus and Guldinus; Area Moment of Inertia: Parallel axis theorem, Perpendicular axis theorem, Moment of inertia of composite shapes, Polar moment of inertia, Radius of gyration; Mass moment of inertia.",
+      "Module 4: Dynamics: Kinematics & Kinetics of Particles - Rectilinear and curvilinear motion of particles; Normal and tangential acceleration; Newton's second law of motion, D'Alembert's principle, Work-Energy principle, Impulse and Momentum, Law of conservation of momentum, Direct central and oblique impact of elastic bodies.",
+      "Module 5: Kinetics of Rigid Bodies & Virtual Work - Plane kinematics and plane kinetics of rigid bodies; Translation, rotation about a fixed axis, General plane motion; Principle of Virtual Work and stability of equilibrium."
     ],
     "textbooks": [
-        "J. L. Meriam and L. G. Kraige, \"Engineering Mechanics: Statics and Dynamics\", 8th Edition, John Wiley, 2015.",
-        "F. P. Beer, E. R. Johnston, and E. R. Eisenberg, \"Vector Mechanics for Engineers: Statics and Dynamics\", 11th Edition, McGraw Hill, 2017.",
-        "I. H. Shames, \"Engineering Mechanics: Statics and Dynamics\", 4th Edition, Pearson Education, 2006.",
-        "S. Timoshenko and D. H. Young, \"Engineering Mechanics\", 5th Edition, McGraw Hill, 2013."
+      "J. L. Meriam and L. G. Kraige, \"Engineering Mechanics: Statics and Dynamics\", 8th Edition, John Wiley, 2015.",
+      "F. P. Beer, E. R. Johnston, and E. R. Eisenberg, \"Vector Mechanics for Engineers: Statics and Dynamics\", 11th Edition, McGraw Hill, 2017.",
+      "I. H. Shames, \"Engineering Mechanics: Statics and Dynamics\", 4th Edition, Pearson Education, 2006.",
+      "S. Timoshenko and D. H. Young, \"Engineering Mechanics\", 5th Edition, McGraw Hill, 2013."
     ],
     "objectives": [
-        "To introduce principles of statics and dynamics of particles and rigid bodies.",
-        "To formulate free-body diagrams, analyze trusses and friction, and solve kinematic/kinetic equations of motion."
+      "To introduce principles of statics and dynamics of particles and rigid bodies.",
+      "To formulate free-body diagrams, analyze trusses and friction, and solve kinematic/kinetic equations of motion."
     ],
     "outcomes": [
-        "CO1: Construct accurate free-body diagrams and calculate reactions for statically determinate systems.",
-        "CO2: Analyze plane trusses using method of joints and method of sections.",
-        "CO3: Determine centroids, center of mass, and area/mass moments of inertia of structural sections.",
-        "CO4: Apply Newton's laws, Work-Energy principle, and Impulse-Momentum theorem to dynamical systems."
+      "CO1: Construct accurate free-body diagrams and calculate reactions for statically determinate systems.",
+      "CO2: Analyze plane trusses using method of joints and method of sections.",
+      "CO3: Determine centroids, center of mass, and area/mass moments of inertia of structural sections.",
+      "CO4: Apply Newton's laws, Work-Energy principle, and Impulse-Momentum theorem to dynamical systems."
     ]
-},
+  },
   "HU100": {
     "code": "HU100",
     "name": "Liberal Arts",
@@ -189,29 +189,29 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-2",
     "credits": 1,
     "modules": [
-        "Module 1: Introduction to Liberal Arts & Humanistic Inquiry - Significance of humanities, social sciences, and creative expression in technological education; Critical thinking, ethical reasoning, empathy, and social consciousness.",
-        "Module 2: Visual Arts, Photography and Cinema - Aesthetics and visual appreciation; Indian visual art traditions, modern painting movements; Fundamentals of cinematography, documentary critique, and visual storytelling.",
-        "Module 3: Music, Performing Arts and Theatre - Indian classical and folk music traditions; World music forms; Dramatic arts, street plays, theatrical improvisation, role-playing, and cultural storytelling.",
-        "Module 4: Literature, Creative Writing and Philosophy - Reading classic short stories, poetry, and philosophical essays; Critical analysis, creative non-fiction, storytelling, and reflective essays.",
-        "Module 5: Heritage, Culture and Environmental Humanities - Cultural heritage of India and Goa; Archaeological conservation; Intersections of technology, ecology, sustainability, and human societies."
+      "Module 1: Introduction to Liberal Arts & Humanistic Inquiry - Significance of humanities, social sciences, and creative expression in technological education; Critical thinking, ethical reasoning, empathy, and social consciousness.",
+      "Module 2: Visual Arts, Photography and Cinema - Aesthetics and visual appreciation; Indian visual art traditions, modern painting movements; Fundamentals of cinematography, documentary critique, and visual storytelling.",
+      "Module 3: Music, Performing Arts and Theatre - Indian classical and folk music traditions; World music forms; Dramatic arts, street plays, theatrical improvisation, role-playing, and cultural storytelling.",
+      "Module 4: Literature, Creative Writing and Philosophy - Reading classic short stories, poetry, and philosophical essays; Critical analysis, creative non-fiction, storytelling, and reflective essays.",
+      "Module 5: Heritage, Culture and Environmental Humanities - Cultural heritage of India and Goa; Archaeological conservation; Intersections of technology, ecology, sustainability, and human societies."
     ],
     "textbooks": [
-        "Martha C. Nussbaum, \"Not for Profit: Why Democracy Needs the Humanities\", Princeton University Press, 2010.",
-        "E. H. Gombrich, \"The Story of Art\", 16th Edition, Phaidon Press, 1995.",
-        "Ananda K. Coomaraswamy, \"The Dance of Shiva: Essays on Indian Art and Culture\", Dover Publications, 2013.",
-        "Selections of contemporary literature, philosophical essays, and cinema studies."
+      "Martha C. Nussbaum, \"Not for Profit: Why Democracy Needs the Humanities\", Princeton University Press, 2010.",
+      "E. H. Gombrich, \"The Story of Art\", 16th Edition, Phaidon Press, 1995.",
+      "Ananda K. Coomaraswamy, \"The Dance of Shiva: Essays on Indian Art and Culture\", Dover Publications, 2013.",
+      "Selections of contemporary literature, philosophical essays, and cinema studies."
     ],
     "objectives": [
-        "To broaden student perspectives beyond technical disciplines through engagement with literature, visual arts, music, philosophy, and cultural heritage.",
-        "To nurture creative imagination, emotional intelligence, ethical sensitivity, and interdisciplinary problem-solving."
+      "To broaden student perspectives beyond technical disciplines through engagement with literature, visual arts, music, philosophy, and cultural heritage.",
+      "To nurture creative imagination, emotional intelligence, ethical sensitivity, and interdisciplinary problem-solving."
     ],
     "outcomes": [
-        "CO1: Appreciate diverse forms of art, music, literature, and philosophical traditions.",
-        "CO2: Develop critical inquiry, aesthetic sensibility, and creative self-expression.",
-        "CO3: Reflect critically on the societal, cultural, and environmental impacts of technology.",
-        "CO4: Communicate creative and humanist ideas effectively in collaborative formats."
+      "CO1: Appreciate diverse forms of art, music, literature, and philosophical traditions.",
+      "CO2: Develop critical inquiry, aesthetic sensibility, and creative self-expression.",
+      "CO3: Reflect critically on the societal, cultural, and environmental impacts of technology.",
+      "CO4: Communicate creative and humanist ideas effectively in collaborative formats."
     ]
-},
+  },
   "PH101": {
     "code": "PH101",
     "name": "Engineering Physics Lab",
@@ -222,25 +222,25 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-3",
     "credits": 2,
     "modules": [
-        "Module 1: Optics & Wave Phenomena Laboratory - 1. Determination of wavelength of sodium light using Newton's rings method; 2. Determination of wavelength of laser light using diffraction grating; 3. Determination of numerical aperture and optical attenuation in optical fiber; 4. Determination of Cauchy's constants of a glass prism using spectrometer; 5. Resolving power of telescope/grating.",
-        "Module 2: Modern Physics & Electromagnetism Laboratory - 6. Determination of Planck's constant using photoelectric cell; 7. Determination of energy bandgap of a semiconductor using reverse-biased p-n junction; 8. Measurement of magnetic field along the axis of current carrying circular coil (Stewart and Gee's experiment); 9. Determination of Hall coefficient and carrier concentration of semiconductor; 10. Study of B-H curve and hysteresis loss of ferromagnetic material."
+      "Module 1: Optics & Wave Phenomena Laboratory - 1. Determination of wavelength of sodium light using Newton's rings method; 2. Determination of wavelength of laser light using diffraction grating; 3. Determination of numerical aperture and optical attenuation in optical fiber; 4. Determination of Cauchy's constants of a glass prism using spectrometer; 5. Resolving power of telescope/grating.",
+      "Module 2: Modern Physics & Electromagnetism Laboratory - 6. Determination of Planck's constant using photoelectric cell; 7. Determination of energy bandgap of a semiconductor using reverse-biased p-n junction; 8. Measurement of magnetic field along the axis of current carrying circular coil (Stewart and Gee's experiment); 9. Determination of Hall coefficient and carrier concentration of semiconductor; 10. Study of B-H curve and hysteresis loss of ferromagnetic material."
     ],
     "textbooks": [
-        "C. L. Arora, \"Practical Physics\", S. Chand Publishing, 2010.",
-        "G. L. Squires, \"Practical Physics\", 4th Edition, Cambridge University Press, 2001.",
-        "Departmental Laboratory Instruction Manual for Engineering Physics Lab, NIT Goa."
+      "C. L. Arora, \"Practical Physics\", S. Chand Publishing, 2010.",
+      "G. L. Squires, \"Practical Physics\", 4th Edition, Cambridge University Press, 2001.",
+      "Departmental Laboratory Instruction Manual for Engineering Physics Lab, NIT Goa."
     ],
     "objectives": [
-        "To provide hands-on experimental validation of key optical, electronic, magnetic, and quantum physical principles.",
-        "To develop rigorous laboratory measurement skills, error analysis, and experimental data interpretation."
+      "To provide hands-on experimental validation of key optical, electronic, magnetic, and quantum physical principles.",
+      "To develop rigorous laboratory measurement skills, error analysis, and experimental data interpretation."
     ],
     "outcomes": [
-        "CO1: Calibrate optical instruments and determine wavelengths, diffraction orders, and fiber parameters.",
-        "CO2: Measure fundamental physical constants such as Planck's constant and semiconductor band gaps.",
-        "CO3: Quantify electromagnetic fields, Hall coefficients, and magnetic hysteresis behavior.",
-        "CO4: Perform systematic uncertainty calculations and present scientific experiment reports."
+      "CO1: Calibrate optical instruments and determine wavelengths, diffraction orders, and fiber parameters.",
+      "CO2: Measure fundamental physical constants such as Planck's constant and semiconductor band gaps.",
+      "CO3: Quantify electromagnetic fields, Hall coefficients, and magnetic hysteresis behavior.",
+      "CO4: Perform systematic uncertainty calculations and present scientific experiment reports."
     ]
-},
+  },
   "CS101": {
     "code": "CS101",
     "name": "Computer Programming Lab",
@@ -251,25 +251,25 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-2",
     "credits": 1,
     "modules": [
-        "Module 1: Basic Constructs, Control Flow & Functions - 1. Programs using basic data types, arithmetic operators, and formatted I/O; 2. Programs on conditional statements (if, if-else, switch-case); 3. Iterative loops (for, while, do-while) for series summation and pattern generation; 4. Programs using modular functions, scope rules, and recursion (GCD, Fibonacci, Towers of Hanoi).",
-        "Module 2: Arrays, Pointers, Structures & File Systems - 5. Programs on 1D and 2D arrays (Matrix multiplication, transpose, search, sorting); 6. String manipulation programs without and with standard library functions; 7. Pointer arithmetic, pass-by-reference, and dynamic memory allocation (malloc, free); 8. Programs using structures, unions, and array of structures; 9. File reading, writing, and record handling; 10. Mini programming project with makefile."
+      "Module 1: Basic Constructs, Control Flow & Functions - 1. Programs using basic data types, arithmetic operators, and formatted I/O; 2. Programs on conditional statements (if, if-else, switch-case); 3. Iterative loops (for, while, do-while) for series summation and pattern generation; 4. Programs using modular functions, scope rules, and recursion (GCD, Fibonacci, Towers of Hanoi).",
+      "Module 2: Arrays, Pointers, Structures & File Systems - 5. Programs on 1D and 2D arrays (Matrix multiplication, transpose, search, sorting); 6. String manipulation programs without and with standard library functions; 7. Pointer arithmetic, pass-by-reference, and dynamic memory allocation (malloc, free); 8. Programs using structures, unions, and array of structures; 9. File reading, writing, and record handling; 10. Mini programming project with makefile."
     ],
     "textbooks": [
-        "Brian W. Kernighan and Dennis M. Ritchie, \"The C Programming Language\", 2nd Edition, Prentice Hall.",
-        "E. Balagurusamy, \"Programming in ANSI C\", 8th Edition, McGraw Hill Education.",
-        "Laboratory Guide on C Programming, Department of Computer Science & Engineering, NIT Goa."
+      "Brian W. Kernighan and Dennis M. Ritchie, \"The C Programming Language\", 2nd Edition, Prentice Hall.",
+      "E. Balagurusamy, \"Programming in ANSI C\", 8th Edition, McGraw Hill Education.",
+      "Laboratory Guide on C Programming, Department of Computer Science & Engineering, NIT Goa."
     ],
     "objectives": [
-        "To gain practical fluency in writing, compiling, debugging, and testing structured C programs.",
-        "To implement algorithms for mathematical computations, matrix operations, sorting, pointer manipulation, and persistent storage."
+      "To gain practical fluency in writing, compiling, debugging, and testing structured C programs.",
+      "To implement algorithms for mathematical computations, matrix operations, sorting, pointer manipulation, and persistent storage."
     ],
     "outcomes": [
-        "CO1: Translate problem statements into executable C programs using appropriate control flow constructs.",
-        "CO2: Implement modular programs using functions, recursive methods, and multi-file structures.",
-        "CO3: Manage dynamic memory and manipulate pointer-based data structures safely.",
-        "CO4: Create applications with file input/output and record-oriented data management."
+      "CO1: Translate problem statements into executable C programs using appropriate control flow constructs.",
+      "CO2: Implement modular programs using functions, recursive methods, and multi-file structures.",
+      "CO3: Manage dynamic memory and manipulate pointer-based data structures safely.",
+      "CO4: Create applications with file input/output and record-oriented data management."
     ]
-},
+  },
   "EE101": {
     "code": "EE101",
     "name": "Basics of Electrical Engineering Lab",
@@ -280,25 +280,25 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-2",
     "credits": 1,
     "modules": [
-        "Module 1: Equipment Familiarisation & Circuit Theorems - 1. Familiarisation with electrical measuring instruments (Ammeter, Voltmeter, Multimeter, Wattmeter, Rheostat, Autotransformer); 2. Experimental verification of Kirchhoff's Current Law (KCL) and Kirchhoff's Voltage Law (KVL); 3. Verification of Thevenin's and Norton's equivalent network theorems; 4. Verification of Superposition and Maximum Power Transfer theorems.",
-        "Module 2: AC Circuits & Electrical Machines - 5. Transient analysis of first-order R-L and R-C circuits; 6. Measurement of active, reactive power, and power factor in single-phase series R-L-C circuits; 7. Measurement of three-phase power using two-wattmeter method in balanced star/delta loads; 8. Determination of voltage regulation and efficiency of single-phase transformer by direct loading."
+      "Module 1: Equipment Familiarisation & Circuit Theorems - 1. Familiarisation with electrical measuring instruments (Ammeter, Voltmeter, Multimeter, Wattmeter, Rheostat, Autotransformer); 2. Experimental verification of Kirchhoff's Current Law (KCL) and Kirchhoff's Voltage Law (KVL); 3. Verification of Thevenin's and Norton's equivalent network theorems; 4. Verification of Superposition and Maximum Power Transfer theorems.",
+      "Module 2: AC Circuits & Electrical Machines - 5. Transient analysis of first-order R-L and R-C circuits; 6. Measurement of active, reactive power, and power factor in single-phase series R-L-C circuits; 7. Measurement of three-phase power using two-wattmeter method in balanced star/delta loads; 8. Determination of voltage regulation and efficiency of single-phase transformer by direct loading."
     ],
     "textbooks": [
-        "D. P. Kothari and I. J. Nagrath, \"Basic Electrical Engineering\", 4th Edition, McGraw Hill Education, 2019.",
-        "Vincent Del Toro, \"Electrical Engineering Fundamentals\", 2nd Edition, Prentice Hall, 1989.",
-        "Laboratory Manual for Basic Electrical Engineering, Department of EEE, NIT Goa."
+      "D. P. Kothari and I. J. Nagrath, \"Basic Electrical Engineering\", 4th Edition, McGraw Hill Education, 2019.",
+      "Vincent Del Toro, \"Electrical Engineering Fundamentals\", 2nd Edition, Prentice Hall, 1989.",
+      "Laboratory Manual for Basic Electrical Engineering, Department of EEE, NIT Goa."
     ],
     "objectives": [
-        "To familiarize students with electrical laboratory equipment, safety measures, components, and instruments.",
-        "To experimentally verify DC/AC network theorems and evaluate performance of single-phase transformers."
+      "To familiarize students with electrical laboratory equipment, safety measures, components, and instruments.",
+      "To experimentally verify DC/AC network theorems and evaluate performance of single-phase transformers."
     ],
     "outcomes": [
-        "CO1: Operate basic electrical laboratory meters, power supplies, and load banks safely.",
-        "CO2: Verify Kirchhoff's laws and circuit theorems on physical electrical networks.",
-        "CO3: Measure electrical power and power factor in single-phase and three-phase circuits.",
-        "CO4: Determine efficiency and voltage regulation of single-phase power transformers."
+      "CO1: Operate basic electrical laboratory meters, power supplies, and load banks safely.",
+      "CO2: Verify Kirchhoff's laws and circuit theorems on physical electrical networks.",
+      "CO3: Measure electrical power and power factor in single-phase and three-phase circuits.",
+      "CO4: Determine efficiency and voltage regulation of single-phase power transformers."
     ]
-},
+  },
   "ME101": {
     "code": "ME101",
     "name": "Engineering Drawing",
@@ -309,27 +309,27 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "1-0-3",
     "credits": 3,
     "modules": [
-        "Module 1: Drawing Instruments, Lines, Lettering & Scales - Drawing instruments and their uses, BIS conventions; Different types of lines, Lettering and dimensioning; Scales: Plain scales, Diagonal scales, Vernier scales; Basics of Orthographic Projection, First and Third angle projection systems.",
-        "Module 2: Projection of Points and Lines - Projection of points in all four quadrants; Projection of straight lines: Parallel to both planes, perpendicular to one plane, inclined to one and parallel to other, inclined to both reference planes; Determination of true length, true inclinations, and traces of lines.",
-        "Module 3: Projection of Planes & Solids - Projection of regular plane figures (triangle, square, pentagon, hexagon, circle) inclined to one or both planes; Projection of regular solids (prisms, pyramids, cylinders, cones) with axis inclined to reference planes; Auxiliary projections.",
-        "Module 4: Sections of Solids, Development of Surfaces & CAD - Section planes perpendicular to one plane and inclined to other, True shape of sections; Development of lateral surfaces of simple and truncated solids (parallel line, radial line methods); Isometric views and isometric projections; Introduction to 2D Computer-Aided Drafting (CAD) tools."
+      "Module 1: Drawing Instruments, Lines, Lettering & Scales - Drawing instruments and their uses, BIS conventions; Different types of lines, Lettering and dimensioning; Scales: Plain scales, Diagonal scales, Vernier scales; Basics of Orthographic Projection, First and Third angle projection systems.",
+      "Module 2: Projection of Points and Lines - Projection of points in all four quadrants; Projection of straight lines: Parallel to both planes, perpendicular to one plane, inclined to one and parallel to other, inclined to both reference planes; Determination of true length, true inclinations, and traces of lines.",
+      "Module 3: Projection of Planes & Solids - Projection of regular plane figures (triangle, square, pentagon, hexagon, circle) inclined to one or both planes; Projection of regular solids (prisms, pyramids, cylinders, cones) with axis inclined to reference planes; Auxiliary projections.",
+      "Module 4: Sections of Solids, Development of Surfaces & CAD - Section planes perpendicular to one plane and inclined to other, True shape of sections; Development of lateral surfaces of simple and truncated solids (parallel line, radial line methods); Isometric views and isometric projections; Introduction to 2D Computer-Aided Drafting (CAD) tools."
     ],
     "textbooks": [
-        "N. D. Bhatt, \"Engineering Drawing: Plane and Solid Geometry\", 53rd Edition, Charotar Publishing House, 2014.",
-        "K. Venugopal and V. Prabhu Raja, \"Engineering Graphics\", 5th Edition, New Age International, 2011.",
-        "D. A. Jolhe, \"Engineering Drawing with an Introduction to AutoCAD\", Tata McGraw Hill, 2008."
+      "N. D. Bhatt, \"Engineering Drawing: Plane and Solid Geometry\", 53rd Edition, Charotar Publishing House, 2014.",
+      "K. Venugopal and V. Prabhu Raja, \"Engineering Graphics\", 5th Edition, New Age International, 2011.",
+      "D. A. Jolhe, \"Engineering Drawing with an Introduction to AutoCAD\", Tata McGraw Hill, 2008."
     ],
     "objectives": [
-        "To teach visualization of 3D engineering components and representation in standard 2D orthographic projections.",
-        "To cultivate precision engineering drafting skills using traditional instruments and modern CAD software."
+      "To teach visualization of 3D engineering components and representation in standard 2D orthographic projections.",
+      "To cultivate precision engineering drafting skills using traditional instruments and modern CAD software."
     ],
     "outcomes": [
-        "CO1: Apply BIS drafting conventions, dimensioning, lettering, and scale constructions.",
-        "CO2: Draw projections of points, straight lines, and planar laminas with true inclinations and traces.",
-        "CO3: Construct projections of regular solids, sectional views, and surface developments.",
-        "CO4: Create isometric views and 2D engineering drawings using CAD drafting tools."
+      "CO1: Apply BIS drafting conventions, dimensioning, lettering, and scale constructions.",
+      "CO2: Draw projections of points, straight lines, and planar laminas with true inclinations and traces.",
+      "CO3: Construct projections of regular solids, sectional views, and surface developments.",
+      "CO4: Create isometric views and 2D engineering drawings using CAD drafting tools."
     ]
-},
+  },
   "MA150": {
     "code": "MA150",
     "name": "Differential Equations and Vector Calculus",
@@ -340,28 +340,28 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-1-0",
     "credits": 4,
     "modules": [
-        "Module 1: First-Order Ordinary Differential Equations - Exact equations, Integrating factors; Linear and Bernoulli equations; Orthogonal trajectories; Equations solvable for p, y, x; Clairaut's equation; Applications to electric circuits, cooling laws, and population dynamics.",
-        "Module 2: Higher-Order Linear ODEs & Series Solutions - Linear differential equations of second and higher order with constant coefficients; Method of undetermined coefficients; Method of variation of parameters; Cauchy-Euler differential equations; System of simultaneous linear differential equations; Power series solutions about ordinary points; Legendre polynomials and Bessel functions.",
-        "Module 3: Partial Differential Equations - Formation of PDEs, First-order linear and non-linear PDEs; Lagrange's method, Charpit's method; Homogeneous and non-homogeneous linear PDEs with constant coefficients; Separation of variables method; One-dimensional wave equation, One-dimensional heat conduction equation, Two-dimensional Laplace equation.",
-        "Module 4: Vector Calculus & Field Integral Theorems - Vector functions of single variable: Velocity, acceleration, curvature, torsion; Gradient of a scalar field, directional derivatives; Divergence and curl of vector fields, physical interpretations; Solenoidal and irrotational fields; Line, Surface, and Volume integrals; Green's theorem in a plane, Gauss Divergence theorem, Stokes' theorem and engineering applications."
+      "Module 1: First-Order Ordinary Differential Equations - Exact equations, Integrating factors; Linear and Bernoulli equations; Orthogonal trajectories; Equations solvable for p, y, x; Clairaut's equation; Applications to electric circuits, cooling laws, and population dynamics.",
+      "Module 2: Higher-Order Linear ODEs & Series Solutions - Linear differential equations of second and higher order with constant coefficients; Method of undetermined coefficients; Method of variation of parameters; Cauchy-Euler differential equations; System of simultaneous linear differential equations; Power series solutions about ordinary points; Legendre polynomials and Bessel functions.",
+      "Module 3: Partial Differential Equations - Formation of PDEs, First-order linear and non-linear PDEs; Lagrange's method, Charpit's method; Homogeneous and non-homogeneous linear PDEs with constant coefficients; Separation of variables method; One-dimensional wave equation, One-dimensional heat conduction equation, Two-dimensional Laplace equation.",
+      "Module 4: Vector Calculus & Field Integral Theorems - Vector functions of single variable: Velocity, acceleration, curvature, torsion; Gradient of a scalar field, directional derivatives; Divergence and curl of vector fields, physical interpretations; Solenoidal and irrotational fields; Line, Surface, and Volume integrals; Green's theorem in a plane, Gauss Divergence theorem, Stokes' theorem and engineering applications."
     ],
     "textbooks": [
-        "G. F. Simmons, \"Differential Equations with Applications and Historical Notes\", 3rd Edition, CRC Press, 2016.",
-        "E. Kreyszig, \"Advanced Engineering Mathematics\", 10th Edition, John Wiley & Sons, 2011.",
-        "R. K. Jain and S. R. K. Iyengar, \"Advanced Engineering Mathematics\", 5th Edition, Narosa Publishing, 2016.",
-        "Dennis G. Zill, \"Advanced Engineering Mathematics\", 6th Edition, Jones & Bartlett Learning, 2018."
+      "G. F. Simmons, \"Differential Equations with Applications and Historical Notes\", 3rd Edition, CRC Press, 2016.",
+      "E. Kreyszig, \"Advanced Engineering Mathematics\", 10th Edition, John Wiley & Sons, 2011.",
+      "R. K. Jain and S. R. K. Iyengar, \"Advanced Engineering Mathematics\", 5th Edition, Narosa Publishing, 2016.",
+      "Dennis G. Zill, \"Advanced Engineering Mathematics\", 6th Edition, Jones & Bartlett Learning, 2018."
     ],
     "objectives": [
-        "To provide rigorous mathematical foundations in ordinary and partial differential equations and vector field calculus.",
-        "To model and analyze physical systems governed by rate equations, wave equations, diffusion, and potential fields."
+      "To provide rigorous mathematical foundations in ordinary and partial differential equations and vector field calculus.",
+      "To model and analyze physical systems governed by rate equations, wave equations, diffusion, and potential fields."
     ],
     "outcomes": [
-        "CO1: Solve first-order and higher-order linear ODEs using analytic and variation of parameters methods.",
-        "CO2: Solve boundary value problems in PDEs using method of separation of variables.",
-        "CO3: Compute gradient, divergence, and curl of physical vector fields.",
-        "CO4: Apply Green's, Gauss Divergence, and Stokes' theorems to line, surface, and volume integral problems."
+      "CO1: Solve first-order and higher-order linear ODEs using analytic and variation of parameters methods.",
+      "CO2: Solve boundary value problems in PDEs using method of separation of variables.",
+      "CO3: Compute gradient, divergence, and curl of physical vector fields.",
+      "CO4: Apply Green's, Gauss Divergence, and Stokes' theorems to line, surface, and volume integral problems."
     ]
-},
+  },
   "CY150": {
     "code": "CY150",
     "name": "Engineering Chemistry",
@@ -372,28 +372,28 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Chemical Thermodynamics & Phase Equilibria - Laws of thermodynamics, entropy change in reversible and irreversible processes, Helmholtz and Gibbs free energy, Maxwell relations, Gibbs-Helmholtz equation; Chemical potential, Clausius-Clapeyron equation; Phase rule, Definitions of terms; One component systems (Water, Sulfur); Two component systems: Lead-Silver system, Eutectic mixtures, Solid solutions.",
-        "Module 2: Electrochemistry & Corrosion Science - Nernst equation, Electrochemical cells, EMF measurement, Standard electrodes (Calomel electrode, Glass electrode); Batteries: Lead-acid, Lithium-ion battery, Fuel cells (H2-O2 fuel cell); Corrosion: Dry and wet corrosion mechanisms, Galvanic, Pitting, and Stress corrosion; Factors affecting corrosion; Protective coatings, Cathodic protection (Sacrificial anode and Impressed current methods).",
-        "Module 3: Polymers, Composites & Nanomaterials - Classification of polymers, Polymerization mechanisms (Addition, Condensation, Coordination); Thermoplastics vs Thermosets; Conducting polymers (Polyaniline, Polypyrrole); Biodegradable polymers (PLA, PGA); Fiber-reinforced polymers (FRP); Nanomaterials: Carbon nanotubes (SWCNTs, MWCNTs), Graphene, Synthesis (Sol-gel, CVD) and engineering applications.",
-        "Module 4: Water Technology & Instrumental Analysis - Hardness of water (Temporary and Permanent), EDTA method, Boiler troubles: Scale, Sludge, Priming, Foaming, Caustic embrittlement; Water treatment: Zeolite process, Ion-exchange demineralization, Reverse Osmosis (RO); Principles and applications of UV-Visible spectroscopy, Fourier Transform Infrared spectroscopy (FTIR), and High Performance Liquid Chromatography (HPLC)."
+      "Module 1: Chemical Thermodynamics & Phase Equilibria - Laws of thermodynamics, entropy change in reversible and irreversible processes, Helmholtz and Gibbs free energy, Maxwell relations, Gibbs-Helmholtz equation; Chemical potential, Clausius-Clapeyron equation; Phase rule, Definitions of terms; One component systems (Water, Sulfur); Two component systems: Lead-Silver system, Eutectic mixtures, Solid solutions.",
+      "Module 2: Electrochemistry & Corrosion Science - Nernst equation, Electrochemical cells, EMF measurement, Standard electrodes (Calomel electrode, Glass electrode); Batteries: Lead-acid, Lithium-ion battery, Fuel cells (H2-O2 fuel cell); Corrosion: Dry and wet corrosion mechanisms, Galvanic, Pitting, and Stress corrosion; Factors affecting corrosion; Protective coatings, Cathodic protection (Sacrificial anode and Impressed current methods).",
+      "Module 3: Polymers, Composites & Nanomaterials - Classification of polymers, Polymerization mechanisms (Addition, Condensation, Coordination); Thermoplastics vs Thermosets; Conducting polymers (Polyaniline, Polypyrrole); Biodegradable polymers (PLA, PGA); Fiber-reinforced polymers (FRP); Nanomaterials: Carbon nanotubes (SWCNTs, MWCNTs), Graphene, Synthesis (Sol-gel, CVD) and engineering applications.",
+      "Module 4: Water Technology & Instrumental Analysis - Hardness of water (Temporary and Permanent), EDTA method, Boiler troubles: Scale, Sludge, Priming, Foaming, Caustic embrittlement; Water treatment: Zeolite process, Ion-exchange demineralization, Reverse Osmosis (RO); Principles and applications of UV-Visible spectroscopy, Fourier Transform Infrared spectroscopy (FTIR), and High Performance Liquid Chromatography (HPLC)."
     ],
     "textbooks": [
-        "P. C. Jain and Monika Jain, \"Engineering Chemistry\", 17th Edition, Dhanpat Rai Publishing, 2018.",
-        "S. S. Dara and S. S. Umare, \"A Textbook of Engineering Chemistry\", 12th Edition, S. Chand Publishing, 2014.",
-        "Shashi Chawla, \"A Text Book of Engineering Chemistry\", Dhanpat Rai & Co., 2013.",
-        "O. G. Palanna, \"Engineering Chemistry\", 2nd Edition, Tata McGraw Hill, 2017."
+      "P. C. Jain and Monika Jain, \"Engineering Chemistry\", 17th Edition, Dhanpat Rai Publishing, 2018.",
+      "S. S. Dara and S. S. Umare, \"A Textbook of Engineering Chemistry\", 12th Edition, S. Chand Publishing, 2014.",
+      "Shashi Chawla, \"A Text Book of Engineering Chemistry\", Dhanpat Rai & Co., 2013.",
+      "O. G. Palanna, \"Engineering Chemistry\", 2nd Edition, Tata McGraw Hill, 2017."
     ],
     "objectives": [
-        "To introduce fundamental concepts of chemical thermodynamics, electrochemistry, corrosion mitigation, advanced materials, and instrumental analysis.",
-        "To apply chemical engineering principles to water treatment, battery storage, and structural materials."
+      "To introduce fundamental concepts of chemical thermodynamics, electrochemistry, corrosion mitigation, advanced materials, and instrumental analysis.",
+      "To apply chemical engineering principles to water treatment, battery storage, and structural materials."
     ],
     "outcomes": [
-        "CO1: Apply phase diagrams and thermodynamics to predict alloy behavior and material phase stability.",
-        "CO2: Formulate electrochemical mechanisms of energy storage devices and design corrosion prevention schemes.",
-        "CO3: Select appropriate polymers, composites, and nanomaterials for structural and electronic applications.",
-        "CO4: Analyze water quality parameters and employ spectroscopic techniques for material characterization."
+      "CO1: Apply phase diagrams and thermodynamics to predict alloy behavior and material phase stability.",
+      "CO2: Formulate electrochemical mechanisms of energy storage devices and design corrosion prevention schemes.",
+      "CO3: Select appropriate polymers, composites, and nanomaterials for structural and electronic applications.",
+      "CO4: Analyze water quality parameters and employ spectroscopic techniques for material characterization."
     ]
-},
+  },
   "HU150": {
     "code": "HU150",
     "name": "Professional Communication",
@@ -404,28 +404,28 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "2-0-3",
     "credits": 4,
     "modules": [
-        "Module 1: Principles of Communication & LSRW Skills - Communication process, models, channels, barriers to effective communication, strategies to overcome barriers; Listening: Active vs passive listening, barriers to listening, taking lecture notes; Speaking: Phonetics, pronunciation, stress, intonation, fluency development.",
-        "Module 2: Reading & Vocabulary Enrichment - Techniques for reading: Skimming, scanning, intensive and extensive reading; Reading comprehension of scientific and technical texts; Vocabulary building: Word formation (affixes, prefixes, roots), Synonyms, Antonyms, Collocations, Idioms, Technical terminology.",
-        "Module 3: Technical Writing & Documentation - Paragraph writing, coherence and cohesion, transitional devices; Formal correspondence: Business letters, Email etiquette, Memo, Notices, Circulars; Technical reports: Structure, formal research reports, progress reports, feasibility studies; Technical proposals; Curriculum Vitae (CV) and resume writing with cover letters.",
-        "Module 4: Oral Presentations & Professional Interactions - Planning and structuring technical presentations, visual aids design, slide presentation hygiene, body language, overcoming stage fear; Group discussions: Dynamics, roles, leadership, negotiation skills; Interview techniques: Types of job interviews, mock interviews, answering behavioral and technical questions.",
-        "Module 5: Communication Lab Practice - Audio-visual lab sessions: Pronunciation practice, accent neutralization, impromptu speaking, elevator pitches, recorded mock presentations with peer feedback, business meetings simulation."
+      "Module 1: Principles of Communication & LSRW Skills - Communication process, models, channels, barriers to effective communication, strategies to overcome barriers; Listening: Active vs passive listening, barriers to listening, taking lecture notes; Speaking: Phonetics, pronunciation, stress, intonation, fluency development.",
+      "Module 2: Reading & Vocabulary Enrichment - Techniques for reading: Skimming, scanning, intensive and extensive reading; Reading comprehension of scientific and technical texts; Vocabulary building: Word formation (affixes, prefixes, roots), Synonyms, Antonyms, Collocations, Idioms, Technical terminology.",
+      "Module 3: Technical Writing & Documentation - Paragraph writing, coherence and cohesion, transitional devices; Formal correspondence: Business letters, Email etiquette, Memo, Notices, Circulars; Technical reports: Structure, formal research reports, progress reports, feasibility studies; Technical proposals; Curriculum Vitae (CV) and resume writing with cover letters.",
+      "Module 4: Oral Presentations & Professional Interactions - Planning and structuring technical presentations, visual aids design, slide presentation hygiene, body language, overcoming stage fear; Group discussions: Dynamics, roles, leadership, negotiation skills; Interview techniques: Types of job interviews, mock interviews, answering behavioral and technical questions.",
+      "Module 5: Communication Lab Practice - Audio-visual lab sessions: Pronunciation practice, accent neutralization, impromptu speaking, elevator pitches, recorded mock presentations with peer feedback, business meetings simulation."
     ],
     "textbooks": [
-        "Meenakshi Raman and Sangeeta Sharma, \"Technical Communication: Principles and Practice\", 3rd Edition, Oxford University Press, 2015.",
-        "M. Ashraf Rizvi, \"Effective Technical Communication\", 2nd Edition, McGraw Hill Education, 2017.",
-        "Andrea J. Rutherfoord, \"Basic Communication Skills for Technology\", 2nd Edition, Pearson Education, 2007."
+      "Meenakshi Raman and Sangeeta Sharma, \"Technical Communication: Principles and Practice\", 3rd Edition, Oxford University Press, 2015.",
+      "M. Ashraf Rizvi, \"Effective Technical Communication\", 2nd Edition, McGraw Hill Education, 2017.",
+      "Andrea J. Rutherfoord, \"Basic Communication Skills for Technology\", 2nd Edition, Pearson Education, 2007."
     ],
     "objectives": [
-        "To enhance students' English communication competency across Listening, Speaking, Reading, and Writing (LSRW).",
-        "To develop professional technical writing, presentation mastery, collaborative interpersonal skills, and interview readiness."
+      "To enhance students' English communication competency across Listening, Speaking, Reading, and Writing (LSRW).",
+      "To develop professional technical writing, presentation mastery, collaborative interpersonal skills, and interview readiness."
     ],
     "outcomes": [
-        "CO1: Communicate fluently and with accurate phonetic pronunciation in formal and interpersonal contexts.",
-        "CO2: Read and critically interpret complex scientific, technical, and analytical documents.",
-        "CO3: Draft professional business letters, technical reports, CVs, and proposals adhering to industry standards.",
-        "CO4: Deliver impactful technical presentations and participate constructively in group discussions and interviews."
+      "CO1: Communicate fluently and with accurate phonetic pronunciation in formal and interpersonal contexts.",
+      "CO2: Read and critically interpret complex scientific, technical, and analytical documents.",
+      "CO3: Draft professional business letters, technical reports, CVs, and proposals adhering to industry standards.",
+      "CO4: Deliver impactful technical presentations and participate constructively in group discussions and interviews."
     ]
-},
+  },
   "EC150": {
     "code": "EC150",
     "name": "Basics of Electronics Engineering",
@@ -436,28 +436,28 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "2-0-0",
     "credits": 2,
     "modules": [
-        "Module 1: Semiconductor Diodes & Power Supplies - Intrinsic and extrinsic semiconductors, energy band diagrams; P-N junction diode: Forward and reverse bias characteristics, ideal vs practical diode, temperature effects; Zener diode: breakdown mechanisms (Avalanche and Zener), Zener diode as a voltage regulator; Diode applications: Half-wave and Full-wave rectifiers (Center-tapped and Bridge), Rectifier efficiency, Ripple factor, Capacitor filter circuits.",
-        "Module 2: Bipolar Junction Transistors (BJT) - Construction and physical operation of BJT, NPN and PNP configurations; Common Base (CB), Common Emitter (CE), Common Collector (CC) configurations, Input and output characteristics; Active, Saturation, and Cut-off regions; Current gain parameters (alpha, beta, gamma); DC load line and operating point (Q-point); BJT biasing circuits: Fixed bias, Collector-to-base bias, Voltage divider bias; BJT as a switch and as an amplifier.",
-        "Module 3: Field Effect Transistors (FET) & Operational Amplifiers - Junction Field Effect Transistor (JFET): Construction, drain and transfer characteristics; MOSFET: Depletion and Enhancement type MOSFETs, V-I characteristics; Introduction to Operational Amplifiers (Op-Amp): Ideal Op-Amp characteristics, Virtual ground concept; Inverting and non-inverting amplifier configurations, Voltage follower, Summing amplifier, Difference amplifier.",
-        "Module 4: Digital Electronics Fundamentals - Number systems: Binary, Octal, Decimal, Hexadecimal; Number conversions; Binary arithmetic; Logic gates: AND, OR, NOT, NAND, NOR, XOR, XNOR; Universal gates; Boolean algebra: Laws and theorems, De Morgan's laws, Boolean expression simplification; Introduction to Combinational logic: Half Adder and Full Adder."
+      "Module 1: Semiconductor Diodes & Power Supplies - Intrinsic and extrinsic semiconductors, energy band diagrams; P-N junction diode: Forward and reverse bias characteristics, ideal vs practical diode, temperature effects; Zener diode: breakdown mechanisms (Avalanche and Zener), Zener diode as a voltage regulator; Diode applications: Half-wave and Full-wave rectifiers (Center-tapped and Bridge), Rectifier efficiency, Ripple factor, Capacitor filter circuits.",
+      "Module 2: Bipolar Junction Transistors (BJT) - Construction and physical operation of BJT, NPN and PNP configurations; Common Base (CB), Common Emitter (CE), Common Collector (CC) configurations, Input and output characteristics; Active, Saturation, and Cut-off regions; Current gain parameters (alpha, beta, gamma); DC load line and operating point (Q-point); BJT biasing circuits: Fixed bias, Collector-to-base bias, Voltage divider bias; BJT as a switch and as an amplifier.",
+      "Module 3: Field Effect Transistors (FET) & Operational Amplifiers - Junction Field Effect Transistor (JFET): Construction, drain and transfer characteristics; MOSFET: Depletion and Enhancement type MOSFETs, V-I characteristics; Introduction to Operational Amplifiers (Op-Amp): Ideal Op-Amp characteristics, Virtual ground concept; Inverting and non-inverting amplifier configurations, Voltage follower, Summing amplifier, Difference amplifier.",
+      "Module 4: Digital Electronics Fundamentals - Number systems: Binary, Octal, Decimal, Hexadecimal; Number conversions; Binary arithmetic; Logic gates: AND, OR, NOT, NAND, NOR, XOR, XNOR; Universal gates; Boolean algebra: Laws and theorems, De Morgan's laws, Boolean expression simplification; Introduction to Combinational logic: Half Adder and Full Adder."
     ],
     "textbooks": [
-        "Robert L. Boylestad and Louis Nashelsky, \"Electronic Devices and Circuit Theory\", 11th Edition, Pearson Education, 2013.",
-        "David A. Bell, \"Electronic Devices and Circuits\", 5th Edition, Oxford University Press, 2008.",
-        "M. Morris Mano and Michael D. Ciletti, \"Digital Design: With an Introduction to the Verilog HDL\", 5th Edition, Pearson, 2012.",
-        "D. Roy Choudhury and Shail B. Jain, \"Linear Integrated Circuits\", 5th Edition, New Age International, 2018."
+      "Robert L. Boylestad and Louis Nashelsky, \"Electronic Devices and Circuit Theory\", 11th Edition, Pearson Education, 2013.",
+      "David A. Bell, \"Electronic Devices and Circuits\", 5th Edition, Oxford University Press, 2008.",
+      "M. Morris Mano and Michael D. Ciletti, \"Digital Design: With an Introduction to the Verilog HDL\", 5th Edition, Pearson, 2012.",
+      "D. Roy Choudhury and Shail B. Jain, \"Linear Integrated Circuits\", 5th Edition, New Age International, 2018."
     ],
     "objectives": [
-        "To introduce fundamental semiconductor devices, diode circuits, transistor configurations, operational amplifiers, and digital logic gates.",
-        "To provide a conceptual bridge between solid-state device physics and modern digital/analog electronic circuit applications."
+      "To introduce fundamental semiconductor devices, diode circuits, transistor configurations, operational amplifiers, and digital logic gates.",
+      "To provide a conceptual bridge between solid-state device physics and modern digital/analog electronic circuit applications."
     ],
     "outcomes": [
-        "CO1: Explain the operational physics and characteristics of semiconductor and Zener diodes in power supply rectification.",
-        "CO2: Analyze BJT and FET biasing, load-line configurations, and transistor amplifier operating points.",
-        "CO3: Design basic linear analog signal processing circuits using operational amplifiers.",
-        "CO4: Simplify Boolean algebra expressions and construct combinational logic arithmetic circuits."
+      "CO1: Explain the operational physics and characteristics of semiconductor and Zener diodes in power supply rectification.",
+      "CO2: Analyze BJT and FET biasing, load-line configurations, and transistor amplifier operating points.",
+      "CO3: Design basic linear analog signal processing circuits using operational amplifiers.",
+      "CO4: Simplify Boolean algebra expressions and construct combinational logic arithmetic circuits."
     ]
-},
+  },
   "ME150": {
     "code": "ME150",
     "name": "Basics of Mechanical and Civil Engineering",
@@ -468,28 +468,28 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Thermal Engineering & Energy Conversion (Part A: Mechanical) - Laws of thermodynamics, Open and closed systems, Concept of enthalpy and entropy; Steam generation: Boilers (Water tube and Fire tube boilers), Steam turbines; Internal Combustion (IC) Engines: 2-stroke and 4-stroke petrol and diesel engines, Otto and Diesel cycles, Working principles, Engine components, Indicator diagrams, Thermal efficiency.",
-        "Module 2: Manufacturing Processes & Machine Elements (Part A: Mechanical) - Casting processes: Sand casting, Pattern types, Moulding sand; Metal forming: Forging, Rolling, Extrusion; Metal joining: Welding (Arc welding, Gas welding), Soldering, Brazing; Machining operations: Lathe, Drilling, Milling machines; Power transmission elements: Belts, Ropes, Chains, and Gear drives, Velocity ratio.",
-        "Module 3: Civil Engineering Materials & Structural Systems (Part B: Civil) - Building materials: Bricks, Stones, Cement (OPC properties, manufacture), Mortar, Concrete (Ingredients, water-cement ratio, workability, curing, compressive strength), Reinforcing steel; Structural components of buildings: Substructure (shallow and deep foundations), Superstructure (columns, beams, slabs, lintels, roofs); Load bearing vs framed structures.",
-        "Module 4: Surveying & Environmental Infrastructure (Part B: Civil) - Surveying: Objectives, principles of surveying, Classification; Chain and Tape surveying, Compass surveying, Prismatic compass, Bearings, Local attraction; Levelling: Concepts, Dumpy level, Levelling staff, Reduced levels, Height of Instrument and Rise & Fall methods; Overview of water supply, sanitation, green buildings, and transportation infrastructure."
+      "Module 1: Thermal Engineering & Energy Conversion (Part A: Mechanical) - Laws of thermodynamics, Open and closed systems, Concept of enthalpy and entropy; Steam generation: Boilers (Water tube and Fire tube boilers), Steam turbines; Internal Combustion (IC) Engines: 2-stroke and 4-stroke petrol and diesel engines, Otto and Diesel cycles, Working principles, Engine components, Indicator diagrams, Thermal efficiency.",
+      "Module 2: Manufacturing Processes & Machine Elements (Part A: Mechanical) - Casting processes: Sand casting, Pattern types, Moulding sand; Metal forming: Forging, Rolling, Extrusion; Metal joining: Welding (Arc welding, Gas welding), Soldering, Brazing; Machining operations: Lathe, Drilling, Milling machines; Power transmission elements: Belts, Ropes, Chains, and Gear drives, Velocity ratio.",
+      "Module 3: Civil Engineering Materials & Structural Systems (Part B: Civil) - Building materials: Bricks, Stones, Cement (OPC properties, manufacture), Mortar, Concrete (Ingredients, water-cement ratio, workability, curing, compressive strength), Reinforcing steel; Structural components of buildings: Substructure (shallow and deep foundations), Superstructure (columns, beams, slabs, lintels, roofs); Load bearing vs framed structures.",
+      "Module 4: Surveying & Environmental Infrastructure (Part B: Civil) - Surveying: Objectives, principles of surveying, Classification; Chain and Tape surveying, Compass surveying, Prismatic compass, Bearings, Local attraction; Levelling: Concepts, Dumpy level, Levelling staff, Reduced levels, Height of Instrument and Rise & Fall methods; Overview of water supply, sanitation, green buildings, and transportation infrastructure."
     ],
     "textbooks": [
-        "P. K. Nag, \"Basic and Applied Thermodynamics\", 2nd Edition, Tata McGraw Hill, 2010.",
-        "P. N. Rao, \"Manufacturing Technology: Foundry, Forming and Welding\", 4th Edition, McGraw Hill, 2013.",
-        "B. C. Punmia, Ashok K. Jain, and Arun K. Jain, \"Basic Civil Engineering\", Laxmi Publications, 2003.",
-        "S. Ramamrutham, \"Basic Civil Engineering\", Dhanpat Rai Publishing Co., 2013."
+      "P. K. Nag, \"Basic and Applied Thermodynamics\", 2nd Edition, Tata McGraw Hill, 2010.",
+      "P. N. Rao, \"Manufacturing Technology: Foundry, Forming and Welding\", 4th Edition, McGraw Hill, 2013.",
+      "B. C. Punmia, Ashok K. Jain, and Arun K. Jain, \"Basic Civil Engineering\", Laxmi Publications, 2003.",
+      "S. Ramamrutham, \"Basic Civil Engineering\", Dhanpat Rai Publishing Co., 2013."
     ],
     "objectives": [
-        "To provide students with a foundational understanding of thermal systems, manufacturing processes, building materials, structural components, and surveying techniques.",
-        "To foster interdisciplinary comprehension of engineering systems combining mechanical prime movers and civil infrastructures."
+      "To provide students with a foundational understanding of thermal systems, manufacturing processes, building materials, structural components, and surveying techniques.",
+      "To foster interdisciplinary comprehension of engineering systems combining mechanical prime movers and civil infrastructures."
     ],
     "outcomes": [
-        "CO1: Explain working principles of thermal boilers, IC engines, and refrigeration systems.",
-        "CO2: Describe primary manufacturing processes including casting, forming, machining, and welding.",
-        "CO3: Identify properties of building materials and understand load transfer in structural building components.",
-        "CO4: Apply linear and angular surveying principles to calculate bearings and ground elevation levels."
+      "CO1: Explain working principles of thermal boilers, IC engines, and refrigeration systems.",
+      "CO2: Describe primary manufacturing processes including casting, forming, machining, and welding.",
+      "CO3: Identify properties of building materials and understand load transfer in structural building components.",
+      "CO4: Apply linear and angular surveying principles to calculate bearings and ground elevation levels."
     ]
-},
+  },
   "HU151": {
     "code": "HU151",
     "name": "Health & Happiness",
@@ -500,28 +500,28 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "2-0-0",
     "credits": 2,
     "modules": [
-        "Module 1: Holistic Health & Human Well-being - Concept of holistic health: Physical, mental, emotional, social, and spiritual dimensions; Understanding the self, self-awareness, and emotional regulation; Lifestyle diseases (Hypertension, Diabetes, Obesity), preventive health practices, circadian rhythms, sleep hygiene.",
-        "Module 2: Nutrition, Dietetics & Indian Knowledge Systems (IKS) - Nutritional science: Macronutrients and micronutrients, Balanced diet, Hydration; Traditional Indian dietary principles: Ahara, concepts of Satvik, Rajasik, and Tamasik foods; Seasonal dietary adjustments (Ritucharya); Gut-brain axis and dietary impact on mental health.",
-        "Module 3: Stress Management & Yogic Science - Stress: Causes, physiological and psychological manifestations, coping mechanisms; Principles and practices of Yoga: Asanas for physical flexibility and strength, Pranayama (breath regulation: Anulom-Vilom, Bhramari, Kapalabhati); Mindfulness, relaxation techniques, Yoga Nidra.",
-        "Module 4: Happiness, Positive Psychology & Social Harmony - Theories of happiness and subjective well-being; Gratitude, resilience, optimism, empathy, and active listening; Harmonious relationships: Family, peers, society, and nature; Value education, professional ethics, human dignity, and work-life balance."
+      "Module 1: Holistic Health & Human Well-being - Concept of holistic health: Physical, mental, emotional, social, and spiritual dimensions; Understanding the self, self-awareness, and emotional regulation; Lifestyle diseases (Hypertension, Diabetes, Obesity), preventive health practices, circadian rhythms, sleep hygiene.",
+      "Module 2: Nutrition, Dietetics & Indian Knowledge Systems (IKS) - Nutritional science: Macronutrients and micronutrients, Balanced diet, Hydration; Traditional Indian dietary principles: Ahara, concepts of Satvik, Rajasik, and Tamasik foods; Seasonal dietary adjustments (Ritucharya); Gut-brain axis and dietary impact on mental health.",
+      "Module 3: Stress Management & Yogic Science - Stress: Causes, physiological and psychological manifestations, coping mechanisms; Principles and practices of Yoga: Asanas for physical flexibility and strength, Pranayama (breath regulation: Anulom-Vilom, Bhramari, Kapalabhati); Mindfulness, relaxation techniques, Yoga Nidra.",
+      "Module 4: Happiness, Positive Psychology & Social Harmony - Theories of happiness and subjective well-being; Gratitude, resilience, optimism, empathy, and active listening; Harmonious relationships: Family, peers, society, and nature; Value education, professional ethics, human dignity, and work-life balance."
     ],
     "textbooks": [
-        "B. K. S. Iyengar, \"Light on Yoga\", HarperCollins Publishers, 2006.",
-        "R. R. Gaur, R. Asthana, and G. P. Bagaria, \"A Foundation Course in Human Values and Professional Ethics\", Excel Books, 2010.",
-        "Swami Vivekananda, \"Raja Yoga\", Advaita Ashrama, Kolkata, 2011.",
-        "Martin Seligman, \"Flourish: A Visionary New Understanding of Happiness and Well-being\", Free Press, 2011."
+      "B. K. S. Iyengar, \"Light on Yoga\", HarperCollins Publishers, 2006.",
+      "R. R. Gaur, R. Asthana, and G. P. Bagaria, \"A Foundation Course in Human Values and Professional Ethics\", Excel Books, 2010.",
+      "Swami Vivekananda, \"Raja Yoga\", Advaita Ashrama, Kolkata, 2011.",
+      "Martin Seligman, \"Flourish: A Visionary New Understanding of Happiness and Well-being\", Free Press, 2011."
     ],
     "objectives": [
-        "To instill holistic awareness of physical health, nutrition, mental well-being, yogic science, and emotional resilience.",
-        "To connect Indian Knowledge Systems (IKS) with modern psychological and physiological health paradigms."
+      "To instill holistic awareness of physical health, nutrition, mental well-being, yogic science, and emotional resilience.",
+      "To connect Indian Knowledge Systems (IKS) with modern psychological and physiological health paradigms."
     ],
     "outcomes": [
-        "CO1: Assess personal physical, nutritional, and emotional wellness habits objectively.",
-        "CO2: Implement yogic asanas, pranayama, and stress-reduction routines in daily student life.",
-        "CO3: Practice mindful lifestyle routines, balanced nutrition, and positive psychology for sustained happiness.",
-        "CO4: Foster empathetic interpersonal relationships, social harmony, and professional ethical commitments."
+      "CO1: Assess personal physical, nutritional, and emotional wellness habits objectively.",
+      "CO2: Implement yogic asanas, pranayama, and stress-reduction routines in daily student life.",
+      "CO3: Practice mindful lifestyle routines, balanced nutrition, and positive psychology for sustained happiness.",
+      "CO4: Foster empathetic interpersonal relationships, social harmony, and professional ethical commitments."
     ]
-},
+  },
   "CY151": {
     "code": "CY151",
     "name": "Engineering Chemistry Lab",
@@ -532,25 +532,25 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-3",
     "credits": 2,
     "modules": [
-        "Module 1: Volumetric & Quantitative Chemical Analysis - 1. Determination of total, permanent, and temporary hardness of water sample by complexometric EDTA titration; 2. Determination of dissolved oxygen (DO) in water sample by Winkler's iodometric method; 3. Estimation of Iron in hematite ore by potassium dichromate redox titration; 4. Estimation of copper in brass alloy by iodometric titration; 5. Determination of percentage purity of commercial soda ash.",
-        "Module 2: Instrumental & Analytical Chemistry - 6. Conductometric titration of strong acid against strong base (HCl vs NaOH); 7. Determination of strength of weak acid using pH-metric titration; 8. Determination of viscosity of lubricating oil using Ostwald viscometer / Redwood viscometer; 9. Determination of flash and fire points of fuels using Pensky-Martens apparatus; 10. Colorimetric estimation of transition metal ions using UV-Visible spectrophotometer."
+      "Module 1: Volumetric & Quantitative Chemical Analysis - 1. Determination of total, permanent, and temporary hardness of water sample by complexometric EDTA titration; 2. Determination of dissolved oxygen (DO) in water sample by Winkler's iodometric method; 3. Estimation of Iron in hematite ore by potassium dichromate redox titration; 4. Estimation of copper in brass alloy by iodometric titration; 5. Determination of percentage purity of commercial soda ash.",
+      "Module 2: Instrumental & Analytical Chemistry - 6. Conductometric titration of strong acid against strong base (HCl vs NaOH); 7. Determination of strength of weak acid using pH-metric titration; 8. Determination of viscosity of lubricating oil using Ostwald viscometer / Redwood viscometer; 9. Determination of flash and fire points of fuels using Pensky-Martens apparatus; 10. Colorimetric estimation of transition metal ions using UV-Visible spectrophotometer."
     ],
     "textbooks": [
-        "J. Mendham, R. C. Denney, J. D. Barnes, and M. Thomas, \"Vogel's Quantitative Chemical Analysis\", 6th Edition, Pearson, 2000.",
-        "Sunita Rattan, \"Experiments in Applied Chemistry\", S. K. Kataria & Sons, 2015.",
-        "Laboratory Manual for Engineering Chemistry, Department of Chemistry, NIT Goa."
+      "J. Mendham, R. C. Denney, J. D. Barnes, and M. Thomas, \"Vogel's Quantitative Chemical Analysis\", 6th Edition, Pearson, 2000.",
+      "Sunita Rattan, \"Experiments in Applied Chemistry\", S. K. Kataria & Sons, 2015.",
+      "Laboratory Manual for Engineering Chemistry, Department of Chemistry, NIT Goa."
     ],
     "objectives": [
-        "To train students in precision volumetric, complexometric, and redox quantitative chemical titrations.",
-        "To operate analytical instruments including pH meters, conductivity meters, viscometers, and spectrophotometers."
+      "To train students in precision volumetric, complexometric, and redox quantitative chemical titrations.",
+      "To operate analytical instruments including pH meters, conductivity meters, viscometers, and spectrophotometers."
     ],
     "outcomes": [
-        "CO1: Quantify water hardness, dissolved oxygen, and mineral concentrations in environmental samples.",
-        "CO2: Perform conductometric and potentiometric acid-base titrations with accurate equivalence point detection.",
-        "CO3: Measure physical properties of lubricating oils and fuels including viscosity and flash/fire points.",
-        "CO4: Execute spectrophotometric estimations and maintain rigorous chemical laboratory safety standards."
+      "CO1: Quantify water hardness, dissolved oxygen, and mineral concentrations in environmental samples.",
+      "CO2: Perform conductometric and potentiometric acid-base titrations with accurate equivalence point detection.",
+      "CO3: Measure physical properties of lubricating oils and fuels including viscosity and flash/fire points.",
+      "CO4: Execute spectrophotometric estimations and maintain rigorous chemical laboratory safety standards."
     ]
-},
+  },
   "EC151": {
     "code": "EC151",
     "name": "Basics of Electronics Engineering Lab",
@@ -561,25 +561,25 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-3",
     "credits": 1,
     "modules": [
-        "Module 1: Component Familiarisation & Diode Applications - 1. Identification and testing of active/passive electronic components (resistors, capacitors, inductors, diodes, transistors); 2. Operation of laboratory test equipment: Regulated DC Power Supply, Digital Multimeter, Function Generator, and Digital Storage Oscilloscope (DSO); 3. Measurement of AC/DC voltage, current, frequency, and phase; 4. V-I characteristics of P-N junction diode and Zener diode; 5. Design and testing of Half-wave and Full-wave bridge rectifiers with capacitor filters; 6. Zener diode voltage regulator circuit.",
-        "Module 2: Transistors, Op-Amps & Digital Logic - 7. Input and output characteristics of Bipolar Junction Transistor (BJT) in Common Emitter (CE) configuration; 8. Design of BJT as an electronic switch; 9. Operational Amplifier circuits: Inverting and Non-inverting amplifiers using IC 741, Voltage follower, Summing amplifier; 10. Verification of truth tables of basic logic gates (AND, OR, NOT, NAND, NOR, XOR); 11. Realization of basic logic gates using universal NAND/NOR gates; 12. Design and verification of Half Adder and Full Adder circuits."
+      "Module 1: Component Familiarisation & Diode Applications - 1. Identification and testing of active/passive electronic components (resistors, capacitors, inductors, diodes, transistors); 2. Operation of laboratory test equipment: Regulated DC Power Supply, Digital Multimeter, Function Generator, and Digital Storage Oscilloscope (DSO); 3. Measurement of AC/DC voltage, current, frequency, and phase; 4. V-I characteristics of P-N junction diode and Zener diode; 5. Design and testing of Half-wave and Full-wave bridge rectifiers with capacitor filters; 6. Zener diode voltage regulator circuit.",
+      "Module 2: Transistors, Op-Amps & Digital Logic - 7. Input and output characteristics of Bipolar Junction Transistor (BJT) in Common Emitter (CE) configuration; 8. Design of BJT as an electronic switch; 9. Operational Amplifier circuits: Inverting and Non-inverting amplifiers using IC 741, Voltage follower, Summing amplifier; 10. Verification of truth tables of basic logic gates (AND, OR, NOT, NAND, NOR, XOR); 11. Realization of basic logic gates using universal NAND/NOR gates; 12. Design and verification of Half Adder and Full Adder circuits."
     ],
     "textbooks": [
-        "Robert L. Boylestad and Louis Nashelsky, \"Electronic Devices and Circuit Theory\", 11th Edition, Pearson Education.",
-        "David A. Bell, \"Laboratory Manual for Electronic Devices and Circuits\", 4th Edition, Oxford University Press.",
-        "Laboratory Guide for Basics of Electronics Engineering, Department of ECE, NIT Goa."
+      "Robert L. Boylestad and Louis Nashelsky, \"Electronic Devices and Circuit Theory\", 11th Edition, Pearson Education.",
+      "David A. Bell, \"Laboratory Manual for Electronic Devices and Circuits\", 4th Edition, Oxford University Press.",
+      "Laboratory Guide for Basics of Electronics Engineering, Department of ECE, NIT Goa."
     ],
     "objectives": [
-        "To provide hands-on experience in electronic testing equipment, breadboarding, device characterization, and circuit prototyping.",
-        "To experimentally verify characteristics of diodes, transistors, operational amplifiers, and digital logic circuits."
+      "To provide hands-on experience in electronic testing equipment, breadboarding, device characterization, and circuit prototyping.",
+      "To experimentally verify characteristics of diodes, transistors, operational amplifiers, and digital logic circuits."
     ],
     "outcomes": [
-        "CO1: Operate oscilloscopes, function generators, multimeters, and DC power supplies safely.",
-        "CO2: Measure and plot V-I characteristics of semiconductor diodes, Zener regulators, and BJTs.",
-        "CO3: Construct inverting and non-inverting operational amplifier analog circuits.",
-        "CO4: Build combinational digital logic circuits using discrete ICs and universal gates."
+      "CO1: Operate oscilloscopes, function generators, multimeters, and DC power supplies safely.",
+      "CO2: Measure and plot V-I characteristics of semiconductor diodes, Zener regulators, and BJTs.",
+      "CO3: Construct inverting and non-inverting operational amplifier analog circuits.",
+      "CO4: Build combinational digital logic circuits using discrete ICs and universal gates."
     ]
-},
+  },
   "ME151": {
     "code": "ME151",
     "name": "Workshop Practices",
@@ -590,25 +590,25 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-3",
     "credits": 2,
     "modules": [
-        "Module 1: Carpentry & Fitting Shop - 1. Carpentry: Use of hand tools (saws, jack planes, chisels, marking gauges); Construction of wood joints: Half-lap joint, Mortise and Tenon joint, Dovetail joint, planning and sawing exercises; 2. Fitting: Demonstration and practice with bench vices, files, hacksaws, try-squares, center punches; Production of stepped joints, V-joints, and square joints; Drilling, tapping, and reaming operations.",
-        "Module 2: Welding, Machining & Advanced Manufacturing - 3. Welding: Electric arc welding safety, preparation of joints, practice on Butt joint, Lap joint, and Tee joint; Oxy-acetylene gas welding and cutting demonstration; 4. Machine Shop: Demonstration of operations on Centre Lathe (facing, plain turning, step turning, taper turning, knurling, thread cutting), Drilling and Shaping machines; 5. Sheet Metal & Foundry: Development and fabrication of sheet metal tray/funnel; Demonstration of sand mould preparation and casting; 6. Overview of CNC machining and 3D printing."
+      "Module 1: Carpentry & Fitting Shop - 1. Carpentry: Use of hand tools (saws, jack planes, chisels, marking gauges); Construction of wood joints: Half-lap joint, Mortise and Tenon joint, Dovetail joint, planning and sawing exercises; 2. Fitting: Demonstration and practice with bench vices, files, hacksaws, try-squares, center punches; Production of stepped joints, V-joints, and square joints; Drilling, tapping, and reaming operations.",
+      "Module 2: Welding, Machining & Advanced Manufacturing - 3. Welding: Electric arc welding safety, preparation of joints, practice on Butt joint, Lap joint, and Tee joint; Oxy-acetylene gas welding and cutting demonstration; 4. Machine Shop: Demonstration of operations on Centre Lathe (facing, plain turning, step turning, taper turning, knurling, thread cutting), Drilling and Shaping machines; 5. Sheet Metal & Foundry: Development and fabrication of sheet metal tray/funnel; Demonstration of sand mould preparation and casting; 6. Overview of CNC machining and 3D printing."
     ],
     "textbooks": [
-        "S. K. Hajra Choudhury, A. K. Hajra Choudhury, and Nirjhar Roy, \"Elements of Workshop Technology: Vol. I & II\", Media Promoters & Publishers, 2012.",
-        "B. S. Raghuwanshi, \"A Course in Workshop Technology: Vol. I & II\", Dhanpat Rai & Co., 2015.",
-        "K. Venkat Reddy, \"Workshop Practice Manual\", 6th Edition, B. S. Publications, 2008."
+      "S. K. Hajra Choudhury, A. K. Hajra Choudhury, and Nirjhar Roy, \"Elements of Workshop Technology: Vol. I & II\", Media Promoters & Publishers, 2012.",
+      "B. S. Raghuwanshi, \"A Course in Workshop Technology: Vol. I & II\", Dhanpat Rai & Co., 2015.",
+      "K. Venkat Reddy, \"Workshop Practice Manual\", 6th Edition, B. S. Publications, 2008."
     ],
     "objectives": [
-        "To provide practical workshop skills across carpentry, fitting, welding, sheet metal, and basic machine tool operations.",
-        "To develop mechanical fabrication safety awareness, dimensional measurement precision, and manufacturing craftsmanship."
+      "To provide practical workshop skills across carpentry, fitting, welding, sheet metal, and basic machine tool operations.",
+      "To develop mechanical fabrication safety awareness, dimensional measurement precision, and manufacturing craftsmanship."
     ],
     "outcomes": [
-        "CO1: Select and safely operate manual hand tools for wood working and precision metal fitting.",
-        "CO2: Fabricate timber joints and metallic fitting specimens adhering to engineering drawings and tolerances.",
-        "CO3: Execute manual metal arc welding joints and understand fusion joining techniques.",
-        "CO4: Explain machining operations on conventional machine tools and advanced manufacturing systems."
+      "CO1: Select and safely operate manual hand tools for wood working and precision metal fitting.",
+      "CO2: Fabricate timber joints and metallic fitting specimens adhering to engineering drawings and tolerances.",
+      "CO3: Execute manual metal arc welding joints and understand fusion joining techniques.",
+      "CO4: Explain machining operations on conventional machine tools and advanced manufacturing systems."
     ]
-},
+  },
   "PE150": {
     "code": "PE150",
     "name": "Physical Education",
@@ -619,25 +619,25 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "1-0-2",
     "credits": 0,
     "modules": [
-        "Module 1: Fitness Fundamentals & Physical Conditioning - Definition, meaning, and components of physical fitness: Cardiovascular endurance, Muscular strength, Muscular endurance, Flexibility, Body composition; Warm-up exercises, Aerobic and anaerobic training, Calisthenics, Circuit training, Core stability exercises.",
-        "Module 2: Sports Skills, Rules & Team Dynamics - Rules, regulations, fundamental skills, court/field dimensions, and game strategies of major sports (Football, Basketball, Volleyball, Cricket, Badminton, Table Tennis, Athletics); Team spirit, leadership, fair play, sports ethics; Postural deformities and corrective exercises; First aid and sports injury management."
+      "Module 1: Fitness Fundamentals & Physical Conditioning - Definition, meaning, and components of physical fitness: Cardiovascular endurance, Muscular strength, Muscular endurance, Flexibility, Body composition; Warm-up exercises, Aerobic and anaerobic training, Calisthenics, Circuit training, Core stability exercises.",
+      "Module 2: Sports Skills, Rules & Team Dynamics - Rules, regulations, fundamental skills, court/field dimensions, and game strategies of major sports (Football, Basketball, Volleyball, Cricket, Badminton, Table Tennis, Athletics); Team spirit, leadership, fair play, sports ethics; Postural deformities and corrective exercises; First aid and sports injury management."
     ],
     "textbooks": [
-        "Charles A. Bucher, \"Foundations of Physical Education and Sport\", McGraw Hill, 1999.",
-        "M. L. Kamlesh, \"Physical Education: Facts and Foundations\", P. B. Publications, 2006.",
-        "Rules of Sports and Games, Ministry of Youth Affairs and Sports, Government of India."
+      "Charles A. Bucher, \"Foundations of Physical Education and Sport\", McGraw Hill, 1999.",
+      "M. L. Kamlesh, \"Physical Education: Facts and Foundations\", P. B. Publications, 2006.",
+      "Rules of Sports and Games, Ministry of Youth Affairs and Sports, Government of India."
     ],
     "objectives": [
-        "To promote physical fitness, motor skills development, active lifestyle habits, and team cooperation.",
-        "To teach sports rules, athletic conditioning, sportsmanship, and injury prevention."
+      "To promote physical fitness, motor skills development, active lifestyle habits, and team cooperation.",
+      "To teach sports rules, athletic conditioning, sportsmanship, and injury prevention."
     ],
     "outcomes": [
-        "CO1: Maintain personal cardiovascular endurance, muscular strength, and overall functional fitness.",
-        "CO2: Demonstrate proficiency in executing fundamental skills in selected sports and athletic events.",
-        "CO3: Adhere to fair play, teamwork, leadership, and emotional self-regulation during competitive games.",
-        "CO4: Apply first-aid principles and preventive strategies against physical fatigue and sports injuries."
+      "CO1: Maintain personal cardiovascular endurance, muscular strength, and overall functional fitness.",
+      "CO2: Demonstrate proficiency in executing fundamental skills in selected sports and athletic events.",
+      "CO3: Adhere to fair play, teamwork, leadership, and emotional self-regulation during competitive games.",
+      "CO4: Apply first-aid principles and preventive strategies against physical fatigue and sports injuries."
     ]
-},
+  },
   "EE530": {
     "code": "EE530",
     "name": "Renewable Energy Systems",
@@ -648,31 +648,31 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Introduction to Renewable Energy - Global and national energy scenarios, Need for sustainable and renewable energy sources, Overview of different renewable energy technologies and options.",
-        "Module 2: Solar Energy - Solar radiation principles and measurement, Solar thermal energy conversion systems, Photovoltaic (PV) cell fundamentals, materials, and technologies, Design and evaluation of PV power plants.",
-        "Module 3: Wind Energy - Wind characteristics and resource assessment, Aerodynamics of wind turbines, Wind turbine technologies and configurations, Integration of wind energy into the power grid.",
-        "Module 4: Hydro, Biomass & Ocean Energy - Hydropower: Types of hydroelectric power plants, small and large-scale hydro systems, pumped hydro; Biomass energy conversion (gasification, pyrolysis, fermentation); Geothermal and Ocean thermal energy conversion (OTEC), tidal, and wave energy systems.",
-        "Module 5: Energy Storage and Integration - Importance of energy storage in renewable systems, Battery technologies and applications, Grid integration challenges and smart grid solutions.",
-        "Module 6: Environmental and Economic Aspects - Life cycle assessment of renewable energy systems, Economic evaluation and policy considerations, Environmental impacts and mitigation strategies."
+      "Module 1: Introduction to Renewable Energy - Global and national energy scenarios, Need for sustainable and renewable energy sources, Overview of different renewable energy technologies and options.",
+      "Module 2: Solar Energy - Solar radiation principles and measurement, Solar thermal energy conversion systems, Photovoltaic (PV) cell fundamentals, materials, and technologies, Design and evaluation of PV power plants.",
+      "Module 3: Wind Energy - Wind characteristics and resource assessment, Aerodynamics of wind turbines, Wind turbine technologies and configurations, Integration of wind energy into the power grid.",
+      "Module 4: Hydro, Biomass & Ocean Energy - Hydropower: Types of hydroelectric power plants, small and large-scale hydro systems, pumped hydro; Biomass energy conversion (gasification, pyrolysis, fermentation); Geothermal and Ocean thermal energy conversion (OTEC), tidal, and wave energy systems.",
+      "Module 5: Energy Storage and Integration - Importance of energy storage in renewable systems, Battery technologies and applications, Grid integration challenges and smart grid solutions.",
+      "Module 6: Environmental and Economic Aspects - Life cycle assessment of renewable energy systems, Economic evaluation and policy considerations, Environmental impacts and mitigation strategies."
     ],
     "textbooks": [
-        "S. P. Sukhatme and J. K. Nayak, \"Solar Energy: Principles of Thermal Collection and Storage\", 3rd Edition, McGraw Hill Education, 2008.",
-        "Chetan Singh Solanki, \"Solar Photovoltaics: Fundamentals, Technologies and Applications\", 3rd Edition, Prentice Hall of India, 2015.",
-        "S. N. Bhadra, D. Kastha, and S. Banerjee, \"Wind Electric Systems\", 2nd Edition, Oxford Publications, 2007.",
-        "J. Twidell and T. Weir, \"Renewable Energy Resources\", 3rd Edition, Taylor & Francis, 2015."
+      "S. P. Sukhatme and J. K. Nayak, \"Solar Energy: Principles of Thermal Collection and Storage\", 3rd Edition, McGraw Hill Education, 2008.",
+      "Chetan Singh Solanki, \"Solar Photovoltaics: Fundamentals, Technologies and Applications\", 3rd Edition, Prentice Hall of India, 2015.",
+      "S. N. Bhadra, D. Kastha, and S. Banerjee, \"Wind Electric Systems\", 2nd Edition, Oxford Publications, 2007.",
+      "J. Twidell and T. Weir, \"Renewable Energy Resources\", 3rd Edition, Taylor & Francis, 2015."
     ],
     "objectives": [
-        "To understand the significance of renewable energy in the current energy landscape.",
-        "To explore various renewable energy sources and technologies (Solar, Wind, Biomass, Hydro).",
-        "To analyze the integration of renewable energy into existing power utility networks."
+      "To understand the significance of renewable energy in the current energy landscape.",
+      "To explore various renewable energy sources and technologies (Solar, Wind, Biomass, Hydro).",
+      "To analyze the integration of renewable energy into existing power utility networks."
     ],
     "outcomes": [
-        "CO1: Enable the student to design and evaluate a renewable power generator at system level.",
-        "CO2: Evaluate feasibility of renewable sources based on resource availability and techno-economic factors.",
-        "CO3: Identify benefits and challenges associated with replacing conventional energy with renewables.",
-        "CO4: Formulate solutions for grid integration of intermittent renewable energy sources."
+      "CO1: Enable the student to design and evaluate a renewable power generator at system level.",
+      "CO2: Evaluate feasibility of renewable sources based on resource availability and techno-economic factors.",
+      "CO3: Identify benefits and challenges associated with replacing conventional energy with renewables.",
+      "CO4: Formulate solutions for grid integration of intermittent renewable energy sources."
     ]
-},
+  },
   "EE535": {
     "code": "EE535",
     "name": "High Voltage Engineering",
@@ -683,27 +683,27 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Conduction and Breakdown in Gases - Ionization processes and Townsend's criterion, Breakdown in electronegative gases, Time lags for breakdown, Streamer theory, Paschen's law, Breakdown in non-uniform fields and corona discharges.",
-        "Module 2: Breakdown in Liquid and Solid Dielectrics - Pure and commercial liquids, Breakdown mechanisms in liquids (Suspended particle, Cavitation, Bubble theories); Breakdown in solids: Intrinsic breakdown, Electromechanical, Thermal breakdown, Partial discharges, Treeing and tracking.",
-        "Module 3: Generation of High Voltages and Currents - Generation of High DC voltages: Half and full wave rectifiers, Voltage multiplier circuits, Cockcroft-Walton circuits, Van de Graaff generators; Generation of High AC voltages: Cascaded transformers, Resonant circuits; Generation of Impulse voltages and currents: Marx circuit, Multistage impulse generators, Standard wave shapes.",
-        "Module 4: Measurement of High Voltages and Non-Destructive Testing - High voltage dividers (Resistive, Capacitive, Mixed), Sphere gaps, Generating voltmeters, Peak voltmeters, Digital recording; Non-destructive testing: Measurement of DC resistivity, Dielectric constant and loss factor (Schering Bridge), Partial discharge measurements, High voltage testing of insulators, bushings, cables, and transformers."
+      "Module 1: Conduction and Breakdown in Gases - Ionization processes and Townsend's criterion, Breakdown in electronegative gases, Time lags for breakdown, Streamer theory, Paschen's law, Breakdown in non-uniform fields and corona discharges.",
+      "Module 2: Breakdown in Liquid and Solid Dielectrics - Pure and commercial liquids, Breakdown mechanisms in liquids (Suspended particle, Cavitation, Bubble theories); Breakdown in solids: Intrinsic breakdown, Electromechanical, Thermal breakdown, Partial discharges, Treeing and tracking.",
+      "Module 3: Generation of High Voltages and Currents - Generation of High DC voltages: Half and full wave rectifiers, Voltage multiplier circuits, Cockcroft-Walton circuits, Van de Graaff generators; Generation of High AC voltages: Cascaded transformers, Resonant circuits; Generation of Impulse voltages and currents: Marx circuit, Multistage impulse generators, Standard wave shapes.",
+      "Module 4: Measurement of High Voltages and Non-Destructive Testing - High voltage dividers (Resistive, Capacitive, Mixed), Sphere gaps, Generating voltmeters, Peak voltmeters, Digital recording; Non-destructive testing: Measurement of DC resistivity, Dielectric constant and loss factor (Schering Bridge), Partial discharge measurements, High voltage testing of insulators, bushings, cables, and transformers."
     ],
     "textbooks": [
-        "M. S. Naidu and V. Kamaraju, \"High Voltage Engineering\", 5th Edition, Tata McGraw Hill, 2013.",
-        "E. Kuffel, W. S. Zaengl, and J. Kuffel, \"High Voltage Engineering: Fundamentals\", 2nd Edition, Newnes, 2000.",
-        "C. L. Wadhwa, \"High Voltage Engineering\", 3rd Edition, New Age International, 2010."
+      "M. S. Naidu and V. Kamaraju, \"High Voltage Engineering\", 5th Edition, Tata McGraw Hill, 2013.",
+      "E. Kuffel, W. S. Zaengl, and J. Kuffel, \"High Voltage Engineering: Fundamentals\", 2nd Edition, Newnes, 2000.",
+      "C. L. Wadhwa, \"High Voltage Engineering\", 3rd Edition, New Age International, 2010."
     ],
     "objectives": [
-        "To introduce breakdown mechanisms in gases, liquids, and solid dielectric insulation media.",
-        "To study circuits for generating and measuring ultra-high AC, DC, and impulse voltages and lightning surges."
+      "To introduce breakdown mechanisms in gases, liquids, and solid dielectric insulation media.",
+      "To study circuits for generating and measuring ultra-high AC, DC, and impulse voltages and lightning surges."
     ],
     "outcomes": [
-        "CO1: Explain breakdown mechanisms in gaseous, liquid, and solid insulation media.",
-        "CO2: Design circuits for generating high DC, AC, and impulse voltages and currents.",
-        "CO3: Select appropriate measuring instruments and divider networks for high voltage testing.",
-        "CO4: Conduct dielectric loss factor and partial discharge non-destructive testing on power apparatus."
+      "CO1: Explain breakdown mechanisms in gaseous, liquid, and solid insulation media.",
+      "CO2: Design circuits for generating high DC, AC, and impulse voltages and currents.",
+      "CO3: Select appropriate measuring instruments and divider networks for high voltage testing.",
+      "CO4: Conduct dielectric loss factor and partial discharge non-destructive testing on power apparatus."
     ]
-},
+  },
   "EE307": {
     "code": "EE307",
     "name": "Seminar",
@@ -714,23 +714,23 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-2",
     "credits": 1,
     "modules": [
-        "Module 1: Literature Survey and Topic Selection - Identification of contemporary research topics in electrical power, renewable systems, control, power electronics, smart grids, or electric mobility; Literature survey from IEEE, IET, Elsevier peer-reviewed publications.",
-        "Module 2: Technical Report Formulation & Oral Defense - Synthesis of surveyed literature into a structured IEEE-standard technical report; Development of visual presentation slides; Oral presentation defense before faculty evaluation committee followed by technical Q&A."
+      "Module 1: Literature Survey and Topic Selection - Identification of contemporary research topics in electrical power, renewable systems, control, power electronics, smart grids, or electric mobility; Literature survey from IEEE, IET, Elsevier peer-reviewed publications.",
+      "Module 2: Technical Report Formulation & Oral Defense - Synthesis of surveyed literature into a structured IEEE-standard technical report; Development of visual presentation slides; Oral presentation defense before faculty evaluation committee followed by technical Q&A."
     ],
     "textbooks": [
-        "IEEE Transactions on Power Systems, Power Electronics, and Industry Applications.",
-        "Guidelines for Technical Writing and Presentations, Academic Senate, NIT Goa."
+      "IEEE Transactions on Power Systems, Power Electronics, and Industry Applications.",
+      "Guidelines for Technical Writing and Presentations, Academic Senate, NIT Goa."
     ],
     "objectives": [
-        "To cultivate independent research literature survey skills in advanced electrical engineering domains.",
-        "To enhance technical presentation abilities, technical writing, and scientific articulation."
+      "To cultivate independent research literature survey skills in advanced electrical engineering domains.",
+      "To enhance technical presentation abilities, technical writing, and scientific articulation."
     ],
     "outcomes": [
-        "CO1: Conduct exhaustive research survey of contemporary advancements in electrical engineering.",
-        "CO2: Compile a structured, publication-standard technical report.",
-        "CO3: Defend research findings through structured oral presentations and answer peer queries."
+      "CO1: Conduct exhaustive research survey of contemporary advancements in electrical engineering.",
+      "CO2: Compile a structured, publication-standard technical report.",
+      "CO3: Defend research findings through structured oral presentations and answer peer queries."
     ]
-},
+  },
   "EE308": {
     "code": "EE308",
     "name": "Problem Solving and Remedial Tutorial",
@@ -741,19 +741,19 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-1-0",
     "credits": 1,
     "modules": [
-        "Module 1: Advanced Problem Solving in Core Electrical Subjects - Rigorous numerical problem sets covering Power Systems, Control Systems, Power Electronics, and Microcontrollers; Analysis of complex multi-loop circuits and transient scenarios.",
-        "Module 2: Competitive Exam & Analytical Reasoning Sessions - Solving standard GATE and competitive technical examination problems; Remedial doubt clearance on core electrical curriculum."
+      "Module 1: Advanced Problem Solving in Core Electrical Subjects - Rigorous numerical problem sets covering Power Systems, Control Systems, Power Electronics, and Microcontrollers; Analysis of complex multi-loop circuits and transient scenarios.",
+      "Module 2: Competitive Exam & Analytical Reasoning Sessions - Solving standard GATE and competitive technical examination problems; Remedial doubt clearance on core electrical curriculum."
     ],
     "textbooks": [
-        "Previous GATE & IES Electrical Engineering solved papers and standard departmental problem sheets."
+      "Previous GATE & IES Electrical Engineering solved papers and standard departmental problem sheets."
     ],
     "objectives": [
-        "To reinforce conceptual clarity through rigorous problem-solving sessions in core electrical subjects."
+      "To reinforce conceptual clarity through rigorous problem-solving sessions in core electrical subjects."
     ],
     "outcomes": [
-        "CO1: Solve complex analytical numerical problems across electrical engineering sub-domains."
+      "CO1: Solve complex analytical numerical problems across electrical engineering sub-domains."
     ]
-},
+  },
   "EE400": {
     "code": "EE400",
     "name": "Major Project - I",
@@ -764,20 +764,20 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-6",
     "credits": 4,
     "modules": [
-        "Module 1: Problem Definition & Feasibility Study - Identification of real-world engineering problem or research objective in power systems, electric vehicles, renewable energy, control, or embedded electronics; Detailed literature review and patent search; Project feasibility, budget, and component selection.",
-        "Module 2: System Architecture, Design & Preliminary Simulation - Mathematical modeling and system block diagram design; Simulation using MATLAB/Simulink, PSCAD, or hardware design tools; Mid-term progress presentation, design evaluation report, and preliminary prototype preparation."
+      "Module 1: Problem Definition & Feasibility Study - Identification of real-world engineering problem or research objective in power systems, electric vehicles, renewable energy, control, or embedded electronics; Detailed literature review and patent search; Project feasibility, budget, and component selection.",
+      "Module 2: System Architecture, Design & Preliminary Simulation - Mathematical modeling and system block diagram design; Simulation using MATLAB/Simulink, PSCAD, or hardware design tools; Mid-term progress presentation, design evaluation report, and preliminary prototype preparation."
     ],
     "textbooks": [
-        "Relevant research papers, IEEE standards, component datasheets, and design application notes."
+      "Relevant research papers, IEEE standards, component datasheets, and design application notes."
     ],
     "objectives": [
-        "To conceptualize, plan, and carry out preliminary design and simulation for a capstone engineering project."
+      "To conceptualize, plan, and carry out preliminary design and simulation for a capstone engineering project."
     ],
     "outcomes": [
-        "CO1: Formulate a well-defined engineering problem addressing technological, societal, or industrial needs.",
-        "CO2: Design system architecture, perform mathematical modeling, and validate through computer simulations."
+      "CO1: Formulate a well-defined engineering problem addressing technological, societal, or industrial needs.",
+      "CO2: Design system architecture, perform mathematical modeling, and validate through computer simulations."
     ]
-},
+  },
   "EE402": {
     "code": "EE402",
     "name": "Comprehensive Examination",
@@ -788,19 +788,19 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-0",
     "credits": 2,
     "modules": [
-        "Module 1: Comprehensive Review of Core Electrical Engineering - Comprehensive assessment covering Electric Circuits, Electromagnetic Fields, Signals and Systems, Electrical Machines, Power Systems, Control Systems, Power Electronics, and Analog/Digital Electronics.",
-        "Module 2: Evaluation Oral & Written Board - Objective written examination and rigorous oral viva-voce before a board of faculty examiners evaluating fundamental knowledge, design aptitude, and analytical depth."
+      "Module 1: Comprehensive Review of Core Electrical Engineering - Comprehensive assessment covering Electric Circuits, Electromagnetic Fields, Signals and Systems, Electrical Machines, Power Systems, Control Systems, Power Electronics, and Analog/Digital Electronics.",
+      "Module 2: Evaluation Oral & Written Board - Objective written examination and rigorous oral viva-voce before a board of faculty examiners evaluating fundamental knowledge, design aptitude, and analytical depth."
     ],
     "textbooks": [
-        "Standard undergraduate textbooks across B.Tech. Electrical and Electronics Engineering curriculum."
+      "Standard undergraduate textbooks across B.Tech. Electrical and Electronics Engineering curriculum."
     ],
     "objectives": [
-        "To assess overall academic mastery, theoretical depth, and analytical competence across the four-year undergraduate curriculum."
+      "To assess overall academic mastery, theoretical depth, and analytical competence across the four-year undergraduate curriculum."
     ],
     "outcomes": [
-        "CO1: Demonstrate comprehensive knowledge across core electrical engineering disciplines and apply them to solve integrated engineering challenges."
+      "CO1: Demonstrate comprehensive knowledge across core electrical engineering disciplines and apply them to solve integrated engineering challenges."
     ]
-},
+  },
   "EE450": {
     "code": "EE450",
     "name": "Major Project - II",
@@ -811,20 +811,20 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-12",
     "credits": 8,
     "modules": [
-        "Module 1: Hardware Fabrication, Embedded Coding & Integration - Physical fabrication of power circuits, PCB layout, gate driver integration, sensor interfacing, and DSP/microcontroller firmware development; Experimental bench testing, fault finding, and calibration.",
-        "Module 2: Performance Evaluation, Final Thesis & Public Defense - Comprehensive laboratory testing, efficiency evaluation, performance validation against initial design benchmarks; Writing of formal B.Tech. dissertation thesis, publication submission, and final viva-voce defense before external examiners."
+      "Module 1: Hardware Fabrication, Embedded Coding & Integration - Physical fabrication of power circuits, PCB layout, gate driver integration, sensor interfacing, and DSP/microcontroller firmware development; Experimental bench testing, fault finding, and calibration.",
+      "Module 2: Performance Evaluation, Final Thesis & Public Defense - Comprehensive laboratory testing, efficiency evaluation, performance validation against initial design benchmarks; Writing of formal B.Tech. dissertation thesis, publication submission, and final viva-voce defense before external examiners."
     ],
     "textbooks": [
-        "IEEE Journals and Transactions, B.Tech. Project Thesis Guidelines, NIT Goa."
+      "IEEE Journals and Transactions, B.Tech. Project Thesis Guidelines, NIT Goa."
     ],
     "objectives": [
-        "To build, test, and deploy a complete hardware/software engineering system solving the capstone challenge."
+      "To build, test, and deploy a complete hardware/software engineering system solving the capstone challenge."
     ],
     "outcomes": [
-        "CO1: Construct and experimentally validate functional hardware prototypes or advanced software systems.",
-        "CO2: Author a rigorous project thesis and defend engineering contributions before an expert panel."
+      "CO1: Construct and experimentally validate functional hardware prototypes or advanced software systems.",
+      "CO2: Author a rigorous project thesis and defend engineering contributions before an expert panel."
     ]
-},
+  },
   "EC300": {
     "code": "EC300",
     "name": "Control Systems",
@@ -835,26 +835,26 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-1-0",
     "credits": 4,
     "modules": [
-        "Module 1: Introduction to Control Systems & Modeling - Basic concepts of control systems, Open loop and closed loop systems, Transfer function modeling of physical systems (Electrical, Mechanical, Electromechanical); Block diagram algebra and reduction techniques; Signal Flow Graphs, Mason's Gain Formula.",
-        "Module 2: Time Domain Analysis - Standard test signals, Transient and steady state response of first and second order systems, Time domain specifications (Delay time, Rise time, Peak time, Peak overshoot, Settling time); Steady state error and static error constants (Kp, Kv, Ka); Types of systems; Concept of stability, Routh-Hurwitz stability criterion.",
-        "Module 3: Root Locus Technique & Frequency Domain Analysis - Root locus concept, Construction rules for root locus plots, Stability analysis and parameter variation using root locus; Frequency domain specifications, Correlation between time and frequency responses; Polar plots, Nyquist stability criterion, Relative stability: Gain margin and Phase margin; Bode plots, Minimum and non-minimum phase systems.",
-        "Module 4: Compensator Design & State Space Analysis - Design of Lag, Lead, and Lag-Lead compensators using root locus and Bode plot techniques; Introduction to State Space Analysis: State variables, State space representation of continuous systems, State transition matrix and properties, Controllability and Observability (Kalman's test)."
+      "Module 1: Introduction to Control Systems & Modeling - Basic concepts of control systems, Open loop and closed loop systems, Transfer function modeling of physical systems (Electrical, Mechanical, Electromechanical); Block diagram algebra and reduction techniques; Signal Flow Graphs, Mason's Gain Formula.",
+      "Module 2: Time Domain Analysis - Standard test signals, Transient and steady state response of first and second order systems, Time domain specifications (Delay time, Rise time, Peak time, Peak overshoot, Settling time); Steady state error and static error constants (Kp, Kv, Ka); Types of systems; Concept of stability, Routh-Hurwitz stability criterion.",
+      "Module 3: Root Locus Technique & Frequency Domain Analysis - Root locus concept, Construction rules for root locus plots, Stability analysis and parameter variation using root locus; Frequency domain specifications, Correlation between time and frequency responses; Polar plots, Nyquist stability criterion, Relative stability: Gain margin and Phase margin; Bode plots, Minimum and non-minimum phase systems.",
+      "Module 4: Compensator Design & State Space Analysis - Design of Lag, Lead, and Lag-Lead compensators using root locus and Bode plot techniques; Introduction to State Space Analysis: State variables, State space representation of continuous systems, State transition matrix and properties, Controllability and Observability (Kalman's test)."
     ],
     "textbooks": [
-        "I. J. Nagrath and M. Gopal, \"Control Systems Engineering\", 6th Edition, New Age International, 2017.",
-        "Katsuhiko Ogata, \"Modern Control Engineering\", 5th Edition, Pearson Education, 2010.",
-        "Norman S. Nise, \"Control Systems Engineering\", 7th Edition, John Wiley & Sons, 2015."
+      "I. J. Nagrath and M. Gopal, \"Control Systems Engineering\", 6th Edition, New Age International, 2017.",
+      "Katsuhiko Ogata, \"Modern Control Engineering\", 5th Edition, Pearson Education, 2010.",
+      "Norman S. Nise, \"Control Systems Engineering\", 7th Edition, John Wiley & Sons, 2015."
     ],
     "objectives": [
-        "To provide deep understanding of feedback control systems, mathematical modeling of dynamic physical processes, time/frequency domain stability criteria, and state-variable methods."
+      "To provide deep understanding of feedback control systems, mathematical modeling of dynamic physical processes, time/frequency domain stability criteria, and state-variable methods."
     ],
     "outcomes": [
-        "CO1: Derive transfer functions of mechanical, electrical, and electromechanical systems using block diagrams and Mason's gain formula.",
-        "CO2: Evaluate transient and steady-state responses and determine stability using Routh-Hurwitz and Root Locus methods.",
-        "CO3: Analyze frequency response using Bode and Nyquist plots to determine Gain and Phase margins.",
-        "CO4: Design lag/lead compensators and assess controllability/observability using modern state space representations."
+      "CO1: Derive transfer functions of mechanical, electrical, and electromechanical systems using block diagrams and Mason's gain formula.",
+      "CO2: Evaluate transient and steady-state responses and determine stability using Routh-Hurwitz and Root Locus methods.",
+      "CO3: Analyze frequency response using Bode and Nyquist plots to determine Gain and Phase margins.",
+      "CO4: Design lag/lead compensators and assess controllability/observability using modern state space representations."
     ]
-},
+  },
   "EC521": {
     "code": "EC521",
     "name": "Advanced Analog IC Design",
@@ -865,27 +865,27 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Submicron CMOS Device Physics & Current Mirrors - MOS models for analog design, Submicron device effects, Short channel effects, Mobility degradation; Current mirrors: Simple, Cascode, Regulated cascode, High swing cascode, Current mirrors with boosted output resistance.",
-        "Module 2: Operational Transconductance Amplifiers (OTA) & Feedback - Single-stage amplifiers, Differential pairs with active load, Cascode amplifiers; Folded cascode OTA, Telescopic OTA, Multi-stage amplifiers; Frequency response of OTAs, Miller compensation, Stability and frequency compensation techniques.",
-        "Module 3: Voltage References & Switched-Capacitor Circuits - Temperature-independent references: Bandgap voltage reference (PTAT, CTAT concepts), Low-voltage bandgap circuits; Switched-capacitor circuits: Basic principles, Switched-capacitor integrators, First-order and second-order SC filters, Non-idealities in SC circuits.",
-        "Module 4: Non-Linear Analog Circuits & Data Converters - Non-linear analog circuits: Gilbert cell, Four-quadrant multipliers, Log and anti-log amplifiers; High-speed comparators; Nyquist-rate Digital-to-Analog (DAC) and Analog-to-Digital (ADC) converters, Flash ADC, SAR ADC, Pipelined ADC, Sigma-Delta oversampling converters."
+      "Module 1: Submicron CMOS Device Physics & Current Mirrors - MOS models for analog design, Submicron device effects, Short channel effects, Mobility degradation; Current mirrors: Simple, Cascode, Regulated cascode, High swing cascode, Current mirrors with boosted output resistance.",
+      "Module 2: Operational Transconductance Amplifiers (OTA) & Feedback - Single-stage amplifiers, Differential pairs with active load, Cascode amplifiers; Folded cascode OTA, Telescopic OTA, Multi-stage amplifiers; Frequency response of OTAs, Miller compensation, Stability and frequency compensation techniques.",
+      "Module 3: Voltage References & Switched-Capacitor Circuits - Temperature-independent references: Bandgap voltage reference (PTAT, CTAT concepts), Low-voltage bandgap circuits; Switched-capacitor circuits: Basic principles, Switched-capacitor integrators, First-order and second-order SC filters, Non-idealities in SC circuits.",
+      "Module 4: Non-Linear Analog Circuits & Data Converters - Non-linear analog circuits: Gilbert cell, Four-quadrant multipliers, Log and anti-log amplifiers; High-speed comparators; Nyquist-rate Digital-to-Analog (DAC) and Analog-to-Digital (ADC) converters, Flash ADC, SAR ADC, Pipelined ADC, Sigma-Delta oversampling converters."
     ],
     "textbooks": [
-        "Behzad Razavi, \"Design of Analog CMOS Integrated Circuits\", 2nd Edition, McGraw Hill, 2016.",
-        "P. R. Gray, P. J. Hurst, S. H. Lewis, and R. G. Meyer, \"Analysis and Design of Analog Integrated Circuits\", 5th Edition, John Wiley, 2009.",
-        "R. Jacob Baker, \"CMOS: Circuit Design, Layout, and Simulation\", 3rd Edition, IEEE Press, Wiley, 2010."
+      "Behzad Razavi, \"Design of Analog CMOS Integrated Circuits\", 2nd Edition, McGraw Hill, 2016.",
+      "P. R. Gray, P. J. Hurst, S. H. Lewis, and R. G. Meyer, \"Analysis and Design of Analog Integrated Circuits\", 5th Edition, John Wiley, 2009.",
+      "R. Jacob Baker, \"CMOS: Circuit Design, Layout, and Simulation\", 3rd Edition, IEEE Press, Wiley, 2010."
     ],
     "objectives": [
-        "To master the design and optimization of advanced analog and mixed-signal CMOS integrated circuits.",
-        "To design high-gain OTAs, bandgap references, switched-capacitor filters, and high-performance data converters."
+      "To master the design and optimization of advanced analog and mixed-signal CMOS integrated circuits.",
+      "To design high-gain OTAs, bandgap references, switched-capacitor filters, and high-performance data converters."
     ],
     "outcomes": [
-        "CO1: Model submicron MOSFET non-idealities in high-gain analog amplifier topologies.",
-        "CO2: Design folded-cascode and telescopic OTAs with advanced Miller frequency compensation.",
-        "CO3: Implement precision bandgap voltage reference circuits and switched-capacitor filters.",
-        "CO4: Analyze architecture, noise, and linearity tradeoffs in Nyquist and Sigma-Delta data converters."
+      "CO1: Model submicron MOSFET non-idealities in high-gain analog amplifier topologies.",
+      "CO2: Design folded-cascode and telescopic OTAs with advanced Miller frequency compensation.",
+      "CO3: Implement precision bandgap voltage reference circuits and switched-capacitor filters.",
+      "CO4: Analyze architecture, noise, and linearity tradeoffs in Nyquist and Sigma-Delta data converters."
     ]
-},
+  },
   "EC530": {
     "code": "EC530",
     "name": "Wireless & 5G Communications",
@@ -896,26 +896,26 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Cellular Concepts & Radio Propagation - Cellular architecture, Frequency reuse, Hand-off strategies, Interference and system capacity, Trunking and Grade of Service; Radio propagation: Free space path loss, Large-scale fading, Log-normal shadowing, Small-scale multipath fading, Rayleigh and Rician distributions, Doppler spread and coherence time, Delay spread and coherence bandwidth.",
-        "Module 2: Digital Modulation & Diversity Techniques - Digital modulation for wireless channels: QPSK, M-QAM, OFDM principles, Cyclic prefix, PAPR reduction; Diversity techniques: Space, Time, and Frequency diversity; Combining techniques: Selection combining, Maximal Ratio Combining (MRC), Equal Gain Combining (EGC); RAKE receiver.",
-        "Module 3: Multiple Input Multiple Output (MIMO) Systems - MIMO channel models, Spatial diversity (Alamouti space-time block codes), Spatial multiplexing, Channel capacity of MIMO channels (Water-filling algorithm), Beamforming, Massive MIMO for 5G.",
-        "Module 4: 5G Architecture & Next-Gen Technologies - 5G New Radio (NR) specifications: Frequency bands (FR1, FR2 / mmWave), Numerologies; 5G Core architecture, Network function virtualization (NFV), Network slicing; Millimeter wave communications, Small cells, Ultra-Reliable Low-Latency Communication (URLLC), Massive Machine-Type Communication (mMTC)."
+      "Module 1: Cellular Concepts & Radio Propagation - Cellular architecture, Frequency reuse, Hand-off strategies, Interference and system capacity, Trunking and Grade of Service; Radio propagation: Free space path loss, Large-scale fading, Log-normal shadowing, Small-scale multipath fading, Rayleigh and Rician distributions, Doppler spread and coherence time, Delay spread and coherence bandwidth.",
+      "Module 2: Digital Modulation & Diversity Techniques - Digital modulation for wireless channels: QPSK, M-QAM, OFDM principles, Cyclic prefix, PAPR reduction; Diversity techniques: Space, Time, and Frequency diversity; Combining techniques: Selection combining, Maximal Ratio Combining (MRC), Equal Gain Combining (EGC); RAKE receiver.",
+      "Module 3: Multiple Input Multiple Output (MIMO) Systems - MIMO channel models, Spatial diversity (Alamouti space-time block codes), Spatial multiplexing, Channel capacity of MIMO channels (Water-filling algorithm), Beamforming, Massive MIMO for 5G.",
+      "Module 4: 5G Architecture & Next-Gen Technologies - 5G New Radio (NR) specifications: Frequency bands (FR1, FR2 / mmWave), Numerologies; 5G Core architecture, Network function virtualization (NFV), Network slicing; Millimeter wave communications, Small cells, Ultra-Reliable Low-Latency Communication (URLLC), Massive Machine-Type Communication (mMTC)."
     ],
     "textbooks": [
-        "Theodore S. Rappaport, \"Wireless Communications: Principles and Practice\", 2nd Edition, Pearson Education, 2002.",
-        "Andrea Goldsmith, \"Wireless Communications\", Cambridge University Press, 2005.",
-        "Erik Dahlman, Stefan Parkvall, and Johan Skold, \"5G NR: The Next Generation Wireless Access Technology\", Academic Press, Elsevier, 2018."
+      "Theodore S. Rappaport, \"Wireless Communications: Principles and Practice\", 2nd Edition, Pearson Education, 2002.",
+      "Andrea Goldsmith, \"Wireless Communications\", Cambridge University Press, 2005.",
+      "Erik Dahlman, Stefan Parkvall, and Johan Skold, \"5G NR: The Next Generation Wireless Access Technology\", Academic Press, Elsevier, 2018."
     ],
     "objectives": [
-        "To provide thorough coverage of wireless propagation physics, cellular architectures, multipath fading channels, MIMO systems, and 5G New Radio specifications."
+      "To provide thorough coverage of wireless propagation physics, cellular architectures, multipath fading channels, MIMO systems, and 5G New Radio specifications."
     ],
     "outcomes": [
-        "CO1: Model wireless channels using path loss, shadowing, and small-scale multipath fading distributions.",
-        "CO2: Analyze digital modulation and diversity combining techniques over fading channels.",
-        "CO3: Formulate capacity and signal detection algorithms for multi-antenna MIMO systems.",
-        "CO4: Explain 5G NR architecture, mmWave communications, network slicing, and URLLC/mMTC use cases."
+      "CO1: Model wireless channels using path loss, shadowing, and small-scale multipath fading distributions.",
+      "CO2: Analyze digital modulation and diversity combining techniques over fading channels.",
+      "CO3: Formulate capacity and signal detection algorithms for multi-antenna MIMO systems.",
+      "CO4: Explain 5G NR architecture, mmWave communications, network slicing, and URLLC/mMTC use cases."
     ]
-},
+  },
   "EC535": {
     "code": "EC535",
     "name": "Low Power VLSI Design",
@@ -926,26 +926,26 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Power Dissipation in CMOS - Need for low power VLSI design; Sources of power dissipation: Dynamic power (Switching power, Short-circuit power), Static power (Subthreshold leakage, Gate leakage, Junction reverse-bias leakage); Technology scaling trends and challenges; Low power metrics (Power-delay product, Energy-delay product).",
-        "Module 2: Circuit and Logic Level Optimization - Circuit level power reduction: Supply voltage scaling, Transistor sizing, Multi-threshold CMOS (MTCMOS), Variable threshold CMOS (VTCMOS), Subthreshold logic circuits; Logic level power reduction: Gate reorganization, Signal gating, Clock gating, Power gating, Precomputation logic, Bus encoding techniques.",
-        "Module 3: Architecture & System Level Low Power Techniques - Dynamic Voltage and Frequency Scaling (DVFS); Parallel and pipelined architectures for low power; Power management modes (Sleep, Standby); Adiabatic logic: Energy recovery principles, Adiabatic switching, Charging and discharging mechanisms.",
-        "Module 4: Low Power Memory & CAD Estimation Tools - Low power SRAM cell design, Read/write power minimization, Leakage reduction in cache memories; Power estimation techniques: Probabilistic power estimation, Statistical methods, CAD tools and methodologies for low power analysis."
+      "Module 1: Power Dissipation in CMOS - Need for low power VLSI design; Sources of power dissipation: Dynamic power (Switching power, Short-circuit power), Static power (Subthreshold leakage, Gate leakage, Junction reverse-bias leakage); Technology scaling trends and challenges; Low power metrics (Power-delay product, Energy-delay product).",
+      "Module 2: Circuit and Logic Level Optimization - Circuit level power reduction: Supply voltage scaling, Transistor sizing, Multi-threshold CMOS (MTCMOS), Variable threshold CMOS (VTCMOS), Subthreshold logic circuits; Logic level power reduction: Gate reorganization, Signal gating, Clock gating, Power gating, Precomputation logic, Bus encoding techniques.",
+      "Module 3: Architecture & System Level Low Power Techniques - Dynamic Voltage and Frequency Scaling (DVFS); Parallel and pipelined architectures for low power; Power management modes (Sleep, Standby); Adiabatic logic: Energy recovery principles, Adiabatic switching, Charging and discharging mechanisms.",
+      "Module 4: Low Power Memory & CAD Estimation Tools - Low power SRAM cell design, Read/write power minimization, Leakage reduction in cache memories; Power estimation techniques: Probabilistic power estimation, Statistical methods, CAD tools and methodologies for low power analysis."
     ],
     "textbooks": [
-        "Kaushik Roy and Sharat C. Prasad, \"Low-Power CMOS VLSI Circuit Design\", John Wiley & Sons, 2000.",
-        "Sung-Mo Kang and Yusuf Leblebici, \"CMOS Digital Integrated Circuits: Analysis and Design\", 3rd Edition, McGraw Hill, 2003.",
-        "Jan M. Rabaey, Anantha Chandrakasan, and Borivoje Nikolic, \"Digital Integrated Circuits: A Design Perspective\", 2nd Edition, Pearson, 2003."
+      "Kaushik Roy and Sharat C. Prasad, \"Low-Power CMOS VLSI Circuit Design\", John Wiley & Sons, 2000.",
+      "Sung-Mo Kang and Yusuf Leblebici, \"CMOS Digital Integrated Circuits: Analysis and Design\", 3rd Edition, McGraw Hill, 2003.",
+      "Jan M. Rabaey, Anantha Chandrakasan, and Borivoje Nikolic, \"Digital Integrated Circuits: A Design Perspective\", 2nd Edition, Pearson, 2003."
     ],
     "objectives": [
-        "To understand sources of power dissipation in modern nanoscale CMOS circuits and master hierarchical power reduction strategies from device to system level."
+      "To understand sources of power dissipation in modern nanoscale CMOS circuits and master hierarchical power reduction strategies from device to system level."
     ],
     "outcomes": [
-        "CO1: Calculate dynamic, short-circuit, and leakage power components in CMOS logic gates.",
-        "CO2: Implement clock gating, power gating, and multi-threshold CMOS (MTCMOS) circuits.",
-        "CO3: Design energy-efficient parallel and pipelined architectures with DVFS support.",
-        "CO4: Formulate low-power SRAM cells and utilize CAD tools for chip-level power estimation."
+      "CO1: Calculate dynamic, short-circuit, and leakage power components in CMOS logic gates.",
+      "CO2: Implement clock gating, power gating, and multi-threshold CMOS (MTCMOS) circuits.",
+      "CO3: Design energy-efficient parallel and pipelined architectures with DVFS support.",
+      "CO4: Formulate low-power SRAM cells and utilize CAD tools for chip-level power estimation."
     ]
-},
+  },
   "EC400": {
     "code": "EC400",
     "name": "Major Project - I",
@@ -956,20 +956,20 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-6",
     "credits": 4,
     "modules": [
-        "Module 1: Problem Definition & Literature Synthesis - Survey of state-of-the-art literature in VLSI, Signal Processing, Communications, Embedded Systems, or IoT; Formulation of engineering problem with clear deliverables and novelty.",
-        "Module 2: System Specification, Architecture & Simulation - System architectural blueprint, hardware/software partitioning, simulation modeling in MATLAB, Cadence, Vivado, or Python; Presentation of preliminary design and project feasibility report."
+      "Module 1: Problem Definition & Literature Synthesis - Survey of state-of-the-art literature in VLSI, Signal Processing, Communications, Embedded Systems, or IoT; Formulation of engineering problem with clear deliverables and novelty.",
+      "Module 2: System Specification, Architecture & Simulation - System architectural blueprint, hardware/software partitioning, simulation modeling in MATLAB, Cadence, Vivado, or Python; Presentation of preliminary design and project feasibility report."
     ],
     "textbooks": [
-        "IEEE Transactions on Circuits and Systems, IEEE Transactions on Wireless Communications, and standard technical reference manuals."
+      "IEEE Transactions on Circuits and Systems, IEEE Transactions on Wireless Communications, and standard technical reference manuals."
     ],
     "objectives": [
-        "To plan and initiate a major capstone project in electronics and communication engineering."
+      "To plan and initiate a major capstone project in electronics and communication engineering."
     ],
     "outcomes": [
-        "CO1: Formulate research/industrial engineering problems and define specifications.",
-        "CO2: Develop system architecture and validate designs through computer-aided simulations."
+      "CO1: Formulate research/industrial engineering problems and define specifications.",
+      "CO2: Develop system architecture and validate designs through computer-aided simulations."
     ]
-},
+  },
   "EC402": {
     "code": "EC402",
     "name": "Comprehensive Examination",
@@ -980,19 +980,19 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-0",
     "credits": 2,
     "modules": [
-        "Module 1: Core ECE Curriculum Review - Thorough evaluation covering Electronic Devices, Analog Circuits, Digital Circuits, Signals and Systems, Control Systems, Digital Signal Processing, Electromagnetic Waves, and Digital Communications.",
-        "Module 2: Written & Oral Viva-Voce Evaluation - Comprehensive written test and oral examination conducted by departmental faculty panels."
+      "Module 1: Core ECE Curriculum Review - Thorough evaluation covering Electronic Devices, Analog Circuits, Digital Circuits, Signals and Systems, Control Systems, Digital Signal Processing, Electromagnetic Waves, and Digital Communications.",
+      "Module 2: Written & Oral Viva-Voce Evaluation - Comprehensive written test and oral examination conducted by departmental faculty panels."
     ],
     "textbooks": [
-        "Standard undergraduate curriculum textbooks in Electronics and Communication Engineering."
+      "Standard undergraduate curriculum textbooks in Electronics and Communication Engineering."
     ],
     "objectives": [
-        "To test holistic mastery and integrative understanding of the four-year undergraduate ECE curriculum."
+      "To test holistic mastery and integrative understanding of the four-year undergraduate ECE curriculum."
     ],
     "outcomes": [
-        "CO1: Demonstrate depth of conceptual and analytical proficiency across all core ECE branches."
+      "CO1: Demonstrate depth of conceptual and analytical proficiency across all core ECE branches."
     ]
-},
+  },
   "EC450": {
     "code": "EC450",
     "name": "Major Project - II",
@@ -1003,20 +1003,20 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-12",
     "credits": 8,
     "modules": [
-        "Module 1: Prototype Implementation & Experimental Testing - Physical prototype realization (FPGA implementation, RF circuit testing, IC layout verification, embedded edge deployment); Hardware measurement using DSO, Spectrum Analyzer, Logic Analyzer.",
-        "Module 2: Performance Characterization & Final Defense - Comprehensive testing against target specifications; Final dissertation submission, conference paper preparation, and project defense before external examiners."
+      "Module 1: Prototype Implementation & Experimental Testing - Physical prototype realization (FPGA implementation, RF circuit testing, IC layout verification, embedded edge deployment); Hardware measurement using DSO, Spectrum Analyzer, Logic Analyzer.",
+      "Module 2: Performance Characterization & Final Defense - Comprehensive testing against target specifications; Final dissertation submission, conference paper preparation, and project defense before external examiners."
     ],
     "textbooks": [
-        "IEEE Standards, Departmental Capstone Project Guidelines, NIT Goa."
+      "IEEE Standards, Departmental Capstone Project Guidelines, NIT Goa."
     ],
     "objectives": [
-        "To realize, test, and document the complete capstone engineering project prototype."
+      "To realize, test, and document the complete capstone engineering project prototype."
     ],
     "outcomes": [
-        "CO1: Fabricate functional hardware/software prototypes meeting target specifications.",
-        "CO2: Author a professional technical thesis and defend results before an expert examination committee."
+      "CO1: Fabricate functional hardware/software prototypes meeting target specifications.",
+      "CO2: Author a professional technical thesis and defend results before an expert examination committee."
     ]
-},
+  },
   "EC400M": {
     "code": "EC400M",
     "name": "Sensor Technologies & Interfacing",
@@ -1027,26 +1027,26 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Sensor Principles and Transducers - Sensor classification, Static and dynamic characteristics (Sensitivity, Linearity, Resolution, Hysteresis, Response time); Resistive sensors (RTD, Strain gauge, Thermistor); Capacitive and Inductive sensors (LVDT); Piezoelectric and Hall effect sensors.",
-        "Module 2: Optical, Chemical & MEMS Sensors - Photodiodes, Phototransistors, Optical encoders, Fiber-optic sensors; Chemical and gas sensors; MEMS accelerometers, Gyroscopes, Pressure sensors; Thermal sensors and thermocouple instrumentation.",
-        "Module 3: Signal Conditioning & Data Acquisition - Wheatstone bridge circuits, Instrumentation amplifiers, Noise shielding and grounding; Filtering and amplification; Analog-to-Digital conversion (ADC) interfaces; Interfacing with microcontrollers (SPI, I2C, UART).",
-        "Module 4: Smart Sensors & IoT Applications - Smart sensor architecture, IEEE 1451 standards; Wireless sensor networks (WSN); Industrial IoT sensor nodes; Environmental and automotive sensor applications."
+      "Module 1: Sensor Principles and Transducers - Sensor classification, Static and dynamic characteristics (Sensitivity, Linearity, Resolution, Hysteresis, Response time); Resistive sensors (RTD, Strain gauge, Thermistor); Capacitive and Inductive sensors (LVDT); Piezoelectric and Hall effect sensors.",
+      "Module 2: Optical, Chemical & MEMS Sensors - Photodiodes, Phototransistors, Optical encoders, Fiber-optic sensors; Chemical and gas sensors; MEMS accelerometers, Gyroscopes, Pressure sensors; Thermal sensors and thermocouple instrumentation.",
+      "Module 3: Signal Conditioning & Data Acquisition - Wheatstone bridge circuits, Instrumentation amplifiers, Noise shielding and grounding; Filtering and amplification; Analog-to-Digital conversion (ADC) interfaces; Interfacing with microcontrollers (SPI, I2C, UART).",
+      "Module 4: Smart Sensors & IoT Applications - Smart sensor architecture, IEEE 1451 standards; Wireless sensor networks (WSN); Industrial IoT sensor nodes; Environmental and automotive sensor applications."
     ],
     "textbooks": [
-        "Jacob Fraden, \"Handbook of Modern Sensors: Physics, Designs, and Applications\", 5th Edition, Springer, 2016.",
-        "D. Patranabis, \"Sensors and Transducers\", 2nd Edition, Prentice Hall of India, 2003.",
-        "Ernest O. Doebelin, \"Measurement Systems: Application and Design\", 5th Edition, McGraw Hill, 2004."
+      "Jacob Fraden, \"Handbook of Modern Sensors: Physics, Designs, and Applications\", 5th Edition, Springer, 2016.",
+      "D. Patranabis, \"Sensors and Transducers\", 2nd Edition, Prentice Hall of India, 2003.",
+      "Ernest O. Doebelin, \"Measurement Systems: Application and Design\", 5th Edition, McGraw Hill, 2004."
     ],
     "objectives": [
-        "To provide interdisciplinary students in the Minor in ECE program with comprehensive understanding of sensor mechanisms, signal conditioning, and microcontroller interfacing."
+      "To provide interdisciplinary students in the Minor in ECE program with comprehensive understanding of sensor mechanisms, signal conditioning, and microcontroller interfacing."
     ],
     "outcomes": [
-        "CO1: Explain operational physics and transduction principles of thermal, optical, mechanical, and magnetic sensors.",
-        "CO2: Design signal conditioning amplifiers and bridge circuits for low-noise sensor signal acquisition.",
-        "CO3: Interface physical sensors with microcontrollers over digital serial protocols (I2C, SPI).",
-        "CO4: Deploy smart sensor modules in IoT and environmental telemetry systems."
+      "CO1: Explain operational physics and transduction principles of thermal, optical, mechanical, and magnetic sensors.",
+      "CO2: Design signal conditioning amplifiers and bridge circuits for low-noise sensor signal acquisition.",
+      "CO3: Interface physical sensors with microcontrollers over digital serial protocols (I2C, SPI).",
+      "CO4: Deploy smart sensor modules in IoT and environmental telemetry systems."
     ]
-},
+  },
   "CS300": {
     "code": "CS300",
     "name": "Data Structures and Algorithms",
@@ -1057,26 +1057,26 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Complexity Analysis & Linear Data Structures - Asymptotic notations (Big-O, Omega, Theta); Mathematical analysis of recursive and non-recursive algorithms; Stacks: Array and linked list implementations, Applications (Infix to postfix conversion, Expression evaluation, Parenthesis matching); Queues: Linear, Circular queue, Deque, Priority Queue; Linked Lists: Singly, Doubly, Circular linked lists, Operations and polynomial representation.",
-        "Module 2: Trees & Hierarchical Structures - Binary Trees: Terminology, Representation, Tree traversals (Inorder, Preorder, Postorder, Level order); Binary Search Trees (BST): Insertion, Deletion, Search; Balanced Trees: AVL trees (Rotations, Insertion, Deletion), Red-Black trees (Properties and basic operations); Multi-way trees: B-trees and B+ trees.",
-        "Module 3: Graphs & Algorithm Design Paradigms - Graph representations (Adjacency Matrix, Adjacency List); Graph traversals: Breadth First Search (BFS), Depth First Search (DFS), Topological sorting; Shortest Path Algorithms: Dijkstra's algorithm, Bellman-Ford algorithm; Minimum Spanning Trees: Prim's and Kruskal's algorithms; Disjoint Set Data Structures (Union-Find).",
-        "Module 4: Hashing & Advanced Design Techniques - Hash tables, Hash functions, Collision resolution techniques (Chaining, Open addressing: Linear probing, Quadratic probing, Double hashing); Divide and Conquer (Merge Sort, Quick Sort); Greedy algorithms (Huffman coding, Fractional knapsack); Dynamic Programming (0/1 Knapsack, Longest Common Subsequence, Matrix chain multiplication)."
+      "Module 1: Complexity Analysis & Linear Data Structures - Asymptotic notations (Big-O, Omega, Theta); Mathematical analysis of recursive and non-recursive algorithms; Stacks: Array and linked list implementations, Applications (Infix to postfix conversion, Expression evaluation, Parenthesis matching); Queues: Linear, Circular queue, Deque, Priority Queue; Linked Lists: Singly, Doubly, Circular linked lists, Operations and polynomial representation.",
+      "Module 2: Trees & Hierarchical Structures - Binary Trees: Terminology, Representation, Tree traversals (Inorder, Preorder, Postorder, Level order); Binary Search Trees (BST): Insertion, Deletion, Search; Balanced Trees: AVL trees (Rotations, Insertion, Deletion), Red-Black trees (Properties and basic operations); Multi-way trees: B-trees and B+ trees.",
+      "Module 3: Graphs & Algorithm Design Paradigms - Graph representations (Adjacency Matrix, Adjacency List); Graph traversals: Breadth First Search (BFS), Depth First Search (DFS), Topological sorting; Shortest Path Algorithms: Dijkstra's algorithm, Bellman-Ford algorithm; Minimum Spanning Trees: Prim's and Kruskal's algorithms; Disjoint Set Data Structures (Union-Find).",
+      "Module 4: Hashing & Advanced Design Techniques - Hash tables, Hash functions, Collision resolution techniques (Chaining, Open addressing: Linear probing, Quadratic probing, Double hashing); Divide and Conquer (Merge Sort, Quick Sort); Greedy algorithms (Huffman coding, Fractional knapsack); Dynamic Programming (0/1 Knapsack, Longest Common Subsequence, Matrix chain multiplication)."
     ],
     "textbooks": [
-        "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein, \"Introduction to Algorithms\", 3rd Edition, MIT Press, 2009.",
-        "Mark Allen Weiss, \"Data Structures and Algorithm Analysis in C++\", 4th Edition, Pearson, 2014.",
-        "Ellis Horowitz, Sartaj Sahni, and Sanguthevar Rajasekaran, \"Fundamentals of Computer Algorithms\", 2nd Edition, Universities Press, 2008."
+      "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein, \"Introduction to Algorithms\", 3rd Edition, MIT Press, 2009.",
+      "Mark Allen Weiss, \"Data Structures and Algorithm Analysis in C++\", 4th Edition, Pearson, 2014.",
+      "Ellis Horowitz, Sartaj Sahni, and Sanguthevar Rajasekaran, \"Fundamentals of Computer Algorithms\", 2nd Edition, Universities Press, 2008."
     ],
     "objectives": [
-        "To introduce linear and non-linear data structures, asymptotic algorithm complexity analysis, and classical algorithm design paradigms (Greedy, Divide & Conquer, Dynamic Programming)."
+      "To introduce linear and non-linear data structures, asymptotic algorithm complexity analysis, and classical algorithm design paradigms (Greedy, Divide & Conquer, Dynamic Programming)."
     ],
     "outcomes": [
-        "CO1: Analyze time and space complexity of iterative and recursive algorithms using asymptotic notations.",
-        "CO2: Implement and manipulate linear data structures including stacks, queues, and linked lists.",
-        "CO3: Construct and balance tree structures (BST, AVL) and perform graph traversal algorithms.",
-        "CO4: Apply Dynamic Programming, Greedy techniques, and hash tables to solve computational optimization problems."
+      "CO1: Analyze time and space complexity of iterative and recursive algorithms using asymptotic notations.",
+      "CO2: Implement and manipulate linear data structures including stacks, queues, and linked lists.",
+      "CO3: Construct and balance tree structures (BST, AVL) and perform graph traversal algorithms.",
+      "CO4: Apply Dynamic Programming, Greedy techniques, and hash tables to solve computational optimization problems."
     ]
-},
+  },
   "CS300M": {
     "code": "CS300M",
     "name": "Data Structures and Algorithms (Minor in CSE)",
@@ -1087,23 +1087,23 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Algorithm Fundamentals & Linear Structures - Algorithm complexity analysis, Big-O notation; Arrays, dynamic arrays, Strings; Stacks and Queues: Implementations and real-world applications; Singly and doubly linked lists.",
-        "Module 2: Trees and Hierarchical Organization - Binary trees, Traversals, Binary Search Trees (BST), AVL trees; Heaps, Heap Sort, Priority Queues in scheduling systems.",
-        "Module 3: Graphs and Network Traversal - Graph modeling, BFS, DFS, Shortest paths (Dijkstra's), Minimum spanning trees (Prim's and Kruskal's); Applications to network routing and circuit topologies.",
-        "Module 4: Searching, Sorting and Algorithm Paradigms - Comparison-based sorting (Merge sort, Quick sort); Hash tables and hash functions; Overview of Greedy algorithms and Dynamic Programming."
+      "Module 1: Algorithm Fundamentals & Linear Structures - Algorithm complexity analysis, Big-O notation; Arrays, dynamic arrays, Strings; Stacks and Queues: Implementations and real-world applications; Singly and doubly linked lists.",
+      "Module 2: Trees and Hierarchical Organization - Binary trees, Traversals, Binary Search Trees (BST), AVL trees; Heaps, Heap Sort, Priority Queues in scheduling systems.",
+      "Module 3: Graphs and Network Traversal - Graph modeling, BFS, DFS, Shortest paths (Dijkstra's), Minimum spanning trees (Prim's and Kruskal's); Applications to network routing and circuit topologies.",
+      "Module 4: Searching, Sorting and Algorithm Paradigms - Comparison-based sorting (Merge sort, Quick sort); Hash tables and hash functions; Overview of Greedy algorithms and Dynamic Programming."
     ],
     "textbooks": [
-        "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein, \"Introduction to Algorithms\", 3rd Edition, MIT Press.",
-        "Mark Allen Weiss, \"Data Structures and Algorithm Analysis in C++\", 4th Edition, Pearson."
+      "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein, \"Introduction to Algorithms\", 3rd Edition, MIT Press.",
+      "Mark Allen Weiss, \"Data Structures and Algorithm Analysis in C++\", 4th Edition, Pearson."
     ],
     "objectives": [
-        "To equip students across other engineering branches (ECE, EEE, ME, CVE) enrolled in the Minor in CSE with strong foundational data structure design and algorithmic problem-solving capabilities."
+      "To equip students across other engineering branches (ECE, EEE, ME, CVE) enrolled in the Minor in CSE with strong foundational data structure design and algorithmic problem-solving capabilities."
     ],
     "outcomes": [
-        "CO1: Design efficient data structures for storage and fast retrieval of non-trivial data.",
-        "CO2: Implement tree and graph algorithms for engineering network and computational problems."
+      "CO1: Design efficient data structures for storage and fast retrieval of non-trivial data.",
+      "CO2: Implement tree and graph algorithms for engineering network and computational problems."
     ]
-},
+  },
   "CS305": {
     "code": "CS305",
     "name": "Design and Analysis of Algorithm Laboratory",
@@ -1114,22 +1114,22 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-3",
     "credits": 2,
     "modules": [
-        "Module 1: Divide & Conquer and Greedy Algorithms Laboratory - 1. Implementation of Merge Sort and Quick Sort with empirical running time analysis; 2. Binary search and selection algorithms; 3. Fractional Knapsack problem using Greedy method; 4. Minimum Spanning Tree using Prim's and Kruskal's algorithms; 5. Dijkstra's single source shortest path algorithm.",
-        "Module 2: Dynamic Programming, Backtracking & Branch and Bound - 6. 0/1 Knapsack problem using Dynamic Programming; 7. Longest Common Subsequence (LCS) and Matrix Chain Multiplication; 8. N-Queens problem using Backtracking; 9. Subset Sum problem; 10. Traveling Salesperson Problem (TSP) using Branch and Bound / DP."
+      "Module 1: Divide & Conquer and Greedy Algorithms Laboratory - 1. Implementation of Merge Sort and Quick Sort with empirical running time analysis; 2. Binary search and selection algorithms; 3. Fractional Knapsack problem using Greedy method; 4. Minimum Spanning Tree using Prim's and Kruskal's algorithms; 5. Dijkstra's single source shortest path algorithm.",
+      "Module 2: Dynamic Programming, Backtracking & Branch and Bound - 6. 0/1 Knapsack problem using Dynamic Programming; 7. Longest Common Subsequence (LCS) and Matrix Chain Multiplication; 8. N-Queens problem using Backtracking; 9. Subset Sum problem; 10. Traveling Salesperson Problem (TSP) using Branch and Bound / DP."
     ],
     "textbooks": [
-        "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein, \"Introduction to Algorithms\", 3rd Edition, MIT Press.",
-        "Laboratory Guide for Design & Analysis of Algorithms, Department of CSE, NIT Goa."
+      "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein, \"Introduction to Algorithms\", 3rd Edition, MIT Press.",
+      "Laboratory Guide for Design & Analysis of Algorithms, Department of CSE, NIT Goa."
     ],
     "objectives": [
-        "To practically implement, benchmark, and compare running times of core algorithmic design paradigms on physical benchmark inputs."
+      "To practically implement, benchmark, and compare running times of core algorithmic design paradigms on physical benchmark inputs."
     ],
     "outcomes": [
-        "CO1: Implement Divide and Conquer, Greedy, and Dynamic Programming algorithms in C++/Python.",
-        "CO2: Measure and empirically plot asymptotic running time behaviors against input size.",
-        "CO3: Solve NP-hard optimization problems using Backtracking and Branch & Bound heuristics."
+      "CO1: Implement Divide and Conquer, Greedy, and Dynamic Programming algorithms in C++/Python.",
+      "CO2: Measure and empirically plot asymptotic running time behaviors against input size.",
+      "CO3: Solve NP-hard optimization problems using Backtracking and Branch & Bound heuristics."
     ]
-},
+  },
   "CS306": {
     "code": "CS306",
     "name": "Technical Seminar",
@@ -1140,20 +1140,20 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-2",
     "credits": 1,
     "modules": [
-        "Module 1: Literature Survey and Contemporary Topic Selection - Identification of cutting-edge research topics in AI, Machine Learning, Cloud Systems, Cybersecurity, Distributed Systems, or Quantum Computing; Comprehensive survey of ACM/IEEE papers.",
-        "Module 2: Technical Paper Synthesis & Seminar Defense - Formulation of an IEEE-format survey report; Creation of presentation slide deck; Oral presentation and viva-voce before departmental faculty panel."
+      "Module 1: Literature Survey and Contemporary Topic Selection - Identification of cutting-edge research topics in AI, Machine Learning, Cloud Systems, Cybersecurity, Distributed Systems, or Quantum Computing; Comprehensive survey of ACM/IEEE papers.",
+      "Module 2: Technical Paper Synthesis & Seminar Defense - Formulation of an IEEE-format survey report; Creation of presentation slide deck; Oral presentation and viva-voce before departmental faculty panel."
     ],
     "textbooks": [
-        "ACM Digital Library and IEEE Xplore recent research publications; Academic Guidelines for Seminar Presentations, NIT Goa."
+      "ACM Digital Library and IEEE Xplore recent research publications; Academic Guidelines for Seminar Presentations, NIT Goa."
     ],
     "objectives": [
-        "To develop literature review skills, critical synthesis of state-of-the-art computer science research, and oral defense communication."
+      "To develop literature review skills, critical synthesis of state-of-the-art computer science research, and oral defense communication."
     ],
     "outcomes": [
-        "CO1: Conduct exhaustive review of peer-reviewed literature in advanced computing domains.",
-        "CO2: Synthesize findings into structured technical documentation and defend research ideas verbally."
+      "CO1: Conduct exhaustive review of peer-reviewed literature in advanced computing domains.",
+      "CO2: Synthesize findings into structured technical documentation and defend research ideas verbally."
     ]
-},
+  },
   "CS353": {
     "code": "CS353",
     "name": "Cloud Computing & Distributed Systems",
@@ -1164,26 +1164,26 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Cloud Architecture & Virtualization - Distributed system foundations, Cloud computing delivery models (IaaS, PaaS, SaaS), Deployment models (Public, Private, Hybrid, Multi-cloud); Virtualization: Hypervisors (Type 1 and Type 2), Full virtualization vs Para-virtualization; OS-level virtualization: Containers, Docker architecture, Kubernetes orchestration fundamentals.",
-        "Module 2: Cloud Storage & Distributed File Systems - Cloud storage models; Distributed File Systems: Google File System (GFS), Hadoop Distributed File System (HDFS); Consistency models, CAP theorem, BASE properties; NoSQL databases: Key-Value stores, Document stores, Column-family stores (HBase, Cassandra).",
-        "Module 3: Cloud Programming Models & Serverless - MapReduce programming paradigm; Apache Spark architecture: Resilient Distributed Datasets (RDDs), Transformations and actions; Serverless computing and Function-as-a-Service (FaaS: AWS Lambda, Google Cloud Functions); Microservices architecture vs Monoliths, API Gateways.",
-        "Module 4: Cloud Security, SLA & Resource Management - Cloud security challenges, Identity and Access Management (IAM), Data encryption at rest and in transit; Multi-tenancy and resource isolation; SLA management, Cloud resource scheduling, Auto-scaling algorithms, Green cloud computing."
+      "Module 1: Cloud Architecture & Virtualization - Distributed system foundations, Cloud computing delivery models (IaaS, PaaS, SaaS), Deployment models (Public, Private, Hybrid, Multi-cloud); Virtualization: Hypervisors (Type 1 and Type 2), Full virtualization vs Para-virtualization; OS-level virtualization: Containers, Docker architecture, Kubernetes orchestration fundamentals.",
+      "Module 2: Cloud Storage & Distributed File Systems - Cloud storage models; Distributed File Systems: Google File System (GFS), Hadoop Distributed File System (HDFS); Consistency models, CAP theorem, BASE properties; NoSQL databases: Key-Value stores, Document stores, Column-family stores (HBase, Cassandra).",
+      "Module 3: Cloud Programming Models & Serverless - MapReduce programming paradigm; Apache Spark architecture: Resilient Distributed Datasets (RDDs), Transformations and actions; Serverless computing and Function-as-a-Service (FaaS: AWS Lambda, Google Cloud Functions); Microservices architecture vs Monoliths, API Gateways.",
+      "Module 4: Cloud Security, SLA & Resource Management - Cloud security challenges, Identity and Access Management (IAM), Data encryption at rest and in transit; Multi-tenancy and resource isolation; SLA management, Cloud resource scheduling, Auto-scaling algorithms, Green cloud computing."
     ],
     "textbooks": [
-        "Kai Hwang, Geoffrey C. Fox, and Jack J. Dongarra, \"Distributed and Cloud Computing: From Parallel Processing to the Internet of Things\", Morgan Kaufmann, 2012.",
-        "Rajkumar Buyya, Christian Vecchiola, and S. Thamarai Selvi, \"Mastering Cloud Computing\", McGraw Hill, 2013.",
-        "Thomas Erl, Ricardo Puttini, and Zaigham Mahmood, \"Cloud Computing: Concepts, Technology & Architecture\", Prentice Hall, 2013."
+      "Kai Hwang, Geoffrey C. Fox, and Jack J. Dongarra, \"Distributed and Cloud Computing: From Parallel Processing to the Internet of Things\", Morgan Kaufmann, 2012.",
+      "Rajkumar Buyya, Christian Vecchiola, and S. Thamarai Selvi, \"Mastering Cloud Computing\", McGraw Hill, 2013.",
+      "Thomas Erl, Ricardo Puttini, and Zaigham Mahmood, \"Cloud Computing: Concepts, Technology & Architecture\", Prentice Hall, 2013."
     ],
     "objectives": [
-        "To understand architectural foundations of cloud computing, virtualization, containerization, distributed file systems, and serverless computing paradigms."
+      "To understand architectural foundations of cloud computing, virtualization, containerization, distributed file systems, and serverless computing paradigms."
     ],
     "outcomes": [
-        "CO1: Contrast IaaS, PaaS, and SaaS architectures and configure Docker/Kubernetes container deployments.",
-        "CO2: Design scalable storage solutions using HDFS and distributed NoSQL database stores.",
-        "CO3: Develop distributed data processing pipelines using MapReduce and Apache Spark.",
-        "CO4: Implement secure IAM policies, SLA-aware auto-scaling, and serverless microservice architectures."
+      "CO1: Contrast IaaS, PaaS, and SaaS architectures and configure Docker/Kubernetes container deployments.",
+      "CO2: Design scalable storage solutions using HDFS and distributed NoSQL database stores.",
+      "CO3: Develop distributed data processing pipelines using MapReduce and Apache Spark.",
+      "CO4: Implement secure IAM policies, SLA-aware auto-scaling, and serverless microservice architectures."
     ]
-},
+  },
   "CS355": {
     "code": "CS355",
     "name": "Network Security Laboratory",
@@ -1194,22 +1194,22 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-3",
     "credits": 2,
     "modules": [
-        "Module 1: Cryptographic Implementations - 1. Implementation of classical substitution and transposition ciphers (Caesar, Playfair, Hill cipher); 2. Implementation of symmetric encryption algorithms: DES and AES; 3. Implementation of RSA public-key cryptosystem; 4. Diffie-Hellman key exchange algorithm; 5. Implementation of SHA-256 cryptographic hash and digital signature generation.",
-        "Module 2: Network Traffic Analysis & Vulnerability Auditing - 6. Packet sniffing and protocol dissection using Wireshark; 7. Port scanning and network mapping using Nmap; 8. Demonstration of Man-in-the-Middle (MITM) and ARP poisoning attacks using Ettercap; 9. SQL Injection and Cross-Site Scripting (XSS) exploitation and mitigation; 10. Firewall rule configuration using iptables and intrusion detection using Snort."
+      "Module 1: Cryptographic Implementations - 1. Implementation of classical substitution and transposition ciphers (Caesar, Playfair, Hill cipher); 2. Implementation of symmetric encryption algorithms: DES and AES; 3. Implementation of RSA public-key cryptosystem; 4. Diffie-Hellman key exchange algorithm; 5. Implementation of SHA-256 cryptographic hash and digital signature generation.",
+      "Module 2: Network Traffic Analysis & Vulnerability Auditing - 6. Packet sniffing and protocol dissection using Wireshark; 7. Port scanning and network mapping using Nmap; 8. Demonstration of Man-in-the-Middle (MITM) and ARP poisoning attacks using Ettercap; 9. SQL Injection and Cross-Site Scripting (XSS) exploitation and mitigation; 10. Firewall rule configuration using iptables and intrusion detection using Snort."
     ],
     "textbooks": [
-        "William Stallings, \"Cryptography and Network Security: Principles and Practice\", 7th Edition, Pearson, 2017.",
-        "Laboratory Guide for Network Security, Department of CSE, NIT Goa."
+      "William Stallings, \"Cryptography and Network Security: Principles and Practice\", 7th Edition, Pearson, 2017.",
+      "Laboratory Guide for Network Security, Department of CSE, NIT Goa."
     ],
     "objectives": [
-        "To gain hands-on proficiency in implementing cryptographic algorithms, analyzing network traffic, simulating cyber attack vectors, and configuring security firewalls."
+      "To gain hands-on proficiency in implementing cryptographic algorithms, analyzing network traffic, simulating cyber attack vectors, and configuring security firewalls."
     ],
     "outcomes": [
-        "CO1: Implement symmetric (AES) and asymmetric (RSA) cryptosystems and digital signatures programmatically.",
-        "CO2: Analyze packet traces and detect network intrusions using Wireshark and Snort.",
-        "CO3: Audit web applications for SQLi and XSS vulnerabilities and configure defensive host firewalls."
+      "CO1: Implement symmetric (AES) and asymmetric (RSA) cryptosystems and digital signatures programmatically.",
+      "CO2: Analyze packet traces and detect network intrusions using Wireshark and Snort.",
+      "CO3: Audit web applications for SQLi and XSS vulnerabilities and configure defensive host firewalls."
     ]
-},
+  },
   "CS501": {
     "code": "CS501",
     "name": "Advanced Data Structures",
@@ -1220,26 +1220,26 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Amortized Analysis & Balanced Trees - Amortized analysis: Aggregate analysis, Accounting method, Potential method; Dynamic tables; Splay trees, Top-down and bottom-up splaying; Skip Lists: Probabilistic analysis, Search, Insertion, Deletion.",
-        "Module 2: Advanced Heaps & Priority Queues - Binomial Heaps: Structure, Binomial trees, Operations (Find-min, Union, Insertion, Extract-min); Fibonacci Heaps: Structure, Potential function, Amortized analysis of operations, Decrease-key, Delete; Leftist heaps and Skew heaps.",
-        "Module 3: Multi-Dimensional & Spatial Data Structures - Spatial structures: Segment Trees, Range minimum queries, Lazy propagation; Fenwick Trees (Binary Indexed Trees); Interval Trees, k-d Trees, Quadtrees, R-Trees for spatial indexing and geometric search.",
-        "Module 4: String Data Structures & Persistent Structures - Tries, Compressed Tries (Patricia Trees); Suffix Trees, Ukkonen's construction algorithm, Applications of Suffix Trees; Suffix Arrays and LCP arrays; Persistent data structures: Partially and fully persistent stacks, trees, and linked lists."
+      "Module 1: Amortized Analysis & Balanced Trees - Amortized analysis: Aggregate analysis, Accounting method, Potential method; Dynamic tables; Splay trees, Top-down and bottom-up splaying; Skip Lists: Probabilistic analysis, Search, Insertion, Deletion.",
+      "Module 2: Advanced Heaps & Priority Queues - Binomial Heaps: Structure, Binomial trees, Operations (Find-min, Union, Insertion, Extract-min); Fibonacci Heaps: Structure, Potential function, Amortized analysis of operations, Decrease-key, Delete; Leftist heaps and Skew heaps.",
+      "Module 3: Multi-Dimensional & Spatial Data Structures - Spatial structures: Segment Trees, Range minimum queries, Lazy propagation; Fenwick Trees (Binary Indexed Trees); Interval Trees, k-d Trees, Quadtrees, R-Trees for spatial indexing and geometric search.",
+      "Module 4: String Data Structures & Persistent Structures - Tries, Compressed Tries (Patricia Trees); Suffix Trees, Ukkonen's construction algorithm, Applications of Suffix Trees; Suffix Arrays and LCP arrays; Persistent data structures: Partially and fully persistent stacks, trees, and linked lists."
     ],
     "textbooks": [
-        "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein, \"Introduction to Algorithms\", 3rd Edition, MIT Press, 2009.",
-        "Mark Allen Weiss, \"Data Structures and Algorithm Analysis in C++\", 4th Edition, Pearson, 2014.",
-        "Sartaj Sahni, \"Data Structures, Algorithms, and Applications in C++\", 2nd Edition, Universities Press, 2005."
+      "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein, \"Introduction to Algorithms\", 3rd Edition, MIT Press, 2009.",
+      "Mark Allen Weiss, \"Data Structures and Algorithm Analysis in C++\", 4th Edition, Pearson, 2014.",
+      "Sartaj Sahni, \"Data Structures, Algorithms, and Applications in C++\", 2nd Edition, Universities Press, 2005."
     ],
     "objectives": [
-        "To master advanced non-linear data structures, amortized analysis techniques, spatial indexing structures, and string processing trees."
+      "To master advanced non-linear data structures, amortized analysis techniques, spatial indexing structures, and string processing trees."
     ],
     "outcomes": [
-        "CO1: Apply amortized analysis to determine bounding times of complex sequence operations.",
-        "CO2: Implement Fibonacci heaps and Binomial heaps with optimal decrease-key operations.",
-        "CO3: Construct Segment Trees, Fenwick Trees, and k-d Trees for range queries and spatial searching.",
-        "CO4: Utilize Suffix Trees, Suffix Arrays, and persistent structures in high-performance computing applications."
+      "CO1: Apply amortized analysis to determine bounding times of complex sequence operations.",
+      "CO2: Implement Fibonacci heaps and Binomial heaps with optimal decrease-key operations.",
+      "CO3: Construct Segment Trees, Fenwick Trees, and k-d Trees for range queries and spatial searching.",
+      "CO4: Utilize Suffix Trees, Suffix Arrays, and persistent structures in high-performance computing applications."
     ]
-},
+  },
   "CS505": {
     "code": "CS505",
     "name": "Data Warehousing and Data Mining",
@@ -1250,25 +1250,25 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Data Warehousing Fundamentals & OLAP - Data warehouse concepts, 3-tier architecture, ETL processes; Data models: Star schema, Snowflake schema, Fact constellation schema; OLAP operations: Roll-up, Drill-down, Slice, Dice, Pivot; Data preprocessing: Cleaning, Integration, Transformation, Reduction (PCA, Sampling).",
-        "Module 2: Association Rule Mining - Frequent itemset mining, Support and Confidence; Apriori algorithm, Generating association rules; FP-Growth algorithm: FP-tree construction and mining without candidate generation; Multi-level and multi-dimensional association rules.",
-        "Module 3: Classification & Prediction - Supervised learning; Decision tree induction (ID3, C4.5, CART); Attribute selection measures (Information gain, Gini index); Naive Bayes classification; Support Vector Machines (SVM); Ensemble methods (Bagging, Boosting, Random Forest); Model evaluation metrics (Precision, Recall, F1-score, ROC, AUC).",
-        "Module 4: Clustering Analysis & Outlier Detection - Unsupervised learning; Partitioning methods: k-Means, k-Medoids; Hierarchical methods: Agglomerative and Divisive clustering, BIRCH; Density-based methods: DBSCAN, OPTICS; Grid-based methods; Outlier detection approaches (Statistical, Proximity-based, Clustering-based)."
+      "Module 1: Data Warehousing Fundamentals & OLAP - Data warehouse concepts, 3-tier architecture, ETL processes; Data models: Star schema, Snowflake schema, Fact constellation schema; OLAP operations: Roll-up, Drill-down, Slice, Dice, Pivot; Data preprocessing: Cleaning, Integration, Transformation, Reduction (PCA, Sampling).",
+      "Module 2: Association Rule Mining - Frequent itemset mining, Support and Confidence; Apriori algorithm, Generating association rules; FP-Growth algorithm: FP-tree construction and mining without candidate generation; Multi-level and multi-dimensional association rules.",
+      "Module 3: Classification & Prediction - Supervised learning; Decision tree induction (ID3, C4.5, CART); Attribute selection measures (Information gain, Gini index); Naive Bayes classification; Support Vector Machines (SVM); Ensemble methods (Bagging, Boosting, Random Forest); Model evaluation metrics (Precision, Recall, F1-score, ROC, AUC).",
+      "Module 4: Clustering Analysis & Outlier Detection - Unsupervised learning; Partitioning methods: k-Means, k-Medoids; Hierarchical methods: Agglomerative and Divisive clustering, BIRCH; Density-based methods: DBSCAN, OPTICS; Grid-based methods; Outlier detection approaches (Statistical, Proximity-based, Clustering-based)."
     ],
     "textbooks": [
-        "Jiawei Han, Micheline Kamber, and Jian Pei, \"Data Mining: Concepts and Techniques\", 3rd Edition, Morgan Kaufmann, 2011.",
-        "Pang-Ning Tan, Michael Steinbach, Anuj Karpatne, and Vipin Kumar, \"Introduction to Data Mining\", 2nd Edition, Pearson, 2018."
+      "Jiawei Han, Micheline Kamber, and Jian Pei, \"Data Mining: Concepts and Techniques\", 3rd Edition, Morgan Kaufmann, 2011.",
+      "Pang-Ning Tan, Michael Steinbach, Anuj Karpatne, and Vipin Kumar, \"Introduction to Data Mining\", 2nd Edition, Pearson, 2018."
     ],
     "objectives": [
-        "To teach data warehouse design, OLAP multidimensional querying, frequent pattern mining, predictive classification, and unsupervised cluster analytics."
+      "To teach data warehouse design, OLAP multidimensional querying, frequent pattern mining, predictive classification, and unsupervised cluster analytics."
     ],
     "outcomes": [
-        "CO1: Design data warehouse multidimensional schemas and execute OLAP operational cubes.",
-        "CO2: Extract frequent itemsets and association rules using Apriori and FP-Growth algorithms.",
-        "CO3: Construct decision trees, Naive Bayes, and ensemble classifiers with validation metrics.",
-        "CO4: Implement k-Means, DBSCAN, and hierarchical clustering algorithms for data segment discovery."
+      "CO1: Design data warehouse multidimensional schemas and execute OLAP operational cubes.",
+      "CO2: Extract frequent itemsets and association rules using Apriori and FP-Growth algorithms.",
+      "CO3: Construct decision trees, Naive Bayes, and ensemble classifiers with validation metrics.",
+      "CO4: Implement k-Means, DBSCAN, and hierarchical clustering algorithms for data segment discovery."
     ]
-},
+  },
   "CS511": {
     "code": "CS511",
     "name": "Optimization Techniques",
@@ -1279,26 +1279,26 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Linear Programming - Formulation of engineering optimization problems; Graphical solution; Simplex algorithm, Two-phase simplex method, Big-M method; Duality theory, Dual simplex algorithm; Sensitivity analysis.",
-        "Module 2: Transportation, Assignment & Integer Programming - Transportation problem: Initial basic feasible solution (North-West corner, Vogel's approximation), MODI method for optimality; Assignment problem: Hungarian algorithm; Integer Linear Programming: Gomory's cutting plane method, Branch and Bound technique.",
-        "Module 3: Non-Linear Unconstrained & Constrained Optimization - Unconstrained optimization: One-dimensional search methods (Golden section search, Fibonacci search); Multi-variable gradient methods: Steepest Descent, Newton-Raphson, Quasi-Newton methods; Constrained optimization: Lagrange multipliers, Karush-Kuhn-Tucker (KKT) necessary and sufficient conditions.",
-        "Module 4: Modern Metaheuristic & Evolutionary Algorithms - Overview of metaheuristics; Genetic Algorithms (GA): Selection, Crossover, Mutation operators; Simulated Annealing; Particle Swarm Optimization (PSO); Ant Colony Optimization (ACO); Applications to computer networking and machine learning hyperparameter tuning."
+      "Module 1: Linear Programming - Formulation of engineering optimization problems; Graphical solution; Simplex algorithm, Two-phase simplex method, Big-M method; Duality theory, Dual simplex algorithm; Sensitivity analysis.",
+      "Module 2: Transportation, Assignment & Integer Programming - Transportation problem: Initial basic feasible solution (North-West corner, Vogel's approximation), MODI method for optimality; Assignment problem: Hungarian algorithm; Integer Linear Programming: Gomory's cutting plane method, Branch and Bound technique.",
+      "Module 3: Non-Linear Unconstrained & Constrained Optimization - Unconstrained optimization: One-dimensional search methods (Golden section search, Fibonacci search); Multi-variable gradient methods: Steepest Descent, Newton-Raphson, Quasi-Newton methods; Constrained optimization: Lagrange multipliers, Karush-Kuhn-Tucker (KKT) necessary and sufficient conditions.",
+      "Module 4: Modern Metaheuristic & Evolutionary Algorithms - Overview of metaheuristics; Genetic Algorithms (GA): Selection, Crossover, Mutation operators; Simulated Annealing; Particle Swarm Optimization (PSO); Ant Colony Optimization (ACO); Applications to computer networking and machine learning hyperparameter tuning."
     ],
     "textbooks": [
-        "Singiresu S. Rao, \"Engineering Optimization: Theory and Practice\", 5th Edition, John Wiley & Sons, 2019.",
-        "Hamdy A. Taha, \"Operations Research: An Introduction\", 10th Edition, Pearson, 2017.",
-        "Kalyanmoy Deb, \"Optimization for Engineering Design: Algorithms and Examples\", 2nd Edition, Prentice Hall of India, 2012."
+      "Singiresu S. Rao, \"Engineering Optimization: Theory and Practice\", 5th Edition, John Wiley & Sons, 2019.",
+      "Hamdy A. Taha, \"Operations Research: An Introduction\", 10th Edition, Pearson, 2017.",
+      "Kalyanmoy Deb, \"Optimization for Engineering Design: Algorithms and Examples\", 2nd Edition, Prentice Hall of India, 2012."
     ],
     "objectives": [
-        "To provide mathematical formulations and algorithmic solvers for linear programming, non-linear optimization, integer programming, and evolutionary metaheuristics."
+      "To provide mathematical formulations and algorithmic solvers for linear programming, non-linear optimization, integer programming, and evolutionary metaheuristics."
     ],
     "outcomes": [
-        "CO1: Formulate and solve linear optimization problems using Simplex and Dual Simplex algorithms.",
-        "CO2: Solve transportation, assignment, and integer programming problems.",
-        "CO3: Apply gradient descent, Newton methods, and KKT conditions to non-linear optimization problems.",
-        "CO4: Implement Genetic Algorithms and Particle Swarm Optimization for multi-variable engineering design."
+      "CO1: Formulate and solve linear optimization problems using Simplex and Dual Simplex algorithms.",
+      "CO2: Solve transportation, assignment, and integer programming problems.",
+      "CO3: Apply gradient descent, Newton methods, and KKT conditions to non-linear optimization problems.",
+      "CO4: Implement Genetic Algorithms and Particle Swarm Optimization for multi-variable engineering design."
     ]
-},
+  },
   "CS401": {
     "code": "CS401",
     "name": "Comprehensive Examination",
@@ -1309,19 +1309,19 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-0",
     "credits": 2,
     "modules": [
-        "Module 1: Comprehensive Review of Computer Science Foundations - Comprehensive assessment covering Data Structures, Algorithms, Discrete Mathematics, Theory of Computation, Operating Systems, Computer Networks, Database Management Systems, Compiler Design, and Computer Architecture.",
-        "Module 2: Written & Viva-Voce Assessment - Written examination and rigorous oral viva-voce before departmental faculty panels assessing foundational depth and analytical problem solving."
+      "Module 1: Comprehensive Review of Computer Science Foundations - Comprehensive assessment covering Data Structures, Algorithms, Discrete Mathematics, Theory of Computation, Operating Systems, Computer Networks, Database Management Systems, Compiler Design, and Computer Architecture.",
+      "Module 2: Written & Viva-Voce Assessment - Written examination and rigorous oral viva-voce before departmental faculty panels assessing foundational depth and analytical problem solving."
     ],
     "textbooks": [
-        "Standard undergraduate textbooks across B.Tech. Computer Science and Engineering curriculum."
+      "Standard undergraduate textbooks across B.Tech. Computer Science and Engineering curriculum."
     ],
     "objectives": [
-        "To assess overall academic mastery, theoretical depth, and analytical competence across the four-year undergraduate curriculum."
+      "To assess overall academic mastery, theoretical depth, and analytical competence across the four-year undergraduate curriculum."
     ],
     "outcomes": [
-        "CO1: Demonstrate comprehensive knowledge across core computer science domains and apply them to solve integrated algorithmic challenges."
+      "CO1: Demonstrate comprehensive knowledge across core computer science domains and apply them to solve integrated algorithmic challenges."
     ]
-},
+  },
   "CS402": {
     "code": "CS402",
     "name": "Major Project - I",
@@ -1332,20 +1332,20 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-6",
     "credits": 4,
     "modules": [
-        "Module 1: Problem Definition & Literature Synthesis - Identification of challenging real-world problem or research topic in AI/ML, Cybersecurity, Cloud Systems, Distributed Systems, or Web3; Comprehensive literature review of IEEE/ACM journals.",
-        "Module 2: System Specification, Architecture & Design - Software Requirement Specification (SRS), system architecture, UML modeling, algorithm design, prototype feasibility assessment, and presentation of preliminary findings to project committee."
+      "Module 1: Problem Definition & Literature Synthesis - Identification of challenging real-world problem or research topic in AI/ML, Cybersecurity, Cloud Systems, Distributed Systems, or Web3; Comprehensive literature review of IEEE/ACM journals.",
+      "Module 2: System Specification, Architecture & Design - Software Requirement Specification (SRS), system architecture, UML modeling, algorithm design, prototype feasibility assessment, and presentation of preliminary findings to project committee."
     ],
     "textbooks": [
-        "ACM/IEEE research papers, Software Engineering guidelines, Departmental Project Manual, NIT Goa."
+      "ACM/IEEE research papers, Software Engineering guidelines, Departmental Project Manual, NIT Goa."
     ],
     "objectives": [
-        "To conceptualize, plan, architect, and conduct feasibility studies for a capstone computer science project."
+      "To conceptualize, plan, architect, and conduct feasibility studies for a capstone computer science project."
     ],
     "outcomes": [
-        "CO1: Formulate well-defined engineering problem statements and software requirement specifications.",
-        "CO2: Design system architecture, modular components, and preliminary prototype implementations."
+      "CO1: Formulate well-defined engineering problem statements and software requirement specifications.",
+      "CO2: Design system architecture, modular components, and preliminary prototype implementations."
     ]
-},
+  },
   "CS450": {
     "code": "CS450",
     "name": "Major Project - II",
@@ -1356,20 +1356,20 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-12",
     "credits": 8,
     "modules": [
-        "Module 1: System Implementation & Testing - Full implementation of system components, database schemas, APIs, and user interfaces; Comprehensive unit testing, integration testing, system testing, performance benchmarking, and security audits.",
-        "Module 2: Project Deployment, Dissertation & Public Defense - Deployment to cloud platforms or physical servers; Preparation of comprehensive B.Tech. thesis dissertation; Public presentation and defense before external evaluation committee."
+      "Module 1: System Implementation & Testing - Full implementation of system components, database schemas, APIs, and user interfaces; Comprehensive unit testing, integration testing, system testing, performance benchmarking, and security audits.",
+      "Module 2: Project Deployment, Dissertation & Public Defense - Deployment to cloud platforms or physical servers; Preparation of comprehensive B.Tech. thesis dissertation; Public presentation and defense before external evaluation committee."
     ],
     "textbooks": [
-        "IEEE/ACM Transactions, B.Tech. Project Thesis Guidelines, NIT Goa."
+      "IEEE/ACM Transactions, B.Tech. Project Thesis Guidelines, NIT Goa."
     ],
     "objectives": [
-        "To complete, benchmark, deploy, and author a comprehensive dissertation for the capstone computer science project."
+      "To complete, benchmark, deploy, and author a comprehensive dissertation for the capstone computer science project."
     ],
     "outcomes": [
-        "CO1: Implement and deploy fully functional, production-ready software systems meeting rigorous performance standards.",
-        "CO2: Author a formal B.Tech. dissertation and defend technical decisions before an expert committee."
+      "CO1: Implement and deploy fully functional, production-ready software systems meeting rigorous performance standards.",
+      "CO2: Author a formal B.Tech. dissertation and defend technical decisions before an expert committee."
     ]
-},
+  },
   "CS900": {
     "code": "CS900",
     "name": "Data Structures and Algorithms (Open Elective)",
@@ -1380,24 +1380,24 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Foundations of Algorithms & Linear Data Structures - Asymptotic complexity (Big-O notation); Arrays, dynamic lists, Strings; Stacks: Array implementation, Expression evaluation; Queues: Circular queue, Priority queue; Singly and doubly linked lists.",
-        "Module 2: Trees & Hierarchical Searching - Binary trees, Traversals (Preorder, Inorder, Postorder); Binary Search Trees (BST), Insertion, Deletion, Search; Introduction to balanced AVL trees; Heaps and Priority Queues.",
-        "Module 3: Graphs & Network Algorithms - Graph representations (Adjacency Matrix, Adjacency List); Breadth First Search (BFS), Depth First Search (DFS); Shortest path algorithms (Dijkstra's); Minimum spanning tree (Prim's and Kruskal's).",
-        "Module 4: Sorting, Searching & Algorithm Strategies - Sorting: Merge sort, Quick sort, Heap sort; Hash tables and collision resolution; Introduction to Divide & Conquer, Greedy method, and Dynamic Programming."
+      "Module 1: Foundations of Algorithms & Linear Data Structures - Asymptotic complexity (Big-O notation); Arrays, dynamic lists, Strings; Stacks: Array implementation, Expression evaluation; Queues: Circular queue, Priority queue; Singly and doubly linked lists.",
+      "Module 2: Trees & Hierarchical Searching - Binary trees, Traversals (Preorder, Inorder, Postorder); Binary Search Trees (BST), Insertion, Deletion, Search; Introduction to balanced AVL trees; Heaps and Priority Queues.",
+      "Module 3: Graphs & Network Algorithms - Graph representations (Adjacency Matrix, Adjacency List); Breadth First Search (BFS), Depth First Search (DFS); Shortest path algorithms (Dijkstra's); Minimum spanning tree (Prim's and Kruskal's).",
+      "Module 4: Sorting, Searching & Algorithm Strategies - Sorting: Merge sort, Quick sort, Heap sort; Hash tables and collision resolution; Introduction to Divide & Conquer, Greedy method, and Dynamic Programming."
     ],
     "textbooks": [
-        "Mark Allen Weiss, \"Data Structures and Algorithm Analysis in C++\", 4th Edition, Pearson, 2014.",
-        "Ellis Horowitz, Sartaj Sahni, and Susan Anderson-Freed, \"Fundamentals of Data Structures in C\", 2nd Edition, Universities Press, 2008."
+      "Mark Allen Weiss, \"Data Structures and Algorithm Analysis in C++\", 4th Edition, Pearson, 2014.",
+      "Ellis Horowitz, Sartaj Sahni, and Susan Anderson-Freed, \"Fundamentals of Data Structures in C\", 2nd Edition, Universities Press, 2008."
     ],
     "objectives": [
-        "To offer non-computer science engineering students comprehensive exposure to fundamental data structures and algorithmic problem solving."
+      "To offer non-computer science engineering students comprehensive exposure to fundamental data structures and algorithmic problem solving."
     ],
     "outcomes": [
-        "CO1: Analyze computational complexity of basic algorithms.",
-        "CO2: Utilize stacks, queues, trees, and graphs to organize engineering data.",
-        "CO3: Select appropriate sorting, searching, and hashing techniques for application software."
+      "CO1: Analyze computational complexity of basic algorithms.",
+      "CO2: Utilize stacks, queues, trees, and graphs to organize engineering data.",
+      "CO3: Select appropriate sorting, searching, and hashing techniques for application software."
     ]
-},
+  },
   "ME206": {
     "code": "ME206",
     "name": "Design Lab - I",
@@ -1408,21 +1408,21 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-3",
     "credits": 2,
     "modules": [
-        "Module 1: Computer-Aided 3D Parametric Modeling - 1. Introduction to 3D parametric CAD modeling software (SolidWorks/Creo/CATIA); 2. Part modeling: Sketching, Constraints, Extrude, Revolve, Sweep, Loft; 3. Modeling of machine components (Shafts, Keys, Couplings, Pulleys, Gears); 4. Drafting and standard tolerancing (GD&T).",
-        "Module 2: Assembly Modeling & Kinematic Simulation - 5. Bottom-up and top-down assembly modeling of mechanical sub-assemblies (Plummer block, Screw jack, Tailstock, Universal coupling); 6. Interference checking and bill of materials (BOM) generation; 7. Motion study and kinematic simulation of slider-crank and four-bar linkages."
+      "Module 1: Computer-Aided 3D Parametric Modeling - 1. Introduction to 3D parametric CAD modeling software (SolidWorks/Creo/CATIA); 2. Part modeling: Sketching, Constraints, Extrude, Revolve, Sweep, Loft; 3. Modeling of machine components (Shafts, Keys, Couplings, Pulleys, Gears); 4. Drafting and standard tolerancing (GD&T).",
+      "Module 2: Assembly Modeling & Kinematic Simulation - 5. Bottom-up and top-down assembly modeling of mechanical sub-assemblies (Plummer block, Screw jack, Tailstock, Universal coupling); 6. Interference checking and bill of materials (BOM) generation; 7. Motion study and kinematic simulation of slider-crank and four-bar linkages."
     ],
     "textbooks": [
-        "Sham Tickoo, \"SolidWorks for Designers\", CADCIM Technologies, 2020.",
-        "K. L. Narayana, P. Kannaiah, and K. Venkata Reddy, \"Machine Drawing\", 6th Edition, New Age International, 2019."
+      "Sham Tickoo, \"SolidWorks for Designers\", CADCIM Technologies, 2020.",
+      "K. L. Narayana, P. Kannaiah, and K. Venkata Reddy, \"Machine Drawing\", 6th Edition, New Age International, 2019."
     ],
     "objectives": [
-        "To master 3D parametric computer-aided modeling, geometric dimensioning and tolerancing (GD&T), assembly design, and motion simulation."
+      "To master 3D parametric computer-aided modeling, geometric dimensioning and tolerancing (GD&T), assembly design, and motion simulation."
     ],
     "outcomes": [
-        "CO1: Create precise 3D parametric solid models of complex mechanical parts.",
-        "CO2: Assemble mechanical components with constraints, perform collision analysis, and generate engineering drafting sheets."
+      "CO1: Create precise 3D parametric solid models of complex mechanical parts.",
+      "CO2: Assemble mechanical components with constraints, perform collision analysis, and generate engineering drafting sheets."
     ]
-},
+  },
   "ME252": {
     "code": "ME252",
     "name": "Manufacturing Processes - II",
@@ -1433,27 +1433,27 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Mechanics of Metal Cutting - Mechanics of orthogonal and oblique cutting; Chip formation mechanisms, Types of chips, Merchant's force circle diagram, Velocity relationships; Cutting tool geometry, Tool signatures (ASA, ORS systems); Cutting forces, Power requirements; Cutting tool materials (HSS, Carbides, Ceramics, CBN, Diamond); Tool wear mechanisms, Tool life, Taylor's tool life equation; Surface finish and cutting fluids.",
-        "Module 2: Machine Tools: Lathe, Shaper, Planer & Milling - Centre lathe: Construction, Operations (Turning, Taper turning, Thread cutting), Lathe attachments; Shaper, Planer, and Slotter: Mechanisms (Quick return mechanism), Operations; Milling machines: Up-milling, Down-milling, Face milling, Indexing methods (Simple, Compound, Differential indexing); Hole making: Drilling, Reaming, Boring, Tapping.",
-        "Module 3: Abrasive Machining & Finishing Operations - Grinding: Grinding wheels, Abrasive types, Grain size, Grade, Structure, Bond types, Wheel marking system; Grinding mechanisms, Mechanics of grinding, Wheel dressing and truing; Surface, Cylindrical, and Centerless grinding; Superfinishing processes: Honing, Lapping, Polishing, Buffing, Burnishing.",
-        "Module 4: Non-Traditional Machining Processes - Classification of advanced machining processes; Mechanical: Ultrasonic Machining (USM), Abrasive Jet Machining (AJM), Water Jet Machining (WJM); Electrochemical: Electrochemical Machining (ECM); Thermal: Electric Discharge Machining (EDM, Wire-EDM), Laser Beam Machining (LBM), Electron Beam Machining (EBM), Plasma Arc Machining (PAM); Working principles, Material removal mechanisms, Process parameters and applications."
+      "Module 1: Mechanics of Metal Cutting - Mechanics of orthogonal and oblique cutting; Chip formation mechanisms, Types of chips, Merchant's force circle diagram, Velocity relationships; Cutting tool geometry, Tool signatures (ASA, ORS systems); Cutting forces, Power requirements; Cutting tool materials (HSS, Carbides, Ceramics, CBN, Diamond); Tool wear mechanisms, Tool life, Taylor's tool life equation; Surface finish and cutting fluids.",
+      "Module 2: Machine Tools: Lathe, Shaper, Planer & Milling - Centre lathe: Construction, Operations (Turning, Taper turning, Thread cutting), Lathe attachments; Shaper, Planer, and Slotter: Mechanisms (Quick return mechanism), Operations; Milling machines: Up-milling, Down-milling, Face milling, Indexing methods (Simple, Compound, Differential indexing); Hole making: Drilling, Reaming, Boring, Tapping.",
+      "Module 3: Abrasive Machining & Finishing Operations - Grinding: Grinding wheels, Abrasive types, Grain size, Grade, Structure, Bond types, Wheel marking system; Grinding mechanisms, Mechanics of grinding, Wheel dressing and truing; Surface, Cylindrical, and Centerless grinding; Superfinishing processes: Honing, Lapping, Polishing, Buffing, Burnishing.",
+      "Module 4: Non-Traditional Machining Processes - Classification of advanced machining processes; Mechanical: Ultrasonic Machining (USM), Abrasive Jet Machining (AJM), Water Jet Machining (WJM); Electrochemical: Electrochemical Machining (ECM); Thermal: Electric Discharge Machining (EDM, Wire-EDM), Laser Beam Machining (LBM), Electron Beam Machining (EBM), Plasma Arc Machining (PAM); Working principles, Material removal mechanisms, Process parameters and applications."
     ],
     "textbooks": [
-        "A. B. Chattopadhyay, \"Machining and Machine Tools\", 2nd Edition, Wiley India, 2017.",
-        "P. N. Rao, \"Manufacturing Technology: Metal Cutting and Machine Tools: Vol. II\", 4th Edition, McGraw Hill, 2018.",
-        "G. K. Lal, \"Introduction to Machining Science\", 3rd Edition, New Age International, 2016.",
-        "P. C. Pandey and H. S. Shan, \"Modern Machining Processes\", Tata McGraw Hill, 1980."
+      "A. B. Chattopadhyay, \"Machining and Machine Tools\", 2nd Edition, Wiley India, 2017.",
+      "P. N. Rao, \"Manufacturing Technology: Metal Cutting and Machine Tools: Vol. II\", 4th Edition, McGraw Hill, 2018.",
+      "G. K. Lal, \"Introduction to Machining Science\", 3rd Edition, New Age International, 2016.",
+      "P. C. Pandey and H. S. Shan, \"Modern Machining Processes\", Tata McGraw Hill, 1980."
     ],
     "objectives": [
-        "To provide thorough comprehension of mechanics of metal cutting, machine tool kinematics, abrasive processes, and non-conventional machining technologies."
+      "To provide thorough comprehension of mechanics of metal cutting, machine tool kinematics, abrasive processes, and non-conventional machining technologies."
     ],
     "outcomes": [
-        "CO1: Calculate cutting forces, tool shear angles, and tool life using Merchant's analysis and Taylor's equation.",
-        "CO2: Formulate operation sequences and indexing setups on lathes, shapers, and milling machines.",
-        "CO3: Select grinding wheels and superfinishing parameters for target surface tolerances.",
-        "CO4: Explain material removal mechanisms of EDM, ECM, USM, and laser beam advanced machining systems."
+      "CO1: Calculate cutting forces, tool shear angles, and tool life using Merchant's analysis and Taylor's equation.",
+      "CO2: Formulate operation sequences and indexing setups on lathes, shapers, and milling machines.",
+      "CO3: Select grinding wheels and superfinishing parameters for target surface tolerances.",
+      "CO4: Explain material removal mechanisms of EDM, ECM, USM, and laser beam advanced machining systems."
     ]
-},
+  },
   "ME255": {
     "code": "ME255",
     "name": "Kinematics & Dynamics Laboratory",
@@ -1464,23 +1464,23 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-3",
     "credits": 2,
     "modules": [
-        "Module 1: Mechanism Kinematics & Cam Dynamics - 1. Kinematic analysis of four-bar and slider-crank mechanisms; 2. Experimental study of cam and follower jump phenomenon and profile generation; 3. Verification of gear ratio and epicyclic gear train kinematics; 4. Determination of Coriolis component of acceleration.",
-        "Module 2: Dynamics, Balancing & Gyroscopic Precession - 5. Static and dynamic balancing of rotating masses; 6. Longitudinal and torsional natural vibration frequencies of spring-mass systems; 7. Experimental determination of radius of gyration using compound pendulum and trifilar suspension; 8. Verification of gyroscopic couple on motorized gyroscope test rig; 9. Speed-displacement characteristics of centrifugal governors (Watt, Porter, Proell, Hartnell)."
+      "Module 1: Mechanism Kinematics & Cam Dynamics - 1. Kinematic analysis of four-bar and slider-crank mechanisms; 2. Experimental study of cam and follower jump phenomenon and profile generation; 3. Verification of gear ratio and epicyclic gear train kinematics; 4. Determination of Coriolis component of acceleration.",
+      "Module 2: Dynamics, Balancing & Gyroscopic Precession - 5. Static and dynamic balancing of rotating masses; 6. Longitudinal and torsional natural vibration frequencies of spring-mass systems; 7. Experimental determination of radius of gyration using compound pendulum and trifilar suspension; 8. Verification of gyroscopic couple on motorized gyroscope test rig; 9. Speed-displacement characteristics of centrifugal governors (Watt, Porter, Proell, Hartnell)."
     ],
     "textbooks": [
-        "S. S. Rattan, \"Theory of Machines\", 4th Edition, McGraw Hill Education, 2014.",
-        "Laboratory Manual for Dynamics of Machinery, Department of Mechanical Engineering, NIT Goa."
+      "S. S. Rattan, \"Theory of Machines\", 4th Edition, McGraw Hill Education, 2014.",
+      "Laboratory Manual for Dynamics of Machinery, Department of Mechanical Engineering, NIT Goa."
     ],
     "objectives": [
-        "To experimentally verify kinematic linkages, gyroscopic couples, dynamic balancing, governor characteristics, and mechanical vibrations."
+      "To experimentally verify kinematic linkages, gyroscopic couples, dynamic balancing, governor characteristics, and mechanical vibrations."
     ],
     "outcomes": [
-        "CO1: Measure kinematic displacements, velocities, and follower jump in mechanical linkages.",
-        "CO2: Perform dynamic balancing of rotating machinery and quantify unbalance forces.",
-        "CO3: Verify gyroscopic precession laws and governor sensitivity experimentally.",
-        "CO4: Determine natural frequencies and damping ratios of vibrating mechanical structures."
+      "CO1: Measure kinematic displacements, velocities, and follower jump in mechanical linkages.",
+      "CO2: Perform dynamic balancing of rotating machinery and quantify unbalance forces.",
+      "CO3: Verify gyroscopic precession laws and governor sensitivity experimentally.",
+      "CO4: Determine natural frequencies and damping ratios of vibrating mechanical structures."
     ]
-},
+  },
   "ME300": {
     "code": "ME300",
     "name": "Seminar",
@@ -1491,20 +1491,20 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-2",
     "credits": 1,
     "modules": [
-        "Module 1: Literature Survey and Topic Selection - Selection of emerging research topics in thermal sciences, renewable propulsion, advanced materials, robotics, or micro-manufacturing; Survey of ASME/Elsevier journal articles.",
-        "Module 2: Technical Report & Presentation Defense - Synthesis into a structured technical paper; Slide presentation and oral viva-voce before departmental evaluation panel."
+      "Module 1: Literature Survey and Topic Selection - Selection of emerging research topics in thermal sciences, renewable propulsion, advanced materials, robotics, or micro-manufacturing; Survey of ASME/Elsevier journal articles.",
+      "Module 2: Technical Report & Presentation Defense - Synthesis into a structured technical paper; Slide presentation and oral viva-voce before departmental evaluation panel."
     ],
     "textbooks": [
-        "ASME Journal of Heat Transfer, Journal of Manufacturing Science and Engineering, NIT Goa Seminar Guidelines."
+      "ASME Journal of Heat Transfer, Journal of Manufacturing Science and Engineering, NIT Goa Seminar Guidelines."
     ],
     "objectives": [
-        "To foster independent literature review, technical synthesis, and scientific oral presentation skills in mechanical engineering."
+      "To foster independent literature review, technical synthesis, and scientific oral presentation skills in mechanical engineering."
     ],
     "outcomes": [
-        "CO1: Perform comprehensive survey of contemporary research publications in mechanical engineering.",
-        "CO2: Deliver an effective technical seminar presentation and answer technical queries with scientific precision."
+      "CO1: Perform comprehensive survey of contemporary research publications in mechanical engineering.",
+      "CO2: Deliver an effective technical seminar presentation and answer technical queries with scientific precision."
     ]
-},
+  },
   "ME302": {
     "code": "ME302",
     "name": "Manufacturing Technology - II",
@@ -1515,26 +1515,26 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Theory of Metal Cutting & Tool Geometry - Mechanics of single-point and multi-point machining; Merchant's circle, Shear zone model, Friction in metal cutting; Tool wear, Tool failure modes, Tool life testing, Economics of machining (Minimum cost and maximum production rate criteria).",
-        "Module 2: CNC Machine Tools & Part Programming - Numerical Control (NC), Computer Numerical Control (CNC), Direct Numerical Control (DNC); Machine architecture, Ball screws, Linear guideways, Servomotors, Encoders, Automatic tool changers (ATC); CNC programming: G-codes and M-codes, Coordinate systems, Canned cycles, Subroutines, APT language fundamentals.",
-        "Module 3: Jigs, Fixtures & Metrology - Principles of location and clamping, 3-2-1 principle of location; Design of drilling jigs and milling fixtures; Metrology: Comparators (Mechanical, Pneumatic, Optical), Limits, Fits and Tolerances (ISO system); Surface roughness measurement (Ra, Rz, CLA), Toolmaker's microscope, Profile projector, Coordinate Measuring Machines (CMM).",
-        "Module 4: Additive Manufacturing & Rapid Prototyping - Principles of Additive Manufacturing (AM); Classification of AM processes: Stereolithography (SLA), Selective Laser Sintering (SLS), Fused Deposition Modeling (FDM), Electron Beam Melting (EBM); CAD to STL translation; Design for Additive Manufacturing (DFAM), Materials, and industrial applications."
+      "Module 1: Theory of Metal Cutting & Tool Geometry - Mechanics of single-point and multi-point machining; Merchant's circle, Shear zone model, Friction in metal cutting; Tool wear, Tool failure modes, Tool life testing, Economics of machining (Minimum cost and maximum production rate criteria).",
+      "Module 2: CNC Machine Tools & Part Programming - Numerical Control (NC), Computer Numerical Control (CNC), Direct Numerical Control (DNC); Machine architecture, Ball screws, Linear guideways, Servomotors, Encoders, Automatic tool changers (ATC); CNC programming: G-codes and M-codes, Coordinate systems, Canned cycles, Subroutines, APT language fundamentals.",
+      "Module 3: Jigs, Fixtures & Metrology - Principles of location and clamping, 3-2-1 principle of location; Design of drilling jigs and milling fixtures; Metrology: Comparators (Mechanical, Pneumatic, Optical), Limits, Fits and Tolerances (ISO system); Surface roughness measurement (Ra, Rz, CLA), Toolmaker's microscope, Profile projector, Coordinate Measuring Machines (CMM).",
+      "Module 4: Additive Manufacturing & Rapid Prototyping - Principles of Additive Manufacturing (AM); Classification of AM processes: Stereolithography (SLA), Selective Laser Sintering (SLS), Fused Deposition Modeling (FDM), Electron Beam Melting (EBM); CAD to STL translation; Design for Additive Manufacturing (DFAM), Materials, and industrial applications."
     ],
     "textbooks": [
-        "P. N. Rao, \"Manufacturing Technology: Metal Cutting and Machine Tools\", 4th Edition, McGraw Hill, 2018.",
-        "Mike P. Groover, \"Automation, Production Systems, and Computer-Integrated Manufacturing\", 4th Edition, Pearson, 2015.",
-        "Ian Gibson, David Rosen, and Brent Stucker, \"Additive Manufacturing Technologies\", 2nd Edition, Springer, 2015."
+      "P. N. Rao, \"Manufacturing Technology: Metal Cutting and Machine Tools\", 4th Edition, McGraw Hill, 2018.",
+      "Mike P. Groover, \"Automation, Production Systems, and Computer-Integrated Manufacturing\", 4th Edition, Pearson, 2015.",
+      "Ian Gibson, David Rosen, and Brent Stucker, \"Additive Manufacturing Technologies\", 2nd Edition, Springer, 2015."
     ],
     "objectives": [
-        "To study CNC machine tool programming, advanced machining mechanics, metrology, inspection fixtures, and additive manufacturing technologies."
+      "To study CNC machine tool programming, advanced machining mechanics, metrology, inspection fixtures, and additive manufacturing technologies."
     ],
     "outcomes": [
-        "CO1: Formulate CNC part programs using G-codes and canned cycles for turning and milling operations.",
-        "CO2: Design locating and clamping arrangements for manufacturing jigs and fixtures.",
-        "CO3: Apply engineering metrology instruments (CMM, comparators) to inspect geometric tolerances.",
-        "CO4: Select appropriate additive manufacturing processes and materials for functional rapid prototyping."
+      "CO1: Formulate CNC part programs using G-codes and canned cycles for turning and milling operations.",
+      "CO2: Design locating and clamping arrangements for manufacturing jigs and fixtures.",
+      "CO3: Apply engineering metrology instruments (CMM, comparators) to inspect geometric tolerances.",
+      "CO4: Select appropriate additive manufacturing processes and materials for functional rapid prototyping."
     ]
-},
+  },
   "ME305": {
     "code": "ME305",
     "name": "Machine Shop - II",
@@ -1545,22 +1545,22 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-3",
     "credits": 2,
     "modules": [
-        "Module 1: Advanced Milling & Shaper Operations - 1. Spur gear cutting on Universal Milling Machine using simple and compound indexing; 2. Helical gear cutting on Universal Milling Machine; 3. Machining of keyways and slots using Shaper and Slotter machines; 4. Face milling and end milling operations.",
-        "Module 2: Grinding & CNC Machining Practice - 5. Precision surface grinding of flat metallic specimens to specified micro-inch finish; 6. Cylindrical grinding of stepped shafts; 7. Tool grinding using Tool and Cutter Grinder; 8. Manual part programming and machining of turned component on CNC Lathe; 9. 2.5D contour milling and drilling cycle execution on CNC Vertical Machining Centre (VMC)."
+      "Module 1: Advanced Milling & Shaper Operations - 1. Spur gear cutting on Universal Milling Machine using simple and compound indexing; 2. Helical gear cutting on Universal Milling Machine; 3. Machining of keyways and slots using Shaper and Slotter machines; 4. Face milling and end milling operations.",
+      "Module 2: Grinding & CNC Machining Practice - 5. Precision surface grinding of flat metallic specimens to specified micro-inch finish; 6. Cylindrical grinding of stepped shafts; 7. Tool grinding using Tool and Cutter Grinder; 8. Manual part programming and machining of turned component on CNC Lathe; 9. 2.5D contour milling and drilling cycle execution on CNC Vertical Machining Centre (VMC)."
     ],
     "textbooks": [
-        "P. N. Rao, \"Manufacturing Technology: Vol II\", McGraw Hill Education.",
-        "Machine Shop Instruction Manual, Department of Mechanical Engineering, NIT Goa."
+      "P. N. Rao, \"Manufacturing Technology: Vol II\", McGraw Hill Education.",
+      "Machine Shop Instruction Manual, Department of Mechanical Engineering, NIT Goa."
     ],
     "objectives": [
-        "To acquire practical machining expertise in gear cutting, precision surface/cylindrical grinding, and CNC lathe/VMC part manufacturing."
+      "To acquire practical machining expertise in gear cutting, precision surface/cylindrical grinding, and CNC lathe/VMC part manufacturing."
     ],
     "outcomes": [
-        "CO1: Execute gear milling operations using dividing heads and indexing mechanisms.",
-        "CO2: Operate cylindrical and surface grinding machine tools to achieve precise dimensional tolerances.",
-        "CO3: Write, simulate, and execute CNC G-code part programs on CNC production machines."
+      "CO1: Execute gear milling operations using dividing heads and indexing mechanisms.",
+      "CO2: Operate cylindrical and surface grinding machine tools to achieve precise dimensional tolerances.",
+      "CO3: Write, simulate, and execute CNC G-code part programs on CNC production machines."
     ]
-},
+  },
   "ME306": {
     "code": "ME306",
     "name": "Thermal Lab - II",
@@ -1571,23 +1571,23 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-3",
     "credits": 2,
     "modules": [
-        "Module 1: Heat Transfer Experiments - 1. Determination of thermal conductivity of metal rod and insulating powder; 2. Determination of heat transfer coefficient under natural and forced convection from a vertical cylinder; 3. Determination of Stefan-Boltzmann constant; 4. Determination of emissivity of a gray test surface; 5. Performance evaluation of parallel-flow and counter-flow heat exchangers; 6. Heat pipe demonstration and critical heat flux apparatus.",
-        "Module 2: Refrigeration, Air Conditioning & Compressors - 7. Determination of Coefficient of Performance (COP) of Vapour Compression Refrigeration Test Rig; 8. Performance testing of Air Conditioning test rig with psychrometric chart analysis; 9. Performance test on two-stage reciprocating air compressor with intercooling; 10. Smoke and exhaust gas emission analysis using flue gas analyzer."
+      "Module 1: Heat Transfer Experiments - 1. Determination of thermal conductivity of metal rod and insulating powder; 2. Determination of heat transfer coefficient under natural and forced convection from a vertical cylinder; 3. Determination of Stefan-Boltzmann constant; 4. Determination of emissivity of a gray test surface; 5. Performance evaluation of parallel-flow and counter-flow heat exchangers; 6. Heat pipe demonstration and critical heat flux apparatus.",
+      "Module 2: Refrigeration, Air Conditioning & Compressors - 7. Determination of Coefficient of Performance (COP) of Vapour Compression Refrigeration Test Rig; 8. Performance testing of Air Conditioning test rig with psychrometric chart analysis; 9. Performance test on two-stage reciprocating air compressor with intercooling; 10. Smoke and exhaust gas emission analysis using flue gas analyzer."
     ],
     "textbooks": [
-        "J. P. Holman, \"Heat Transfer\", 10th Edition, McGraw Hill Education, 2010.",
-        "C. P. Arora, \"Refrigeration and Air Conditioning\", 3rd Edition, Tata McGraw Hill, 2008.",
-        "Laboratory Manual for Thermal Engineering - II, Department of Mechanical Engineering, NIT Goa."
+      "J. P. Holman, \"Heat Transfer\", 10th Edition, McGraw Hill Education, 2010.",
+      "C. P. Arora, \"Refrigeration and Air Conditioning\", 3rd Edition, Tata McGraw Hill, 2008.",
+      "Laboratory Manual for Thermal Engineering - II, Department of Mechanical Engineering, NIT Goa."
     ],
     "objectives": [
-        "To conduct experimental investigations on conduction, convection, radiation heat transfer, heat exchangers, refrigeration systems, and multistage air compressors."
+      "To conduct experimental investigations on conduction, convection, radiation heat transfer, heat exchangers, refrigeration systems, and multistage air compressors."
     ],
     "outcomes": [
-        "CO1: Measure thermal conductivity, convection heat transfer coefficients, and radiation emissivity.",
-        "CO2: Evaluate effectiveness and NTU of parallel and counter-flow heat exchangers.",
-        "CO3: Determine COP and volumetric efficiency of refrigeration test rigs and air compressors."
+      "CO1: Measure thermal conductivity, convection heat transfer coefficients, and radiation emissivity.",
+      "CO2: Evaluate effectiveness and NTU of parallel and counter-flow heat exchangers.",
+      "CO3: Determine COP and volumetric efficiency of refrigeration test rigs and air compressors."
     ]
-},
+  },
   "ME355": {
     "code": "ME355",
     "name": "Automobile & Engines Lab",
@@ -1598,22 +1598,22 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-3",
     "credits": 2,
     "modules": [
-        "Module 1: Automobile Subsystems & Dismantling - 1. Dismantling, study, and reassembly of multi-cylinder petrol and diesel automotive engines; 2. Study of automotive chassis layouts, frame types, and suspension systems (MacPherson strut, leaf spring, torsion bar); 3. Study and servicing of automotive clutch (Single plate, Multi-plate, Diaphragm) and manual/automatic gearboxes (Synchromesh, Epicyclic, Continuously Variable Transmission - CVT); 4. Inspection of propeller shaft, universal joints, differential gear unit, and rear axle.",
-        "Module 2: Steering, Braking & Engine Testing - 5. Study and adjustment of steering geometry (Camber, Caster, Kingpin inclination, Toe-in/Toe-out) and power steering mechanisms; 6. Study and bleeding of hydraulic, pneumatic, and Anti-lock Braking Systems (ABS); 7. Fuel injection pump (CRDI) and distributor ignition system testing; 8. Performance testing of multi-cylinder automotive engine connected to eddy current dynamometer; 9. Exhaust emission testing using 5-gas exhaust analyzer."
+      "Module 1: Automobile Subsystems & Dismantling - 1. Dismantling, study, and reassembly of multi-cylinder petrol and diesel automotive engines; 2. Study of automotive chassis layouts, frame types, and suspension systems (MacPherson strut, leaf spring, torsion bar); 3. Study and servicing of automotive clutch (Single plate, Multi-plate, Diaphragm) and manual/automatic gearboxes (Synchromesh, Epicyclic, Continuously Variable Transmission - CVT); 4. Inspection of propeller shaft, universal joints, differential gear unit, and rear axle.",
+      "Module 2: Steering, Braking & Engine Testing - 5. Study and adjustment of steering geometry (Camber, Caster, Kingpin inclination, Toe-in/Toe-out) and power steering mechanisms; 6. Study and bleeding of hydraulic, pneumatic, and Anti-lock Braking Systems (ABS); 7. Fuel injection pump (CRDI) and distributor ignition system testing; 8. Performance testing of multi-cylinder automotive engine connected to eddy current dynamometer; 9. Exhaust emission testing using 5-gas exhaust analyzer."
     ],
     "textbooks": [
-        "Kirpal Singh, \"Automobile Engineering: Vol I & II\", 13th Edition, Standard Publishers Distributors, 2012.",
-        "William H. Crouse and Donald L. Anglin, \"Automotive Mechanics\", 10th Edition, McGraw Hill, 2006."
+      "Kirpal Singh, \"Automobile Engineering: Vol I & II\", 13th Edition, Standard Publishers Distributors, 2012.",
+      "William H. Crouse and Donald L. Anglin, \"Automotive Mechanics\", 10th Edition, McGraw Hill, 2006."
     ],
     "objectives": [
-        "To acquire hands-on laboratory experience in dismantling, inspecting, testing, and assembling automotive powertrain, transmission, steering, and braking systems."
+      "To acquire hands-on laboratory experience in dismantling, inspecting, testing, and assembling automotive powertrain, transmission, steering, and braking systems."
     ],
     "outcomes": [
-        "CO1: Explain operational mechanisms of modern automotive engines, transmissions, differentials, and suspensions.",
-        "CO2: Diagnose and test hydraulic brake systems, steering linkages, and fuel injection mechanisms.",
-        "CO3: Measure engine brake power, specific fuel consumption, and emission gases experimentally."
+      "CO1: Explain operational mechanisms of modern automotive engines, transmissions, differentials, and suspensions.",
+      "CO2: Diagnose and test hydraulic brake systems, steering linkages, and fuel injection mechanisms.",
+      "CO3: Measure engine brake power, specific fuel consumption, and emission gases experimentally."
     ]
-},
+  },
   "ME400": {
     "code": "ME400",
     "name": "Major Project - I",
@@ -1624,20 +1624,20 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-6",
     "credits": 4,
     "modules": [
-        "Module 1: Problem Formulation & Literature Search - Selection of research problem or industrial design challenge in thermal engineering, robotics, CAD/CAM, structural mechanics, or advanced materials; Survey of ASME/Elsevier publications.",
-        "Module 2: Conceptual Design, CAD Modeling & Simulation - Formulation of engineering specifications; Detailed 3D CAD modeling, FEA structural/thermal analysis using ANSYS/Abaqus or CFD simulation using ANSYS Fluent; Submission of interim report and presentation to project committee."
+      "Module 1: Problem Formulation & Literature Search - Selection of research problem or industrial design challenge in thermal engineering, robotics, CAD/CAM, structural mechanics, or advanced materials; Survey of ASME/Elsevier publications.",
+      "Module 2: Conceptual Design, CAD Modeling & Simulation - Formulation of engineering specifications; Detailed 3D CAD modeling, FEA structural/thermal analysis using ANSYS/Abaqus or CFD simulation using ANSYS Fluent; Submission of interim report and presentation to project committee."
     ],
     "textbooks": [
-        "ASME Standards, Mechanical Engineering Capstone Project Guidelines, NIT Goa."
+      "ASME Standards, Mechanical Engineering Capstone Project Guidelines, NIT Goa."
     ],
     "objectives": [
-        "To conceptualize, plan, architect, and conduct feasibility studies for a capstone mechanical engineering project."
+      "To conceptualize, plan, architect, and conduct feasibility studies for a capstone mechanical engineering project."
     ],
     "outcomes": [
-        "CO1: Formulate engineering design problem statements and establish technical specifications.",
-        "CO2: Perform numerical CAD/FEA/CFD simulations and validate initial design feasibility."
+      "CO1: Formulate engineering design problem statements and establish technical specifications.",
+      "CO2: Perform numerical CAD/FEA/CFD simulations and validate initial design feasibility."
     ]
-},
+  },
   "ME402": {
     "code": "ME402",
     "name": "Comprehensive Examination",
@@ -1648,19 +1648,19 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-0",
     "credits": 2,
     "modules": [
-        "Module 1: Core Mechanical Engineering Foundations - Assessment covering Engineering Mechanics, Mechanics of Materials, Theory of Machines, Machine Design, Thermodynamics, Fluid Mechanics, Heat Transfer, Manufacturing Science, and Industrial Engineering.",
-        "Module 2: Comprehensive Written & Viva-Voce Evaluation - Comprehensive written examination and oral viva-voce before departmental faculty examination panels."
+      "Module 1: Core Mechanical Engineering Foundations - Assessment covering Engineering Mechanics, Mechanics of Materials, Theory of Machines, Machine Design, Thermodynamics, Fluid Mechanics, Heat Transfer, Manufacturing Science, and Industrial Engineering.",
+      "Module 2: Comprehensive Written & Viva-Voce Evaluation - Comprehensive written examination and oral viva-voce before departmental faculty examination panels."
     ],
     "textbooks": [
-        "Standard undergraduate curriculum textbooks across B.Tech. Mechanical Engineering."
+      "Standard undergraduate curriculum textbooks across B.Tech. Mechanical Engineering."
     ],
     "objectives": [
-        "To test holistic mastery and integrative understanding of the four-year undergraduate Mechanical Engineering curriculum."
+      "To test holistic mastery and integrative understanding of the four-year undergraduate Mechanical Engineering curriculum."
     ],
     "outcomes": [
-        "CO1: Demonstrate comprehensive conceptual and analytical proficiency across all core branches of mechanical engineering."
+      "CO1: Demonstrate comprehensive conceptual and analytical proficiency across all core branches of mechanical engineering."
     ]
-},
+  },
   "ME450": {
     "code": "ME450",
     "name": "Major Project - II",
@@ -1671,20 +1671,20 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-12",
     "credits": 8,
     "modules": [
-        "Module 1: Prototype Fabrication, Experimental Testing & Optimization - Physical fabrication of mechanical hardware, assembly of mechatronic sensors/actuators, precision machining; Experimental testing on laboratory test rigs, measurement, calibration, and structural optimization.",
-        "Module 2: Project Dissertation, Paper Publication & Public Defense - Comprehensive performance benchmarking; Authoring of formal B.Tech. dissertation; Conference/journal manuscript submission; Public presentation and defense before external evaluation committee."
+      "Module 1: Prototype Fabrication, Experimental Testing & Optimization - Physical fabrication of mechanical hardware, assembly of mechatronic sensors/actuators, precision machining; Experimental testing on laboratory test rigs, measurement, calibration, and structural optimization.",
+      "Module 2: Project Dissertation, Paper Publication & Public Defense - Comprehensive performance benchmarking; Authoring of formal B.Tech. dissertation; Conference/journal manuscript submission; Public presentation and defense before external evaluation committee."
     ],
     "textbooks": [
-        "ASME Journals, B.Tech. Project Thesis Manual, NIT Goa."
+      "ASME Journals, B.Tech. Project Thesis Manual, NIT Goa."
     ],
     "objectives": [
-        "To fabricate, test, optimize, document, and defend the capstone mechanical engineering prototype."
+      "To fabricate, test, optimize, document, and defend the capstone mechanical engineering prototype."
     ],
     "outcomes": [
-        "CO1: Fabricate working mechanical prototypes and conduct rigorous experimental performance evaluations.",
-        "CO2: Write an engineering dissertation and defend technical conclusions before an expert panel."
+      "CO1: Fabricate working mechanical prototypes and conduct rigorous experimental performance evaluations.",
+      "CO2: Write an engineering dissertation and defend technical conclusions before an expert panel."
     ]
-},
+  },
   "ME516": {
     "code": "ME516",
     "name": "Industrial Robotics & Automation",
@@ -1695,26 +1695,26 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Robot Anatomy & Spatial Transformations - Robot anatomy, Coordinate frames, Work volume, Degrees of freedom; Spatial descriptions and transformations: Representation of position and orientation, Rotation matrices, Homogeneous transformation matrices, Composite transformations.",
-        "Module 2: Forward and Inverse Kinematics - Denavit-Hartenberg (D-H) convention and parameters; Forward kinematics of serial manipulators (SCARA, PUMA, Articulated); Inverse kinematics problem, Geometric and algebraic solutions, Workspace analysis, Degeneracy and singularities.",
-        "Module 3: Differential Kinematics, Statics & Dynamics - Linear and angular velocity of links, Manipulator Jacobian, Jacobian singularities; Static force analysis; Dynamic formulations: Newton-Euler formulation, Euler-Lagrange equations of motion, Inertia tensor; Trajectory generation: Joint space vs Cartesian space trajectories, Polynomial trajectories.",
-        "Module 4: Robot Actuators, Sensors & Industrial Applications - Actuators: DC servomotors, Stepper motors, Hydraulic and Pneumatic actuators; Sensors: Encoders, Tachometers, Force-torque sensors, Proximity sensors, Machine vision systems; Robot end effectors and grippers; Robot programming languages; Industrial automation applications: Welding, Painting, Pick-and-place, Assembly operations."
+      "Module 1: Robot Anatomy & Spatial Transformations - Robot anatomy, Coordinate frames, Work volume, Degrees of freedom; Spatial descriptions and transformations: Representation of position and orientation, Rotation matrices, Homogeneous transformation matrices, Composite transformations.",
+      "Module 2: Forward and Inverse Kinematics - Denavit-Hartenberg (D-H) convention and parameters; Forward kinematics of serial manipulators (SCARA, PUMA, Articulated); Inverse kinematics problem, Geometric and algebraic solutions, Workspace analysis, Degeneracy and singularities.",
+      "Module 3: Differential Kinematics, Statics & Dynamics - Linear and angular velocity of links, Manipulator Jacobian, Jacobian singularities; Static force analysis; Dynamic formulations: Newton-Euler formulation, Euler-Lagrange equations of motion, Inertia tensor; Trajectory generation: Joint space vs Cartesian space trajectories, Polynomial trajectories.",
+      "Module 4: Robot Actuators, Sensors & Industrial Applications - Actuators: DC servomotors, Stepper motors, Hydraulic and Pneumatic actuators; Sensors: Encoders, Tachometers, Force-torque sensors, Proximity sensors, Machine vision systems; Robot end effectors and grippers; Robot programming languages; Industrial automation applications: Welding, Painting, Pick-and-place, Assembly operations."
     ],
     "textbooks": [
-        "John J. Craig, \"Introduction to Robotics: Mechanics and Control\", 3rd Edition, Pearson, 2008.",
-        "Saeed B. Niku, \"Introduction to Robotics: Analysis, Systems, Applications\", 2nd Edition, John Wiley & Sons, 2011.",
-        "Mark W. Spong, Seth Hutchinson, and M. Vidyasagar, \"Robot Modeling and Control\", John Wiley & Sons, 2006."
+      "John J. Craig, \"Introduction to Robotics: Mechanics and Control\", 3rd Edition, Pearson, 2008.",
+      "Saeed B. Niku, \"Introduction to Robotics: Analysis, Systems, Applications\", 2nd Edition, John Wiley & Sons, 2011.",
+      "Mark W. Spong, Seth Hutchinson, and M. Vidyasagar, \"Robot Modeling and Control\", John Wiley & Sons, 2006."
     ],
     "objectives": [
-        "To understand spatial kinematics, dynamic modeling, trajectory generation, and robotic control for industrial automation."
+      "To understand spatial kinematics, dynamic modeling, trajectory generation, and robotic control for industrial automation."
     ],
     "outcomes": [
-        "CO1: Derive homogeneous transformation matrices and establish D-H parameter tables for serial robotic arms.",
-        "CO2: Solve forward and inverse kinematic equations for multi-DOF industrial manipulators.",
-        "CO3: Formulate Jacobian matrices and model manipulator dynamics using Euler-Lagrange equations.",
-        "CO4: Select robotic actuators, end-effectors, and machine vision sensors for automated manufacturing lines."
+      "CO1: Derive homogeneous transformation matrices and establish D-H parameter tables for serial robotic arms.",
+      "CO2: Solve forward and inverse kinematic equations for multi-DOF industrial manipulators.",
+      "CO3: Formulate Jacobian matrices and model manipulator dynamics using Euler-Lagrange equations.",
+      "CO4: Select robotic actuators, end-effectors, and machine vision sensors for automated manufacturing lines."
     ]
-},
+  },
   "ME530": {
     "code": "ME530",
     "name": "Gas Dynamics & Jet Propulsion",
@@ -1725,26 +1725,26 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Fundamentals of Compressible Flow - Energy and momentum equations for compressible fluid flow; Stagnation states: Temperature, Pressure, Density; Speed of sound, Mach number, Mach cone; Area-velocity relationship; Isentropic flow through variable area ducts: Convergent and Convergent-Divergent (de Laval) nozzles, Choked flow conditions, Flow operation under varying back pressures.",
-        "Module 2: Normal and Oblique Shock Waves - Governing equations for normal shock waves; Rankine-Hugoniot relations; Prandtl relation; Stagnation pressure loss across shock waves; Oblique shock waves: Governing equations, Shock polar, θ-β-M relationship; Reflection and intersection of shocks; Expansion waves: Prandtl-Meyer expansion fan.",
-        "Module 3: Flow with Friction and Heat Transfer - Fanno flow: Flow in constant area ducts with friction, Fanno line, Choking due to friction; Rayleigh flow: Flow in constant area ducts with heat transfer, Rayleigh line, Thermal choking; Performance and entropy variations in 1D compressible flows.",
-        "Module 4: Aircraft Propulsion Systems & Rocket Engines - Propulsion fundamentals, Thrust equations, Propulsive efficiency, Overall thermal efficiency; Working principles and thermodynamic cycles of Turbojet, Turbofan, Turboprop, and Turboshaft engines; Afterburners; Ramjet and Scramjet engines; Rocket propulsion: Solid and liquid propellant rocket motors, Specific impulse, Rocket equation."
+      "Module 1: Fundamentals of Compressible Flow - Energy and momentum equations for compressible fluid flow; Stagnation states: Temperature, Pressure, Density; Speed of sound, Mach number, Mach cone; Area-velocity relationship; Isentropic flow through variable area ducts: Convergent and Convergent-Divergent (de Laval) nozzles, Choked flow conditions, Flow operation under varying back pressures.",
+      "Module 2: Normal and Oblique Shock Waves - Governing equations for normal shock waves; Rankine-Hugoniot relations; Prandtl relation; Stagnation pressure loss across shock waves; Oblique shock waves: Governing equations, Shock polar, θ-β-M relationship; Reflection and intersection of shocks; Expansion waves: Prandtl-Meyer expansion fan.",
+      "Module 3: Flow with Friction and Heat Transfer - Fanno flow: Flow in constant area ducts with friction, Fanno line, Choking due to friction; Rayleigh flow: Flow in constant area ducts with heat transfer, Rayleigh line, Thermal choking; Performance and entropy variations in 1D compressible flows.",
+      "Module 4: Aircraft Propulsion Systems & Rocket Engines - Propulsion fundamentals, Thrust equations, Propulsive efficiency, Overall thermal efficiency; Working principles and thermodynamic cycles of Turbojet, Turbofan, Turboprop, and Turboshaft engines; Afterburners; Ramjet and Scramjet engines; Rocket propulsion: Solid and liquid propellant rocket motors, Specific impulse, Rocket equation."
     ],
     "textbooks": [
-        "S. M. Yahya, \"Fundamentals of Compressible Flow with Aircraft and Rocket Propulsion\", 5th Edition, New Age International, 2016.",
-        "E. Rathakrishnan, \"Gas Dynamics\", 6th Edition, PHI Learning, 2017.",
-        "P. H. Oosthuizen and W. E. Carscallen, \"Introduction to Compressible Fluid Flow\", 2nd Edition, CRC Press, 2013."
+      "S. M. Yahya, \"Fundamentals of Compressible Flow with Aircraft and Rocket Propulsion\", 5th Edition, New Age International, 2016.",
+      "E. Rathakrishnan, \"Gas Dynamics\", 6th Edition, PHI Learning, 2017.",
+      "P. H. Oosthuizen and W. E. Carscallen, \"Introduction to Compressible Fluid Flow\", 2nd Edition, CRC Press, 2013."
     ],
     "objectives": [
-        "To introduce 1D compressible aerodynamics, isentropic nozzle flows, normal/oblique shocks, Fanno/Rayleigh flows, and aerospace jet/rocket engines."
+      "To introduce 1D compressible aerodynamics, isentropic nozzle flows, normal/oblique shocks, Fanno/Rayleigh flows, and aerospace jet/rocket engines."
     ],
     "outcomes": [
-        "CO1: Apply compressible flow equations to calculate flow properties across convergent-divergent nozzles.",
-        "CO2: Solve normal and oblique shock wave equations to compute stagnation pressure losses.",
-        "CO3: Analyze compressible flows with friction (Fanno) and heat addition (Rayleigh).",
-        "CO4: Evaluate thrust, specific fuel consumption, and efficiencies of turbojet, turbofan, and rocket propulsion engines."
+      "CO1: Apply compressible flow equations to calculate flow properties across convergent-divergent nozzles.",
+      "CO2: Solve normal and oblique shock wave equations to compute stagnation pressure losses.",
+      "CO3: Analyze compressible flows with friction (Fanno) and heat addition (Rayleigh).",
+      "CO4: Evaluate thrust, specific fuel consumption, and efficiencies of turbojet, turbofan, and rocket propulsion engines."
     ]
-},
+  },
   "CV300": {
     "code": "CV300",
     "name": "Seminar",
@@ -1755,20 +1755,20 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-2",
     "credits": 1,
     "modules": [
-        "Module 1: Literature Survey and Topic Selection - Selection of emerging research topics in structural engineering, sustainable construction, geotechnical design, hydrology, or smart transportation systems; Survey of ASCE/Springer journals.",
-        "Module 2: Technical Report & Seminar Defense - Formulation of an ASCE-standard technical survey report; Slide presentation preparation; Oral defense before faculty evaluation board."
+      "Module 1: Literature Survey and Topic Selection - Selection of emerging research topics in structural engineering, sustainable construction, geotechnical design, hydrology, or smart transportation systems; Survey of ASCE/Springer journals.",
+      "Module 2: Technical Report & Seminar Defense - Formulation of an ASCE-standard technical survey report; Slide presentation preparation; Oral defense before faculty evaluation board."
     ],
     "textbooks": [
-        "ASCE Journal of Structural Engineering, Journal of Geotechnical and Geoenvironmental Engineering, NIT Goa Guidelines."
+      "ASCE Journal of Structural Engineering, Journal of Geotechnical and Geoenvironmental Engineering, NIT Goa Guidelines."
     ],
     "objectives": [
-        "To develop research survey and technical presentation skills in contemporary civil engineering advancements."
+      "To develop research survey and technical presentation skills in contemporary civil engineering advancements."
     ],
     "outcomes": [
-        "CO1: Conduct exhaustive review of peer-reviewed literature in civil infrastructure systems.",
-        "CO2: Deliver an effective technical seminar presentation and defend civil engineering design principles."
+      "CO1: Conduct exhaustive review of peer-reviewed literature in civil infrastructure systems.",
+      "CO2: Deliver an effective technical seminar presentation and defend civil engineering design principles."
     ]
-},
+  },
   "CV355": {
     "code": "CV355",
     "name": "Environmental Quality Testing Lab",
@@ -1779,24 +1779,24 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-3",
     "credits": 2,
     "modules": [
-        "Module 1: Water Quality Analysis - 1. Determination of pH, Electrical Conductivity, and Turbidity of water samples using nephelometer; 2. Determination of Total Solids, Total Dissolved Solids (TDS), and Total Suspended Solids (TSS); 3. Determination of Total Hardness, Calcium, and Magnesium hardness by EDTA method; 4. Determination of Chlorides by Argentometric method; 5. Determination of Dissolved Oxygen (DO) and Biochemical Oxygen Demand (BOD5); 6. Chemical Oxygen Demand (COD) measurement using closed reflux titrimetric method.",
-        "Module 2: Wastewater & Ambient Air Monitoring - 7. Determination of Optimum Coagulant Dosage using Jar Test Apparatus; 8. Determination of Residual Chlorine and Chlorine Demand of water; 9. Bacteriological examination of water by Most Probable Number (MPN) technique; 10. Measurement of Particulate Matter (PM10, PM2.5) in ambient air using High Volume Air Sampler; 11. Measurement of ambient noise levels using sound level meter."
+      "Module 1: Water Quality Analysis - 1. Determination of pH, Electrical Conductivity, and Turbidity of water samples using nephelometer; 2. Determination of Total Solids, Total Dissolved Solids (TDS), and Total Suspended Solids (TSS); 3. Determination of Total Hardness, Calcium, and Magnesium hardness by EDTA method; 4. Determination of Chlorides by Argentometric method; 5. Determination of Dissolved Oxygen (DO) and Biochemical Oxygen Demand (BOD5); 6. Chemical Oxygen Demand (COD) measurement using closed reflux titrimetric method.",
+      "Module 2: Wastewater & Ambient Air Monitoring - 7. Determination of Optimum Coagulant Dosage using Jar Test Apparatus; 8. Determination of Residual Chlorine and Chlorine Demand of water; 9. Bacteriological examination of water by Most Probable Number (MPN) technique; 10. Measurement of Particulate Matter (PM10, PM2.5) in ambient air using High Volume Air Sampler; 11. Measurement of ambient noise levels using sound level meter."
     ],
     "textbooks": [
-        "Clair N. Sawyer, Perry L. McCarty, and Gene F. Parkin, \"Chemistry for Environmental Engineering and Science\", 5th Edition, McGraw Hill, 2003.",
-        "Standard Methods for the Examination of Water and Wastewater, 23rd Edition, APHA, AWWA, WEF, 2017.",
-        "Laboratory Manual for Environmental Engineering, Department of Civil Engineering, NIT Goa."
+      "Clair N. Sawyer, Perry L. McCarty, and Gene F. Parkin, \"Chemistry for Environmental Engineering and Science\", 5th Edition, McGraw Hill, 2003.",
+      "Standard Methods for the Examination of Water and Wastewater, 23rd Edition, APHA, AWWA, WEF, 2017.",
+      "Laboratory Manual for Environmental Engineering, Department of Civil Engineering, NIT Goa."
     ],
     "objectives": [
-        "To train students in physical, chemical, and biological testing of potable water, municipal wastewater, ambient air pollutants, and environmental noise."
+      "To train students in physical, chemical, and biological testing of potable water, municipal wastewater, ambient air pollutants, and environmental noise."
     ],
     "outcomes": [
-        "CO1: Measure physical and chemical parameters of water and wastewater samples in compliance with IS 10500 standards.",
-        "CO2: Quantify BOD, COD, and microbial concentrations to assess organic pollution levels.",
-        "CO3: Determine optimum chemical coagulant dosages using jar testing apparatus.",
-        "CO4: Operate environmental monitoring equipment for ambient air particulates (PM10/PM2.5) and acoustic noise."
+      "CO1: Measure physical and chemical parameters of water and wastewater samples in compliance with IS 10500 standards.",
+      "CO2: Quantify BOD, COD, and microbial concentrations to assess organic pollution levels.",
+      "CO3: Determine optimum chemical coagulant dosages using jar testing apparatus.",
+      "CO4: Operate environmental monitoring equipment for ambient air particulates (PM10/PM2.5) and acoustic noise."
     ]
-},
+  },
   "CV400": {
     "code": "CV400",
     "name": "Major Project - I",
@@ -1807,20 +1807,20 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-6",
     "credits": 4,
     "modules": [
-        "Module 1: Problem Definition & Site Investigation - Selection of civil infrastructure design problem or research project in structural design, geotechnical foundation analysis, environmental remediation, or transportation planning; Literature review and site reconnaissance.",
-        "Module 2: Structural Modeling, Analysis & Preliminary Design - Soil investigation data processing, structural modeling in STAAD.Pro / ETABS, geotechnical bearing capacity calculations, or hydrology modeling in HEC-RAS; Presentation of design progress report to faculty committee."
+      "Module 1: Problem Definition & Site Investigation - Selection of civil infrastructure design problem or research project in structural design, geotechnical foundation analysis, environmental remediation, or transportation planning; Literature review and site reconnaissance.",
+      "Module 2: Structural Modeling, Analysis & Preliminary Design - Soil investigation data processing, structural modeling in STAAD.Pro / ETABS, geotechnical bearing capacity calculations, or hydrology modeling in HEC-RAS; Presentation of design progress report to faculty committee."
     ],
     "textbooks": [
-        "IS Codes of Practice (IS 456, IS 800, IS 1893), Civil Engineering Project Manual, NIT Goa."
+      "IS Codes of Practice (IS 456, IS 800, IS 1893), Civil Engineering Project Manual, NIT Goa."
     ],
     "objectives": [
-        "To conceptualize, plan, architect, and conduct feasibility studies for a capstone civil engineering infrastructure project."
+      "To conceptualize, plan, architect, and conduct feasibility studies for a capstone civil engineering infrastructure project."
     ],
     "outcomes": [
-        "CO1: Formulate civil engineering project scopes meeting Indian Standard (IS) regulatory codes and environmental guidelines.",
-        "CO2: Perform structural/hydraulic modeling and establish design feasibility."
+      "CO1: Formulate civil engineering project scopes meeting Indian Standard (IS) regulatory codes and environmental guidelines.",
+      "CO2: Perform structural/hydraulic modeling and establish design feasibility."
     ]
-},
+  },
   "CV402": {
     "code": "CV402",
     "name": "Comprehensive Examination",
@@ -1831,19 +1831,19 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-0",
     "credits": 2,
     "modules": [
-        "Module 1: Core Civil Engineering Assessment - Comprehensive review covering Structural Analysis, Design of Reinforced Concrete and Steel Structures, Geotechnical Engineering, Fluid Mechanics and Hydraulics, Water Resources Engineering, Environmental Engineering, Transportation Engineering, and Geomatics.",
-        "Module 2: Comprehensive Evaluation Board - Written examination and rigorous viva-voce before departmental faculty examination panels assessing foundational depth and design aptitude."
+      "Module 1: Core Civil Engineering Assessment - Comprehensive review covering Structural Analysis, Design of Reinforced Concrete and Steel Structures, Geotechnical Engineering, Fluid Mechanics and Hydraulics, Water Resources Engineering, Environmental Engineering, Transportation Engineering, and Geomatics.",
+      "Module 2: Comprehensive Evaluation Board - Written examination and rigorous viva-voce before departmental faculty examination panels assessing foundational depth and design aptitude."
     ],
     "textbooks": [
-        "Standard undergraduate textbooks across B.Tech. Civil Engineering curriculum."
+      "Standard undergraduate textbooks across B.Tech. Civil Engineering curriculum."
     ],
     "objectives": [
-        "To test holistic mastery and integrative understanding of the four-year undergraduate Civil Engineering curriculum."
+      "To test holistic mastery and integrative understanding of the four-year undergraduate Civil Engineering curriculum."
     ],
     "outcomes": [
-        "CO1: Demonstrate comprehensive knowledge across core civil engineering disciplines and apply them to solve integrated infrastructure problems."
+      "CO1: Demonstrate comprehensive knowledge across core civil engineering disciplines and apply them to solve integrated infrastructure problems."
     ]
-},
+  },
   "CV450": {
     "code": "CV450",
     "name": "Major Project - II",
@@ -1854,20 +1854,20 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-12",
     "credits": 8,
     "modules": [
-        "Module 1: Detailed Engineering Design, Estimation & Optimization - Complete structural detailing of foundation, superstructure, reinforcement detailing sheets, drainage schemes, pavement cross-sections; Detailed quantity estimation and costing (BOQ); Environmental impact assessment.",
-        "Module 2: Thesis Documentation & Public Defense - Comprehensive project report compilation; Drawing sheets and design calculation book; Manuscript submission; Final viva-voce defense before external examiners."
+      "Module 1: Detailed Engineering Design, Estimation & Optimization - Complete structural detailing of foundation, superstructure, reinforcement detailing sheets, drainage schemes, pavement cross-sections; Detailed quantity estimation and costing (BOQ); Environmental impact assessment.",
+      "Module 2: Thesis Documentation & Public Defense - Comprehensive project report compilation; Drawing sheets and design calculation book; Manuscript submission; Final viva-voce defense before external examiners."
     ],
     "textbooks": [
-        "IS Codes of Practice, ASCE Guidelines, B.Tech. Project Thesis Guidelines, NIT Goa."
+      "IS Codes of Practice, ASCE Guidelines, B.Tech. Project Thesis Guidelines, NIT Goa."
     ],
     "objectives": [
-        "To complete detailed civil engineering drawings, structural/hydraulic designs, cost estimations, and thesis defense."
+      "To complete detailed civil engineering drawings, structural/hydraulic designs, cost estimations, and thesis defense."
     ],
     "outcomes": [
-        "CO1: Author detailed structural design drawings, quantity estimations, and execution plans adhering to national standards.",
-        "CO2: Author a formal B.Tech. dissertation and defend engineering deliverables before an expert committee."
+      "CO1: Author detailed structural design drawings, quantity estimations, and execution plans adhering to national standards.",
+      "CO2: Author a formal B.Tech. dissertation and defend engineering deliverables before an expert committee."
     ]
-},
+  },
   "MA400M": {
     "code": "MA400M",
     "name": "Applied Optimization Techniques",
@@ -1878,25 +1878,25 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-        "Module 1: Linear Optimization & Convex Analysis - Convex sets and functions, Epigraphs; Linear programming formulation, Simplex method, Two-phase simplex; Duality theory, Karush-Kuhn-Tucker (KKT) conditions for convex optimization.",
-        "Module 2: Gradient Methods & Line Search - Unconstrained optimization: Descent direction, Exact and backtracking line search; Steepest descent, Conjugate gradient method; Newton and Quasi-Newton methods (BFGS, DFP updates).",
-        "Module 3: Constrained Optimization Algorithms - Projected gradient methods, Penalty and Barrier methods; Augmented Lagrangian method; Sequential Quadratic Programming (SQP); Primal-dual interior point methods.",
-        "Module 4: Applications in Data Science & Machine Learning - Least squares problems, Ridge regression, Lasso; Stochastic gradient descent (SGD), Adam optimizer; Matrix completion and low-rank approximations; Support vector machines dual formulation."
+      "Module 1: Linear Optimization & Convex Analysis - Convex sets and functions, Epigraphs; Linear programming formulation, Simplex method, Two-phase simplex; Duality theory, Karush-Kuhn-Tucker (KKT) conditions for convex optimization.",
+      "Module 2: Gradient Methods & Line Search - Unconstrained optimization: Descent direction, Exact and backtracking line search; Steepest descent, Conjugate gradient method; Newton and Quasi-Newton methods (BFGS, DFP updates).",
+      "Module 3: Constrained Optimization Algorithms - Projected gradient methods, Penalty and Barrier methods; Augmented Lagrangian method; Sequential Quadratic Programming (SQP); Primal-dual interior point methods.",
+      "Module 4: Applications in Data Science & Machine Learning - Least squares problems, Ridge regression, Lasso; Stochastic gradient descent (SGD), Adam optimizer; Matrix completion and low-rank approximations; Support vector machines dual formulation."
     ],
     "textbooks": [
-        "Stephen Boyd and Lieven Vandenberghe, \"Convex Optimization\", Cambridge University Press, 2004.",
-        "Jorge Nocedal and Stephen J. Wright, \"Numerical Optimization\", 2nd Edition, Springer, 2006."
+      "Stephen Boyd and Lieven Vandenberghe, \"Convex Optimization\", Cambridge University Press, 2004.",
+      "Jorge Nocedal and Stephen J. Wright, \"Numerical Optimization\", 2nd Edition, Springer, 2006."
     ],
     "objectives": [
-        "To provide advanced mathematical foundations in convex optimization, line search methods, Lagrangian duality, and stochastic algorithms for machine learning."
+      "To provide advanced mathematical foundations in convex optimization, line search methods, Lagrangian duality, and stochastic algorithms for machine learning."
     ],
     "outcomes": [
-        "CO1: Verify convexity of sets and optimization functions using Hessian analysis.",
-        "CO2: Apply Newton, BFGS, and Conjugate Gradient algorithms to multivariable optimization problems.",
-        "CO3: Solve constrained problems using KKT optimality conditions and augmented Lagrangian techniques.",
-        "CO4: Implement Stochastic Gradient Descent and regularization algorithms in data science contexts."
+      "CO1: Verify convexity of sets and optimization functions using Hessian analysis.",
+      "CO2: Apply Newton, BFGS, and Conjugate Gradient algorithms to multivariable optimization problems.",
+      "CO3: Solve constrained problems using KKT optimality conditions and augmented Lagrangian techniques.",
+      "CO4: Implement Stochastic Gradient Descent and regularization algorithms in data science contexts."
     ]
-},
+  },
   "TECH-WS": {
     "code": "TECH-WS",
     "name": "Technical Workshop & Hardware Prototyping",
@@ -1907,19 +1907,19 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-2",
     "credits": 1,
     "modules": [
-        "Module 1: Rapid Prototyping & Sensor Interfacing - PCB design and fabrication using KiCad; Soldering and SMD assembly; Arduino, ESP32, and Raspberry Pi embedded sensor interfacing.",
-        "Module 2: Mini Project & Technical Showcase - Collaborative hardware prototyping; Design of automated robotic or IoT telemetry system; Demonstration and peer review."
+      "Module 1: Rapid Prototyping & Sensor Interfacing - PCB design and fabrication using KiCad; Soldering and SMD assembly; Arduino, ESP32, and Raspberry Pi embedded sensor interfacing.",
+      "Module 2: Mini Project & Technical Showcase - Collaborative hardware prototyping; Design of automated robotic or IoT telemetry system; Demonstration and peer review."
     ],
     "textbooks": [
-        "Laboratory Guide for Technical Workshops, IEEE Student Branch, NIT Goa."
+      "Laboratory Guide for Technical Workshops, IEEE Student Branch, NIT Goa."
     ],
     "objectives": [
-        "To provide hands-on hardware fabrication, soldering, micro-controller programming, and rapid prototyping experience."
+      "To provide hands-on hardware fabrication, soldering, micro-controller programming, and rapid prototyping experience."
     ],
     "outcomes": [
-        "CO1: Design printed circuit boards (PCBs) and assemble functional IoT prototypes."
+      "CO1: Design printed circuit boards (PCBs) and assemble functional IoT prototypes."
     ]
-},
+  },
   "HACK-LAB": {
     "code": "HACK-LAB",
     "name": "Hackathon Lab & Capstone Mentoring",
@@ -1930,19 +1930,19 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-2",
     "credits": 1,
     "modules": [
-        "Module 1: Problem Ideation & Agile Prototyping - Rapid ideation, Design thinking, Hackathon team sprints; Agile development with Git and CI/CD pipelines.",
-        "Module 2: MVP Development & Product Pitching - Building Minimum Viable Products (MVPs); Cloud deployment, API integration; Pitch presentation and live demonstration."
+      "Module 1: Problem Ideation & Agile Prototyping - Rapid ideation, Design thinking, Hackathon team sprints; Agile development with Git and CI/CD pipelines.",
+      "Module 2: MVP Development & Product Pitching - Building Minimum Viable Products (MVPs); Cloud deployment, API integration; Pitch presentation and live demonstration."
     ],
     "textbooks": [
-        "Agile Development and Innovation Handbook, NIT Goa Incubation Centre."
+      "Agile Development and Innovation Handbook, NIT Goa Incubation Centre."
     ],
     "objectives": [
-        "To foster collaborative software/hardware innovation, agile development, and pitch presentation skills."
+      "To foster collaborative software/hardware innovation, agile development, and pitch presentation skills."
     ],
     "outcomes": [
-        "CO1: Build and deploy functional MVPs in rapid collaborative hackathon settings."
+      "CO1: Build and deploy functional MVPs in rapid collaborative hackathon settings."
     ]
-},
+  },
   "LIB-GATE": {
     "code": "LIB-GATE",
     "name": "Library Reference & GATE Preparation",
@@ -1953,19 +1953,19 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-1-0",
     "credits": 1,
     "modules": [
-        "Module 1: Research Database & Academic Literature Utilization - Effective usage of IEEE Xplore, ScienceDirect, SpringerLink, and Web of Science; Citation managers (Mendeley, Zotero).",
-        "Module 2: GATE & National Competitive Exam Review - Systematic problem-solving sessions on previous years' GATE exam papers; Conceptual revision in core engineering subjects."
+      "Module 1: Research Database & Academic Literature Utilization - Effective usage of IEEE Xplore, ScienceDirect, SpringerLink, and Web of Science; Citation managers (Mendeley, Zotero).",
+      "Module 2: GATE & National Competitive Exam Review - Systematic problem-solving sessions on previous years' GATE exam papers; Conceptual revision in core engineering subjects."
     ],
     "textbooks": [
-        "Previous GATE Question Papers and Solutions; Central Library Reference Guide, NIT Goa."
+      "Previous GATE Question Papers and Solutions; Central Library Reference Guide, NIT Goa."
     ],
     "objectives": [
-        "To support independent academic research, digital library exploration, and rigorous preparation for national competitive examinations."
+      "To support independent academic research, digital library exploration, and rigorous preparation for national competitive examinations."
     ],
     "outcomes": [
-        "CO1: Conduct targeted research queries across international citation databases and solve competitive technical problems."
+      "CO1: Conduct targeted research queries across international citation databases and solve competitive technical problems."
     ]
-},
+  },
   "CAMPUS-ACT": {
     "code": "CAMPUS-ACT",
     "name": "Campus Activity & Holistic Development",
@@ -1976,19 +1976,19 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "0-0-2",
     "credits": 0,
     "modules": [
-        "Module 1: Co-Curricular & Student Club Engagement - Participation in student clubs (Technical, Cultural, Literary, Robotics, Environmental); Event coordination and leadership roles.",
-        "Module 2: Sports, Yoga & Community Service - Physical conditioning, team sports participation, National Service Scheme (NSS), community welfare and environmental sustainability campaigns."
+      "Module 1: Co-Curricular & Student Club Engagement - Participation in student clubs (Technical, Cultural, Literary, Robotics, Environmental); Event coordination and leadership roles.",
+      "Module 2: Sports, Yoga & Community Service - Physical conditioning, team sports participation, National Service Scheme (NSS), community welfare and environmental sustainability campaigns."
     ],
     "textbooks": [
-        "Student Activity Centre Guidelines, National Institute of Technology Goa."
+      "Student Activity Centre Guidelines, National Institute of Technology Goa."
     ],
     "objectives": [
-        "To promote holistic student development through sports, cultural arts, club initiatives, and community service."
+      "To promote holistic student development through sports, cultural arts, club initiatives, and community service."
     ],
     "outcomes": [
-        "CO1: Demonstrate teamwork, event management leadership, and active civic participation."
+      "CO1: Demonstrate teamwork, event management leadership, and active civic participation."
     ]
-},
+  },
   "MA203": {
     "code": "MA203",
     "name": "Probability, Statistics and Complex Analysis",
@@ -2010,7 +2010,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "1. S M Ross, “Stochastic Processes”, Wiley India Pvt. Ltd., 1995 (2th Ed.)",
       "2. S M Ross, “Introduction to Probability and Statistics for Engineers and Scientists”, Academic Press, 2021 (6th\nEd.)",
       "3. S M Ross, “Introduction to Probability Models”, Academic Press, 2014 (11th Ed.)",
-      "4. R V Churchill and J W Brown, “Complex variables and applications”, McGraw Hill Higher Education, 2003\n(7th Ed.)\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 20/ 166\n\nModule 2. Third Semester Courses: 2.2. Circuit Theory",
+      "4. R V Churchill and J W Brown, “Complex variables and applications”, McGraw Hill Higher Education, 2003\n(7th Ed.)",
       "2.2 Circuit Theory"
     ],
     "objectives": [],
@@ -2039,7 +2039,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "3. C K Alexander and M N O Sadiku, “Fundamentals of Electric Circuits,” McGraw Hill Education, 2022 (7th Ed.)",
       "2.2.5.2 Reference Books:",
       "1. J D Ryder, “Networks, Lines and Fields,” Prentice Hall India, 1989 (2nd Ed.)",
-      "2. R C Dorf and J A Svoboda, “Introduction to Electric Circuits,” John Wiley & Sons, 2004 (6th Ed.)\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 22/ 166\n\nModule 2. Third Semester Courses: 2.3. Electromagnetic Fields",
+      "2. R C Dorf and J A Svoboda, “Introduction to Electric Circuits,” John Wiley & Sons, 2004 (6th Ed.)",
       "2.3 Electromagnetic Fields"
     ],
     "objectives": [],
@@ -2067,7 +2067,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "2. M Sadiku and S V Kulkarni, “Elements of Electromagnetics”, Oxford University Press, 2015, (6th Ed.)",
       "2.3.5.2 Reference Books:",
       "1. John Kraus and Daniel Fleisch, “Electromagnetics with Applications,” McGraw Hill Education, 2017 (5th Ed.)",
-      "2. S M Ross and N N Rao, “Elements of Engineering Electromagnetics,” Pearson Education, 2006 (6th Ed.)\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 24/ 166\n\nModule 2. Third Semester Courses: 2.4. Analog and Integrated Circuits",
+      "2. S M Ross and N N Rao, “Elements of Engineering Electromagnetics,” Pearson Education, 2006 (6th Ed.)",
       "2.4 Analog and Integrated Circuits"
     ],
     "objectives": [],
@@ -2096,7 +2096,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "1. Ramakanth A. Gayakwad, “Op-Amps and Linear Integrated Circuits,” Pearson Education, 2015 (4th Ed.)",
       "2. A S Sedra, K C Smith and Arun N. Chandorkar, “Microelectronic Circuits: Theory And Applications”, Oxford\nUniversity Press, 2017 (7th Ed.)",
       "3. Thomas L. Floyd, “Electronic Devices”, Pearson Education Limited, 2013 (9th Ed.)",
-      "4. Behzad Razavi, “Fundamentals of Microelectronics”, John Wiley & Sons, 2021 (3rd Ed.)\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 26/ 166\n\nModule 2. Third Semester Courses: 2.5. Electrical and Electronics Measurement",
+      "4. Behzad Razavi, “Fundamentals of Microelectronics”, John Wiley & Sons, 2021 (3rd Ed.)",
       "2.5 Electrical and Electronics Measurement"
     ],
     "objectives": [],
@@ -2130,7 +2130,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "4. Bowens A J, “Digital Instrumentation”, Tata McGraw Hill, 1996.",
       "5. Cooper, “Electronic Instrumentation And Measurement Techniques”, Prentice Hall, 1985",
       "6. Rangan C S, “Instruments Devices And System”, Tata McGraw Hill, 1998",
-      "7. V K Aatre, G K Ananthasuresh, K J Vinoy, S Gopalakrishnan, K N Bhat , “Micro and Smart Systems”, Willey\nIndia Publiser, 2010\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 28/ 166\n\nModule 2. Third Semester Courses: 2.6. Simulation Laboratory",
+      "7. V K Aatre, G K Ananthasuresh, K J Vinoy, S Gopalakrishnan, K N Bhat , “Micro and Smart Systems”, Willey\nIndia Publiser, 2010",
       "2.6 Simulation Laboratory"
     ],
     "objectives": [],
@@ -2148,7 +2148,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "credits": 3,
     "modules": [
       "Module 1: Introduction: Introduction to basic matrix operations and generation of various signals &\nsequences using a suitable Simulation Platform.",
-      "Module 2: Using the suitable simulation platform,\n1. Verify Mesh and Nodal analysis to find branch voltages and currents.\n2. Verify various network theorems.\n3. Analyse single–phase series and parallel AC circuits using R-L, R-C and R -L-C elements.\n4. Simulate transient response of RLC Circuit to an input (i) Step, (ii) Pulse and (iii)\nSinusoidal signals.\n5. Simulate half wave and full wave bridge rectifiers with R-L, R-C and R-L-C Loads.\n6. Verify the truth tables of basic gates.\n7. Design the NAND and NOR gates as universal logic gates.\n8. Simulate the Integrator and Differentiator circuits using OP-AMP.\n9. Design and verify the truth tables of Half and Full adder circuits.\n10. Design and verify the truth tables of Half and Full subtractor circuits.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 29/ 166",
+      "Module 2: Using the suitable simulation platform,\n1. Verify Mesh and Nodal analysis to find branch voltages and currents.\n2. Verify various network theorems.\n3. Analyse single–phase series and parallel AC circuits using R-L, R-C and R -L-C elements.\n4. Simulate transient response of RLC Circuit to an input (i) Step, (ii) Pulse and (iii)\nSinusoidal signals.\n5. Simulate half wave and full wave bridge rectifiers with R-L, R-C and R-L-C Loads.\n6. Verify the truth tables of basic gates.\n7. Design the NAND and NOR gates as universal logic gates.\n8. Simulate the Integrator and Differentiator circuits using OP-AMP.\n9. Design and verify the truth tables of Half and Full adder circuits.\n10. Design and verify the truth tables of Half and Full subtractor circuits.",
       "Module 2. Third Semester Courses: 2.7. Electrical and Electronics Measurement Lab\n2.7 Electrical and Electronics Measurement Lab"
     ],
     "textbooks": [],
@@ -2166,7 +2166,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "modules": [
       "Module 1: 1. (a) Loading effects of Potentiometer.\n(b) Calibration of Voltmeters and Ammeters using Potentiometers.\n2. (a) Measurement of Low Resistance by Kelvin’s Double Bridge Method.\n(b) Measurement of resistance by Wheatstone bridge method.\n3. Measurement of Self Inductance and Capacitance using Bridges.\n4. Measurement of Power and Power Factor using wattmeter method.\n5. Study of DSO control panel, its specifications. Find time constant of a relay using DSO.",
       "Module 2: 6. (a) Measurements using proximity sensors.\n(Any Three) (b) Characterize the Hall Effect sensor.\n(c) Characterize the temperature sensors (RTD, Thermocouple).\n7. (a) Measurement of level in a tank using capacitive type level probe.\n(b) Measurement of pressure and displacement.\n(c) Measurement of strain and torque using strain gauges.\n8. (a) Study of Opto-coupler using photoelectric transducers.\n(b) Characteristics of Micro pressure and Micro accelerometer sensing device.\n9. (a) Study of Detectors (leak detector, flame detector, smoke detector etc.).\n(b) Study of smart transmitters.\n(c) Design of alarms and annunciators.\n10. Signal Conditioning for any one transducer.",
-      "Module 3: 11. PCB design for any one signal conditioning application.\n12. Enclosure design for circuit and measurement.\n13. Simulation of Instrumentation System Design Using real-time suitable software.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 30/ 166",
+      "Module 3: 11. PCB design for any one signal conditioning application.\n12. Enclosure design for circuit and measurement.\n13. Simulation of Instrumentation System Design Using real-time suitable software.",
       "Module 2. Third Semester Courses: 2.8. Tinkering Lab - I\n2.8 Tinkering Lab - I"
     ],
     "textbooks": [],
@@ -2179,16 +2179,29 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 22,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "Module 1: Introduction: Workshop attire briefing. Electric safety rules and unsafe practices. Pre-\ncautions and first aid practices. Introduction to tools, electrical materials, meters, symbols\nand abbreviations",
-      "Module 2: 1. Basic Wiring\n2. Control a fan using electronic regulator/calling bell/ buzzer/ alarm\n3. Meter board for lighting installation using energy meter, fuse, Main Circuit Breaker\n(MCB), Double Pole (DP) switch, Earth-leakage circuit breaker (ELCB), open circuit, short\ncircuit, polarity, insulation resistance and earth fault and indicator\n4. Preparing an electrical extension board\n5. Soldering exercise.\n6. PCB Design.\n7. UPS/Inverter Wiring.\n8. Winding an Inductor of specified rating.\n9. Earthing analysis .\n10. Testing of Motors, Cables, Power Capacitors, Batteries, etc.\n11. Arduino based projects .\n12. Studio projects on state-of-art technologies. Ex: Drones, IoT applications, Robotics,\nMobile technology, etc\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 31/ 166",
-      "Module 3\nFourth Semester Courses:\n3.1 Innovation & Entrepreneurship"
+      "Module 1: Electrical Safety, Workshop Practices & Tools - Workshop attire briefing, electrical safety rules and shock hazard prevention, precautions and first aid practices; identification of tools, cables, switches, meters, wiring symbols and standard schematic abbreviations.",
+      "Module 2: Practical Wiring & Power Distribution - Lighting circuits, stair-case wiring, fan regulation wiring; assembling distribution board with Energy meter, MCB, DP switch, ELCB/RCCB, fuse, indicator lamps; testing continuity, polarity, earth resistance and insulation resistance.",
+      "Module 3: Electronics Prototyping & PCB Design - Soldering and desoldering techniques, PCB layout design, chemical etching/milling, inductor winding of specified inductance and wire gauge, transformer testing and verification.",
+      "Module 4: Embedded Studio & Prototyping Projects - Microcontroller interfacing (Arduino/ESP32), sensor signal acquisition, motor driver interfacing, and hands-on studio project in robotics, smart home automation, or IoT application."
     ],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "textbooks": [
+      "1. J. B. Gupta, \"A Course in Electrical Installation Estimating and Costing\", S. K. Kataria & Sons, 2013.",
+      "2. K. B. Bhatia, \"Electrical Workshop and Practice\", Khanna Publishers, 2011.",
+      "3. Simon Monk, \"Programming Arduino: Getting Started with Sketches\", 2nd Edition, McGraw-Hill, 2016."
+    ],
+    "objectives": [
+      "To familiarize students with standard electrical workshop practices, safety guidelines, and tools.",
+      "To provide hands-on experience in house wiring, PCB fabrication, and microcontroller-based hardware prototyping."
+    ],
+    "outcomes": [
+      "CO1: Adhere to electrical safety standards, identify protective switchgear, and execute standard domestic wiring.",
+      "CO2: Fabricate printed circuit boards and wind inductors according to design requirements.",
+      "CO3: Interface sensors and actuators with embedded microcontroller boards to build functional prototypes."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/EEE2025.pdf"
   },
   "IE250": {
     "code": "IE250",
@@ -2210,7 +2223,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "3.1.5.2 Reference Books:",
       "1. Floyd Hurt, ”Rousing Creativity: Think New Now”, Crisp Publications Inc., 1999",
       "2. Kalevi Rantanen and Ellen Domb, ”Simplified TRIZ”, Auerbach Publications, Taylor & Francis Group, 2010\n(2nd Ed.)",
-      "3. John Adair, ”The Art of Creative Thinking”, Kogan Page Publication, 2011\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 33/ 166\n\nModule 3. Fourth Semester Courses: 3.2. Signals and Systems",
+      "3. John Adair, ”The Art of Creative Thinking”, Kogan Page Publication, 2011",
       "3.2 Signals and Systems"
     ],
     "objectives": [],
@@ -2239,7 +2252,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "2. Simon Haykin and Barry van Veen, ”Signals and Systems”, John Wiley and Sons (Asia) Private Limited, 1998",
       "3.2.5.2 Reference Books:",
       "1. M E Van Valkenberg, “Network Analysis”, PHI Learning Publications, 2014 (3rd Ed.)",
-      "2. B P Lathi, ”Signal Processing and Linear Systems”, Oxford University Press, 1998\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 35/ 166\n\nModule 3. Fourth Semester Courses: 3.3. Electrical Machines - I",
+      "2. B P Lathi, ”Signal Processing and Linear Systems”, Oxford University Press, 1998",
       "3.3 Electrical Machines - I"
     ],
     "objectives": [],
@@ -2269,7 +2282,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "3.3.5.2 Reference Books:",
       "1. S J Chapman, “Electric Machinery Fundamentals,” McGraw Hill, 2010 (4th Ed.).",
       "2. I J Nagarath and D P Kothari, “Electric Machines,” Tata McGraw Hill, 2010 (4th Ed.).",
-      "3. P S Bimbhra, “Electrical Machinery,” Khanna Publishers, 2008 (7th Ed.).\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 37/ 166\n\nModule 3. Fourth Semester Courses: 3.4. Digital Systems",
+      "3. P S Bimbhra, “Electrical Machinery,” Khanna Publishers, 2008 (7th Ed.).",
       "3.4 Digital Systems"
     ],
     "objectives": [],
@@ -2301,7 +2314,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "1. Stephen Brown and Zvonko Vranesic, “Fundamentals of Digital Logic with VHDL Design”, McGraw Hill Edu-\ncation, 2017 (3rd Ed.)",
       "2. Ronald J. Tocci, Neal S. Widmer, Gregory L. Moss, “Digital Systems: Principles and Applications”, Pearson\nEducation, 2009 (10th Ed.)",
       "3. Herbert Taub and Donald Schilling, “Digital Integrated Electronics”, McGraw Hill Education, 2017",
-      "4. T. L. Floyd and Jain, “Digital Fundamentals”, Pearson Education, 2003 (8th Ed.)\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 39/ 166\n\nModule 3. Fourth Semester Courses: 3.5. Control Systems",
+      "4. T. L. Floyd and Jain, “Digital Fundamentals”, Pearson Education, 2003 (8th Ed.)",
       "3.5 Control Systems"
     ],
     "objectives": [],
@@ -2330,7 +2343,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "2. M. Gopal, “Control Systems, Principles and Design”, Tata McGraw Hill, 2020",
       "3.5.5.2 Reference Books:",
       "1. I. J. Nagrath M. Gopal, “Control Systems Engineering”, New Age Int., 7th Edition,2021",
-      "2. Norman S. Nise, “Control System Engineering”, John Wiley and Sons, Inc, 2018\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 41/ 166\n\nModule 3. Fourth Semester Courses: 3.6. Computational Methods",
+      "2. Norman S. Nise, “Control System Engineering”, John Wiley and Sons, Inc, 2018",
       "3.6 Computational Methods"
     ],
     "objectives": [],
@@ -2359,7 +2372,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "1. E Kreyszig, “Advanced engineering mathematics”, Wiley India Pvt. Ltd., 2010 (8th Ed.)",
       "2. R L Burden and J D Faires, “Numerical Analysis”, Brooks/Cole, 2012 (9th Ed.)",
       "3. G D Smith, “Numerical solution of Partial Differential Equations”, Oxford University Press, 1985, (3rd Ed.)",
-      "4. M B Patil, M C Chandorkar, V Ramanarayanan and V T Ranganathan, “Simulation of Power Electronic\nCircuits”, Narosa, 2009, (1st Ed.)\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 43/ 166\n\nModule 3. Fourth Semester Courses: 3.7. Electrical Machine Lab - I",
+      "4. M B Patil, M C Chandorkar, V Ramanarayanan and V T Ranganathan, “Simulation of Power Electronic\nCircuits”, Narosa, 2009, (1st Ed.)",
       "3.7 Electrical Machine Lab - I"
     ],
     "objectives": [],
@@ -2376,7 +2389,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-      ".\n3.7.2 Syllabus:\n1. Determination of B-H curve for ferromagnetic core.\n2. Performance Characteristics of DC generator.\n3. Performance Characteristics of DC Motor.\n4. Speed control of DC shunt Motor.\n5. Open circuit and Short circuit test of 1-ph and 3-ph transformer.\n6. Direct load test on 1-ph and 3-ph transformer.\n7. No Load and Block rotor test on three phase Induction motor.\n8. Performance Characteristics of three phase Induction motor.\n9. Speed control of Slip ring Induction motor.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 44/ 166",
+      ".\n3.7.2 Syllabus:\n1. Determination of B-H curve for ferromagnetic core.\n2. Performance Characteristics of DC generator.\n3. Performance Characteristics of DC Motor.\n4. Speed control of DC shunt Motor.\n5. Open circuit and Short circuit test of 1-ph and 3-ph transformer.\n6. Direct load test on 1-ph and 3-ph transformer.\n7. No Load and Block rotor test on three phase Induction motor.\n8. Performance Characteristics of three phase Induction motor.\n9. Speed control of Slip ring Induction motor.",
       "Module 3. Fourth Semester Courses: 3.8. Analog and Digital Circuits Lab\n3.8 Analog and Digital Circuits Lab"
     ],
     "textbooks": [],
@@ -2392,7 +2405,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-      "1. Characteristics of MOSFET in different configurations.\n2. Characteristics of RC oscillator.\n3. Adder and subtractor circuits.\n4. Multiplexer and Demultiplexer.\n5. Counters/registers using flip-flops.\n6. Linear applications of op-amps.\n7. Non-linear applications of op-amps.\n8. Second order low pass, high pass, band pass filters implementation.\n9. Monostable, Astable, and bistable multivibrators.\n10. Phase locked loop.\n11. ADCs and DACs.\n12. Verilog/VHDL programming to realize logic gates, sequential and combinational circuits.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 45/ 166",
+      "1. Characteristics of MOSFET in different configurations.\n2. Characteristics of RC oscillator.\n3. Adder and subtractor circuits.\n4. Multiplexer and Demultiplexer.\n5. Counters/registers using flip-flops.\n6. Linear applications of op-amps.\n7. Non-linear applications of op-amps.\n8. Second order low pass, high pass, band pass filters implementation.\n9. Monostable, Astable, and bistable multivibrators.\n10. Phase locked loop.\n11. ADCs and DACs.\n12. Verilog/VHDL programming to realize logic gates, sequential and combinational circuits.",
       "Module 3. Fourth Semester Courses: 3.9. Control System Lab\n3.9 Control System Lab"
     ],
     "textbooks": [],
@@ -2405,15 +2418,28 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 23,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      ".\n3. to analyse the performance and stability of physical systems using classical and advanced control approaches.\n4. to design controllers for physical systems to meet the desired specifications.\n3.9.2 Syllabus:\n1. Simulation of various control systems tools using suitable software.\n2. Study of DC servo motors and Synchro pairs.\n3. Study of rectilinear motion.\n4. DC and AC position Control Systems.\n5. (a) Closed-loop P, PI, PD, and PID controllers.\n(b) Design and validation of PID controller for speed and position control.\n6. (a) Temperature Control Systems.\n(b) Two tank water Level Control Systems.\n7. Study of Inverted Pendulum System.\n8. (a) Study of 2-DoF ball on beam.\n(b) Study of Cascade Control using 3-DoF gyroscope.\n9. Study and develop the ladder programs using PLC for different applications.\n10. Study of Magnetic Levitation.\n11. Microcontroller based Control System with any one application.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 46/ 166",
-      "Module 4\nFifth Semester Courses:\n4.1 Environmental Studies"
+      "Module 1: Simulation of Control Systems - MATLAB/Simulink modeling of transfer functions, state-space representations, step and impulse responses, and pole-zero map stability analysis.",
+      "Module 2: Servomotors & Position Control - Experimental study of AC and DC servomotors, synchro transmitter-receiver pairs, and closed-loop angular/rectilinear position control systems.",
+      "Module 3: PID Controller Design & Tuning - Design, tuning (Ziegler-Nichols), and experimental validation of P, PI, PD, and PID controllers for DC motor speed control, liquid level control, and temperature control systems.",
+      "Module 4: Advanced Control & Automation - Study of inverted pendulum system, 2-DoF ball-on-beam balance, 3-DoF gyroscope cascade control, and PLC ladder logic programming for industrial sequencing."
     ],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "textbooks": [
+      "1. I. J. Nagrath and M. Gopal, \"Control Systems Engineering\", 6th Edition, New Age International, 2018.",
+      "2. Katsuhiko Ogata, \"Modern Control Engineering\", 5th Edition, Pearson, 2015."
+    ],
+    "objectives": [
+      "To experimentally verify the principles of classical and modern control system engineering.",
+      "To design, tune, and test analog and digital PID controllers on real hardware plants."
+    ],
+    "outcomes": [
+      "CO1: Model dynamic systems and analyze stability using time-domain and frequency-domain response curves.",
+      "CO2: Implement and tune PID controllers for speed, position, temperature, and level regulation.",
+      "CO3: Program PLCs and configure industrial control loops for automated machinery."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/EEE2025.pdf"
   },
   "ES300": {
     "code": "ES300",
@@ -2435,7 +2461,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "3. G. Tyler Miller, Jr., Scott Spoolman, Brooks/Cole, “Environmental science: Problems, concepts, and solutions”,\n16th Ed., ISBN-13: 978-0-495-55671-8.",
       "4.1.5.2 Reference Books:",
       "1. William P. Cunningham, Mary Ann Cunningham, “Principles of environmental science: Inquiry & application,”\nMcgraw-Hill, (7th Ed.) ISBN 978–0–07–353251–6",
-      "2. William P. Cunningham, Mary Ann Cunningham, “Environmental science: A global concern,” Mcgraw-Hill,\n(12th Ed.) ISBN 978–0–07–338325–5.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 48/ 166\n\nModule 4. Fifth Semester Courses: 4.2. Power Electronics",
+      "2. William P. Cunningham, Mary Ann Cunningham, “Environmental science: A global concern,” Mcgraw-Hill,\n(12th Ed.) ISBN 978–0–07–338325–5.",
       "4.2 Power Electronics"
     ],
     "objectives": [],
@@ -2466,7 +2492,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "4.2.5.2 Reference Books:",
       "1. Robert W. Erickson and Dragan Maksimovi´c, “Fundamentals of Power Electronics,” Springer, 2002 3rd Ed.)",
       "2. John G. Kassakian, Martin F. Schlecht, and George C. Verghese, “Principles of Power Electronics,” Cambridge\nUniversity Press, 2021 (2nd Ed.)",
-      "3. M. B. Patil, V. Ramanarayanan, and V. T. Ranganathan, “Simulation of Power Electronic Circuits”, Narosa\nPublishing House, 2013\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 50/ 166\n\nModule 4. Fifth Semester Courses: 4.3. Electrical Machines-II",
+      "3. M. B. Patil, V. Ramanarayanan, and V. T. Ranganathan, “Simulation of Power Electronic Circuits”, Narosa\nPublishing House, 2013",
       "4.3 Electrical Machines-II"
     ],
     "objectives": [],
@@ -2494,7 +2520,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "4.3.5.2 Reference Books:",
       "1. A E Fitzgerald, C Kingsley and S D Umans, “Electrical Machinery,” Tata McGraw Hill, 2003 (6th Ed.).",
       "2. Theodore Wildi , “Electrical Machines, Drives, and Power Systems,” Pearson Education Limited",
-      "3. S J Chapman, “Electric Machinery Fundamentals,” McGraw Hill, 2010 (4th Ed.).\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 52/ 166\n\nModule 4. Fifth Semester Courses: 4.4. Power Systems-I",
+      "3. S J Chapman, “Electric Machinery Fundamentals,” McGraw Hill, 2010 (4th Ed.).",
       "4.4 Power Systems-I"
     ],
     "objectives": [],
@@ -2526,7 +2552,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "1. Sunil S Rao, “Switch gear and protection,” Khanna publishers, 1997 (Xnd Ed.)",
       "2. A. R. Warrington, “Electrical Power System Protection”, Wiley.",
       "3. Y. G. Paithankar & S. R. Bhide, “Fundamentals of Power System Protection”, PHI Learning.",
-      "4. Prabha Kundur, “Power System Stability and Control”, McGraw-Hill.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 54/ 166\n\nModule 4. Fifth Semester Courses: 4.5. Microprocessor and Microcontroller",
+      "4. Prabha Kundur, “Power System Stability and Control”, McGraw-Hill.",
       "4.5 Microprocessor and Microcontroller"
     ],
     "objectives": [],
@@ -2556,7 +2582,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "4. Krishna Kant, “Microprocessors and Microcontrollers, Architecture, Programming, and System Design-8085,8086,8051,8096”\nPublication,",
       "4.5.5.2 Reference Books:",
       "1. Barry B. Brey, “The Intel Microprocessors: Architecture, Programming and Interface”, PHI",
-      "2. Felipe. Neves,” Hands-On Embedded System Design: Leverage The Power Of Arm Processors, FPGAs, ASIP\nAnd ASICS For Building Effective Embedded System Design, PACKT Publishing Limited\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 56/ 166\n\nModule 4. Fifth Semester Courses: 4.6. Electrical Machine-II Laboratory",
+      "2. Felipe. Neves,” Hands-On Embedded System Design: Leverage The Power Of Arm Processors, FPGAs, ASIP",
       "4.6 Electrical Machine-II Laboratory"
     ],
     "objectives": [],
@@ -2573,7 +2599,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-      "ation.\n4. Familiarize students with real-world applications and modern machine technologies.\n4.6.2 Syllabus:\n1. Determine synchronous impedance and voltage regulation using the EMF method.\n2. Determination of Voltage regulation of Alternator by ZPF method.\n3. Operating Characteristics of Alternator.\n4. Determination of V-Curve and Inverted V-Curve of Synchronous Motor.\n5. Determination of Xd and Xq of salient pole synchronous machine.\n6. Performance analysis of Permanent Magnet Synchronous Motor.\n7. Performance analysis of BLDC Motor.\n8. Performance characteristics of Single-Phase Induction Motor.\n9. Study the torque characteristics and commutation principles of SRM.\n10. Analysis of speed-torque characteristics and performance of Universal Motor under AC and DC supplies.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 57/ 166",
+      "ation.\n4. Familiarize students with real-world applications and modern machine technologies.\n4.6.2 Syllabus:\n1. Determine synchronous impedance and voltage regulation using the EMF method.\n2. Determination of Voltage regulation of Alternator by ZPF method.\n3. Operating Characteristics of Alternator.\n4. Determination of V-Curve and Inverted V-Curve of Synchronous Motor.\n5. Determination of Xd and Xq of salient pole synchronous machine.\n6. Performance analysis of Permanent Magnet Synchronous Motor.\n7. Performance analysis of BLDC Motor.\n8. Performance characteristics of Single-Phase Induction Motor.\n9. Study the torque characteristics and commutation principles of SRM.\n10. Analysis of speed-torque characteristics and performance of Universal Motor under AC and DC supplies.",
       "Module 4. Fifth Semester Courses: 4.7. Microprocessor Lab\n4.7 Microprocessor Lab"
     ],
     "textbooks": [],
@@ -2589,7 +2615,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-      "1. Arithmetic operations using 80x86.\n2. Waveform generations using 80x86.\n3. Interfacing using 80x86.\n4. Arithmetic operations and waveform generation using 8051.\n5. Interfacing of Stepper motor/DC motor control using 8051.\n6. Programming timers, serial communications, interrupts using 8051.\n7. Interfacing using ARMx.\n8. Basic Verilog programming for implementation of digital logics.\n9. Mini Projects.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 58/ 166",
+      "1. Arithmetic operations using 80x86.\n2. Waveform generations using 80x86.\n3. Interfacing using 80x86.\n4. Arithmetic operations and waveform generation using 8051.\n5. Interfacing of Stepper motor/DC motor control using 8051.\n6. Programming timers, serial communications, interrupts using 8051.\n7. Interfacing using ARMx.\n8. Basic Verilog programming for implementation of digital logics.\n9. Mini Projects.",
       "Module 4. Fifth Semester Courses: 4.8. Tinkering Lab - II\n4.8 Tinkering Lab - II"
     ],
     "textbooks": [],
@@ -2605,8 +2631,8 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-      "The entire class will be divided into a few groups. Based on the knowledge gained so far, each group is required to\nconceptualize, design, and complete a project, applying their understanding of the subjects they have learned, along\nwith performance analysis and control strategies, to address a practical problem or develop an innovative solution.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 59/ 166",
-      "Module 5\nSixth Semester Courses:\n5.1 Electrical System Design"
+      "The entire class will be divided into a few groups. Based on the knowledge gained so far, each group is required to\nconceptualize, design, and complete a project, applying their understanding of the subjects they have learned, along\nwith performance analysis and control strategies, to address a practical problem or develop an innovative solution.",
+      "Module 5"
     ],
     "textbooks": [],
     "objectives": [],
@@ -2658,7 +2684,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "5.1.3.1 Text Books:",
       "1. The books suggested by the course instructor.",
       "5.1.3.2 Reference Books:",
-      "1. The books suggested by the course instructor.\n\nModule 5. Sixth Semester Courses: 5.2. Electrical Drives",
+      "1. The books suggested by the course instructor.",
       "5.2 Electrical Drives"
     ],
     "objectives": [],
@@ -2685,7 +2711,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "3. R. Krishnan, “Electric Motor Drives: Modeling, Analysis, and Control”, Pearson Education, 2001, (1st Ed.).",
       "4. I. Boldear and S. A. Nasar, “Electric Drives,” CRC Press, Boca Raton, FL, 1999",
       "5.2.5.2 Reference Books:",
-      "1. Mikhail Chilikin, “Electric Drive”, Mir Publishers, 1976, (1st Ed.).\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 62/ 166\n\nModule 5. Sixth Semester Courses: 5.3. Power Systems-II",
+      "1. Mikhail Chilikin, “Electric Drive”, Mir Publishers, 1976, (1st Ed.).",
       "5.3 Power Systems-II"
     ],
     "objectives": [],
@@ -2718,7 +2744,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "1. J. D. Glover, M. S. Sarma, T. Overbye, “Power System Analysis and Design”, Cengage Learning",
       "2. C. L. Wadhwa, “Electrical Power Systems,” New Age Int. Publishers, 2022 (Xth Ed.)",
       "3. P. M. Anderson, “Faulted Power System Analysis”, IEEE Press",
-      "4. A. R. Bergen & V. Vittal, “Power System Analysis”, Pearson\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 64/ 166\n\nModule 5. Sixth Semester Courses: 5.4. Power Electronics and Drive Lab",
+      "4. A. R. Bergen & V. Vittal, “Power System Analysis”, Pearson",
       "5.4 Power Electronics and Drive Lab"
     ],
     "objectives": [],
@@ -2735,7 +2761,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-      "1. Characteristics of Semiconductor Devices such as, BJT, IGBT, MOSFET, etc.\n2. Performance analysis of uncontrolled rectifiers - single phase and three-phase rectifier\n3. Performance analysis of SCR rectifiers - single phase and three-phase rectifier.\n4. Simulation and hardware implementation of DC-DC converters with duty cycle control.\n5. Performance analysis of 1-ϕ & 3 − ϕ inverter output voltage with square wave, quasi-square wave, and PWM control.\n6. Closed-loop speed control of DC motor using chopper circuits.\n7. V/f control of three-phase induction motor using a PWM inverter.\n8. Implementation of slip control and rotor resistance control of induction motor.\n9. BLDC/PMSM/SRM motor control.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 65/ 166",
+      "1. Characteristics of Semiconductor Devices such as, BJT, IGBT, MOSFET, etc.\n2. Performance analysis of uncontrolled rectifiers - single phase and three-phase rectifier\n3. Performance analysis of SCR rectifiers - single phase and three-phase rectifier.\n4. Simulation and hardware implementation of DC-DC converters with duty cycle control.\n5. Performance analysis of 1-ϕ & 3 − ϕ inverter output voltage with square wave, quasi-square wave, and PWM control.\n6. Closed-loop speed control of DC motor using chopper circuits.\n7. V/f control of three-phase induction motor using a PWM inverter.\n8. Implementation of slip control and rotor resistance control of induction motor.\n9. BLDC/PMSM/SRM motor control.",
       "Module 5. Sixth Semester Courses: 5.5. Power System Lab\n5.5 Power System Lab"
     ],
     "textbooks": [],
@@ -2751,7 +2777,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-      "Module - 1: Hardware Experiments (any Six)\n1. Transmission Line studies using simulator: a. ABCD Paraments b. Ferranti Effect, c.\nVoltage regulation, d. Compensation methods\n2. Measurement of sequence impedances and currents.\n3. Numerical relay characteristics - Over current relay, IDMT, Over Voltage/Under Voltage, etc\n4. Testing of Current Transformer and Potential Transformer.\n5. Study of circuit breakers.\n6. Study of any two protection schemes:a. Earth fault protection of a generator, b. Trans-\nformer differential protection , c. Working of Buchholz relay, d. Over Current protection of\nTransmission Line, e. Over Voltage /Under Voltage protection of Transmission Line\n7. Study of Digital Energy Meter.\n8. Study of Solar Photo Voltaic (SPV) systems.\n9. High Voltage testing: a. Impulse and Flashover testing, b. Partial Discharge, c. Earth\nResistance Tester, d. Transformer oil testing, e. String Insulators\nModule - 2: Software simulations\n10. Formation of YBU S and ZBU S .\n11. Load Flow Analysis using Gauss Seidal (GS) Method.\n12. Load Flow Analysis using Newton-Raphson (NR) Method.\n13. Load Flow Analysis using Fast Decoupled (FD) Method.\n14. To obtain Swing Curve and to determine Critical Clearing Time, angle, Regulation,\nInertia Constant, etc\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 66/ 166",
+      "Module - 1: Hardware Experiments (any Six)\n1. Transmission Line studies using simulator: a. ABCD Paraments b. Ferranti Effect, c.\nVoltage regulation, d. Compensation methods\n2. Measurement of sequence impedances and currents.\n3. Numerical relay characteristics - Over current relay, IDMT, Over Voltage/Under Voltage, etc\n4. Testing of Current Transformer and Potential Transformer.\n5. Study of circuit breakers.\n6. Study of any two protection schemes:a. Earth fault protection of a generator, b. Trans-\nformer differential protection , c. Working of Buchholz relay, d. Over Current protection of\nTransmission Line, e. Over Voltage /Under Voltage protection of Transmission Line\n7. Study of Digital Energy Meter.\n8. Study of Solar Photo Voltaic (SPV) systems.\n9. High Voltage testing: a. Impulse and Flashover testing, b. Partial Discharge, c. Earth\nResistance Tester, d. Transformer oil testing, e. String Insulators\nModule - 2: Software simulations\n10. Formation of YBU S and ZBU S .\n11. Load Flow Analysis using Gauss Seidal (GS) Method.\n12. Load Flow Analysis using Newton-Raphson (NR) Method.\n13. Load Flow Analysis using Fast Decoupled (FD) Method.\n14. To obtain Swing Curve and to determine Critical Clearing Time, angle, Regulation,",
       "Module 5. Sixth Semester Courses: 5.6. Electrical & Electronic Design Lab\n5.6 Electrical & Electronic Design Lab"
     ],
     "textbooks": [],
@@ -2764,81 +2790,90 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 23,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "Based on the concepts and methodologies learned in the “Electrical System Design” course, students are\nrequired to apply their knowledge to complete a comprehensive design project. This project will involve integrating\nkey aspects such as system specifications, component selection, circuit design, protection mechanisms, control\nstrategies, and performance evaluation, demonstrating their ability to design a functional and efficient electrical\nsystem.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 67/ 166",
-      "Module 6\nSeventh Semester Courses:\n6.1 Industrial Economics"
+      "Module 1: Power Electronic Hardware Design - Gate driver isolation circuits (optocoupler / pulse transformer), heatsink thermal calculations, and PCB layout optimization for high di/dt and dv/dt switching.",
+      "Module 2: Magnetic Component Design - High-frequency inductor and transformer design using area-product (Ap) method, ferrite core selection, winding loss minimization, and gap calculation.",
+      "Module 3: Signal Conditioning & Closed-Loop Controller - Op-amp current/voltage sensing circuits, anti-aliasing active filters, microcontroller/DSP PWM interface, and analog feedback compensator design.",
+      "Module 4: System Integration, EMI Mitigation & Testing - Enclosure packaging, thermal management, snubber and clamp circuit verification, conducted EMI reduction, and full-load efficiency testing."
     ],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "textbooks": [
+      "1. Ned Mohan, \"Power Electronics: Converters, Applications, and Design\", 3rd Edition, Wiley, 2007.",
+      "2. Abraham I. Pressman, Keith Billings, Taylor Morey, \"Switching Power Supply Design\", 3rd Edition, McGraw-Hill, 2009.",
+      "3. Colonel Wm. T. McLyman, \"Transformer and Inductor Design Handbook\", 4th Edition, CRC Press, 2011."
+    ],
+    "objectives": [
+      "To impart hands-on system design methodology for power converters and electrical apparatus.",
+      "To integrate magnetic component sizing, gate driving, sensor signal conditioning, and microcontroller feedback."
+    ],
+    "outcomes": [
+      "CO1: Design and size magnetics including high-frequency inductors and flyback/forward transformers.",
+      "CO2: Layout noise-immune power electronic PCBs with isolated gate driver circuits.",
+      "CO3: Implement closed-loop voltage and current compensators on physical converter prototypes."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/EEE2025.pdf"
   },
   "EE401": {
     "code": "EE401",
-    "name": "Summer Project / Industrial Training DC Project/Training",
+    "name": "Summer Project / Industrial Training",
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
-    "modules": [],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/EEE2025.pdf",
+    "ltp": "0-0-3",
+    "credits": 2,
+    "modules": [
+      "Module 1: Industrial Internship & Problem Identification - Minimum 6-8 weeks industrial training at an accredited core engineering plant, utility, research organization, or power utility (e.g. NTPC, PowerGrid, BHEL, Goa Electricity Dept); logging daily technical activities and identifying industrial bottlenecks or design challenges.",
+      "Module 2: Technical Methodology & System Analysis - Analytical formulation of the engineering problem; technical survey of electrical machinery, drives, power systems, or control topologies applied in the plant; data collection, measurement protocols, and safety norms.",
+      "Module 3: Implementation, Simulation & Experimental Validation - Simulation of industrial subsystems using MATLAB/Simulink, PSCAD, ETAP, or hardware breadboard prototypes; comparative analysis between existing operational parameters and optimized solutions.",
+      "Module 4: Technical Documentation, Seminar & Viva Voce - Compilation of comprehensive industrial training report as per NIT Goa academic formatting standards; demonstration of plant workflows; presentation and comprehensive defense before the Department Evaluation Committee."
+    ],
+    "textbooks": [
+      "NIT Goa Academic Curriculum & Regulations Handbook for B.Tech Programs",
+      "IEEE Standards for Industrial Training and Technical Report Writing",
+      "Wayne C. Booth, Gregory G. Colomb, Joseph M. Williams, \"The Craft of Research\", University of Chicago Press"
+    ],
+    "objectives": [
+      "To expose electrical engineering undergraduates to actual industrial practices, manufacturing workflows, and safety standards.",
+      "To bridge academic theoretical principles with live industrial instrumentation, power apparatus, and automation."
+    ],
+    "outcomes": [
+      "CO1: Comprehend industrial scale operations, utility workflows, switchgear, and protective relays in live environments.",
+      "CO2: Formulate technical problem statements and investigate solutions using industry standard tools.",
+      "CO3: Prepare rigorous engineering technical reports adhering to ethical documentation standards.",
+      "CO4: Communicate engineering solutions effectively through oral defense before technical evaluation panels."
+    ]
   },
   "HS350": {
     "code": "HS350",
     "name": "Industrial Economics",
-    "branch": "CVE",
+    "branch": "COMMON",
     "pdfPath": "/syllabi/CVE2025.pdf",
     "pdfName": "CVE2025.pdf",
     "ltp": "3-0-0",
-    "credits": 19,
+    "credits": 3,
     "modules": [
-      "Unit-1: Introduction to Economics – Introduction to Industrial economics - nature and scope -\nconcept of firm and industry- types of firms - structure, conduct and performance\nUnit-2: Standard forms of market structure - pricing strategies and output determination of\nfirms - profit maximization, sales maximization (William J. Baumol), utility maximization\n(Oliver E. Williamson), growth maximization (George K. Yarrow) - equilibrium of firms under\n\n\nperfect competition, monopoly, monopolistic competition and oligopoly - optimum price and\noutput - economies of scale.\nUnit-3: Price and non-price competition - strategic behaviour of firms - collusion and mergers -\ngame theory - market failures and information asymmetry - advertising and product differentiation\n- market entry and exit - concentration and diversification\nUnit- 4: Patents and technological change- the economics of patent-innovation and diffusion\nmeasures of concentration\nUnit- 5: Research and Development (R&D) and market structure -- product and process\ninnovation- R&D and patent race-licensing and incentive to innovate\nUnit-6: Economics of the fourth Industrial Revolution – Industrial revolution past, present and\nFuture, Internet-Artificial Intelligence- Blockchain technologies\nEssential reading",
-      "1. Donald A. Hay, Derek J. Morris, Industrial Economics: Theory and Evidence, Oxford\nUniversity Press, 1979",
-      "2. Carton, D. and J. Perloff. Modern Industrial Organization (Reading, Massachusetts:\nAddison-Wesley),",
-      "3. Lall, Sanjaya. Competitiveness, Technology and Skills (Cheltenham: Edward Elgar),",
-      "4. Shy, O. (",
-      "1996). Industrial organization: Theory and applications. MIT Press.\nSupplementary reading",
-      "1. A. Singh and A.N. Sandhu, Industrial Economics, Himalaya Publishing House, Bombay,\n1988",
-      "2. Ferguson, Paul R. and Glenys J. Ferguson, (",
-      "1994), Industrial Economics - Issues and\nPerspectives, Macmillan, London.",
-      "3. Stephen Martin, Advanced Industrial Economics, Oxford, UK Blackwell Publisher, 2002",
-      "4. R. R. Barthwal, Industrial Economics: An Introductory Textbook, New Age International\nPublishers, 2007",
-      "5. Hay, Donald A. and Derek J. Morris. Industrial Economics and Organization: Theory and\nEvidence, 2nd Edition (Oxford: Oxford University Press),",
-      "6. Schmalensee, R., Inter-industry studies of Structure and Performance, in Schmalensee, R.\nand R. D. Willig (eds.): Handbook of Industrial Organization [Amsterdam: North-\nHolland] Vols. 2 Chapter 16, pp. 951-1009,",
-      "7. Siddharthan, N. S. and Y.S. Rajan. Global Business, Technology and Knowledge\nSharing: Lessons for Developing Country Enterprises (New Delhi: Macmillan),",
-      "8. Tirole, Jean. The Theory of Industrial Organization (Cambridge, MA: The MIT Press),",
-      "1988.\n\n\nELECTIVES"
+      "Module 1: Introduction to Industrial Economics - Nature, scope, concept of firm and industry, types of firms, ownership structures, and structure-conduct-performance (SCP) paradigm.",
+      "Module 2: Market Structures & Managerial Theories - Pricing strategies and output determination under perfect competition, monopoly, monopolistic competition, and oligopoly; Baumol sales maximization, Williamson utility maximization, and Marris growth models; economies of scale.",
+      "Module 3: Strategic Behavior & Game Theory - Price and non-price competition, collusion, cartels, vertical and horizontal mergers, game-theoretic strategies, information asymmetry, advertising, and product differentiation.",
+      "Module 4: Innovation, R&D & Fourth Industrial Revolution - Economics of patents, technological diffusion, R&D races, licensing, market concentration indices (Herfindahl-Hirschman), and the economic impact of Industry 4.0, IoT, and AI."
     ],
     "textbooks": [
-      "6.1.5.1 Text Books:",
-      "1. Donald A. Hay, Derek J. Morris, Industrial Economics: Theory and Evidence, Oxford University Press, 1979",
-      "2. Carton, D. and J. Perloff. Modern Industrial Organization (Reading, Massachusetts: AddisonWesley), 1999.",
-      "3. Lall, Sanjaya. Competitiveness, Technology and Skills (Cheltenham: Edward Elgar), 2001.",
-      "4. Shy, O. (1996). Industrial organization: Theory and applications. MIT Press.",
-      "6.1.5.2 Reference Books:",
-      "1. A. Singh and A.N. Sandhu, Industrial Economics, Himalaya Publishing House, Bombay, 1988.",
-      "2. Ferguson, Paul R. and Glenys J. Ferguson, (1994), Industrial Economics - Issues and Perspectives, Macmillan,\nLondon.",
-      "3. Stephen Martin, Advanced Industrial Economics, Oxford, UK Blackwell Publisher, 2002.",
-      "4. R. R. Barthwal, Industrial Economics: An Introductory Textbook, New Age International Publishers, 2007.",
-      "5. Hay, Donald A. and Derek J. Morris. Industrial Economics and Organization: Theory and Evidence, 2nd Edition\n(Oxford: Oxford University Press), 1991.",
-      "6. Schmalensee, R., Inter-industry studies of Structure and Performance, in Schmalensee, R. and R. D.Willig (eds.):\nHandbook of Industrial Organization [Amsterdam: North-Holland] Vols. 2 Chapter 16, pp. 951-1009, 1989.",
-      "7. Siddharthan, N. S. and Y.S. Rajan. Global Business, Technology and Knowledge Sharing: Lessons for Developing\nCountry Enterprises (New Delhi: Macmillan), 2002.",
-      "8. Tirole, Jean. The Theory of Industrial Organization (Cambridge, MA: The MIT Press), 1988.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 69/ 166\n\nPart II\nCourse Content : Elective Courses\n\nModule 7\nElective Courses:",
-      "7.1 Selected Topics in Electrical Engineering"
+      "1. Donald A. Hay and Derek J. Morris, \"Industrial Economics: Theory and Evidence\", Oxford University Press, 1991.",
+      "2. Dennis W. Carlton and Jeffrey M. Perloff, \"Modern Industrial Organization\", 4th Edition, Pearson, 2005.",
+      "3. R. R. Barthwal, \"Industrial Economics: An Introductory Textbook\", New Age International Publishers, 2007."
     ],
     "objectives": [
-      "1. Identify and analyse the behaviour of a firm under different market situations\nsystematically.",
-      "2. Understand and assimilate the issues related to strategic behaviour in firms, R&D and\ninnovation.",
-      "3. Have a comprehensive coverage of firms' profitability and efficiency measurements,\nwith applications to India's industrial structure.",
-      "4. To understand the rich complexities and paradox of fourth industrial revolution."
+      "To identify and analyze firm behavior under diverse industrial market environments.",
+      "To understand strategic decision making, innovation dynamics, and economic implications of Industry 4.0."
     ],
     "outcomes": [
-      "Upon completion, students should have an in-depth knowledge of"
-    ]
+      "CO1: Evaluate industrial market structures and price-output equilibrium across competition models.",
+      "CO2: Apply game-theoretic principles to model strategic interaction, cartels, and mergers.",
+      "CO3: Assess returns to R&D, patent races, and macroeconomic factors shaping technological diffusion."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CVE2025.pdf"
   },
   "EE500": {
     "code": "EE500",
@@ -2855,7 +2890,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "7.1.2.1 Text Books:",
       "1. The books suggested by the course instructor.",
       "7.1.2.2 Reference Books:",
-      "1. The books suggested by the course instructor.\n\nModule 7. Elective Courses: 7.2. Electrical Safety: Standards and Protocols",
+      "1. The books suggested by the course instructor.",
       "7.2 Electrical Safety: Standards and Protocols"
     ],
     "objectives": [],
@@ -2886,7 +2921,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "1. Mohammad Shahidehpour, HatimYamin, “Market operations in Electric power systems”, John Wiley & son\nLTD, Publication, 2002.",
       "2. Lorrin Philipson, H. Lee Willis, “Understanding Electric Utilities and Deregulation” Taylor & Francis, New York",
       "3. Mohammad Shahidehpour, Muwaffaq Alomoush, “Restructured Electrical Power Systems”, Marcel Dekker, INC.,\nNew York, 2001.",
-      "4. Relevant research articles.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 75/ 166\n\nModule 7. Elective Courses: 7.4. Energy Auditing",
+      "4. Relevant research articles.",
       "7.4 Energy Auditing"
     ],
     "objectives": [],
@@ -2919,7 +2954,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "2. Bureau of Energy Efficiency, “Energy Efficiency in Electrical Utilities”",
       "3. S. C. Tripathy, “Energy Conservation and Management”.",
       "4. Case Studies on Energy Efficiency published by TERI, CII, and PCRA",
-      "5. Relevant research articles.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 77/ 166\n\nModule 7. Elective Courses: 7.5. Utilization of Electrical Energy & Illumination",
+      "5. Relevant research articles.",
       "7.5 Utilization of Electrical Energy & Illumination"
     ],
     "objectives": [],
@@ -2953,7 +2988,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "3. S. M. Chaudhari, “Illumination Engineering,” Nirali Prakashan, 2021",
       "4. Amir Khajepour, Saber Fallah and Avesta Goodarzi, “Electric and Hybrid Vehicles Technologies, Modeling and\nControl: A Mechatronic Approach,” John Wiley & Sons Ltd.",
       "5. “Energy Efficiency in Electrical Utilities,” BEE Guidebook.",
-      "6. Relevant research articles.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 79/ 166\n\nModule 7. Elective Courses: 7.6. Building Management Systems",
+      "6. Relevant research articles.",
       "7.6 Building Management Systems"
     ],
     "objectives": [],
@@ -2987,7 +3022,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "4. Er. V. K. Jain, Er. Amitabh Bajaj, Design of Electrical Installations, University Science Press.",
       "5. Code of practice for Electrical wiring installations, (System voltage not exceeding 650 volts), Indian Standard\nInstitution, IS: 732-1983.",
       "6. Guide for Electrical layout in residential buildings, Indian Standard Institution, IS: 4648-1968.",
-      "7. Relevant research articles.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 81/ 166\n\nModule 7. Elective Courses: 7.7. Power System Protection",
+      "7. Relevant research articles.",
       "7.7 Power System Protection"
     ],
     "objectives": [],
@@ -3022,7 +3057,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "3. D.P. Kothari & I.J. Nagrath, Modern Power System Analysis, McGraw Hill.",
       "4. P.K. Dash & S. Samantaray, Adaptive Protection of Power Systems, Springer.",
       "5. IEEE Standards (IEEE C37 series) and research papers on smart grid and AI-based protection techniques.",
-      "6. Reports from PowerGrid India, CEA on Blackout Analysis & Smart Grid Protection.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 83/ 166\n\nModule 7. Elective Courses: 7.8. Advanced Power System Protection",
+      "6. Reports from PowerGrid India, CEA on Blackout Analysis & Smart Grid Protection.",
       "7.8 Advanced Power System Protection"
     ],
     "objectives": [],
@@ -3056,7 +3091,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "3. IEEE Standards (IEEE C37 series) and research papers on smart grid and AI-based protection techniques.",
       "4. Reports from PowerGrid India, CEA on Blackout Analysis & Smart Grid Protection.",
       "5. IEC 61850 – Communication Networks and Systems in Substations, IEC, 2021 Ed.",
-      "6. IEEE Std C37.118 – Synchrophasor Measurement for Power Systems, IEEE, 2022 Ed.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 85/ 166\n\nModule 7. Elective Courses: 7.9. Power System Operation and Control",
+      "6. IEEE Std C37.118 – Synchrophasor Measurement for Power Systems, IEEE, 2022 Ed.",
       "7.9 Power System Operation and Control"
     ],
     "objectives": [],
@@ -3088,7 +3123,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "1. J. D. Glover, M. S. Sarma, & T. J. Overbye, “Power System Analysis and Design,” Cengage, 2022 (6th Ed.)",
       "2. N. G. Hingorani & L. Gyugyi, “Understanding FACTS: Concepts and Technology of Flexible AC Transmission\nSystems, Wiley-IEEE.",
       "3. H. Saadat, “Power System Analysis,” PSA Publishing, 2022 (3rd Ed.)",
-      "4. Research papers on AI-based grid optimization, cybersecurity, and renewable integration (IEEE, CIGR´E, ISGF\nReports).\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 87/ 166\n\nModule 7. Elective Courses: 7.10. Power Quality",
+      "4. Research papers on AI-based grid optimization, cybersecurity, and renewable integration (IEEE, CIGR´E, ISGF\nReports).",
       "7.10 Power Quality"
     ],
     "objectives": [],
@@ -3120,7 +3155,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "1. IEEE Standards (IEEE-519, IEEE-1159) and IEC 61000 Reports on Power Quality.",
       "2. Ewald F. Fuchs & Mohammad A. S. Masoum, “Power Quality in Power Systems and Electrical Machines,”\nElsevier, 2022 (3rd Ed.)",
       "3. Bollen Math H J, “Understanding Power Quality Problems,” Wiley-IEEE, 2021 (Reprint)",
-      "4. Research papers on PQ issues in EV charging and renewable energy integration (IEEE Transactions, CEA\nReports)\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 89/ 166\n\nModule 7. Elective Courses: 7.11. Smart Electric Grids",
+      "4. Research papers on PQ issues in EV charging and renewable energy integration (IEEE Transactions, CEA\nReports)",
       "7.11 Smart Electric Grids"
     ],
     "objectives": [],
@@ -3152,7 +3187,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "1. Stuart Borlase, “Smart Grids-Infrastructure, Technology and Solutions,” CRC Press, 2024 (3rd Ed.)",
       "2. Janaka Ekanayake, Kithsiri Liyanage, Jianzhong Wu and Akihiko Yokoyama, “Smart GridT echnology and\napplications”, Wiley, 2020 (2nd Ed.)",
       "3. James Momoh, “Smart Grid-Fundamentals of design and analysis”, Wiley.",
-      "4. Relevant research papers.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 91/ 166\n\nModule 7. Elective Courses: 7.12. Microgrid Operation and Control",
+      "4. Relevant research papers.",
       "7.12 Microgrid Operation and Control"
     ],
     "objectives": [],
@@ -3180,7 +3215,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "2. Hassan Bevrani, Bruno Francois, and Toshifumi Ise, “Microgrid Dynamics and Control”, John Wiley & Sons,\nInc., 2017 (1st Ed.)",
       "7.12.5.2 Reference Books:",
       "1. Josep M. Guerrero (Editor), Ritu Kandari (Editor), “Microgrids: Modeling, Control, and Applications,” Aca-\ndemic Press Inc, 2021.",
-      "2. Research papers\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 93/ 166\n\nModule 7. Elective Courses: 7.13. HVDC and FACTS",
+      "2. Research papers",
       "7.13 HVDC and FACTS"
     ],
     "objectives": [],
@@ -3210,7 +3245,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "7.13.5.2 Reference Books:",
       "1. J. Arrillaga, “High Voltage Direct Current Transmission,” IET, 1998 (2nd Ed.)",
       "2. IEEE & CIGR´E Reports on HVDC and FACTS Technologies",
-      "3. Case Studies from Indian HVDC/FACTS Projects (PowerGrid Reports, CEA Reports)\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 95/ 166\n\nModule 7. Elective Courses: 7.14. Power Distribution Systems",
+      "3. Case Studies from Indian HVDC/FACTS Projects (PowerGrid Reports, CEA Reports)",
       "7.14 Power Distribution Systems"
     ],
     "objectives": [],
@@ -3244,7 +3279,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "3. B. Das, “Power Distribution Automation,” IET Power and Energy Series, 2016",
       "4. J. J. Burke, “Power Distribution Engineering: Fundamentals and Applications,” CRC Press, 1994 (1st Ed.)",
       "5. T. A Short, “Electric Power Distribution Handbook,” CRC Press, 2018 (2nd Ed.)",
-      "6. Relevant research articles.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 97/ 166\n\nModule 7. Elective Courses: 7.15. High Voltage Engineering",
+      "6. Relevant research articles.",
       "7.15 High Voltage Engineering"
     ],
     "objectives": [],
@@ -3275,7 +3310,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "1. E Kuffel, & W.S. Zaengl “High Voltage Engineering Fundamentals,” Pergamon press, Oxford, London, 2013\n(2nd Ed.)",
       "2. Ravindra Arora & Wolfgang Mosch, “High Voltage and Electrical Insulation Engineering,” Wiley-IEEE Press,\n2011 (1st Ed.)",
       "3. Standard techniques for high voltage testing, IEEE Publication 1978.",
-      "4. Relevant research articles.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 99/ 166\n\nModule 7. Elective Courses: 7.16. Advanced Power Electronics",
+      "4. Relevant research articles.",
       "7.16 Advanced Power Electronics"
     ],
     "objectives": [],
@@ -3303,7 +3338,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "2. R. W. Erickson & D. Maksimovic, “Fundamentals of Power Electronics,” Springer, 2020 (3rd Ed.)",
       "3. M. H. Rashid, “Power Electronics: Circuits, Devices, and Applications”, PHI, 2013 (4th Ed.)",
       "7.16.5.2 Reference Books:",
-      "1. P. T. Krein, “Elements of Power Electronics, Indian Edition,” Oxford University Press, 2014 (2nd Ed.)\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 101/ 166\n\nModule 7. Elective Courses: 7.17. Power Electronic Converters for Renewable Energy",
+      "1. P. T. Krein, “Elements of Power Electronics, Indian Edition,” Oxford University Press, 2014 (2nd Ed.)",
       "7.17 Power Electronic Converters for Renewable Energy"
     ],
     "objectives": [],
@@ -3331,7 +3366,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "2. Suleiman M. Sharkh, Mohammad A. Abu-Sara, Georgios I. Orfanoudakis & Babar Hussain, “Power Electronic\nConverters for Microgrids,” Wiley-IEEE Press, April 2014 (1st Ed.)",
       "3. Fang Lin Luo & Hong Ye, “Advanced DC/AC Inverters: Applications in Renewable Energy,” CRC Press, 2013\n(1st Ed.)",
       "7.17.5.2 Reference Books:",
-      "1. Sudipta Chakraborty, Marcelo G. Sim˜oes & William E. Kramer, “Power Electronics for Renewable and Dis-\ntributed Energy Systems,” Springer 2013 (1st Ed.)\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 103/ 166\n\nModule 7. Elective Courses: 7.18. Advanced Electric Drives",
+      "1. Sudipta Chakraborty, Marcelo G. Sim˜oes & William E. Kramer, “Power Electronics for Renewable and Dis-\ntributed Energy Systems,” Springer 2013 (1st Ed.)",
       "7.18 Advanced Electric Drives"
     ],
     "objectives": [],
@@ -3362,7 +3397,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "5. Ned Mohan, Advanced Electric Drives: Analysis, Control, and Modeling Using MATLAB/Simulink, Wiley, 2014,\n1st Edition.",
       "7.18.5.2 Reference Books:",
       "1. Ali Emadi, Advanced Electric Drive Vehicles, CRC Press, 2017, 1st Edition.",
-      "2. Frede Blaabjerg (Ed.), Advanced and Intelligent Control in Power Electronics and Drives, Springer, 2014, 1st\nEdition.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 105/ 166\n\nModule 7. Elective Courses: 7.19. Electrical Machine Design",
+      "2. Frede Blaabjerg (Ed.), Advanced and Intelligent Control in Power Electronics and Drives, Springer, 2014, 1st\nEdition.",
       "7.19 Electrical Machine Design"
     ],
     "objectives": [],
@@ -3394,7 +3429,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "5. R. Krishnan, Permanent Magnet Synchronous and Brushless DC Motor Drives, CRC Press, 2010, 1st Edition.",
       "7.20.5.2 Reference Books:",
       "1. C. K. Sankaran, Special Electrical Machines and Applications, Yes Dee Publishing, 2017, 1st Edition.",
-      "2. E.G. Janardanan, Special Electrical Machines, Prentice Hall India, 2014, 1st Edition.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 109/ 166\n\nModule 7. Elective Courses: 7.21. Renewable Energy Systems",
+      "2. E.G. Janardanan, Special Electrical Machines, Prentice Hall India, 2014, 1st Edition.",
       "7.21 Renewable Energy Systems"
     ],
     "objectives": [],
@@ -3404,16 +3439,35 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   },
   "EE524": {
     "code": "EE524",
-    "name": "Special Electric Machines DE",
+    "name": "Special Electric Machines",
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/EEE2025.pdf",
     "ltp": "3-0-0",
     "credits": 3,
-    "modules": [],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "modules": [
+      "Module 1: Stepper Motors & Switched Reluctance Motors (SRM) - Constructional features, variable reluctance and permanent magnet stepper motors, hybrid stepper motors, torque-speed characteristics, open-loop and closed-loop driver circuits, microstepping techniques. Switched reluctance motor: Operating principle, inductance profile, torque production, power converter topologies (asymmetric bridge), sensorless rotor position detection.",
+      "Module 2: Permanent Magnet Brushless DC (BLDC) Motors - Principle of operation, electronic commutation, comparison with conventional DC motors, Hall sensor placement, square-wave vs sinusoidal back-EMF, inverter topologies, 120-degree and 180-degree conduction modes, speed torque characteristics, sensorless control using back-EMF zero-crossing detection.",
+      "Module 3: Permanent Magnet Synchronous Motors (PMSM) - Surface-mounted and interior permanent magnet motors (SPMSM and IPMSM), d-q axes modeling, vector control / field-oriented control (FOC), direct torque control (DTC), flux weakening operation for high-speed traction, torque ripple minimization techniques in precision aerospace and EV drives.",
+      "Module 4: Linear Motors, Servomotors & Special Drives - Linear Induction Motors (LIM): Construction, transverse edge and end effects, thrust-velocity characteristics, applications in maglev and urban transit. Linear Synchronous Motors (LSM). AC and DC servomotors, synchros, resolver, hysteresis motor, and ultrasonic piezoelectric motors."
+    ],
+    "textbooks": [
+      "E. G. Janardanan, \"Special Electrical Machines\", Prentice Hall of India, 2014.",
+      "T. J. E. Miller, \"Brushless Permanent-Magnet and Reluctance Motor Drives\", Clarendon Press Oxford, 1989.",
+      "R. Krishnan, \"Switched Reluctance Motor Drives: Modeling, Simulation, Analysis, Design, and Applications\", CRC Press, 2001.",
+      "K. Venkataratnam, \"Special Electrical Machines\", Universities Press, 2008."
+    ],
+    "objectives": [
+      "To understand operating principles, construction, and control of non-conventional and special electrical machines.",
+      "To master the mathematical models, drive electronics, and converter topologies for BLDC, SRM, PMSM, and linear machines."
+    ],
+    "outcomes": [
+      "CO1: Analyze stepping sequences, driver electronics, and dynamic responses of stepper and switched reluctance motors.",
+      "CO2: Design electronic commutation circuits and controller schemes for permanent magnet brushless DC motors.",
+      "CO3: Formulate vector control and flux-weakening strategies for permanent magnet synchronous motors.",
+      "CO4: Select and evaluate linear motors, servomotors, and special drive topologies for robotics and transportation systems."
+    ]
   },
   "EE531": {
     "code": "EE531",
@@ -3437,7 +3491,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "4. Behrooz Mashadi & David Crolla, “Vehicle Powertrain Systems,“ John Wiley & Sons, 2012 (1st Ed.)",
       "7.22.5.2 Reference Books:",
       "1. K Wang Hee Na, “AC Motor Control & Electrical Vehicle Application,” CR Press, Taylor & Francis Group,\n2020 (2nd Ed.)",
-      "2. Ali Elamadi, “Handbook of Automotive Power Electronics and Drives,” CRC publishers, 2012.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 113/ 166\n\nModule 7. Elective Courses: 7.23. Autonomous Vehicles and Drones",
+      "2. Ali Elamadi, “Handbook of Automotive Power Electronics and Drives,” CRC publishers, 2012.",
       "7.23 Autonomous Vehicles and Drones"
     ],
     "objectives": [],
@@ -3471,7 +3525,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "2. Richard Szeliski, “Computer Vision: Algorithms and Applications,” Springer, 2022 (2nd Ed.)",
       "3. Raj Madhavan, “Autonomous Ground Vehicles: Technology, Applications & Challenges,” Springer, 2011",
       "4. M. Santos & V. Kumar, “Drone Technology: Principles, Applications and Future Trends,” John Wiley & Sons,\n2023 (1st Ed.)",
-      "5. IEEE Transactions on Intelligent Vehicles (T-IV), Vehicular Technology, Intelligent Transportation Systems.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 115/ 166\n\nModule 7. Elective Courses: 7.24. Robotics and Automation",
+      "5. IEEE Transactions on Intelligent Vehicles (T-IV), Vehicular Technology, Intelligent Transportation Systems.",
       "7.24 Robotics and Automation"
     ],
     "objectives": [],
@@ -3506,7 +3560,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "1. Frank. D, Petruzella, “Programmable Logic Controllers,” McGraw Hill, 2019 (5th Ed.)",
       "2. Ernest O. Doebelin, Dhanesh N. Manik, “Doebelin’s Measurement Systems,” McGraw Hill, 2019 (7th Ed.)",
       "3. G. Stephanopoulous, “Chemical Process Control: An introduction to Theory and Practice”, EEE",
-      "4. S. Mukhopadhyay, S. Sen and A. K. Deb, “Industrial Instrumentation, Control and Automation,” Jaico Pub-\nlishing House, 2012\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 117/ 166\n\nModule 7. Elective Courses: 7.25. Energy Storage Systems",
+      "4. S. Mukhopadhyay, S. Sen and A. K. Deb, “Industrial Instrumentation, Control and Automation,” Jaico Pub-\nlishing House, 2012",
       "7.25 Energy Storage Systems"
     ],
     "objectives": [],
@@ -3538,7 +3592,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "1. Bergveld H.J., Kraits W.S., Notten P.H.L, “Battery Management Systems - Design by Modelling” Philips Re-\nsearch Book Series, 2002",
       "2. Pop Valer, et al, “Battery management systems: Accurate state-of-charge indication for battery-powered appli-\ncations,” Vol. 9. Springer Science & Business Media, 2008.",
       "3. Halil S. Hamut, Nader Javani, Ibrahim Din¸cer “Thermal Management of Electric Vehicle Battery Systems” John\nWiley & Sons, 2016.",
-      "4. Relevant research articles\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 119/ 166\n\nModule 7. Elective Courses: 7.26. Advanced Control System",
+      "4. Relevant research articles",
       "7.26 Advanced Control System"
     ],
     "objectives": [],
@@ -3570,7 +3624,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "7.26.5.2 Reference Books:",
       "1. S.H. Zak, “Systems and Control,” Oxford Univ. Press, 2003",
       "2. Alberto Isidori, “Nonlinear Control Systems,” Springer Verlag, 1995",
-      "3. Jean-Jacques E. Slotine & Weiping Li, “Applied Nonlinear Control,” Prentice-Hall, NJ, 1991\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 121/ 166\n\nModule 7. Elective Courses: 7.27. Embedded Systems Design",
+      "3. Jean-Jacques E. Slotine & Weiping Li, “Applied Nonlinear Control,” Prentice-Hall, NJ, 1991",
       "7.27 Embedded Systems Design"
     ],
     "objectives": [],
@@ -3604,7 +3658,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "7.27.5.2 Reference Books:",
       "1. J.W. Valvano, “Embedded Microcomputer System: Real Time Interfacing,” Brooks/Cole, 2000",
       "2. Qing Li, “Real Time Concepts for Embedded Systems,” Elsevier, 2001",
-      "3. Herma K., “Real Time Systems: Design for Distributed Embedded Applications,” Springer, 2001 (2nd Ed.)\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 123/ 166\n\nModule 7. Elective Courses: 7.28. Embedded Control System",
+      "3. Herma K., “Real Time Systems: Design for Distributed Embedded Applications,” Springer, 2001 (2nd Ed.)",
       "7.28 Embedded Control System"
     ],
     "objectives": [],
@@ -3639,7 +3693,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "2. Bela G Liptak, “Instrument Engineers Handbook,” CRC press, 2003 (4th Ed.)",
       "3. W B Ribbens, “Understanding Automotive Electronics: An Engineering Perspective,” Elsevier, 2017 (8th Ed.)",
       "7.28.5.3 E-Learning Resources:",
-      "1. Prof. Banibrata Mukherjee, IIT Kharagpur online lecture series on “Embedded Sensing, Actuation and Inter-\nfacing Systems” https : //onlinecourses.nptel.ac.in/noc24ee68/preview/\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 125/ 166\n\nModule 7. Elective Courses: 7.29. Digital Signal Processing",
+      "1. Prof. Banibrata Mukherjee, IIT Kharagpur online lecture series on “Embedded Sensing, Actuation and Inter-\nfacing Systems” https : //onlinecourses.nptel.ac.in/noc24ee68/preview/",
       "7.29 Digital Signal Processing"
     ],
     "objectives": [],
@@ -3669,7 +3723,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "4. B. Venkatramani and M. Bhaskar, “Digital Signal Processors: Architecture, Programming, and Applications,”\nTata McGraw Hill, 2003",
       "7.29.5.2 Reference Books:",
       "1. E. C. Ifeachor and B. W. Jervis, “Digital Signal Processing,” Pearson Education, 2002 (2nd Ed.)",
-      "2. Li Tan, Jean Jiang, “Digital Signal Processing fundamentals and Applications,” Academic Press, 2013\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 127/ 166\n\nModule 7. Elective Courses: 7.30. Digital Image Processing",
+      "2. Li Tan, Jean Jiang, “Digital Signal Processing fundamentals and Applications,” Academic Press, 2013",
       "7.30 Digital Image Processing"
     ],
     "objectives": [],
@@ -3701,7 +3755,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "7.30.5.2 Reference Books:",
       "1. Anil K Jain, “Fundamentals of Digital Image Processing,” Pearson, 1989",
       "2. A. C. Bovik, “The essential guide to image processing,” Academic Press, 2009",
-      "3. William K. Pratt, “Digital Image Processing,” Wiley-Interscience, 2007 (4th Ed.)\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 129/ 166\n\nModule 7. Elective Courses: 7.31. FPGA based Digital Design",
+      "3. William K. Pratt, “Digital Image Processing,” Wiley-Interscience, 2007 (4th Ed.)",
       "7.31 FPGA based Digital Design"
     ],
     "objectives": [],
@@ -3730,7 +3784,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "3. Cem Unsalan, Bora Tar, “Digital System Design with FPGA Implementation Using Verilog and VHDL,” McGraw\nHill Education, 2017 (1st Ed.)",
       "4. Vahid, “Digital Design, with RTL Design, VHDL, and Verilog,” John Wiley and Sons Publishers, (2nd Ed.)",
       "7.31.5.2 Reference Books:",
-      "1. Harris, “Digital Design and Computer Architecture,” Elsevier, (2nd Ed.)\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 131/ 166\n\nModule 7. Elective Courses: 7.32. Applied Linear Algebra for Electrical Engineers",
+      "1. Harris, “Digital Design and Computer Architecture,” Elsevier, (2nd Ed.)",
       "7.32 Applied Linear Algebra for Electrical Engineers"
     ],
     "objectives": [],
@@ -3760,7 +3814,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "2. Thomas S. Shores, ”Applied Linear Algebra and Matrix Analysis,” Springer, 2017",
       "3. M. B. Patil, V. Ramanarayanan, and V. T. Ranganathan, ”Simulation of Power Electronic Circuits,” Narosa\nPublishing House, 2013",
       "7.32.5.2 Reference Books:",
-      "1. Daniel Norman, ”Introduction to Linear Algebra for Science and Engineering” CRC Press, 2010\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 133/ 166\n\nModule 7. Elective Courses: 7.33. Intelligent Systems in Electrical Engineering",
+      "1. Daniel Norman, ”Introduction to Linear Algebra for Science and Engineering” CRC Press, 2010",
       "7.33 Intelligent Systems in Electrical Engineering"
     ],
     "objectives": [],
@@ -3793,7 +3847,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "1. T. J. Ross, ”Fuzzy Logic with Engineering Applications,” Wiley, 2010 (3rd Ed.)",
       "2. S. Rajasekaran & G. A. Vijayalakshmi Pai, ”Neural Networks, Fuzzy Logic, and Genetic Algorithms: Synthesis\nand Applications,” Prentice Hall, 2003",
       "3. F. Milano, ”AI and Machine Learning in Smart Grid Systems,” Springer, 2020",
-      "4. IEEE Transactions & research papers on AI applications in power systems, smart grids, and energy trading.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 135/ 166\n\nModule 7. Elective Courses: 7.34. Optimization Techniques for Electrical Engineering",
+      "4. IEEE Transactions & research papers on AI applications in power systems, smart grids, and energy trading.",
       "7.34 Optimization Techniques for Electrical Engineering"
     ],
     "objectives": [],
@@ -3825,7 +3879,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "1. J. A. Momoh, ”Electric Power System Applications of Optimization,” CRC Press, 2021 (2nd Ed.)",
       "2. Xiao-Ping Zhang, ”Resilient Power Systems with Optimization and AI,” Wiley-IEEE Press.",
       "3. A. P. Engelbrecht, ”Computational Intelligence: An Introduction,” Wiley.",
-      "4. IEEE Transactions on Power Systems & Smart Grids – Research on AI and optimization in power networks\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 137/ 166\n\nModule 7. Elective Courses: 7.35. Soft Computing",
+      "4. IEEE Transactions on Power Systems & Smart Grids – Research on AI and optimization in power networks",
       "7.35 Soft Computing"
     ],
     "objectives": [],
@@ -3855,7 +3909,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "3. Jang, Sun, & Mizutani, “Neuro-Fuzzy and Soft Computing,” Pearson.",
       "7.35.5.2 Reference Books:",
       "1. David E. Goldberg, “Genetic Algorithms in Search, Optimization, and Machine Learning,” Pearson.",
-      "2. S. Rajasekaran & G.A. Vijayalakshmi Pai, “Neural Networks, Fuzzy Logic, and Genetic Algorithms,” PHI, 2020\n(4th Ed.)\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 139/ 166\n\nModule 7. Elective Courses: 7.36. Internet of Things (IoT) in Electrical Engineering",
+      "2. S. Rajasekaran & G.A. Vijayalakshmi Pai, “Neural Networks, Fuzzy Logic, and Genetic Algorithms,” PHI, 2020\n(4th Ed.)",
       "7.36 Internet of Things (IoT) in Electrical Engineering"
     ],
     "objectives": [],
@@ -3887,7 +3941,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "7.36.5.2 Reference Books:",
       "1. Anuradha, J., Tripathy, B. K, Internet of things (IoT) technologies, applications, challenges and solutions, CRC\nPress, Taylor & Francis, 2018.",
       "2. Mansaf Alam, Kashish Ara Shakil, Samiya Khan, Internet of Things (IoT) - Concepts and Applications, Springer\nPublications, 2020.",
-      "3. Ernest O. Doebelin, Dhanesh N. Manik, Doebelin’s Measurement Systems, McGraw Hill, 2019, 7th Edition.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 141/ 166\n\nModule 7. Elective Courses: 7.37. IoT, IoV, IoD and IIoT Applications in Electrical Engineering",
+      "3. Ernest O. Doebelin, Dhanesh N. Manik, Doebelin’s Measurement Systems, McGraw Hill, 2019, 7th Edition.",
       "7.37 IoT, IoV, IoD and IIoT Applications in Electrical Engineering"
     ],
     "objectives": [],
@@ -3918,7 +3972,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "7.37.5.2 Reference Books:",
       "1. Arshdeep Bahga & Vijay Madisetti, Internet of Things: A Hands-on Approach, Universities Press.",
       "2. Robert Faludi, Building Wireless Sensor Networks, O’Reilly Media.",
-      "3. IEEE transactions on Industrial Electronics, Smart Grid, Vehicular Technology, Internet of Things, Robotics.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 143/ 166\n\nModule 7. Elective Courses: 7.38. Cyber Physical Systems",
+      "3. IEEE transactions on Industrial Electronics, Smart Grid, Vehicular Technology, Internet of Things, Robotics.",
       "7.38 Cyber Physical Systems"
     ],
     "objectives": [],
@@ -3948,7 +4002,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "7.38.5.2 Reference Books:",
       "1. Ranjan Ganguli, Sondipon Adhikari, Souvik Chakraborty, Mrittika Ganguli, Digital Twin: A Dynamic System\nand Computing Perspective, CRC Press.",
       "2. Suh, Sang C., U. John Tanik, John N. Carbone, and Abdullah Eroglu, eds. Applied cyber-physical systems.\nSpringer New York",
-      "3. Relevant research articles\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 145/ 166\n\nModule 7. Elective Courses: 7.39. Cyber Security in Electrical Grids",
+      "3. Relevant research articles",
       "7.39 Cyber Security in Electrical Grids"
     ],
     "objectives": [],
@@ -3980,7 +4034,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "2. Yongge Wang and Bei-Tseng Chu, SCADA: Securing SCADA Infrastructure Communications, August 5, 2004.",
       "3. Andrew Hildick-Smith, Security for Critical Infrastructure SCADA Systems, February 23, 2005.",
       "4. John D. Moteff, Critical Infrastructures: Background, Policy, and Implementation, July 11, 2011",
-      "5. Relevant research papers.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 147/ 166\n\nModule 7. Elective Courses: 7.40. AI and ML Applications in Electrical Engineering",
+      "5. Relevant research papers.",
       "7.40 AI and ML Applications in Electrical Engineering"
     ],
     "objectives": [],
@@ -4013,7 +4067,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "2. P. S. R. Murty, Operation and Control in Power Systems, BS Publications.",
       "3. Ian Goodfellow et al., Deep Learning, MIT Press",
       "4. IEEE Transactions on AI in Power Systems & Cybersecurity",
-      "5. Industry Reports on AI-Driven Smart Grids & Cybersecurity by NITI Aayog\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 149/ 166\n\nModule 7. Elective Courses: 7.41. Evolutionary Computation for Electrical Engineering",
+      "5. Industry Reports on AI-Driven Smart Grids & Cybersecurity by NITI Aayog",
       "7.41 Evolutionary Computation for Electrical Engineering"
     ],
     "objectives": [],
@@ -4045,7 +4099,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "1. Kenneth A. De Jong, Evolutionary Computation: A Unified Approach, MIT Press.",
       "2. A. P. Engelbrecht, Computational Intelligence: An Introduction, Wiley.",
       "3. M. H. Rashid, Power Electronics Handbook: Devices, Circuits, and Applications, Academic Press.",
-      "4. IEEE Transactions & research papers on evolutionary computation applications in power systems, smart grids,\nand cybersecurity.\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 151/ 166\n\nModule 7. Elective Courses: 7.42. VLSI Technology",
+      "4. IEEE Transactions & research papers on evolutionary computation applications in power systems, smart grids,\nand cybersecurity.",
       "7.42 VLSI Technology"
     ],
     "objectives": [],
@@ -4075,7 +4129,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "3. Sneh Saurabh, “Introduction to VLSI Design Flow”",
       "7.42.5.2 Reference Books:",
       "1. Jan M. Rabaey, “Digital Integrated Circuits: A design perspective”, Pearson Publications",
-      "2. Morris M. Mano and M. D. Cilettil, “Digital Design”, Pearson\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 153/ 166\n\nModule 7. Elective Courses: 7.43. Multimedia Systems",
+      "2. Morris M. Mano and M. D. Cilettil, “Digital Design”, Pearson",
       "7.43 Multimedia Systems"
     ],
     "objectives": [],
@@ -4105,7 +4159,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "1. Lee, Jae-Beom, and Hari Kalva. The VC-1 and H. 264 video compression standards for broadband video services.\nVol. 32, Springer",
       "2. Tian, Xiaohua, M. Le Thinh, and Yong Lian, Entropy Coders of the H. 264/AVC Standard, Springer.",
       "3. Lin, Youn-Long Steve, et al. VLSI Design for Video Coding, Springer.",
-      "4. Ramachandran, and Seetharaman, “Digital VLSI systems design”, Springer\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 155/ 166\n\nModule 7. Elective Courses: 7.44. Reliability Engineering",
+      "4. Ramachandran, and Seetharaman, “Digital VLSI systems design”, Springer",
       "7.44 Reliability Engineering"
     ],
     "objectives": [],
@@ -4134,7 +4188,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "2. E. Balagurusamy, “Reliability Engineering”, TMH, 1984",
       "7.44.5.2 Reference Books:",
       "1. Roy Bilinton and Ronald N. Allan, “Reliability Evaluation of Power System”, 2nd edition, Plenum press, NY",
-      "2. L S Srinath, “Reliability Engineering”, East-West Press\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 157/ 166\n\nPart III\nCourse Content : Open Elective Courses\n(Offered by EEE Department for the students of other Departments)\n\nModule 8\nOpen Elective Courses:",
+      "2. L S Srinath, “Reliability Engineering”, East-West Press",
       "8.1 Electrical System Design for Buildings"
     ],
     "objectives": [],
@@ -4168,7 +4222,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "3. Er. V. K. Jain, Er. Amitabh Bajaj, Design of Electrical Installations, University Science Press.",
       "4. Code of practice for Electrical wiring installations, (System voltage not exceeding 650 volts), Indian Standard\nInstitution, IS: 732-1983.",
       "5. Guide for Electrical layout in residential buildings, Indian Standard Institution, IS: 4648-1968.",
-      "6. Relevant Research papers\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 160/ 166\n\nModule 8. Open Elective Courses: 8.2. General Aspects of Electrical Safety",
+      "6. Relevant Research papers",
       "8.2 General Aspects of Electrical Safety"
     ],
     "objectives": [],
@@ -4195,7 +4249,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "1. John Cadick, Mary Capelli-Schellpfeffer, Dennis Neitzel, Al Winfield, ‘Electrical Safety Handbook’, McGraw-Hill\nEducation, 4th Edition, 2012.",
       "2. Maxwell Adams. J, ‘Electrical Safety- a guide to the causes and prevention of electric hazards’, The Institution\nof Electric Engineers, IET 1994.",
       "1. Ray A. Jones, Jane G. Jones, ‘Electrical Safety in the Workplace’, Jones & Bartlett Learning, 2000.",
-      "2. Relevant Research papers\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 162/ 166\n\nModule 8. Open Elective Courses: 8.3. Introduction to Non-Conventional Energy",
+      "2. Relevant Research papers",
       "8.3 Introduction to Non-Conventional Energy"
     ],
     "objectives": [],
@@ -4227,7 +4281,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "8.3.5.2 Reference Books:",
       "1. Twidell, J. and Weir, T., Renewable Energy Resources, Taylor & Francis, 3rd Edition, 2015.",
       "2. Principles of Solar Engineering, D.Y. Goswami, F.Kreith and J.F. Kreider, Taylor and Francis, Philadelphia,",
-      "3. Boyle, G., Renewable Energy: Power for a Sustainable Future, Oxford University Press, 3rd Edition, 2012\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 164/ 166\n\nModule 8. Open Elective Courses: 8.4. Electric Vehicle Technology",
+      "3. Boyle, G., Renewable Energy: Power for a Sustainable Future, Oxford University Press, 3rd Edition, 2012",
       "8.4 Electric Vehicle Technology"
     ],
     "objectives": [],
@@ -4257,7 +4311,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "8.4.5.2 Reference Books:",
       "1. Iqbal Husain, “Electric and Hybrid Vehicles, Design Fundamentals,” CRC Press,2003.",
       "2. K Wang Hee Na, AC Motor Control & Electrical Vehicle Application, CR Press, Taylor & Francis Group, 2019",
-      "3. Ali Elamadi, “Handbook of Automotive Power Electronics and Drives”, CRC publishers, 2012.\n—————————————————— The End ——————————————————\nEEE, NIT Goa Academic Handbook : B.Tech. in EEE 166/ 166"
+      "3. Ali Elamadi, “Handbook of Automotive Power Electronics and Drives”, CRC publishers, 2012.\n—————————————————— The End ——————————————————"
     ],
     "objectives": [],
     "outcomes": [
@@ -5337,12 +5391,30 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "ECE",
     "pdfPath": "/syllabi/ECE2025.pdf",
     "pdfName": "ECE2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/ECE2025.pdf",
     "ltp": "3-0-0",
     "credits": 3,
-    "modules": [],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "modules": [
+      "Module 1: Optical Fiber Waveguides & Transmission Characteristics - Ray theory transmission, total internal reflection, acceptance angle, numerical aperture, skew rays. Electromagnetic mode theory for optical propagation, step-index and graded-index fibers, single-mode and multimode fibers, cutoff wavelength, mode field diameter. Attenuation mechanisms: absorption, scattering (Rayleigh), bending losses. Dispersion: material dispersion, waveguide dispersion, polarization mode dispersion (PMD), intermodal and intramodal dispersion, pulse broadening.",
+      "Module 2: Optical Sources & Transmitters - Light Emitting Diodes (LED): Surface emitting and edge emitting LED, quantum efficiency, spectral width. Semiconductor Laser Diodes: Fabry-Perot cavity resonators, Distributed Feedback (DFB) lasers, VCSELs, threshold conditions, external quantum efficiency, direct and external modulation (Mach-Zehnder electro-optic modulators), transmitter drive circuits.",
+      "Module 3: Optical Detectors & Receivers - Principles of optical detection, quantum efficiency, responsivity. PIN photodiode and Avalanche Photodiode (APD), multiplication factor, noise mechanisms in photodetectors (shot noise, thermal noise, dark current), signal-to-noise ratio (SNR), bit error rate (BER), eye diagrams, receiver frontend preamplifiers (high impedance and transimpedance amplifiers).",
+      "Module 4: Optical Amplifiers, WDM & Optical Link Design - Optical amplifiers: Erbium-Doped Fiber Amplifiers (EDFA), semiconductor optical amplifiers (SOA), Raman amplification. Wavelength Division Multiplexing (WDM/DWDM): Multiplexers, demultiplexers, optical add-drop multiplexers (OADM), fiber Bragg gratings. Optical link power budget and rise-time budget analysis, dispersion-managed soliton systems, coherent optical communications."
+    ],
+    "textbooks": [
+      "Gerd Keiser, \"Optical Fiber Communications\", 5th Edition, McGraw-Hill, 2013.",
+      "Govind P. Agrawal, \"Fiber-Optic Communication Systems\", 4th Edition, John Wiley & Sons, 2010.",
+      "John M. Senior, \"Optical Fiber Communications: Principles and Practice\", 3rd Edition, Pearson, 2009."
+    ],
+    "objectives": [
+      "To understand lightwave propagation fundamentals in optical waveguides, signal degradation mechanisms, and dispersion compensation.",
+      "To analyze optical sources, photodetectors, transceivers, and perform complete optical link power and rise-time budget design."
+    ],
+    "outcomes": [
+      "CO1: Calculate propagation constants, numerical aperture, V-number, and dispersion limits in single-mode and multimode fibers.",
+      "CO2: Evaluate operating principles and modulation characteristics of semiconductor laser sources and LEDs.",
+      "CO3: Design low-noise optical receiver front-ends using PIN and avalanche photodiodes.",
+      "CO4: Synthesize point-to-point WDM optical transmission links using link power margin and rise-time calculations."
+    ]
   },
   "EC509": {
     "code": "EC509",
@@ -5854,12 +5926,30 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "ECE",
     "pdfPath": "/syllabi/ECE2025.pdf",
     "pdfName": "ECE2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/ECE2025.pdf",
     "ltp": "3-0-0",
     "credits": 3,
-    "modules": [],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "modules": [
+      "Module 1: 5G NR, mmWave & Massive MIMO - 5G Standalone and Non-Standalone network architectures, mmWave propagation characteristics, atmospheric attenuation, hybrid analog-digital beamforming architectures, pilot contamination in Massive MIMO, spatial multiplexing gains.",
+      "Module 2: Cognitive Radio & Dynamic Spectrum Access - Spectrum scarcity challenge, cognitive radio cycle, energy detection, matched filter detection, cyclostationary feature detection, cooperative spectrum sensing, secondary user throughput optimization under interference constraints.",
+      "Module 3: Cooperative Communications & Opportunistic Relaying - Amplify-and-forward (AF), decode-and-forward (DF), selective relaying, cooperative diversity protocols, outage probability derivation over Rayleigh and Rician fading channels, distributed space-time codes.",
+      "Module 4: Reconfigurable Intelligent Surfaces (RIS) & Terahertz Communications - RIS-assisted wireless propagation, phase shift optimization, Terahertz channel modeling, molecular absorption, ultra-dense small cells, Integrated Sensing and Communication (ISAC) principles."
+    ],
+    "textbooks": [
+      "Andrea Goldsmith, \"Wireless Communications\", Cambridge University Press, 2005.",
+      "David Tse and Pramod Viswanath, \"Fundamentals of Wireless Communication\", Cambridge University Press, 2005.",
+      "Thomas L. Marzetta, Erik G. Larsson, Hong Yang, Hien Quoc Ngo, \"Fundamentals of Massive MIMO\", Cambridge University Press, 2016."
+    ],
+    "objectives": [
+      "To expose advanced undergraduates to state-of-the-art developments in wireless communications and next-generation networks.",
+      "To analyze massive MIMO, cognitive radio, relay networks, and metasurface communications."
+    ],
+    "outcomes": [
+      "CO1: Model and evaluate mmWave and massive MIMO channel capacity and beamforming performance.",
+      "CO2: Design dynamic spectrum sensing algorithms for cognitive radio systems.",
+      "CO3: Formulate cooperative relaying protocols and analyze bit error rate and outage probability.",
+      "CO4: Assess emerging communications paradigms including RIS and integrated sensing and communications."
+    ]
   },
   "EC592": {
     "code": "EC592",
@@ -5867,12 +5957,31 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "ECE",
     "pdfPath": "/syllabi/ECE2025.pdf",
     "pdfName": "ECE2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/ECE2025.pdf",
     "ltp": "3-0-0",
     "credits": 3,
-    "modules": [],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "modules": [
+      "Module 1: Multirate Digital Signal Processing - Decimation and interpolation, sampling rate conversion by rational factors, polyphase decomposition of FIR filters, polyphase decimators and interpolators, Quadrature Mirror Filter (QMF) banks, perfect reconstruction conditions.",
+      "Module 2: Adaptive Filtering & Algorithm Analysis - Optimum mean-square error filtering, Wiener-Hopf equation, Least Mean Squares (LMS) algorithm, normalized LMS, Recursive Least Squares (RLS) algorithm, Kalman filtering fundamentals, convergence analysis, applications in noise cancellation and line equalization.",
+      "Module 3: Time-Frequency Analysis & Wavelet Transforms - Limitations of Fourier transform for non-stationary signals, Short-Time Fourier Transform (STFT), uncertainty principle (Heisenberg-Gabor), continuous wavelet transform (CWT), discrete wavelet transform (DWT), multiresolution analysis (MRA), Daubechies wavelets.",
+      "Module 4: Compressive Sensing & Sparse Representation - Sparse signal representation, dictionary learning, Restricted Isometry Property (RIP), random sensing matrices, L1-minimization, Basis Pursuit, greedy reconstruction algorithms (Orthogonal Matching Pursuit - OMP), applications in MRI and radar imaging."
+    ],
+    "textbooks": [
+      "P. P. Vaidyanathan, \"Multirate Systems and Filter Banks\", Prentice Hall, 1993.",
+      "Simon Haykin, \"Adaptive Filter Theory\", 5th Edition, Pearson, 2013.",
+      "Stephane Mallat, \"A Wavelet Tour of Signal Processing: The Sparse Way\", 3rd Edition, Academic Press, 2008.",
+      "Yonina C. Eldar and Gitta Kutyniok, \"Compressed Sensing: Theory and Applications\", Cambridge University Press, 2012."
+    ],
+    "objectives": [
+      "To study advanced signal processing methodologies beyond standard DFT and fixed digital filtering.",
+      "To master multirate filter banks, adaptive filtering algorithms, wavelet analysis, and compressive sensing."
+    ],
+    "outcomes": [
+      "CO1: Design efficient multirate systems and perfect reconstruction filter banks.",
+      "CO2: Implement adaptive LMS and RLS filters for acoustic echo cancellation and channel equalization.",
+      "CO3: Apply discrete wavelet transforms for multi-resolution signal denoising and feature extraction.",
+      "CO4: Formulate sparse recovery problems using compressed sensing and evaluate reconstruction accuracy."
+    ]
   },
   "EC593": {
     "code": "EC593",
@@ -5880,12 +5989,30 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "ECE",
     "pdfPath": "/syllabi/ECE2025.pdf",
     "pdfName": "ECE2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/ECE2025.pdf",
     "ltp": "3-0-0",
     "credits": 3,
-    "modules": [],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "modules": [
+      "Module 1: Low-Power High-Performance Digital CMOS - Sources of power dissipation (dynamic, short-circuit, leakage: subthreshold, gate tunneling), voltage scaling challenges, clock gating, multi-VDD design, power gating, dynamic voltage and frequency scaling (DVFS), multi-threshold CMOS (MTCMOS).",
+      "Module 2: Advanced Nanoscale Transistors & Emerging Logic - Short channel effects (DIBL, velocity saturation, punchthrough), FinFET device physics, Gate-All-Around (GAA) nanosheets, carbon nanotube FETs (CNTFET), negative capacitance FETs (NCFET), 2.5D/3D packaging and through-silicon vias (TSV).",
+      "Module 3: Semiconductor Memory Design - 6T SRAM cell architecture, read/write Static Noise Margins (SNM), wordline drivers, sense amplifiers, dynamic RAM (1T-1C DRAM cell), non-volatile flash memory, emerging resistive RAM (RRAM), phase-change memory (PCM), and Spin-Transfer Torque MRAM (STT-MRAM).",
+      "Module 4: Design for Testability (DFT) & Silicon Debug - Fault models (stuck-at, transition delay, bridging), Controllability and Observability, scan-based test architecture, Boundary Scan (IEEE 1149.1 JTAG), Built-In Self-Test (BIST: LFSR, MISR), Automatic Test Pattern Generation (ATPG) algorithms (D-Algorithm, PODEM)."
+    ],
+    "textbooks": [
+      "Neil H. E. Weste and David Money Harris, \"CMOS VLSI Design: A Circuits and Systems Perspective\", 4th Edition, Addison-Wesley, 2010.",
+      "Jan M. Rabaey, Anantha Chandrakasan, Borivoje Nikolic, \"Digital Integrated Circuits: A Design Perspective\", 2nd Edition, Pearson, 2003.",
+      "M. L. Bushnell and V. D. Agrawal, \"Essentials of Electronic Testing for Digital, Memory and Mixed-Signal VLSI Circuits\", Springer, 2000."
+    ],
+    "objectives": [
+      "To provide students with depth in modern sub-nanometer VLSI architectures, power optimization, and design-for-test.",
+      "To study FinFET and GAA nanoscale devices, SRAM memory architectures, and automated manufacturing testing."
+    ],
+    "outcomes": [
+      "CO1: Implement dynamic and leakage power reduction techniques in digital integrated circuits.",
+      "CO2: Analyze short-channel effects and parasitic capacitance limits in 3D nanoscale transistor geometries.",
+      "CO3: Design static RAM arrays with stable read/write noise margins and high-speed sense amplification.",
+      "CO4: Synthesize scan paths, BIST circuits, and ATPG test vectors for VLSI manufacturing test validation."
+    ]
   },
   "EC594": {
     "code": "EC594",
@@ -5893,12 +6020,30 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "ECE",
     "pdfPath": "/syllabi/ECE2025.pdf",
     "pdfName": "ECE2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/ECE2025.pdf",
     "ltp": "3-0-0",
     "credits": 3,
-    "modules": [],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "modules": [
+      "Module 1: Embedded IoT Systems & Sensor Interfaces - Sensor conditioning circuits, instrumentation amplifiers, bridge circuits, RTDs, thermocouples, capacitive sensor interfaces. Embedded wireless transceivers, low-power design, Bluetooth Low Energy (BLE), LoRaWAN physical layers and microcontroller interfacing.",
+      "Module 2: Mixed-Signal Data Conversion Architectures - Sample-and-hold circuits, switched capacitor integrator, digital-to-analog converters (R-2R, current steering), analog-to-digital converters: Successive Approximation Register (SAR), pipelined, flash, and Sigma-Delta oversampling ADCs, quantization noise shaping.",
+      "Module 3: Power Management ICs & Energy Harvesting - Low-Dropout (LDO) linear regulators, stability and compensation, synchronous buck and boost DC-DC switching regulators, efficiency curves, piezoelectric, thermoelectric, and photovoltaic energy harvesting power management units (PMUs).",
+      "Module 4: High-Speed PCB Design & Signal Integrity - Microstrip and stripline transmission line routing, characteristic impedance calculation, reflections and termination techniques, crosstalk minimization, power delivery networks (PDN), decoupling capacitor selection, electromagnetic compatibility (EMC/EMI) compliance."
+    ],
+    "textbooks": [
+      "Behzad Razavi, \"Design of Analog CMOS Integrated Circuits\", 2nd Edition, McGraw-Hill, 2016.",
+      "Howard Johnson and Martin Graham, \"High-Speed Digital Design: A Handbook of Black Magic\", Prentice Hall, 1993.",
+      "Paul Horowitz and Winfield Hill, \"The Art of Electronics\", 3rd Edition, Cambridge University Press, 2015."
+    ],
+    "objectives": [
+      "To develop proficiency in mixed-signal interfaces, high-speed electronic design, and sensor power management.",
+      "To analyze ADC/DAC architectures, PCB signal integrity, and energy harvesting electronics."
+    ],
+    "outcomes": [
+      "CO1: Design sensor conditioning and instrumentation amplifier circuitry for analog frontends.",
+      "CO2: Evaluate speed, resolution, and linearity tradeoffs in Nyquist and Sigma-Delta data converters.",
+      "CO3: Size components for switching and linear regulators in low-power embedded power management ICs.",
+      "CO4: Mitigate transmission line reflections, crosstalk, and ground bounce in multilayer high-speed PCBs."
+    ]
   },
   "EC595": {
     "code": "EC595",
@@ -5906,12 +6051,30 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "ECE",
     "pdfPath": "/syllabi/ECE2025.pdf",
     "pdfName": "ECE2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/ECE2025.pdf",
     "ltp": "3-0-0",
     "credits": 3,
-    "modules": [],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "modules": [
+      "Module 1: Advanced Semiconductor Device Physics - Energy band diagrams under non-equilibrium conditions, carrier drift, diffusion, recombination mechanisms, continuity equation. Metal-semiconductor contacts: Schottky barrier diode physics, Richardson-Dushman emission, Ohmic contact formation, heterojunction band alignments (Anderson's rule).",
+      "Module 2: Cleanroom Fabrication Technologies - Thermal oxidation kinetics (Deal-Grove model), advanced photolithography (Deep UV, EUV lithography, immersion, phase-shift masks), dry plasma etching (RIE, ICP), chemical vapor deposition (LPCVD, PECVD), atomic layer deposition (ALD), ion implantation and rapid thermal annealing (RTA).",
+      "Module 3: Thin Film Characterization & Device Metrology - Four-point probe resistivity, Hall effect measurements, Capacitance-Voltage (C-V) profiling for oxide charges and interface trap density, scanning electron microscopy (SEM), transmission electron microscopy (TEM), atomic force microscopy (AFM).",
+      "Module 4: Wide Bandgap & 2D Nanomaterials - Gallium Nitride (GaN) High Electron Mobility Transistors (HEMT), 2DEG formation, Silicon Carbide (SiC) power MOSFETs for high-voltage power electronics, graphene and transition metal dichalcogenides (MoS2) for next-generation nano-transistors."
+    ],
+    "textbooks": [
+      "S. M. Sze and Kwok K. Ng, \"Physics of Semiconductor Devices\", 3rd Edition, John Wiley & Sons, 2006.",
+      "James D. Plummer, Michael D. Deal, Peter B. Griffin, \"Silicon VLSI Technology: Fundamentals, Practice, and Modeling\", Prentice Hall, 2000.",
+      "D. K. Schroder, \"Semiconductor Material and Device Characterization\", 3rd Edition, IEEE Press/John Wiley & Sons, 2006."
+    ],
+    "objectives": [
+      "To understand advanced semiconductor physics, cleanroom microfabrication processes, and device metrology.",
+      "To investigate wide-bandgap and 2D nanomaterial devices for modern high-performance microelectronics."
+    ],
+    "outcomes": [
+      "CO1: Derive carrier transport equations and band diagrams for heterojunctions and Schottky barriers.",
+      "CO2: Formulate microfabrication process flows including EUV photolithography, ALD, and dry plasma etching.",
+      "CO3: Interpret C-V curves, Hall measurements, and electron microscope imaging for semiconductor qualification.",
+      "CO4: Assess 2DEG transport in GaN HEMTs and evaluate 2D materials for sub-5nm transistor logic."
+    ]
   },
   "EC900": {
     "code": "EC900",
@@ -6248,42 +6411,32 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   },
   "CS206": {
     "code": "CS206",
-    "name": "Object Oriented Programming",
+    "name": "Object Oriented Programming Lab",
     "branch": "CSE",
     "pdfPath": "/syllabi/CSE2025.pdf",
     "pdfName": "CSE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 24,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "List of experiments",
-      "1) Simple programs in C++",
-      "2) Matrix multiplication in C++\n\n) Operator overloading exercises",
-      "4) Matrix manipulation using dynamic memory allocation",
-      "5) Overloading dynamic memory allocation operators",
-      "6) Practice on templates",
-      "7) Implementation of linked list using templates",
-      "8) Implementation of sorting algorithms using templates",
-      "9) Implementation of stack and queue using exception handling",
-      "10) Inheritance based exercise",
-      "11) File handling using streams",
-      "12) Practice of Java programming",
-      "13) File handling using Java streams",
-      "14) Multithreaded programming using Java",
-      "15) Developing graphical user interfaces using Java"
+      "Module 1: C++ Object-Oriented Principles - Classes, objects, constructors/destructors, operator overloading, copy constructors, and dynamic memory allocation (new/delete).",
+      "Module 2: Advanced C++ & Templates - Function and class templates, multiple and virtual inheritance, runtime polymorphism with virtual functions, exception handling, and Standard Template Library (STL containers & iterators).",
+      "Module 3: Java Fundamentals & Architecture - Java byte-code and JVM, class structures, packages, interfaces, abstract classes, exception handling, and I/O byte/character streams.",
+      "Module 4: Java Multithreading & GUI Applications - Thread lifecycles, synchronization, inter-thread communication, Java Collections framework, and GUI application development using Java Swing/JavaFX."
     ],
     "textbooks": [
-      "1. BJarne Stroustrup, “The C++ Programming Language”, 4th Edition, Addison Wesley, 2013.",
-      "2. Stanley B Lippman, “The C++ Primer”, 5th Edition, Addison Wesley, 2012.",
-      "3. Ira Pohl, “Object Oriented Programming using C++”, 2nd Edition, Pearson, 2003.",
-      "4. Patrick Naughton and Herbert Schildt, “Java 2: The Complete Reference”, 5th Edition,\nMcGraw Hill, 2017.",
-      "5. Paul. Deitel, Harvey Deitel, “Java: How to program”, 8th Edition, Pearson, 2017.\n\nth Semester"
+      "1. Bjarne Stroustrup, \"The C++ Programming Language\", 4th Edition, Addison-Wesley, 2013.",
+      "2. Herbert Schildt, \"Java: The Complete Reference\", 12th Edition, McGraw-Hill, 2021."
     ],
     "objectives": [
-      "The objective of the course is to introduce students to fundamental programming concepts and\nmethodologies which are essential to build good C++/Java programs."
+      "To gain hands-on proficiency in object-oriented paradigm using C++ and Java.",
+      "To master generic programming, exception safety, multithreading, and GUI application design."
     ],
     "outcomes": [
-      "At the completion of this course, the student shall acquire knowledge and ability to"
-    ]
+      "CO1: Implement object-oriented designs using classes, encapsulation, inheritance, and dynamic polymorphism in C++.",
+      "CO2: Utilize STL containers, algorithms, and templates to write robust and reusable code.",
+      "CO3: Develop concurrent multithreaded applications and graphical interfaces in Java."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CSE2025.pdf"
   },
   "CS250": {
     "code": "CS250",
@@ -6459,39 +6612,32 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   },
   "CS256": {
     "code": "CS256",
-    "name": "Microprocessor and Microcontrollers",
+    "name": "Microprocessors and Microcontrollers Lab",
     "branch": "CSE",
     "pdfPath": "/syllabi/CSE2025.pdf",
     "pdfName": "CSE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 24,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "List of Experiments:",
-      "1) Assembly Level programs for arithmetic ( addition, subtraction, multiplication) and logic\noperations",
-      "2) Assembly Level Programs for sorting of numbers",
-      "3) Embedded C programs for arithmetic and logic operations",
-      "4) Embedded C program for sorting and searching of numbers",
-      "5) I/O interface experiments using Assembly Level Program and Embedded C program,\nInterfacing with A/D and D/A converters",
-      "6) Interfacing with stepper motors",
-      "7) LCD interfacing to 8051",
-      "8) Design and execute programs to generate square wave / Sine Wave/ Pulses/ triangular\nwave",
-      "9) Design and execute a I/O interface problem using Keyboard/push button as input and\nLED as output device.",
-      "10) Mini project"
+      "Module 1: 8086 Assembly Language Programming - Real-mode architecture, register operations, 16-bit arithmetic (addition, subtraction, multiplication, division), logic operations, and array sorting/searching.",
+      "Module 2: 8051 Microcontroller & Embedded C - 8051 internal architecture, SFR configuration, timer/counter programming, external interrupts, and serial communication (UART) in Assembly and Embedded C.",
+      "Module 3: Hardware Peripheral Interfacing - Interfacing matrix keypads, 7-segment displays, 16x2 LCD modules, stepper motors, and ADC/DAC converters with 8051.",
+      "Module 4: Embedded System Application & Mini-Project - Design, programming, and debugging of a standalone microcontroller-based application with sensors and actuators."
     ],
     "textbooks": [
-      "1. M. Morris Mano, “Computer System Architecture”, Pearson, 3 rd edition, 1992",
-      "2. Barry B. Brey, “The Intel Microprocessors: Architecture, Programming and Interface”, PHI,",
-      "3. Sivarama P. Dandamudi, “Introduction to Assembly Language Programming: From 8086 to\nPentium Processors”, Springer, 1998.",
-      "4. . Muhammad Ali Mazidi, Janice G. Mazidi, Rolin D Mckinlay,“ 8051 Microcontroller and\nEmbedded systems”, Pearson Education, 2005.",
-      "5. Krishna Kant, “Microprocessors and Microcontrollers, Architecture, Programming, and System\nDesign-8085,8086,8051,8096”,PHI Publication,",
-      "6. Andrew N Sloss, Dominic Symes and Chris Wright, ARM System developers guide-Designing\nand developing system software, Elsevier 2004\n\nth Semester\n\nCourse Objective\nThe objectives of this course are to provide knowledge about the services rendered by\noperating systems, to provide a detailed discussion of various process management\ntechniques and memory management techniques, to discuss the various file-system design\nand implementation issues, to discuss the I/O management functionalities and to discuss how\nthe protection domains help to achieve security in a system."
+      "1. Barry B. Brey, \"The Intel Microprocessors: Architecture, Programming, and Interfacing\", 8th Edition, Pearson, 2009.",
+      "2. Muhammad Ali Mazidi, Janice Gillispie Mazidi, Rolin D. McKinlay, \"The 8051 Microcontroller and Embedded Systems\", 2nd Edition, Pearson, 2007."
     ],
     "objectives": [
-      "To provide hands on experience on programming and interfacing micro controllers"
+      "To provide hands-on assembly language programming skills on 8086 microprocessor.",
+      "To program and interface real-world peripherals with 8051 microcontroller using Embedded C."
     ],
     "outcomes": [
-      "At the completion of this course, the student shall acquire knowledge and ability"
-    ]
+      "CO1: Write, assemble, and debug 8086 assembly language routines for arithmetic, logical, and array processing tasks.",
+      "CO2: Program on-chip timers, interrupts, and serial ports of 8051 microcontrollers.",
+      "CO3: Interface physical devices including LCDs, motors, and converters to create functional embedded prototypes."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CSE2025.pdf"
   },
   "CS301": {
     "code": "CS301",
@@ -6736,29 +6882,65 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   },
   "CS400": {
     "code": "CS400",
-    "name": "Summer Project/Industrial Training",
+    "name": "Summer Project / Industrial Training",
     "branch": "CSE",
     "pdfPath": "/syllabi/CSE2025.pdf",
     "pdfName": "CSE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
-    "modules": [],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CSE2025.pdf",
+    "ltp": "0-0-3",
+    "credits": 2,
+    "modules": [
+      "Module 1: Industrial Internship & Software Requirements Engineering - Minimum 6-8 weeks technical training in a software enterprise, research laboratory, or startup incubator; understanding enterprise software architecture, Agile/Scrum workflow cycles, system requirements analysis, and code versioning standards (Git).",
+      "Module 2: Architectural Design & Implementation - System architectural modeling using UML diagrams, database schema normalization (SQL/NoSQL), microservices or cloud deployment configurations, frontend-backend REST/GraphQL API integration, clean code development following industry design patterns.",
+      "Module 3: Testing, CI/CD & Security Audits - Unit testing, integration testing, end-to-end automation test suites, continuous integration and continuous deployment (CI/CD) pipelines (GitHub Actions, Docker, Kubernetes), basic vulnerability scanning (OWASP Top 10 mitigation).",
+      "Module 4: Technical Documentation, Seminar & Viva Voce - Preparation of comprehensive project report according to NIT Goa guidelines, architectural block diagrams, API documentation (Swagger/OpenAPI), performance metrics analysis, live system demonstration, and evaluation before the Departmental Academic Committee."
+    ],
+    "textbooks": [
+      "Ian Sommerville, \"Software Engineering\", 10th Edition, Pearson, 2015.",
+      "Robert C. Martin, \"Clean Architecture: A Craftsman's Guide to Software Structure and Design\", Prentice Hall, 2017.",
+      "NIT Goa B.Tech Ordinance and Academic Regulations for Project Work"
+    ],
+    "objectives": [
+      "To immerse computer science students in real-world software engineering environments and industrial software pipelines.",
+      "To strengthen end-to-end full-stack software development, testing, cloud infrastructure deployment, and technical defense skills."
+    ],
+    "outcomes": [
+      "CO1: Apply professional software engineering practices and Agile methodology in production environments.",
+      "CO2: Design scalable backend architectures, database models, and cloud-native services.",
+      "CO3: Implement rigorous automated unit tests, continuous integration, and secure code practices.",
+      "CO4: Communicate software architectures clearly in written documentation and oral technical defense."
+    ]
   },
   "IKS350": {
     "code": "IKS350",
-    "name": "Indian Knowledge System IKS",
+    "name": "Indian Knowledge System",
     "branch": "CSE",
     "pdfPath": "/syllabi/CSE2025.pdf",
     "pdfName": "CSE2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CSE2025.pdf",
     "ltp": "3-0-0",
-    "credits": 19,
-    "modules": [],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "credits": 3,
+    "modules": [
+      "Module 1: Overview and Philosophical Foundations of Indian Knowledge Systems - Introduction to IKS, classification of Indian corpus (Vedas, Upavedas, Vedangas, Darshanas). Epistemological foundations: Pramana theory (Pratyaksha, Anumana, Upamana, Shabda). Ancient worldview of interconnectedness, ecology, and sustainable living.",
+      "Module 2: Mathematics, Astronomy & Computing in Ancient India - Historical development of the decimal place-value number system and zero (Shunya). Sulba Sutras and geometrical theorems, Pingala's Chhandas Shastra (binary representations, Pascal's triangle - Meru Prastara, combinatorics). Contributions of Aryabhata, Brahmagupta, Bhaskara II (Lilavati), and the Kerala School of Astronomy and Mathematics (Madhava's infinite series expansions for sine, cosine, and pi).",
+      "Module 3: Engineering, Metallurgy, Architecture & Water Management - Traditional Indian metallurgical mastery: Wootz steel, rustless iron pillar of Delhi, zinc smelting technology at Zawar. Shilpa Shastra, Vastu Shastra principles in temple architecture and seismic resistance. Historic hydraulic engineering: traditional water harvesting systems, stepwells (Baolis), Harappan drainage networks, Grand Anicut (Kallanai).",
+      "Module 4: Health Sciences, Linguistics & Governance - Fundamentals of Ayurveda (Tridosha, Panchamahabhuta theory), holistic wellness and medicinal plant databases (Charaka and Sushruta Samhitas, surgical innovations). Paninian grammar: Ashtadhyayi as an early formal generative language machine. Principles of governance, ethics, and economic management in Kautilya's Arthashastra."
+    ],
+    "textbooks": [
+      "B. Mahadevan, Vinayak Rajat Bhat, and Nagendra Pavana R. N., \"Introduction to Indian Knowledge System: Concepts and Applications\", PHI Learning, 2022.",
+      "Kapil Kapoor and A. K. Singh, \"Indian Knowledge Systems\", 2 Volumes, D.K. Printworld, 2005.",
+      "C. K. Raju, \"Cultural Foundations of Mathematics: The Nature of Mathematical Proof and the Transmission of the Calculus from India to Europe in the 16th c. CE\", Pearson, 2007."
+    ],
+    "objectives": [
+      "To impart a structured understanding of India's rich indigenous intellectual heritage in science, mathematics, technology, and philosophy.",
+      "To connect historic mathematical, metallurgical, computational, and architectural breakthroughs to modern engineering practice."
+    ],
+    "outcomes": [
+      "CO1: Appreciate the historical evolution and scientific methodology underpinning traditional Indian knowledge systems.",
+      "CO2: Analyze early computational, combinatoric, and calculus concepts pioneered in Indian mathematics.",
+      "CO3: Evaluate indigenous metallurgical, architectural, and water harvesting civil engineering technologies.",
+      "CO4: Synthesize traditional ethical and sustainability principles within contemporary engineering problem solving."
+    ]
   },
   "CS550": {
     "code": "CS550",
@@ -7090,22 +7272,34 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   },
   "CS526": {
     "code": "CS526",
-    "name": "Parallel Algorithms (PA)",
+    "name": "Parallel Algorithms",
     "branch": "CSE",
     "pdfPath": "/syllabi/CSE2025.pdf",
     "pdfName": "CSE2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CSE2025.pdf",
     "ltp": "3-0-0",
     "credits": 3,
-    "modules": [],
-    "textbooks": [
-      "1. Jaja, J. “An introduction to parallel algorithms”, Addison- Wesley, Reading, MA, 1992.",
-      "2. Gibbons A., W.Rytter, “Efficient parallel algorithms”, Cambridge university Press;\nCambridge, 1988",
-      "3. H. Sparkias and A. Gibbon, “Lecture notes on parallel computation”, Cambridge University\nPress, 1993.",
-      "4. K. Hwang and F. A. Briggs, “Computer architecture and parallel processing”, McGraw Hill\nInc., 1985.",
-      "5. S. Akl., “Design and analysis of parallel algorithms”, Prentice Hall Inc, 1992\nCourse Objective\nTo introduce the main algorithmic techniques in the framework of distributed models of\ncomputing; to define the most significant complexity parameters and the computational limits of\nparallelism and concurrency."
+    "modules": [
+      "Module 1: Parallel Computing Models & Complexity - Parallel Random Access Machine (PRAM) models: EREW, CREW, CRCW (Common, Arbitrary, Priority), relative computational power. Interconnection network topologies: Hypercube, mesh, shuffle-exchange, butterfly networks. Work-depth (work-time) algorithmic framework, Brent's theorem, cost optimality, Amdahl's and Gustafson's laws.",
+      "Module 2: Fundamental Parallel Algorithmic Paradigms - Prefix sums (all-prefix-sums / scan) algorithm and applications; Parallel list ranking via pointer jumping; Symmetry breaking in parallel symmetry models; Tree contraction and Euler tour technique; Parallel search and selection algorithms.",
+      "Module 3: Parallel Sorting Networks & Matrix Computations - Sorting networks: 0-1 Principle, Bitonic sort, Odd-Even Merge sort, Shear sort on 2D mesh, parallel quicksort and sample sort. Parallel matrix operations: Cannon's algorithm, Fox's algorithm for dense matrix multiplication, parallel block matrix inversion and solving linear systems.",
+      "Module 4: Parallel Graph Algorithms & Modern Architectures - Parallel Breadth-First Search (BFS), connected components, minimum spanning tree (parallel Boruvka's and Prim's algorithms), shortest path algorithms. Practical parallel programming implementation: Multi-threading with OpenMP, message passing with MPI, massively parallel GPU acceleration with NVIDIA CUDA."
     ],
-    "objectives": [],
-    "outcomes": []
+    "textbooks": [
+      "Joseph JaJa, \"An Introduction to Parallel Algorithms\", Addison-Wesley, 1992.",
+      "Ananth Grama, Anshul Gupta, George Karypis, Vipin Kumar, \"Introduction to Parallel Computing\", 2nd Edition, Addison-Wesley, 2003.",
+      "Michael J. Quinn, \"Parallel Programming in C with MPI and OpenMP\", McGraw-Hill, 2004."
+    ],
+    "objectives": [
+      "To introduce algorithmic techniques in the framework of shared memory and distributed memory parallel models of computing.",
+      "To analyze work-depth bounds, computational limits of concurrency, and design scalable parallel algorithms for sorting, graphs, and matrices."
+    ],
+    "outcomes": [
+      "CO1: Analyze parallel computational complexity using PRAM and work-depth frameworks.",
+      "CO2: Design efficient parallel prefix-sum, list ranking, and pointer-jumping algorithms.",
+      "CO3: Formulate parallel matrix multiplication and sorting network architectures.",
+      "CO4: Implement scalable parallel graph and numerical algorithms on OpenMP and CUDA platforms."
+    ]
   },
   "CS527": {
     "code": "CS527",
@@ -7534,18 +7728,29 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "CSE",
     "pdfPath": "/syllabi/CSE2025.pdf",
     "pdfName": "CSE2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CSE2025.pdf",
     "ltp": "3-0-0",
     "credits": 3,
-    "modules": [],
+    "modules": [
+      "Module 1: Privacy Threats & Attack Formulations - Real-world data sharing scenarios (healthcare, financial, demographic datasets), record linkage, attribute linkage, table linkage, probabilistic attacks. Quasi-identifiers, sensitive attributes, equivalence classes, background knowledge attacks.",
+      "Module 2: Anonymization Principles & Partitioning Algorithms - k-Anonymity model and suppression/generalization operations. Limitations of k-anonymity (homogeneity attack, background attack). l-Diversity (distinct, entropy, recursive l-diversity) and t-Closeness. Multidimensional partitioning algorithms: Mondrian multidimensional k-anonymity, Incognito algorithm, Bottom-Up Generalization.",
+      "Module 3: Differential Privacy Principles & Mechanisms - Mathematical foundations of Differential Privacy (DP), epsilon-differential privacy, global sensitivity, Laplace mechanism, Exponential mechanism, Gaussian mechanism ((epsilon, delta)-DP). Composition theorems (basic and advanced composition). Local differential privacy (randomized response, Google RAPPOR), differential privacy in machine learning (DP-SGD).",
+      "Module 4: Cryptographic Privacy & Secure Data Mining - Secure Multi-Party Computation (SMPC): Shamir secret sharing, Yao's garbled circuits, oblivious transfer (OT). Homomorphic encryption (Paillier, BGV/BFV schemes). Synthetic data generation using generative models (DP-GANs), privacy evaluation metrics, privacy policies and compliance (GDPR, India DPDP Act 2023)."
+    ],
     "textbooks": [
-      "1. Benjamin C.M. Fung, Ke Wang, Ada Wai-Chee Fu and Philip S. Yu, \"Introduction to\nPrivacyPreserving Data Publishing: Concepts and Techniques\", 1st Edition, Chapman &\nHall/CRC, 2010.",
-      "2. Charu C. Aggarwal, \"Privacy-Preserving Data Mining: Models and Algorithms\", 1st Edition,\nSpringer, 2008.\nCourse Objective\nThe objectives of this course are to understand real world notion of secure multi party\ncomputation, to analyze various models of secure computation, to privacy threats and model,\nwhile publishing the data, to analyze and design semi honest and active security secure\ncomputation protocols for solving real world problems and to understand the existing zero\nknowledge proof systems."
+      "Benjamin C. M. Fung, Ke Wang, Ada Wai-Chee Fu, Philip S. Yu, \"Introduction to Privacy-Preserving Data Publishing: Concepts and Techniques\", 1st Edition, Chapman & Hall/CRC, 2010.",
+      "Charu C. Aggarwal, \"Privacy-Preserving Data Mining: Models and Algorithms\", Springer, 2008.",
+      "Cynthia Dwork and Aaron Roth, \"The Algorithmic Foundations of Differential Privacy\", Foundations and Trends in Theoretical Computer Science, NOW Publishers, 2014."
     ],
     "objectives": [
-      "The objectives of this course are to understand real world notion of secure multi party\ncomputation, to analyze various models of secure computation, to privacy threats and model,\nwhile publishing the data, to analyze and design semi honest and active security secure\ncomputation protocols for solving real world problems and to understand the existing zero\nknowledge proof systems."
+      "To understand privacy threats, attack vectors, and mathematical models in publishing sensitive tabular and graph datasets.",
+      "To analyze anonymization mechanisms (k-anonymity, l-diversity, t-closeness), rigorous differential privacy algorithms, and cryptographic secure multi-party protocols."
     ],
     "outcomes": [
-      "At the completion of this course, the student will be able to:"
+      "CO1: Formulate attack models against data publishing systems identifying quasi-identifiers and linkages.",
+      "CO2: Implement multidimensional generalization and suppression algorithms satisfying k-anonymity and l-diversity.",
+      "CO3: Design perturbation mechanisms using Laplace and Exponential mechanisms meeting differential privacy bounds.",
+      "CO4: Synthesize cryptographic and synthetic data strategies complying with modern data protection regulations."
     ]
   },
   "CS547": {
@@ -8027,16 +8232,34 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   },
   "IK350": {
     "code": "IK350",
-    "name": "Indian Knowledge System IKS (OE) 3 3 ME350 Metrology",
+    "name": "Indian Knowledge System",
     "branch": "MCE",
     "pdfPath": "/syllabi/MCE2025.pdf",
     "pdfName": "MCE2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/MCE2025.pdf",
     "ltp": "3-0-0",
     "credits": 3,
-    "modules": [],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "modules": [
+      "Module 1: Overview and Philosophical Foundations of Indian Knowledge Systems - Introduction to IKS, classification of Indian corpus (Vedas, Upavedas, Vedangas, Darshanas). Epistemological foundations: Pramana theory (Pratyaksha, Anumana, Upamana, Shabda). Ancient worldview of interconnectedness, ecology, and sustainable living.",
+      "Module 2: Mathematics, Astronomy & Computing in Ancient India - Historical development of the decimal place-value number system and zero (Shunya). Sulba Sutras and geometrical theorems, Pingala's Chhandas Shastra (binary representations, Pascal's triangle - Meru Prastara, combinatorics). Contributions of Aryabhata, Brahmagupta, Bhaskara II (Lilavati), and the Kerala School of Astronomy and Mathematics (Madhava's infinite series expansions for sine, cosine, and pi).",
+      "Module 3: Engineering, Metallurgy, Architecture & Water Management - Traditional Indian metallurgical mastery: Wootz steel, rustless iron pillar of Delhi, zinc smelting technology at Zawar. Shilpa Shastra, Vastu Shastra principles in temple architecture and seismic resistance. Historic hydraulic engineering: traditional water harvesting systems, stepwells (Baolis), Harappan drainage networks, Grand Anicut (Kallanai).",
+      "Module 4: Health Sciences, Linguistics & Governance - Fundamentals of Ayurveda (Tridosha, Panchamahabhuta theory), holistic wellness and medicinal plant databases (Charaka and Sushruta Samhitas, surgical innovations). Paninian grammar: Ashtadhyayi as an early formal generative language machine. Principles of governance, ethics, and economic management in Kautilya's Arthashastra."
+    ],
+    "textbooks": [
+      "B. Mahadevan, Vinayak Rajat Bhat, and Nagendra Pavana R. N., \"Introduction to Indian Knowledge System: Concepts and Applications\", PHI Learning, 2022.",
+      "Kapil Kapoor and A. K. Singh, \"Indian Knowledge Systems\", 2 Volumes, D.K. Printworld, 2005.",
+      "C. K. Raju, \"Cultural Foundations of Mathematics: The Nature of Mathematical Proof and the Transmission of the Calculus from India to Europe in the 16th c. CE\", Pearson, 2007."
+    ],
+    "objectives": [
+      "To impart a structured understanding of India's indigenous intellectual heritage in science, mathematics, technology, and philosophy.",
+      "To connect historic mathematical, metallurgical, computational, and architectural breakthroughs to modern mechanical engineering and design practice."
+    ],
+    "outcomes": [
+      "CO1: Appreciate the historical evolution and scientific methodology underpinning traditional Indian knowledge systems.",
+      "CO2: Analyze early computational, combinatoric, and calculus concepts pioneered in Indian mathematics.",
+      "CO3: Evaluate indigenous metallurgical, architectural, and water harvesting civil engineering technologies.",
+      "CO4: Synthesize traditional ethical and sustainability principles within contemporary engineering problem solving."
+    ]
   },
   "ME351": {
     "code": "ME351",
@@ -8175,12 +8398,31 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "MCE",
     "pdfPath": "/syllabi/MCE2025.pdf",
     "pdfName": "MCE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
-    "modules": [],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/MCE2025.pdf",
+    "ltp": "0-0-0",
+    "credits": 2,
+    "modules": [
+      "Module 1: Thermal & Fluids Engineering - First and Second laws of thermodynamics, air standard cycles (Otto, Diesel, Dual, Brayton), Rankine cycle with reheat/regeneration; Steady and transient heat conduction, laminar and turbulent boundary layers, forced and natural convection correlations, radiation laws and shape factors; Fluid statics, Bernoulli equation, Navier-Stokes fundamentals, pipe flow friction and minor losses.",
+      "Module 2: Applied Mechanics & Machine Design - Stress-strain relations, Mohr's circle for 3D stresses, failure theories (Tresca, Von Mises, Rankine), fatigue and endurance limit (S-N curve, Goodman/Soderberg criteria); Design of shafts, keys, couplings, spur and helical gears, rolling element bearings, hydrodynamic lubrication, belt and chain drives, thin and thick cylinders.",
+      "Module 3: Manufacturing Science & Materials Technology - Phase diagrams (Iron-Iron Carbide diagram, TTT curves), heat treatment processes (annealing, normalizing, quenching, tempering); Metal casting principles (solidification, gating and riser design); Metal forming (rolling, forging, extrusion, wire drawing); Metal cutting mechanics (Merchant's circle, Taylor's tool life equation), CNC machining, non-traditional machining (EDM, ECM, USM, LBM); Welding physics (arc, resistance, solid state welding) and welding defects.",
+      "Module 4: Industrial Engineering & Metrology - Forecasting methods, inventory management (EOQ, ABC analysis), linear programming (simplex method), CPM/PERT project network analysis; Metrology: Limits, fits, and tolerances (hole and shaft basis systems), Taylor's principle of gauge design, linear and angular measurements, comparators, surface roughness parameters (Ra, Rz)."
+    ],
+    "textbooks": [
+      "P. K. Nag, \"Engineering Thermodynamics\", 6th Edition, McGraw-Hill, 2017.",
+      "V. B. Bhandari, \"Design of Machine Elements\", 4th Edition, McGraw-Hill, 2016.",
+      "Serope Kalpakjian and Steven R. Schmid, \"Manufacturing Engineering and Technology\", 7th Edition, Pearson, 2013.",
+      "Frank M. White, \"Fluid Mechanics\", 8th Edition, McGraw-Hill, 2015."
+    ],
+    "objectives": [
+      "To comprehensively evaluate the student's holistic understanding across all fundamental mechanical engineering disciplines.",
+      "To test problem-solving, analytical rigor, and synthesis of thermal, design, manufacturing, and industrial engineering principles."
+    ],
+    "outcomes": [
+      "CO1: Solve integrated multidisciplinary thermodynamic and fluid transport problems.",
+      "CO2: Design mechanical transmission components under static and cyclic fatigue loading.",
+      "CO3: Select optimal manufacturing workflows and heat treatment regimes for structural components.",
+      "CO4: Formulate industrial optimization models and metrological inspection standards."
+    ]
   },
   "HS353": {
     "code": "HS353",
@@ -9788,12 +10030,34 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "CVE",
     "pdfPath": "/syllabi/CVE2025.pdf",
     "pdfName": "CVE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
-    "modules": [],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CVE2025.pdf",
+    "ltp": "0-0-3",
+    "credits": 2,
+    "modules": [
+      "Experiment 1: Determination of Metacentric Height of a floating vessel/pontoon under varying center of gravity conditions.",
+      "Experiment 2: Verification of Bernoulli's Theorem in a converging-diverging duct under steady flow conditions.",
+      "Experiment 3: Calibration of Flow Measurement Devices - Determination of discharge coefficient (Cd) for Venturimeter and Orifice meter.",
+      "Experiment 4: Flow Over Notches & Weirs - Calibration of standard V-notch (triangular) and rectangular notch.",
+      "Experiment 5: Determination of Darcy Friction Factor (f) in commercial pipes of varying diameters and roughness.",
+      "Experiment 6: Measurement of Minor Energy Losses in pipe fittings: Sudden enlargement, sudden contraction, bends, and elbows.",
+      "Experiment 7: Impact of Jet on Vanes - Measurement of hydrodynamic reactive forces on flat, inclined, and hemispherical curved vanes.",
+      "Experiment 8: Reynolds Dye Experiment - Flow visualization and determination of critical Reynolds number (laminar, transitional, and turbulent regimes)."
+    ],
+    "textbooks": [
+      "K. L. Kumar, \"Engineering Fluid Mechanics\", S. Chand & Company Ltd, New Delhi, 2010.",
+      "P. N. Modi and S. M. Seth, \"Hydraulics and Fluid Mechanics Including Hydraulics Machines\", Standard Book House, 2017.",
+      "Frank M. White, \"Fluid Mechanics\", 8th Edition, McGraw-Hill, 2015."
+    ],
+    "objectives": [
+      "To provide hands-on experimental verification of fluid statics, kinematics, and dynamics principles.",
+      "To calibrate standard discharge meters and evaluate major/minor head losses in hydraulic conduits."
+    ],
+    "outcomes": [
+      "CO1: Determine stability parameters of floating bodies using metacentric height measurements.",
+      "CO2: Validate Bernoulli's energy conservation equation and measure flow rate using Venturi and Orifice meters.",
+      "CO3: Quantify frictional head losses and minor losses across pipe components.",
+      "CO4: Analyze momentum transfer and hydrodynamic thrust from liquid jets impinging on solid boundaries."
+    ]
   },
   "CV207": {
     "code": "CV207",
@@ -9832,16 +10096,34 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   },
   "XX250": {
     "code": "XX250",
-    "name": "Innovation and Entrepreneurship HU/HM",
+    "name": "Innovation and Entrepreneurship",
     "branch": "CVE",
     "pdfPath": "/syllabi/CVE2025.pdf",
     "pdfName": "CVE2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CVE2025.pdf",
     "ltp": "3-0-0",
     "credits": 3,
-    "modules": [],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "modules": [
+      "Module 1: Ideation, Design Thinking & Opportunity Identification - Innovation mindsets, serendipity vs structured innovation, Design Thinking methodology (Empathize, Define, Ideate, Prototype, Test); Customer discovery interviews, persona creation, pain point synthesis, TAM/SAM/SOM market sizing.",
+      "Module 2: Business Modeling & Value Proposition - Value Proposition Canvas, Business Model Canvas (BMC): Customer segments, value propositions, channels, customer relationships, revenue streams, key resources, key activities, key partnerships, and cost structure. Unit economics and customer lifetime value (LTV) vs customer acquisition cost (CAC).",
+      "Module 3: Intellectual Property, Legal & Incorporation - Overview of IP rights: Patents, industrial designs, trademarks, copyrights, trade secrets; Patent search databases and filing procedures in India (Indian Patent Office); Startup entity types (Sole Proprietorship, LLP, Private Limited Company), founder agreements, vesting schedules, regulatory and tax compliance under Startup India.",
+      "Module 4: Startup Financing, Pitching & Growth Scaling - Funding lifecycle: Bootstrapping, friends and family, grants, angel investors, venture capital; Valuation methodologies, term sheets, cap table management, equity dilution; Building winning pitch decks and delivering investor presentations."
+    ],
+    "textbooks": [
+      "Alexander Osterwalder and Yves Pigneur, \"Business Model Generation: A Handbook for Visionaries, Game Changers, and Challengers\", John Wiley & Sons, 2010.",
+      "Eric Ries, \"The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses\", Crown Business, 2011.",
+      "Robert D. Hisrich, Michael P. Peters, Dean A. Shepherd, \"Entrepreneurship\", 11th Edition, McGraw-Hill, 2020."
+    ],
+    "objectives": [
+      "To equip engineering students with an entrepreneurial mindset, design-thinking methodologies, and commercialization skills.",
+      "To guide students through business model formulation, IP protection, regulatory compliances, and venture pitching."
+    ],
+    "outcomes": [
+      "CO1: Apply design thinking principles to transform engineering challenges into viable commercial innovations.",
+      "CO2: Construct a comprehensive Business Model Canvas with validated value propositions.",
+      "CO3: Formulate IP protection strategies and understand legal corporate governance frameworks.",
+      "CO4: Develop investor pitch presentations with sound financial models and valuation estimates."
+    ]
   },
   "CV250": {
     "code": "CV250",
@@ -10553,29 +10835,65 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   },
   "HS300": {
     "code": "HS300",
-    "name": "Industrial Economics HU/HM",
+    "name": "Industrial Economics & Management",
     "branch": "CVE",
     "pdfPath": "/syllabi/CVE2025.pdf",
     "pdfName": "CVE2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CVE2025.pdf",
     "ltp": "3-0-0",
     "credits": 3,
-    "modules": [],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "modules": [
+      "Module 1: Microeconomic Fundamentals & Demand Analysis - Scarcity, choice and production possibility frontiers; Law of Demand and Supply, elasticity of demand (price, income, cross elasticity) and its managerial applications; Cardinal and ordinal utility theory, indifference curves, consumer equilibrium.",
+      "Module 2: Production Theory, Cost Concepts & Market Structures - Production function with one and two variable inputs, Law of Diminishing Returns, Isoquants, Isocosts, returns to scale; Short-run and long-run cost curves, economies and diseconomies of scale; Price and output determination under Perfect Competition, Monopoly, Monopolistic Competition, and Oligopoly (Cournot, kinked demand curve).",
+      "Module 3: Engineering Economics & Project Appraisal - Time value of money, cash flow diagrams, compounding and discounting formulas; Capital budgeting evaluation techniques: Net Present Value (NPV), Internal Rate of Return (IRR), Payback Period, Benefit-Cost Ratio (BCR); Depreciation calculation methods (Straight line, Declining balance, Sum-of-the-years-digits).",
+      "Module 4: Principles of Management & Organizational Behavior - Scientific management (Taylor) and administrative theory (Fayol); Functions of management: Planning, organizing, staffing, directing, controlling; Leadership styles, motivation theories (Maslow's hierarchy, Herzberg's two-factor theory); Corporate governance, business ethics, and corporate social responsibility (CSR)."
+    ],
+    "textbooks": [
+      "R. Paneerselvam, \"Engineering Economics\", 2nd Edition, PHI Learning, 2013.",
+      "H. L. Ahuja, \"Modern Microeconomics: Theory and Applications\", 19th Edition, S. Chand Publishing, 2017.",
+      "Harold Koontz and Heinz Weihrich, \"Essentials of Management: An International and Leadership Perspective\", 10th Edition, McGraw-Hill, 2015."
+    ],
+    "objectives": [
+      "To provide civil engineering students with foundational knowledge in industrial microeconomics, project appraisal, and corporate management.",
+      "To enable rigorous financial evaluation of infrastructure engineering investments using time-value-of-money concepts."
+    ],
+    "outcomes": [
+      "CO1: Apply demand forecasting and elasticity models to evaluate infrastructure project feasibility.",
+      "CO2: Analyze production costs and pricing strategies across diverse market structures.",
+      "CO3: Execute financial evaluations of public and private civil projects using NPV, IRR, and BCR metrics.",
+      "CO4: Synthesize managerial and leadership frameworks for effective engineering teamwork and project leadership."
+    ]
   },
   "CV401": {
     "code": "CV401",
-    "name": "Summer Project/Industrial Training",
+    "name": "Summer Project / Industrial Training",
     "branch": "CVE",
     "pdfPath": "/syllabi/CVE2025.pdf",
     "pdfName": "CVE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
-    "modules": [],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CVE2025.pdf",
+    "ltp": "0-0-3",
+    "credits": 2,
+    "modules": [
+      "Module 1: Field Site Induction & Safety Protocol - Minimum 6-8 weeks industrial training at an accredited civil engineering construction firm, consultancy, infrastructure authority (NHAI, CPWD, PWD, Konkan Railway), or research laboratory; compliance with site safety protocols (PPE, scaffolding, excavation safety standards IS 3764).",
+      "Module 2: Structural Survey, Drawings & Quality Assurance - Reading and interpreting architectural, structural, and MEP engineering drawings; Bar Bending Schedule (BBS) verification; on-site quality control tests on construction materials (slump test, cube casting, soil compaction proctor test, rebar tensile inspection).",
+      "Module 3: Project Execution & Construction Management - Monitoring site execution progress against baseline schedules (MS Project / Primavera); quantity estimation and measurement sheet verification; billing procedures, rate analysis, and daily progress reporting (DPR).",
+      "Module 4: Technical Report Preparation, Presentation & Viva Voce - Drafting comprehensive industrial training report adhering to NIT Goa academic formatting standards; detailed case study of an on-site structural challenge and its engineering solution; technical presentation and oral defense before the Department Evaluation Committee."
+    ],
+    "textbooks": [
+      "B. C. Punmia and K. K. Khandelwal, \"Project Planning and Control with PERT and CPM\", Laxmi Publications, 2016.",
+      "K. K. Chitkara, \"Construction Project Management: Planning, Scheduling and Controlling\", 4th Edition, McGraw-Hill, 2019.",
+      "National Building Code of India (NBC 2016), Bureau of Indian Standards (BIS)."
+    ],
+    "objectives": [
+      "To immerse civil engineering undergraduates in actual construction site execution, structural QA/QC, and project scheduling.",
+      "To connect theoretical structural design with practical surveying, concrete technology, and building bye-laws."
+    ],
+    "outcomes": [
+      "CO1: Apply site safety norms, QA/QC testing protocols, and building code compliances.",
+      "CO2: Interpret complex structural engineering drawings and verify bar bending schedules.",
+      "CO3: Analyze construction project progress, resource allocation, and billing workflows.",
+      "CO4: Deliver comprehensive technical reports and defend structural solutions before faculty evaluation panels."
+    ]
   },
   "CV550": {
     "code": "CV550",
@@ -11055,16 +11373,34 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   },
   "CV514": {
     "code": "CV514",
-    "name": "Advanced RCC structures",
+    "name": "Advanced RCC Structures",
     "branch": "CVE",
     "pdfPath": "/syllabi/CVE2025.pdf",
     "pdfName": "CVE2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CVE2025.pdf",
     "ltp": "3-0-0",
     "credits": 3,
-    "modules": [],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "modules": [
+      "Module 1: Yield Line Theory & Advanced Slab Systems - Upper and lower bound theorems, yield line patterns for rectangular, triangular, and circular slabs with diverse boundary conditions; Moment capacity along yield lines, virtual work method, equilibrium method. Flat slabs: Direct design method and equivalent frame method as per IS 456:2000, drops, column capitals, punching shear failure and shear reinforcement.",
+      "Module 2: Deep Beams & Strut-and-Tie Models (STM) - Behavior and stress distributions in deep beams, lever arm calculation, design and detailing of simple and continuous deep beams as per IS 456; B-regions and D-regions (Bernoulli vs Discontinuity regions); Strut-and-Tie modeling: Struts, ties, nodal zones, STM design of corbels, brackets, pile caps, and deep beams with web openings.",
+      "Module 3: Retaining Structures, Bunkers & Silos - Cantilever and counterfort retaining walls, lateral earth pressure theories (Rankine and Coulomb), stability against overturning, sliding and bearing failure, shear key design and detailing; Design of grain storage structures: Circular and rectangular silos and bunkers, Janssen's and Airy's pressure theories, hoop tension, bottom hopper design.",
+      "Module 4: Liquid Retaining Structures & Ductile Detailing - Design of circular and rectangular overhead and underground water tanks, Intze tanks, membrane and bending stresses, IS 3370 (Parts 1-4) crack width limits and minimum reinforcement; Ductile detailing of earthquake-resistant reinforced concrete frames and shear walls conforming to IS 13920:2016."
+    ],
+    "textbooks": [
+      "P. C. Varghese, \"Advanced Reinforced Concrete Design\", 2nd Edition, Prentice Hall of India, 2005.",
+      "N. Krishna Raju, \"Advanced Reinforced Concrete Design (IS: 456-2000)\", CBS Publishers, 2016.",
+      "S. U. Pillai and D. Menon, \"Reinforced Concrete Design\", 3rd Edition, Tata McGraw-Hill, 2017."
+    ],
+    "objectives": [
+      "To provide civil engineering students with advanced principles of reinforced concrete analysis and design beyond standard beam-column elements.",
+      "To master yield line theory, flat slabs, deep beams with STM, retaining structures, silos, water tanks, and earthquake-resistant ductile detailing."
+    ],
+    "outcomes": [
+      "CO1: Calculate ultimate load-carrying capacity of slabs using yield line analysis and design flat slabs.",
+      "CO2: Apply Strut-and-Tie Models (STM) to design corbels, deep beams, and discontinuity regions.",
+      "CO3: Design cantilever/counterfort retaining walls, bunkers, and silos according to IS standards.",
+      "CO4: Synthesize designs for crack-free liquid retaining tanks and ductile earthquake-resistant frame joints."
+    ]
   },
   "CV515": {
     "code": "CV515",
@@ -11197,16 +11533,34 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   },
   "CV519": {
     "code": "CV519",
-    "name": "Non Destructive Testing and Evaluation",
+    "name": "Non-Destructive Testing and Evaluation",
     "branch": "CVE",
     "pdfPath": "/syllabi/CVE2025.pdf",
     "pdfName": "CVE2025.pdf",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CVE2025.pdf",
     "ltp": "3-0-0",
     "credits": 3,
-    "modules": [],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "modules": [
+      "Module 1: Surface Hardness & Ultrasonic Testing Methods - Need for in-situ assessment of concrete structures, Schmidt Rebound Hammer test: Operational mechanics, calibration anvil, angle correction, reliability and limitations; Ultrasonic Pulse Velocity (UPV) test: Direct, indirect, and semi-direct transmission modes, pulse transit time measurement, dynamic modulus of elasticity calculation, crack depth estimation and honeycomb detection.",
+      "Module 2: Partially Destructive & Semi-Destructive Testing - Core extraction and testing (IS 516): Core diameter selection, height-to-diameter correction, strength interpretation; Pull-out test (Lok-test, Capo-test), pull-off test, break-off test, Windsor probe penetration resistance test; In-situ moisture measurement.",
+      "Module 3: Corrosion Assessment & Chemical Testing - Rebar corrosion mechanics in reinforced concrete; Half-cell potential survey (ASTM C876), resistivity meter testing, galvanostatic pulse technique; Chemical analysis: Carbonation depth measurement (Phenolphthalein spray test), chloride content analysis, sulfate content, pH evaluation.",
+      "Module 4: Advanced Electromagnetic, Radiographic & Acoustic Methods - Cover meter and pachometer for rebar location and concrete cover thickness; Ground Penetrating Radar (GPR) for void detection and slab thickness measurement; Radiographic inspection (X-ray, Gamma-ray); Acoustic emission technique and impact echo testing for active crack monitoring; Structural Health Monitoring (SHM) sensor networks."
+    ],
+    "textbooks": [
+      "V. M. Malhotra and N. J. Carino, \"Handbook on Nondestructive Testing of Concrete\", 2nd Edition, CRC Press, 2004.",
+      "P. K. Mehta and P. J. M. Monteiro, \"Concrete: Microstructure, Properties, and Materials\", 4th Edition, McGraw-Hill, 2014.",
+      "IS 13311 (Part 1 & Part 2): 1992, \"Non-Destructive Testing of Concrete - Methods of Test\", Bureau of Indian Standards."
+    ],
+    "objectives": [
+      "To understand physical principles, standard testing protocols, and field applications of non-destructive testing for existing civil infrastructure.",
+      "To master rebound hammer, ultrasonic pulse velocity, half-cell potential, GPR, and acoustic emission for structural integrity diagnosis."
+    ],
+    "outcomes": [
+      "CO1: Perform and calibrate rebound hammer and ultrasonic pulse velocity tests to estimate concrete uniformity.",
+      "CO2: Evaluate compressive strength and in-situ tensile adhesion using core sampling and pull-out methods.",
+      "CO3: Conduct half-cell potential surveys and chemical carbonation tests to assess steel reinforcement corrosion.",
+      "CO4: Synthesize radar, acoustic emission, and cover meter data for comprehensive structural health monitoring reports."
+    ]
   },
   "CV520": {
     "code": "CV520",
@@ -12496,12 +12850,30 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "CVE",
     "pdfPath": "/syllabi/CVE2025.pdf",
     "pdfName": "CVE2025.pdf",
-    "ltp": "3-0-0",
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CVE2025.pdf",
+    "ltp": "0-0-12",
     "credits": 12,
-    "modules": [],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "modules": [
+      "Module 1: Advanced Research & Problem Implementation - Detailed experimental or numerical investigation of the problem formulated in Phase I (CV400); laboratory fabrication and testing of structural prototypes, geotechnical characterization, hydraulic flume modeling, environmental pollutant treatment setups, or advanced computational simulation (STAAD.Pro, ETABS, ANSYS, Plaxis, GIS).",
+      "Module 2: Data Synthesis, Validation & Sensitivity Analysis - Systematic experimental data recording and error analysis; validation against benchmark analytical solutions or experimental literature; parametric sensitivity studies to evaluate reliability, economic feasibility, life-cycle carbon footprint, and seismic or environmental resilience.",
+      "Module 3: Project Report Compilation & Manuscript Drafting - Preparation of authoritative B.Tech dissertation following NIT Goa academic thesis standards; comprehensive literature synthesis, methodology documentation, charts, CAD drawings, and discussion; preparation of a peer-reviewed research manuscript for conference or journal submission.",
+      "Module 4: Final Demonstration, Seminar & Viva Voce - Physical or numerical model demonstration before the Departmental Project Evaluation Committee (DPEC) and external examiners; oral defense presentation covering project novelty, societal relevance, economic viability, and engineering design validity."
+    ],
+    "textbooks": [
+      "NIT Goa B.Tech Ordinance and Academic Regulations for Final Year Project",
+      "Wayne C. Booth, Gregory G. Colomb, Joseph M. Williams, \"The Craft of Research\", 4th Edition, University of Chicago Press, 2016.",
+      "Bureau of Indian Standards (BIS) Codes of Practice relevant to the selected structural, geotechnical, or environmental project domain."
+    ],
+    "objectives": [
+      "To enable final-year civil engineering students to independently design, model, fabricate, or simulate a comprehensive infrastructure solution.",
+      "To foster research rigor, scientific data analysis, thesis documentation, and professional technical defense."
+    ],
+    "outcomes": [
+      "CO1: Execute advanced laboratory experiments or finite element simulations for civil engineering systems.",
+      "CO2: Perform rigorous data validation, error analysis, and parametric engineering optimization.",
+      "CO3: Author professional engineering theses and technical conference publications.",
+      "CO4: Defend research outcomes and technical design decisions before academic evaluation committees."
+    ]
   },
   "CY100": {
     "code": "CY100",

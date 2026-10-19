@@ -23,6 +23,7 @@ import {
   ListTodo,
 } from 'lucide-react';
 import { downloadTestsICS } from '../utils/testStorage';
+import { getOfficialCourseSyllabus } from '../data/officialSyllabusRegistry';
 
 interface TestCalendarViewProps {
   tests: AcademicTest[];
@@ -1356,12 +1357,43 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
 
               {/* Syllabus */}
               <div>
-                <label className="block text-slate-700 font-bold mb-1">Syllabus & Key Topics</label>
+                <div className="flex items-center justify-between mb-1">
+                  <label className="block text-slate-700 font-bold">Syllabus & Key Topics</label>
+                  <span className="text-[11px] text-blue-700 font-medium">Official Curriculum</span>
+                </div>
+                {(() => {
+                  const off = getOfficialCourseSyllabus(editCourseCode) || courses[editCourseCode];
+                  const mods = (off?.modules && off.modules.length > 0) ? off.modules : (courses[editCourseCode]?.modules || []);
+                  if (!mods || mods.length === 0) return null;
+                  return (
+                    <div className="mb-2 flex flex-wrap gap-1 items-center">
+                      <span className="text-[10px] text-slate-500 font-semibold mr-1">Insert Module:</span>
+                      {mods.map((mod, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          onClick={() => setEditSyllabus(mod)}
+                          className="text-[10px] px-2 py-0.5 rounded-md bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 transition font-medium max-w-[180px] truncate"
+                          title={mod}
+                        >
+                          {mod.includes(':') ? mod.split(':')[0] : `Mod ${idx + 1}`}
+                        </button>
+                      ))}
+                      <button
+                        type="button"
+                        onClick={() => setEditSyllabus(mods.join('\n\n'))}
+                        className="text-[10px] px-2 py-0.5 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition font-medium"
+                      >
+                        All Modules
+                      </button>
+                    </div>
+                  );
+                })()}
                 <textarea
                   rows={2}
                   value={editSyllabus}
                   onChange={(e) => setEditSyllabus(e.target.value)}
-                  className="w-full bg-white border border-slate-200 rounded-md p-2.5 text-slate-900 focus:outline-none focus:border-blue-600 resize-none"
+                  className="w-full bg-white border border-slate-200 rounded-md p-2.5 text-slate-900 focus:outline-none focus:border-blue-600 resize-none text-xs leading-relaxed"
                 />
               </div>
 
@@ -1550,13 +1582,44 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
 
               {/* Syllabus */}
               <div>
-                <label className="block text-slate-700 font-bold mb-1">Syllabus & Key Topics (Optional)</label>
+                <div className="flex items-center justify-between mb-1">
+                  <label className="block text-slate-700 font-bold">Syllabus & Key Topics (Optional)</label>
+                  <span className="text-[11px] text-blue-700 font-medium">Official Curriculum</span>
+                </div>
+                {(() => {
+                  const off = getOfficialCourseSyllabus(newCourseCode) || courses[newCourseCode];
+                  const mods = (off?.modules && off.modules.length > 0) ? off.modules : (courses[newCourseCode]?.modules || []);
+                  if (!mods || mods.length === 0) return null;
+                  return (
+                    <div className="mb-2 flex flex-wrap gap-1 items-center">
+                      <span className="text-[10px] text-slate-500 font-semibold mr-1">Insert Module:</span>
+                      {mods.map((mod, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          onClick={() => setNewSyllabus(mod)}
+                          className="text-[10px] px-2 py-0.5 rounded-md bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 transition font-medium max-w-[180px] truncate"
+                          title={mod}
+                        >
+                          {mod.includes(':') ? mod.split(':')[0] : `Mod ${idx + 1}`}
+                        </button>
+                      ))}
+                      <button
+                        type="button"
+                        onClick={() => setNewSyllabus(mods.join('\n\n'))}
+                        className="text-[10px] px-2 py-0.5 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition font-medium"
+                      >
+                        All Modules
+                      </button>
+                    </div>
+                  );
+                })()}
                 <textarea
                   rows={2}
                   placeholder="e.g. Modules 1 & 2: SCR characteristics, Gate triggering, Buck converter..."
                   value={newSyllabus}
                   onChange={(e) => setNewSyllabus(e.target.value)}
-                  className="w-full bg-white border border-slate-200 rounded-md p-2.5 text-slate-900 focus:outline-none focus:border-blue-600 resize-none"
+                  className="w-full bg-white border border-slate-200 rounded-md p-2.5 text-slate-900 focus:outline-none focus:border-blue-600 resize-none text-xs leading-relaxed"
                 />
               </div>
 

@@ -256,17 +256,33 @@ export function getAllKnownCourses(): Record<string, Course> {
     };
   });
 
-  // Then layer 1st year cycle courses
-  Object.assign(map, PHYSICS_CYCLE_COURSES);
-  Object.assign(map, CHEMISTRY_CYCLE_COURSES);
+  const mergeCourses = (target: Record<string, Course>, incoming: Record<string, Course>) => {
+    Object.entries(incoming).forEach(([code, course]) => {
+      if (target[code]) {
+        target[code] = {
+          ...target[code],
+          ...course,
+          // Preserve official accredited syllabus and textbooks if incoming has empty arrays
+          modules: (course.modules && course.modules.length > 0) ? course.modules : target[code].modules,
+          textbooks: (course.textbooks && course.textbooks.length > 0) ? course.textbooks : target[code].textbooks,
+        };
+      } else {
+        target[code] = course;
+      }
+    });
+  };
 
-  // Then layer EEE 5th semester courses
-  Object.assign(map, EEE5_COURSES);
+  // Layer 1st year cycle courses
+  mergeCourses(map, PHYSICS_CYCLE_COURSES);
+  mergeCourses(map, CHEMISTRY_CYCLE_COURSES);
 
-  // Then layer all branch semester timetable courses
+  // Layer EEE 5th semester courses
+  mergeCourses(map, EEE5_COURSES);
+
+  // Layer all branch semester timetable courses
   Object.values(BRANCH_SEMESTER_DATA).forEach((branchSem) => {
     if (branchSem && branchSem.courses) {
-      Object.assign(map, branchSem.courses);
+      mergeCourses(map, branchSem.courses);
     }
   });
 
