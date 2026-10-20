@@ -2144,16 +2144,28 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "Module 1: Introduction: Introduction to basic matrix operations and generation of various signals &\nsequences using a suitable Simulation Platform.",
-      "Module 2: Using the suitable simulation platform,\n1. Verify Mesh and Nodal analysis to find branch voltages and currents.\n2. Verify various network theorems.\n3. Analyse single–phase series and parallel AC circuits using R-L, R-C and R -L-C elements.\n4. Simulate transient response of RLC Circuit to an input (i) Step, (ii) Pulse and (iii)\nSinusoidal signals.\n5. Simulate half wave and full wave bridge rectifiers with R-L, R-C and R-L-C Loads.\n6. Verify the truth tables of basic gates.\n7. Design the NAND and NOR gates as universal logic gates.\n8. Simulate the Integrator and Differentiator circuits using OP-AMP.\n9. Design and verify the truth tables of Half and Full adder circuits.\n10. Design and verify the truth tables of Half and Full subtractor circuits.",
-      "Module 2. Third Semester Courses: 2.7. Electrical and Electronics Measurement Lab\n2.7 Electrical and Electronics Measurement Lab"
+      "Module 1: Introduction to MATLAB & Matrix Computing - Matrix operations, scalar and vector math, continuous and discrete signal generation, basic plotting tools, and control system transfer function representations.",
+      "Module 2: Electric Circuit Simulation - Mesh and nodal analysis, verification of network theorems (Thevenin, Norton, Maximum Power Transfer), transient RLC circuit response to step, impulse, and sinusoidal excitation.",
+      "Module 3: Electronic & Power Electronic Circuits - Simulation of half-wave and full-wave bridge rectifiers with R, RL, and RLC loads, op-amp active integrator and differentiator circuits, combinational adder/subtractor logic.",
+      "Module 4: PCB Design & System Simulation - Schematic capture, PCB artwork and routing for transducer signal conditioning, enclosure design principles, and simulation of electromechanical drive systems."
     ],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "textbooks": [
+      "1. Duane Hanselman and Bruce Littlefield, \"Mastering MATLAB\", Pearson.",
+      "2. Muhammad H. Rashid, \"SPICE for Power Electronics and Electric Power\", 3rd Edition, CRC Press."
+    ],
+    "objectives": [
+      "To provide hands-on experience in computational simulation of electrical and electronic circuits.",
+      "To verify circuit theorems and design PCB layouts for practical engineering hardware."
+    ],
+    "outcomes": [
+      "CO1: Simulate transient and steady-state responses of linear and nonlinear electrical circuits.",
+      "CO2: Model analog filters, op-amp applications, and converter topologies using modern software tools.",
+      "CO3: Design printed circuit board layouts for signal conditioning hardware."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/EEE2025.pdf"
   },
   "EE205": {
     "code": "EE205",
@@ -2161,17 +2173,28 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "Module 1: 1. (a) Loading effects of Potentiometer.\n(b) Calibration of Voltmeters and Ammeters using Potentiometers.\n2. (a) Measurement of Low Resistance by Kelvin’s Double Bridge Method.\n(b) Measurement of resistance by Wheatstone bridge method.\n3. Measurement of Self Inductance and Capacitance using Bridges.\n4. Measurement of Power and Power Factor using wattmeter method.\n5. Study of DSO control panel, its specifications. Find time constant of a relay using DSO.",
-      "Module 2: 6. (a) Measurements using proximity sensors.\n(Any Three) (b) Characterize the Hall Effect sensor.\n(c) Characterize the temperature sensors (RTD, Thermocouple).\n7. (a) Measurement of level in a tank using capacitive type level probe.\n(b) Measurement of pressure and displacement.\n(c) Measurement of strain and torque using strain gauges.\n8. (a) Study of Opto-coupler using photoelectric transducers.\n(b) Characteristics of Micro pressure and Micro accelerometer sensing device.\n9. (a) Study of Detectors (leak detector, flame detector, smoke detector etc.).\n(b) Study of smart transmitters.\n(c) Design of alarms and annunciators.\n10. Signal Conditioning for any one transducer.",
-      "Module 3: 11. PCB design for any one signal conditioning application.\n12. Enclosure design for circuit and measurement.\n13. Simulation of Instrumentation System Design Using real-time suitable software.",
-      "Module 2. Third Semester Courses: 2.8. Tinkering Lab - I\n2.8 Tinkering Lab - I"
+      "Module 1: DC Potentiometers & Resistance Bridges - Calibration of voltmeters and ammeters using DC potentiometer, Kelvin's double bridge for low resistance, Wheatstone bridge for medium resistance measurement.",
+      "Module 2: AC Bridges & Power Measurement - Measurement of self-inductance and capacitance using Maxwell, Schering, and Hay bridges; three-phase power and power factor measurement using two-wattmeter method.",
+      "Module 3: Transducer Characterization - Static and dynamic characteristics of LVDT, strain gauges, thermocouple, RTD (PT-100), capacitive level sensor, optical sensors, and Hall effect sensors.",
+      "Module 4: Instrumentation Signal Conditioning - Design of instrumentation amplifiers, active filter circuits, analog-to-digital data acquisition, and digital storage oscilloscope (DSO) transient capture."
     ],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "textbooks": [
+      "1. A. K. Sawhney, \"A Course in Electrical and Electronic Measurements and Instrumentation\", Dhanpat Rai & Co.",
+      "2. David A. Bell, \"Electronic Instrumentation and Measurements\", 3rd Edition, Oxford University Press."
+    ],
+    "objectives": [
+      "To experimentally calibrate electrical meters and verify precision measurement bridges.",
+      "To characterize industrial sensors and design transducer signal conditioning circuits."
+    ],
+    "outcomes": [
+      "CO1: Calibrate analog and digital meters using precision potentiometers.",
+      "CO2: Measure circuit impedances, three-phase power, and power factor with laboratory accuracy.",
+      "CO3: Interface physical sensors and condition analog signals for data acquisition."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/EEE2025.pdf"
   },
   "EE206": {
     "code": "EE206",
@@ -2386,15 +2409,28 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      ".\n3.7.2 Syllabus:\n1. Determination of B-H curve for ferromagnetic core.\n2. Performance Characteristics of DC generator.\n3. Performance Characteristics of DC Motor.\n4. Speed control of DC shunt Motor.\n5. Open circuit and Short circuit test of 1-ph and 3-ph transformer.\n6. Direct load test on 1-ph and 3-ph transformer.\n7. No Load and Block rotor test on three phase Induction motor.\n8. Performance Characteristics of three phase Induction motor.\n9. Speed control of Slip ring Induction motor.",
-      "Module 3. Fourth Semester Courses: 3.8. Analog and Digital Circuits Lab\n3.8 Analog and Digital Circuits Lab"
+      "Module 1: Magnetic Core & DC Generators - B-H curve and hysteresis loop determination for ferromagnetic cores; open circuit and load characteristics of DC shunt, series, and compound generators.",
+      "Module 2: DC Motors & Testing - Speed control of DC shunt motor via armature voltage and field flux control; Swinburne's test, Hopkinson's regenerative test, and direct brake load test on DC series motor.",
+      "Module 3: Transformers - Open circuit (OC) and short circuit (SC) tests on single-phase transformers; predetermination of efficiency and voltage regulation; Sumpner's back-to-back test; Scott connection for 3-phase to 2-phase conversion.",
+      "Module 4: Polyphase Induction Motors - No-load and blocked rotor tests on three-phase squirrel cage induction motor; circle diagram construction; direct load test on wound rotor motor and rotor resistance speed control."
     ],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "textbooks": [
+      "1. I. J. Nagrath and D. P. Kothari, \"Electric Machines\", 5th Edition, McGraw-Hill.",
+      "2. P. S. Bimbhra, \"Electrical Machinery\", 7th Edition, Khanna Publishers."
+    ],
+    "objectives": [
+      "To perform operational and performance testing on DC machines, transformers, and polyphase induction motors.",
+      "To evaluate efficiency, losses, voltage regulation, and torque-speed characteristics."
+    ],
+    "outcomes": [
+      "CO1: Conduct standard tests to determine equivalent circuit parameters of transformers and induction machines.",
+      "CO2: Control the speed and analyze torque-speed characteristics of DC motors.",
+      "CO3: Construct circle diagrams and predict performance metrics under varying industrial loads."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/EEE2025.pdf"
   },
   "EE256": {
     "code": "EE256",
@@ -2402,15 +2438,28 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "1. Characteristics of MOSFET in different configurations.\n2. Characteristics of RC oscillator.\n3. Adder and subtractor circuits.\n4. Multiplexer and Demultiplexer.\n5. Counters/registers using flip-flops.\n6. Linear applications of op-amps.\n7. Non-linear applications of op-amps.\n8. Second order low pass, high pass, band pass filters implementation.\n9. Monostable, Astable, and bistable multivibrators.\n10. Phase locked loop.\n11. ADCs and DACs.\n12. Verilog/VHDL programming to realize logic gates, sequential and combinational circuits.",
-      "Module 3. Fourth Semester Courses: 3.9. Control System Lab\n3.9 Control System Lab"
+      "Module 1: Discrete Analog Circuits - Static and dynamic characteristics of BJT and MOSFET amplifiers, frequency response, feedback amplifier topologies, RC phase-shift and Wien bridge oscillators.",
+      "Module 2: Operational Amplifier Applications - Inverting, non-inverting, summing, and difference amplifiers; active low-pass, high-pass, and band-pass Butterworth filters; Schmitt trigger and precision rectifiers.",
+      "Module 3: Digital Combinational & Sequential Logic - Implementation of adders, subtractors, multiplexers, demultiplexers, flip-flops, asynchronous and synchronous counters, and shift registers.",
+      "Module 4: Multivibrators & HDL Simulation - Astable and monostable multivibrators using IC 555; introduction to Verilog/VHDL simulation and implementation of combinational/sequential logic on FPGA/CPLD trainer boards."
     ],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "textbooks": [
+      "1. Adel S. Sedra and Kenneth C. Smith, \"Microelectronic Circuits\", 7th Edition, Oxford University Press.",
+      "2. M. Morris Mano and Michael D. Ciletti, \"Digital Design\", 6th Edition, Pearson."
+    ],
+    "objectives": [
+      "To design, build, and test practical analog amplifier, filter, and oscillator circuits.",
+      "To synthesize digital combinational and sequential logic circuits using discrete ICs and hardware description languages."
+    ],
+    "outcomes": [
+      "CO1: Design and verify linear and non-linear op-amp processing circuits.",
+      "CO2: Construct synchronous counters and register circuits using flip-flops and logic gates.",
+      "CO3: Model and simulate digital hardware blocks using Verilog/VHDL."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/EEE2025.pdf"
   },
   "EE257": {
     "code": "EE257",
@@ -2596,15 +2645,28 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "ation.\n4. Familiarize students with real-world applications and modern machine technologies.\n4.6.2 Syllabus:\n1. Determine synchronous impedance and voltage regulation using the EMF method.\n2. Determination of Voltage regulation of Alternator by ZPF method.\n3. Operating Characteristics of Alternator.\n4. Determination of V-Curve and Inverted V-Curve of Synchronous Motor.\n5. Determination of Xd and Xq of salient pole synchronous machine.\n6. Performance analysis of Permanent Magnet Synchronous Motor.\n7. Performance analysis of BLDC Motor.\n8. Performance characteristics of Single-Phase Induction Motor.\n9. Study the torque characteristics and commutation principles of SRM.\n10. Analysis of speed-torque characteristics and performance of Universal Motor under AC and DC supplies.",
-      "Module 4. Fifth Semester Courses: 4.7. Microprocessor Lab\n4.7 Microprocessor Lab"
+      "Module 1: Synchronous Generator Regulation - Voltage regulation of 3-phase alternator using EMF (synchronous impedance), MMF (Ampere-Turn), and Potier (ZPF) methods.",
+      "Module 2: Synchronous Machine Characteristics - V-curves and inverted V-curves of synchronous motor, determination of direct-axis (Xd) and quadrature-axis (Xq) reactances by slip test on salient-pole alternator.",
+      "Module 3: Fractional HP & Special Motors - Performance characteristics of single-phase capacitor start/run induction motor, universal motor speed-torque curves under AC and DC supplies.",
+      "Module 4: Advanced Brushless Machines - Operation, Hall sensor feedback, and performance analysis of Permanent Magnet Synchronous Motor (PMSM) and Brushless DC (BLDC) motor drives."
     ],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "textbooks": [
+      "1. P. S. Bimbhra, \"Generalized Theory of Electrical Machines\", 5th Edition, Khanna Publishers.",
+      "2. Stephen J. Chapman, \"Electric Machinery Fundamentals\", 5th Edition, McGraw-Hill."
+    ],
+    "objectives": [
+      "To evaluate regulation, synchronization, and reactive power control of synchronous machines.",
+      "To test and characterize special electric machines including BLDC, PMSM, and fractional horsepower motors."
+    ],
+    "outcomes": [
+      "CO1: Determine voltage regulation of synchronous alternators using standard test protocols.",
+      "CO2: Plot V and inverted-V curves to analyze synchronous motor excitation and power factor correction.",
+      "CO3: Analyze performance characteristics of fractional horsepower and modern brushless drives."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/EEE2025.pdf"
   },
   "EE305": {
     "code": "EE305",
@@ -2612,15 +2674,28 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "1. Arithmetic operations using 80x86.\n2. Waveform generations using 80x86.\n3. Interfacing using 80x86.\n4. Arithmetic operations and waveform generation using 8051.\n5. Interfacing of Stepper motor/DC motor control using 8051.\n6. Programming timers, serial communications, interrupts using 8051.\n7. Interfacing using ARMx.\n8. Basic Verilog programming for implementation of digital logics.\n9. Mini Projects.",
-      "Module 4. Fifth Semester Courses: 4.8. Tinkering Lab - II\n4.8 Tinkering Lab - II"
+      "Module 1: 8086 Assembly Language Programming - 16-bit arithmetic, BCD operations, string manipulation, block move, sorting (bubble/selection), code conversions (ASCII to Binary/Hex).",
+      "Module 2: 8051 Microcontroller Programming - Arithmetic, logic, and bit manipulation instructions, timer/counter configuration, interrupt service routines, and UART serial communication.",
+      "Module 3: Hardware Peripheral Interfacing - Interfacing 8255 PPI, matrix keypad, 16x2 LCD display, stepper motor and DC motor speed/direction control, ADC0808 and DAC0800 interfacing.",
+      "Module 4: ARM Cortex & Verilog Introduction - Basic arithmetic and GPIO programming on ARM Cortex-M microcontroller; introductory Verilog simulation for digital logic blocks."
     ],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "textbooks": [
+      "1. Barry B. Brey, \"The Intel Microprocessors\", 8th Edition, Pearson.",
+      "2. Muhammad Ali Mazidi, Janice G. Mazidi, Rolin D. McKinlay, \"The 8051 Microcontroller and Embedded Systems\", 2nd Edition, Pearson."
+    ],
+    "objectives": [
+      "To develop assembly language programming proficiency for 8086 microprocessors and 8051 microcontrollers.",
+      "To design interfacing circuitry for real-world devices, converters, displays, and motors."
+    ],
+    "outcomes": [
+      "CO1: Write and debug assembly routines for arithmetic operations, array searching, and sorting.",
+      "CO2: Configure on-chip timers, interrupts, and serial communication on 8051 microcontrollers.",
+      "CO3: Interface sensors, keypads, LCDs, and motor drives for embedded automation tasks."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/EEE2025.pdf"
   },
   "EE306": {
     "code": "EE306",
@@ -2628,15 +2703,29 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "The entire class will be divided into a few groups. Based on the knowledge gained so far, each group is required to\nconceptualize, design, and complete a project, applying their understanding of the subjects they have learned, along\nwith performance analysis and control strategies, to address a practical problem or develop an innovative solution.",
-      "Module 5"
+      "Module 1: Project Conceptualization & Problem Formulation - Group formation, literature survey, identification of practical engineering problems in smart energy, robotics, IoT, renewable power conversion, or biomedical instrumentation.",
+      "Module 2: System Architecture & Hardware Sizing - Detailed block diagram design, component specification, microcontroller/DSP selection (STM32, ESP32, TI C2000), power budget, and thermal calculations.",
+      "Module 3: Circuit Design, Prototyping & PCB Fabrication - Schematic entry, PCB layout, rapid prototyping, hardware assembly, sensor integration, and motor driver / power stage wiring.",
+      "Module 4: Embedded Firmware, Testing & Product Demonstration - Firmware development, closed-loop control implementation, system debugging, project demonstration, and technical viva-voce examination."
     ],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "textbooks": [
+      "1. Simon Monk, \"Programming Arduino: Getting Started with Sketches\", 2nd Edition, McGraw-Hill, 2016.",
+      "2. Paul Horowitz and Winfield Hill, \"The Art of Electronics\", 3rd Edition, Cambridge University Press, 2015.",
+      "3. Ned Mohan, \"Power Electronics: Converters, Applications, and Design\", 3rd Edition, Wiley, 2007."
+    ],
+    "objectives": [
+      "To foster practical hardware design and innovative product prototyping skills in electrical engineering.",
+      "To translate theoretical circuit and control concepts into working physical demonstrators."
+    ],
+    "outcomes": [
+      "CO1: Architect functional multi-subsystem engineering prototypes to solve real-world problems.",
+      "CO2: Fabricate custom PCBs and write robust embedded firmware for hardware interaction.",
+      "CO3: Validate prototype functionality through systematic experimental testing and technical presentation."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/EEE2025.pdf"
   },
   "HU350": {
     "code": "HU350",
@@ -2758,15 +2847,28 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "1. Characteristics of Semiconductor Devices such as, BJT, IGBT, MOSFET, etc.\n2. Performance analysis of uncontrolled rectifiers - single phase and three-phase rectifier\n3. Performance analysis of SCR rectifiers - single phase and three-phase rectifier.\n4. Simulation and hardware implementation of DC-DC converters with duty cycle control.\n5. Performance analysis of 1-ϕ & 3 − ϕ inverter output voltage with square wave, quasi-square wave, and PWM control.\n6. Closed-loop speed control of DC motor using chopper circuits.\n7. V/f control of three-phase induction motor using a PWM inverter.\n8. Implementation of slip control and rotor resistance control of induction motor.\n9. BLDC/PMSM/SRM motor control.",
-      "Module 5. Sixth Semester Courses: 5.5. Power System Lab\n5.5 Power System Lab"
+      "Module 1: Power Semiconductor Switching - Gate triggering circuits (UJT relaxation oscillator, TCA785), turn-on and turn-off characteristics of SCR, MOSFET, and IGBT, and snubber circuit performance.",
+      "Module 2: Controlled Rectifiers & Choppers - Single-phase and three-phase half-controlled and fully-controlled bridge converters with R and RL loads; step-down (buck) and step-up (boost) DC-DC converters with PWM duty ratio control.",
+      "Module 3: Inverters & AC Voltage Controllers - Single-phase and three-phase voltage source inverters (VSI) using 120° and 180° conduction modes; sinusoidal PWM (SPWM) modulation and total harmonic distortion (THD) measurement.",
+      "Module 4: Electric Drive Control - Closed-loop speed control of DC motor using chopper/phase-controlled drive; V/f control of 3-phase induction motor using variable frequency drive (VFD); BLDC motor drive demonstration."
     ],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "textbooks": [
+      "1. Ned Mohan, Tore M. Undeland, William P. Robbins, \"Power Electronics: Converters, Applications, and Design\", 3rd Edition, Wiley.",
+      "2. G. K. Dubey, \"Fundamentals of Electrical Drives\", 2nd Edition, Narosa Publishing House."
+    ],
+    "objectives": [
+      "To experimentally test characteristics and gate triggering of power semiconductor switching devices.",
+      "To build and analyze controlled converters, PWM inverters, and closed-loop motor drive systems."
+    ],
+    "outcomes": [
+      "CO1: Trigger and evaluate static/dynamic characteristics of SCRs, MOSFETs, and IGBTs.",
+      "CO2: Measure voltage, current waveforms, and harmonic content of controlled rectifiers and inverters.",
+      "CO3: Implement closed-loop speed control of DC and AC electrical machines."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/EEE2025.pdf"
   },
   "EE354": {
     "code": "EE354",
@@ -2774,15 +2876,27 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "Module - 1: Hardware Experiments (any Six)\n1. Transmission Line studies using simulator: a. ABCD Paraments b. Ferranti Effect, c.\nVoltage regulation, d. Compensation methods\n2. Measurement of sequence impedances and currents.\n3. Numerical relay characteristics - Over current relay, IDMT, Over Voltage/Under Voltage, etc\n4. Testing of Current Transformer and Potential Transformer.\n5. Study of circuit breakers.\n6. Study of any two protection schemes:a. Earth fault protection of a generator, b. Trans-\nformer differential protection , c. Working of Buchholz relay, d. Over Current protection of\nTransmission Line, e. Over Voltage /Under Voltage protection of Transmission Line\n7. Study of Digital Energy Meter.\n8. Study of Solar Photo Voltaic (SPV) systems.\n9. High Voltage testing: a. Impulse and Flashover testing, b. Partial Discharge, c. Earth\nResistance Tester, d. Transformer oil testing, e. String Insulators\nModule - 2: Software simulations\n10. Formation of YBU S and ZBU S .\n11. Load Flow Analysis using Gauss Seidal (GS) Method.\n12. Load Flow Analysis using Newton-Raphson (NR) Method.\n13. Load Flow Analysis using Fast Decoupled (FD) Method.\n14. To obtain Swing Curve and to determine Critical Clearing Time, angle, Regulation,",
-      "Module 5. Sixth Semester Courses: 5.6. Electrical & Electronic Design Lab\n5.6 Electrical & Electronic Design Lab"
+      "Module 1: Transmission Line Performance - ABCD parameters, Ferranti effect, voltage regulation, and reactive power compensation on transmission line simulator model.",
+      "Module 2: Switchgear & Protective Relaying - Operating characteristics of overcurrent IDMT relay, percentage differential protection of transformers, Earth fault protection of generator, testing of CT and PT.",
+      "Module 3: High Voltage Testing & Insulation - Dielectric breakdown strength testing of transformer oil, impulse sparkover testing of string insulators, earth resistance measurement using Megger.",
+      "Module 4: Computer-Aided Power System Analysis - Formation of Y-bus and Z-bus matrices, load flow analysis using Gauss-Seidel, Newton-Raphson, and Fast Decoupled methods, symmetrical and unsymmetrical fault analysis, swing curve and critical clearing time."
     ],
-    "textbooks": [],
-    "objectives": [],
-    "outcomes": []
+    "textbooks": [
+      "1. Hadi Saadat, \"Power System Analysis\", 3rd Edition, McGraw-Hill.",
+      "2. Badri Ram and D. N. Vishwakarma, \"Power System Protection and Switchgear\", 2nd Edition, Tata McGraw-Hill."
+    ],
+    "objectives": [
+      "To analyze transmission line performance and high-voltage dielectric properties experimentally.",
+      "To test protective relays, switchgear, and perform computational power flow and fault studies."
+    ],
+    "outcomes": [
+      "CO1: Determine transmission line parameters, voltage regulation, and reactive power compensation limits.",
+      "CO2: Calibrate and test electromagnetic and numerical protective relays under simulated fault conditions."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/EEE2025.pdf"
   },
   "EE355": {
     "code": "EE355",
@@ -6339,75 +6453,61 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   },
   "CS204": {
     "code": "CS204",
-    "name": "Data Structures",
+    "name": "Data Structures Laboratory",
     "branch": "CSE",
     "pdfPath": "/syllabi/CSE2025.pdf",
     "pdfName": "CSE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "List of Experiments",
-      "1) Implementation of array operations, Structures & Unions",
-      "2) Stacks, Queues, Circular Queues, Priority Queues, Multiple stacks and queues",
-      "3) Infix to postfix expression using stack",
-      "4) Implementation of linked lists: stacks, queues",
-      "5) Implementation of doubly linked lists",
-      "6) Tree traversals",
-      "7) Open Addressing for Collision handling in Hashing",
-      "8) Implementation of DFS and BFS",
-      "9) Implementation of Kruskal’s, and Prim’s algorithms",
-      "10) Implementation of sorting algorithms: Bubble Sort, Insertion Sort, Quick Sort, Selection\nSort, Merge Sort, Heap Sort"
+      "Module 1: Linear Data Structures - Array operations, structures, unions, singly linked list, doubly linked list, circular linked list, dynamic memory allocation and polynomial addition.",
+      "Module 2: Stacks & Queues - Array and linked list representation of stacks and queues, circular queue, double-ended queue (deque), infix to postfix conversion, and postfix expression evaluation.",
+      "Module 3: Trees & Graphs - Binary search tree (BST) operations (insertion, deletion, search), tree traversals (inorder, preorder, postorder), graph representation (adjacency matrix/list), BFS and DFS traversals.",
+      "Module 4: Sorting & Searching Algorithms - Linear and binary search, bubble sort, selection sort, insertion sort, merge sort, quick sort, and hashing with open addressing."
     ],
     "textbooks": [
-      "1. Aaron M. Tenenbaum, Yedidyah Langsam, Moshe J. Augenstein, “Data Structures using\nC”, Third Edition, Pearson, 2009.",
-      "2. Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest and Clifford Stein,\n“Introduction to Algorithms”, Second Edition, PHI, 2009.",
-      "3. Alfred V Aho, John E Hopcroft, Jeffrey D. Ullman, “Data structures & algorithms”,\nPearson, 2013.",
-      "4. Mark Allen Weiss, “Data Structures and Algorithm Analysis in C”, Second Edition, Pearson\nEducation, 2006.",
-      "5. Michael T.Goodrich and Roberto Tamassia, “Algorithm Design: Foundations, Analysis and Internet\nExamples”, Second Edition, Wiley-India, 2006."
+      "1. Mark Allen Weiss, \"Data Structures and Algorithm Analysis in C\", 2nd Edition, Pearson.",
+      "2. Ellis Horowitz, Sartaj Sahni, Susan Anderson-Freed, \"Fundamentals of Data Structures in C\", 2nd Edition, Silicon Press."
     ],
     "objectives": [
-      "The objective of the course is to illustrate the implementation of basic data structures and to\ndevelop programming skills to apply appropriate data structures for problem solving."
+      "To provide hands-on programming experience in implementing fundamental linear and non-linear data structures.",
+      "To analyze empirical runtime performance of searching and sorting algorithms."
     ],
     "outcomes": [
-      "At the completion of this course, the student shall acquire knowledge and ability to"
-    ]
+      "CO1: Implement dynamic data structures including linked lists, stacks, and queues in C.",
+      "CO2: Construct and traverse binary search trees and graph representations.",
+      "CO3: Compare and evaluate practical time and space complexities of sorting algorithms."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CSE2025.pdf"
   },
   "CS205": {
     "code": "CS205",
-    "name": "Digital Systems Design",
+    "name": "Digital Systems Design Laboratory",
     "branch": "CSE",
     "pdfPath": "/syllabi/CSE2025.pdf",
     "pdfName": "CSE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "List of Experiments",
-      "1) Simplification, realization of boolean expressions using logic gates/universal gates",
-      "2) Realization of half/full adder &amp; half/full subtractors using logic gates",
-      "3) Realization of parallel adder/subtractors using 7483 chip, BCD to Excess-3code conversion\n& vice versa, binary to gray code conversion & vice versa",
-      "4) MUX/DEMUX – use of 74153,74139 for arithmetic circuits & code converter",
-      "5) Realization of one/two bit comparator and study of 7485 magnitude comparator",
-      "6) Use of a) Decoder chip to drive LED display &amp;amp; b) Priority encoder",
-      "7) Truth table verification of flip-flops: i) JK Master Slave ii) T type iii) D type",
-      "8) Realization of 3 bit counters as a sequential circuit &amp;amp; MOD-N counter design\n(7476,7490,74192,",
-      "9) Writing & testing of sequence generator",
-      "10) Hardware modeling using Verilog/VHDL; Laboratory exercises and assignments to\nsupplement the lab"
+      "Module 1: Logic Gates & Boolean Minimization - Simplification and realization of boolean expressions using basic and universal NAND/NOR gates, Gray-to-Binary code converters.",
+      "Module 2: Combinational Arithmetic & MSI Circuits - Half and full adders, 4-bit parallel binary adder/subtractor, magnitude comparator, 4:1 multiplexer, 1:4 demultiplexer, and BCD to 7-segment decoder.",
+      "Module 3: Sequential Circuits & Counters - Truth table verification of SR, JK, D, and T flip-flops; design of asynchronous ripple counters, synchronous decade counters, and universal shift registers.",
+      "Module 4: Hardware Description Language (HDL) - Verilog/VHDL modeling, simulation, and synthesis of combinational and sequential circuits on FPGA/CPLD trainer kits."
     ],
     "textbooks": [
-      "1. Morris Mano, “Digital Design”, Pearson Education India,5th Edition, 2013",
-      "2. Charles. H. Roth, Jr., “Fundamentals of Logic Design”, Fifth Edition, Thomson Brooks\n/Cole, 2005.",
-      "3. R. J. Tocci, “Digital Systems Principles and Applications”, Prentice Hall",
-      "4. D. D. Givone, “Digital Principles and Design”, Tata McGraw Hill.\n\n. S. Palnitkar, “Verilog HDL: A Guide to Digital Design and Synthesis”, Second Edition,\nPearson Education, 2004.",
-      "6. J. Bhasker, “A VHDL primer”, 3rd edition, Addison Wesley Longmen, 1999.",
-      "7. Douglas Perry, “VHDL: Programming by example”, 4 th ed. McGraw Hill International,",
-      "8. Peter Ashenden, “The Designer Guide to VHDL”,Morgan Kaufmann, 1998"
+      "1. M. Morris Mano and Michael D. Ciletti, \"Digital Design: With an Introduction to the Verilog HDL\", 6th Edition, Pearson.",
+      "2. Stephen Brown and Zvonko Vranesic, \"Fundamentals of Digital Logic with Verilog Design\", 3rd Edition, McGraw-Hill."
     ],
     "objectives": [
-      "The course provides practical knowledge in designing the digital logic systems and their\nverification for the desired output."
+      "To gain hands-on proficiency in designing, wiring, and testing digital circuits using discrete ICs.",
+      "To learn hardware description language (HDL) modeling and FPGA board implementation."
     ],
     "outcomes": [
-      "At the completion of this course, the student shall acquire knowledge and ability to"
-    ]
+      "CO1: Realize combinational logic circuits using basic gates, decoders, and multiplexers.",
+      "CO2: Design synchronous counters, state machines, and shift registers using flip-flops.",
+      "CO3: Write Verilog testbenches and synthesize digital circuits on FPGA target boards."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CSE2025.pdf"
   },
   "CS206": {
     "code": "CS206",
@@ -6583,32 +6683,32 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   },
   "CS255": {
     "code": "CS255",
-    "name": "Database Systems",
+    "name": "Database Systems Laboratory",
     "branch": "CSE",
     "pdfPath": "/syllabi/CSE2025.pdf",
     "pdfName": "CSE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "List of Experiments",
-      "1) Defining schemas for applications.",
-      "2) Creating tables, Renaming tables, Data constraints (Primary key, Foreign key, Not Null),\nData insertion into a table.",
-      "3) Grouping data, aggregate functions, Oracle functions (mathematical, character functions).",
-      "4) Sub-queries, Set operations, Joins.",
-      "5) Creation of databases, writing SQL and PL/SQL queries to retrieve information from the\ndatabases.",
-      "6) Procedures, Functions, Cursors, Triggers, Packages, views, Assertions.\n\n) Deployment of Forms, Reports Normalization, Query Processing Algorithms in the above\napplication project;",
-      "8) Assignment in Design and Implementation of Database systems or packages for\napplications such as office automation, hotel management, hospital management;"
+      "Module 1: DDL & Schema Design - Database schema design, table creation, integrity constraints (primary key, foreign key, unique, check), alter and drop operations.",
+      "Module 2: DML & Complex SQL Queries - Data insertion, update, delete; complex SELECT queries with nested subqueries, joins (inner, outer, self), aggregate functions, and GROUP BY/HAVING clauses.",
+      "Module 3: Advanced SQL & Views - Views creation, sequences, indexes, transactions management (commit, rollback, savepoint), and database role security.",
+      "Module 4: PL/SQL, Triggers & Web Database Connectivity - PL/SQL blocks, stored procedures, functions, cursors, row-level and statement-level triggers, database connection with frontend application."
     ],
     "textbooks": [
-      "1. Ramez Elmasri, Shamkant B Navathe, “Fundamentals of database systems”, 5th ed., 2003.",
-      "2. Avi Silberschatz, Henry Korth and S. Sudarshan, “Database Systems Concepts”, 5th\nEdition, TMH, 2005"
+      "1. Abraham Silberschatz, Henry F. Korth, S. Sudarshan, \"Database System Concepts\", 7th Edition, McGraw-Hill.",
+      "2. Ramez Elmasri and Shamkant B. Navathe, \"Fundamentals of Database Systems\", 7th Edition, Pearson."
     ],
     "objectives": [
-      "To obtain working knowledge of a database management system and developing applications\nusing the databases."
+      "To design relational database schemas and write complex SQL queries on PostgreSQL/MySQL.",
+      "To write stored procedures, triggers, and connect applications with database engines."
     ],
     "outcomes": [
-      "At the completion of this course, the student shall acquire knowledge and ability to"
-    ]
+      "CO1: Create normalized relational tables enforcing referential and domain integrity.",
+      "CO2: Compose complex analytical SQL queries using multi-table joins and subqueries.",
+      "CO3: Develop robust PL/SQL stored procedures and triggers for business logic enforcement."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CSE2025.pdf"
   },
   "CS256": {
     "code": "CS256",
@@ -6730,40 +6830,32 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   },
   "CS304": {
     "code": "CS304",
-    "name": "Operating Systems",
+    "name": "Operating Systems Laboratory",
     "branch": "CSE",
     "pdfPath": "/syllabi/CSE2025.pdf",
     "pdfName": "CSE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "List of Experiments",
-      "1) Write a program to perform operation count for a given pseudo code",
-      "2) Write a program to perform Quick Sort for the given list of integer values.",
-      "3) Write a Program to perform Merge Sort on the given two lists of integer values.",
-      "4) Write a program to find solution for knapsack problem using greedy method.",
-      "5) Write a program to find minimum cost spanning tree using Prim's Algorithm.",
-      "6) Write a program to find minimum cost spanning tree using Kruskal's Algorithm.",
-      "7) Write a program to perform Single source shortest path problem for a given graph,",
-      "8) Write a program to find solution for job sequencing with deadlines problem.",
-      "9) Write a program for all pairs shortest path problem.",
-      "10) Write a program to solve N-QUEENS problem.",
-      "11) Write a program to solve Sum of subsets problem for a given set of distinct numbers.",
-      "12) Write a program to solve travelling sales person problem using branch and bound."
+      "Module 1: Shell Programming & System Calls - Unix/Linux environment, bash scripting, file permissions; Unix process control system calls: fork(), exec(), wait(), exit(), getpid().",
+      "Module 2: CPU Scheduling Algorithms - Simulation of FCFS, SJF (preemptive and non-preemptive), Priority scheduling, and Round Robin (RR) CPU scheduling algorithms.",
+      "Module 3: Inter-Process Communication & Synchronization - IPC using pipes and shared memory; synchronization mechanisms using semaphores and mutexes to solve the Producer-Consumer, Readers-Writers, and Dining Philosophers problems.",
+      "Module 4: Memory Management & Disk Scheduling - Page replacement algorithms: FIFO, LRU, Optimal; Disk scheduling algorithms: FCFS, SSTF, SCAN, C-SCAN; Deadlock detection and banker's algorithm simulation."
     ],
     "textbooks": [
-      "1. Silberschatz, Galvin and Gagne, \"Operating System Concepts\", 10/E, John Wiley & Sons,",
-      "2. William Stallings, “Operating Systems –Internals and Design Principles”, 8/E, Pearson\nPublications, 2014",
-      "3. Andrew S. Tanenbaum, “Modern Operating Systems”, 4/E, Pearson Publications, 2014.",
-      "4. MelinMilenkovic, “Operating Systems: Concepts and Design”, McGraw Hill, New York,",
-      "2000..\nCourse Objective :\nThe primary objective of this course is to introduce the concept of algorithm as a precise\nmathematical concept, and study how to design algorithms, establish their correctness, study\ntheir efficiency and memory needs. The course consists of a strong mathematical component\nin addition to the design of various algorithms."
+      "1. Abraham Silberschatz, Peter Baer Galvin, Greg Gagne, \"Operating System Concepts\", 10th Edition, Wiley.",
+      "2. Robert Love, \"Linux System Programming: Talking Directly to the Kernel and C Library\", 2nd Edition, O'Reilly."
     ],
     "objectives": [
-      "The primary objective of this course is to introduce the concept of algorithm as a precise\nmathematical concept, and study how to design algorithms, establish their correctness, study\ntheir efficiency and memory needs. The course consists of a strong mathematical component\nin addition to the design of various algorithms."
+      "To master Linux kernel system calls for process management, file I/O, and IPC.",
+      "To simulate operating system scheduling, memory paging, and concurrency primitives."
     ],
     "outcomes": [
-      "At the completion of this course, the student shall acquire knowledge and ability to"
-    ]
+      "CO1: Utilize POSIX system calls to spawn, monitor, and synchronize child processes.",
+      "CO2: Simulate and evaluate CPU scheduling and page replacement algorithms.",
+      "CO3: Implement multithreaded mutual exclusion using semaphores and condition variables."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CSE2025.pdf"
   },
   "CS350": {
     "code": "CS350",
@@ -6825,60 +6917,56 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-      "Introduction to Computer Network: Network Topologies, OSI reference model, services\nand role of each layer of OSI model and TCP/IP, Data Communication: Components of a\nData Communication System, Simplex, Half-Duplex and Duplex Modes of Communication;\nAnalog and Digital Signals; Noiseless and Noisy Channels; Bandwidth, Throughput and\nLatency; Digital and Analog Transmission; Data Encoding and Modulation Techniques;\nBroadband and Baseband Transmission; Multiplexing, Transmission Media, Transmission\nErrors, Error Handling Mechanisms.\nData Link Layer and Logical Link Control (LLC) sub-layer: Framing; Error control\nincluding Bit-parity, CRC and Hamming Codes; Reliable transmission and Automatic Repeat\nRequest (ARQ) protocols including Stop-and-Wait, Go-back-N, Selective Repeat.\nPerformance analysis of ARQ protocols. Example protocols such as HDLC and PPP.\nMedium Access Control (MAC) sub-layer: Shared media systems; Bus, Star and Ring\ntopologies; TDMA, FDMA, CSMA, CSMA/CD, Ethernet and IEEE",
-      "802.3; IEEE",
-      "802.11\nincluding CSMA/CA protocols; Performance analysis; Shared and Switched Ethernet;\nRelated protocols such as ICMP, NAT, ARP and RARP.\nNetwork Layer: Internet Protocol (IP) headers; Routing protocols including distance-vector\nand link-state approaches; Interior and Exterior Gateway Protocol concepts; Routing\nAlgorithms including Dijkstra&#39;s algorithm and distributed Bellman-Ford algorithm;\nExample protocols: OSPF, RIP, BGP.\nTransport Layer: Socket Interface and Socket programming; Reliable end-to-end\ntransmission protocols; UDP header; Details of TCP header and operation including options\n\nheaders and congestion control; TCP variants such as Reno, Tahoe, Vegas, Compound and\nCUBIC.\nApplication Layer: DNS, SMTP, FTP, SNMP, HTTP, VPN, VLANs, MPLS, Network\nsecurity: basic concept, Advanced topics: Data center Network (DCN), Software Defined\nNetworking (SDN)."
+      "Module 1: Introduction to Computer Networks & Physical Layer - Network topologies, OSI reference model and TCP/IP protocol suite; analog and digital transmission; noiseless and noisy channels (Nyquist and Shannon capacity); encoding, modulation, multiplexing (TDM, FDM, WDM), transmission media, transmission errors and detection mechanisms.",
+      "Module 2: Data Link Layer & Medium Access Control - Framing, flow control, error control (parity, CRC, Hamming codes); Automatic Repeat Request (ARQ) protocols: Stop-and-Wait, Go-Back-N, Selective Repeat, performance analysis; Medium Access Control (MAC) sublayer: Pure and Slotted ALOHA, CSMA, CSMA/CD, Ethernet standards (IEEE 802.3), IEEE 802.11 wireless LANs with CSMA/CA, switches and bridges.",
+      "Module 3: Network Layer & Routing Protocols - Virtual circuit and datagram networks, IP addressing (IPv4, IPv6), subnetting, CIDR, NAT, ARP, ICMP; routing algorithms: Dijkstra's shortest path, Distance Vector (Bellman-Ford), Link State routing; interior and exterior routing protocols (RIP, OSPF, BGP).",
+      "Module 4: Transport Layer, Application Layer & Advanced Networking - Transport layer services, multiplexing/demultiplexing, UDP, TCP connection management, reliable data transfer, flow control, and TCP congestion control algorithms (Tahoe, Reno, CUBIC); Application layer protocols: HTTP/HTTPS, DNS, SMTP, FTP; Introduction to Software Defined Networking (SDN) and Network Security fundamentals."
     ],
     "textbooks": [
-      "1. Larry L. Peterson, Bruce S. Davie, “Computer Networks - A Systems Approach”, Morgan\nKaufmann, sixth edition",
-      "2. James F. Kurose, Keith W. Ross, “Computer Networking: A Top-Down Approach”,\nPearson Education.",
-      "3. Andrew S. Tanenbaum, “Computer Network”, Prentice Hall of India, 5th Edition.",
-      "4. Behrouz A. Forouzan, “Data Communications and Networking”, McGraw-Hill.",
-      "5. William Stallings, “Data and Computer Communication”, Pearson\nCourse Objectives:\nTo obtain the practice of writing compilers."
+      "1. Larry L. Peterson and Bruce S. Davie, \"Computer Networks: A Systems Approach\", 6th Edition, Morgan Kaufmann.",
+      "2. James F. Kurose and Keith W. Ross, \"Computer Networking: A Top-Down Approach\", 8th Edition, Pearson.",
+      "3. Andrew S. Tanenbaum and David J. Wetherall, \"Computer Networks\", 5th Edition, Pearson."
     ],
     "objectives": [
-      "The objective of this course is to introduce concepts and implementation of computer\nnetworks; architecture, protocol layers, inter-networking and addressing; network application\ndevelopment, congestion control protocols, routing and switching, wireless networking. The\ncourse will also touch upon some recent advances in the field of computer networking."
+      "To understand architecture, layered abstractions, and protocols of modern computer networks.",
+      "To master error handling, medium access, routing, and transport-layer congestion control."
     ],
     "outcomes": [
-      "At the completion of this course, the student shall acquire knowledge and ability to"
-    ]
+      "CO1: Explain the functionality and interfaces between layers of the OSI and TCP/IP models.",
+      "CO2: Analyze ARQ flow control mechanisms and medium access contention algorithms.",
+      "CO3: Compute optimal routing paths using distance-vector and link-state algorithms.",
+      "CO4: Evaluate TCP congestion control variants and design network client-server sockets."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CSE2025.pdf"
   },
   "CS354": {
     "code": "CS354",
-    "name": "Computer Networks",
+    "name": "Computer Networks Laboratory",
     "branch": "CSE",
     "pdfPath": "/syllabi/CSE2025.pdf",
     "pdfName": "CSE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "List of Experiments\nImplement the following using any programming language",
-      "1. Implement the error detection method such as CRC and Checksum",
-      "2. Implementation of channel access protocols in data link layer such as Aloha, CSMA,\nCSMA/CD protocols. Comparison study on the performance of these protocols.",
-      "3. The routing protocols such as RIP, OSPF, BGP.",
-      "4. Implementation of basic Client Server program using TCP and UDP Socket.",
-      "5. Using TCP/IP sockets, write a client server program to make the client send the file name\nand to make the server send back the contents of the requested file if present.",
-      "6. Implementing fully concurrent application with a TCP server acting as a directory server\nand client programs allowing concurrent connection and message transfer (Eg. Chat\nsystem).",
-      "7. Implementation of ARQ protocols in TCP layer, and observe the reliable data transmission\nover an unreliable source or service.\nUsing Wireshark",
-      "8. Investigate the IP protocol, focusing on the IP datagram. Analyz a trace of IP datagrams\nsent and received by an execution of the traceroute program",
-      "9. Explore several aspects of the HTTP protocol: the basic GET/response interaction, HTTP\nmessage formats, retrieving large HTML files, retrieving HTML files with embedded\nobjects, and HTTP authentication and security.",
-      "10. Observe DHCP in action, perform several DHCP-related commands and capture the\nDHCP messages exchanged as a result of executing these commands.",
-      "11. Observe the local DNS servers, DNS caching, DNS records and messages, and the\nTYPE field in the DNS record."
+      "Module 1: Network Commands & Packet Sniffing - Study of basic networking commands (ping, traceroute, netstat, ifconfig/ip, arp, nslookup); packet capture and protocol header analysis using Wireshark for ARP, ICMP, IP, TCP, and UDP.",
+      "Module 2: Error Detection & Framing - Implementation of bit stuffing, byte stuffing, error detection using CRC (Cyclic Redundancy Check) and Checksum; simulation of Stop-and-Wait, Go-Back-N, and Selective Repeat ARQ protocols.",
+      "Module 3: Socket Programming (TCP/UDP) - Implementation of iterative and concurrent client-server communication using TCP and UDP sockets in C/Python/Java; file transfer and multi-user chat applications.",
+      "Module 4: Routing & Network Simulation - Implementation of Distance Vector Routing (Bellman-Ford) and Link State Routing (Dijkstra) algorithms; network simulation using Cisco Packet Tracer or NS-3 for subnet configuration, router setup, and OSPF/RIP routing."
     ],
     "textbooks": [
-      "1. James F.Kurose, Computer networking: Atop-down approach featuring the internet,\nPearson Education India\n\n. Online Resources: Interactive animations, Video notes from Kurose and Ross book.\nWire shark assignments, Presentation slides, interactive exercises from the following link:\nhttps://gaia.cs.umass.edu/kurose_ross/wireshark.php.",
-      "3. https://www.wireshark.org/\nCOURSE OBJECTIVES",
-      "1. Identify and analyze the behaviour of a firm under different market situations\nsystematically.",
-      "2. Understand and assimilate the issues related to strategic behaviour in firms, R&D and\ninnovation.",
-      "3. Have a comprehensive coverage of firms' profitability and efficiency measurements,\nwith applications to India's industrial structure.",
-      "4. To understand the rich complexities and paradox of fourth industrial revolution."
+      "1. W. Richard Stevens, \"UNIX Network Programming, Volume 1: The Sockets Networking API\", 3rd Edition, Addison-Wesley.",
+      "2. James F. Kurose and Keith W. Ross, \"Computer Networking: A Top-Down Approach\", 8th Edition, Pearson."
     ],
     "objectives": [
-      "To provide students with a theoretical and practical base in computer networks issues.\nAnalyze and compare various networking protocols. Demonstrate the working of different\nconcepts of networking."
+      "To gain practical experience in network packet inspection, socket programming, and protocol implementation.",
+      "To simulate routing and topology configurations in modern network environments."
     ],
     "outcomes": [
-      "At the completion of this course, the student shall acquire knowledge and ability to"
-    ]
+      "CO1: Inspect live protocol packets using Wireshark and troubleshoot communication issues.",
+      "CO2: Write client-server networking applications using TCP/UDP socket APIs.",
+      "CO3: Simulate routing protocols and sliding window ARQ mechanisms."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CSE2025.pdf"
   },
   "CS400": {
     "code": "CS400",
@@ -10769,31 +10857,29 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "CVE",
     "pdfPath": "/syllabi/CVE2025.pdf",
     "pdfName": "CVE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "List of experiments:\n(Atleast 8 exercises comprising of 4 from Design of RCC structures and 4 from Design of Steel\nstructures, which can be chosen from the following)",
-      "1. Detailing of different types of bolts and welds.",
-      "2. Bolted and welded connection detailing.",
-      "3. Detailing of a truss structure.",
-      "4. Detailing of slab base connected with primary and secondary beams, resting on columns.",
-      "5. Detailing of plate girder.",
-      "6. Detailing of beams, columns, footings and slab, stairs for RCC Beam column connections"
+      "Module 1: Bolted & Welded Connections - Detail drawings of high-strength friction grip (HSFG) bolts, fillet and butt welds, bracket connections, and eccentric load detailing as per IS:800.",
+      "Module 2: Steel Roof Trusses & Girders - Structural layout of Pratt and Howe roof trusses, purlins, sag rods, column base plates, and welded plate girder detailing.",
+      "Module 3: Reinforced Concrete Structural Components - Detailed reinforcement drawings of continuous beams, two-way slabs, flat slabs, short and slender columns, and isolated/combined footings conforming to IS:456 and SP:34.",
+      "Module 4: Computer-Aided Drafting & BIM - Preparation of structural working drawings, bar bending schedules (BBS), and beam-column joint ductile detailing (IS:13920) using AutoCAD / Revit."
     ],
     "textbooks": [
-      "1. Limit State Design of Steel Structures, S K Duggal, Tata Mc Graw Hill Publishers,\n2019, 3rd Edition",
-      "2. N. Subramanian, Design of steel structures, Oxford higher education, 2008",
-      "3. Punmia, A. K. Jain and Arun Kumar Jain, Comprehensive Design of Steel Structures,\nLaxmi Publication, 2nd edition,2015",
-      "4. Limit State Design of Reinforced Concrete Structures, B.C. Punmia, Ashok. K.Jain\nand Arun K Jain, Laxmi Pub. Pvt Ltd, 2016.",
-      "5. Design of Reinforced Concrete Structures, IS:456-2000, N Krishnaraju, CBS\nPublications, 2019, 4th Edition.\nReference books:",
-      "1. Relevant IS Codes"
+      "1. S. K. Duggal, \"Limit State Design of Steel Structures\", 3rd Edition, Tata McGraw-Hill, 2019.",
+      "2. B. C. Punmia, Ashok K. Jain, Arun K. Jain, \"Limit State Design of Reinforced Concrete Structures\", Laxmi Publications, 2016.",
+      "3. IS:456-2000, IS:800-2007, SP:34 Handbook on Concrete Reinforcement and Detailing, Bureau of Indian Standards."
     ],
     "objectives": [
-      "1. To equip the students with understanding various RCC and steel connections like beam\ncolumn joints, bolted and welded connections, lap joints etc.",
-      "2. To visualize, sketch and accurately draw the components of a beam column joint, truss,\nbeam, plate girder and column.",
-      "3. To learn the uses of drafting software AutoCAD."
+      "To master structural detailing of RCC and steel building components as per Indian Standard codes.",
+      "To prepare production-ready structural engineering drawings and Bar Bending Schedules using AutoCAD."
     ],
-    "outcomes": []
+    "outcomes": [
+      "CO1: Draft steel connection and roof truss layouts adhering to IS:800 specifications.",
+      "CO2: Generate comprehensive reinforcement detailing for multistory RCC elements complying with IS:456 and IS:13920.",
+      "CO3: Prepare professional structural blueprints and bar bending schedules for site execution."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CVE2025.pdf"
   },
   "CV354": {
     "code": "CV354",
