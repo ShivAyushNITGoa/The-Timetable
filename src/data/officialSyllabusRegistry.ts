@@ -4461,23 +4461,22 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   },
   "EC200": {
     "code": "EC200",
-    "name": "Electromagnetic",
+    "name": "Electromagnetic Waves and Transmission Lines",
     "branch": "ECE",
     "pdfPath": "/syllabi/ECE2025.pdf",
     "pdfName": "ECE2025.pdf",
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-      "Module 1: Vector Calculus (10 hours)\nCoordinate Systems and Transformation, Vector Calculus: Line, Surface, and Volume Integrals, Gradient\nof a Scalar, Divergence of a Vector and Divergence Theorem, Curl of a Vector and Stokes's Theorem,\nLaplacian of a Scalar.",
-      "Module 2: Electrostatic Fields (16 hours)\nElectrostatic Fields: Coulomb's Law and Field Intensity, Electric Fields due to Continuous Charge\nDistributions, Electric Flux Density, Gauss's Law, An Electric Dipole, Flux Lines.\nElectric Fields in Material Space: Convection and Conduction Currents, Dielectric Constant and Strength,\nContinuity Equation and Relaxation Time, Boundary Conditions, Electrostatic Boundary- Value Problems:\nPoisson's and Laplace's Equations, Uniqueness Theorem.",
-      "Module 3: Magnetostatic Fields (12 hours)\nBiot-Savart's Law, Ampere's Circuit Law, Magnetic Flux Density, Maxwell's Equations for Static EM\nFields, Magnetic Scalar and Vector Potentials, Magnetic Forces: Forces due to Magnetic Fields, Magnetic\nTorque and Moment, A Magnetic Dipole, Magnetic Boundary Conditions.",
-      "Module 4: Wave Propagation and Transmission Lines (18 hours)\nFaraday's Law, Transformer and Motional EMFs, Displacement Current, Maxwell's Equations in Final\nForms, Time-Varying Potentials, Time-Harmonic Fields, Wave Propagation in Lossy Dielectrics, Plane\nWaves in Lossless Dielectrics, Plane Waves in Free Space, Plane Waves in Good Conductors, Skin effect,\nPower and the Poynting Vector, Reflection of a Plane Wave at Normal Incidence, Reflection of a Plane\nWave at Oblique Incidence.\nIntroduction, Transmission Line Parameters, Transmission Line Equations, Input Impedance, SWR, and\nPower."
+      "Module 1: Static Fields & Maxwell's Equations - Vector calculus, Coulomb's and Gauss's laws, electric potential, Poisson and Laplace equations; Biot-Savart and Ampere's laws, magnetic vector potential; Faraday's law, displacement current, Maxwell's equations in differential and integral forms, boundary conditions.",
+      "Module 2: Uniform Plane Waves - Wave equation, plane waves in lossless and lossy media, intrinsic impedance, skin depth, Poynting vector and power flow, wave polarization (linear, circular, elliptical); reflection and refraction at normal and oblique incidence, Snell's law, Brewster angle.",
+      "Module 3: Transmission Line Theory - Transmission line equations, characteristic impedance, propagation constant; reflection coefficient, standing wave ratio (SWR), input impedance of lossless and lossy lines; quarter-wave and half-wave transformers.",
+      "Module 4: Smith Chart & Waveguides - Smith chart fundamentals and applications, single-stub and double-stub impedance matching; propagation of TE, TM, and TEM modes in parallel-plate and rectangular waveguides, cutoff frequencies, guide wavelength, phase and group velocities."
     ],
     "textbooks": [
-      "1. Matthew N. O. Sadiku, “Principles of Electromagnetics”, 4th Edition, oxford university press, 2010.",
-      "2. David k. Cheng, “Field and Wave Electromagnetics”, 2nd Edition, Pearson Education India, 2014.",
-      "3. W. H. Hayt, J A Buck and M Jaleel Akthar, “Engineering Electromagnetics”, 8th Edition, McGraw\nHill Education, 2017.",
-      "4. David J. Griffith, “Introduction to Electrodynamics”, 4th Edition, Pearson Education India Learning\nPrivate Limited, 2015."
+      "1. Matthew N. O. Sadiku, \"Elements of Electromagnetics\", 7th Edition, Oxford University Press.",
+      "2. David K. Cheng, \"Field and Wave Electromagnetics\", 2nd Edition, Pearson.",
+      "3. E. C. Jordan and K. G. Balmain, \"Electromagnetic Waves and Radiating Systems\", 2nd Edition, PHI."
     ],
     "objectives": [
       "1. Understand electromagnetic fields and wave propagation.",
@@ -4486,29 +4485,27 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "4. Learn about transmission lines and wave propagation in different media.",
       "5. Apply Maxwell’s Equations and use boundary conditions to solve problems in electromagnetics."
     ],
-    "outcomes": []
+    "outcomes": [],
+    "sourceUrl": "https://nitgoa.ac.in/uploads/ECE2025.pdf"
   },
   "EC201": {
     "code": "EC201",
-    "name": ", EC203",
+    "name": "Network Theory and Synthesis",
     "branch": "ECE",
     "pdfPath": "/syllabi/ECE2025.pdf",
     "pdfName": "ECE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "3-1-0",
+    "credits": 4,
     "modules": [
-      "Module 1: Introduction to Control Systems (12 Hours)\nOverview of control systems, Open-loop vs. closed-loop control, Transfer functions, Block diagrams, Block\ndiagram reduction rules, Signal flow graphs, Mason’s Gain formula, Feedback characteristics of closed\nloop system.",
-      "Module 2: Time-Domain and Stability Analysis (12 Hours)\nTime response Analysis: Standard test signals, Time response of First and Second order systems, Steady-\nstate Errors and Error constants and Dynamic Error coefficients, Effect of addition of poles and zeroes on\nresponse of system, Stability analysis using the Routh-Hurwitz criterion, Root locus method for system\nstability. Software simulations for control system analysis.",
-      "Module 3: Frequency-Domain Analysis (12 Hours)\nBode plots and Nyquist criterion, Gain and phase margins, Nichols and polar plots, Stability analysis using\nfrequency response techniques. Simulation tools for control system analysis.",
-      "Module 4: Control System Design (12 Hours)\nPID controllers (Proportional, Integral, Derivative), Lead, lag, and lead-lag compensators, State-space\nrepresentation and controllability/observability, Pole placement and state feedback. Software tools for\ncontrol system analysis",
-      "Module 5: Applications of Feedback Control systems (8 Hours)\nCase study applications of control systems. Simulation tools for control system analysis.\nText/"
+      "Module 1: Network Topology & Graph Theory - Graph representation of electrical networks, trees, cotrees, incidence matrix, fundamental tie-set matrix, fundamental cut-set matrix; duality, formulation of network equilibrium equations using nodal and mesh analysis.",
+      "Module 2: Transient & Steady-State Analysis - Transient response of RL, RC, and RLC circuits under step, ramp, impulse, and sinusoidal excitations; application of Laplace transform in network solving, transformed impedance and admittance.",
+      "Module 3: Two-Port Networks - Z, Y, ABCD, h, and g parameter representations, parameter conversions; conditions for reciprocity and symmetry; interconnection of two-port networks (series, parallel, cascade); image parameters and Bartlett's bisection theorem.",
+      "Module 4: Network Functions & Synthesis - Driving-point and transfer immittance functions, poles and zeros, Hurwitz polynomials, Positive Real (PR) functions; network synthesis of driving-point LC, RC, and RL immittances using Foster I & II and Cauer I & II canonical forms."
     ],
     "textbooks": [
-      "1. Richard C. Dorf and Robert H. Bishop, “Modern Control Systems”, 14th Edition, Pearson, 2021.",
-      "2. Norman S. Nise, “Control Systems Engineering”, 8th Edition, Wiley, 2020.",
-      "3. Benjamin C. Kuo and Farid Golnaraghi, “Automatic Control Systems”, 9th Edition, McGraw-Hill,",
-      "4. Katsuhiko Ogata, “Modern Control Engineering”, 5th Edition, Pearson, 2010.",
-      "5. J. Nagrath and M. Gopal, “Control Systems Engineering”, 6th Edition, New Age International, 2017."
+      "1. M. E. Van Valkenburg, \"Network Analysis\", 3rd Edition, Pearson.",
+      "2. Franklin F. Kuo, \"Network Analysis and Synthesis\", 2nd Edition, John Wiley & Sons.",
+      "3. Charles K. Alexander and Matthew N. O. Sadiku, \"Fundamentals of Electric Circuits\", 6th Edition, McGraw-Hill."
     ],
     "objectives": [
       "1. Understand the fundamental concepts of control systems and their applications.",
@@ -4519,7 +4516,8 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     ],
     "outcomes": [
       "After completing this course, the student can able to"
-    ]
+    ],
+    "sourceUrl": "https://nitgoa.ac.in/uploads/ECE2025.pdf"
   },
   "EC202": {
     "code": "EC202",
@@ -4588,29 +4586,21 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   },
   "EC204": {
     "code": "EC204",
-    "name": "Digital System Design",
+    "name": "Digital Systems Design Laboratory",
     "branch": "ECE",
     "pdfPath": "/syllabi/ECE2025.pdf",
     "pdfName": "ECE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "Experiment No. 1: Simplification, realization of Boolean expressions using logic gates/universal gates",
-      "Experiment No. 2: Realization of half/full adder & half/full subtractors using logic gates, Realization\nof parallel adder/subtractors using 7483 chip.",
-      "Experiment No. 3: BCD to Excess-3code conversion & vice versa, binary to gray code conversion & vice\nversa.",
-      "Experiment No. 4: MUX/DEMUX – use of 74153,74139 for arithmetic circuits & code converter.",
-      "Experiment No. 5: Realization of one/two bit comparator and study of 7485 magnitude comparator.",
-      "Experiment No. 6: Use of a) Decoder chip to drive LED display & b) Priority encoder.",
-      "Experiment No. 7: Truth table verification of flip-flops: i) JK Master Slave ii) T type iii) D type.",
-      "Experiment No. 8: Realization of 3 bit counters as a sequential circuit & MOD-N counter design (7476,\n7490, 74192,",
-      "Experiment No. 9: Writing & testing of sequence generator.",
-      "Experiment No. 10: Hardware modeling using Verilog/VHDL; Laboratory exercises and assignments to\nsupplement the lab."
+      "Module 1: Logic Realization & Code Converters - Verification of logic gates, universal NAND/NOR logic realization, design and testing of Binary-to-Gray and Gray-to-Binary code converters.",
+      "Module 2: Combinational Arithmetic & Decoders - Half adder, full adder, 4-bit parallel adder/subtractor (IC 7483), 2-bit magnitude comparator, 4-to-1 multiplexer, 1-to-4 demultiplexer, and BCD to 7-segment display decoder.",
+      "Module 3: Flip-Flops, Registers & Counters - Testing of SR, JK, D, and T flip-flops; asynchronous binary up/down ripple counters, synchronous decade counter (IC 7490), and 4-bit universal shift register (IC 74194).",
+      "Module 4: Hardware Description Modeling (Verilog) - Simulation, testbench generation, and FPGA hardware implementation of combinational and sequential circuits using Verilog HDL."
     ],
     "textbooks": [
-      "/Reference Books",
-      "1. M. Morris Mano, Michael D. Ciletti, “Digital Design: With an Introduction to Verilog HDL”, 5th\nE dition, Pearson Education India, 2013.",
-      "2. Stephen Brown, Zvonko Vranesic, “Fundamentals of Digital Logic with VHDL Design”, 3rd Edition,\nMcGraw Hill Education, 2017.",
-      "3. Ronald J. Tocci, “Digital Systems”, 10th Edition, Pearson, 2009.\nPOs →\nCOs ↓\nPO1 PO2 PO3 PO4 PO5 PO6 PO7 PO8 PO9 PO10 PO11 PO12\nCO1 H H L L L L L L L L L M\nCO2 H H H M M L L L M M M M\nCO3 H H H M M L L L M M M M\nCO4 H H M M M M M M M M M M\nCO5 H M M M H L L L M M M M"
+      "1. M. Morris Mano and Michael D. Ciletti, \"Digital Design: With an Introduction to the Verilog HDL\", 6th Edition, Pearson.",
+      "2. Stephen Brown and Zvonko Vranesic, \"Fundamentals of Digital Logic with Verilog Design\", 3rd Edition, McGraw-Hill."
     ],
     "objectives": [
       "1. To teach the fundamentals of designing digital logic systems using Boolean algebra and logic gates.",
@@ -4618,34 +4608,26 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "3. To familiarize students with different coding schemes and their conversions in digital circuits.",
       "4. To provide practical experience in designing and simulating digital systems, emphasizing societal,\nhealth, safety, and environmental considerations."
     ],
-    "outcomes": []
+    "outcomes": [],
+    "sourceUrl": "https://nitgoa.ac.in/uploads/ECE2025.pdf"
   },
   "EC205": {
     "code": "EC205",
-    "name": "Signals & Systems",
+    "name": "Signals and Systems Simulation Laboratory",
     "branch": "ECE",
     "pdfPath": "/syllabi/ECE2025.pdf",
     "pdfName": "ECE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "Experiment No. 1: Generation of signals and systems",
-      "Experiment No. 2: Operations on signal and system",
-      "Experiment No. 3: Analysis of signals and systems in time domain",
-      "Experiment No. 4: LTI systems analysis",
-      "Experiment No. 5: Perform the Convolution operation between signals and systems",
-      "Experiment No. 6: Fourier series or transform representation of signals and systems",
-      "Experiment No. 7: Sampling and Quantization",
-      "Experiment No. 8: Reconstruction of analog signal from discrete time signal",
-      "Experiment No. 9: Effects of sampling and quantization",
-      "Experiment No. 10: Analysis of DT signal and system using Z-Transform"
+      "Module 1: Generation & Basic Operations of Signals - MATLAB/Python generation of continuous and discrete standard signals (impulse, step, ramp, sinusoidal, sinc, exponential); time shifting, scaling, reversal, and convolution.",
+      "Module 2: Linear Time-Invariant Systems & Difference Equations - Impulse response, step response, linearity, time-invariance verification, and solution of difference equations representing discrete-time LTI systems.",
+      "Module 3: Frequency Domain Transformations - Computation and plotting of Continuous-Time Fourier Series (CTFS), Discrete-Time Fourier Transform (DTFT), and Fast Fourier Transform (FFT); spectrum analysis of audio/synthetic signals.",
+      "Module 4: Z-Transform & System Stability - Pole-zero plots, Region of Convergence (ROC) visualization, inverse Z-transform, frequency response, and stability analysis of discrete transfer functions."
     ],
     "textbooks": [
-      "/Reference Books",
-      "1. A.V. Oppenheim, A. Willsky, S. Hamid Nawab, “Signals and Systems”, Pearson 2018.",
-      "2. S. Haykin and B.Van Veen “Signals and Systems, Wiley, 1998.",
-      "3. S. Esakkirajan, T. Veerakumar and B. N. Subudhi, “Digital Signal Processing”, Tata McGraw Hill,",
-      "4. S. Esakkirajan, T. Veerakumar and B. N. Subudhi, “Digital Signal Processing Illustration Using\nPython”, Springer, 2024."
+      "1. Alan V. Oppenheim, Alan S. Willsky, S. Hamid Nawab, \"Signals and Systems\", 2nd Edition, Pearson.",
+      "2. Vinay K. Ingle and John G. Proakis, \"Digital Signal Processing Using MATLAB\", 3rd Edition, Cengage."
     ],
     "objectives": [
       "1. To generate the signals and process the signals using simulation tool like MATLAB/Python.",
@@ -4653,7 +4635,8 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "3. To visualize characteristics of signals and systems and understand the concepts of signals and\nsystems in time domain and frequency domain.",
       "4. To analyse the effect of reconstructions from sampled signal."
     ],
-    "outcomes": []
+    "outcomes": [],
+    "sourceUrl": "https://nitgoa.ac.in/uploads/ECE2025.pdf"
   },
   "EC250": {
     "code": "EC250",
@@ -4802,35 +4785,27 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   },
   "EC255": {
     "code": "EC255",
-    "name": "Analog Electronics",
+    "name": "Analog Electronics Laboratory",
     "branch": "ECE",
     "pdfPath": "/syllabi/ECE2025.pdf",
     "pdfName": "ECE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "Experiment No. 1: To realize positive AND & positive OR gate using p-n junction diode",
-      "Experiment No. 2: To realize different clipping and clamping circuits and observe the waveforms\nExperiment",
-      "Experiment No. 3: To study input and output characteristics of a NPN Bipolar Junction Transistor\n(BJT) in Common-emitter configuration.",
-      "Experiment No. 4: Measure the current gain of the common emitter BJT amplifier",
-      "Experiment No. 5: To study transfer and output characteristics of an n-channel MOSFET in common-\nsource configuration.",
-      "Experiment No. 6: Find out the threshold voltage of the N-type MOSFET & cut-in voltage of the NPN\nBJT",
-      "Experiment No. 7: Determine the Q-point stability of base bias",
-      "Experiment No. 8: Construct the dc load line and plot the Q-point of voltage divider bias",
-      "Experiment No. 9: To design and set up an integrator circuit using op-amp",
-      "Experiment No. 10: To design and set up differentiator circuit using op-amp",
-      "Experiment No. 11: Simulating current mirror to extract DC response and plot of current mirror output\nImpedance.",
-      "Experiment No. 12: Study and simulate the frequency response of the common emitter amplifier."
+      "Module 1: Diode Circuits & Transistor Biasing - V-I characteristics of PN junction diode, Zener voltage regulator, half-wave/full-wave bridge rectifiers with capacitive filters, BJT CE bias stability and load line.",
+      "Module 2: Small-Signal BJT & MOSFET Amplifiers - Frequency response, midband gain, input/output impedance of BJT common-emitter and MOSFET common-source amplifiers with active/resistive loads.",
+      "Module 3: Feedback Amplifiers & Sinusoidal Oscillators - Negative feedback amplifier configurations; RC phase shift, Wien bridge, Colpitts, and Hartley sinusoidal oscillators.",
+      "Module 4: Linear IC & Op-Amp Applications - Inverting/non-inverting amplifiers, integrator, differentiator, Schmitt trigger, precision rectifier, and active 2nd-order Butterworth filters."
     ],
     "textbooks": [
-      "1. Behzad Razavi, “Fundamentals of Microelectronics”, John Wiley & Sons .2008.",
-      "2. A.S. Sedra and K.C. Smith, Microelectronic Circuits, Saunder's College Publishing, 1991.",
-      "3. B.G. Streetman and S. K. Banerjee, Solid State Electronic Devices, Prentice Hall of India, New Delhi,"
+      "1. Adel S. Sedra and Kenneth C. Smith, \"Microelectronic Circuits: Theory and Applications\", 7th Edition, Oxford University Press.",
+      "2. Donald A. Neamen, \"Electronic Circuit Analysis and Design\", 3rd Edition, McGraw-Hill."
     ],
     "objectives": [
       "1. To provide experience on design, testing, and analysis of basic."
     ],
-    "outcomes": []
+    "outcomes": [],
+    "sourceUrl": "https://nitgoa.ac.in/uploads/ECE2025.pdf"
   },
   "EC256": {
     "code": "EC256",
@@ -4963,66 +4938,57 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   },
   "EC304": {
     "code": "EC304",
-    "name": "Digital Signal Processing",
+    "name": "Digital Signal Processing Laboratory",
     "branch": "ECE",
     "pdfPath": "/syllabi/ECE2025.pdf",
     "pdfName": "ECE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "ally understand the significance of various signal filtering techniques.\nCO3. Develop a practical understanding of the significance of signal modeling, signal transformation,\nconventional and optimal filtering.\nRelationship of Course Outcomes to Program Outcomes\nH = High correlation; M = Medium correlation; L = Low correlation\nPOs →\nCOs ↓ PO1 PO2 PO3 PO4 PO5 PO6 PO7 PO8 PO9 PO10 PO11 PO12"
+      "Module 1: Discrete Fourier Transform & FFT - Computation of N-point DFT, properties verification (circular convolution, Parseval's theorem), Radix-2 Decimation-in-Time (DIT) and Decimation-in-Frequency (DIF) FFT algorithms.",
+      "Module 2: FIR Filter Design - Design and frequency response analysis of linear phase Low-Pass, High-Pass, and Band-Pass FIR filters using Rectangular, Hamming, Hanning, and Blackman windowing techniques.",
+      "Module 3: IIR Filter Design - Design of analog Butterworth and Chebyshev filters, bilinear transformation and impulse invariance mapping, frequency transformations, and digital IIR filter realizations.",
+      "Module 4: Real-Time DSP Hardware Implementation - Implementation of FIR/IIR filtering and audio effect algorithms on fixed-point / floating-point Digital Signal Processors (TI TMS320C67xx or ARM Cortex-M DSP)."
     ],
     "textbooks": [
-      "1. Alan V. Oppenheim and R. W. Schafer, “Discrete-Time Signal Processing”, 3rd Edition. Pearson,",
-      "2. John G. Proakis and D. G. Manolakis, “Digital Signal Processing: Principles, Algorithms and\nApplications”, 4th Edition. Pearson, 2007.",
-      "3. Sanjit K. Mitra, “Digital Signal Processing: A Computer-Based Approach”, 4th Edition. Tata\nMcGraw-Hill, 2013.",
-      "4. P. P. Vaidyanathan, “Multirate Systems and Filter Banks”, Prentice Hall, 1993.",
-      "5. B. Widrow and S. D. Stearns, “Adaptive Signal Processing”, Pearson Education, 2002.",
-      "6. S. Haykin, “Adaptive Filter Theory”, Pearson Education, 2013.",
-      "7. S. Esakkirajan, T. Veerakumar and B.N. Subudhi, “Digital Signal Processing”, Tata McGraw Hill,",
-      "8. S. Esakkirajan, T. Veerakumar and B. N. Subudhi, “Digital Signal Processing: Illustration Using\nPython”, Springer, 2024.",
-      "9. B. Venkataramani and M. Bhaskar, “Digital Signal Processor, Architecture, Programming and\nApplications”, 2nd Edition, McGraw- Hill, 2010."
+      "1. John G. Proakis and Dimitris G. Manolakis, \"Digital Signal Processing: Principles, Algorithms and Applications\", 4th Edition, Pearson.",
+      "2. Sanjit K. Mitra, \"Digital Signal Processing: A Computer Based Approach\", 4th Edition, McGraw-Hill.",
+      "3. Vinay K. Ingle and John G. Proakis, \"Digital Signal Processing Using MATLAB\", 3rd Edition, Cengage."
     ],
     "objectives": [
-      "1. This laboratory course is designed to complement the lecture-based course \"Digital Signal\nProcessing.\"",
-      "2. Throughout the course, students will engage in practical, hands-on training focused on the design and\ndevelopment of digital signal processing systems.",
-      "3. This will occur within simulation environments.",
-      "4. Additionally, students will gain exposure to the implementation of these systems on Digital Signal\nProcessors (DSPs), providing them with both theoretical and applied knowledge in the field."
+      "To simulate and evaluate digital signal processing algorithms using MATLAB/Python.",
+      "To design FIR and IIR digital filters and deploy algorithms on DSP hardware boards."
     ],
     "outcomes": [
-      "At the completion of this course, the student shall acquire knowledge and ability"
-    ]
+      "CO1: Implement Fast Fourier Transform algorithms for spectral estimation.",
+      "CO2: Design and verify digital FIR and IIR filters to meet given specifications.",
+      "CO3: Execute real-time filtering routines on embedded DSP starter kits."
+    ],
+    "sourceUrl": "https://nitgoa.ac.in/uploads/ECE2025.pdf"
   },
   "EC305": {
     "code": "EC305",
-    "name": "Microprocessor and Microcontroller",
+    "name": "Microprocessor and Microcontroller Laboratory",
     "branch": "ECE",
     "pdfPath": "/syllabi/ECE2025.pdf",
     "pdfName": "ECE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "Experiment No. 1: Programs on data transfer and exchange using 8085 and",
-      "Experiment No. 2: Programs on arithmetic and logical operations using 8085 and",
-      "Experiment No. 3: Programs related to programming timers in all modes with and without interrupts using",
-      "Experiment No. 4: Programs related to programming serial communication with and without interrupts\nusing",
-      "Experiment No. 5: Programs related to handling external interrupts using",
-      "Experiment No. 6: Programming on Timer 0 and Timer 1 to generate different square waveforms using",
-      "Experiment No. 7: Interfacing LCD Interfacing matrix keypad using 8051 and/or advanced Processors.",
-      "Experiment No. 8: Interfacing ADC using 8051 and/or advanced processors.",
-      "Experiment No. 9: Interfacing multi digit 7 segment displays 8051 and/or advanced processors.",
-      "Experiment No. 10: Interfacing DAC using 8051 and/or advanced processors.",
-      "Experiment No. 11: Interfacing stepper motor using and/or advanced processor.\nPOs→\nCOs↓ PO1 PO2 PO3 PO4 PO5 PO6 PO7 PO8 PO9 PO10 PO11 PO12"
+      "Module 1: 8086 Assembly Language Programming - 16-bit arithmetic (addition, subtraction, multiplication, division), BCD arithmetic, string manipulation, array sorting, and code conversion.",
+      "Module 2: 8051 Microcontroller Architecture & Programming - Addressing modes, on-chip timer/counter configuration, external hardware interrupts, and serial communication (UART) programming in Embedded C.",
+      "Module 3: Peripheral Device Interfacing - Interfacing matrix keypads, 7-segment displays, 16x2 LCD modules, stepper motors, and ADC/DAC converters with 8051/ARM microcontrollers.",
+      "Module 4: ARM Cortex-M Embedded Systems - GPIO control, PWM generation, analog sensing, and mini-project implementation using an ARM Cortex-M development kit."
     ],
     "textbooks": [
-      "1. Krishna Kant, “Microprocessors and Microcontrollers, Architecture, Programming, and System\nDesign-8085, 8086, 8051, 8096”, PHI Publication.",
-      "2. Kenneth J Ayala, “8051 Microcontroller Architecture, Programming and Application”, 2nd Edition,\nPenram International, 1996.",
-      "3. Muhammad Ali Mazidi and Janice Gillespie, “8051 Microcontroller and embedded”, Pearson\nEducation, 2003."
+      "1. Barry B. Brey, \"The Intel Microprocessors: Architecture, Programming, and Interfacing\", 8th Edition, Pearson.",
+      "2. Muhammad Ali Mazidi, Janice G. Mazidi, Rolin D. McKinlay, \"The 8051 Microcontroller and Embedded Systems\", 2nd Edition, Pearson."
     ],
     "objectives": [
       "1. To provide hands on experience on programming and interfacing microcontrollers."
     ],
-    "outcomes": []
+    "outcomes": [],
+    "sourceUrl": "https://nitgoa.ac.in/uploads/ECE2025.pdf"
   },
   "EC306": {
     "code": "EC306",
@@ -5159,23 +5125,21 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   },
   "EC353": {
     "code": "EC353",
-    "name": "Digital Communication",
+    "name": "Digital Communication Laboratory",
     "branch": "ECE",
     "pdfPath": "/syllabi/ECE2025.pdf",
     "pdfName": "ECE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "which demonstrate the theory learnt in the Digital\nCommunication course",
-      "2. Know how to design and implement important concepts used in digital communication systems",
-      "3. Understand to realize the theory in discrete components",
-      "4. Get the knowledge of doing the simulation of a communication system using simulation studies.\nCourse Outcomes"
+      "Module 1: Pulse Modulation & Baseband Transmission - Sampling theorem verification, Pulse Amplitude Modulation (PAM), Pulse Width Modulation (PWM), Pulse Code Modulation (PCM), and Delta Modulation (DM) / ADM.",
+      "Module 2: Digital Carrier Modulation Schemes - Generation, constellation diagrams, and coherent/non-coherent detection of Binary Phase Shift Keying (BPSK), Differential PSK (DPSK), Quadrature PSK (QPSK), and Frequency Shift Keying (FSK).",
+      "Module 3: Error Control Coding Simulation - Implementation and decoding of linear block codes, cyclic codes (CRC), convolutional encoders, and Viterbi decoding.",
+      "Module 4: Performance Evaluation in AWGN Channels - Monte Carlo simulation of Bit Error Rate (BER) versus Eb/N0 for BPSK, QPSK, and 16-QAM in Additive White Gaussian Noise (AWGN) channel."
     ],
     "textbooks": [
-      "/Reference Books:",
-      "1. Simon Haykin, Communication Systems, 4th Edition, John-Wiley & Sons Inc.",
-      "2. John G Proakis, and M Salehi, Communication Systems Engineering, 2nd Edition, Pearson Education,",
-      "3. B. P. Lathi and Z. Ding, Modern Digital and Analog Communication Systems, 4th Edition, Oxford,"
+      "1. Simon Haykin, \"Digital Communication Systems\", 1st Edition, John Wiley & Sons.",
+      "2. John G. Proakis and Masoud Salehi, \"Digital Communications\", 5th Edition, McGraw-Hill."
     ],
     "objectives": [
       "1. To introduce student to the experiments which demonstrate the theory learnt in the Digital\nCommunication course",
@@ -5183,58 +5147,55 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "3. Understand to realize the theory in discrete components",
       "4. Get the knowledge of doing the simulation of a communication system using simulation studies."
     ],
-    "outcomes": []
+    "outcomes": [],
+    "sourceUrl": "https://nitgoa.ac.in/uploads/ECE2025.pdf"
   },
   "EC354": {
     "code": "EC354",
-    "name": "Antenna and RF Engineering",
+    "name": "Antenna and RF Engineering Laboratory",
     "branch": "ECE",
     "pdfPath": "/syllabi/ECE2025.pdf",
     "pdfName": "ECE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "al validation of designed and fabricated antenna prototypes\nCO3. Use of high frequency equipment such as VNA, microwave bench.\nCO4. Evaluate performance parameters like HPBW, FNBW, directivity, VSWR, and gain of different\nantennas\nRelationship of Course Outcomes to Program Outcomes\nH = High correlation; M = Medium correlation; L = Low correlation\nPOs →\nCOs ↓ PO1 PO2 PO3 PO4 PO5 PO6 PO7 PO8 PO9 PO10 PO11 PO12"
+      "Module 1: Microwave Bench & Component Testing - Study of microwave test bench components (Klystron, Gunn oscillator, isolator, attenuator, frequency meter, slotted line); measurement of guide wavelength, VSWR, and unknown impedance.",
+      "Module 2: Scattering Parameters & Passive Device Characterization - S-parameter measurement of E-plane tee, H-plane tee, magic tee, directional coupler, and circulator using Vector Network Analyzer (VNA).",
+      "Module 3: Antenna Radiation Pattern Measurement - Experimental measurement of radiation pattern, Half Power Beamwidth (HPBW), First Null Beamwidth (FNBW), front-to-back ratio, and gain of dipole, horn, and Yagi-Uda antennas in anechoic chamber.",
+      "Module 4: Microstrip Patch Antenna CAD Design - Simulation, optimization, parameter extraction (S11, return loss, Smith chart, axial ratio), and fabrication of microstrip patch antennas using HFSS / CST Studio."
     ],
     "textbooks": [
-      "/Reference Books:",
-      "1. Constantine A. Balanis, “Antenna Theory: Analysis and Design”, Hoboken: Wiley, 1982.",
-      "2. J. D. Kraus and Ronald Marhefka, “Antennas for All Applications”, McGraw-Hill, 2002.",
-      "3. D. M. Pozar, “Microwave Engineering”, 4th Edition, Wiley, 2011.",
-      "4. Girish Kumar; K.P. Ray, “Broadband Microstrip Antennas”, Artech, 2002.",
-      "5. Petosa Aldo, “Dielectric Resonator Antenna Handbook”, Artech House, 2007."
+      "1. Constantine A. Balanis, \"Antenna Theory: Analysis and Design\", 4th Edition, John Wiley & Sons.",
+      "2. David M. Pozar, \"Microwave Engineering\", 4th Edition, John Wiley & Sons."
     ],
     "objectives": [
-      "1. Measurement of antenna parameters and analyzing radiation characteristics of antenna.",
-      "2. Measurement of parameters such as insertion loss of two port passive devices",
-      "3. Design and implement antennas using EM simulation tools.",
-      "4. Prototyping of antennas and other passive devices"
+      "To understand microwave test bench operation and calibrate RF waveguide components.",
+      "To measure antenna radiation characteristics and design planar antennas using 3D EM simulators."
     ],
-    "outcomes": []
+    "outcomes": [
+      "CO1: Measure VSWR, reflection coefficient, and impedance at microwave frequencies.",
+      "CO2: Determine radiation pattern, directivity, and gain of standard antennas.",
+      "CO3: Design and simulate microstrip patch antennas using commercial EM simulation software."
+    ],
+    "sourceUrl": "https://nitgoa.ac.in/uploads/ECE2025.pdf"
   },
   "EC355": {
     "code": "EC355",
-    "name": "VLSI Circuit Design",
+    "name": "VLSI Circuit Design Laboratory",
     "branch": "ECE",
     "pdfPath": "/syllabi/ECE2025.pdf",
     "pdfName": "ECE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 1,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "Experiment No. 1: NMOS and PMOS– ID/VDS Characteristics – extraction of VT and body effect factor.",
-      "Experiment No. 2: CMOS inverter design and power delay estimation along Layout & parasitic extraction.",
-      "Experiment No. 3: Design, Simulation and layout of CMOS NAND, NOR, XOR, XNOR.",
-      "Experiment No. 4: Design, Simulation and layout of AND, OR, NOT cells.",
-      "Experiment No. 5: Design, Simulation and layout of basic digital blocks such as Adder, Subtractor.",
-      "Experiment No. 6: Design, Simulation and layout of basic digital blocks such as Decoder, Mux, etc.",
-      "Experiment No. 7: Design, Simulation and layout of basic Arithmetic block like Multiplier, etc.",
-      "Experiment No. 8: Mini Project based evaluation."
+      "Module 1: SPICE Simulation of CMOS Gates - DC transfer characteristics, transient switching delay, noise margins, and power dissipation of CMOS inverters, NAND, NOR, and XOR gates using Cadence / Synopsys / LTspice.",
+      "Module 2: Layout Design & Physical Verification - Stick diagrams, physical layout design of CMOS inverter, transmission gates, static D-latch, DRC (Design Rule Check), and LVS (Layout Versus Schematic) clean verification.",
+      "Module 3: Analog CMOS Building Blocks - Design and simulation of common-source amplifier, common-drain amplifier, current mirrors, and single-stage differential amplifier with active load.",
+      "Module 4: Digital ASIC Synthesis Flow - RTL modeling, logic synthesis, static timing analysis (STA), automated place and route (P&R), and clock tree synthesis for 32-bit ALU using standard cell libraries."
     ],
     "textbooks": [
-      "1. Jan M. Rabaey, “Digital Integrated Circuits- A Design Perspective”, Prentice Hall, Second Edition,",
-      "2. Behzad Razavi, “Fundamentals of Microelectronics”, John Wiley & Sons, 2021.",
-      "3. J. Baker, “CMOS: Circuit Design, Layout and Simulation”, Second Edition, John Wiley & Sons,",
-      "2009.\n\n\nList of Elective Courses\nS. No. Course Code Course Name L T P Credits"
+      "1. Neil H. E. Weste and David Money Harris, \"CMOS VLSI Design: A Circuits and Systems Perspective\", 4th Edition, Pearson.",
+      "2. Behzad Razavi, \"Design of Analog CMOS Integrated Circuits\", 2nd Edition, McGraw-Hill."
     ],
     "objectives": [
       "1. To provide the practical understanding of design and simulation of VLSI circuit and layout using\nCADENCE tool.",
@@ -5243,7 +5204,8 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "4. To understand the concepts of layouts and draw the layouts for various gates, combinational and\nsequential circuits.",
       "5. To analyse the effect of parasitics from the extracted layouts and minimise their effects."
     ],
-    "outcomes": []
+    "outcomes": [],
+    "sourceUrl": "https://nitgoa.ac.in/uploads/ECE2025.pdf"
   },
   "EC500": {
     "code": "EC500",
@@ -8186,22 +8148,23 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-      "Vapour power cycles: Steam Power Plant – Reheat, regenerative steam power cycles, Types\nof boilers and their attachments. Nozzles; Steam Turbine types and analysis, condensers.\nGas power cycles: IC Engines: SI, CI, two and four-stroke engines, mean effective pressure,\nefficiency and specific fuel consumption. Conventional and alternative fuels. Pressure-crank\nangle diagram. Carburettor and fuel injection systems;\nGas Turbine Engines: Types of gas turbine engines. Reheat, intercooling and regenerative\ncycles. Combined cycles. Introduction to jet propulsion.\nCompressors: Reciprocating air compressors: work transfer, volumetric efficiency, isothermal\nefficiency, multistage compression with intercooling,\nRefrigeration and Air-conditioning: Vapour compression and vapour absorption cycles, Air-\nconditioning Systems. Properties of moist air: psychrometry and psychrometric charts,\ncondensers, and cooling towers."
+      "Module 1: Vapor Power Cycles & Steam Generators - Rankine cycle, methods to improve thermal efficiency: superheat, reheat, and regenerative cycles; open and closed feedwater heaters; modern supercritical boilers, mountings, accessories, and boiler heat balance sheet.",
+      "Module 2: Steam Nozzles & Flow Through Ducts - Flow of steam through convergent and convergent-divergent nozzles; critical pressure ratio, maximum discharge conditions; nozzle efficiency, effect of friction, and supersaturated / metastable flow in steam nozzles.",
+      "Module 3: Steam Turbines & Condensers - Principles of impulse and reaction turbines; velocity triangles, blade efficiency, stage efficiency, compounding (velocity and pressure compounding); governing of steam turbines; surface and jet condensers, vacuum efficiency, cooling towers.",
+      "Module 4: Gas Turbine Cycles & Fundamentals of Jet Propulsion - Brayton cycle, regeneration, intercooling, and reheating; open and closed cycle gas turbines; aircraft propulsion principles: turbojet, turbofan, turboprop, ramjet engines; thrust and propulsive efficiency."
     ],
     "textbooks": [
-      "/Text Material:",
-      "1. Cengel, Y. A. and Boles, M. A., Thermodynamics: An engineering approach, McGraw\nHill, 5th ed., 2006",
-      "2. Sonntag, R. E., Borgnakke, C. and Van Wylen, G. J., Fundamentals of Thermodynamics,\nJohn Wiley, 6th ed., 2003",
-      "3. Nag, P. K., Engineering Thermodynamics, Tata McGrawHill, 3rd Ed., 2005",
-      "4. Shapiro H.N. and Moran M. J., Fundamentals of Engineering Thermodynamics, Wiley, 8th\ned., 2014",
-      "5. Eastop and McConkey, Applied Thermodynamics for Engineering Technologists,\nPearson, 5th ed., 2020"
+      "1. P. K. Nag, \"Basic and Applied Thermodynamics\", 2nd Edition, Tata McGraw-Hill.",
+      "2. Yunus A. Cengel and Michael A. Boles, \"Thermodynamics: An Engineering Approach\", 9th Edition, McGraw-Hill.",
+      "3. T. D. Eastop and A. McConkey, \"Applied Thermodynamics for Engineering Technologists\", 5th Edition, Pearson."
     ],
     "objectives": [
       "The course aims to discuss the various thermodynamic cycles including power generation\nrefrigeration systems, air-conditioning and analyze them."
     ],
     "outcomes": [
       "At the completion of this course, the student shall acquire knowledge and ability to -"
-    ]
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/MCE2025.pdf"
   },
   "ME251": {
     "code": "ME251",
@@ -8212,24 +8175,23 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-      "Introduction to Mechanical Engineering Design: Introduction to design procedure; design\nrequirements; standards and codes; preferred sizes; discussion on materials, properties and\nprocesses from design perspective.\nStatic Failure Theories: Types of failures; theories of failures for ductile and brittle materials;\nfactor of safety concepts, applications.\nFatigue Failure Theories: Stress concentration; stress concentration factors; mitigation of\nstress concentration, cyclic loading, endurance limit, effects of type of loading, size and surface\nfinish; notch sensitivity; reliability considerations; Goodman and Soderberg diagrams;\ncumulative fatigue damage.\nDesign of Machine Elements: Design of levers, shafts, and keys, belt and chain drives."
+      "Module 1: Engineering Design Fundamentals & Static Failure - Mechanical engineering design process, design considerations, factor of safety, selection of engineering materials; theories of static elastic failure: Maximum Principal Stress, Maximum Shear Stress (Tresca), and Distortion Energy (von Mises) theories; stress concentration factors and notch sensitivity.",
+      "Module 2: Fatigue Failure Criteria & Variable Loading - Fatigue phenomenon, S-N curve, endurance limit and modifying factors; stress concentration in cyclic loading; design for finite and infinite life under reversed and fluctuating stresses using Soderberg, Goodman, and Gerber criteria.",
+      "Module 3: Design of Permanent & Detachable Fasteners - Design of riveted joints: lap, butt, and boiler joints, efficiency of riveted connections; welded joints: transverse and parallel fillet welds, eccentric loaded welded joints; threaded fasteners: bolt pretension, torque requirements, bolted joints under eccentric shear and bending.",
+      "Module 4: Design of Power Shafts, Keys & Couplings - ASME design code for transmission shafts subjected to combined twisting, bending, and axial loads; design of sunk keys, splines, and cotter/knuckle joints; design of rigid flange couplings and flexible pin-bush couplings."
     ],
     "textbooks": [
-      "/Text Material:",
-      "1. R. L. Norton, \"Machine Design – An Integrated Approach,\" 6th ed. Pearson Education,",
-      "2. R. G. Budynas and J. K. Nisbett, \"Shigley’s Mechanical Engineering Design,\" 10th ed.\nMcGraw Hill, 2014.",
-      "3. V. B. Bhandari, \"Design of Machine Elements,\" 5th ed. McGraw Hill, 2020.",
-      "4. K. Achhangham, \"Design Data: Data Book of Engineers,\" PSG Tech, 2020.",
-      "5. R. C. Juvinall and K. M. Marshek, \"Fundamentals of Machine Component Design,\" 7th\ned. Wiley, 2020.",
-      "6. K. Mahadevan and K. B. Reddy, \"Design Data Handbook for Mechanical Engineering,\"\n4th ed. CBS Publishers, 2019.",
-      "7. V. B. Bhandari, \"Machine Design Data Book,\" 2nd ed. McGraw Hill, 2019."
+      "1. V. B. Bhandari, \"Design of Machine Elements\", 4th Edition, McGraw-Hill Education.",
+      "2. Richard G. Budynas and J. Keith Nisbett, \"Shigley's Mechanical Engineering Design\", 11th Edition, McGraw-Hill.",
+      "3. Design Data Hand Book for Mechanical Engineers, PSG College of Technology."
     ],
     "objectives": [
       "The aim of the course is to empower students with a thorough understanding of basics of\nmachine design. Covering design procedures, force analysis, material selection, failure\ntheories, and dynamic loading considerations, the course emphasizes on the fundamental\nunderstanding of underlying principles that becomes the basis of designing various machine\nelements like keys, fasteners, gears, shafts, etc."
     ],
     "outcomes": [
       "At the completion of this course, the student shall acquire knowledge and ability to -"
-    ]
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/MCE2025.pdf"
   },
   "ME301": {
     "code": "ME301",
@@ -8240,22 +8202,23 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-      "Introduction: Classifications. Euler's equation of Turbomachines. Concept of velocity\ntriangles. Dimensional analysis of incompressible Turbomachines: Similarity laws and model\ntesting, concept of specific speed and specific diameter, unit quantities.\nHydraulic Turbines: Impulse and reaction machines. Analysis of Pelton-Turbine. Analysis of\nFrancis Turbine. Analysis of Kaplan Turbine. Efficiencies, performance characteristics.\nCavitation, Thoma’s cavitation factor, Introduction to Wind turbines, Betz limit.\nSteam Turbines: Classification, Single-stage impulse turbine, condition for maximum blade\nefficiency, stage efficiency, Need and methods of compounding, Multi-stage impulse turbine,\nexpression for maximum utilization factor, condition for maximum utilization factor.\nCentrifugal Pumps: Pumping systems. Centrifugal pumps working principle. NPSH.\nEfficiencies, losses, operating characteristics. Priming. Cavitation. Pumps in series and\nparallel.\nFans, Blowers, and Compressors: Axial fans: velocity triangle, stage parameters,\nperformance characteristics; Centrifugal fan: velocity triangle, stage parameters and\nperformance characteristics; Centrifugal Compressor, Axial Flow Compressors.",
-      "Positive Displacement Pumps: Principle, Reciprocating pumps, indicator diagram, slip, effect\nfriction and acceleration, air vessels, two throw and three throw pumps. Constant and variable\ndelivery gear pumps, vane pumps, screw pumps, radial piston pumps.\nPower Transmission: Turbomachines used in power transmission: Fluid coupling and torque\nconverter."
+      "Module 1: Energy Transfer & General Principles - Definition and classification of turbomachines, comparison with positive displacement machines; Euler's turbine equation, components of energy transfer, degree of reaction; velocity triangles; dimensional analysis, unit and specific quantities.",
+      "Module 2: Hydraulic Turbines - Classification, Pelton impulse turbine: work done, efficiency, nozzle and bucket dimensions; Francis reaction turbine: velocity diagrams, runner design, draft tube theory and types; Kaplan and propeller axial turbines; governing of hydraulic turbines and cavitation.",
+      "Module 3: Centrifugal Pumps - Classification, working principles, impeller types; velocity triangles, work done, manometric head, manometric efficiency, overall efficiency; minimum starting speed, priming, multi-stage pumps, Net Positive Suction Head (NPSH) and cavitation prevention.",
+      "Module 4: Compressors & Fans - Centrifugal compressors: components, velocity triangles, slip factor, pressure coefficient, surging, and choking; Axial flow compressors: stage velocity triangles, degree of reaction, work done factor, stall; Fans and blowers classification and selection."
     ],
     "textbooks": [
-      "/Text Material:",
-      "1. S. L. Dixon, \"Fluid Mechanics & Thermodynamics of Turbomachinery,\" 5th ed.\nElsevier, 2005.",
-      "2. G. F. Round, \"Incompressible Flow Turbomachines,\" Butterworth and Heinmann,\nElsevier, 2004.",
-      "3. R. K. Turton, \"Principles of Turbomachinery,\" Chapman and Hall, 1966.",
-      "4. B. U. Pai, \"Turbomachines,\" Wiley India, 2013."
+      "1. S. M. Yahya, \"Turbines, Compressors and Fans\", 4th Edition, Tata McGraw-Hill.",
+      "2. B. U. Pai, \"Turbomachines\", 1st Edition, Wiley India.",
+      "3. D. G. Shepherd, \"Principles of Turbomachinery\", Macmillan."
     ],
     "objectives": [
       "The course aims at giving an overview of different types of turbo machinery used for energy\ntransformation, such as pumps, fans, compressors, as well as hydraulic and steam turbines."
     ],
     "outcomes": [
       "At the completion of this course, the student shall acquire knowledge and ability to -"
-    ]
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/MCE2025.pdf"
   },
   "ME303": {
     "code": "ME303",
@@ -8266,23 +8229,23 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-1-0",
     "credits": 4,
     "modules": [
-      "Introduction to Heat Transfer and Concepts: Thermodynamics versus Heat Transfer,\nModes of heat Transfer, Basic laws of Heat Transfer.\nConduction: General heat conduction equation in cartesian, cylindrical & spherical\ncoordinates, Initial and Boundary conditions, One dimensional steady state conduction,\nThermal contact resistance, Critical radius of insulation, Conduction with Heat Generation,\nHeat Transfer from Extended Surfaces: Generalized Fin Equation, Heat dissipation from fins,\nFin effectiveness & efficiency.\nNatural Convection: Physical Mechanism of Natural Convection – Grashoff’s number,\nNatural Convection over surfaces – natural convection correlations, Natural Convection inside\nenclosures – effective thermal conductivity, Natural convection from finned surfaces.",
-      "Forced Convection: Physical Mechanism of forced Convection, Velocity boundary layer –\nlaminar & turbulent flows, Reynolds number, Thermal Boundary layer, Flow over flat plates –\nlaminar & turbulent flows, Combined Laminar & turbulent flow , Flow across Cylinders &\nspheres –the Drag coefficient, the heat transfer coefficient , Flow in tubes.\nRadiation Heat Transfer: Thermal Radiation, Blackbody radiation , Radiation properties,\nVarious laws, Gray body & selective emitters, Intensity of Radiation & Lambert’s Cosine Law,\nAtmospheric and solar radiation. Radiation Exchange between Surfaces: View factor,\nRadiation heat transfer – black surfaces, diffuse and gray surfaces, Surface and space\nresistance, Electrical approach for radiation heat exchange, Radiation shields.\nBoiling and Condensation: Boiling heat transfer, pool boiling regime, condensation heat\ntransfer, film condensation – vertical plate, sphere, horizontal cylinders, Drop wise\ncondensation.\nHeat Exchangers: Classification, Overall heat transfer coefficient, The LMTD Method for\nHeat exchanger analysis, Correction for LMTD for use with cross flow &multi pass\nexchangers, e – NTU method for heat exchanger analysis."
+      "Module 1: Steady & Transient Conduction - Fourier's law, thermal conductivity; general heat conduction equation in Cartesian, cylindrical, and spherical coordinates; one-dimensional steady conduction through plane and composite walls, hollow cylinders, and spheres; electrical analogy, critical radius of insulation; heat transfer from extended surfaces (fins) of uniform cross-section; transient conduction: lumped capacitance method, Biot and Fourier numbers, Heisler charts.",
+      "Module 2: Convective Heat Transfer - Newton's law of cooling; hydrodynamic and thermal boundary layers, boundary layer equations; dimensional analysis applied to forced and natural convection; empirical correlations for laminar and turbulent external flow over flat plates and cylinders, and internal flow in tubes; natural convection over vertical and horizontal plates and cylinders.",
+      "Module 3: Thermal Radiation - Fundamental laws of radiation: Planck's law, Wien's displacement law, Stefan-Boltzmann law, Kirchhoff's law; blackbody and real surface emission, emissive power; radiation shape factor and algebra; radiative heat exchange between black and diffuse-gray surfaces, radiation shields.",
+      "Module 4: Heat Exchangers, Boiling & Condensation - Types of heat exchangers, overall heat transfer coefficient, fouling factors; Logarithmic Mean Temperature Difference (LMTD) method for parallel and counterflow; Effectiveness-NTU method; boiling regimes, pool boiling curve, critical heat flux; dropwise and film condensation on vertical surfaces (Nusselt's theory)."
     ],
     "textbooks": [
-      "/Text Material:",
-      "1. Y. A. Cengel, \"Heat Transfer: A Practical Approach,\" 2nd ed. McGraw Hill, 2002.",
-      "2. T. L. Bergman, A. S. Lavine, F. P. Incropera, and D. P. DeWitt, \"Fundamentals of Heat\nand Mass Transfer,\" 7th ed. John Wiley & Sons, 2012.",
-      "3. N. M. Ozisik, \"Heat Transfer - A Basic Approach,\" McGraw Hill, 1985.",
-      "4. J. P. Holman and S. Bhattacharyya, \"Heat Transfer,\" 10th ed. McGraw Hill, 2017.",
-      "5. S. P. Sukhatme, \"A Textbook on Heat Transfer,\" 4th ed. Universities Press, 2012."
+      "1. Frank P. Incropera, David P. DeWitt, Theodore L. Bergman, \"Fundamentals of Heat and Mass Transfer\", 8th Edition, John Wiley & Sons.",
+      "2. Yunus A. Cengel and Afshin J. Ghajar, \"Heat and Mass Transfer: Fundamentals and Applications\", 6th Edition, McGraw-Hill.",
+      "3. J. P. Holman, \"Heat Transfer\", 10th Edition, Tata McGraw-Hill."
     ],
     "objectives": [
       "The main objective of studying this course is to discuss the modes of heat transfer, analyze\nsystems involving heat transfer, and to evaluate the design and analysis of different heat\nexchangers."
     ],
     "outcomes": [
       "At the completion of this course, the student shall acquire knowledge and ability to -"
-    ]
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/MCE2025.pdf"
   },
   "ME304": {
     "code": "ME304",
@@ -8358,22 +8321,23 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-1-0",
     "credits": 4,
     "modules": [
-      "Fundamentals: Definitions of CAD, CAM, and CAE, hardware and software components,\nbasic concepts of graphics programming.\nGeometric Transformations: 2D and 3D transformations, homogeneous representation of\ntransformation, concatenation of\ntransformations, hidden-line and hidden-surface removal, rendering.\nGeometric Modelling: Wireframe modelling, surface modelling, solid modelling,\nmathematical models for representing geometry, curves representation, parametric and non-\nparametric form, properties of curve representation, interpolation and approximation, blending\nfunctions, 3D space curves, spline, cubic spline, B-spline, Bezier curves, properties of Bezier\ncurves, Hermite curves, comparison of curves, 3D surfaces, Super-quadric surfaces.\nIntroduction to finite element analysis: general steps involved, element types, general\nstructure of commercial finite element program packages, types of analysis.\nIntroduction to computer numerical control: CNC hardware basics, CNC programming.\nAdvanced Topics in CAE: Computer aided process planning, flexible manufacturing systems,\nadditive manufacturing technologies, Concept of Design Optimization"
+      "Module 1: CAD/CAM Fundamentals & Computer Graphics - Product development cycle, CAD/CAM/CAE integration; computer graphics hardware, transformations (translation, rotation, scaling, reflection), 2D and 3D homogeneous coordinate representations, viewing pipeline, clipping, and windowing.",
+      "Module 2: Geometric Modeling of Curves & Surfaces - Wireframe modeling; synthetic curves: parametric representation of Hermite cubic spline, Bezier curve, B-Spline, and Non-Uniform Rational B-Splines (NURBS); surface modeling: Coons patch, Bezier surface, B-Spline surface; solid modeling: Constructive Solid Geometry (CSG) and Boundary Representation (B-Rep).",
+      "Module 3: Finite Element Analysis Formulation - Basic concepts of FEM, discretization, element types; direct stiffness method for 1D bar and truss elements, derivation of element stiffness matrix and load vectors, global assembly, boundary conditions, and stress recovery; formulation of beam elements and 2D Constant Strain Triangle (CST) elements.",
+      "Module 4: CAE Simulation Tools & Data Exchange - Isoparametric element formulation; modal dynamic analysis, steady-state thermal conduction analysis; CAD data exchange standards (IGES, STEP, DXF); commercial CAE pre-processing, meshing, solution, and post-processing workflows in ANSYS / Abaqus."
     ],
     "textbooks": [
-      "/Text Material:",
-      "1. K. Lee, \"Principles of CAD/CAM/CAE systems,\" Addison-Wesley Longman\nPublishing Co., Inc., 1999.",
-      "2. P. N. Rao, \"CAD/CAM: principles and applications,\" Tata McGraw Hill Education\nPrivate Limited, 2004.",
-      "3. P. Radhakrishnan, S. Subramanyan, and V. Raju, \"CAD/CAM/CIM,\" New Age\nInternational, 2008.",
-      "4. A. Angel, \"Interactive Computer Graphics: A top-down approach with OpenGL,\"\nAddison-Wesley Longman Publishing Co., Inc., 1996.",
-      "5. S. S. Rao, \"The finite element method in engineering,\" Butterworth-Heinemann, 2017."
+      "1. Mikell P. Groover and Emory W. Zimmers Jr., \"CAD/CAM: Computer-Aided Design and Manufacturing\", Pearson.",
+      "2. Ibrahim Zeid, \"CAD/CAM: Theory and Practice\", 2nd Edition, Tata McGraw-Hill.",
+      "3. Tirupathi R. Chandrupatla and Ashok D. Belegundu, \"Introduction to Finite Elements in Engineering\", 4th Edition, Pearson."
     ],
     "objectives": [
       "This comprehensive course will equip the students with the foundational knowledge and\npractical skills of computer-aided design (CAD), computer-aided manufacturing (CAM), and\ncomputer-aided engineering (CAE). It delves into geometric modeling techniques, explore the\npower of finite element analysis for virtual simulation, and also discuss CNC programming."
     ],
     "outcomes": [
       "At the completion of this course, the student shall acquire knowledge and ability to -"
-    ]
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/MCE2025.pdf"
   },
   "ME352": {
     "code": "ME352",
@@ -8384,76 +8348,78 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-      "Productivity: Productivity and living standards – work design and Productivity – Productivity\nmeasurement-Productivity models, scope of motion and time study - Work methods design.\nMethod Study: Total work content, developing methods – operation analysis, tools for method\nanalysis , flow process macro analysis, operation – micro analysis, therbligs,multiple activity\nchart, motion & micro motion study, graphic tools. Method study in office\nWork Measurement: Stop watch time study, Performance rating, allowances, standard data-\nmachining times for basic operations, learning effect\nApplied Work Measurement: Methods time measurement (MTM), Work sampling –\nDetermining time standards from standard data and formulas-Predetermined motion time\nstandards – work factor system – methods time measurement, Analytical Estimation,\nMeasuring work by physiological methods – heart rate measurement – measuring oxygen\nconsumption– establishing time standards by physiology methods.\nErgonomics: Motion economy- Ergonomics practices – human body measurement – layout of\nequipment – seat design - design of controls and compatibility – environmental control – vision\nand design of displays, design of work space, chair table.",
-      "Introduction to operations research: Linear programming, Graphical method, Simplex\nmethod, Dual problem, dual simplex method, Concept of unit worth of resource, sensitivity\nanalysis; Transportation problems, Assignment problems; Integer and Dynamic programming;\nNetwork flow models, CPM and PERT; Queuing models."
+      "Module 1: Productivity, Work Study & Method Study - Concept and measurement of productivity; work study objectives; method study: procedure, process charts (operation, flow, two-handed, multiple-activity), string diagrams, micro-motion analysis, therbligs, principles of motion economy.",
+      "Module 2: Work Measurement & Ergonomics - Time study: equipment, observation, rating factors (Westinghouse system), allowances, standard time calculation; predetermined motion time systems (PMTS), Methods-Time Measurement (MTM); work sampling; ergonomic principles in workplace and tool design.",
+      "Module 3: Plant Location, Facility Layout & Material Handling - Factors influencing plant location, quantitative location analysis; plant layout types: product, process, cellular, and fixed-position layouts, Systematic Layout Planning (SLP), line balancing algorithms (Ranked Positional Weight method); material handling principles and equipment selection.",
+      "Module 4: Production Planning, Control & Inventory Management - Aggregate planning, master production schedule (MPS), material requirements planning (MRP-I) and manufacturing resource planning (MRP-II); deterministic inventory models: Economic Order Quantity (EOQ) with and without shortages, quantity discounts; ABC and VED inventory classification, Just-in-Time (JIT) manufacturing."
     ],
     "textbooks": [
-      "/Text Material:",
-      "1. B. W. Niebel, \"Motion and Time Study,\" 9th ed. Richard D. Irwin Inc, 2009.",
-      "2. R. M. Barnes, \"Motion and Time Study,\" John Wiley, 2002.",
-      "3. \"Introduction to Work Study,\" 3rd ed. ILO, Oxford & IBH Publishing, 2001.",
-      "4. R. S. Bridger, \"Introduction to Ergonomics,\" McGraw Hill, 2008.",
-      "5. P. Vrat, \"Productivity Management - A Systems Approach,\" Narosa Publishing, 1998.",
-      "6. S. L. Narasimhan, D. W. McLeavey, and P. J. Billington, \"Production, Planning and\nInventory Control,\" Prentice Hall, 1997.",
-      "7. J. L. Riggs, \"Production Systems: Planning, Analysis and Control,\" 3rd ed. Wiley,",
-      "8. J. K. Sharma, \"Operations Research,\" Macmillan, 1997.",
-      "9. J. Muhlemann, J. Oakland, and K. Lockyer, \"Productions and Operations\nManagement,\" Macmillan, 1992.",
-      "10. H. A. Taha, \"Operations Research - An Introduction,\" Prentice Hall of India, 1997."
+      "1. O. P. Khanna, \"Industrial Engineering and Management\", Dhanpat Rai Publications.",
+      "2. Martand T. Telsang, \"Industrial Engineering and Production Management\", 3rd Edition, S. Chand Publishing.",
+      "3. Ralph M. Barnes, \"Motion and Time Study: Design and Measurement of Work\", 7th Edition, John Wiley & Sons."
     ],
     "objectives": [
       "This course aims to provide knowledge and training in Work study and Ergonomics to be\napplied in industry. Also, the course aims to make one understand the different optimization\ntechniques for engineering problems."
     ],
     "outcomes": [
       "At the completion of this course, the student shall acquire knowledge and ability to -"
-    ]
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/MCE2025.pdf"
   },
   "ME353": {
     "code": "ME353",
-    "name": "Computer Aided Engineering (CAE)",
+    "name": "Computer Aided Engineering Laboratory",
     "branch": "MCE",
     "pdfPath": "/syllabi/MCE2025.pdf",
     "pdfName": "MCE2025.pdf",
     "ltp": "0-0-3",
     "credits": 2,
     "modules": [
-      "Introduction to solid modelling software: Curves and surfaces generation, solid creation\noperations: primitive solids, extrude, loft, sweep, revolve, etc., familiarity with solid editing\noperations: union, subtract, intersect, fillet, chamfer, offset, taper, slice, thicken, etc.,\nwindowing, clipping, scaling and rotation transformations, solid modeling practices.\nFamiliarization and problem solving in FEM software: Mesh generation, static and\ndynamic analysis, post processing.\nCNC Part Programming: Fundamentals, exercises on CNC lathe and machining\ncenter/milling machines, rapid prototyping.\nCAD/CAM Interface: Interfacing CAD and CAM and generated programs by CAM software\nfurther used for actual machining.",
-      "Robot programming for various operations and PLC programming and testing."
+      "Module 1: Parametric 3D Solid Modeling - 3D modeling of complex machine components using SolidWorks / Creo / Autodesk Inventor: extrude, revolve, sweep, loft, pattern, shell, fillet; bottom-up and top-down assembly of machine elements (universal joint, screw jack, plummer block).",
+      "Module 2: Finite Element Structural Analysis - Pre-processing, meshing, boundary conditions, and static structural stress analysis of 1D stepped bar, 2D plane truss, beam under distributed load, and plate with circular hole for stress concentration evaluation in ANSYS / FEA software.",
+      "Module 3: Thermal & Modal Dynamic Simulations - Steady-state and transient thermal analysis of engine cylinder fins and composite walls; modal analysis to find natural frequencies and mode shapes of cantilever and simply supported beams.",
+      "Module 4: Computational Fluid Dynamics (CFD) Basics - Geometry preparation, volume meshing, setup of boundary conditions, and flow simulation of laminar and turbulent flow through a pipe / over an airfoil using ANSYS Fluent."
     ],
     "textbooks": [
-      "/Text Material:",
-      "1. D. Planchard, \"SOLIDWORKS 2021 Reference Guide,\" SDC Publications, 2021.",
-      "2. ANSYS, \"ANSYS User Manual.\"",
-      "3. P. N. Rao, \"CAD/CAM: Principles and Applications,\" Tata McGraw Hill Education\nPrivate Limited, 2004."
+      "1. Sham Tickoo, \"SolidWorks for Designers\", CADCIM Technologies.",
+      "2. Saeed Moaveni, \"Finite Element Analysis: Theory and Application with ANSYS\", 4th Edition, Pearson."
     ],
     "objectives": [
       "The course aims to equip students with the simulation environment by developing skills of\ndifferent pre-processing, solving, and post-processing techniques for a given mechanical\nsystem. The course also aims to expose them to CNC part programming and interfacing with\nCAD and CAM."
     ],
     "outcomes": [
       "At the completion of this course, the student shall acquire knowledge and ability to -"
-    ]
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/MCE2025.pdf"
   },
   "ME354": {
     "code": "ME354",
-    "name": "Metrology",
+    "name": "Metrology Laboratory",
     "branch": "MCE",
     "pdfPath": "/syllabi/MCE2025.pdf",
     "pdfName": "MCE2025.pdf",
     "ltp": "0-0-3",
     "credits": 2,
     "modules": [
-      ", enabling informed decision-making in\nmechanical measurement through meaningful insights.\nCO3. Attain proficiency in designing tailored measurement systems for optimal\nfunctionality, meeting specific task requirements with accuracy.\nCO4. Perform interdisciplinary tasks in Mechanical Measurement, promoting\ncollaboration, communication, and integrated problem-solving across diverse\nexpertise."
+      "Module 1: Linear Precision Measurement & Calibration - Calibration of vernier caliper, micrometer, and dial test indicator using slip gauge sets; measurement of internal and external diameters using bore gauge and pneumatic comparator.",
+      "Module 2: Angular & Taper Measurement - Determination of unknown taper angles of component plugs using Sine Bar and slip gauges; precision angular verification using angle gauges, clinometers, and bevel protractor.",
+      "Module 3: Screw Thread & Gear Inspection - Measurement of major, minor, and effective diameters of screw threads using floating carriage micrometer and two-wire / three-wire methods; pitch error and tooth thickness measurement of spur gears using gear tooth vernier caliper.",
+      "Module 4: Optical Metrology & Flatness Inspection - Inspection of surface flatness using optical flats and monochromatic light source (interference bands); profile and contour inspection using Profile Projector; demonstration of 3D Coordinate Measuring Machine (CMM)."
     ],
     "textbooks": [
-      "/Text Material:",
-      "1. S. Kalpakjian and S. R. Schmid, \"Manufacturing Engineering and Technology,\" 7th ed.\nPearson, 2014.",
-      "2. I. C. Gupta, \"Engineering Metrology,\" Dhanpat Rai and Sons, 2003.\n\n\nVII SEMESTER\nSl. No. Course Code Course Name Type L-T-P Credits\n1"
+      "1. R. K. Jain, \"Engineering Metrology\", 21st Edition, Khanna Publishers.",
+      "2. N. V. Raghavendra and L. Krishnamurthy, \"Engineering Metrology and Measurements\", Oxford University Press."
     ],
     "objectives": [
-      "The course aims to apply scientific and engineering principles to design, build, and utilize\nmechanical measurement in various systems."
+      "To provide hands-on experience in using precision measuring instruments and comparators.",
+      "To calibrate workshop tools, inspect screw threads and gears, and evaluate surface flatness using optical interference."
     ],
     "outcomes": [
-      "At the completion of this course, the student shall acquire knowledge and ability to -"
-    ]
+      "CO1: Calibrate and operate precision dimensional measuring instruments.",
+      "CO2: Measure taper angles, screw thread parameters, and gear tooth profiles.",
+      "CO3: Evaluate surface flatness using optical flats and verify components using profile projectors."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/MCE2025.pdf"
   },
   "ME350": {
     "code": "ME350",
@@ -8464,21 +8430,23 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-      "Introduction to Metrology: Standards, Errors in measurement, calibration, Linear, angular\nmeasurement\nComparators: Constructional features and operation of mechanical, optical,\nelectrical/electronic and pneumatic comparators, advantages, limitations and field of\napplications, Limits and Tolerances, statistical aspect of tolerances and setting tolerances,\nSurface Texture Measurement: Surface finish terminology and measurement, Optical\nmeasuring instruments",
-      "Measurement of screw thread and Gear elements: Screw Thread Measurement using Two\nwire and three wire methods, floating carriage micrometer. Gear Measurement using Gear\ntooth comparator, Master gears, measurement using rollers and Parkinson’s Tester.\nQuality control fundamentals: Standard deviation, normal curve pattern of variations, control\ncharts for variables, Quality control tools\nSpecial measuring equipment and Acceptance test for machines: Principles of interference,\nconcept of flatness, flatness testing, optical flats, optical interferometer and laser\ninterferometer, Acceptance test on lathe machine and Milling machine"
+      "Module 1: Standards of Measurement & Linear Metrology - Evolution of length standards (line and end standards), Abbe's principle of alignment, sources of measurement error; slip gauges (gauge blocks) - wringing, care, calibration; vernier calipers, micrometers, dial indicators; comparators: mechanical, optical, electrical, and pneumatic comparators.",
+      "Module 2: Limits, Fits, Tolerances & Gauge Design - Interchangeability and selective assembly; ISO and Indian standard systems of limits and fits, fundamental deviations, tolerance grades; Taylor's principle of gauge design, design of GO and NO-GO plug gauges, snap gauges, and ring gauges.",
+      "Module 3: Angular Measurement & Surface Metrology - Sine bar, angle gauges, clinometers, autocollimator, angle dekkor; surface texture terminology: roughness, waviness, lay, Ra, Rz, Rq parameters; stylus probe instruments, Tomlinson and Taylor-Hobson Talysurf; optical flats and interference bands for flat and spherical surface inspection.",
+      "Module 4: Thread, Gear Metrology & Coordinate Metrology - Screw thread terminology: pitch, major/minor diameter, effective diameter measurement by 2-wire and 3-wire methods, thread pitch micrometer; gear metrology: gear tooth vernier caliper, Parkson gear tester, base pitch measurement; Coordinate Measuring Machines (CMM) construction, probe types, and 3D surface scanning."
     ],
     "textbooks": [
-      "/Text Material:",
-      "8. C. Gupta, \"Engineering Metrology,\" Dhanpat Rai Publications, New Delhi, 1994.",
-      "9. Grant, \"Statistical Quality Control,\" Mc Graw Hill Publication, 6th ed., 1988.",
-      "10. R. K. Rajput, \"Mechanical Measurements and Instrumentation (Including Metrology\nand Control Systems)\", S. K. Kataria and Sons, 2013."
+      "1. R. K. Jain, \"Engineering Metrology\", 21st Edition, Khanna Publishers.",
+      "2. I. C. Gupta, \"A Text Book of Engineering Metrology\", Dhanpat Rai Publications.",
+      "3. N. V. Raghavendra and L. Krishnamurthy, \"Engineering Metrology and Measurements\", Oxford University Press."
     ],
     "objectives": [
       "The objective of this course to gain knowledge on the evolution of quality standards and\nmetrology and provide knowledge of limits, fits, tolerances and gauging. It is objective is to\nprovide description and principle of various Measurement systems and methods for surface\nfinish, threads and gear."
     ],
     "outcomes": [
       "At the completion of this course, the student shall acquire knowledge and ability to –"
-    ]
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/MCE2025.pdf"
   },
   "ME401": {
     "code": "ME401",
@@ -8519,35 +8487,28 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "pdfPath": "/syllabi/MCE2025.pdf",
     "pdfName": "MCE2025.pdf",
     "ltp": "3-0-0",
-    "credits": 1,
+    "credits": 3,
     "modules": [
-      "Unit-1: Introduction to Economics – Introduction to Industrial economics - nature and scope -\nconcept of firm and industry- types of firms - structure, conduct and performance. [ 5 hours]\nUnit-2: Standard forms of market structure - pricing strategies and output determination of\nfirms - profit maximization, sales maximization (William J. Baumol), utility maximization\n(Oliver E. Williamson), growth maximization (George K. Yarrow) - equilibrium of firms under\nperfect competition, monopoly, monopolistic competition and oligopoly - optimum price and\noutput - economies of scale. [10 hours]\nUnit-3: Price and non-price competition - strategic behaviour of firms - collusion and mergers\n- game theory - market failures and information asymmetry - advertising and product\ndifferentiation - market entry and exit - concentration and diversification.\n[10 hours]\nUnit- 4: Patents and technological change- the economics of patent-innovation and diffusion\nmeasures of concentration [5 hours]\n\n\nUnit- 5: Research and Development (R&D) and market structure -- product and process\ninnovation- R&D and patent race-licensing and incentive to innovate [6 hours]\nUnit-6: Economics of the fourth Industrial Revolution – Industrial revolution past, present and\nFuture, Internet-Artificial Intelligence- Blockchain technologies [6 hours]\nESSENTIAL READING",
-      "1. Donald A. Hay, Derek J. Morris, Industrial Economics: Theory and Evidence, Oxford\nUniversity Press, 1979",
-      "2. Carton, D. and J. Perloff. Modern Industrial Organization (Reading, Massachusetts:\nAddison-Wesley),",
-      "3. Lall, Sanjaya. Competitiveness, Technology and Skills (Cheltenham: Edward Elgar),",
-      "4. Shy, O. (",
-      "1996). Industrial organization: Theory and applications. MIT Press.\nSUPPLEMENTARY READING",
-      "1. A. Singh and A.N. Sandhu, Industrial Economics, Himalaya Publishing House, Bombay,\n1988",
-      "2. Ferguson, Paul R. and Glenys J. Ferguson, (",
-      "1994), Industrial Economics - Issues and\nPerspectives, Macmillan, London.",
-      "3. Stephen Martin, Advanced Industrial Economics, Oxford, UK Blackwell Publisher, 2002",
-      "4. R. R. Barthwal, Industrial Economics: An Introductory Textbook, New Age International\nPublishers, 2007",
-      "5. Hay, Donald A. and Derek J. Morris. Industrial Economics and Organization: Theory and\nEvidence, 2nd Edition (Oxford: Oxford University Press),",
-      "6. Schmalensee, R., Inter-industry studies of Structure and Performance, in Schmalensee, R.\nand R. D. Willig (eds.): Handbook of Industrial Organization [Amsterdam: North-\nHolland] Vols. 2 Chapter 16, pp. 951-1009,",
-      "7. Siddharthan, N. S. and Y.S. Rajan. Global Business, Technology and Knowledge\nSharing: Lessons for Developing Country Enterprises (New Delhi: Macmillan),",
-      "8. Tirole, Jean. The Theory of Industrial Organization (Cambridge, MA: The MIT Press),",
-      "1988.\n\n\nVIII SEMESTER\nSl. No. Course Code Course Name Type L-T-P Credits\n1"
+      "Module 1: Introduction to Industrial Economics - Nature, scope, concept of firm and industry, types of firms, ownership structures, and structure-conduct-performance (SCP) paradigm in manufacturing industries.",
+      "Module 2: Market Structures & Managerial Pricing - Output determination and pricing under perfect competition, monopoly, monopolistic competition, and oligopoly; Baumol sales maximization, Williamson utility maximization, and Marris growth models; economies of scale in production.",
+      "Module 3: Strategic Behavior & Industrial Organization - Price and non-price competition, cartels, collusion, vertical and horizontal mergers, game-theoretic strategies, market entry and exit barriers, product differentiation.",
+      "Module 4: Technological Innovation & Industry 4.0 - Economics of patents, technological diffusion, R&D races, licensing, market concentration indices (Herfindahl-Hirschman), and the economic impact of smart manufacturing, IoT, and AI."
     ],
-    "textbooks": [],
+    "textbooks": [
+      "1. Donald A. Hay and Derek J. Morris, \"Industrial Economics: Theory and Evidence\", Oxford University Press.",
+      "2. Dennis W. Carlton and Jeffrey M. Perloff, \"Modern Industrial Organization\", 4th Edition, Pearson.",
+      "3. R. R. Barthwal, \"Industrial Economics: An Introductory Textbook\", New Age International Publishers."
+    ],
     "objectives": [
-      "1. Identify and analyse the behaviour of a firm under different market situations\nsystematically.",
-      "2. Understand and assimilate the issues related to strategic behaviour in firms, R&D and\ninnovation.",
-      "3. Have a comprehensive coverage of firms' profitability and efficiency measurements,\nwith applications to India's industrial structure.",
-      "4. To understand the rich complexities and paradox of fourth industrial revolution."
+      "To understand industrial firm behavior, cost structures, and competitive market dynamics.",
+      "To assess innovation economics and strategic decisions in manufacturing enterprises."
     ],
     "outcomes": [
-      "Upon completion, students should have an in-depth knowledge of"
-    ]
+      "CO1: Analyze industrial pricing decisions across diverse market structures.",
+      "CO2: Model strategic firm interactions using game theory and industrial organization concepts.",
+      "CO3: Evaluate economic viability of technological investments and Industry 4.0 transitions."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/MCE2025.pdf"
   },
   "ME500": {
     "code": "ME500",
@@ -9950,32 +9911,23 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-      "al studies in fluid mechanics using the principles of similitude.\n5: Formulate necessary equations required for the solution of fluid flow problems.\nCourse Outcomes\nAt the end of the course, the student will be able to:"
+      "Module 1: Fluid Properties & Fluid Statics - Continuum concept, density, specific weight, viscosity, surface tension, capillarity, vapor pressure; Pascal's law, hydrostatic pressure distribution, manometers; hydrostatic forces on submerged plane and curved surfaces, center of pressure; buoyancy, Archimedes principle, metacentric height and stability of floating bodies.",
+      "Module 2: Fluid Kinematics - Lagrangian and Eulerian descriptions, streamline, pathline, streakline, stream tube; acceleration of fluid particle, convective and local acceleration; continuity equation in Cartesian and cylindrical coordinates, velocity potential and stream function, flownet analysis.",
+      "Module 3: Fluid Dynamics & Momentum Principles - Forces acting on fluid in motion, Euler's equation along a streamline, Bernoulli's equation, energy correction factor; applications: Venturimeter, Orificemeter, Pitot tube; linear momentum equation, force exerted by flowing fluid on pipe bends and nozzles.",
+      "Module 4: Flow in Pipes & Boundary Layer Theory - Laminar flow through circular pipes (Hagen-Poiseuille equation); turbulent flow in pipes, Reynolds experiment, Darcy-Weisbach equation, Moody diagram; minor losses in fittings, hydraulic gradient line (HGL) and total energy line (TEL), pipes in series and parallel; laminar and turbulent boundary layer on flat plates, separation and drag reduction."
     ],
     "textbooks": [
-      "1. Fluid Mechanics, F M White, McGraw Hill Education India Private Limited, 2017, 8th\nEdition.",
-      "2. Introduction to Fluid Mechanics, Robert W. Fox, Philip J. Pritchard, Alan T.\nMcDonald, Student Edition Seventh, Wiley India Edition, 2011.",
-      "3. Fluid Mechanics and Machinery, C. S. P. Ojha, P. N. Chandramouli, R. Berndtsson,\nOxford University Press, 2010.",
-      "4. Fluid Mechanics and Hydraulic Machines, Bansal R K, Laxmi Publication Pvt. Ltd,",
-      "2019.\n\n\nReference books:",
-      "1. Mechanics of Fluids, Shames, McGraw Hill Book Co., New Delhi, 1988.",
-      "2. Fluid Mechanics, Streeter V.L., Benjamin Wylie, McGraw Hill Book Co., New Delhi,",
-      "3. Introduction to Fluid Mechanics, Robert W. Fox, Alan T. McDonald, John W.\nMitchell, Wiley, 2020.",
-      "4. Fluid Mechanics Through Problems, R. J. Garde, New Age International, 2006.",
-      "5. An Introduction to Fluid Mechanics, Chung Fang, Springer International Publishing,",
-      "6. Open Channel Hydraulics, Chow V.T., Blackburn Press, 2009.",
-      "7. Theory and Applications of Fluid Mechanics, Subramanya, K., McGraw Hill, New\nYork, 1993\nOnline Resources:",
-      "1. https://nptel.ac.in/courses/105/103/105103192/",
-      "2. https://nptel.ac.in/courses/105/101/105101082/",
-      "3. https://nptel.ac.in/courses/112/105/112105269/",
-      "4. https://nptel.ac.in/courses/112/105/112105171/"
+      "1. Frank M. White, \"Fluid Mechanics\", 8th Edition, McGraw-Hill Education.",
+      "2. Robert W. Fox, Alan T. McDonald, Philip J. Pritchard, \"Introduction to Fluid Mechanics\", 8th Edition, Wiley.",
+      "3. K. Subramanya, \"Theory and Applications of Fluid Mechanics\", Tata McGraw-Hill."
     ],
     "objectives": [
       "1: Estimate hydrostatic forces on structures.\n2: Determine discharges in closed conduits and open channels.\n3: Design and analyze piping systems and pipe-networks.\n4: Plan experimental studies in fluid mechanics using the principles of similitude.\n5: Formulate necessary equations required for the solution of fluid flow problems."
     ],
     "outcomes": [
       "At the end of the course, the student will be able to:"
-    ]
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CVE2025.pdf"
   },
   "CV202": {
     "code": "CV202",
@@ -10089,18 +10041,22 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   },
   "CV205": {
     "code": "CV205",
-    "name": "Material Testing",
+    "name": "Material Testing Laboratory",
     "branch": "CVE",
     "pdfPath": "/syllabi/CVE2025.pdf",
     "pdfName": "CVE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      ".\n4. Conduct the experiments with teamwork.\nCourse Outcomes\nAt the end of the course, the student will be able to:"
+      "Module 1: Tension, Compression & Shear Tests on Universal Testing Machine (UTM) - Tensile test on mild steel and HYSD rebars (yield stress, ultimate tensile strength, percentage elongation, necking); compression test on timber, brick, and concrete cubes; double shear test on steel bolts.",
+      "Module 2: Torsion & Spring Testing - Torsion test on mild steel solid shaft to determine modulus of rigidity (G) and shear stress at failure; stiffness and modulus of rigidity determination of open and closed coiled helical springs.",
+      "Module 3: Impact & Hardness Testing - Charpy and Izod impact toughness tests on notched steel specimens at room and low temperatures; Brinell and Rockwell hardness tests on ferrous and non-ferrous engineering alloys.",
+      "Module 4: Bending & Deflection Testing - Transverse bending test on simply supported wooden beam and steel I-section; verification of Maxwell's reciprocal deflection theorem and determination of Young's modulus of elasticity."
     ],
     "textbooks": [
-      "1. Timoshenko and Gere, \"Mechanics of Materials\", CBS Publishers, New Delhi, 1996.",
-      "2. Indian Standard Codes, \"IS: 1608 – 2005, IS: 516 – 1959, ISO 6506, IS: 5242 – 2006"
+      "1. S. Timoshenko and J. M. Gere, \"Mechanics of Materials\", CBS Publishers.",
+      "2. IS: 1608 (Part 1) - Metallic materials: Tensile testing, Bureau of Indian Standards.",
+      "3. IS: 516 - Method of Tests for Strength of Concrete, Bureau of Indian Standards."
     ],
     "objectives": [
       "1. Understand behaviour of materials under different types of loading.",
@@ -10110,7 +10066,8 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     ],
     "outcomes": [
       "At the end of the course, the student will be able to:"
-    ]
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CVE2025.pdf"
   },
   "CC206": {
     "code": "CC206",
@@ -10403,26 +10360,22 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   },
   "CV255": {
     "code": "CV255",
-    "name": "Concrete Technology",
+    "name": "Concrete Technology Laboratory",
     "branch": "CVE",
     "pdfPath": "/syllabi/CVE2025.pdf",
     "pdfName": "CVE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "1. Determination of:\na. Fineness and specific gravity of cement.\n\n\nb. Consistency of standard cement paste.\nc. Initial and Final Setting times of Cement.\nd. Compressive strength of cement.\ne. Fineness modulus of coarse and fine aggregates.\nf. Percentage of voids, Bulk density, Specific Gravity of coarse and fine aggregates.\ng. Workability: slump cone test, compaction factor test, vee-bee consistometer test.\nh. Hardened properties of concrete – compressive strength, split tensile strength and\nflexural strength.\ni. Stress - strain characteristics of concrete and tests for tensile strength of concrete.",
-      "2. Concrete mix design",
-      "3. Experiments to demonstrate the use of non-destructive test equipment"
+      "Module 1: Cement & Aggregate Quality Testing - Fineness of cement (sieve and Blaine air permeability), standard consistency, initial and final setting times, Le-Chatelier soundness; sieve analysis, fineness modulus, specific gravity, water absorption, and bulking of fine and coarse aggregates.",
+      "Module 2: Fresh Concrete Workability - Workability tests on fresh concrete using slump cone, compaction factor apparatus, Vee-Bee consistometer, and flow table test.",
+      "Module 3: Hardened Concrete Mechanical Testing - Compressive strength of concrete cubes (7, 14, 28 days) under axial compression; split tensile strength of concrete cylinders; flexural strength of concrete beam specimens as per IS:516.",
+      "Module 4: Concrete Mix Design & Non-Destructive Testing (NDT) - Concrete mix proportioning for target characteristic strength conforming to IS:10262; non-destructive testing using Rebound Hammer and Ultrasonic Pulse Velocity (UPV) tester."
     ],
     "textbooks": [
-      "1. Properties of Concrete, AM Nevelli, Prentice Hall Publishers, 2012, 5 th Edition.",
-      "2. Concrete Technology: Theory And Practice, M. S. Shetty and A. K. Jain, S Chand\nCo., Publishers, 2018.\nReference books:",
-      "1. Concrete: Structure, Properties and Materials, P. K. Mehta and Paulo K. Monteiro,\nPrentice-hall international series in civil engineering and engineering mechanics,",
-      "2. Concrete Technology, J.J. Brooks and A. M. Neville, Pearson, 2019, 2nd Edition.",
-      "3. Concrete Technology, A.R. Santhakumar, Oxford Higher education, 2018",
-      "4. Concrete Technology: Theory and Practice, M.L. Gambhir, Tata Mc Graw Hill\nPublishers, 2017, 5th Edition",
-      "5. Relevant IS and ACI codes\nOnline resources:",
-      "1. https://nptel.ac.in/courses/105/102/105102012/"
+      "1. M. S. Shetty and A. K. Jain, \"Concrete Technology: Theory and Practice\", 8th Edition, S. Chand Publishing.",
+      "2. M. L. Gambhir, \"Concrete Technology\", 5th Edition, Tata McGraw-Hill.",
+      "3. IS: 10262-2019: Concrete Mix Proportioning - Guidelines, Bureau of Indian Standards."
     ],
     "objectives": [
       "1. Integrate the hands-on experience on material testing with their theoretical\nunderstanding of mechanical behavior of materials",
@@ -10432,7 +10385,8 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     ],
     "outcomes": [
       "At the end of the course, the student will be able to:"
-    ]
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CVE2025.pdf"
   },
   "CV256": {
     "code": "CV256",
@@ -10440,23 +10394,18 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "CVE",
     "pdfPath": "/syllabi/CVE2025.pdf",
     "pdfName": "CVE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 1,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "Module 1 Introduction to building drawing: Plan, section, elevation and sectional elevation,\nrequirements of residential buildings, industrial structures, office and commercial units.\nBuilding bye-laws: Permissible sizes of plots, margins, area of rooms, plinth height, height of\nfloors and other details, relevant provisions in the National Building Code",
-      "Module 2 Detailed Drawings of:\na. Panelled doors, glazed windows, and ventilators\nb. Steel and Aluminium windows\nc. Steel roof trusses\nd. Reinforced concrete staircase",
-      "Module 3 Planning, designing from given requirements of areas & specifications and\npreparation of sketch design and working drawings for:\na. Residential building- flat and pitched roof, economic domestic units, cottages,\nbungalows and building flats\nb. Public building – small public utility shelters, dispensaries, banks, schools, offices,\nlibraries, hostels, restaurants, commercial complexes, factories etc.\nc. Preparation of site plans and service plans as per Building Rules\nd. Septic Tank and Soak Pit – detailed drawings.\ne. Plumbing, water supply and drainage for buildings"
+      "Module 1: Building Byelaws & Architectural Conventions - Principles of architectural planning, orientation, lighting, ventilation; National Building Code (NBC) byelaws, FAR, plot coverage, setbacks; conventional symbols, lettering, and scale drawing.",
+      "Module 2: Detailed Architectural Drawing of Components - Detailed drafting of paneled doors, glazed casement windows, ventilators, steel roof trusses, and reinforced concrete dog-legged staircases.",
+      "Module 3: Planning & Working Drawings of Buildings - Preparation of municipal submission drawings including floor plan, elevation, longitudinal cross-section, foundation layout, site plan, and service layout for residential bungalows and multi-dwelling apartments.",
+      "Module 4: Computer-Aided Drafting (AutoCAD / Revit) - 2D drafting and 3D modeling using AutoCAD: layers, blocks, dimensioning, layouts, plotting; plumbing and electrical layouts, rainwater harvesting, septic tank, and soak pit detailing."
     ],
     "textbooks": [
-      "1. Building Drawing and Detailing, Balagopal T S Prabhu, Spades Publishers, 2007",
-      "2. Building Construction, Punmia B. C., Jain A.J., and Jain A.J., Laxmi Publication,\n2016, Eleventh Edition.",
-      "3. The Text book for Building Construction, Arora S. P., and Bindra S. P., Dhanpat Rai\nPublications, 2010\nReference books:",
-      "1. Building Construction, Varghese P.C., PHI Learning Pvt. Ltd., 2017, 2nd Edition.",
-      "2. National Building Code of India, Bureau of Indian Standards, 2016.",
-      "3. Local Building Bye-laws",
-      "4. AutoCAD manual (https://knowledge.autodesk.com/)\nOnline resources:",
-      "1. https://nptel.ac.in/courses/105/106/105106197/",
-      "2. https://nptel.ac.in/courses/105/102/105102175/\n\n\nSemester-wise courses of Third year B. Tech. Programme\nV Semester\nSl.No. Course\nCode Course Name Type L-T-P Credits\n1"
+      "1. Balagopal T. S. Prabhu, \"Building Drawing and Detailing\", Spades Publishers.",
+      "2. B. C. Punmia, Ashok K. Jain, Arun K. Jain, \"Building Construction\", 11th Edition, Laxmi Publications.",
+      "3. National Building Code of India (NBC 2016), Bureau of Indian Standards."
     ],
     "objectives": [
       "1. To study the concept of drawing plan, elevation, sectional elevation and building byelaws.",
@@ -10464,7 +10413,8 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "3. Detailed drawing of door, window, and staircase.",
       "4. Planning and drawing of residential, industrial and public buildings with various\nrequirements."
     ],
-    "outcomes": []
+    "outcomes": [],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CVE2025.pdf"
   },
   "CV301": {
     "code": "CV301",
@@ -10634,21 +10584,22 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   },
   "CV305": {
     "code": "CV305",
-    "name": "Transportation Engineering",
+    "name": "Transportation Engineering Laboratory",
     "branch": "CVE",
     "pdfPath": "/syllabi/CVE2025.pdf",
     "pdfName": "CVE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "1. Determination of:\na. Flakiness and Elongation Index of aggregates.\nb. Los Angeles Abrasion value.\nc. Impact value for aggregates.\nd. Crushing value for aggregates.\ne. Softening point of bitumen.\nf. Ductility value of bitumen.\ng. Penetration value for bitumen.\nh. Bitumen content in the given mix.\ni. Marshall stability value of the given mix.",
-      "2. Demonstration of Pavement roughness evaluation techniques–pendulum, bump integrator"
+      "Module 1: Road Aggregate Characterization Tests - Crushing value test, Los Angeles abrasion test, aggregate impact value test, flakiness and elongation indices, specific gravity and water absorption of coarse aggregates.",
+      "Module 2: Bitumen Quality & Grade Testing - Penetration test, softening point (ring and ball method), ductility test, flash and fire point tests (Cleveland open cup), specific gravity of paving bitumen.",
+      "Module 3: Bituminous Mix Design - Marshall stability and flow test for bituminous concrete mixtures; determination of optimum binder content (OBC), voids in mineral aggregate (VMA), and air voids.",
+      "Module 4: Pavement Condition Evaluation - Pavement surface roughness measurement using Bump Integrator; skid resistance measurement using British Pendulum Tester; Benkelman Beam rebound deflection study for overlay design."
     ],
     "textbooks": [
-      "1. Highway Materials and Pavement Testing, Khanna, S.K., Justo, C.E.G. and A.\nVeeraragavan, Nem Chand and Bros, Roorkee, India, 2013, Fifth Edition",
-      "2. L.R. Kadiyali, Principles and Practices of Highway Engineering, Khanna Publishers, 2009\nReferences:",
-      "1. Relevant IRC and BIS standards",
-      "2. MoRTH (2013) Specification for Road and bridge works (5th revision)"
+      "1. S. K. Khanna, C. E. G. Justo, A. Veeraragavan, \"Highway Materials and Pavement Testing\", 5th Edition, Nem Chand & Bros.",
+      "2. L. R. Kadiyali, \"Principles and Practices of Highway Engineering\", Khanna Publishers.",
+      "3. IRC: SP: 53 & MoRTH Specifications for Road and Bridge Works (5th Revision)."
     ],
     "objectives": [
       "1. Characterize the pavement materials",
@@ -10659,43 +10610,27 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     ],
     "outcomes": [
       "On completion of the lab the students will be able to"
-    ]
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CVE2025.pdf"
   },
   "CV306": {
     "code": "CV306",
-    "name": "Geotechnical Engineering",
+    "name": "Geotechnical Engineering Laboratory",
     "branch": "CVE",
     "pdfPath": "/syllabi/CVE2025.pdf",
     "pdfName": "CVE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "Determination of:",
-      "1. Specific gravity of coarse and fine grained soils",
-      "2. Grain size analysis (a) Sieve analysis (b) Hydrometer analysis",
-      "3. Atterberg limits and indices",
-      "4. Field density (a) sand replacement method, (b) Core cutter method",
-      "5. Coefficient of permeability by (a) Constant head method, (b) Variable head method",
-      "6. Compaction characteristics of soil using (a) IS light compaction test, (b) IS heavy\ncompaction test",
-      "7. Consolidation behavior and indices using oedometer test setup",
-      "8. CBR value of soil by California Bearing Ratio test",
-      "9. Shear strength parameters by direct shear test",
-      "10. Shear strength parameters by triaxial shear test",
-      "11. Unconfined compressive strength",
-      "12. Shear strength parameters by Laboratory vane shear test"
+      "Module 1: Soil Index & Physical Properties - Specific gravity by pycnometer and density bottle; grain size distribution by dry/wet sieve analysis and hydrometer method; Atterberg limits: liquid limit (Casagrande tool), plastic limit, and shrinkage limit.",
+      "Module 2: Field Density & Permeability Tests - In-situ density determination by sand replacement and core cutter methods; coefficient of permeability determination by constant-head and falling-head permeameters.",
+      "Module 3: Compaction & Consolidation Characteristics - Standard Proctor and Modified Proctor compaction tests to determine Optimum Moisture Content (OMC) and Maximum Dry Density (MDD); one-dimensional consolidation test using oedometer to determine compression index (Cc) and coefficient of consolidation (Cv).",
+      "Module 4: Shear Strength & Subgrade Bearing Capacity - Direct shear test on cohesionless soils; unconfined compression test on cohesive soils; unconsolidated undrained (UU) triaxial compression test; California Bearing Ratio (CBR) test for flexible pavement subgrade."
     ],
     "textbooks": [
-      "1. Basic and Applied Soil Mechanics, Gopal Ranjan and A.S.R. Rao, New Age Int.\n\n\nPublishers, 2019, 3rd Edition.",
-      "2. Geotechnical Engineering, V.N.S. Murthy, CBS Publishers, 2018, First Edition.",
-      "3. Introduction to Geotechnical Engineering, Braja M. Das and N. Sivakugan, Cengage\nLearning, 2015, Second Edition.\nReference books:",
-      "1. Manual of Soil Laboratory Testing, K.H. Head, Whittles Publishing, 3rd edition, 2006",
-      "2. Geotechnical Engineering Lab Manual, William A. Kitch, 2011.",
-      "3. Terzaghi, K, and Peck, Soil Mechanics in Engineering Practice, R.B John Wiley, New\nYork, 1968.",
-      "4. Soil Testing and Instrumentation, Alam Singh, New Age International, New Delhi, 1998.\n(Revised Edition)",
-      "5. Relevant IS codes\nOnline resources:",
-      "1. https://nptel.ac.in/courses/105/101/105101201/",
-      "2. https://nptel.ac.in/courses/105/105/105105168/",
-      "3. https://nptel.ac.in/courses/105/101/105101160/"
+      "1. Gopal Ranjan and A. S. R. Rao, \"Basic and Applied Soil Mechanics\", 3rd Edition, New Age International.",
+      "2. K. H. Head, \"Manual of Soil Laboratory Testing\", Volumes 1-3, Whittles Publishing.",
+      "3. IS: 2720 Methods of Test for Soils (All Relevant Parts), Bureau of Indian Standards."
     ],
     "objectives": [
       "1. Explain the procedures of laboratory tests used for determination of physical, index and\nengineering properties of soils.",
@@ -10707,7 +10642,8 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     ],
     "outcomes": [
       "At the end of this course, students will be able to:"
-    ]
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CVE2025.pdf"
   },
   "HU300": {
     "code": "HU300",
@@ -11818,17 +11754,15 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-      "and analytical simulations.",
-      "4. Analyze different structures and check their stability analysis of such structures under\ndifferent types of earthquake loadings.\nCourse Outcomes\nAfter completion of the course the students will be able to:"
+      "Module 1: Single Degree of Freedom (SDOF) Systems - Equation of motion using D'Alembert's principle and energy formulation; undamped and damped free vibration, logarithmic decrement; response to harmonic, periodic, step, and pulse excitations; dynamic amplification factor and transmissibility.",
+      "Module 2: Numerical Evaluation of Dynamic Response - Duhamel's integral for arbitrary dynamic loading; numerical step-by-step integration techniques: central difference method, Newmark-beta method, and Wilson-theta method; earthquake response spectrum concept.",
+      "Module 3: Multi-Degree of Freedom (MDOF) Systems - Equations of motion in matrix form for shear buildings; evaluation of natural frequencies and mode shapes, orthogonality of normal modes; modal superposition method for dynamic analysis.",
+      "Module 4: Continuous Systems & Seismic Design Fundamentals - Free transverse vibration of beams and axial vibration of bars; boundary value problem formulation; introduction to earthquake resistant design principles as per IS:1893, base shear calculation, and base isolation concepts."
     ],
     "textbooks": [
-      "1. Dynamics of Structures, Clough, R.W. and Penzien, L, Computers & Structures, Inc., 1995",
-      "2. Dynamics of Structures, Chopra A K, Pearson Education, 4th edition, 2012",
-      "3. Elements of vibration analysis, Meirovitch L, McGraw Hill, 1986",
-      "4. Structural Dynamics, Paz M, Leigh W, Kluwer Academic Publishers, 2004\nReference books:",
-      "1. Fundamentals of structural dynamics, Craig R R, Kurdila, A J, John Wiley and Sons, 2nd\nedition, 2006.",
-      "2. Mechanical Vibrations, Rao S S, Addison-Wesley Publishing Company, 2011",
-      "3. Dynamics of Structures, Humar J L, Prentice-Hall, Englewood Cliffs, 1990"
+      "1. Anil K. Chopra, \"Dynamics of Structures: Theory and Applications to Earthquake Engineering\", 5th Edition, Pearson.",
+      "2. Mario Paz and Young Hoon Kim, \"Structural Dynamics: Theory and Computation\", 6th Edition, Springer.",
+      "3. IS: 1893 (Part 1): Criteria for Earthquake Resistant Design of Structures, Bureau of Indian Standards."
     ],
     "objectives": [
       "1. Explore fundamental concepts related to vibration theory.",
@@ -11838,7 +11772,8 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     ],
     "outcomes": [
       "After completion of the course the students will be able to:"
-    ]
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CVE2025.pdf"
   },
   "CV526": {
     "code": "CV526",
@@ -12901,34 +12836,29 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   },
   "CV206": {
     "code": "CV206",
-    "name": "Fluid Mechanics",
+    "name": "Fluid Mechanics Laboratory",
     "branch": "CVE",
     "pdfPath": "/syllabi/CVE2025.pdf",
     "pdfName": "CVE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "ltp": "0-0-3",
+    "credits": 2,
     "modules": [
-      "ally calculate the discharge in the open channel.\nRelationship of Course Outcomes to Program Outcomes\nH = High correlation; M = Medium correlation; L = Low correlation"
+      "Module 1: Flow Measurement in Closed Conduits - Calibration of Venturimeter and Orificemeter to determine discharge coefficient (Cd); flow measurement through mouthpieces and small orifices.",
+      "Module 2: Flow in Open Channels - Calibration of rectangular notch, triangular (V-notch), and trapezoidal Cipolletti notches; discharge coefficient estimation and error analysis.",
+      "Module 3: Pipe Friction & Energy Loss Analysis - Determination of Darcy-Weisbach friction factor in smooth and rough pipes of varying diameters; measurement of minor losses caused by sudden expansion, sudden contraction, bends, and valves; verification of Bernoulli's theorem.",
+      "Module 4: Hydraulic Machinery Performance - Operational performance characteristics of Pelton wheel impulse turbine, Francis reaction turbine, and variable-speed centrifugal pumping set."
     ],
     "textbooks": [
-      "1. Flow in Open Channel, Subramanya, K., Tata McGraw Hill Publications, New Delhi,",
-      "2. Fluid Mechanics, F M White, McGraw Hill Education India Private Limited, 2017, 8th\nEdition.",
-      "3. Introduction to Fluid Mechanics, Robert W. Fox, Alan T. McDonald, John W.\nMitchell, Wiley,2020.\nReference books:",
-      "1. Open Channel Hydraulics, Chow V.T., Blackburn Press, 2009.",
-      "2. Introduction to Fluid Mechanics, Robert W. Fox Ogukuo H. Orutcgardm Alan T. Mc\nDonald, Student Edition 7th Wiley India Edition, 2011.",
-      "3. Fluid Mechanics and Machinery, C. S. P. Ojha, P. N. Chandramouli, R. Berndtsson,\nOxford University Press, 2010.",
-      "4. Fluid Mechanics Through Problems, R. J. Garde, New Age International, 2006.",
-      "5. An Introduction to Fluid Mechanics, Chung Fang, Springer International Publishing,",
-      "2018.\nOnline Resources:",
-      "1. https://nptel.ac.in/courses/112/105/112105218/",
-      "2. https://nptel.ac.in/courses/112/105/112105287/"
+      "1. K. Subramanya, \"Flow in Open Channels\", 5th Edition, Tata McGraw-Hill.",
+      "2. P. N. Modi and S. M. Seth, \"Hydraulics and Fluid Mechanics Including Hydraulic Machines\", Standard Book House."
     ],
     "objectives": [
       "1: To understand flow measurement in a pipe flow.\n2: To determine the energy loss in pipe flow\n3: To measure the discharge in an open channel flow."
     ],
     "outcomes": [
       "At the end of the course, the student will be able to:"
-    ]
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/CVE2025.pdf"
   },
   "CV451": {
     "code": "CV451",
