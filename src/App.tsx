@@ -945,75 +945,83 @@ export default function App() {
       />
 
       {/* Course Detail Modal */}
-      <CourseModal
-        courseCode={activeModalCourse}
-        courses={effectiveCourses}
-        branch={safeProfile.branch}
-        semester={safeProfile.semester}
-        onClose={() => setActiveModalCourse(null)}
-        onTrackAttendance={() => {
-          setActiveTab('attendance');
-          showToast(`Switched to Attendance Tracker for ${activeModalCourse}`);
-        }}
-        onScheduleTest={(courseCode) => {
-          setScheduleTestCourseCode(courseCode);
-          setActiveTab('tests');
-          showToast(`Scheduling new assessment for ${courseCode}`);
-        }}
-      />
+      {activeModalCourse && (
+        <CourseModal
+          courseCode={activeModalCourse}
+          courses={effectiveCourses}
+          branch={safeProfile.branch}
+          semester={safeProfile.semester}
+          onClose={() => setActiveModalCourse(null)}
+          onTrackAttendance={() => {
+            setActiveTab('attendance');
+            showToast(`Switched to Attendance Tracker for ${activeModalCourse}`);
+          }}
+          onScheduleTest={(courseCode) => {
+            setScheduleTestCourseCode(courseCode);
+            setActiveTab('tests');
+            showToast(`Scheduling new assessment for ${courseCode}`);
+          }}
+        />
+      )}
 
       {/* PWA Information & Local Installation Guide Modal */}
-      <PwaInstallGuideModal
-        isOpen={isPwaModalOpen}
-        onClose={() => setIsPwaModalOpen(false)}
-      />
+      {isPwaModalOpen && (
+        <PwaInstallGuideModal
+          isOpen={isPwaModalOpen}
+          onClose={() => setIsPwaModalOpen(false)}
+        />
+      )}
 
       {/* Administrator Control Panel Modal (Authorized for ashivamone@gmail.com) */}
-      <AdminPanelModal
-        isOpen={isAdminModalOpen}
-        onClose={() => setIsAdminModalOpen(false)}
-        currentUser={currentUser}
-        announcements={announcements}
-        timetableOverrides={allTimetableOverrides}
-        courseOverrides={cloudCourseOverrides}
-        onOverridesUpdated={refreshAllOverrides}
-        onTimetableUpdated={(branch, sem, day, slots) => {
-          const currentKey = safeProfile.semester <= 2
-            ? `SEC-${safeProfile.firstYearSection || 'A'}-${safeProfile.semester}`
-            : `${safeProfile.branch}-${safeProfile.semester}`;
-          const targetKey = sem <= 2 ? `SEC-A-${sem}` : `${branch}-${sem}`;
-          if (currentKey === targetKey) {
-            setCloudScheduleOverride((prev) => ({
-              ...(prev || activeBranchData.schedule),
-              [day]: slots,
+      {isAdminModalOpen && (
+        <AdminPanelModal
+          isOpen={isAdminModalOpen}
+          onClose={() => setIsAdminModalOpen(false)}
+          currentUser={currentUser}
+          announcements={announcements}
+          timetableOverrides={allTimetableOverrides}
+          courseOverrides={cloudCourseOverrides}
+          onOverridesUpdated={refreshAllOverrides}
+          onTimetableUpdated={(branch, sem, day, slots) => {
+            const currentKey = safeProfile.semester <= 2
+              ? `SEC-${safeProfile.firstYearSection || 'A'}-${safeProfile.semester}`
+              : `${safeProfile.branch}-${safeProfile.semester}`;
+            const targetKey = sem <= 2 ? `SEC-A-${sem}` : `${branch}-${sem}`;
+            if (currentKey === targetKey) {
+              setCloudScheduleOverride((prev) => ({
+                ...(prev || activeBranchData.schedule),
+                [day]: slots,
+              }));
+            }
+            showToast(`Saved timetable override for ${branch} Sem ${sem} (${day})`);
+          }}
+          onCoursesUpdated={(courseCode, override) => {
+            setCloudCourseOverrides((prev) => ({
+              ...prev,
+              [courseCode]: override,
             }));
-          }
-          showToast(`Saved timetable override for ${branch} Sem ${sem} (${day})`);
-        }}
-        onCoursesUpdated={(courseCode, override) => {
-          setCloudCourseOverrides((prev) => ({
-            ...prev,
-            [courseCode]: override,
-          }));
-          showToast(`Updated course & syllabus override for ${courseCode}`);
-        }}
-      />
+            showToast(`Updated course & syllabus override for ${courseCode}`);
+          }}
+        />
+      )}
 
       {/* Admin Slot & Syllabus Quick Editor Modal */}
-      <AdminSlotEditorModal
-        isOpen={slotEditorState.isOpen}
-        onClose={() => setSlotEditorState((prev) => ({ ...prev, isOpen: false }))}
-        slot={slotEditorState.slot}
-        day={slotEditorState.day}
-        branch={slotEditorState.branch}
-        semester={slotEditorState.semester}
-        firstYearSection={slotEditorState.firstYearSection}
-        allCourses={effectiveCourses}
-        onSlotSaved={() => {
-          refreshAllOverrides();
-          showToast('Slot & syllabus updates saved and live synced to cloud!');
-        }}
-      />
+      {slotEditorState.isOpen && (
+        <AdminSlotEditorModal
+          isOpen={slotEditorState.isOpen}
+          onClose={() => setSlotEditorState((prev) => ({ ...prev, isOpen: false }))}
+          slot={slotEditorState.slot}
+          day={slotEditorState.day}
+          branch={slotEditorState.branch}
+          semester={slotEditorState.semester}
+          firstYearSection={slotEditorState.firstYearSection}
+          allCourses={effectiveCourses}
+          onSlotSaved={() => {
+            refreshAllOverrides();
+            showToast('Slot & syllabus updates saved and live synced to cloud!');
+          }}
+        />
+      )}
 
       {/* Mobile Bottom Navigation Bar (Docked on < sm screens) */}
       <MobileBottomNav

@@ -156,6 +156,43 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
     });
   }, [selectedCourseCode, allCourses, courseOverrides]);
 
+  // Filtered courses for management catalog
+  const filteredCourseCodes = useMemo(() => {
+    const query = courseSearchQuery.trim().toLowerCase();
+    return Object.keys(allCourses)
+      .filter((code) => {
+        const c = allCourses[code];
+        if (!c) return false;
+        // Search term matching
+        if (query) {
+          const matchCode = code.toLowerCase().includes(query);
+          const matchName = c.name ? c.name.toLowerCase().includes(query) : false;
+          const matchCoord = c.coordinator ? c.coordinator.toLowerCase().includes(query) : false;
+          if (!matchCode && !matchName && !matchCoord) return false;
+        }
+        // Category matching
+        if (courseCategoryFilter !== 'ALL' && c.category !== courseCategoryFilter) {
+          return false;
+        }
+        // Department / Branch matching
+        if (courseDeptFilter !== 'ALL') {
+          if (courseDeptFilter === 'MINOR') {
+            if (!c.isMinor && !code.endsWith('M')) return false;
+          } else if (courseDeptFilter === 'FIRST_YEAR') {
+            const firstYearCodes = [
+              'MA100', 'PH100', 'CY100', 'ME100', 'EE100', 'CS100', 'HS100',
+              'MA150', 'PH150', 'CY150', 'ME150', 'EE150', 'CS150', 'HS150',
+            ];
+            if (!firstYearCodes.includes(code)) return false;
+          } else if (!code.startsWith(courseDeptFilter)) {
+            return false;
+          }
+        }
+        return true;
+      })
+      .sort();
+  }, [allCourses, courseSearchQuery, courseDeptFilter, courseCategoryFilter]);
+
   if (!isOpen) return null;
 
   // Handlers for Timetable Editor
@@ -252,43 +289,6 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
       setIsSaving(false);
     }
   };
-
-  // Filtered courses for management catalog
-  const filteredCourseCodes = useMemo(() => {
-    const query = courseSearchQuery.trim().toLowerCase();
-    return Object.keys(allCourses)
-      .filter((code) => {
-        const c = allCourses[code];
-        if (!c) return false;
-        // Search term matching
-        if (query) {
-          const matchCode = code.toLowerCase().includes(query);
-          const matchName = c.name ? c.name.toLowerCase().includes(query) : false;
-          const matchCoord = c.coordinator ? c.coordinator.toLowerCase().includes(query) : false;
-          if (!matchCode && !matchName && !matchCoord) return false;
-        }
-        // Category matching
-        if (courseCategoryFilter !== 'ALL' && c.category !== courseCategoryFilter) {
-          return false;
-        }
-        // Department / Branch matching
-        if (courseDeptFilter !== 'ALL') {
-          if (courseDeptFilter === 'MINOR') {
-            if (!c.isMinor && !code.endsWith('M')) return false;
-          } else if (courseDeptFilter === 'FIRST_YEAR') {
-            const firstYearCodes = [
-              'MA100', 'PH100', 'CY100', 'ME100', 'EE100', 'CS100', 'HS100',
-              'MA150', 'PH150', 'CY150', 'ME150', 'EE150', 'CS150', 'HS150',
-            ];
-            if (!firstYearCodes.includes(code)) return false;
-          } else if (!code.startsWith(courseDeptFilter)) {
-            return false;
-          }
-        }
-        return true;
-      })
-      .sort();
-  }, [allCourses, courseSearchQuery, courseDeptFilter, courseCategoryFilter]);
 
   // Handlers for Course Management & Syllabus Editor
   const handleCreateNewCourse = () => {

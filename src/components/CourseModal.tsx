@@ -51,18 +51,17 @@ export const CourseModal: React.FC<CourseModalProps> = ({
   onTrackAttendance,
   onScheduleTest,
 }) => {
-  if (!courseCode) return null;
-
+  const safeCode = courseCode || '';
   const allKnown = getAllKnownCourses();
-  const officialSyllabus = getOfficialCourseSyllabus(courseCode);
+  const officialSyllabus = safeCode ? getOfficialCourseSyllabus(safeCode) : null;
 
   const courseBase: Course =
-    courses?.[courseCode] ||
-    allKnown[courseCode] ||
-    COURSES[courseCode] || {
-      code: courseCode,
-      name: officialSyllabus?.name || `Course ${courseCode}`,
-      type: (courseCode.includes('Lab') || officialSyllabus?.name.toLowerCase().includes('lab')) ? 'Lab' : 'Theory',
+    (safeCode && courses?.[safeCode]) ||
+    allKnown[safeCode] ||
+    COURSES[safeCode] || {
+      code: safeCode,
+      name: officialSyllabus?.name || (safeCode ? `Course ${safeCode}` : ''),
+      type: (safeCode.includes('Lab') || officialSyllabus?.name.toLowerCase().includes('lab')) ? 'Lab' : 'Theory',
       credits: officialSyllabus?.credits || 3,
       ltp: officialSyllabus?.ltp || '3-0-0',
       teachingSlot: 'Core',
@@ -93,7 +92,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
     textbooks: effectiveTextbooks,
   };
 
-  const isMinor = course.isMinor || courseCode === 'CS300M';
+  const isMinor = course.isMinor || safeCode === 'CS300M';
   const [viewTab, setViewTab] = React.useState<'details' | 'pdf'>('details');
 
   // Attendance state & sync
@@ -101,20 +100,22 @@ export const CourseModal: React.FC<CourseModalProps> = ({
   const [attendance, setAttendance] = React.useState<{ attended: number; total: number }>({ attended: 0, total: 0 });
 
   React.useEffect(() => {
+    if (!safeCode) return;
     try {
       const stored = localStorage.getItem(attendanceKey);
       if (stored) {
         const parsed = JSON.parse(stored);
-        if (parsed[courseCode]) {
-          setAttendance(parsed[courseCode]);
+        if (parsed[safeCode]) {
+          setAttendance(parsed[safeCode]);
         }
       }
     } catch {
       // ignore
     }
-  }, [attendanceKey, courseCode]);
+  }, [attendanceKey, safeCode]);
 
   const updateAttendance = (newAttended: number, newTotal: number) => {
+    if (!safeCode) return;
     const validAttended = Math.max(0, newAttended);
     const validTotal = Math.max(0, newTotal);
     setAttendance({ attended: validAttended, total: validTotal });
@@ -122,11 +123,11 @@ export const CourseModal: React.FC<CourseModalProps> = ({
     try {
       const stored = localStorage.getItem(attendanceKey);
       const parsed = stored ? JSON.parse(stored) : {};
-      parsed[courseCode] = { attended: validAttended, total: validTotal };
+      parsed[safeCode] = { attended: validAttended, total: validTotal };
       localStorage.setItem(attendanceKey, JSON.stringify(parsed));
       window.dispatchEvent(
         new CustomEvent('nit_goa_attendance_updated', {
-          detail: { branch, semester, courseCode, attended: validAttended, total: validTotal },
+          detail: { branch, semester, courseCode: safeCode, attended: validAttended, total: validTotal },
         })
       );
     } catch {
@@ -135,8 +136,9 @@ export const CourseModal: React.FC<CourseModalProps> = ({
   };
 
   // Personal study tasks & notes state
-  const taskKey = `nit_goa_tasks_${courseCode}`;
+  const taskKey = safeCode ? `nit_goa_tasks_${safeCode}` : 'nit_goa_tasks_default';
   const [tasks, setTasks] = React.useState<CourseTask[]>(() => {
+    if (!safeCode) return [];
     try {
       const saved = localStorage.getItem(taskKey);
       return saved ? JSON.parse(saved) : [];
@@ -192,6 +194,8 @@ export const CourseModal: React.FC<CourseModalProps> = ({
     attendance.total > 0 && attendancePct !== null && attendancePct < 75
       ? Math.ceil((0.75 * attendance.total - attendance.attended) / 0.25)
       : 0;
+
+  if (!courseCode) return null;
 
   return (
     <div 
