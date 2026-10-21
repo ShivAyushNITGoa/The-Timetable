@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export type AppTheme = 'sapphire';
 
-export type AppearanceMode = 'light';
+export type AppearanceMode = 'light' | 'dark';
 
 export interface ThemeConfig {
   id: AppTheme;
@@ -40,13 +40,19 @@ export const APP_THEMES: ThemeConfig[] = [
 ];
 
 const THEME_STORAGE_KEY = 'nit_goa_app_theme';
-const MODE_STORAGE_KEY = 'nit_goa_appearance_mode_v3';
+const MODE_STORAGE_KEY = 'nit_goa_appearance_mode';
 
 export function getActiveTheme(): AppTheme {
   return 'sapphire';
 }
 
 export function getAppearanceMode(): AppearanceMode {
+  try {
+    const saved = localStorage.getItem(MODE_STORAGE_KEY);
+    if (saved === 'dark' || saved === 'light') return saved;
+  } catch {
+    // ignore
+  }
   return 'light';
 }
 
@@ -54,33 +60,49 @@ export function setActiveTheme(_theme: string): void {
   try {
     localStorage.setItem(THEME_STORAGE_KEY, 'sapphire');
     document.documentElement.setAttribute('data-theme', 'sapphire');
-    document.documentElement.setAttribute('data-mode', 'light');
     window.dispatchEvent(new CustomEvent('nit_goa_theme_changed', { detail: { theme: 'sapphire' } }));
   } catch (e) {
     console.error('Error saving theme to storage:', e);
   }
 }
 
-export function setAppearanceMode(_mode: string): void {
+export function applyAppearanceModeToDom(mode: AppearanceMode): void {
   try {
-    localStorage.setItem(MODE_STORAGE_KEY, 'light');
-    document.documentElement.setAttribute('data-mode', 'light');
-    window.dispatchEvent(new CustomEvent('nit_goa_mode_changed', { detail: { mode: 'light' } }));
+    document.documentElement.setAttribute('data-theme', 'sapphire');
+    document.documentElement.setAttribute('data-mode', mode);
+    if (mode === 'dark') {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+    } else {
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+    }
+  } catch (e) {
+    console.error('Error applying appearance mode to DOM:', e);
+  }
+}
+
+export function setAppearanceMode(mode: AppearanceMode): void {
+  try {
+    localStorage.setItem(MODE_STORAGE_KEY, mode);
+    applyAppearanceModeToDom(mode);
+    window.dispatchEvent(new CustomEvent('nit_goa_mode_changed', { detail: { mode } }));
   } catch (e) {
     console.error('Error saving appearance mode to storage:', e);
   }
 }
 
+export function toggleAppearanceMode(): AppearanceMode {
+  const current = getAppearanceMode();
+  const next: AppearanceMode = current === 'dark' ? 'light' : 'dark';
+  setAppearanceMode(next);
+  return next;
+}
+
 export function initTheme(): { theme: AppTheme; mode: AppearanceMode } {
-  try {
-    document.documentElement.setAttribute('data-theme', 'sapphire');
-    document.documentElement.setAttribute('data-mode', 'light');
-    document.documentElement.classList.remove('dark');
-    document.documentElement.classList.add('light');
-  } catch (e) {
-    console.error('Error initializing theme on document:', e);
-  }
-  return { theme: 'sapphire', mode: 'light' };
+  const mode = getAppearanceMode();
+  applyAppearanceModeToDom(mode);
+  return { theme: 'sapphire', mode };
 }
 
 export function getThemeConfig(_themeId?: string): ThemeConfig {
@@ -88,20 +110,46 @@ export function getThemeConfig(_themeId?: string): ThemeConfig {
 }
 
 /**
- * React hook to read theme config (unified university palette)
+ * React hook to read theme config and reactively toggle light/dark appearance mode
  */
 export function useTheme() {
   const [theme] = useState<AppTheme>('sapphire');
-  const [mode] = useState<AppearanceMode>('light');
+  const [mode, setModeState] = useState<AppearanceMode>(() => getAppearanceMode());
 
-  const config = APP_THEMES[0];
+  useEffect(() => {
+    const handleModeChange = (e: Event) => {
+      const customEvent = e as CustomEvent<{ mode: AppearanceMode }>;
+      if (customEvent.detail?.mode) {
+        setModeState(customEvent.detail.mode);
+      } else {
+        setModeState(getAppearanceMode());
+      }
+    };
+
+    window.addEventListener('nit_goa_mode_changed', handleModeChange);
+    return () => {
+      window.removeEventListener('nit_goa_mode_changed', handleModeChange);
+    };
+  }, []);
+
+  const toggleMode = useCallback(() => {
+    const next = toggleAppearanceMode();
+    setModeState(next);
+  }, []);
+
+  const changeMode = useCallback((newMode: AppearanceMode) => {
+    setAppearanceMode(newMode);
+    setModeState(newMode);
+  }, []);
 
   return {
     theme,
     changeTheme: setActiveTheme,
     mode,
-    changeMode: setAppearanceMode,
-    config,
+    changeMode,
+    toggleMode,
+    isDark: mode === 'dark',
+    config: APP_THEMES[0],
     allThemes: APP_THEMES,
   };
 }

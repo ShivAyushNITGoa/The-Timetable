@@ -16,6 +16,8 @@ import {
   ArrowRight,
   X,
   CornerDownLeft,
+  Sun,
+  Moon,
 } from 'lucide-react';
 import { Course } from '../data/timetableData';
 import { ActiveTab } from './Navbar';
@@ -58,7 +60,7 @@ export const CommandPaletteModal: React.FC<CommandPaletteModalProps> = ({
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
-  const { config: themeConfig } = useTheme();
+  const { config: themeConfig, mode, toggleMode } = useTheme();
 
   // Focus input when modal opens
   useEffect(() => {
@@ -219,6 +221,18 @@ export const CommandPaletteModal: React.FC<CommandPaletteModalProps> = ({
           onClose();
           onExportCalendar();
         },
+      },
+      {
+        id: 'action-toggle-theme',
+        category: 'Action',
+        title: mode === 'dark' ? 'Switch to Light Theme' : 'Switch to Dark Theme',
+        subtitle: 'Toggle application appearance between light and dark modes',
+        badge: 'Theme',
+        icon: mode === 'dark' ? Sun : Moon,
+        action: () => {
+          toggleMode();
+          onClose();
+        },
       }
     );
 
@@ -254,7 +268,7 @@ export const CommandPaletteModal: React.FC<CommandPaletteModalProps> = ({
     });
 
     return items;
-  }, [courses, onSelectCourse, onSelectTab, onSelectDay, onOpenThemeSelector, onExportCalendar, onOpenPwaGuide, onClose]);
+  }, [courses, onSelectCourse, onSelectTab, onSelectDay, onOpenThemeSelector, onExportCalendar, onOpenPwaGuide, onClose, mode, toggleMode]);
 
   // Filter items by search query
   const filteredItems = useMemo(() => {

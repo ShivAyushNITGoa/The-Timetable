@@ -600,54 +600,19 @@ export default function App() {
   // Show Landing Page when user clicks About & Install from top bar
   if (showLandingPage) {
     return (
-      <>
-        <LandingPage
-          currentUser={currentUser}
-          isAdmin={isAdmin}
-          onSignIn={handleGoogleSignIn}
-          onSignOut={handleGoogleSignOut}
-          onContinueToTimetable={() => {
-            setShowLandingPage(false);
-            setActiveTab('day');
-            setSelectedDay(getTodayDayOfWeek());
-          }}
-          onOpenAdminPanel={() => setIsAdminModalOpen(true)}
-          authLoading={authLoading}
-        />
-        <AdminPanelModal
-          isOpen={isAdminModalOpen}
-          onClose={() => setIsAdminModalOpen(false)}
-          currentUser={currentUser}
-          announcements={announcements}
-          timetableOverrides={allTimetableOverrides}
-          courseOverrides={cloudCourseOverrides}
-          onOverridesUpdated={refreshAllOverrides}
-          onTimetableUpdated={(branch, sem, day, slots) => {
-            const currentKey = safeProfile.semester <= 2
-              ? `SEC-${safeProfile.firstYearSection || 'A'}-${safeProfile.semester}`
-              : `${safeProfile.branch}-${safeProfile.semester}`;
-            const targetKey = sem <= 2 ? `SEC-A-${sem}` : `${branch}-${sem}`;
-            if (currentKey === targetKey) {
-              setCloudScheduleOverride((prev) => ({
-                ...(prev || activeBranchData.schedule),
-                [day]: slots,
-              }));
-            }
-            showToast(`Saved timetable override for ${branch} Sem ${sem} (${day})`);
-          }}
-          onCoursesUpdated={(courseCode, override) => {
-            setCloudCourseOverrides((prev) => ({
-              ...prev,
-              [courseCode]: override,
-            }));
-            showToast(`Updated course & syllabus override for ${courseCode}`);
-          }}
-        />
-        <PwaInstallGuideModal
-          isOpen={isPwaModalOpen}
-          onClose={() => setIsPwaModalOpen(false)}
-        />
-      </>
+      <LandingPage
+        currentUser={currentUser}
+        isAdmin={isAdmin}
+        onSignIn={handleGoogleSignIn}
+        onSignOut={handleGoogleSignOut}
+        onContinueToTimetable={() => {
+          setShowLandingPage(false);
+          setActiveTab('day');
+          setSelectedDay(getTodayDayOfWeek());
+        }}
+        onOpenAdminPanel={() => setIsAdminModalOpen(true)}
+        authLoading={authLoading}
+      />
     );
   }
 
@@ -925,24 +890,28 @@ export default function App() {
       </main>
 
       {/* Universal Branch & Year Selection Modal */}
-      <BranchYearSelector
-        isOpen={isBranchSelectorOpen}
-        onClose={() => setIsBranchSelectorOpen(false)}
-        profile={safeProfile}
-        currentProfile={safeProfile}
-        onSaveProfile={handleSaveProfile}
-      />
+      {isBranchSelectorOpen && (
+        <BranchYearSelector
+          isOpen={isBranchSelectorOpen}
+          onClose={() => setIsBranchSelectorOpen(false)}
+          profile={safeProfile}
+          currentProfile={safeProfile}
+          onSaveProfile={handleSaveProfile}
+        />
+      )}
 
       {/* Schedule Customizer Modal */}
-      <ScheduleCustomizerModal
-        isOpen={isCustomizerOpen}
-        onClose={() => setIsCustomizerOpen(false)}
-        selectedDay={selectedDay}
-        currentSlots={effectiveSchedule[selectedDay] || []}
-        courses={effectiveCourses}
-        onSaveSlots={(slots) => handleSaveScheduleDay(selectedDay, slots)}
-        onResetSchedule={handleResetSchedule}
-      />
+      {isCustomizerOpen && (
+        <ScheduleCustomizerModal
+          isOpen={isCustomizerOpen}
+          onClose={() => setIsCustomizerOpen(false)}
+          selectedDay={selectedDay}
+          currentSlots={effectiveSchedule[selectedDay] || []}
+          courses={effectiveCourses}
+          onSaveSlots={(slots) => handleSaveScheduleDay(selectedDay, slots)}
+          onResetSchedule={handleResetSchedule}
+        />
+      )}
 
       {/* Course Detail Modal */}
       {activeModalCourse && (
@@ -1043,19 +1012,21 @@ export default function App() {
       />
 
       {/* Quick Command Palette (Ctrl+K) */}
-      <CommandPaletteModal
-        isOpen={isCommandPaletteOpen}
-        onClose={() => setIsCommandPaletteOpen(false)}
-        courses={effectiveCourses}
-        onSelectCourse={(courseCode) => setActiveModalCourse(courseCode)}
-        onSelectTab={handleSetActiveTab}
-        onSelectDay={(day) => {
-          setSelectedDay(day);
-          handleSetActiveTab('day');
-        }}
-        onExportCalendar={handleExportCalendar}
-        onOpenPwaGuide={() => setIsPwaModalOpen(true)}
-      />
+      {isCommandPaletteOpen && (
+        <CommandPaletteModal
+          isOpen={isCommandPaletteOpen}
+          onClose={() => setIsCommandPaletteOpen(false)}
+          courses={effectiveCourses}
+          onSelectCourse={(courseCode) => setActiveModalCourse(courseCode)}
+          onSelectTab={handleSetActiveTab}
+          onSelectDay={(day) => {
+            setSelectedDay(day);
+            handleSetActiveTab('day');
+          }}
+          onExportCalendar={handleExportCalendar}
+          onOpenPwaGuide={() => setIsPwaModalOpen(true)}
+        />
+      )}
 
       {/* Floating Action Toast Notification (positioned cleanly above mobile nav) */}
       {toastMessage && (

@@ -22,6 +22,8 @@ import {
   User as UserIcon,
   Palette,
   Search,
+  Sun,
+  Moon,
 } from 'lucide-react';
 import { StudentProfile, DEFAULT_STUDENT_PROFILE, BRANCHES_LIST } from '../data/branchesData';
 import { BrandLogo, BrandIcon } from './BrandLogo';
@@ -75,7 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const safeProfile = profile && profile.branch ? profile : DEFAULT_STUDENT_PROFILE;
   const branchInfo = BRANCHES_LIST.find((b) => b.code === safeProfile.branch) || BRANCHES_LIST[0];
-  const { config: themeConfig } = useTheme();
+  const { config: themeConfig, mode, toggleMode } = useTheme();
 
   // Desktop/Tablet horizontal scroll controls
   const navRef = useRef<HTMLElement | null>(null);
@@ -212,6 +214,21 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <Search className="w-4 h-4 text-slate-600" />
                 </button>
               )}
+
+              {/* Dark / Light Theme Toggler (Mobile) */}
+              <button
+                type="button"
+                onClick={toggleMode}
+                className="min-h-[38px] min-w-[38px] p-2 rounded-lg bg-white hover:bg-slate-50 active:bg-slate-100 text-slate-700 border border-slate-200 flex items-center justify-center active:scale-95 transition shadow-2xs"
+                title={mode === 'dark' ? 'Switch to Light Theme' : 'Switch to Dark Theme'}
+                aria-label="Toggle dark/light theme"
+              >
+                {mode === 'dark' ? (
+                  <Sun className="w-4 h-4 text-amber-400" />
+                ) : (
+                  <Moon className="w-4 h-4 text-slate-600" />
+                )}
+              </button>
 
               {/* Admin Panel Button */}
               {isAdmin && onOpenAdmin && (
@@ -514,6 +531,27 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="hidden xl:inline">Export Calendar (.ics)</span>
               <span className="hidden md:inline xl:hidden">Export (.ics)</span>
               <span className="md:hidden">Export</span>
+            </button>
+
+            {/* Dark / Light Theme Toggler */}
+            <button
+              type="button"
+              onClick={toggleMode}
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 border border-slate-200 text-xs font-semibold transition active:scale-95 shadow-2xs shrink-0"
+              title={mode === 'dark' ? 'Switch to Light Theme' : 'Switch to Dark Theme'}
+              aria-label="Toggle dark/light theme"
+            >
+              {mode === 'dark' ? (
+                <>
+                  <Sun className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                  <span className="hidden xl:inline">Light</span>
+                </>
+              ) : (
+                <>
+                  <Moon className="w-3.5 h-3.5 text-slate-600 shrink-0" />
+                  <span className="hidden xl:inline">Dark</span>
+                </>
+              )}
             </button>
 
             {/* About & PWA Guide */}
