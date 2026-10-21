@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, [data-mode="dark"], .dark *, [data-mode="dark"] *));
+
 :root,
 [data-theme="sapphire"],
 [data-mode="light"] {
@@ -591,9 +593,13 @@ body::before {
 }
 
 /* Nav & header containers in dark mode */
-[data-mode="dark"] header.bg-white,
-[data-mode="dark"] nav.bg-white,
-[data-mode="dark"] footer.bg-white {
-  background-color: #0b1120 !important;
+[data-mode="dark"] header,
+.dark header,
+[data-mode="dark"] nav,
+.dark nav,
+[data-mode="dark"] footer,
+.dark footer {
+  background-color: rgba(11, 17, 32, 0.96) !important;
   border-color: #1e293b !important;
 }
+

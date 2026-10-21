@@ -92,12 +92,12 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
       className={`inline-flex flex-wrap sm:flex-nowrap items-center justify-center sm:justify-start gap-2 select-none max-w-full ${className}`}
     >
       <BrandIconSvg size={iconSize} rounded={true} />
-      <div className="flex items-center gap-1 text-slate-900 tracking-tight leading-none select-none font-bold text-base sm:text-lg">
+      <div className="flex items-center gap-1 text-slate-900 dark:text-slate-100 tracking-tight leading-none select-none font-bold text-base sm:text-lg">
         <span className="text-[#b0b91a]">The</span>
-        <span className="text-slate-900 font-black">GDevelopers</span>
+        <span className="text-slate-900 dark:text-slate-100 font-black">GDevelopers</span>
       </div>
       {subtitle && (
-        <span className="text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 border border-slate-200 text-center max-w-full break-words shadow-2xs">
+        <span className="text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 text-center max-w-full break-words shadow-2xs">
           {subtitle}
         </span>
       )}
