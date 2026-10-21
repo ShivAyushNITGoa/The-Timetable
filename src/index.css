@@ -603,3 +603,18 @@ body::before {
   border-color: #1e293b !important;
 }
 
+/* Landing Hero Section theme styles */
+.hero-section {
+  background: radial-gradient(ellipse 85% 55% at 50% -10%, rgba(219, 234, 254, 0.6), transparent 70%),
+              linear-gradient(to bottom, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%) !important;
+}
+
+[data-mode="dark"] .hero-section,
+.dark .hero-section {
+  background: radial-gradient(ellipse 85% 55% at 50% -10%, rgba(37, 99, 235, 0.22), transparent 75%),
+              linear-gradient(to bottom, #0b1120 0%, #090d16 60%, #0f172a 100%) !important;
+  border-color: #1e293b !important;
+}
+
+
+
