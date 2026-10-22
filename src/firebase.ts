@@ -18,6 +18,7 @@ import {
   Firestore,
 } from 'firebase/firestore';
 import firebaseConfig from '../firebase-applet-config.json';
+export { firebaseConfig };
 
 // Designated Admin Email
 export const ADMIN_EMAIL = 'ashivamone@gmail.com';

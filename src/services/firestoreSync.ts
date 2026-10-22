@@ -53,8 +53,9 @@ export async function getTimetableOverride(branchSemesterKey: string): Promise<R
     const snap = await getDoc(docRef);
     if (snap.exists()) {
       const data = snap.data() as TimetableOverrideDoc;
-      if (data.scheduleJson) {
-        return JSON.parse(data.scheduleJson);
+      const raw = data.scheduleJson || (data as any).scheduleData;
+      if (raw) {
+        return JSON.parse(raw);
       }
     }
   } catch (err: any) {
@@ -74,9 +75,10 @@ export async function getAllTimetableOverrides(): Promise<Record<string, Record<
     const snap = await getDocs(colRef);
     snap.forEach((docSnap) => {
       const data = docSnap.data() as TimetableOverrideDoc;
-      if (data.branchSemesterKey && data.scheduleJson) {
+      const raw = data.scheduleJson || (data as any).scheduleData;
+      if (data.branchSemesterKey && raw) {
         try {
-          result[data.branchSemesterKey] = JSON.parse(data.scheduleJson);
+          result[data.branchSemesterKey] = JSON.parse(raw);
         } catch (e) {
           console.warn('Error parsing timetable override JSON for', data.branchSemesterKey, e);
         }
@@ -100,10 +102,12 @@ export async function saveTimetableOverride(
 ): Promise<void> {
   const path = `timetable_overrides/${branchSemesterKey}`;
   const docRef = doc(db, 'timetable_overrides', branchSemesterKey);
-  const payload: TimetableOverrideDoc = {
+  const jsonStr = JSON.stringify(schedule);
+  const payload: TimetableOverrideDoc & { scheduleData: string } = {
     branchSemesterKey,
     room: room || '',
-    scheduleJson: JSON.stringify(schedule),
+    scheduleJson: jsonStr,
+    scheduleData: jsonStr,
     notes: notes || '',
     updatedBy: userEmail,
     updatedAt: new Date().toISOString(),
@@ -135,6 +139,8 @@ export async function getAllCourseOverrides(): Promise<Record<string, Partial<Co
     snap.forEach((d) => {
       const data = d.data() as CourseOverrideDoc;
       try {
+        const rawModules = data.modulesJson || (data as any).modules;
+        const rawTextbooks = data.textbooksJson || (data as any).textbooks;
         overrides[data.code] = {
           code: data.code,
           name: data.name,
@@ -144,8 +150,8 @@ export async function getAllCourseOverrides(): Promise<Record<string, Partial<Co
           shortName: data.shortName,
           room: data.room,
           notes: data.notes,
-          modules: data.modulesJson ? JSON.parse(data.modulesJson) : undefined,
-          textbooks: data.textbooksJson ? JSON.parse(data.textbooksJson) : undefined,
+          modules: rawModules ? (typeof rawModules === 'string' ? JSON.parse(rawModules) : rawModules) : undefined,
+          textbooks: rawTextbooks ? (typeof rawTextbooks === 'string' ? JSON.parse(rawTextbooks) : rawTextbooks) : undefined,
         };
       } catch (parseErr) {
         console.warn('Error parsing course override for', data.code, parseErr);
@@ -166,7 +172,9 @@ export async function saveCourseOverride(
 ): Promise<void> {
   const path = `course_overrides/${course.code}`;
   const docRef = doc(db, 'course_overrides', course.code);
-  const payload: CourseOverrideDoc = {
+  const modulesStr = JSON.stringify(course.modules || []);
+  const textbooksStr = JSON.stringify(course.textbooks || []);
+  const payload: CourseOverrideDoc & { modules: string; textbooks: string } = {
     code: course.code,
     name: course.name,
     credits: course.credits,
@@ -175,8 +183,10 @@ export async function saveCourseOverride(
     shortName: course.shortName || '',
     room: course.room,
     notes: course.notes || '',
-    modulesJson: JSON.stringify(course.modules || []),
-    textbooksJson: JSON.stringify(course.textbooks || []),
+    modulesJson: modulesStr,
+    modules: modulesStr,
+    textbooksJson: textbooksStr,
+    textbooks: textbooksStr,
     updatedBy: userEmail,
     updatedAt: new Date().toISOString(),
   };

@@ -40,6 +40,7 @@ import {
   removeAnnouncement,
   AnnouncementDoc,
 } from '../services/firestoreSync';
+import { firebaseConfig } from '../firebase';
 
 export interface AdminPanelModalProps {
   isOpen: boolean;
@@ -104,6 +105,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
   const [newAnnouncementTitle, setNewAnnouncementTitle] = useState('');
   const [newAnnouncementContent, setNewAnnouncementContent] = useState('');
   const [newAnnouncementType, setNewAnnouncementType] = useState<'info' | 'warning' | 'success' | 'urgent'>('info');
+  const [confirmDeleteAnnId, setConfirmDeleteAnnId] = useState<string | null>(null);
 
   // Initialize course catalog
   useEffect(() => {
@@ -423,6 +425,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
       setNewAnnouncementTitle('');
       setNewAnnouncementContent('');
       setSaveStatus('Announcement published live to students!');
+      onOverridesUpdated?.();
       setTimeout(() => setSaveStatus(null), 4000);
     } catch (err: any) {
       setSaveStatus(`Failed to post announcement: ${err.message}`);
@@ -431,46 +434,81 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
     }
   };
 
+  const handleToggleAnnouncement = async (id: string, active: boolean) => {
+    try {
+      setIsSaving(true);
+      await toggleAnnouncementActive(id, active);
+      setSaveStatus(`Announcement ${active ? 'disabled' : 'enabled'} successfully.`);
+      onOverridesUpdated?.();
+      setTimeout(() => setSaveStatus(null), 3000);
+    } catch (err: any) {
+      setSaveStatus(`Action failed: ${err.message}`);
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const handleRemoveAnnouncement = async (id: string) => {
+    if (confirmDeleteAnnId !== id) {
+      setConfirmDeleteAnnId(id);
+      setSaveStatus('Click Delete again within 4s to confirm removing this broadcast.');
+      setTimeout(() => setConfirmDeleteAnnId(null), 4000);
+      return;
+    }
+    setConfirmDeleteAnnId(null);
+    try {
+      setIsSaving(true);
+      await removeAnnouncement(id);
+      setSaveStatus('Announcement deleted successfully.');
+      onOverridesUpdated?.();
+      setTimeout(() => setSaveStatus(null), 3000);
+    } catch (err: any) {
+      setSaveStatus(`Delete failed: ${err.message}`);
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
   return (
-    <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
-      <div className="bg-white border border-slate-200 w-full max-w-5xl rounded-lg shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+    <div className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 w-full max-w-5xl rounded-lg shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
         {/* Modal Top Header */}
-        <div className="px-5 py-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
+        <div className="px-5 py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-amber-50 text-amber-700 border border-amber-200">
+            <div className="p-2 rounded-lg bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800">
               <ShieldCheck size={20} />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="text-base font-bold text-slate-900 tracking-tight">
+                <h2 className="text-base font-bold text-slate-900 dark:text-white tracking-tight">
                   Academic Administrator Control Panel
                 </h2>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-amber-50 text-amber-700 font-bold border border-amber-200">
+                <span className="text-[10px] px-2 py-0.5 rounded bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 font-bold border border-amber-200 dark:border-amber-800">
                   SUPERUSER
                 </span>
               </div>
-              <p className="text-xs text-slate-500">
-                Verified Admin: <span className="text-slate-700 font-mono">{currentUser?.email}</span>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                Verified Admin: <span className="text-slate-700 dark:text-slate-300 font-mono">{currentUser?.email}</span>
               </p>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition"
           >
             <X size={18} />
           </button>
         </div>
 
         {/* Tab Navigation */}
-        <div className="px-5 border-b border-slate-200 bg-white flex items-center gap-2 overflow-x-auto">
+        <div className="px-5 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center gap-2 overflow-x-auto shrink-0">
           <button
             onClick={() => setActiveTab('timetable')}
             className={`flex items-center gap-2 px-3.5 py-3 text-xs font-semibold border-b-2 transition whitespace-nowrap ${
               activeTab === 'timetable'
-                ? 'border-indigo-600 text-indigo-700 font-bold'
-                : 'border-transparent text-slate-500 hover:text-slate-800'
+                ? 'border-indigo-600 dark:border-indigo-400 text-indigo-700 dark:text-indigo-400 font-bold'
+                : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
             }`}
           >
             <Calendar size={15} />
@@ -480,8 +518,8 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
             onClick={() => setActiveTab('syllabus')}
             className={`flex items-center gap-2 px-3.5 py-3 text-xs font-semibold border-b-2 transition whitespace-nowrap ${
               activeTab === 'syllabus'
-                ? 'border-indigo-600 text-indigo-700 font-bold'
-                : 'border-transparent text-slate-500 hover:text-slate-800'
+                ? 'border-indigo-600 dark:border-indigo-400 text-indigo-700 dark:text-indigo-400 font-bold'
+                : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
             }`}
           >
             <BookOpen size={15} />
@@ -491,8 +529,8 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
             onClick={() => setActiveTab('announcements')}
             className={`flex items-center gap-2 px-3.5 py-3 text-xs font-semibold border-b-2 transition whitespace-nowrap ${
               activeTab === 'announcements'
-                ? 'border-indigo-600 text-indigo-700 font-bold'
-                : 'border-transparent text-slate-500 hover:text-slate-800'
+                ? 'border-indigo-600 dark:border-indigo-400 text-indigo-700 dark:text-indigo-400 font-bold'
+                : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
             }`}
           >
             <Bell size={15} />
@@ -502,8 +540,8 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
             onClick={() => setActiveTab('diagnostics')}
             className={`flex items-center gap-2 px-3.5 py-3 text-xs font-semibold border-b-2 transition whitespace-nowrap ${
               activeTab === 'diagnostics'
-                ? 'border-indigo-600 text-indigo-700 font-bold'
-                : 'border-transparent text-slate-500 hover:text-slate-800'
+                ? 'border-indigo-600 dark:border-indigo-400 text-indigo-700 dark:text-indigo-400 font-bold'
+                : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
             }`}
           >
             <ShieldCheck size={15} />
@@ -513,32 +551,32 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
 
         {/* Status Toast / Banner */}
         {saveStatus && (
-          <div className="mx-5 mt-4 p-3 rounded-lg bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs flex items-center justify-between">
+          <div className="mx-5 mt-4 p-3 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-800 dark:text-indigo-300 text-xs flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Info size={16} />
               <span>{saveStatus}</span>
             </div>
-            <button onClick={() => setSaveStatus(null)} className="text-slate-400 hover:text-slate-700">
+            <button onClick={() => setSaveStatus(null)} className="text-slate-400 hover:text-slate-700 dark:hover:text-white">
               <X size={14} />
             </button>
           </div>
         )}
 
         {/* Modal Scrollable Body */}
-        <div className="p-5 overflow-y-auto flex-1 text-slate-800">
+        <div className="p-5 overflow-y-auto flex-1 text-slate-800 dark:text-slate-100 bg-slate-50/50 dark:bg-slate-900/50">
           {/* TAB 1: TIMETABLE EDITOR */}
           {activeTab === 'timetable' && (
             <div className="space-y-6">
               {/* Selector Bar */}
-              <div className="p-4 rounded-lg bg-slate-950 border border-slate-800 grid grid-cols-1 sm:grid-cols-4 gap-3">
+              <div className="p-4 rounded-lg bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 grid grid-cols-1 sm:grid-cols-4 gap-3">
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">
+                  <label className="block text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
                     Semester
                   </label>
                   <select
                     value={selectedSemester}
                     onChange={(e) => setSelectedSemester(Number(e.target.value))}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                   >
                     {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
                       <option key={s} value={s}>
@@ -550,13 +588,13 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
 
                 {selectedSemester <= 2 ? (
                   <div>
-                    <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">
+                    <label className="block text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
                       Section
                     </label>
                     <select
                       value={selectedSection}
                       onChange={(e) => setSelectedSection(e.target.value as any)}
-                      className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500"
+                      className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                     >
                       <option value="A">Section A (Physics Cycle)</option>
                       <option value="B">Section B (Physics Cycle)</option>
@@ -566,13 +604,13 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                   </div>
                 ) : (
                   <div>
-                    <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">
+                    <label className="block text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
                       Department Branch
                     </label>
                     <select
                       value={selectedBranch}
                       onChange={(e) => setSelectedBranch(e.target.value as BranchCode)}
-                      className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500"
+                      className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                     >
                       {BRANCHES_LIST.map((b) => (
                         <option key={b.code} value={b.code}>
@@ -584,10 +622,10 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                 )}
 
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">
+                  <label className="block text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
                     Editing Target
                   </label>
-                  <div className="px-3 py-1.5 bg-slate-900 border border-slate-700 rounded-lg text-xs font-mono text-indigo-300">
+                  <div className="px-3 py-1.5 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-mono text-indigo-700 dark:text-indigo-300 font-bold">
                     {timetableKey}
                   </div>
                 </div>
@@ -605,7 +643,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                     onClick={handleResetTimetable}
                     disabled={isSaving}
                     title="Reset to Master Timetable baseline"
-                    className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition"
+                    className="px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 text-xs font-semibold transition"
                   >
                     <RotateCcw size={14} />
                   </button>
@@ -613,15 +651,15 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
               </div>
 
               {/* Day Selector */}
-              <div className="flex items-center gap-1.5 border-b border-slate-800 pb-2">
+              <div className="flex items-center gap-1.5 border-b border-slate-200 dark:border-slate-800 pb-2 overflow-x-auto">
                 {DAYS.map((day) => (
                   <button
                     key={day}
                     onClick={() => setSelectedDay(day)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition shrink-0 ${
                       selectedDay === day
                         ? 'bg-indigo-600 text-white'
-                        : 'bg-slate-800 text-slate-400 hover:text-white'
+                        : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                     }`}
                   >
                     {day} ({(editingSchedule[day] || []).length})
@@ -629,7 +667,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                 ))}
                 <button
                   onClick={() => handleAddSlot(selectedDay)}
-                  className="ml-auto inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-teal-400 text-xs font-semibold transition"
+                  className="ml-auto inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-slate-800 hover:bg-emerald-100 dark:hover:bg-slate-700 border border-emerald-200 dark:border-slate-700 text-emerald-700 dark:text-teal-400 text-xs font-semibold transition shrink-0"
                 >
                   <Plus size={14} />
                   Add Slot
@@ -639,74 +677,74 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
               {/* Slots Table */}
               <div className="space-y-3">
                 {(editingSchedule[selectedDay] || []).length === 0 ? (
-                  <div className="p-8 text-center text-slate-500 text-xs">
+                  <div className="p-8 text-center text-slate-500 dark:text-slate-400 text-xs bg-white dark:bg-slate-950 rounded-lg border border-slate-200 dark:border-slate-800">
                     No slots configured for {selectedDay}. Click "+ Add Slot" above to insert a lecture or lab.
                   </div>
                 ) : (
                   (editingSchedule[selectedDay] || []).map((slot, index) => (
                     <div
                       key={slot.id || index}
-                      className="p-3.5 rounded-lg bg-slate-950 border border-slate-800/90 grid grid-cols-1 md:grid-cols-12 gap-3 items-center"
+                      className="p-3.5 rounded-lg bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800/90 grid grid-cols-1 md:grid-cols-12 gap-3 items-center"
                     >
                       <div className="md:col-span-2">
-                        <label className="block text-[10px] text-slate-500 font-semibold mb-0.5">Timing</label>
+                        <label className="block text-[10px] text-slate-500 dark:text-slate-400 font-semibold mb-0.5">Timing</label>
                         <div className="flex items-center gap-1 text-xs">
                           <input
                             type="text"
                             value={slot.startTime}
                             onChange={(e) => handleSlotChange(selectedDay, index, 'startTime', e.target.value)}
-                            className="w-14 bg-slate-900 border border-slate-700 rounded px-1.5 py-1 text-center font-mono text-white text-xs"
+                            className="w-14 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded px-1.5 py-1 text-center font-mono text-slate-900 dark:text-white text-xs"
                           />
-                          <span className="text-slate-500">-</span>
+                          <span className="text-slate-400 dark:text-slate-500">-</span>
                           <input
                             type="text"
                             value={slot.endTime}
                             onChange={(e) => handleSlotChange(selectedDay, index, 'endTime', e.target.value)}
-                            className="w-14 bg-slate-900 border border-slate-700 rounded px-1.5 py-1 text-center font-mono text-white text-xs"
+                            className="w-14 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded px-1.5 py-1 text-center font-mono text-slate-900 dark:text-white text-xs"
                           />
                         </div>
                       </div>
 
                       <div className="md:col-span-2">
-                        <label className="block text-[10px] text-slate-500 font-semibold mb-0.5">Slot Name</label>
+                        <label className="block text-[10px] text-slate-500 dark:text-slate-400 font-semibold mb-0.5">Slot Name</label>
                         <input
                           type="text"
                           value={slot.slotName || ''}
                           onChange={(e) => handleSlotChange(selectedDay, index, 'slotName', e.target.value)}
-                          className="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1 text-white text-xs"
+                          className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded px-2 py-1 text-slate-900 dark:text-white text-xs"
                           placeholder="Slot A, Slot B, Lab..."
                         />
                       </div>
 
                       <div className="md:col-span-2">
-                        <label className="block text-[10px] text-slate-500 font-semibold mb-0.5">Course Code</label>
+                        <label className="block text-[10px] text-slate-500 dark:text-slate-400 font-semibold mb-0.5">Course Code</label>
                         <input
                           type="text"
                           value={slot.courseCode || ''}
                           onChange={(e) => handleSlotChange(selectedDay, index, 'courseCode', e.target.value.toUpperCase())}
-                          className="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1 text-amber-300 font-mono text-xs font-bold"
+                          className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded px-2 py-1 text-amber-700 dark:text-amber-300 font-mono text-xs font-bold"
                           placeholder="EE201, FREE, LUNCH..."
                         />
                       </div>
 
                       <div className="md:col-span-2">
-                        <label className="block text-[10px] text-slate-500 font-semibold mb-0.5">Room Location</label>
+                        <label className="block text-[10px] text-slate-500 dark:text-slate-400 font-semibold mb-0.5">Room Location</label>
                         <input
                           type="text"
                           value={slot.room || ''}
                           onChange={(e) => handleSlotChange(selectedDay, index, 'room', e.target.value)}
-                          className="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1 text-white text-xs"
+                          className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded px-2 py-1 text-slate-900 dark:text-white text-xs"
                           placeholder="Room 18, Room 69..."
                         />
                       </div>
 
                       <div className="md:col-span-3">
-                        <label className="block text-[10px] text-slate-500 font-semibold mb-0.5">Faculty / Notes</label>
+                        <label className="block text-[10px] text-slate-500 dark:text-slate-400 font-semibold mb-0.5">Faculty / Notes</label>
                         <input
                           type="text"
                           value={slot.notes || ''}
                           onChange={(e) => handleSlotChange(selectedDay, index, 'notes', e.target.value)}
-                          className="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1 text-slate-300 text-xs"
+                          className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded px-2 py-1 text-slate-700 dark:text-slate-300 text-xs"
                           placeholder="Faculty name or details"
                         />
                       </div>
@@ -714,7 +752,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                       <div className="md:col-span-1 flex justify-end">
                         <button
                           onClick={() => handleDeleteSlot(selectedDay, index)}
-                          className="p-1.5 rounded-lg text-slate-500 hover:text-rose-400 hover:bg-rose-500/10 transition"
+                          className="p-1.5 rounded-lg text-slate-400 dark:text-slate-500 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-500/10 transition"
                           title="Delete slot"
                         >
                           <Trash2 size={15} />
@@ -731,7 +769,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
           {activeTab === 'syllabus' && (
             <div className="space-y-6">
               {/* Course Catalog Search & Filter Controls */}
-              <div className="p-4 rounded-lg bg-slate-950 border border-slate-800 space-y-3">
+              <div className="p-4 rounded-lg bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-3">
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
                   {/* Search Bar */}
                   <div className="relative flex-1">
@@ -741,12 +779,12 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                       value={courseSearchQuery}
                       onChange={(e) => setCourseSearchQuery(e.target.value)}
                       placeholder="Search by code (e.g. CS200, EE301), title, or faculty..."
-                      className="w-full bg-slate-900 border border-slate-700 rounded-lg pl-9 pr-8 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                      className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg pl-9 pr-8 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-indigo-500"
                     />
                     {courseSearchQuery && (
                       <button
                         onClick={() => setCourseSearchQuery('')}
-                        className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+                        className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 dark:hover:text-white"
                       >
                         <X size={13} />
                       </button>
@@ -755,7 +793,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
 
                   {/* Actions & Course Count */}
                   <div className="flex items-center gap-2 shrink-0">
-                    <span className="text-[11px] font-mono text-slate-400 px-2.5 py-1 rounded bg-slate-900 border border-slate-800">
+                    <span className="text-[11px] font-mono text-slate-600 dark:text-slate-400 px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
                       {filteredCourseCodes.length} / {Object.keys(allCourses).length} courses
                     </span>
                     <button
@@ -769,8 +807,8 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                 </div>
 
                 {/* Filter Pills */}
-                <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-slate-800/80">
-                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1 mr-1">
+                <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-slate-200 dark:border-slate-800/80">
+                  <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1 mr-1">
                     <Filter size={12} /> Dept:
                   </span>
                   {[
@@ -788,17 +826,17 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                       onClick={() => setCourseDeptFilter(dept.id)}
                       className={`px-2.5 py-1 rounded text-[11px] font-medium transition ${
                         courseDeptFilter === dept.id
-                          ? 'bg-indigo-600 text-white shadow-sm'
-                          : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800'
+                          ? 'bg-indigo-600 text-white shadow-xs'
+                          : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-800'
                       }`}
                     >
                       {dept.label}
                     </button>
                   ))}
 
-                  <div className="h-4 w-[1px] bg-slate-800 mx-1 hidden sm:block" />
+                  <div className="h-4 w-[1px] bg-slate-300 dark:bg-slate-800 mx-1 hidden sm:block" />
 
-                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider ml-1">Type:</span>
+                  <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider ml-1">Type:</span>
                   {[
                     { id: 'ALL', label: 'All' },
                     { id: 'core', label: 'Core' },
@@ -810,8 +848,8 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                       onClick={() => setCourseCategoryFilter(cat.id)}
                       className={`px-2 py-0.5 rounded text-[10px] uppercase font-semibold transition ${
                         courseCategoryFilter === cat.id
-                          ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
-                          : 'bg-slate-900 text-slate-400 hover:text-white'
+                          ? 'bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-500/30'
+                          : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                       }`}
                     >
                       {cat.label}
@@ -821,14 +859,14 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
               </div>
 
               {/* Course Selector & Save / Revert Actions */}
-              <div className="p-4 rounded-lg bg-slate-950 border border-slate-800 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+              <div className="p-4 rounded-lg bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
                 <div className="flex-1">
                   <div className="flex items-center justify-between mb-1">
-                    <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                    <label className="block text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
                       Selected Course to Manage
                     </label>
                     {courseOverrides && courseOverrides[selectedCourseCode] && (
-                      <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold flex items-center gap-1">
+                      <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-500/30 font-semibold flex items-center gap-1">
                         <ShieldCheck size={10} /> Active Cloud Override
                       </span>
                     )}
@@ -836,7 +874,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                   <select
                     value={selectedCourseCode}
                     onChange={(e) => setSelectedCourseCode(e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500 font-mono"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500 font-mono"
                   >
                     {filteredCourseCodes.length === 0 ? (
                       <option value="">No courses matching current filters</option>
@@ -867,7 +905,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                     onClick={handleResetCourse}
                     disabled={isSaving || !editingCourse.code}
                     title="Revert to default curriculum syllabus"
-                    className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition"
+                    className="px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 text-xs font-semibold transition"
                   >
                     <RotateCcw size={14} />
                   </button>
@@ -875,7 +913,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                     onClick={handleDeleteCourse}
                     disabled={isSaving || !editingCourse.code}
                     title="Delete course from catalog"
-                    className="p-2 rounded-lg bg-slate-800 hover:bg-rose-500/20 text-slate-400 hover:text-rose-400 text-xs transition"
+                    className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-rose-100 dark:hover:bg-rose-500/20 text-slate-500 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 border border-slate-200 dark:border-slate-700 text-xs transition"
                   >
                     <Trash2 size={14} />
                   </button>
@@ -883,35 +921,35 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
               </div>
 
               {/* Course Form Details */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-5 rounded-lg bg-slate-950 border border-slate-800">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-5 rounded-lg bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
                 <div>
-                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Course Code</label>
+                  <label className="block text-[11px] text-slate-500 dark:text-slate-400 font-semibold mb-1">Course Code</label>
                   <input
                     type="text"
                     value={editingCourse.code || ''}
                     onChange={(e) => setEditingCourse({ ...editingCourse, code: e.target.value.toUpperCase() })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-amber-300 font-mono font-bold"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-amber-700 dark:text-amber-300 font-mono font-bold"
                     placeholder="e.g. CS200, EE301"
                   />
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Course Title / Name</label>
+                  <label className="block text-[11px] text-slate-500 dark:text-slate-400 font-semibold mb-1">Course Title / Name</label>
                   <input
                     type="text"
                     value={editingCourse.name || ''}
                     onChange={(e) => setEditingCourse({ ...editingCourse, name: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white font-semibold"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-900 dark:text-white font-semibold"
                     placeholder="e.g. Data Structures and Algorithms"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Category</label>
+                  <label className="block text-[11px] text-slate-500 dark:text-slate-400 font-semibold mb-1">Category</label>
                   <select
                     value={editingCourse.category || 'core'}
                     onChange={(e) => setEditingCourse({ ...editingCourse, category: e.target.value as any })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-900 dark:text-white"
                   >
                     <option value="core">Core</option>
                     <option value="elective">Elective</option>
@@ -920,32 +958,32 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Credits</label>
+                  <label className="block text-[11px] text-slate-500 dark:text-slate-400 font-semibold mb-1">Credits</label>
                   <input
                     type="number"
                     value={editingCourse.credits || 0}
                     onChange={(e) => setEditingCourse({ ...editingCourse, credits: Number(e.target.value) })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-900 dark:text-white"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">L-T-P Ratio</label>
+                  <label className="block text-[11px] text-slate-500 dark:text-slate-400 font-semibold mb-1">L-T-P Ratio</label>
                   <input
                     type="text"
                     value={editingCourse.ltp || ''}
                     onChange={(e) => setEditingCourse({ ...editingCourse, ltp: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white font-mono"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-900 dark:text-white font-mono"
                     placeholder="3-0-0"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Course Type</label>
+                  <label className="block text-[11px] text-slate-500 dark:text-slate-400 font-semibold mb-1">Course Type</label>
                   <select
                     value={editingCourse.type || 'Theory'}
                     onChange={(e) => setEditingCourse({ ...editingCourse, type: e.target.value as any })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-900 dark:text-white"
                   >
                     <option value="Theory">Theory</option>
                     <option value="Practical">Practical (Lab)</option>
@@ -958,73 +996,73 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Teaching Slot</label>
+                  <label className="block text-[11px] text-slate-500 dark:text-slate-400 font-semibold mb-1">Teaching Slot</label>
                   <input
                     type="text"
                     value={editingCourse.teachingSlot || ''}
                     onChange={(e) => setEditingCourse({ ...editingCourse, teachingSlot: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-indigo-300 font-mono font-bold"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-indigo-700 dark:text-indigo-300 font-mono font-bold"
                     placeholder="Slot A, Slot B, Lab..."
                   />
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Classroom / Lab Location</label>
+                  <label className="block text-[11px] text-slate-500 dark:text-slate-400 font-semibold mb-1">Classroom / Lab Location</label>
                   <input
                     type="text"
                     value={editingCourse.room || ''}
                     onChange={(e) => setEditingCourse({ ...editingCourse, room: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-900 dark:text-white"
                     placeholder="Room 18, Room 8/9, Networks Lab..."
                   />
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Course Coordinator / Faculty</label>
+                  <label className="block text-[11px] text-slate-500 dark:text-slate-400 font-semibold mb-1">Course Coordinator / Faculty</label>
                   <input
                     type="text"
                     value={editingCourse.coordinator || ''}
                     onChange={(e) => setEditingCourse({ ...editingCourse, coordinator: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-900 dark:text-white"
                     placeholder="Faculty Name(s)"
                   />
                 </div>
 
                 <div className="sm:col-span-4 flex items-center gap-2 pt-1">
-                  <label className="flex items-center gap-2 cursor-pointer text-xs text-slate-300">
+                  <label className="flex items-center gap-2 cursor-pointer text-xs text-slate-700 dark:text-slate-300">
                     <input
                       type="checkbox"
                       checked={!!editingCourse.isMinor}
                       onChange={(e) => setEditingCourse({ ...editingCourse, isMinor: e.target.checked })}
-                      className="rounded border-slate-700 bg-slate-900 text-indigo-600 focus:ring-indigo-500"
+                      className="rounded border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-indigo-600 focus:ring-indigo-500"
                     />
                     <span>Mark as Minor Degree Specialization Course (Minor in CSE)</span>
                   </label>
                 </div>
 
                 <div className="sm:col-span-4">
-                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Course Overview & Notes</label>
+                  <label className="block text-[11px] text-slate-500 dark:text-slate-400 font-semibold mb-1">Course Overview & Notes</label>
                   <textarea
                     rows={2}
                     value={editingCourse.notes || ''}
                     onChange={(e) => setEditingCourse({ ...editingCourse, notes: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-300"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-800 dark:text-slate-300"
                     placeholder="Overview, prerequisites, or official curriculum handbook notes..."
                   />
                 </div>
               </div>
 
               {/* Modules List */}
-              <div className="p-5 rounded-lg bg-slate-950 border border-slate-800 space-y-3">
+              <div className="p-5 rounded-lg bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-3">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-xs font-bold text-white uppercase tracking-wider">
+                  <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">
                     Syllabus Modules ({(editingCourse.modules || []).length})
                   </h3>
                 </div>
 
                 {(editingCourse.modules || []).map((mod, idx) => (
                   <div key={idx} className="flex items-start gap-2">
-                    <span className="text-xs font-bold text-indigo-400 pt-2 shrink-0">{idx + 1}.</span>
+                    <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 pt-2 shrink-0">{idx + 1}.</span>
                     <textarea
                       rows={2}
                       value={mod}
@@ -1033,14 +1071,14 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                         updated[idx] = e.target.value;
                         setEditingCourse({ ...editingCourse, modules: updated });
                       }}
-                      className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-slate-200"
+                      className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2 text-xs text-slate-800 dark:text-slate-200"
                     />
                     <button
                       onClick={() => {
                         const updated = (editingCourse.modules || []).filter((_, i) => i !== idx);
                         setEditingCourse({ ...editingCourse, modules: updated });
                       }}
-                      className="p-1.5 text-slate-500 hover:text-rose-400"
+                      className="p-1.5 text-slate-400 hover:text-rose-600 dark:hover:text-rose-400"
                     >
                       <Trash2 size={14} />
                     </button>
@@ -1053,7 +1091,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                     value={newModuleText}
                     onChange={(e) => setNewModuleText(e.target.value)}
                     placeholder="Module N: Topic details..."
-                    className="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white"
+                    className="flex-1 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-900 dark:text-white"
                   />
                   <button
                     onClick={() => {
@@ -1064,7 +1102,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                       });
                       setNewModuleText('');
                     }}
-                    className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-teal-400 text-xs font-semibold"
+                    className="px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-slate-800 hover:bg-emerald-100 dark:hover:bg-slate-700 border border-emerald-200 dark:border-slate-700 text-emerald-700 dark:text-teal-400 text-xs font-semibold"
                   >
                     Add Module
                   </button>
@@ -1072,14 +1110,14 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
               </div>
 
               {/* Textbooks List */}
-              <div className="p-5 rounded-lg bg-slate-950 border border-slate-800 space-y-3">
-                <h3 className="text-xs font-bold text-white uppercase tracking-wider">
+              <div className="p-5 rounded-lg bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-3">
+                <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">
                   Prescribed Textbooks & References ({(editingCourse.textbooks || []).length})
                 </h3>
 
                 {(editingCourse.textbooks || []).map((book, idx) => (
                   <div key={idx} className="flex items-center gap-2">
-                    <span className="text-xs font-mono text-slate-500">[{idx + 1}]</span>
+                    <span className="text-xs font-mono text-slate-400 dark:text-slate-500">[{idx + 1}]</span>
                     <input
                       type="text"
                       value={book}
@@ -1088,14 +1126,14 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                         updated[idx] = e.target.value;
                         setEditingCourse({ ...editingCourse, textbooks: updated });
                       }}
-                      className="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200"
+                      className="flex-1 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-800 dark:text-slate-200"
                     />
                     <button
                       onClick={() => {
                         const updated = (editingCourse.textbooks || []).filter((_, i) => i !== idx);
                         setEditingCourse({ ...editingCourse, textbooks: updated });
                       }}
-                      className="p-1.5 text-slate-500 hover:text-rose-400"
+                      className="p-1.5 text-slate-400 hover:text-rose-600 dark:hover:text-rose-400"
                     >
                       <Trash2 size={14} />
                     </button>
@@ -1108,7 +1146,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                     value={newBookText}
                     onChange={(e) => setNewBookText(e.target.value)}
                     placeholder="Author, 'Book Title', Publisher"
-                    className="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white"
+                    className="flex-1 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-900 dark:text-white"
                   />
                   <button
                     onClick={() => {
@@ -1119,7 +1157,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                       });
                       setNewBookText('');
                     }}
-                    className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-teal-400 text-xs font-semibold"
+                    className="px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-slate-800 hover:bg-emerald-100 dark:hover:bg-slate-700 border border-emerald-200 dark:border-slate-700 text-emerald-700 dark:text-teal-400 text-xs font-semibold"
                   >
                     Add Book
                   </button>
@@ -1132,31 +1170,31 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
           {activeTab === 'announcements' && (
             <div className="space-y-6">
               {/* Post New Announcement */}
-              <form onSubmit={handlePostAnnouncement} className="p-5 rounded-lg bg-slate-950 border border-slate-800 space-y-4">
-                <h3 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                  <Bell size={14} className="text-amber-400" />
+              <form onSubmit={handlePostAnnouncement} className="p-5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-4">
+                <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                  <Bell size={14} className="text-amber-500" />
                   Broadcast Live Academic Notice
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div className="sm:col-span-2">
-                    <label className="block text-[11px] text-slate-400 font-semibold mb-1">Notice Title</label>
+                    <label className="block text-[11px] text-slate-700 dark:text-slate-400 font-semibold mb-1">Notice Title</label>
                     <input
                       type="text"
                       required
                       value={newAnnouncementTitle}
                       onChange={(e) => setNewAnnouncementTitle(e.target.value)}
                       placeholder="e.g. Schedule Change: Slot E cancelled on Friday"
-                      className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white"
+                      className="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[11px] text-slate-400 font-semibold mb-1">Notice Type</label>
+                    <label className="block text-[11px] text-slate-700 dark:text-slate-400 font-semibold mb-1">Notice Type</label>
                     <select
                       value={newAnnouncementType}
                       onChange={(e) => setNewAnnouncementType(e.target.value as any)}
-                      className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white"
+                      className="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-900 dark:text-white"
                     >
                       <option value="info">Information (Blue)</option>
                       <option value="warning">Warning / Alert (Amber)</option>
@@ -1167,14 +1205,14 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">Notice Details</label>
+                  <label className="block text-[11px] text-slate-700 dark:text-slate-400 font-semibold mb-1">Notice Details</label>
                   <textarea
                     rows={3}
                     required
                     value={newAnnouncementContent}
                     onChange={(e) => setNewAnnouncementContent(e.target.value)}
                     placeholder="Enter message for students and faculty..."
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-xs text-slate-200"
+                    className="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-3 text-xs text-slate-900 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-500"
                   />
                 </div>
 
@@ -1182,7 +1220,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                   <button
                     type="submit"
                     disabled={isSaving}
-                    className="px-5 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition shadow flex items-center gap-2"
+                    className="px-5 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white text-xs font-bold transition shadow-xs flex items-center gap-2 cursor-pointer"
                   >
                     <Bell size={14} />
                     Publish Broadcast Notice
@@ -1192,43 +1230,43 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
 
               {/* List of Announcements */}
               <div className="space-y-3">
-                <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                <h3 className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
                   Active & Past Broadcasts ({announcements.length})
                 </h3>
 
                 {announcements.length === 0 ? (
-                  <div className="p-8 text-center text-slate-500 text-xs bg-slate-950 rounded-lg border border-slate-800">
+                  <div className="p-8 text-center text-slate-500 text-xs bg-slate-50 dark:bg-slate-950 rounded-lg border border-slate-200 dark:border-slate-800">
                     No announcements published yet. Post one above to show on student screens.
                   </div>
                 ) : (
                   announcements.map((ann) => (
                     <div
                       key={ann.id}
-                      className={`p-4 rounded-lg border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${
+                      className={`p-4 rounded-lg border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition ${
                         ann.active
-                          ? 'bg-slate-950 border-slate-800'
-                          : 'bg-slate-950/40 border-slate-800/40 opacity-60'
+                          ? 'bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 shadow-xs'
+                          : 'bg-slate-50/70 dark:bg-slate-950/40 border-slate-200/60 dark:border-slate-800/40 opacity-70'
                       }`}
                     >
                       <div className="space-y-1">
                         <div className="flex items-center gap-2">
                           <span
-                            className={`text-[10px] font-bold px-2 py-0.5 rounded uppercase ${
+                            className={`text-[10px] font-bold px-2 py-0.5 rounded-sm uppercase ${
                               ann.type === 'urgent'
-                                ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
+                                ? 'bg-rose-100 dark:bg-rose-500/20 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-500/30'
                                 : ann.type === 'warning'
-                                ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                                ? 'bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-500/30'
                                 : ann.type === 'success'
-                                ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
-                                : 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
+                                ? 'bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-500/30'
+                                : 'bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/30'
                             }`}
                           >
                             {ann.type}
                           </span>
-                          <h4 className="text-sm font-semibold text-white">{ann.title}</h4>
+                          <h4 className="text-sm font-semibold text-slate-900 dark:text-white">{ann.title}</h4>
                         </div>
-                        <p className="text-xs text-slate-300">{ann.content}</p>
-                        <div className="text-[11px] text-slate-500 flex items-center gap-2">
+                        <p className="text-xs text-slate-600 dark:text-slate-300">{ann.content}</p>
+                        <div className="text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-2">
                           <span>By: {ann.authorName}</span>
                           <span>•</span>
                           <span>{new Date(ann.createdAt).toLocaleDateString()}</span>
@@ -1237,20 +1275,28 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
 
                       <div className="flex items-center gap-2 shrink-0">
                         <button
-                          onClick={() => toggleAnnouncementActive(ann.id, ann.active)}
-                          className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+                          type="button"
+                          onClick={() => handleToggleAnnouncement(ann.id, ann.active)}
+                          className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer ${
                             ann.active
-                              ? 'bg-amber-500/20 text-amber-300 hover:bg-amber-500/30'
-                              : 'bg-slate-800 text-slate-400 hover:text-white'
+                              ? 'bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-amber-500/30'
+                              : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-400 hover:bg-slate-300 dark:hover:text-white'
                           }`}
                         >
                           {ann.active ? 'Disable' : 'Enable'}
                         </button>
                         <button
-                          onClick={() => removeAnnouncement(ann.id)}
-                          className="p-1.5 rounded-lg text-slate-500 hover:text-rose-400 hover:bg-rose-500/10 transition"
+                          type="button"
+                          onClick={() => handleRemoveAnnouncement(ann.id)}
+                          className={`p-1.5 rounded-lg transition cursor-pointer flex items-center gap-1 text-xs ${
+                            confirmDeleteAnnId === ann.id
+                              ? 'bg-rose-500 text-white font-bold px-2.5 py-1'
+                              : 'text-slate-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-500/10'
+                          }`}
+                          title="Delete announcement"
                         >
-                          <Trash2 size={16} />
+                          <Trash2 size={15} />
+                          {confirmDeleteAnnId === ann.id && <span>Confirm</span>}
                         </button>
                       </div>
                     </div>
@@ -1263,49 +1309,51 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
           {/* TAB 4: DIAGNOSTICS */}
           {activeTab === 'diagnostics' && (
             <div className="space-y-6">
-              <div className="p-5 rounded-lg bg-slate-950 border border-slate-800 space-y-4">
-                <h3 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                  <ShieldCheck size={16} className="text-emerald-400" />
+              <div className="p-5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-4">
+                <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                  <ShieldCheck size={16} className="text-emerald-500" />
                   Cloud Firebase Security & Storage Status
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                  <div className="p-3.5 rounded-lg bg-slate-900 border border-slate-800">
-                    <div className="text-slate-400">Firebase Project ID</div>
-                    <div className="text-white font-mono font-bold mt-1">nifty-cursor-gjlsj</div>
-                  </div>
-                  <div className="p-3.5 rounded-lg bg-slate-900 border border-slate-800">
-                    <div className="text-slate-400">Firestore Database ID</div>
-                    <div className="text-white font-mono font-bold mt-1 text-[11px] truncate">
-                      ai-studio-thetimetable-bbc64c6a-3ecd-43a7-992a-0f1184c7b5a4
+                  <div className="p-3.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                    <div className="text-slate-500 dark:text-slate-400">Firebase Project ID</div>
+                    <div className="text-slate-900 dark:text-white font-mono font-bold mt-1">
+                      {firebaseConfig.projectId || 'nit-goa-timetable'}
                     </div>
                   </div>
-                  <div className="p-3.5 rounded-lg bg-slate-900 border border-slate-800">
-                    <div className="text-slate-400">Authorized Admin Email</div>
-                    <div className="text-amber-300 font-mono font-bold mt-1">ashivamone@gmail.com</div>
+                  <div className="p-3.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                    <div className="text-slate-500 dark:text-slate-400">Firestore Database ID</div>
+                    <div className="text-slate-900 dark:text-white font-mono font-bold mt-1 text-[11px] truncate" title={firebaseConfig.firestoreDatabaseId}>
+                      {firebaseConfig.firestoreDatabaseId || 'ai-studio-thetimetable-bbc64c6a-3ecd-43a7-992a-0f1184c7b5a4'}
+                    </div>
                   </div>
-                  <div className="p-3.5 rounded-lg bg-slate-900 border border-slate-800">
-                    <div className="text-slate-400">Security Rules Status</div>
-                    <div className="text-emerald-400 font-bold mt-1 flex items-center gap-1.5">
+                  <div className="p-3.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                    <div className="text-slate-500 dark:text-slate-400">Authorized Admin Email</div>
+                    <div className="text-amber-700 dark:text-amber-400 font-mono font-bold mt-1">ashivamone@gmail.com</div>
+                  </div>
+                  <div className="p-3.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                    <div className="text-slate-500 dark:text-slate-400">Security Rules Status</div>
+                    <div className="text-emerald-700 dark:text-emerald-400 font-bold mt-1 flex items-center gap-1.5">
                       <CheckCircle2 size={14} /> Deployed & Hardened
                     </div>
                   </div>
                 </div>
 
-                <div className="p-4 rounded-lg bg-slate-900/60 border border-slate-800 text-xs space-y-2">
-                  <div className="font-semibold text-slate-200">Active Live Overrides Summary:</div>
-                  <div className="flex gap-4 text-slate-400">
+                <div className="p-4 rounded-lg bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-xs space-y-2">
+                  <div className="font-semibold text-slate-800 dark:text-slate-200">Active Live Overrides Summary:</div>
+                  <div className="flex flex-wrap gap-4 text-slate-600 dark:text-slate-400">
                     <div>
                       Custom Timetables in Firestore:{' '}
-                      <strong className="text-white">{Object.keys(timetableOverrides || {}).length}</strong>
+                      <strong className="text-slate-900 dark:text-white font-bold">{Object.keys(timetableOverrides || {}).length}</strong>
                     </div>
                     <div>
                       Custom Course Syllabi:{' '}
-                      <strong className="text-white">{Object.keys(courseOverrides || {}).length}</strong>
+                      <strong className="text-slate-900 dark:text-white font-bold">{Object.keys(courseOverrides || {}).length}</strong>
                     </div>
                     <div>
                       Announcements:{' '}
-                      <strong className="text-white">{(announcements || []).length}</strong>
+                      <strong className="text-slate-900 dark:text-white font-bold">{(announcements || []).length}</strong>
                     </div>
                   </div>
                 </div>
@@ -1315,11 +1363,11 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
         </div>
 
         {/* Modal Footer */}
-        <div className="px-5 py-3 border-t border-slate-800 bg-slate-950/60 flex items-center justify-between text-xs text-slate-500">
+        <div className="px-5 py-3 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/80 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
           <div>Changes saved to Firestore reflect live across all connected student sessions.</div>
           <button
             onClick={onClose}
-            className="px-4 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-semibold transition"
+            className="px-4 py-1.5 rounded-lg bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-white font-semibold transition"
           >
             Done
           </button>

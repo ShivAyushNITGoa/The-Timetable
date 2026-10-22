@@ -305,11 +305,17 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
     }
   };
 
+  const [confirmDelete, setConfirmDelete] = useState(false);
+
   const handleDelete = async () => {
     if (!slot?.id || !onDeleteSlot) return;
-    if (!window.confirm(`Are you sure you want to delete this slot (${slot.slotName} • ${slot.startTime}-${slot.endTime})?`)) {
+    if (!confirmDelete) {
+      setConfirmDelete(true);
+      setStatusMessage({ type: 'error', text: 'Click Delete again within 4 seconds to confirm removing this slot.' });
+      setTimeout(() => setConfirmDelete(false), 4000);
       return;
     }
+    setConfirmDelete(false);
 
     setIsDeleting(true);
     setStatusMessage(null);
@@ -330,24 +336,24 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl bg-slate-900 border border-slate-700/80 rounded-lg shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">
+      <div className="relative w-full max-w-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
         {/* Modal Header */}
-        <div className="px-5 py-4 bg-slate-900 border-b border-slate-800 flex items-center justify-between shrink-0">
+        <div className="px-5 py-4 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
             <div className="p-2 rounded-lg bg-blue-600 text-white font-bold shadow-xs">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2 flex-wrap">
-                <h3 className="font-bold text-white text-base sm:text-lg">
+                <h3 className="font-bold text-slate-900 dark:text-white text-base sm:text-lg">
                   {isNewSlot ? 'Add New Timetable Slot' : `Edit Slot: ${slot?.slotName || 'Period'}`}
                 </h3>
-                <span className="text-[10px] px-2 py-0.5 rounded-md bg-blue-900/30 text-blue-300 border border-blue-500/30 font-bold uppercase">
+                <span className="text-[10px] px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/30 font-bold uppercase">
                   Admin Edit
                 </span>
               </div>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                 {semester <= 2
                   ? `1st Year Sec ${firstYearSection || 'A'} • Sem ${semester} • ${day}`
                   : `${branch} Engineering • Sem ${semester} • ${day}`}
@@ -358,7 +364,7 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition shrink-0"
+            className="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition shrink-0 cursor-pointer"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -366,15 +372,15 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
         </div>
 
         {/* Tab Switcher: Slot Scheduling vs. Course Syllabus */}
-        <div className="px-5 pt-3 border-b border-slate-800 bg-slate-900/60 flex items-center justify-between shrink-0">
+        <div className="px-5 pt-3 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/60 flex items-center justify-between shrink-0">
           <div className="flex gap-2">
             <button
               type="button"
               onClick={() => setActiveTab('slot')}
-              className={`pb-2.5 px-3 text-xs font-semibold border-b-2 transition flex items-center gap-1.5 ${
+              className={`pb-2.5 px-3 text-xs font-semibold border-b-2 transition flex items-center gap-1.5 cursor-pointer ${
                 activeTab === 'slot'
-                  ? 'border-blue-500 text-blue-300'
-                  : 'border-transparent text-slate-400 hover:text-slate-200'
+                  ? 'border-blue-600 dark:border-blue-500 text-blue-600 dark:text-blue-400'
+                  : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
               }`}
             >
               <Clock className="w-3.5 h-3.5" />
@@ -383,17 +389,17 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
             <button
               type="button"
               onClick={() => setActiveTab('syllabus')}
-              className={`pb-2.5 px-3 text-xs font-semibold border-b-2 transition flex items-center gap-1.5 ${
+              className={`pb-2.5 px-3 text-xs font-semibold border-b-2 transition flex items-center gap-1.5 cursor-pointer ${
                 activeTab === 'syllabus'
-                  ? 'border-blue-500 text-blue-300'
-                  : 'border-transparent text-slate-400 hover:text-slate-200'
+                  ? 'border-blue-600 dark:border-blue-500 text-blue-600 dark:text-blue-400'
+                  : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
               }`}
             >
               <BookOpen className="w-3.5 h-3.5" />
               <span>2. Course Syllabus & Faculty</span>
               {modules.length > 0 && (
-                <span className="text-[10px] px-1.5 py-0.2 rounded bg-slate-800 text-blue-300 font-mono">
-                  {modules.length} modules
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 text-blue-700 dark:text-blue-300 font-mono font-bold">
+                  {modules.length}
                 </span>
               )}
             </button>
@@ -405,8 +411,8 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
           <div
             className={`mx-5 mt-3 p-3 rounded-lg text-xs flex items-center gap-2 ${
               statusMessage.type === 'success'
-                ? 'bg-emerald-500/15 border border-emerald-500/30 text-emerald-300'
-                : 'bg-rose-500/15 border border-rose-500/30 text-rose-300'
+                ? 'bg-emerald-50 dark:bg-emerald-500/15 border border-emerald-200 dark:border-emerald-500/30 text-emerald-800 dark:text-emerald-300'
+                : 'bg-rose-50 dark:bg-rose-500/15 border border-rose-200 dark:border-rose-500/30 text-rose-800 dark:text-rose-300'
             }`}
           >
             {statusMessage.type === 'success' ? (
@@ -424,7 +430,7 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
             <div className="space-y-4">
               {/* Quick Period Presets */}
               <div>
-                <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">
+                <label className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-1.5">
                   Standard Timing Presets (NIT Goa Matrix)
                 </label>
                 <div className="flex flex-wrap gap-1.5">
@@ -433,7 +439,7 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
                       key={p.name}
                       type="button"
                       onClick={() => handleApplyPreset(p)}
-                      className="px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-[11px] text-slate-300 hover:text-white border border-slate-700/60 transition active:scale-95"
+                      className="px-2.5 py-1 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-[11px] text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border border-slate-300 dark:border-slate-700/60 transition active:scale-95 cursor-pointer"
                     >
                       {p.name}
                     </button>
@@ -444,8 +450,8 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
               {/* Slot Name & Timing */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
-                  <label className="text-xs font-semibold text-slate-300 block mb-1">
-                    Slot Label / Name <span className="text-amber-400">*</span>
+                  <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+                    Slot Label / Name <span className="text-amber-500">*</span>
                   </label>
                   <input
                     type="text"
@@ -453,29 +459,29 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
                     value={slotName}
                     onChange={(e) => setSlotName(e.target.value)}
                     placeholder="e.g. Slot A, Practical Lab"
-                    className="w-full px-3 py-2 rounded-md bg-slate-950 border border-slate-700 text-white text-xs focus:outline-none focus:border-amber-400"
+                    className="w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:outline-hidden focus:border-amber-500"
                   />
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-slate-300 block mb-1">Start Time (24h)</label>
+                  <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">Start Time (24h)</label>
                   <input
                     type="time"
                     required
                     value={startTime}
                     onChange={(e) => setStartTime(e.target.value)}
-                    className="w-full px-3 py-2 rounded-md bg-slate-950 border border-slate-700 text-white text-xs focus:outline-none focus:border-amber-400"
+                    className="w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:outline-hidden focus:border-amber-500"
                   />
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-slate-300 block mb-1">End Time (24h)</label>
+                  <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">End Time (24h)</label>
                   <input
                     type="time"
                     required
                     value={endTime}
                     onChange={(e) => setEndTime(e.target.value)}
-                    className="w-full px-3 py-2 rounded-md bg-slate-950 border border-slate-700 text-white text-xs focus:outline-none focus:border-amber-400"
+                    className="w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:outline-hidden focus:border-amber-500"
                   />
                 </div>
               </div>
@@ -484,22 +490,22 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <div className="flex items-center justify-between mb-1">
-                    <label className="text-xs font-semibold text-slate-300">
+                    <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">
                       Subject / Course Code
                     </label>
-                    <span className="text-[10px] text-slate-400">e.g. CS200, EE301</span>
+                    <span className="text-[10px] text-slate-500 dark:text-slate-400">e.g. CS200, EE301</span>
                   </div>
                   <input
                     type="text"
                     value={courseCode}
                     onChange={(e) => handleCourseCodeSelect(e.target.value.toUpperCase())}
                     placeholder="Type or pick code..."
-                    className="w-full px-3 py-2 rounded-md bg-slate-950 border border-slate-700 text-white text-xs uppercase font-mono font-bold focus:outline-none focus:border-amber-400"
+                    className="w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-xs uppercase font-mono font-bold focus:outline-hidden focus:border-amber-500"
                   />
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-slate-300 block mb-1">
+                  <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">
                     Classroom / Venue
                   </label>
                   <div className="flex gap-2">
@@ -508,7 +514,7 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
                       value={room}
                       onChange={(e) => setRoom(e.target.value)}
                       placeholder="e.g. Room 18, LH 01"
-                      className="w-full px-3 py-2 rounded-md bg-slate-950 border border-slate-700 text-white text-xs focus:outline-none focus:border-amber-400"
+                      className="w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:outline-hidden focus:border-amber-500"
                     />
                   </div>
                   {/* Quick Room Suggestions */}
@@ -518,10 +524,10 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
                         key={r}
                         type="button"
                         onClick={() => setRoom(r)}
-                        className={`text-[10px] px-1.5 py-0.5 rounded border transition ${
+                        className={`text-[10px] px-1.5 py-0.5 rounded border transition cursor-pointer ${
                           room === r
-                            ? 'bg-amber-500/20 text-amber-300 border-amber-500/40'
-                            : 'bg-slate-800 text-slate-400 border-slate-700 hover:text-white'
+                            ? 'bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 border-amber-300 dark:border-amber-500/40'
+                            : 'bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:text-slate-900 dark:hover:text-white'
                         }`}
                       >
                         {r}
@@ -532,12 +538,12 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
               </div>
 
               {/* Slot Flags / Checkboxes */}
-              <div className="p-3.5 rounded-lg bg-slate-950 border border-slate-800 space-y-2.5">
-                <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
+              <div className="p-3.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-2.5">
+                <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block">
                   Slot Characteristics
                 </span>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                  <label className="flex items-center gap-2 text-xs text-slate-300 cursor-pointer select-none">
+                  <label className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 cursor-pointer select-none">
                     <input
                       type="checkbox"
                       checked={isLab}
@@ -549,13 +555,13 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
                           if (slotName.startsWith('Slot')) setSlotName('Practical Lab');
                         }
                       }}
-                      className="rounded bg-slate-800 border-slate-700 text-amber-500 focus:ring-0"
+                      className="rounded bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-700 text-amber-600 focus:ring-0"
                     />
-                    <Beaker className="w-3.5 h-3.5 text-emerald-400" />
+                    <Beaker className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                     <span>Practical Lab</span>
                   </label>
 
-                  <label className="flex items-center gap-2 text-xs text-slate-300 cursor-pointer select-none">
+                  <label className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 cursor-pointer select-none">
                     <input
                       type="checkbox"
                       checked={isLunch}
@@ -567,13 +573,13 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
                           setSlotName('LUNCH BREAK');
                         }
                       }}
-                      className="rounded bg-slate-800 border-slate-700 text-amber-500 focus:ring-0"
+                      className="rounded bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-700 text-amber-600 focus:ring-0"
                     />
-                    <Coffee className="w-3.5 h-3.5 text-amber-400" />
+                    <Coffee className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
                     <span>Lunch Break</span>
                   </label>
 
-                  <label className="flex items-center gap-2 text-xs text-slate-300 cursor-pointer select-none">
+                  <label className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 cursor-pointer select-none">
                     <input
                       type="checkbox"
                       checked={isFree}
@@ -585,20 +591,20 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
                           setSlotName('Free Period');
                         }
                       }}
-                      className="rounded bg-slate-800 border-slate-700 text-blue-500 focus:ring-0"
+                      className="rounded bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-700 text-blue-600 focus:ring-0"
                     />
                     <Clock className="w-3.5 h-3.5 text-slate-400" />
                     <span>Free Period</span>
                   </label>
 
-                  <label className="flex items-center gap-2 text-xs text-slate-300 cursor-pointer select-none">
+                  <label className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 cursor-pointer select-none">
                     <input
                       type="checkbox"
                       checked={isMinor}
                       onChange={(e) => setIsMinor(e.target.checked)}
-                      className="rounded bg-slate-800 border-slate-700 text-blue-500 focus:ring-0"
+                      className="rounded bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-700 text-blue-600 focus:ring-0"
                     />
-                    <Bookmark className="w-3.5 h-3.5 text-blue-400" />
+                    <Bookmark className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                     <span>Minor Subject</span>
                   </label>
                 </div>
@@ -606,7 +612,7 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
 
               {/* Administrative Notes */}
               <div>
-                <label className="text-xs font-semibold text-slate-300 block mb-1">
+                <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">
                   Slot Notes / Specific Instructions (Optional)
                 </label>
                 <input
@@ -614,20 +620,20 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder="e.g. Alternate weeks with Lab B, or Special Lecture"
-                  className="w-full px-3 py-2 rounded-md bg-slate-950 border border-slate-700 text-white text-xs focus:outline-none focus:border-amber-400"
+                  className="w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:outline-hidden focus:border-amber-500"
                 />
               </div>
 
               {/* Quick tip to edit syllabus */}
-              <div className="p-3 rounded-lg bg-amber-500/10 border border-amber-500/20 text-xs text-amber-300 flex items-center justify-between gap-3">
+              <div className="p-3 rounded-lg bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 text-xs text-amber-900 dark:text-amber-300 flex items-center justify-between gap-3">
                 <div className="flex items-center gap-2">
-                  <BookOpen className="w-4 h-4 text-amber-400 shrink-0" />
+                  <BookOpen className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
                   <span>Want to adjust the course title, faculty coordinator, or module syllabus topics?</span>
                 </div>
                 <button
                   type="button"
                   onClick={() => setActiveTab('syllabus')}
-                  className="px-2.5 py-1 rounded-md bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-[11px] shrink-0 transition"
+                  className="px-2.5 py-1 rounded-md bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-[11px] shrink-0 transition cursor-pointer"
                 >
                   Edit Syllabus →
                 </button>
@@ -640,7 +646,7 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
               {/* Course Title & Faculty */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="text-xs font-semibold text-slate-300 block mb-1">
+                  <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">
                     Course Full Name / Title
                   </label>
                   <input
@@ -648,12 +654,12 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
                     value={courseName}
                     onChange={(e) => setCourseName(e.target.value)}
                     placeholder="e.g. Operating Systems"
-                    className="w-full px-3 py-2 rounded-md bg-slate-950 border border-slate-700 text-white text-xs focus:outline-none focus:border-amber-400"
+                    className="w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:outline-hidden focus:border-amber-500"
                   />
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-slate-300 block mb-1">
+                  <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">
                     Faculty Coordinator / Instructor
                   </label>
                   <input
@@ -661,7 +667,7 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
                     value={coordinator}
                     onChange={(e) => setCoordinator(e.target.value)}
                     placeholder="e.g. Dr. Damodar Reddy"
-                    className="w-full px-3 py-2 rounded-md bg-slate-950 border border-slate-700 text-white text-xs focus:outline-none focus:border-amber-400"
+                    className="w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:outline-hidden focus:border-amber-500"
                   />
                 </div>
               </div>
@@ -669,34 +675,34 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
               {/* Credits, LTP & Category */}
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="text-xs font-semibold text-slate-300 block mb-1">Credits</label>
+                  <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">Credits</label>
                   <input
                     type="number"
                     min={0}
                     max={10}
                     value={credits}
                     onChange={(e) => setCredits(Number(e.target.value))}
-                    className="w-full px-3 py-2 rounded-md bg-slate-950 border border-slate-700 text-white text-xs focus:outline-none focus:border-amber-400"
+                    className="w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:outline-hidden focus:border-amber-500"
                   />
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-slate-300 block mb-1">L-T-P Structure</label>
+                  <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">L-T-P Structure</label>
                   <input
                     type="text"
                     value={ltp}
                     onChange={(e) => setLtp(e.target.value)}
                     placeholder="3-0-0"
-                    className="w-full px-3 py-2 rounded-md bg-slate-950 border border-slate-700 text-white text-xs font-mono focus:outline-none focus:border-amber-400"
+                    className="w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-xs font-mono focus:outline-hidden focus:border-amber-500"
                   />
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-slate-300 block mb-1">Category</label>
+                  <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">Category</label>
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value as any)}
-                    className="w-full px-3 py-2 rounded-md bg-slate-950 border border-slate-700 text-white text-xs focus:outline-none focus:border-amber-400"
+                    className="w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:outline-hidden focus:border-amber-500"
                   >
                     <option value="core">Core</option>
                     <option value="elective">Elective</option>
@@ -708,13 +714,13 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
               </div>
 
               {/* Syllabus Modules Manager */}
-              <div className="p-4 rounded-lg bg-slate-950 border border-slate-800 space-y-3">
+              <div className="p-4 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <BookOpen className="w-4 h-4 text-amber-400" />
-                    <span className="text-xs font-bold text-white">Syllabus Modules Breakdown</span>
+                    <BookOpen className="w-4 h-4 text-amber-500" />
+                    <span className="text-xs font-bold text-slate-900 dark:text-white">Syllabus Modules Breakdown</span>
                   </div>
-                  <span className="text-[11px] text-slate-400">{modules.length} Modules Defined</span>
+                  <span className="text-[11px] text-slate-500 dark:text-slate-400">{modules.length} Modules Defined</span>
                 </div>
 
                 {/* Modules List */}
@@ -722,16 +728,16 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
                   {modules.map((mod, idx) => (
                     <div
                       key={idx}
-                      className="p-3 rounded-lg bg-slate-900 border border-slate-800 flex items-start justify-between gap-3 text-xs"
+                      className="p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-start justify-between gap-3 text-xs"
                     >
                       <div className="space-y-1 flex-1">
-                        <span className="font-bold text-amber-300">Module {idx + 1}:</span>
-                        <p className="text-slate-300 whitespace-pre-wrap">{mod}</p>
+                        <span className="font-bold text-amber-700 dark:text-amber-300">Module {idx + 1}:</span>
+                        <p className="text-slate-700 dark:text-slate-300 whitespace-pre-wrap">{mod}</p>
                       </div>
                       <button
                         type="button"
                         onClick={() => handleRemoveModule(idx)}
-                        className="p-1 text-slate-400 hover:text-rose-400 rounded-md hover:bg-slate-800 transition shrink-0"
+                        className="p-1 text-slate-400 hover:text-rose-500 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition shrink-0 cursor-pointer"
                         title="Delete this module"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -747,20 +753,20 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
                 </div>
 
                 {/* Add Module Input */}
-                <div className="space-y-1.5 pt-2 border-t border-slate-800/80">
+                <div className="space-y-1.5 pt-2 border-t border-slate-200 dark:border-slate-800/80">
                   <textarea
                     rows={2}
                     value={newModuleText}
                     onChange={(e) => setNewModuleText(e.target.value)}
                     placeholder="Enter module topics (e.g. 'Module 1: Introduction to Data Structures, Arrays, Stacks and Queues')..."
-                    className="w-full p-2.5 rounded-md bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-amber-400"
+                    className="w-full p-2.5 rounded-md bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:outline-hidden focus:border-amber-500"
                   />
                   <div className="flex justify-end">
                     <button
                       type="button"
                       onClick={handleAddModule}
                       disabled={!newModuleText.trim()}
-                      className="px-3 py-1.5 rounded-md bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-950 text-xs font-bold transition flex items-center gap-1.5"
+                      className="px-3 py-1.5 rounded-md bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-950 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
                     >
                       <Plus className="w-3.5 h-3.5" />
                       <span>Add Module</span>
@@ -770,23 +776,23 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
               </div>
 
               {/* Textbooks & References */}
-              <div className="p-4 rounded-lg bg-slate-950 border border-slate-800 space-y-3">
+              <div className="p-4 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-white">Recommended Reference Books</span>
-                  <span className="text-[11px] text-slate-400">{textbooks.length} Books</span>
+                  <span className="text-xs font-bold text-slate-900 dark:text-white">Recommended Reference Books</span>
+                  <span className="text-[11px] text-slate-500 dark:text-slate-400">{textbooks.length} Books</span>
                 </div>
 
                 <div className="space-y-1.5">
                   {textbooks.map((book, idx) => (
                     <div
                       key={idx}
-                      className="px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-between gap-2 text-xs text-slate-300"
+                      className="px-3 py-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-2 text-xs text-slate-700 dark:text-slate-300"
                     >
                       <span className="truncate">{book}</span>
                       <button
                         type="button"
                         onClick={() => handleRemoveTextbook(idx)}
-                        className="p-1 text-slate-400 hover:text-rose-400 rounded-md hover:bg-slate-800 transition shrink-0"
+                        className="p-1 text-slate-400 hover:text-rose-500 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition shrink-0 cursor-pointer"
                         title="Remove book"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
@@ -799,19 +805,19 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
                   )}
                 </div>
 
-                <div className="flex gap-2 pt-2 border-t border-slate-800/80">
+                <div className="flex gap-2 pt-2 border-t border-slate-200 dark:border-slate-800/80">
                   <input
                     type="text"
                     value={newBookText}
                     onChange={(e) => setNewBookText(e.target.value)}
                     placeholder="Author: Title of Book, Publisher, Edition..."
-                    className="flex-1 px-3 py-2 rounded-md bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-amber-400"
+                    className="flex-1 px-3 py-2 rounded-md bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:outline-hidden focus:border-amber-500"
                   />
                   <button
                     type="button"
                     onClick={handleAddTextbook}
                     disabled={!newBookText.trim()}
-                    className="px-3 py-2 rounded-md bg-slate-800 hover:bg-slate-700 disabled:opacity-50 text-amber-300 text-xs font-bold transition flex items-center gap-1.5"
+                    className="px-3 py-2 rounded-md bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 disabled:opacity-50 text-slate-800 dark:text-amber-300 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
                   >
                     <Plus className="w-3.5 h-3.5" />
                     <span>Add</span>
@@ -822,17 +828,23 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
           )}
 
           {/* Action Buttons */}
-          <div className="pt-3 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
             <div>
               {!isNewSlot && onDeleteSlot && (
                 <button
                   type="button"
                   onClick={handleDelete}
                   disabled={isDeleting || isSaving}
-                  className="w-full sm:w-auto px-4 py-2 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/30 text-xs font-bold transition flex items-center justify-center gap-1.5 active:scale-95"
+                  className="w-full sm:w-auto px-4 py-2 rounded-lg bg-rose-50 hover:bg-rose-100 dark:bg-rose-500/10 dark:hover:bg-rose-500/20 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-500/30 text-xs font-bold transition flex items-center justify-center gap-1.5 active:scale-95 cursor-pointer"
                 >
                   <Trash2 className="w-4 h-4" />
-                  <span>{isDeleting ? 'Deleting...' : 'Delete Slot'}</span>
+                  <span>
+                    {isDeleting
+                      ? 'Deleting...'
+                      : confirmDelete
+                      ? 'Click to Confirm Delete'
+                      : 'Delete Slot'}
+                  </span>
                 </button>
               )}
             </div>
@@ -842,7 +854,7 @@ export const AdminSlotEditorModal: React.FC<AdminSlotEditorModalProps> = ({
                 type="button"
                 onClick={onClose}
                 disabled={isSaving || isDeleting}
-                className="px-4 py-2 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition border border-slate-700"
+                className="px-4 py-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold transition border border-slate-300 dark:border-slate-700 cursor-pointer"
               >
                 Cancel
               </button>

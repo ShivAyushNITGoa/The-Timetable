@@ -45,7 +45,9 @@ import { onAuthStateChanged, User } from 'firebase/auth';
 import {
   getTimetableOverride,
   getAllTimetableOverrides,
+  saveTimetableOverride,
   getAllCourseOverrides,
+  saveCourseOverride,
   subscribeToAnnouncements,
   AnnouncementDoc,
   getUserCloudData,
@@ -585,6 +587,131 @@ export default function App() {
     showToast('Timetable & scheduled tests exported as .ics calendar file!');
   };
 
+  const handleSaveAdminSlot = async (slotData: TimeSlot, courseData?: Course) => {
+    if (!currentUser?.email) {
+      throw new Error('You must be signed in as administrator to save changes.');
+    }
+    const { branch, semester, firstYearSection, day } = slotEditorState;
+    const timetableKey =
+      semester <= 2
+        ? `SEC-${firstYearSection || 'A'}-${semester}`
+        : `${branch}-${semester}`;
+
+    const currentSchedule: Record<DayOfWeek, TimeSlot[]> =
+      allTimetableOverrides[timetableKey] ||
+      (activeBranchData.schedule
+        ? JSON.parse(JSON.stringify(activeBranchData.schedule))
+        : {
+            Monday: [],
+            Tuesday: [],
+            Wednesday: [],
+            Thursday: [],
+            Friday: [],
+            Saturday: [],
+            Sunday: [],
+          });
+
+    const daySlots = [...(currentSchedule[day] || [])];
+    const existingIndex = daySlots.findIndex((s) => s.id === slotData.id);
+    if (existingIndex >= 0) {
+      daySlots[existingIndex] = slotData;
+    } else {
+      daySlots.push(slotData);
+    }
+    daySlots.sort((a, b) => (a.startTime || '').localeCompare(b.startTime || ''));
+
+    const updatedSchedule: Record<DayOfWeek, TimeSlot[]> = {
+      ...currentSchedule,
+      [day]: daySlots,
+    };
+
+    await saveTimetableOverride(
+      timetableKey,
+      updatedSchedule,
+      currentUser.email,
+      slotData.room || ''
+    );
+
+    if (courseData && courseData.code) {
+      await saveCourseOverride(courseData, currentUser.email);
+      setCloudCourseOverrides((prev) => ({
+        ...prev,
+        [courseData.code]: courseData,
+      }));
+    }
+
+    setAllTimetableOverrides((prev) => ({
+      ...prev,
+      [timetableKey]: updatedSchedule,
+    }));
+
+    const currentActiveKey =
+      safeProfile.semester <= 2
+        ? `SEC-${safeProfile.firstYearSection || 'A'}-${safeProfile.semester}`
+        : `${safeProfile.branch}-${safeProfile.semester}`;
+
+    if (timetableKey === currentActiveKey) {
+      setCloudScheduleOverride(updatedSchedule);
+    }
+
+    showToast(`Saved ${slotData.slotName || 'slot'} to ${timetableKey} (${day})`);
+    refreshAllOverrides();
+  };
+
+  const handleDeleteAdminSlot = async (slotId: string) => {
+    if (!currentUser?.email) {
+      throw new Error('You must be signed in as administrator to delete slots.');
+    }
+    const { branch, semester, firstYearSection, day } = slotEditorState;
+    const timetableKey =
+      semester <= 2
+        ? `SEC-${firstYearSection || 'A'}-${semester}`
+        : `${branch}-${semester}`;
+
+    const currentSchedule: Record<DayOfWeek, TimeSlot[]> =
+      allTimetableOverrides[timetableKey] ||
+      (activeBranchData.schedule
+        ? JSON.parse(JSON.stringify(activeBranchData.schedule))
+        : {
+            Monday: [],
+            Tuesday: [],
+            Wednesday: [],
+            Thursday: [],
+            Friday: [],
+            Saturday: [],
+            Sunday: [],
+          });
+
+    const daySlots = (currentSchedule[day] || []).filter((s) => s.id !== slotId);
+    const updatedSchedule: Record<DayOfWeek, TimeSlot[]> = {
+      ...currentSchedule,
+      [day]: daySlots,
+    };
+
+    await saveTimetableOverride(
+      timetableKey,
+      updatedSchedule,
+      currentUser.email
+    );
+
+    setAllTimetableOverrides((prev) => ({
+      ...prev,
+      [timetableKey]: updatedSchedule,
+    }));
+
+    const currentActiveKey =
+      safeProfile.semester <= 2
+        ? `SEC-${safeProfile.firstYearSection || 'A'}-${safeProfile.semester}`
+        : `${safeProfile.branch}-${safeProfile.semester}`;
+
+    if (timetableKey === currentActiveKey) {
+      setCloudScheduleOverride(updatedSchedule);
+    }
+
+    showToast(`Deleted slot from ${timetableKey} (${day})`);
+    refreshAllOverrides();
+  };
+
   const branchInfo = BRANCHES_LIST.find((b) => b.code === safeProfile.branch) || BRANCHES_LIST[0];
 
   // If Firebase Auth is still restoring state, show initial clean loader
@@ -985,10 +1112,9 @@ export default function App() {
           semester={slotEditorState.semester}
           firstYearSection={slotEditorState.firstYearSection}
           allCourses={effectiveCourses}
-          onSlotSaved={() => {
-            refreshAllOverrides();
-            showToast('Slot & syllabus updates saved and live synced to cloud!');
-          }}
+          onSaveSlot={handleSaveAdminSlot}
+          onDeleteSlot={handleDeleteAdminSlot}
+          currentUserEmail={currentUser?.email || undefined}
         />
       )}
 
