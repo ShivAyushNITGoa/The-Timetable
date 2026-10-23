@@ -767,98 +767,22 @@ export default function App() {
         onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
       />
 
-      {/* Universal Student Profile Context Strip (Hidden on mobile to preserve vertical screen estate) */}
-      <div className="hidden sm:block bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2 flex flex-wrap items-center justify-between gap-3 text-xs">
-          <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300 flex-wrap">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-            <span>
-              Active Curriculum:{' '}
-              <strong className="text-slate-900 dark:text-white">
-                {safeProfile.semester <= 2
-                  ? `B.Tech 1st Year (Section ${safeProfile.firstYearSection || 'A'}) • Sem ${safeProfile.semester} (${
-                      (safeProfile.firstYearSection === 'C' || safeProfile.firstYearSection === 'D')
-                        ? (safeProfile.semester === 1 ? 'Chemistry Cycle' : 'Physics Cycle')
-                        : (safeProfile.semester === 1 ? 'Physics Cycle' : 'Chemistry Cycle')
-                    } • ${safeProfile.branch})`
-                  : `B.Tech ${safeProfile.year}${
-                      safeProfile.year === 2 ? 'nd' : safeProfile.year === 3 ? 'rd' : 'th'
-                    } Year • Sem ${safeProfile.semester} (${safeProfile.branch} - ${branchInfo.name})`}
-              </strong>
-            </span>
-
-            {safeProfile.branch === 'EEE' && safeProfile.semester === 5 && safeProfile.hasMinor && (
-              <>
-                <span className="text-slate-300 dark:text-slate-600">•</span>
-                <span className="text-blue-700 dark:text-blue-300 font-semibold flex items-center gap-1 bg-blue-50 dark:bg-blue-950/40 px-2 py-0.5 rounded border border-blue-200 dark:border-blue-800">
-                  <Bookmark className="w-3 h-3 text-blue-600 dark:text-blue-400" />
-                  CS300M (CSE Minor) Active
-                </span>
-              </>
-            )}
-
-            {scheduleOverride && (
-              <span className="px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 font-semibold shadow-2xs">
-                Custom Schedule Active
-              </span>
-            )}
-
-            {cloudScheduleOverride && !scheduleOverride && (
-              <span className="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 font-semibold shadow-2xs">
-                Cloud Sync Active
-              </span>
-            )}
-          </div>
-
-          <div className="flex items-center gap-3 text-slate-500 dark:text-slate-400">
-            {/* Admin quick indicator if logged in as ashivamone@gmail.com */}
-            {isAdmin && (
-              <button
-                type="button"
-                onClick={() => setIsAdminModalOpen(true)}
-                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 text-[11px] font-bold hover:bg-blue-100 dark:hover:bg-blue-900/60 transition shadow-2xs"
-              >
-                <ShieldCheck className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-                <span>Admin Privileges Active</span>
-              </button>
-            )}
-
-            {/* Quick Test reminder badge */}
-            <button
-              onClick={() => setActiveTab('tests')}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition text-[11px] font-semibold border border-slate-200 dark:border-slate-700 shadow-2xs"
-            >
-              <CalendarCheck className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-              <span>{tests.length} Tests in Calendar</span>
-            </button>
-
-            {/* Change Profile CTA */}
-            <button
-              onClick={() => setIsBranchSelectorOpen(true)}
-              className="inline-flex items-center gap-1 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition"
-              title="Change your branch or academic year"
-            >
-              <Building2 className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-              <span className="underline decoration-slate-300 dark:decoration-slate-600">Switch Branch / Year</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
       {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-6 pb-[calc(7.5rem+env(safe-area-inset-bottom,0px))] sm:pb-8">
-        {/* Next Class / Ongoing Session Live Status Banner */}
-        <NextClassLiveBanner
-          schedule={effectiveSchedule}
-          courses={effectiveCourses}
-          selectedElective={selectedElective}
-          selectedBatch={selectedBatch}
-          onOpenCourseModal={setActiveModalCourse}
-          onNavigateToDay={(day) => {
-            setSelectedDay(day);
-            handleSetActiveTab('day');
-          }}
-        />
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-6 pb-[calc(5rem+env(safe-area-inset-bottom,0px))] sm:pb-8">
+        {/* Next Class / Ongoing Session Live Status Banner (Shown on non-day tabs so Day view does not have duplicate hero boxes) */}
+        {activeTab !== 'day' && (
+          <NextClassLiveBanner
+            schedule={effectiveSchedule}
+            courses={effectiveCourses}
+            selectedElective={selectedElective}
+            selectedBatch={selectedBatch}
+            onOpenCourseModal={setActiveModalCourse}
+            onNavigateToDay={(day) => {
+              setSelectedDay(day);
+              handleSetActiveTab('day');
+            }}
+          />
+        )}
 
         {/* Active Institute Announcements Broadcast Banner */}
         {announcements
@@ -866,29 +790,29 @@ export default function App() {
           .map((ann) => (
             <div
               key={ann.id}
-              className="mb-4 p-4 rounded-lg bg-white border border-slate-200 flex items-start justify-between gap-3 shadow-xs animate-in fade-in slide-in-from-top-2 duration-300"
+              className="mb-4 p-4 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-start justify-between gap-3 shadow-2xs animate-in fade-in slide-in-from-top-2 duration-300"
             >
               <div className="flex items-start gap-3 min-w-0">
-                <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-200 text-blue-600 flex items-center justify-center shrink-0 mt-0.5">
-                  <Bell className="w-4 h-4 text-blue-600" />
+                <div className="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 mt-0.5">
+                  <Bell className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                 </div>
                 <div className="min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-blue-600 text-white shadow-2xs">
                       Official Notice
                     </span>
-                    <h4 className="text-sm font-bold text-slate-900">{ann.title}</h4>
+                    <h4 className="text-sm font-bold text-slate-900 dark:text-white">{ann.title}</h4>
                   </div>
-                  <p className="text-xs text-slate-600 mt-1 leading-relaxed whitespace-pre-line">{ann.content}</p>
-                  <span className="text-[10px] text-slate-400 mt-1.5 block">
-                    Posted by <strong className="text-slate-700">{ann.author}</strong> • Real-time Institute Broadcast
+                  <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed whitespace-pre-line">{ann.content}</p>
+                  <span className="text-[10px] text-slate-400 dark:text-slate-500 mt-1.5 block">
+                    Posted by <strong className="text-slate-700 dark:text-slate-300">{ann.author}</strong> • Real-time Institute Broadcast
                   </span>
                 </div>
               </div>
               <button
                 type="button"
                 onClick={() => setDismissedAnnouncements((prev) => [...prev, ann.id])}
-                className="text-slate-400 hover:text-slate-700 p-1 rounded-lg hover:bg-slate-100 transition shrink-0"
+                className="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition shrink-0 cursor-pointer"
                 title="Dismiss Notice"
               >
                 <X className="w-4 h-4" />

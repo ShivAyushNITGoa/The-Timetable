@@ -182,96 +182,78 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="sticky top-0 z-40 bg-white/95 dark:bg-[#0b1120]/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
       <div className="max-w-7xl mx-auto px-3 sm:px-6">
-        {/* Mobile Header Bar (< sm screens): Compact, space-efficient, touch-friendly 44px targets */}
-        <div className="sm:hidden pt-2 pb-1.5">
+        {/* Mobile Header Bar (< sm screens): Compact, space-efficient, zero-clutter */}
+        <div className="sm:hidden py-2">
           <div className="flex items-center justify-between gap-2">
-            {/* Brand & NIT Goa Tag */}
+            {/* Brand & Active Branch Quick Pill */}
             <div className="flex items-center gap-2 min-w-0">
-              <BrandIcon size={32} className="rounded-lg shadow-2xs shrink-0 ring-1 ring-slate-200 dark:ring-slate-700" />
-              <div className="min-w-0">
-                <div className="flex items-center gap-1 leading-none">
-                  <span className="text-sm font-bold text-slate-900 dark:text-white tracking-tight whitespace-nowrap">NIT Goa</span>
-                  <span className="text-slate-300 dark:text-slate-600 text-xs">•</span>
-                  <span className="text-xs font-bold text-blue-600 dark:text-blue-400">Timetable</span>
-                </div>
-                <p className="text-[10px] text-slate-500 dark:text-slate-400 font-medium truncate mt-0.5">
-                  Cuncolim Campus
-                </p>
-              </div>
+              <BrandIcon size={28} className="rounded-md shadow-2xs shrink-0" />
+              <button
+                type="button"
+                onClick={onOpenBranchSelector}
+                className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold border border-slate-200 dark:border-slate-700 transition active:scale-95 shrink-0 cursor-pointer"
+                title="Switch branch, year, or semester"
+              >
+                <span className="text-blue-600 dark:text-blue-400">{safeProfile.branch}</span>
+                <span className="text-slate-400 dark:text-slate-500 font-normal">·</span>
+                <span>
+                  {safeProfile.semester <= 2
+                    ? `Sec ${safeProfile.firstYearSection || 'A'} Sem ${safeProfile.semester}`
+                    : `Sem ${safeProfile.semester}`}
+                </span>
+                <ChevronDown className="w-3 h-3 text-slate-500 dark:text-slate-400" />
+              </button>
             </div>
 
-            {/* Mobile Top Actions */}
-            <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
-              {/* Quick Command Search */}
+            {/* Mobile Top Actions: Only the most essential controls */}
+            <div className="flex items-center gap-1 shrink-0">
+              {/* Quick Search */}
               {onOpenCommandPalette && (
                 <button
                   type="button"
                   onClick={onOpenCommandPalette}
-                  className="min-h-[38px] min-w-[38px] p-2 rounded-lg bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 active:bg-slate-100 dark:active:bg-slate-600 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 flex items-center justify-center active:scale-95 transition shadow-2xs"
-                  title="Quick Command Search (Ctrl+K)"
+                  className="w-8 h-8 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center transition active:scale-95 cursor-pointer"
+                  title="Search (Ctrl+K)"
                   aria-label="Quick Search"
                 >
-                  <Search className="w-4 h-4 text-slate-600 dark:text-slate-300" />
+                  <Search className="w-4 h-4" />
                 </button>
               )}
 
-              {/* Dark / Light Theme Toggler (Mobile) */}
+              {/* Dark / Light Theme Toggler */}
               <button
                 type="button"
                 onClick={toggleMode}
-                className="min-h-[38px] min-w-[38px] p-2 rounded-lg bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 active:bg-slate-100 dark:active:bg-slate-600 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 flex items-center justify-center active:scale-95 transition shadow-2xs"
+                className="w-8 h-8 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center transition active:scale-95 cursor-pointer"
                 title={mode === 'dark' ? 'Switch to Light Theme' : 'Switch to Dark Theme'}
                 aria-label="Toggle dark/light theme"
               >
                 {mode === 'dark' ? (
-                  <Sun className="w-4 h-4 text-amber-400 animate-in spin-in-90 duration-200" />
+                  <Sun className="w-4 h-4 text-amber-400" />
                 ) : (
-                  <Moon className="w-4 h-4 text-slate-600 dark:text-slate-300 animate-in spin-in-90 duration-200" />
+                  <Moon className="w-4 h-4 text-slate-600 dark:text-slate-300" />
                 )}
               </button>
 
-              {/* Admin Panel Button */}
+              {/* Admin Panel Button (if admin) */}
               {isAdmin && onOpenAdmin && (
                 <button
                   type="button"
                   onClick={onOpenAdmin}
-                  className="min-h-[38px] px-2.5 sm:px-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs flex items-center gap-1 active:scale-95 transition shadow-2xs"
+                  className="h-8 px-2 rounded-lg bg-blue-600 text-white font-semibold text-xs flex items-center gap-1 active:scale-95 transition cursor-pointer"
                   title="Admin Control Panel"
                 >
-                  <ShieldCheck className="w-4 h-4 shrink-0" />
-                  <span className="hidden min-[380px]:inline">Admin</span>
+                  <ShieldCheck className="w-3.5 h-3.5" />
+                  <span>Admin</span>
                 </button>
               )}
-
-              {/* Landing & About */}
-              {onOpenLanding && (
-                <button
-                  type="button"
-                  onClick={onOpenLanding}
-                  className="min-h-[38px] min-w-[38px] px-2 rounded-lg bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-semibold flex items-center justify-center active:scale-95 transition shadow-2xs"
-                  title="About & PWA Download"
-                >
-                  <Info className="w-4 h-4 text-slate-600 dark:text-slate-300" />
-                </button>
-              )}
-
-              {/* Export Calendar .ics */}
-              <button
-                type="button"
-                onClick={onExportCalendar}
-                className="min-h-[38px] min-w-[38px] p-2 rounded-lg bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 active:bg-slate-100 dark:active:bg-slate-600 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 flex items-center justify-center active:scale-95 transition shadow-2xs"
-                title="Export Calendar (.ics)"
-                aria-label="Export Calendar (.ics)"
-              >
-                <Download className="w-4 h-4 text-slate-600 dark:text-slate-300" />
-              </button>
 
               {/* User Sign In / Out */}
               {currentUser ? (
                 <button
                   type="button"
                   onClick={onSignOut}
-                  className="min-h-[38px] min-w-[38px] p-2 rounded-lg bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 flex items-center justify-center transition"
+                  className="w-8 h-8 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center transition cursor-pointer"
                   title={`Signed in as ${currentUser.email}. Click to sign out.`}
                 >
                   <LogOut className="w-3.5 h-3.5" />
@@ -280,114 +262,76 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   type="button"
                   onClick={onSignIn}
-                  className="min-h-[38px] px-2 sm:px-2.5 rounded-lg bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-300 dark:border-slate-700 font-bold text-xs flex items-center gap-1 transition shadow-2xs hover:bg-slate-50 dark:hover:bg-slate-700"
+                  className="h-8 px-2 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold text-xs flex items-center gap-1 transition cursor-pointer"
                   title="Sign In with Google"
                 >
-                  <LogIn className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
-                  <span className="hidden min-[380px]:inline">Login</span>
+                  <LogIn className="w-3.5 h-3.5" />
+                  <span>Login</span>
                 </button>
               ) : null}
             </div>
           </div>
 
-          {/* Dedicated Ultra-Prominent Branch & Semester Active Status Banner */}
-          <button
-            type="button"
-            onClick={onOpenBranchSelector}
-            className="w-full mt-2 px-3.5 py-2.5 rounded-lg bg-white dark:bg-slate-800/80 hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700/80 hover:border-slate-300 dark:hover:border-slate-600 flex items-center justify-between gap-2.5 transition active:scale-[0.99] text-left shadow-2xs group"
-            aria-label="Switch Branch, Year, or Semester"
-          >
-            <div className="flex items-center gap-2.5 min-w-0">
-              <span className="px-2.5 py-1 rounded-md text-xs font-bold bg-slate-900 dark:bg-blue-600 text-white tracking-wider shadow-2xs shrink-0">
-                {safeProfile.branch}
-              </span>
-              <div className="min-w-0">
-                <div className="flex items-center gap-1.5 flex-wrap">
-                  <span className="text-xs font-bold text-slate-900 dark:text-white">
-                    {safeProfile.semester <= 2
-                      ? `Sem ${safeProfile.semester} • Section ${safeProfile.firstYearSection || 'A'}`
-                      : `Semester ${safeProfile.semester} • Year ${safeProfile.year}`}
-                  </span>
-                  {safeProfile.branch === 'EEE' && safeProfile.semester === 5 && safeProfile.hasMinor && (
-                    <span className="px-1.5 py-0.2 rounded text-[10px] font-semibold bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-600 shrink-0">
-                      CS300M Minor
-                    </span>
-                  )}
-                </div>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium truncate mt-0.5">
-                  {safeProfile.semester <= 2
-                    ? `${safeProfile.firstYearSection === 'A' || safeProfile.firstYearSection === 'B' ? 'Physics' : 'Chemistry'} Cycle Curriculum`
-                    : branchInfo.name}
-                </p>
+          {/* Inline Mobile Batch & Elective Segmented Bar (Ultra-slim, zero bloat) */}
+          <div className="flex items-center justify-between gap-1.5 text-xs pt-1.5 mt-1 border-t border-slate-100 dark:border-slate-800/60">
+            {/* Lab Batch Selector */}
+            <div className="flex items-center gap-0.5 bg-slate-100 dark:bg-slate-800/80 p-0.5 rounded-md border border-slate-200/80 dark:border-slate-700/60 text-[11px]">
+              <span className="text-[10px] text-slate-500 dark:text-slate-400 font-bold px-1">Lab:</span>
+              <button
+                type="button"
+                onClick={() => setSelectedBatch('batch1')}
+                className={`px-2 py-0.5 rounded font-semibold transition active:scale-95 cursor-pointer ${
+                  selectedBatch === 'batch1'
+                    ? 'bg-blue-600 text-white shadow-2xs font-bold'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                B1
+              </button>
+              <button
+                type="button"
+                onClick={() => setSelectedBatch('batch2')}
+                className={`px-2 py-0.5 rounded font-semibold transition active:scale-95 cursor-pointer ${
+                  selectedBatch === 'batch2'
+                    ? 'bg-blue-600 text-white shadow-2xs font-bold'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                B2
+              </button>
+            </div>
+
+            {/* Elective Selector (when EEE Sem 5 is active) */}
+            {safeProfile.branch === 'EEE' && safeProfile.semester === 5 && (
+              <div className="flex items-center gap-0.5 bg-slate-100 dark:bg-slate-800/80 p-0.5 rounded-md border border-slate-200/80 dark:border-slate-700/60 text-[11px]">
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold px-1">Elective:</span>
+                <button
+                  type="button"
+                  onClick={() => setSelectedElective('EE541')}
+                  className={`px-2 py-0.5 rounded font-semibold transition active:scale-95 cursor-pointer ${
+                    selectedElective === 'EE541'
+                      ? 'bg-blue-600 text-white shadow-2xs font-bold'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  }`}
+                  title="EE541 Embedded Systems Design"
+                >
+                  EE541
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSelectedElective('EE545')}
+                  className={`px-2 py-0.5 rounded font-semibold transition active:scale-95 cursor-pointer ${
+                    selectedElective === 'EE545'
+                      ? 'bg-blue-600 text-white shadow-2xs font-bold'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  }`}
+                  title="EE545 FPGA based Digital Design"
+                >
+                  EE545
+                </button>
               </div>
-            </div>
-
-            <div className="flex items-center gap-1 text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-700/80 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 px-2.5 py-1.5 rounded-md border border-slate-200 dark:border-slate-600 shrink-0 transition">
-              <span>Change</span>
-              <ChevronDown className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 group-hover:translate-y-0.5 transition-transform" />
-            </div>
-          </button>
-        </div>
-
-        {/* Mobile Elective & Lab Batch Strip (Always visible when semester has batches) */}
-        <div className="sm:hidden pb-2 pt-1 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between gap-1.5 text-xs flex-wrap">
-          {/* Lab Batch Selector */}
-          <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800/90 p-0.5 rounded-lg border border-slate-200 dark:border-slate-700">
-            <span className="text-[10px] text-slate-700 dark:text-slate-300 font-bold px-1.5">Lab:</span>
-            <button
-              type="button"
-              onClick={() => setSelectedBatch('batch1')}
-              className={`min-h-[30px] px-3 py-0.5 rounded-md font-semibold text-xs transition active:scale-95 ${
-                selectedBatch === 'batch1'
-                  ? 'bg-blue-600 text-white shadow-2xs'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              Batch 1
-            </button>
-            <button
-              type="button"
-              onClick={() => setSelectedBatch('batch2')}
-              className={`min-h-[30px] px-3 py-0.5 rounded-md font-semibold text-xs transition active:scale-95 ${
-                selectedBatch === 'batch2'
-                  ? 'bg-blue-600 text-white shadow-2xs'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              Batch 2
-            </button>
+            )}
           </div>
-
-          {/* Elective Selector (when EEE Sem 5 is active) */}
-          {safeProfile.branch === 'EEE' && safeProfile.semester === 5 && (
-            <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800/90 p-0.5 rounded-lg border border-slate-200 dark:border-slate-700">
-              <span className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold px-1">Elective:</span>
-              <button
-                type="button"
-                onClick={() => setSelectedElective('EE541')}
-                className={`min-h-[30px] px-2.5 py-0.5 rounded-md font-semibold text-xs transition active:scale-95 ${
-                  selectedElective === 'EE541'
-                    ? 'bg-blue-600 text-white shadow-2xs'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-                }`}
-                title="EE541 Embedded Systems Design"
-              >
-                EE541
-              </button>
-              <button
-                type="button"
-                onClick={() => setSelectedElective('EE545')}
-                className={`min-h-[30px] px-2.5 py-0.5 rounded-md font-semibold text-xs transition active:scale-95 ${
-                  selectedElective === 'EE545'
-                    ? 'bg-blue-600 text-white shadow-2xs'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-                }`}
-                title="EE545 FPGA based Digital Design"
-              >
-                EE545
-              </button>
-            </div>
-          )}
         </div>
 
         {/* Desktop & Tablet Top Strip (>= sm screens): Responsive, zero-overlap layout */}

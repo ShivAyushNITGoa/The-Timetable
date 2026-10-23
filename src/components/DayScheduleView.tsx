@@ -237,8 +237,8 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
   return (
     <div className="space-y-6">
-      {/* Day Selector Pills */}
-      <div className="grid grid-cols-7 gap-1 sm:flex sm:overflow-x-auto pb-1 sm:pb-2 scrollbar-none">
+      {/* Day Selector Pills: Ergonomic horizontal scroll on mobile, 7-col grid on desktop */}
+      <div className="flex sm:grid sm:grid-cols-7 gap-1.5 overflow-x-auto no-scrollbar pb-1 sm:pb-2 select-none">
         {days.map((day) => {
           const isToday = currentDayName === day;
           const isSelected = selectedDay === day;
@@ -251,32 +251,32 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
               key={day}
               type="button"
               onClick={() => onSelectDay(day)}
-              className={`min-h-[44px] sm:min-h-[48px] py-1.5 px-0.5 sm:px-4 sm:py-2.5 rounded-lg font-semibold text-xs sm:text-sm flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-0.5 sm:gap-2 transition-all active:scale-95 ${
+              className={`min-w-[58px] sm:min-w-0 sm:w-full min-h-[46px] sm:min-h-[48px] py-2 px-1.5 sm:px-3 rounded-xl font-semibold text-xs sm:text-sm flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1 sm:gap-2 transition-all active:scale-95 shrink-0 cursor-pointer ${
                 isSelected
-                  ? 'bg-slate-900 text-white font-bold shadow-2xs'
+                  ? 'bg-blue-600 dark:bg-blue-600 text-white font-bold shadow-xs'
                   : isWeekend
-                  ? 'bg-slate-50 hover:bg-slate-100 text-slate-500 border border-slate-200'
-                  : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200'
+                  ? 'bg-slate-50 dark:bg-slate-900/60 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-800'
+                  : 'bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800'
               }`}
             >
               <span className="hidden sm:inline">{day}</span>
               <span className="sm:hidden text-xs font-bold">{shortDay}</span>
               {isToday ? (
                 <span
-                  className={`text-[8px] sm:text-[10px] px-1 sm:px-1.5 py-0.2 sm:py-0.5 rounded-md font-bold uppercase tracking-wider ${
+                  className={`text-[8px] sm:text-[10px] px-1 sm:px-1.5 py-0.2 sm:py-0.5 rounded font-bold uppercase tracking-wider ${
                     isSelected
                       ? 'bg-white/20 text-white'
-                      : 'bg-slate-100 text-slate-900 border border-slate-300'
+                      : 'bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200'
                   }`}
                 >
                   Today
                 </span>
               ) : isWeekend ? (
-                <span className={`sm:hidden text-[8px] font-medium ${isSelected ? 'text-slate-200' : 'text-slate-400'}`}>wknd</span>
+                <span className={`sm:hidden text-[8px] font-medium ${isSelected ? 'text-white/80' : 'text-slate-400'}`}>wknd</span>
               ) : null}
               {dayMinor && (
                 <span
-                  className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-amber-300' : 'bg-slate-700'}`}
+                  className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-amber-300' : 'bg-blue-500 dark:bg-blue-400'}`}
                   title="Has CS300M Minor Class"
                 />
               )}
@@ -287,16 +287,16 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
       {/* Alert banner if test scheduled today */}
       {todaysTests.length > 0 && (
-        <div className="p-4 rounded-lg bg-slate-50 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-in fade-in">
+        <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-in fade-in">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 text-slate-800 flex items-center justify-center font-bold shrink-0">
+            <div className="w-9 h-9 rounded-lg bg-amber-500/20 text-amber-700 dark:text-amber-300 flex items-center justify-center font-bold shrink-0">
               <CalendarCheck className="w-4 h-4" />
             </div>
             <div>
-              <div className="text-xs font-bold text-slate-900 uppercase tracking-wider">
+              <div className="text-xs font-bold text-amber-900 dark:text-amber-200 uppercase tracking-wider">
                 Scheduled Test / Exam Today
               </div>
-              <div className="text-sm font-bold text-slate-900 mt-0.5">
+              <div className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">
                 {todaysTests.map((t) => `${t.courseCode}: ${t.title} (${t.startTime} in ${t.room})`).join(' • ')}
               </div>
             </div>
@@ -306,7 +306,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
             <button
               type="button"
               onClick={onNavigateToTests}
-              className="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold flex items-center gap-1.5 transition self-start sm:self-auto shrink-0 shadow-xs active:scale-95"
+              className="px-3 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold flex items-center gap-1.5 transition self-start sm:self-auto shrink-0 shadow-xs active:scale-95"
             >
               <span>View Agenda & Tasks</span>
               <ChevronRight className="w-3.5 h-3.5" />
@@ -317,17 +317,17 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
       {/* Jump to Today banner when browsing another day */}
       {!isSelectedDayToday && (
-        <div className="p-3.5 rounded-lg bg-white border border-slate-200 shadow-2xs flex items-center justify-between gap-3">
+        <div className="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xs flex items-center justify-between gap-3">
           <div className="flex items-center gap-2.5 min-w-0">
-            <Calendar className="w-4 h-4 text-slate-700 shrink-0" />
-            <span className="text-xs text-slate-600">
-              Viewing <strong>{selectedDay}</strong>'s schedule. Today is <strong>{currentDayName}</strong>.
+            <Calendar className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
+            <span className="text-xs text-slate-600 dark:text-slate-400">
+              Viewing <strong className="text-slate-900 dark:text-white">{selectedDay}</strong>'s schedule. Today is <strong className="text-slate-900 dark:text-white">{currentDayName}</strong>.
             </span>
           </div>
           <button
             type="button"
             onClick={() => onSelectDay(currentDayName as DayOfWeek)}
-            className="min-h-[38px] px-3.5 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-2xs shrink-0"
+            className="min-h-[36px] px-3.5 py-1.5 rounded-lg bg-slate-900 dark:bg-slate-100 hover:bg-slate-800 dark:hover:bg-white text-white dark:text-slate-900 font-semibold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-2xs shrink-0"
           >
             <span>Jump to Today ({currentDayName.slice(0, 3)})</span>
             <ChevronRight className="w-3.5 h-3.5" />
@@ -336,187 +336,291 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
       )}
 
       {/* Live Academic Status & Next Class Countdown Hero */}
-      {isSelectedDayToday && (
-        <div className="p-4 sm:p-5 rounded-lg bg-white border border-slate-200 shadow-2xs space-y-3.5">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div className="flex items-center gap-3">
-              <div
-                className={`w-9 h-9 rounded-lg flex items-center justify-center font-bold shrink-0 ${
-                  activeSlot
-                    ? 'bg-slate-100 text-slate-900 border border-slate-300 animate-pulse'
-                    : 'bg-slate-100 text-slate-600 border border-slate-200'
-                }`}
-              >
-                {activeSlot ? <Clock className="w-4 h-4 text-slate-900" /> : <TrendingUp className="w-4 h-4 text-slate-500" />}
-              </div>
-              <div>
-                <div className="text-[11px] font-bold uppercase tracking-wider flex items-center gap-2">
-                  {activeSlot ? (
-                    <span className="text-slate-900 flex items-center gap-1.5 font-bold">
-                      <span className="w-2 h-2 rounded-full bg-slate-900 animate-ping inline-block" />
-                      Class Happening Right Now
-                    </span>
-                  ) : nextSlot ? (
-                    <span className="text-slate-800 flex items-center gap-1.5 font-semibold">
-                      <Clock className="w-3.5 h-3.5 text-slate-700" />
-                      Next Upcoming Session
-                    </span>
-                  ) : (
-                    <span className="text-emerald-800 flex items-center gap-1.5 font-semibold">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
-                      All Scheduled Lectures Done
-                    </span>
-                  )}
-                </div>
-                <div className="text-sm sm:text-base font-bold text-slate-900 mt-0.5">
-                  {activeSlot ? (
-                    <span>
-                      {courses[activeSlot.courseCode]?.name || activeSlot.slotName} ({activeSlot.courseCode}) •{' '}
-                      {minutesRemainingInActive !== null && minutesRemainingInActive > 0
-                        ? `${minutesRemainingInActive} mins remaining`
-                        : 'Concluding now'}
-                    </span>
-                  ) : nextSlot ? (
-                    <span>
-                      {courses[nextSlot.courseCode]?.name || nextSlot.slotName} ({nextSlot.courseCode}) at {nextSlot.startTime}{' '}
-                      {minutesUntilNext !== null && (
-                        <span className="text-slate-900 font-bold">(Starts in {minutesUntilNext} mins)</span>
-                      )}
-                    </span>
-                  ) : (
-                    <span>All classes for today have concluded! You are free for the day.</span>
-                  )}
-                </div>
-              </div>
-            </div>
+      {/* 1. Mobile-Optimized Unified Header (< sm screens): Compact, zero-overlap, saves ~200px vertical space */}
+      <div className="sm:hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-3.5 shadow-2xs space-y-3">
+        {/* Top Row: Live Status & Controls */}
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2 min-w-0">
+            {isSelectedDayToday ? (
+              activeSlot ? (
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800/80 text-blue-700 dark:text-blue-300 font-bold text-xs truncate">
+                  <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 shrink-0 animate-pulse" />
+                  <span className="truncate">Live: {courses[activeSlot.courseCode]?.shortName || activeSlot.courseCode}</span>
+                </span>
+              ) : nextSlot ? (
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-xs truncate">
+                  <Clock className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
+                  <span className="truncate">Next: {courses[nextSlot.courseCode]?.shortName || nextSlot.courseCode} ({nextSlot.startTime})</span>
+                </span>
+              ) : (
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/80 text-emerald-700 dark:text-emerald-300 font-semibold text-xs">
+                  <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
+                  <span>Lectures Concluded</span>
+                </span>
+              )
+            ) : (
+              <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                Day Schedule ({selectedDay.slice(0, 3)})
+              </span>
+            )}
+          </div>
 
-            {/* Class Notification Toggle */}
-            <div className="flex items-center gap-2 self-start sm:self-center">
+          <div className="flex items-center gap-1.5 shrink-0">
+            {isSelectedDayToday && (
               <button
                 type="button"
                 onClick={handleRequestNotifications}
-                className={`min-h-[38px] px-3 py-1.5 rounded-lg border text-xs font-semibold flex items-center gap-1.5 transition active:scale-95 ${
+                className={`p-1.5 rounded-lg border text-xs transition active:scale-95 cursor-pointer ${
                   notificationActive
-                    ? 'bg-slate-100 border-slate-300 text-slate-900'
-                    : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-700'
+                    ? 'bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-400'
+                    : 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-500'
                 }`}
-                title="Enable web alerts before your classes"
+                title={notificationActive ? 'Class Alerts Active' : 'Enable Class Alerts'}
+                aria-label="Toggle class alerts"
               >
-                {notificationActive ? (
-                  <BellRing className="w-3.5 h-3.5 text-slate-800" />
-                ) : (
-                  <Bell className="w-3.5 h-3.5 text-slate-500" />
-                )}
-                <span>{notificationActive ? 'Class Alerts Active' : 'Enable Class Alerts'}</span>
+                {notificationActive ? <BellRing className="w-4 h-4 text-blue-600 dark:text-blue-400" /> : <Bell className="w-4 h-4" />}
               </button>
-            </div>
-          </div>
-
-          {/* Daily Progress & Breaks */}
-          <div className="pt-2.5 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs text-slate-500">
-            <div className="flex items-center gap-2.5">
-              <span className="text-slate-600 font-medium">Daily Progress:</span>
-              <span className="font-bold text-slate-900">
-                {completedClassesToday} of {totalClasses} classes completed
-              </span>
-              <div className="w-24 h-2 bg-slate-100 rounded overflow-hidden inline-block">
-                <div
-                  className="h-full bg-slate-900 transition-all duration-500"
-                  style={{ width: `${totalClasses > 0 ? (completedClassesToday / totalClasses) * 100 : 0}%` }}
-                />
-              </div>
-            </div>
-            {freeSlots.length > 0 && (
-              <div className="flex items-center gap-1.5 text-[11px] text-slate-500">
-                <Coffee className="w-3.5 h-3.5 text-slate-600" />
-                <span>Free/Break slots: {freeSlots.map((s) => s.startTime + '–' + s.endTime).join(', ')}</span>
-              </div>
             )}
-          </div>
-        </div>
-      )}
-
-      {/* Day Header & Briefing Bar */}
-      <div className="bg-white border border-slate-200 rounded-lg p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4 shadow-2xs">
-        <div className="flex items-center justify-between w-full sm:w-auto gap-2">
-          <div>
-            <div className="flex items-center gap-2">
-              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
-                {selectedDay}'s Timetable
-              </h2>
-              {isSelectedDayToday && (
-                <span className="px-2 py-0.5 rounded-md text-xs font-semibold bg-slate-100 text-slate-800 border border-slate-300">
-                  Live Today
-                </span>
-              )}
-            </div>
-            <p className="text-xs text-slate-500 mt-1">
-              {branch} Semester {semester} • NIT Goa Campus
-            </p>
-          </div>
-
-          {/* Quick Prev / Next Day navigation buttons for mobile thumb */}
-          <div className="flex items-center gap-2 sm:hidden">
             <button
               type="button"
               onClick={goToPrevDay}
-              className="min-h-[40px] min-w-[40px] rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center border border-slate-200 active:scale-95 transition shadow-xs"
+              className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 active:scale-95 transition cursor-pointer"
               aria-label="Previous day"
-              title="Previous day"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-4 h-4" />
             </button>
             <button
               type="button"
               onClick={goToNextDay}
-              className="min-h-[40px] min-w-[40px] rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center border border-slate-200 active:scale-95 transition shadow-xs"
+              className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 active:scale-95 transition cursor-pointer"
               aria-label="Next day"
-              title="Next day"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
 
-        {/* Badges for Day & Customize / Test Buttons */}
-        <div className="flex items-center gap-2 flex-wrap">
-          <div className="px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-xs text-slate-700">
-            <strong className="text-slate-900">{totalClasses}</strong> Sessions
+        {/* Middle Row: Day Title & Quick Info */}
+        <div className="flex items-center justify-between gap-2 pt-0.5">
+          <div>
+            <h2 className="text-base font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-1.5">
+              <span>{selectedDay}'s Timetable</span>
+              {isSelectedDayToday && (
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-blue-600 text-white font-bold">
+                  Today
+                </span>
+              )}
+            </h2>
+            <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              <span>{totalClasses} Classes</span>
+              {hasMinor && <span>· CS300M</span>}
+              {hasLab && <span>· 3h Lab</span>}
+            </div>
           </div>
-          {hasMinor && (
-            <div className="px-2.5 py-1 rounded-md bg-slate-100 border border-slate-300 text-xs text-slate-800 flex items-center gap-1.5 shadow-2xs">
-              <Bookmark className="w-3.5 h-3.5 text-slate-600" />
-              <span>Includes <strong>CS300M Minor</strong></span>
-            </div>
-          )}
-          {hasLab && (
-            <div className="px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-xs text-slate-800 flex items-center gap-1.5">
-              <Beaker className="w-3.5 h-3.5 text-slate-600" />
-              <span>3-Hour Lab Session</span>
-            </div>
-          )}
 
-          {onOpenCustomizer && (
-            <button
-              onClick={onOpenCustomizer}
-              className="px-3 py-1.5 rounded-md bg-white hover:bg-slate-50 text-xs text-slate-700 border border-slate-300 font-semibold flex items-center gap-1.5 transition active:scale-95 shadow-2xs"
-              title="Customize timing or add extra slots to this day"
-            >
-              <Edit3 className="w-3.5 h-3.5 text-slate-600" />
-              <span>Edit Day Schedule</span>
-            </button>
-          )}
+          <div className="flex items-center gap-1.5 shrink-0">
+            {onOpenCustomizer && (
+              <button
+                type="button"
+                onClick={onOpenCustomizer}
+                className="px-2.5 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-700 flex items-center gap-1 transition active:scale-95 cursor-pointer"
+              >
+                <Edit3 className="w-3.5 h-3.5 text-slate-500" />
+                <span>Edit</span>
+              </button>
+            )}
+            {isAdmin && onAdminAddSlot && (
+              <button
+                type="button"
+                onClick={() => onAdminAddSlot(selectedDay)}
+                className="px-2.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold flex items-center gap-1 transition active:scale-95 cursor-pointer"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                <span>Add</span>
+              </button>
+            )}
+          </div>
+        </div>
 
-          {isAdmin && onAdminAddSlot && (
-            <button
-              onClick={() => onAdminAddSlot(selectedDay)}
-              className="px-3 py-1.5 rounded-md bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-xs"
-              title="Admin: Add a new slot to this day"
-            >
-              <Plus className="w-3.5 h-3.5" />
-              <span>+ Add Slot (Admin)</span>
-            </button>
-          )}
+        {/* Bottom Row: Progress Bar on Today */}
+        {isSelectedDayToday && totalClasses > 0 && (
+          <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2 text-[11px] text-slate-500 dark:text-slate-400">
+            <span>{completedClassesToday} of {totalClasses} classes done</span>
+            <div className="w-28 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-blue-600 dark:bg-blue-500 rounded-full transition-all duration-500"
+                style={{ width: `${(completedClassesToday / totalClasses) * 100}%` }}
+              />
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* 2. Desktop Header Bar (>= sm screens): Full expansive presence */}
+      <div className="hidden sm:block space-y-4">
+        {/* Live Academic Status & Next Class Countdown Hero */}
+        {isSelectedDayToday && (
+          <div className="p-4 sm:p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-3.5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
+                <div
+                  className={`w-9 h-9 rounded-lg flex items-center justify-center font-bold shrink-0 ${
+                    activeSlot
+                      ? 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20'
+                      : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700'
+                  }`}
+                >
+                  {activeSlot ? <Clock className="w-4 h-4 text-blue-600 dark:text-blue-400" /> : <TrendingUp className="w-4 h-4 text-slate-500 dark:text-slate-400" />}
+                </div>
+                <div>
+                  <div className="text-[11px] font-bold uppercase tracking-wider flex items-center gap-2">
+                    {activeSlot ? (
+                      <span className="text-blue-600 dark:text-blue-400 flex items-center gap-1.5 font-bold">
+                        <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 inline-block" />
+                        Class In Progress
+                      </span>
+                    ) : nextSlot ? (
+                      <span className="text-slate-700 dark:text-slate-300 flex items-center gap-1.5 font-semibold">
+                        <Clock className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
+                        Next Upcoming Session
+                      </span>
+                    ) : (
+                      <span className="text-emerald-700 dark:text-emerald-400 flex items-center gap-1.5 font-semibold">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                        All Scheduled Lectures Done
+                      </span>
+                    )}
+                  </div>
+                  <div className="text-sm sm:text-base font-bold text-slate-900 dark:text-white mt-0.5">
+                    {activeSlot ? (
+                      <span>
+                        {courses[activeSlot.courseCode]?.name || activeSlot.slotName} ({activeSlot.courseCode}) ·{' '}
+                        {minutesRemainingInActive !== null && minutesRemainingInActive > 0
+                          ? `${minutesRemainingInActive} mins remaining`
+                          : 'Concluding now'}
+                      </span>
+                    ) : nextSlot ? (
+                      <span>
+                        {courses[nextSlot.courseCode]?.name || nextSlot.slotName} ({nextSlot.courseCode}) at {nextSlot.startTime}{' '}
+                        {minutesUntilNext !== null && (
+                          <span className="text-blue-600 dark:text-blue-400 font-semibold">(Starts in {minutesUntilNext} mins)</span>
+                        )}
+                      </span>
+                    ) : (
+                      <span>All classes for today have concluded. You are free for the day.</span>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Class Notification Toggle */}
+              <div className="flex items-center gap-2 self-start sm:self-center">
+                <button
+                  type="button"
+                  onClick={handleRequestNotifications}
+                  className={`min-h-[36px] px-3 py-1.5 rounded-lg border text-xs font-semibold flex items-center gap-1.5 transition active:scale-95 cursor-pointer ${
+                    notificationActive
+                      ? 'bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300'
+                      : 'bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'
+                  }`}
+                  title="Enable web alerts before your classes"
+                >
+                  {notificationActive ? (
+                    <BellRing className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                  ) : (
+                    <Bell className="w-3.5 h-3.5 text-slate-400" />
+                  )}
+                  <span>{notificationActive ? 'Class Alerts Active' : 'Enable Class Alerts'}</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Daily Progress & Breaks */}
+            <div className="pt-2.5 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs text-slate-500 dark:text-slate-400">
+              <div className="flex items-center gap-2.5">
+                <span className="text-slate-600 dark:text-slate-400 font-medium">Daily Progress:</span>
+                <span className="font-bold text-slate-900 dark:text-white">
+                  {completedClassesToday} of {totalClasses} classes completed
+                </span>
+                <div className="w-24 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden inline-block">
+                  <div
+                    className="h-full bg-blue-600 dark:bg-blue-500 rounded-full transition-all duration-500"
+                    style={{ width: `${totalClasses > 0 ? (completedClassesToday / totalClasses) * 100 : 0}%` }}
+                  />
+                </div>
+              </div>
+              {freeSlots.length > 0 && (
+                <div className="flex items-center gap-1.5 text-[11px] text-slate-500 dark:text-slate-400">
+                  <Coffee className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
+                  <span>Free slots: {freeSlots.map((s) => s.startTime + '–' + s.endTime).join(', ')}</span>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Day Header & Briefing Bar */}
+        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4 shadow-2xs">
+          <div className="flex items-center justify-between w-full sm:w-auto gap-2">
+            <div>
+              <div className="flex items-center gap-2">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+                  {selectedDay}'s Timetable
+                </h2>
+                {isSelectedDayToday && (
+                  <span className="px-2 py-0.5 rounded-md text-xs font-semibold bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+                    Live Today
+                  </span>
+                )}
+              </div>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                {branch} Semester {semester} · NIT Goa Campus
+              </p>
+            </div>
+          </div>
+
+          {/* Badges for Day & Customize / Test Buttons */}
+          <div className="flex items-center gap-2 flex-wrap">
+            <div className="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-700 dark:text-slate-300">
+              <strong className="text-slate-900 dark:text-white">{totalClasses}</strong> Sessions
+            </div>
+            {hasMinor && (
+              <div className="px-2.5 py-1 rounded-md bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 text-xs text-blue-800 dark:text-blue-300 flex items-center gap-1.5 shadow-2xs">
+                <Bookmark className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                <span>Includes <strong>CS300M Minor</strong></span>
+              </div>
+            )}
+            {hasLab && (
+              <div className="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                <Beaker className="w-3.5 h-3.5 text-slate-600 dark:text-slate-400" />
+                <span>3-Hour Lab Session</span>
+              </div>
+            )}
+
+            {onOpenCustomizer && (
+              <button
+                type="button"
+                onClick={onOpenCustomizer}
+                className="px-3 py-1.5 rounded-md bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-xs text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 font-semibold flex items-center gap-1.5 transition active:scale-95 shadow-2xs cursor-pointer"
+                title="Customize timing or add extra slots to this day"
+              >
+                <Edit3 className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
+                <span>Edit Day Schedule</span>
+              </button>
+            )}
+
+            {isAdmin && onAdminAddSlot && (
+              <button
+                type="button"
+                onClick={() => onAdminAddSlot(selectedDay)}
+                className="px-3 py-1.5 rounded-md bg-slate-900 dark:bg-slate-100 hover:bg-slate-800 dark:hover:bg-white text-white dark:text-slate-900 font-semibold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-xs cursor-pointer"
+                title="Admin: Add a new slot to this day"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                <span>+ Add Slot (Admin)</span>
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
@@ -531,14 +635,14 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
             return (
               <div
                 key={slot.id || `lunch-${index}`}
-                className="py-3 px-4 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-between text-slate-600 text-xs sm:text-sm"
+                className="py-3 px-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 flex items-center justify-between text-slate-600 dark:text-slate-400 text-xs sm:text-sm"
               >
                 <div className="flex items-center gap-2.5">
-                  <Coffee className="w-4 h-4 text-slate-600" />
-                  <span className="font-semibold text-slate-800">LUNCH BREAK</span>
-                  <span className="text-slate-500">• Institute Dining / Refreshment</span>
+                  <Coffee className="w-4 h-4 text-slate-500 dark:text-slate-400" />
+                  <span className="font-semibold text-slate-800 dark:text-slate-200">LUNCH BREAK</span>
+                  <span className="text-slate-500 dark:text-slate-400">· Dining & Refreshment</span>
                 </div>
-                <div className="font-mono text-xs text-slate-500">
+                <div className="font-mono text-xs text-slate-500 dark:text-slate-400">
                   {slot.startTime} – {slot.endTime}
                 </div>
               </div>
@@ -550,26 +654,26 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
             return (
               <div
                 key={slot.id || `free-${index}`}
-                className="py-3.5 px-4 rounded-lg bg-slate-50/70 border border-dashed border-slate-200 flex items-center justify-between text-slate-600 text-xs sm:text-sm"
+                className="py-3 px-4 rounded-xl bg-slate-50/60 dark:bg-slate-900/40 border border-dashed border-slate-200 dark:border-slate-800 flex items-center justify-between text-slate-600 dark:text-slate-400 text-xs sm:text-sm"
               >
                 <div className="flex items-center gap-2.5">
-                  <span className="w-2 h-2 rounded-full bg-slate-400" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-slate-400 dark:bg-slate-600" />
                   <div>
-                    <span className="font-semibold text-slate-800">{slot.slotName}</span>
-                    <span className="text-slate-500 text-xs block sm:inline sm:ml-2">
+                    <span className="font-semibold text-slate-800 dark:text-slate-200">{slot.slotName}</span>
+                    <span className="text-slate-500 dark:text-slate-400 text-xs block sm:inline sm:ml-2">
                       {slot.notes || 'Open Slot — Self-Study / Library Period'}
                     </span>
                   </div>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <div className="font-mono text-xs text-slate-500 shrink-0">
+                  <div className="font-mono text-xs text-slate-500 dark:text-slate-400 shrink-0">
                     {slot.startTime} – {slot.endTime}
                   </div>
                   {isAdmin && onAdminEditSlot && (
                     <button
                       type="button"
                       onClick={() => onAdminEditSlot(slot, selectedDay)}
-                      className="px-2.5 py-1 rounded-md bg-white hover:bg-slate-100 text-slate-700 hover:text-slate-900 font-semibold text-xs flex items-center gap-1 border border-slate-200 shadow-2xs transition active:scale-95"
+                      className="px-2.5 py-1 rounded-md bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-xs flex items-center gap-1 border border-slate-200 dark:border-slate-700 shadow-2xs transition active:scale-95"
                     >
                       <Edit3 className="w-3 h-3" />
                       <span>Edit</span>
@@ -591,34 +695,34 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
               <div
                 key={slot.id || `elective-${index}`}
                 onClick={() => onOpenCourseModal(chosenOption?.code || 'EE541')}
-                className={`group relative p-4 sm:p-5 rounded-lg border transition-all cursor-pointer shadow-2xs ${
+                className={`group relative p-3.5 sm:p-5 rounded-xl border transition-all cursor-pointer shadow-2xs ${
                   active
-                    ? 'bg-white border-l-4 border-l-slate-900 border-slate-200 shadow-xs ring-1 ring-slate-200'
+                    ? 'bg-white dark:bg-slate-900 border-blue-500/80 dark:border-blue-500/70 ring-1 ring-blue-500/20 shadow-xs'
                     : passed
-                    ? 'bg-slate-50/60 border-slate-200 opacity-75 hover:opacity-100 hover:border-slate-300'
-                    : 'bg-white border-slate-200 hover:border-slate-300'
+                    ? 'bg-slate-50/70 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800/80 opacity-75 hover:opacity-100 hover:border-slate-300 dark:hover:border-slate-700'
+                    : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
                 }`}
               >
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-3">
                   <div className="flex items-center gap-2 flex-wrap min-w-0">
-                    <span className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-800 border border-slate-200 text-xs font-semibold">
+                    <span className="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-semibold">
                       {slot.slotName}
                     </span>
-                    <span className="font-mono text-xs text-slate-700 font-semibold whitespace-nowrap">
+                    <span className="font-mono text-xs text-slate-700 dark:text-slate-300 font-semibold whitespace-nowrap">
                       {slot.startTime} – {slot.endTime}
                     </span>
-                    <span className="text-xs text-slate-500 whitespace-nowrap">(55 mins)</span>
+                    <span className="text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">(55 mins)</span>
                   </div>
 
                   <div className="flex flex-wrap items-center justify-start md:justify-end gap-2 min-w-0">
                     {active && (
-                      <span className="shrink-0 whitespace-nowrap px-2.5 py-1 rounded-md bg-slate-900 text-white font-bold text-[10px] tracking-wider uppercase shadow-xs">
+                      <span className="shrink-0 whitespace-nowrap px-2.5 py-0.5 rounded-md bg-blue-600 dark:bg-blue-600 text-white font-bold text-[10px] tracking-wider uppercase shadow-xs">
                         HAPPENING NOW
                       </span>
                     )}
 
-                    <div className="flex items-center gap-1.5 text-xs text-slate-600 min-w-0">
-                      <MapPin className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+                    <div className="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400 min-w-0">
+                      <MapPin className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 shrink-0" />
                       <span className="truncate max-w-[180px] sm:max-w-[240px]">Room {slot.room}</span>
                     </div>
 
@@ -629,7 +733,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                           e.stopPropagation();
                           onAdminEditSlot(slot, selectedDay);
                         }}
-                        className="shrink-0 px-2.5 py-1 rounded-md bg-white hover:bg-slate-100 text-slate-700 hover:text-slate-900 font-semibold text-xs flex items-center gap-1 border border-slate-200 shadow-2xs transition active:scale-95"
+                        className="shrink-0 px-2.5 py-1 rounded-md bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-xs flex items-center gap-1 border border-slate-200 dark:border-slate-700 shadow-2xs transition active:scale-95"
                         title="Admin: Edit Slot & Syllabus"
                       >
                         <Edit3 className="w-3 h-3" />
@@ -641,20 +745,20 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-900 transition flex items-center gap-2">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition flex items-center gap-2">
                       <span>{chosenOption?.code}</span>
-                      <span className="text-slate-400 font-normal">•</span>
+                      <span className="text-slate-400 font-normal">·</span>
                       <span>{chosenOption?.name}</span>
                     </h3>
-                    <p className="text-xs text-slate-600 mt-1 flex items-center gap-2">
-                      <User className="w-3.5 h-3.5 text-slate-500" />
+                    <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 flex items-center gap-2">
+                      <User className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
                       <span>
-                        Coordinator: <strong className="text-slate-800">{courseDetails?.coordinator || chosenOption?.faculty}</strong>
+                        Coordinator: <strong className="text-slate-800 dark:text-slate-200">{courseDetails?.coordinator || chosenOption?.faculty}</strong>
                       </span>
                     </p>
                     {otherOption && (
-                      <p className="text-[11px] text-slate-600 mt-2 bg-slate-50 px-2.5 py-1 rounded-lg inline-block border border-slate-200">
-                        Elective Choice Active: <span className="text-slate-900 font-semibold">{chosenOption?.code}</span> (Parallel: {otherOption.code})
+                      <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-2 bg-slate-50 dark:bg-slate-800/60 px-2.5 py-1 rounded-md inline-block border border-slate-200 dark:border-slate-700">
+                        Elective Choice Active: <span className="text-slate-900 dark:text-white font-semibold">{chosenOption?.code}</span> (Parallel: {otherOption.code})
                       </p>
                     )}
 
@@ -662,57 +766,57 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                       const courseTest = getCourseUpcomingTest(chosenOption?.code);
                       if (!courseTest) return null;
                       return (
-                        <div className="mt-2.5 inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-xs text-slate-800">
-                          <Calendar className="w-3.5 h-3.5 text-slate-600 shrink-0" />
+                        <div className="mt-2.5 inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/20 text-xs text-amber-900 dark:text-amber-200">
+                          <Calendar className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
                           <span>{courseTest.type}: <strong>{courseTest.title}</strong> ({courseTest.date})</span>
                         </div>
                       );
                     })()}
                   </div>
-                  <ChevronRight className="w-5 h-5 text-slate-400 group-hover:text-slate-700 transition shrink-0 self-center" />
+                  <ChevronRight className="w-5 h-5 text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition shrink-0 self-center" />
                 </div>
 
                 {/* Inline Attendance Action & Status Bar */}
                 {chosenOption?.code && (
                   <div
-                    className="mt-3.5 pt-3 border-t border-slate-100 flex items-center justify-between gap-2 flex-wrap"
+                    className="mt-2.5 pt-2 sm:mt-3.5 sm:pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <div className="flex items-center gap-2">
-                      <CheckSquare className="w-3.5 h-3.5 text-slate-500" />
-                      <span className="text-xs text-slate-600 font-medium">Attendance:</span>
+                    <div className="flex items-center gap-1.5 min-w-0">
+                      <CheckSquare className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 shrink-0" />
+                      <span className="text-xs text-slate-600 dark:text-slate-400 font-medium hidden sm:inline">Attendance:</span>
                       {(() => {
                         const rec = attendanceRecords[chosenOption.code] || { attended: 0, total: 0 };
                         const pct = rec.total > 0 ? Math.round((rec.attended / rec.total) * 100) : null;
                         return (
                           <span
-                            className={`text-xs font-bold font-mono ${
-                              pct === null ? 'text-slate-400' : pct >= 75 ? 'text-emerald-700' : 'text-rose-700'
+                            className={`text-xs font-bold font-mono whitespace-nowrap ${
+                              pct === null ? 'text-slate-400 dark:text-slate-500' : pct >= 75 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'
                             }`}
                           >
-                            {pct !== null ? `${pct}% (${rec.attended}/${rec.total})` : 'Not logged yet'}
+                            {pct !== null ? `${pct}% (${rec.attended}/${rec.total})` : 'Unlogged'}
                           </span>
                         );
                       })()}
                     </div>
 
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1.5 shrink-0">
                       <button
                         type="button"
                         onClick={(e) => handleLogAttendance(chosenOption.code, true, e)}
-                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-semibold flex items-center gap-1 transition active:scale-95 shadow-2xs"
+                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 text-xs font-semibold flex items-center gap-1 transition active:scale-95 cursor-pointer shadow-2xs"
                         title={`Mark +1 Present for ${chosenOption.code}`}
                       >
-                        <Check className="w-3 h-3 text-emerald-600 stroke-[2.5]" />
+                        <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400 stroke-[2.5]" />
                         <span>+ Present</span>
                       </button>
                       <button
                         type="button"
                         onClick={(e) => handleLogAttendance(chosenOption.code, false, e)}
-                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-800 border border-rose-200 text-xs font-semibold flex items-center gap-1 transition active:scale-95 shadow-2xs"
+                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/50 text-rose-800 dark:text-rose-300 border border-rose-200 dark:border-rose-800/60 text-xs font-semibold flex items-center gap-1 transition active:scale-95 cursor-pointer shadow-2xs"
                         title={`Mark +1 Absent for ${chosenOption.code}`}
                       >
-                        <X className="w-3 h-3 text-rose-600 stroke-[2.5]" />
+                        <X className="w-3 h-3 text-rose-600 dark:text-rose-400 stroke-[2.5]" />
                         <span>+ Absent</span>
                       </button>
                     </div>
@@ -731,35 +835,35 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
               <div
                 key={slot.id || `lab-${index}`}
                 onClick={() => onOpenCourseModal(currentLab.code)}
-                className={`group relative p-4 sm:p-5 rounded-lg border transition-all cursor-pointer shadow-2xs ${
+                className={`group relative p-3.5 sm:p-5 rounded-xl border transition-all cursor-pointer shadow-2xs ${
                   active
-                    ? 'bg-white border-l-4 border-l-slate-900 border-slate-200 shadow-xs ring-1 ring-slate-200'
+                    ? 'bg-white dark:bg-slate-900 border-blue-500/80 dark:border-blue-500/70 ring-1 ring-blue-500/20 shadow-xs'
                     : passed
-                    ? 'bg-slate-50/60 border-slate-200 opacity-75 hover:opacity-100 hover:border-slate-300'
-                    : 'bg-white border-slate-200 hover:border-slate-300'
+                    ? 'bg-slate-50/70 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800/80 opacity-75 hover:opacity-100 hover:border-slate-300 dark:hover:border-slate-700'
+                    : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
                 }`}
               >
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-3">
                   <div className="flex items-center gap-2 flex-wrap min-w-0">
-                    <span className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-800 border border-slate-200 text-xs font-semibold flex items-center gap-1">
-                      <Beaker className="w-3 h-3 text-slate-600" />
+                    <span className="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-semibold flex items-center gap-1">
+                      <Beaker className="w-3 h-3 text-slate-500 dark:text-slate-400" />
                       {slot.slotName}
                     </span>
-                    <span className="font-mono text-xs text-slate-700 font-semibold whitespace-nowrap">
+                    <span className="font-mono text-xs text-slate-700 dark:text-slate-300 font-semibold whitespace-nowrap">
                       {slot.startTime} – {slot.endTime}
                     </span>
-                    <span className="text-xs text-slate-500 whitespace-nowrap">(2 Hrs 55 Mins)</span>
+                    <span className="text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">(2 Hrs 55 Mins)</span>
                   </div>
 
                   <div className="flex flex-wrap items-center justify-start md:justify-end gap-2 min-w-0">
                     {active && (
-                      <span className="shrink-0 whitespace-nowrap px-2.5 py-1 rounded-md bg-slate-900 text-white font-bold text-[10px] tracking-wider uppercase shadow-xs">
+                      <span className="shrink-0 whitespace-nowrap px-2.5 py-0.5 rounded-md bg-blue-600 dark:bg-blue-600 text-white font-bold text-[10px] tracking-wider uppercase shadow-xs">
                         HAPPENING NOW
                       </span>
                     )}
 
-                    <div className="flex items-center gap-1.5 text-xs text-slate-600 min-w-0">
-                      <MapPin className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+                    <div className="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400 min-w-0">
+                      <MapPin className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 shrink-0" />
                       <span className="truncate max-w-[180px] sm:max-w-[240px]">{slot.room}</span>
                     </div>
 
@@ -770,7 +874,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                           e.stopPropagation();
                           onAdminEditSlot(slot, selectedDay);
                         }}
-                        className="shrink-0 px-2.5 py-1 rounded-md bg-white hover:bg-slate-100 text-slate-700 hover:text-slate-900 font-semibold text-xs flex items-center gap-1 border border-slate-200 shadow-2xs transition active:scale-95"
+                        className="shrink-0 px-2.5 py-1 rounded-md bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-xs flex items-center gap-1 border border-slate-200 dark:border-slate-700 shadow-2xs transition active:scale-95"
                         title="Admin: Edit Slot & Syllabus"
                       >
                         <Edit3 className="w-3 h-3" />
@@ -782,27 +886,27 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-900 transition flex items-center gap-2">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition flex items-center gap-2">
                       <span>{currentLab.code}</span>
-                      <span className="text-slate-400 font-normal">•</span>
+                      <span className="text-slate-400 font-normal">·</span>
                       <span>{currentLab.name}</span>
                     </h3>
-                    <p className="text-xs text-slate-600 mt-1 flex items-center gap-2">
-                      <User className="w-3.5 h-3.5 text-slate-500" />
+                    <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 flex items-center gap-2">
+                      <User className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
                       <span>
-                        Faculty: <strong className="text-slate-800">{currentLab.faculty}</strong>
+                        Faculty: <strong className="text-slate-800 dark:text-slate-200">{currentLab.faculty}</strong>
                       </span>
                     </p>
-                    <p className="text-[11px] text-slate-600 mt-2 bg-slate-50 px-2.5 py-1 rounded-lg inline-block border border-slate-200">
-                      Batch Selection: <strong className="text-slate-900">{selectedBatch === 'batch1' ? 'Batch 1' : 'Batch 2'}</strong> • Alternate batch: {alternateLab.code}
+                    <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-2 bg-slate-50 dark:bg-slate-800/60 px-2.5 py-1 rounded-md inline-block border border-slate-200 dark:border-slate-700">
+                      Batch Selection: <strong className="text-slate-900 dark:text-white">{selectedBatch === 'batch1' ? 'Batch 1' : 'Batch 2'}</strong> · Alternate batch: {alternateLab.code}
                     </p>
 
                     {(() => {
                       const labTest = getCourseUpcomingTest(currentLab.code);
                       if (!labTest) return null;
                       return (
-                        <div className="mt-2.5 inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-xs text-slate-800">
-                          <Calendar className="w-3.5 h-3.5 text-slate-600 shrink-0" />
+                        <div className="mt-2.5 inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/20 text-xs text-amber-900 dark:text-amber-200">
+                          <Calendar className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
                           <span>{labTest.type}: <strong>{labTest.title}</strong> ({labTest.date})</span>
                           {onNavigateToTests && (
                             <button
@@ -811,7 +915,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                                 e.stopPropagation();
                                 onNavigateToTests();
                               }}
-                              className="ml-1 text-[11px] underline font-bold hover:text-slate-900"
+                              className="ml-1 text-[11px] underline font-bold hover:text-slate-900 dark:hover:text-white"
                             >
                               Agenda
                             </button>
@@ -820,50 +924,50 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                       );
                     })()}
                   </div>
-                  <ChevronRight className="w-5 h-5 text-slate-400 group-hover:text-slate-700 transition shrink-0 self-center" />
+                  <ChevronRight className="w-5 h-5 text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition shrink-0 self-center" />
                 </div>
 
                 {/* Inline Attendance Action & Status Bar */}
                 {currentLab?.code && (
                   <div
-                    className="mt-3.5 pt-3 border-t border-slate-100 flex items-center justify-between gap-2 flex-wrap"
+                    className="mt-2.5 pt-2 sm:mt-3.5 sm:pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <div className="flex items-center gap-2">
-                      <CheckSquare className="w-3.5 h-3.5 text-slate-500" />
-                      <span className="text-xs text-slate-600 font-medium">Lab Attendance:</span>
+                    <div className="flex items-center gap-1.5 min-w-0">
+                      <CheckSquare className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 shrink-0" />
+                      <span className="text-xs text-slate-600 dark:text-slate-400 font-medium hidden sm:inline">Lab Attendance:</span>
                       {(() => {
                         const rec = attendanceRecords[currentLab.code] || { attended: 0, total: 0 };
                         const pct = rec.total > 0 ? Math.round((rec.attended / rec.total) * 100) : null;
                         return (
                           <span
-                            className={`text-xs font-bold font-mono ${
-                              pct === null ? 'text-slate-400' : pct >= 75 ? 'text-emerald-700' : 'text-rose-700'
+                            className={`text-xs font-bold font-mono whitespace-nowrap ${
+                              pct === null ? 'text-slate-400 dark:text-slate-500' : pct >= 75 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'
                             }`}
                           >
-                            {pct !== null ? `${pct}% (${rec.attended}/${rec.total})` : 'Not logged yet'}
+                            {pct !== null ? `${pct}% (${rec.attended}/${rec.total})` : 'Unlogged'}
                           </span>
                         );
                       })()}
                     </div>
 
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1.5 shrink-0">
                       <button
                         type="button"
                         onClick={(e) => handleLogAttendance(currentLab.code, true, e)}
-                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-semibold flex items-center gap-1 transition active:scale-95 shadow-2xs"
+                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 text-xs font-semibold flex items-center gap-1 transition active:scale-95 cursor-pointer shadow-2xs"
                         title={`Mark +1 Present for ${currentLab.code}`}
                       >
-                        <Check className="w-3 h-3 text-emerald-600 stroke-[2.5]" />
+                        <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400 stroke-[2.5]" />
                         <span>+ Present</span>
                       </button>
                       <button
                         type="button"
                         onClick={(e) => handleLogAttendance(currentLab.code, false, e)}
-                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-800 border border-rose-200 text-xs font-semibold flex items-center gap-1 transition active:scale-95 shadow-2xs"
+                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/50 text-rose-800 dark:text-rose-300 border border-rose-200 dark:border-rose-800/60 text-xs font-semibold flex items-center gap-1 transition active:scale-95 cursor-pointer shadow-2xs"
                         title={`Mark +1 Absent for ${currentLab.code}`}
                       >
-                        <X className="w-3 h-3 text-rose-600 stroke-[2.5]" />
+                        <X className="w-3 h-3 text-rose-600 dark:text-rose-400 stroke-[2.5]" />
                         <span>+ Absent</span>
                       </button>
                     </div>
@@ -881,12 +985,12 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
             <div
               key={slot.id || `slot-${index}`}
               onClick={() => onOpenCourseModal(slot.courseCode)}
-              className={`group relative p-4 sm:p-5 rounded-lg border transition-all cursor-pointer shadow-2xs ${
+              className={`group relative p-3.5 sm:p-5 rounded-xl border transition-all cursor-pointer shadow-2xs ${
                 active
-                  ? 'bg-white border-l-4 border-l-slate-900 border-slate-200 shadow-xs ring-1 ring-slate-200'
+                  ? 'bg-white dark:bg-slate-900 border-blue-500/80 dark:border-blue-500/70 ring-1 ring-blue-500/20 shadow-xs'
                   : passed
-                  ? 'bg-slate-50/60 border-slate-200 opacity-75 hover:opacity-100 hover:border-slate-300'
-                  : 'bg-white border-slate-200 hover:border-slate-300'
+                  ? 'bg-slate-50/70 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800/80 opacity-75 hover:opacity-100 hover:border-slate-300 dark:hover:border-slate-700'
+                  : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
               }`}
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-3">
@@ -895,17 +999,17 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                   <span
                     className={`px-2 py-0.5 rounded-md text-xs font-semibold ${
                       isMinor
-                        ? 'bg-slate-100 text-blue-950 border border-slate-300 flex items-center gap-1 shadow-2xs'
-                        : 'bg-slate-100 text-slate-800 border border-slate-200'
+                        ? 'bg-blue-50 dark:bg-blue-950/40 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-800 flex items-center gap-1 shadow-2xs'
+                        : 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700'
                     }`}
                   >
-                    {isMinor && <BookOpen className="w-3 h-3 text-slate-600" />}
+                    {isMinor && <BookOpen className="w-3 h-3 text-blue-600 dark:text-blue-400" />}
                     {slot.slotName}
                   </span>
-                  <span className="font-mono text-xs text-slate-700 font-semibold whitespace-nowrap">
+                  <span className="font-mono text-xs text-slate-700 dark:text-slate-300 font-semibold whitespace-nowrap">
                     {slot.startTime} – {slot.endTime}
                   </span>
-                  <span className="text-xs text-slate-500 whitespace-nowrap">
+                  <span className="text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">
                     ({slot.isLab ? '2 Hrs 55 Mins' : '55 Mins'})
                   </span>
                 </div>
@@ -913,13 +1017,13 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                 {/* Right: status + room + admin action */}
                 <div className="flex flex-wrap items-center justify-start md:justify-end gap-2 min-w-0">
                   {active && (
-                    <span className="shrink-0 whitespace-nowrap px-2.5 py-1 rounded-md bg-slate-900 text-white font-bold text-[10px] tracking-wider uppercase shadow-xs">
+                    <span className="shrink-0 whitespace-nowrap px-2.5 py-0.5 rounded-md bg-blue-600 dark:bg-blue-600 text-white font-bold text-[10px] tracking-wider uppercase shadow-xs">
                       HAPPENING NOW
                     </span>
                   )}
 
-                  <div className="flex items-center gap-1.5 text-xs font-medium min-w-0 text-slate-600">
-                    <MapPin className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+                  <div className="flex items-center gap-1.5 text-xs font-medium min-w-0 text-slate-600 dark:text-slate-400">
+                    <MapPin className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 shrink-0" />
                     <span className="truncate max-w-[180px] sm:max-w-[240px]">
                       Room {slot.room || course?.room}
                     </span>
@@ -932,7 +1036,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                         e.stopPropagation();
                         onAdminEditSlot(slot, selectedDay);
                       }}
-                      className="shrink-0 px-2.5 py-1 rounded-md bg-white hover:bg-slate-100 text-slate-700 hover:text-slate-900 font-semibold text-xs flex items-center gap-1 border border-slate-200 shadow-2xs transition active:scale-95"
+                      className="shrink-0 px-2.5 py-1 rounded-md bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-xs flex items-center gap-1 border border-slate-200 dark:border-slate-700 shadow-2xs transition active:scale-95"
                       title="Admin: Edit Slot & Syllabus"
                     >
                       <Edit3 className="w-3 h-3" />
@@ -944,89 +1048,89 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <h3 className="text-base sm:text-lg font-bold tracking-tight transition flex items-center gap-2 text-slate-900 group-hover:text-blue-900">
+                  <h3 className="text-base sm:text-lg font-bold tracking-tight transition flex items-center gap-2 text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
                     <span>{course?.code || slot.courseCode}</span>
-                    <span className="text-slate-400 font-normal">•</span>
+                    <span className="text-slate-400 font-normal">·</span>
                     <span>{course?.name || slot.slotName}</span>
                   </h3>
 
                   {course?.coordinator && (
-                    <p className="text-xs text-slate-600 mt-1 flex items-center gap-2">
-                      <User className="w-3.5 h-3.5 text-slate-500" />
+                    <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 flex items-center gap-2">
+                      <User className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
                       <span>
-                        Coordinator: <strong className="text-slate-800">{course.coordinator} ({course.shortName})</strong>
+                        Coordinator: <strong className="text-slate-800 dark:text-slate-200">{course.coordinator} ({course.shortName})</strong>
                       </span>
                     </p>
                   )}
 
                   {isMinor && (
-                    <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 border border-slate-300 text-[11px] text-slate-800">
-                      <BookOpen className="w-3.5 h-3.5 text-slate-600" />
-                      <span>Special: CSE Minor Course • Coordinated by Dr. Pravati Swain</span>
+                    <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 text-[11px] text-blue-800 dark:text-blue-300">
+                      <BookOpen className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                      <span>Special: CSE Minor Course · Coordinated by Dr. Pravati Swain</span>
                     </div>
                   )}
 
                   {slot.notes && !isMinor && (
-                    <p className="text-[11px] text-slate-500 mt-1.5 italic">{slot.notes}</p>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1.5 italic">{slot.notes}</p>
                   )}
 
                   {(() => {
                     const regularTest = getCourseUpcomingTest(course?.code || slot.courseCode);
                     if (!regularTest) return null;
                     return (
-                      <div className="mt-2.5 inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-xs text-slate-800">
-                        <Calendar className="w-3.5 h-3.5 text-slate-600 shrink-0" />
+                      <div className="mt-2.5 inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/20 text-xs text-amber-900 dark:text-amber-200">
+                        <Calendar className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
                         <span>{regularTest.type}: <strong>{regularTest.title}</strong> ({regularTest.date})</span>
                       </div>
                     );
                   })()}
                 </div>
 
-                <ChevronRight className="w-5 h-5 text-slate-400 group-hover:text-slate-700 transition shrink-0 self-center" />
+                <ChevronRight className="w-5 h-5 text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition shrink-0 self-center" />
               </div>
 
               {/* Inline Attendance Action & Status Bar */}
               {(course?.code || slot.courseCode) && (
                 <div
-                  className="mt-3.5 pt-3 border-t border-slate-100 flex items-center justify-between gap-2 flex-wrap"
+                  className="mt-2.5 pt-2 sm:mt-3.5 sm:pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <div className="flex items-center gap-2">
-                    <CheckSquare className="w-3.5 h-3.5 text-slate-500" />
-                    <span className="text-xs text-slate-600 font-medium">Attendance:</span>
+                  <div className="flex items-center gap-1.5 min-w-0">
+                    <CheckSquare className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 shrink-0" />
+                    <span className="text-xs text-slate-600 dark:text-slate-400 font-medium hidden sm:inline">Attendance:</span>
                     {(() => {
                       const code = course?.code || slot.courseCode;
                       const rec = attendanceRecords[code] || { attended: 0, total: 0 };
                       const pct = rec.total > 0 ? Math.round((rec.attended / rec.total) * 100) : null;
                       return (
                         <span
-                          className={`text-xs font-bold font-mono ${
-                            pct === null ? 'text-slate-400' : pct >= 75 ? 'text-emerald-700' : 'text-rose-700'
+                          className={`text-xs font-bold font-mono whitespace-nowrap ${
+                            pct === null ? 'text-slate-400 dark:text-slate-500' : pct >= 75 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'
                           }`}
                         >
-                          {pct !== null ? `${pct}% (${rec.attended}/${rec.total})` : 'Not logged yet'}
+                          {pct !== null ? `${pct}% (${rec.attended}/${rec.total})` : 'Unlogged'}
                         </span>
                       );
                     })()}
                   </div>
 
-                  <div className="flex items-center gap-1.5">
+                  <div className="flex items-center gap-1.5 shrink-0">
                     <button
                       type="button"
                       onClick={(e) => handleLogAttendance(course?.code || slot.courseCode, true, e)}
-                      className="min-h-[34px] px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-semibold flex items-center gap-1 transition active:scale-95 shadow-2xs"
+                      className="min-h-[34px] px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 text-xs font-semibold flex items-center gap-1 transition active:scale-95 cursor-pointer shadow-2xs"
                       title={`Mark +1 Present for ${course?.code || slot.courseCode}`}
                     >
-                      <Check className="w-3 h-3 text-emerald-600 stroke-[2.5]" />
+                      <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400 stroke-[2.5]" />
                       <span>+ Present</span>
                     </button>
                     <button
                       type="button"
                       onClick={(e) => handleLogAttendance(course?.code || slot.courseCode, false, e)}
-                      className="min-h-[34px] px-2.5 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-800 border border-rose-200 text-xs font-semibold flex items-center gap-1 transition active:scale-95 shadow-2xs"
+                      className="min-h-[34px] px-2.5 py-1 rounded-lg bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/50 text-rose-800 dark:text-rose-300 border border-rose-200 dark:border-rose-800/60 text-xs font-semibold flex items-center gap-1 transition active:scale-95 cursor-pointer shadow-2xs"
                       title={`Mark +1 Absent for ${course?.code || slot.courseCode}`}
                     >
-                      <X className="w-3 h-3 text-rose-600 stroke-[2.5]" />
+                      <X className="w-3 h-3 text-rose-600 dark:text-rose-400 stroke-[2.5]" />
                       <span>+ Absent</span>
                     </button>
                   </div>
@@ -1042,7 +1146,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
           <button
             type="button"
             onClick={() => onAdminAddSlot(selectedDay)}
-            className="w-full py-3 rounded-lg bg-slate-100 hover:bg-slate-200 border border-dashed border-slate-300 text-slate-800 font-semibold text-xs flex items-center justify-center gap-2 transition active:scale-98 shadow-2xs"
+            className="w-full py-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-dashed border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-xs flex items-center justify-center gap-2 transition active:scale-98 shadow-2xs"
           >
             <Plus className="w-4 h-4" />
             <span>+ Add Slot for {selectedDay} (Admin)</span>

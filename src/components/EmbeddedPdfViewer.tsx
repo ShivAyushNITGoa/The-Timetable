@@ -686,21 +686,21 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
       >
         {/* Loading Spinner */}
         {loading && (
-          <div className="absolute inset-0 z-20 bg-white/80 backdrop-blur-xs flex flex-col items-center justify-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600">
+          <div className="absolute inset-0 z-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xs flex flex-col items-center justify-center gap-3">
+            <div className="w-10 h-10 rounded-lg bg-blue-50 dark:bg-slate-800 border border-blue-200 dark:border-slate-700 flex items-center justify-center text-blue-600 dark:text-blue-400">
               <Loader2 className="w-6 h-6 animate-spin" />
             </div>
-            <p className="text-sm font-semibold text-slate-800">Loading Official PDF Handbook...</p>
-            <p className="text-xs text-slate-500">Rendering high-resolution curriculum handbook pages</p>
+            <p className="text-sm font-semibold text-slate-800 dark:text-slate-100">Loading Official PDF Handbook...</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Rendering high-resolution curriculum handbook pages</p>
           </div>
         )}
 
         {/* Error State */}
         {error && (
-          <div className="max-w-md mx-auto my-12 p-6 rounded-lg bg-white border border-slate-200 text-center space-y-3 shadow-md">
-            <AlertCircle className="w-8 h-8 text-blue-600 mx-auto" />
-            <h4 className="text-sm font-bold text-slate-900">Browser Display Notice</h4>
-            <p className="text-xs text-slate-600 leading-relaxed">{error}</p>
+          <div className="max-w-md mx-auto my-12 p-6 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center space-y-3 shadow-md">
+            <AlertCircle className="w-8 h-8 text-blue-600 dark:text-blue-400 mx-auto" />
+            <h4 className="text-sm font-bold text-slate-900 dark:text-white">Browser Display Notice</h4>
+            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{error}</p>
             <div className="pt-2 flex items-center justify-center gap-3">
               <a
                 href={pdfUrl}

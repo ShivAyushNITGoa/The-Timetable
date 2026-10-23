@@ -54,6 +54,10 @@ body::before {
   background-color: #000000 !important;
 }
 
+[data-mode="oled"] .bg-white,
+[data-mode="oled"] .bg-white\/95,
+[data-mode="oled"] .bg-white\/90,
+[data-mode="oled"] .bg-white\/80,
 [data-mode="oled"] .bg-slate-900,
 [data-mode="oled"] .bg-slate-900\/95,
 [data-mode="oled"] .bg-slate-900\/90,
@@ -515,10 +519,19 @@ body::before {
 
 /* Background containers in dark mode */
 [data-mode="dark"] .bg-white,
+[data-mode="dark"] .bg-white\/95,
+[data-mode="dark"] .bg-white\/90,
+[data-mode="dark"] .bg-white\/85,
+[data-mode="dark"] .bg-white\/80,
+[data-mode="dark"] .bg-white\/75,
+[data-mode="dark"] .bg-white\/70,
+[data-mode="dark"] .bg-white\/60,
+[data-mode="dark"] .bg-white\/50,
 [data-mode="dark"] .bg-slate-50,
-[data-mode="dark"] .bg-slate-50\/60,
+[data-mode="dark"] .bg-slate-50\/95,
+[data-mode="dark"] .bg-slate-50\/90,
 [data-mode="dark"] .bg-slate-50\/80,
-[data-mode="dark"] .bg-slate-50\/90 {
+[data-mode="dark"] .bg-slate-50\/60 {
   background-color: #0f172a !important;
   color: #f1f5f9 !important;
 }
@@ -540,6 +553,7 @@ body::before {
 }
 
 /* Borders in dark mode */
+[data-mode="dark"] .border-slate-100,
 [data-mode="dark"] .border-slate-200,
 [data-mode="dark"] .border-slate-300 {
   border-color: #1e293b !important;
@@ -549,6 +563,7 @@ body::before {
   border-color: #334155 !important;
 }
 
+[data-mode="dark"] .divide-slate-100 > :not([hidden]) ~ :not([hidden]),
 [data-mode="dark"] .divide-slate-200 > :not([hidden]) ~ :not([hidden]) {
   border-color: #1e293b !important;
 }

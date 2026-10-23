@@ -174,82 +174,82 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
   return (
     <div className="space-y-6">
       {/* Header Info Banner */}
-      <div className="bg-white border border-slate-200 rounded-lg p-5 sm:p-6 shadow-2xs">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 sm:p-6 shadow-2xs">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-5">
           <div>
             <div className="flex items-center gap-2 mb-2 flex-wrap">
-              <span className="text-xs px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-800 font-semibold border border-slate-200 flex items-center gap-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-slate-700" />
+              <span className="text-xs px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold border border-slate-200 dark:border-slate-700 flex items-center gap-1">
+                <ShieldCheck className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                 NIT Goa 75% Rule Compliance ({branch} Sem {semester})
               </span>
-              <span className="text-xs px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-700 font-mono border border-slate-200">
+              <span className="text-xs px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono border border-slate-200 dark:border-slate-700">
                 Offline PWA Storage Active
               </span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
               Subject-Wise Attendance Manager
             </h2>
-            <p className="text-xs text-slate-600 mt-1">
+            <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">
               Calculate safe bunk allowances and required makeup classes to guarantee end-sem exam eligibility.
             </p>
           </div>
 
           {/* Quick Criteria Pill */}
-          <div className="text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 shrink-0">
-            <div className="flex items-center gap-2 text-slate-900 font-bold mb-0.5">
-              <TrendingUp className="w-4 h-4 text-slate-700" />
+          <div className="text-xs text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/60 p-3 sm:p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 shrink-0">
+            <div className="flex items-center gap-2 text-slate-900 dark:text-white font-bold mb-0.5">
+              <TrendingUp className="w-4 h-4 text-blue-600 dark:text-blue-400" />
               <span>NIT Goa Master Policy</span>
             </div>
-            <p className="text-[11px] text-slate-600">
-              Minimum <strong className="text-slate-900">75.0%</strong> required. Shortage below 75% results in grade penalty or exam debarment.
+            <p className="text-[11px] text-slate-600 dark:text-slate-400">
+              Minimum <strong className="text-slate-900 dark:text-white">75.0%</strong> required. Shortage below 75% results in grade penalty or exam debarment.
             </p>
           </div>
         </div>
 
         {/* Global Summary KPI Bar */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5 pt-4 border-t border-slate-200">
-          <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
-            <span className="text-[11px] text-slate-500 block mb-0.5">Overall Percentage</span>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mt-4 pt-3.5 sm:mt-5 sm:pt-4 border-t border-slate-200 dark:border-slate-800">
+          <div className="bg-slate-50 dark:bg-slate-850 p-2.5 sm:p-3.5 rounded-xl border border-slate-200 dark:border-slate-800">
+            <span className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 block mb-0.5">Overall Percentage</span>
             <div
-              className={`text-xl font-bold font-mono tabular-nums ${
+              className={`text-lg sm:text-xl font-bold font-mono tabular-nums ${
                 stats.totalHeld === 0
-                  ? 'text-slate-500'
+                  ? 'text-slate-500 dark:text-slate-400'
                   : stats.isOverallSafe
-                  ? 'text-emerald-700'
-                  : 'text-rose-700 font-black'
+                  ? 'text-emerald-600 dark:text-emerald-400'
+                  : 'text-rose-600 dark:text-rose-400 font-black'
               }`}
             >
               {stats.totalHeld === 0 ? '100%' : `${stats.overallPct.toFixed(1)}%`}
             </div>
-            <span className="text-[10px] text-slate-500 block mt-0.5">Across all subjects</span>
+            <span className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 block mt-0.5">Across all subjects</span>
           </div>
 
-          <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
-            <span className="text-[11px] text-slate-500 block mb-0.5">Classes Attended</span>
-            <div className="text-xl font-bold font-mono text-slate-900 tabular-nums">
-              {stats.totalAttended} <span className="text-xs font-normal text-slate-500">/ {stats.totalHeld}</span>
+          <div className="bg-slate-50 dark:bg-slate-850 p-2.5 sm:p-3.5 rounded-xl border border-slate-200 dark:border-slate-800">
+            <span className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 block mb-0.5">Classes Attended</span>
+            <div className="text-lg sm:text-xl font-bold font-mono text-slate-900 dark:text-white tabular-nums">
+              {stats.totalAttended} <span className="text-xs font-normal text-slate-500 dark:text-slate-400">/ {stats.totalHeld}</span>
             </div>
-            <span className="text-[10px] text-slate-500 block mt-0.5">Total sessions logged</span>
+            <span className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 block mt-0.5">Total sessions logged</span>
           </div>
 
-          <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
-            <span className="text-[11px] text-slate-500 block mb-0.5">Safe Subjects</span>
-            <div className="text-xl font-bold font-mono text-emerald-700 tabular-nums">
+          <div className="bg-slate-50 dark:bg-slate-850 p-2.5 sm:p-3.5 rounded-xl border border-slate-200 dark:border-slate-800">
+            <span className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 block mb-0.5">Safe Subjects</span>
+            <div className="text-lg sm:text-xl font-bold font-mono text-emerald-600 dark:text-emerald-400 tabular-nums">
               {stats.coursesAbove75}
             </div>
-            <span className="text-[10px] text-slate-500 block mt-0.5">&ge; 75% attendance</span>
+            <span className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 block mt-0.5">&ge; 75% attendance</span>
           </div>
 
-          <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
-            <span className="text-[11px] text-slate-500 block mb-0.5">At Risk / Shortage</span>
+          <div className="bg-slate-50 dark:bg-slate-850 p-2.5 sm:p-3.5 rounded-xl border border-slate-200 dark:border-slate-800">
+            <span className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 block mb-0.5">At Risk / Shortage</span>
             <div
-              className={`text-xl font-bold font-mono tabular-nums ${
-                stats.coursesBelow75 > 0 ? 'text-rose-700 font-black' : 'text-slate-500'
+              className={`text-lg sm:text-xl font-bold font-mono tabular-nums ${
+                stats.coursesBelow75 > 0 ? 'text-rose-600 dark:text-rose-400 font-black' : 'text-slate-500 dark:text-slate-400'
               }`}
             >
               {stats.coursesBelow75}
             </div>
-            <span className="text-[10px] text-slate-500 block mt-0.5">Need attention (&lt;75%)</span>
+            <span className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 block mt-0.5">Need attention (&lt;75%)</span>
           </div>
         </div>
       </div>
@@ -272,33 +272,33 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
           return (
             <div
               key={code}
-              className={`p-4 sm:p-5 rounded-lg border transition-all duration-150 ${
+              className={`p-3.5 sm:p-5 rounded-xl border transition-all duration-150 ${
                 isMinor
-                  ? 'bg-blue-50/50 border-blue-200 shadow-2xs'
-                  : 'bg-white border-slate-200 hover:border-slate-300 shadow-2xs'
+                  ? 'bg-blue-50/40 dark:bg-blue-950/20 border-blue-200 dark:border-blue-850 shadow-2xs'
+                  : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-2xs'
               }`}
             >
               <div className="flex items-start justify-between gap-3 mb-3">
                 <div className="min-w-0">
                   <div className="flex items-center gap-2 mb-1 flex-wrap">
-                    <span className="text-xs font-mono font-bold text-blue-700">
+                    <span className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400">
                       {code}
                     </span>
                     {course?.teachingSlot && (
-                      <span className="text-[10px] px-1.5 py-0.2 rounded bg-slate-100 text-slate-700 border border-slate-200 font-mono">
+                      <span className="text-[10px] px-1.5 py-0.2 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-mono">
                         Slot {course.teachingSlot}
                       </span>
                     )}
                     {isMinor && (
-                      <span className="text-[10px] px-2 py-0.2 bg-blue-100 text-blue-800 rounded font-semibold border border-blue-200 flex items-center gap-1">
-                        <Bookmark className="w-2.5 h-2.5 text-blue-600" /> CSE Minor
+                      <span className="text-[10px] px-2 py-0.2 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded font-semibold border border-blue-200 dark:border-blue-700 flex items-center gap-1">
+                        <Bookmark className="w-2.5 h-2.5 text-blue-600 dark:text-blue-400" /> CSE Minor
                       </span>
                     )}
                   </div>
-                  <h4 className="text-sm font-bold text-slate-900 truncate max-w-[240px]">
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-white truncate max-w-[240px]">
                     {course?.name || code}
                   </h4>
-                  <p className="text-[11px] text-slate-500 truncate mt-0.5">
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate mt-0.5">
                     {course?.coordinator || 'Faculty Coordinator'}
                   </p>
                 </div>
@@ -307,23 +307,23 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
                 <div className="text-right shrink-0">
                   <div
                     className={`text-xl font-mono font-black tabular-nums ${
-                      record.total === 0 ? 'text-slate-500' : isSafe ? 'text-emerald-700' : 'text-rose-700'
+                      record.total === 0 ? 'text-slate-500 dark:text-slate-400' : isSafe ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'
                     }`}
                   >
                     {record.total === 0 ? '100%' : `${percentage.toFixed(1)}%`}
                   </div>
-                  <div className="text-[10px] font-mono text-slate-500 tabular-nums">
+                  <div className="text-[10px] font-mono text-slate-500 dark:text-slate-400 tabular-nums">
                     {record.attended} / {record.total} attended
                   </div>
                 </div>
               </div>
 
               {/* Progress Bar */}
-              <div className="w-full bg-slate-100 rounded-md h-2 overflow-hidden mb-3 border border-slate-200">
+              <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-1.5 overflow-hidden mb-3 border border-slate-200/80 dark:border-slate-700">
                 <div
-                  className={`h-full transition-all duration-300 rounded-md ${
+                  className={`h-full transition-all duration-300 rounded-full ${
                     record.total === 0
-                      ? 'bg-slate-300 w-full'
+                      ? 'bg-slate-300 dark:bg-slate-600 w-full'
                       : isSafe
                       ? 'bg-emerald-500'
                       : 'bg-rose-500'
@@ -333,20 +333,20 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
               </div>
 
               {/* Smart Bunk / Shortage Indicator Box */}
-              <div className="rounded-lg p-2.5 mb-3.5 text-xs">
+              <div className="rounded-lg mb-3.5 text-xs">
                 {record.total === 0 ? (
-                  <div className="flex items-center gap-2 text-slate-500 text-[11px] bg-slate-50 p-2 rounded-lg border border-slate-200">
-                    <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+                  <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-[11px] bg-slate-50 dark:bg-slate-800/60 p-2.5 rounded-lg border border-slate-200 dark:border-slate-700">
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-400 dark:bg-slate-600" />
                     <span>No classes conducted yet. Tap "+1 Present" as lectures start.</span>
                   </div>
                 ) : isSafe ? (
-                  <div className="flex items-center gap-2 text-emerald-800 text-[11px] bg-emerald-50 p-2.5 rounded-lg border border-emerald-200">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <div className="flex items-center gap-2 text-emerald-800 dark:text-emerald-200 text-[11px] bg-emerald-50 dark:bg-emerald-950/40 p-2.5 rounded-lg border border-emerald-200 dark:border-emerald-800/60">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
                     <span className="font-medium">
                       {safeBunks > 0 ? (
                         <>
-                          Safe Margin: You can safely miss{' '}
-                          <strong className="text-emerald-950 underline decoration-emerald-500/50">
+                          Safe Margin: You can miss{' '}
+                          <strong className="text-emerald-950 dark:text-emerald-100 font-bold underline decoration-emerald-500/50">
                             {safeBunks} more {safeBunks === 1 ? 'class' : 'classes'}
                           </strong>{' '}
                           and remain &ge; 75%.
@@ -357,11 +357,11 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
                     </span>
                   </div>
                 ) : (
-                  <div className="flex items-center gap-2 text-rose-800 text-[11px] bg-rose-50 p-2.5 rounded-lg border border-rose-200 animate-in fade-in">
-                    <AlertTriangle className="w-4 h-4 text-rose-600 shrink-0" />
+                  <div className="flex items-center gap-2 text-rose-800 dark:text-rose-200 text-[11px] bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-lg border border-rose-200 dark:border-rose-800/60 animate-in fade-in">
+                    <AlertTriangle className="w-4 h-4 text-rose-600 dark:text-rose-400 shrink-0" />
                     <span className="font-medium">
                       Shortage Warning: Attend next{' '}
-                      <strong className="text-rose-950 underline decoration-rose-500/50">
+                      <strong className="text-rose-950 dark:text-rose-100 font-bold underline decoration-rose-500/50">
                         {requiredClasses} {requiredClasses === 1 ? 'class' : 'classes'}
                       </strong>{' '}
                       consecutively to reach 75%.
@@ -372,30 +372,30 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
 
               {/* Direct Edit Mode vs Quick Action Buttons */}
               {editingCode === code ? (
-                <div className="pt-3 border-t border-slate-200 space-y-2 animate-in fade-in">
-                  <div className="text-[11px] font-bold flex items-center justify-between text-blue-700">
+                <div className="pt-3 border-t border-slate-200 dark:border-slate-800 space-y-2 animate-in fade-in">
+                  <div className="text-[11px] font-bold flex items-center justify-between text-blue-600 dark:text-blue-400">
                     <span>Edit Attendance Counts</span>
-                    <span className="text-[10px] text-slate-500 font-normal">Attended &le; Total</span>
+                    <span className="text-[10px] text-slate-500 dark:text-slate-400 font-normal">Attended &le; Total</span>
                   </div>
                   <div className="grid grid-cols-2 gap-2">
                     <div>
-                      <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Attended</label>
+                      <label className="text-[10px] text-slate-500 dark:text-slate-400 block mb-0.5 font-medium">Attended</label>
                       <input
                         type="number"
                         min="0"
                         value={editAttended}
                         onChange={(e) => setEditAttended(Math.max(0, parseInt(e.target.value) || 0))}
-                        className="w-full bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 focus:outline-none focus:border-blue-600 font-mono shadow-2xs"
+                        className="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-blue-600 font-mono shadow-2xs"
                       />
                     </div>
                     <div>
-                      <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Total Conducted</label>
+                      <label className="text-[10px] text-slate-500 dark:text-slate-400 block mb-0.5 font-medium">Total Conducted</label>
                       <input
                         type="number"
                         min={editAttended}
                         value={editTotal}
                         onChange={(e) => setEditTotal(Math.max(0, parseInt(e.target.value) || 0))}
-                        className="w-full bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 focus:outline-none focus:border-blue-600 font-mono shadow-2xs"
+                        className="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-blue-600 font-mono shadow-2xs"
                       />
                     </div>
                   </div>
@@ -403,7 +403,7 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
                     <button
                       type="button"
                       onClick={() => saveDirectAttendance(code)}
-                      className="flex-1 min-h-[36px] px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs flex items-center justify-center gap-1.5 transition active:scale-95 shadow-2xs"
+                      className="flex-1 min-h-[36px] px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs flex items-center justify-center gap-1.5 transition active:scale-95 shadow-xs"
                     >
                       <Check className="w-3.5 h-3.5 stroke-[2.5]" />
                       <span>Save Numbers</span>
@@ -411,29 +411,29 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
                     <button
                       type="button"
                       onClick={() => setEditingCode(null)}
-                      className="min-h-[36px] px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium transition active:scale-95 border border-slate-200"
+                      className="min-h-[36px] px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-medium transition active:scale-95 border border-slate-200 dark:border-slate-700"
                     >
                       Cancel
                     </button>
                   </div>
                 </div>
               ) : (
-                <div className="flex items-center justify-between gap-2 pt-3 border-t border-slate-200">
+                <div className="flex items-center justify-between gap-2 pt-3 border-t border-slate-200 dark:border-slate-800">
                   <div className="flex items-center gap-2 flex-1">
                     <button
                       type="button"
                       onClick={() => markClassPresent(code)}
-                      className="min-h-[40px] flex-1 px-3 py-2 text-xs font-semibold rounded-lg bg-emerald-100 hover:bg-emerald-200 active:bg-emerald-300 text-emerald-800 border border-emerald-300 transition flex items-center justify-center gap-1.5 active:scale-98 shadow-2xs"
+                      className="min-h-[36px] flex-1 px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 transition flex items-center justify-center gap-1.5 active:scale-98 shadow-2xs"
                     >
-                      <Plus className="w-4 h-4 text-emerald-700 stroke-[2.5]" />
+                      <Plus className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 stroke-[2.5]" />
                       <span>Present (+1)</span>
                     </button>
                     <button
                       type="button"
                       onClick={() => markClassAbsent(code)}
-                      className="min-h-[40px] flex-1 px-3 py-2 text-xs font-semibold rounded-lg bg-rose-100 hover:bg-rose-200 active:bg-rose-300 text-rose-800 border border-rose-300 transition flex items-center justify-center gap-1.5 active:scale-98 shadow-2xs"
+                      className="min-h-[36px] flex-1 px-3 py-1.5 text-xs font-semibold rounded-lg bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/50 text-rose-800 dark:text-rose-300 border border-rose-200 dark:border-rose-800/60 transition flex items-center justify-center gap-1.5 active:scale-98 shadow-2xs"
                     >
-                      <Minus className="w-4 h-4 text-rose-700 stroke-[2.5]" />
+                      <Minus className="w-3.5 h-3.5 text-rose-600 dark:text-rose-400 stroke-[2.5]" />
                       <span>Absent (+1)</span>
                     </button>
                   </div>
@@ -442,7 +442,7 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
                     <button
                       type="button"
                       onClick={() => startEditing(code)}
-                      className="min-h-[40px] min-w-[38px] px-2 flex items-center justify-center text-slate-500 hover:text-slate-800 rounded-lg bg-slate-50 hover:bg-slate-100 transition active:scale-95 border border-slate-200 shadow-2xs"
+                      className="min-h-[36px] min-w-[36px] px-2 flex items-center justify-center text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 rounded-lg bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 transition active:scale-95 border border-slate-200 dark:border-slate-700 shadow-2xs"
                       title="Directly edit attendance numbers"
                       aria-label={`Edit numbers for ${code}`}
                     >
@@ -451,7 +451,7 @@ export const AttendanceTracker: React.FC<AttendanceTrackerProps> = ({
                     <button
                       type="button"
                       onClick={() => resetCourse(code)}
-                      className="min-h-[40px] min-w-[38px] px-2 flex items-center justify-center text-slate-500 hover:text-rose-600 rounded-lg bg-slate-50 hover:bg-slate-100 transition active:scale-95 border border-slate-200 shadow-2xs"
+                      className="min-h-[36px] min-w-[36px] px-2 flex items-center justify-center text-slate-500 hover:text-rose-600 dark:text-slate-400 dark:hover:text-rose-400 rounded-lg bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 transition active:scale-95 border border-slate-200 dark:border-slate-700 shadow-2xs"
                       title="Reset counter"
                       aria-label={`Reset attendance counter for ${code}`}
                     >
