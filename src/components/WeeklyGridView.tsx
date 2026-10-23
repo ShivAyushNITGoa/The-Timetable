@@ -130,7 +130,7 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
       {mobileMode === 'cards' && (
         <div className="space-y-4">
           {/* Day selection tabs */}
-          <div className="flex sm:grid sm:grid-cols-7 gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar pb-1">
+          <div className="flex sm:grid sm:grid-cols-7 gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar pb-0.5 select-none">
             {days.map((day) => {
               const isToday = currentDayName === day;
               const isSelected = selectedMobileDay === day;
@@ -143,28 +143,34 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                   key={day}
                   type="button"
                   onClick={() => setSelectedMobileDay(day)}
-                  className={`min-w-[52px] flex-1 sm:min-w-0 min-h-[44px] py-1.5 px-1 sm:px-1.5 rounded-lg border text-center transition flex flex-col items-center justify-center relative active:scale-95 shrink-0 sm:shrink ${
+                  className={`min-w-[44px] sm:min-w-0 sm:w-full h-8 sm:h-9 px-1.5 sm:px-2 rounded-lg font-semibold text-[11px] sm:text-xs flex items-center justify-center gap-1 transition-all active:scale-95 shrink-0 cursor-pointer ${
                     isSelected
-                      ? 'bg-blue-600 dark:bg-blue-600 text-white font-bold border-blue-600 shadow-xs'
+                      ? 'bg-blue-600 dark:bg-blue-600 text-white font-bold shadow-xs ring-1 ring-blue-600'
                       : isWeekend
-                      ? 'bg-slate-50 dark:bg-slate-900/60 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800'
-                      : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800'
+                      ? 'bg-slate-50 dark:bg-slate-900/60 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-800'
+                      : 'bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800'
                   }`}
                 >
-                  <span className="text-xs sm:text-sm font-bold">{shortDay}</span>
+                  <span className="hidden sm:inline">{day}</span>
+                  <span className="sm:hidden font-bold">{shortDay}</span>
                   {isToday ? (
                     <span
-                      className={`text-[8px] sm:text-[9px] px-1 rounded uppercase tracking-wider font-extrabold ${
-                        isSelected ? 'bg-white/20 text-white' : 'text-blue-600 dark:text-blue-400'
+                      className={`text-[8px] sm:text-[9px] px-1 py-0.2 rounded font-extrabold uppercase tracking-tight ${
+                        isSelected
+                          ? 'bg-white/25 text-white'
+                          : 'bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300'
                       }`}
                     >
                       Today
                     </span>
                   ) : isWeekend ? (
-                    <span className={`text-[8px] font-medium ${isSelected ? 'text-white/80' : 'text-slate-400'}`}>wknd</span>
+                    <span className={`sm:hidden text-[7px] font-medium leading-none ${isSelected ? 'text-white/80' : 'text-slate-400'}`}>wknd</span>
                   ) : null}
-                  {dayMinor && (
-                    <span className={`w-1.5 h-1.5 rounded-full absolute top-1 right-1 ${isSelected ? 'bg-amber-300' : 'bg-blue-500 dark:bg-blue-400'}`} />
+                  {dayMinor && !isToday && (
+                    <span
+                      className={`w-1 h-1 rounded-full ${isSelected ? 'bg-amber-300' : 'bg-blue-500 dark:bg-blue-400'}`}
+                      title="Has CS300M Minor Class"
+                    />
                   )}
                 </button>
               );
@@ -226,29 +232,29 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                   <div
                     key={`elective-${idx}`}
                     onClick={() => onOpenCourseModal(code)}
-                    className="p-3.5 sm:p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition cursor-pointer active:scale-[0.99] flex items-center justify-between gap-3 shadow-2xs"
+                    className="p-3 sm:p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition cursor-pointer active:scale-[0.99] flex items-center justify-between gap-3 shadow-2xs"
                   >
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-[10px] px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 font-bold uppercase">
+                    <div className="space-y-0.5 sm:space-y-1 min-w-0">
+                      <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                        <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 font-bold uppercase">
                           {slot.slotName}
                         </span>
-                        <span className="text-xs font-mono text-slate-600 dark:text-slate-400 font-semibold flex items-center gap-1">
+                        <span className="text-[11px] sm:text-xs font-mono text-slate-600 dark:text-slate-400 font-semibold flex items-center gap-1">
                           <Clock className="w-3 h-3 text-slate-400" /> {slot.startTime} – {slot.endTime}
                         </span>
-                        <span className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
+                        <span className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
                           <MapPin className="w-3 h-3 text-slate-400" /> Room {slot.room}
                         </span>
                       </div>
-                      <div className="text-sm font-bold text-slate-900 dark:text-white">
+                      <div className="text-sm font-bold text-slate-900 dark:text-white truncate">
                         {code}: {chosenOption?.name}
                       </div>
-                      <div className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-                        <User className="w-3 h-3 text-slate-400" />
-                        <span>Faculty: {chosenOption?.faculty}</span>
+                      <div className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5 truncate">
+                        <User className="w-3 h-3 text-slate-400 shrink-0" />
+                        <span className="truncate">Faculty: {chosenOption?.faculty}</span>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 shrink-0">
+                    <div className="flex items-center gap-1.5 shrink-0">
                       {isAdmin && onAdminEditSlot && (
                         <button
                           type="button"
@@ -256,14 +262,14 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                             e.stopPropagation();
                             onAdminEditSlot(slot, selectedMobileDay);
                           }}
-                          className="p-1.5 px-2.5 rounded-md bg-slate-900 dark:bg-slate-100 hover:bg-slate-800 dark:hover:bg-white text-white dark:text-slate-900 text-xs font-bold flex items-center gap-1 shadow-2xs transition active:scale-95"
+                          className="h-6 px-2 rounded-md bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[10px] font-semibold flex items-center gap-1 border border-slate-200 dark:border-slate-700 shadow-2xs transition active:scale-95"
                           title="Admin: Edit Slot & Syllabus"
                         >
-                          <Edit3 className="w-3.5 h-3.5" />
+                          <Edit3 className="w-2.5 h-2.5" />
                           <span>Edit</span>
                         </button>
                       )}
-                      <ChevronRight className="w-5 h-5 text-slate-400 dark:text-slate-500 shrink-0" />
+                      <ChevronRight className="w-4 h-4 text-slate-400 dark:text-slate-500 shrink-0" />
                     </div>
                   </div>
                 );
@@ -288,29 +294,29 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                   <div
                     key={`lab-${idx}`}
                     onClick={() => onOpenCourseModal(labCode)}
-                    className="p-3.5 sm:p-4 rounded-xl bg-slate-50/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition cursor-pointer active:scale-[0.99] flex items-center justify-between gap-3 shadow-2xs"
+                    className="p-3 sm:p-4 rounded-xl bg-slate-50/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition cursor-pointer active:scale-[0.99] flex items-center justify-between gap-3 shadow-2xs"
                   >
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-[10px] px-2 py-0.5 rounded-md bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 font-bold flex items-center gap-1 uppercase">
-                          <Beaker className="w-3 h-3 text-slate-500 dark:text-slate-400" /> Practical Lab
+                    <div className="space-y-0.5 sm:space-y-1 min-w-0">
+                      <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                        <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 font-bold flex items-center gap-1 uppercase">
+                          <Beaker className="w-2.5 h-2.5 text-slate-500 dark:text-slate-400" /> Practical Lab
                         </span>
-                        <span className="text-xs font-mono text-slate-600 dark:text-slate-400 font-semibold flex items-center gap-1">
+                        <span className="text-[11px] sm:text-xs font-mono text-slate-600 dark:text-slate-400 font-semibold flex items-center gap-1">
                           <Clock className="w-3 h-3 text-slate-400" /> {slot.startTime} – {slot.endTime}
                         </span>
-                        <span className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
+                        <span className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
                           <MapPin className="w-3 h-3 text-slate-400" /> {labRoom}
                         </span>
                       </div>
-                      <div className="text-sm font-bold text-slate-900 dark:text-white">
+                      <div className="text-sm font-bold text-slate-900 dark:text-white truncate">
                         {labCode}: {labName}
                       </div>
-                      <div className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-                        <User className="w-3 h-3 text-slate-400" />
-                        <span>Faculty: {labFaculty} ({selectedBatch.toUpperCase()})</span>
+                      <div className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5 truncate">
+                        <User className="w-3 h-3 text-slate-400 shrink-0" />
+                        <span className="truncate">Faculty: {labFaculty} ({selectedBatch.toUpperCase()})</span>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 shrink-0">
+                    <div className="flex items-center gap-1.5 shrink-0">
                       {isAdmin && onAdminEditSlot && (
                         <button
                           type="button"
@@ -318,14 +324,14 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                             e.stopPropagation();
                             onAdminEditSlot(slot, selectedMobileDay);
                           }}
-                          className="p-1.5 px-2.5 rounded-md bg-slate-900 dark:bg-slate-100 hover:bg-slate-800 dark:hover:bg-white text-white dark:text-slate-900 text-xs font-bold flex items-center gap-1 shadow-2xs transition active:scale-95"
+                          className="h-6 px-2 rounded-md bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[10px] font-semibold flex items-center gap-1 border border-slate-200 dark:border-slate-700 shadow-2xs transition active:scale-95"
                           title="Admin: Edit Slot & Syllabus"
                         >
-                          <Edit3 className="w-3.5 h-3.5" />
+                          <Edit3 className="w-2.5 h-2.5" />
                           <span>Edit</span>
                         </button>
                       )}
-                      <ChevronRight className="w-5 h-5 text-slate-400 dark:text-slate-500 shrink-0" />
+                      <ChevronRight className="w-4 h-4 text-slate-400 dark:text-slate-500 shrink-0" />
                     </div>
                   </div>
                 );
@@ -339,16 +345,16 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                 <div
                   key={`std-${idx}`}
                   onClick={() => onOpenCourseModal(slot.courseCode)}
-                  className={`p-3.5 sm:p-4 rounded-xl border transition cursor-pointer active:scale-[0.99] flex items-center justify-between gap-3 shadow-2xs ${
+                  className={`p-3 sm:p-4 rounded-xl border transition cursor-pointer active:scale-[0.99] flex items-center justify-between gap-3 shadow-2xs ${
                     isMinor
                       ? 'bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-850 hover:border-blue-300 dark:hover:border-blue-700'
                       : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
                   }`}
                 >
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-2 flex-wrap">
+                  <div className="space-y-0.5 sm:space-y-1 min-w-0">
+                    <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
                       <span
-                        className={`text-[10px] px-2 py-0.5 rounded-md font-bold uppercase ${
+                        className={`text-[10px] px-1.5 py-0.5 rounded-md font-bold uppercase ${
                           isMinor
                             ? 'bg-blue-100 dark:bg-blue-900/50 text-blue-900 dark:text-blue-200 border border-blue-200 dark:border-blue-700 flex items-center gap-1 font-bold'
                             : 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700'
@@ -356,24 +362,24 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                       >
                         {slot.slotName}
                       </span>
-                      <span className="text-xs font-mono text-slate-600 dark:text-slate-400 font-semibold flex items-center gap-1">
+                      <span className="text-[11px] sm:text-xs font-mono text-slate-600 dark:text-slate-400 font-semibold flex items-center gap-1">
                         <Clock className="w-3 h-3 text-slate-400" /> {slot.startTime} – {slot.endTime}
                       </span>
-                      <span className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
+                      <span className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
                         <MapPin className="w-3 h-3 text-slate-400" /> Room {slot.room || course?.room}
                       </span>
                     </div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-white">
+                    <div className="text-sm font-bold text-slate-900 dark:text-white truncate">
                       {slot.courseCode}: {course?.name || slot.slotName}
                     </div>
                     {course?.coordinator && (
-                      <div className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-                        <User className="w-3 h-3 text-slate-400" />
-                        <span>Faculty: {course.coordinator}</span>
+                      <div className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5 truncate">
+                        <User className="w-3 h-3 text-slate-400 shrink-0" />
+                        <span className="truncate">Faculty: {course.coordinator}</span>
                       </div>
                     )}
                   </div>
-                  <div className="flex items-center gap-2 shrink-0">
+                  <div className="flex items-center gap-1.5 shrink-0">
                     {isAdmin && onAdminEditSlot && (
                       <button
                         type="button"
@@ -381,14 +387,14 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                           e.stopPropagation();
                           onAdminEditSlot(slot, selectedMobileDay);
                         }}
-                        className="p-1.5 px-2.5 rounded-md bg-slate-900 dark:bg-slate-100 hover:bg-slate-800 dark:hover:bg-white text-white dark:text-slate-900 text-xs font-bold flex items-center gap-1 shadow-2xs transition active:scale-95"
+                        className="h-6 px-2 rounded-md bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[10px] font-semibold flex items-center gap-1 border border-slate-200 dark:border-slate-700 shadow-2xs transition active:scale-95"
                         title="Admin: Edit Slot & Syllabus"
                       >
-                        <Edit3 className="w-3.5 h-3.5" />
+                        <Edit3 className="w-2.5 h-2.5" />
                         <span>Edit</span>
                       </button>
                     )}
-                    <ChevronRight className="w-5 h-5 text-slate-400 dark:text-slate-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 text-slate-400 dark:text-slate-500 shrink-0" />
                   </div>
                 </div>
               );

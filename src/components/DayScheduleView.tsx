@@ -236,9 +236,9 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
   };
 
   return (
-    <div className="space-y-6">
-      {/* Day Selector Pills: Ergonomic horizontal scroll on mobile, 7-col grid on desktop */}
-      <div className="flex sm:grid sm:grid-cols-7 gap-1.5 overflow-x-auto no-scrollbar pb-1 sm:pb-2 select-none">
+    <div className="space-y-3 sm:space-y-5">
+      {/* Day Selector Pills: Compact horizontal scroll on mobile, 7-col grid on desktop */}
+      <div className="flex sm:grid sm:grid-cols-7 gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar pb-0.5 select-none">
         {days.map((day) => {
           const isToday = currentDayName === day;
           const isSelected = selectedDay === day;
@@ -251,32 +251,32 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
               key={day}
               type="button"
               onClick={() => onSelectDay(day)}
-              className={`min-w-[58px] sm:min-w-0 sm:w-full min-h-[46px] sm:min-h-[48px] py-2 px-1.5 sm:px-3 rounded-xl font-semibold text-xs sm:text-sm flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1 sm:gap-2 transition-all active:scale-95 shrink-0 cursor-pointer ${
+              className={`min-w-[44px] sm:min-w-0 sm:w-full h-8 sm:h-9 px-1.5 sm:px-2 rounded-lg font-semibold text-[11px] sm:text-xs flex items-center justify-center gap-1 transition-all active:scale-95 shrink-0 cursor-pointer ${
                 isSelected
-                  ? 'bg-blue-600 dark:bg-blue-600 text-white font-bold shadow-xs'
+                  ? 'bg-blue-600 dark:bg-blue-600 text-white font-bold shadow-xs ring-1 ring-blue-600'
                   : isWeekend
                   ? 'bg-slate-50 dark:bg-slate-900/60 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-800'
                   : 'bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800'
               }`}
             >
               <span className="hidden sm:inline">{day}</span>
-              <span className="sm:hidden text-xs font-bold">{shortDay}</span>
+              <span className="sm:hidden font-bold">{shortDay}</span>
               {isToday ? (
                 <span
-                  className={`text-[8px] sm:text-[10px] px-1 sm:px-1.5 py-0.2 sm:py-0.5 rounded font-bold uppercase tracking-wider ${
+                  className={`text-[8px] sm:text-[9px] px-1 py-0.2 rounded font-extrabold uppercase tracking-tight ${
                     isSelected
-                      ? 'bg-white/20 text-white'
-                      : 'bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200'
+                      ? 'bg-white/25 text-white'
+                      : 'bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300'
                   }`}
                 >
                   Today
                 </span>
               ) : isWeekend ? (
-                <span className={`sm:hidden text-[8px] font-medium ${isSelected ? 'text-white/80' : 'text-slate-400'}`}>wknd</span>
+                <span className={`sm:hidden text-[7px] font-medium leading-none ${isSelected ? 'text-white/80' : 'text-slate-400'}`}>wknd</span>
               ) : null}
-              {dayMinor && (
+              {dayMinor && !isToday && (
                 <span
-                  className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-amber-300' : 'bg-blue-500 dark:bg-blue-400'}`}
+                  className={`w-1 h-1 rounded-full ${isSelected ? 'bg-amber-300' : 'bg-blue-500 dark:bg-blue-400'}`}
                   title="Has CS300M Minor Class"
                 />
               )}
@@ -287,17 +287,17 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
       {/* Alert banner if test scheduled today */}
       {todaysTests.length > 0 && (
-        <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-in fade-in">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-amber-500/20 text-amber-700 dark:text-amber-300 flex items-center justify-center font-bold shrink-0">
-              <CalendarCheck className="w-4 h-4" />
+        <div className="p-2.5 sm:p-3.5 rounded-lg bg-amber-500/10 border border-amber-500/20 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 animate-in fade-in">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="w-7 h-7 rounded-md bg-amber-500/20 text-amber-700 dark:text-amber-300 flex items-center justify-center font-bold shrink-0">
+              <CalendarCheck className="w-3.5 h-3.5" />
             </div>
-            <div>
-              <div className="text-xs font-bold text-amber-900 dark:text-amber-200 uppercase tracking-wider">
+            <div className="min-w-0">
+              <div className="text-[10px] font-bold text-amber-900 dark:text-amber-200 uppercase tracking-wider">
                 Scheduled Test / Exam Today
               </div>
-              <div className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">
-                {todaysTests.map((t) => `${t.courseCode}: ${t.title} (${t.startTime} in ${t.room})`).join(' • ')}
+              <div className="text-xs font-bold text-slate-900 dark:text-white truncate">
+                {todaysTests.map((t) => `${t.courseCode}: ${t.title} (${t.startTime})`).join(' • ')}
               </div>
             </div>
           </div>
@@ -306,10 +306,10 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
             <button
               type="button"
               onClick={onNavigateToTests}
-              className="px-3 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold flex items-center gap-1.5 transition self-start sm:self-auto shrink-0 shadow-xs active:scale-95"
+              className="h-6 sm:h-7 px-2.5 rounded-md bg-amber-600 hover:bg-amber-700 text-white text-[11px] font-bold flex items-center gap-1 transition self-start sm:self-auto shrink-0 shadow-2xs active:scale-95"
             >
-              <span>View Agenda & Tasks</span>
-              <ChevronRight className="w-3.5 h-3.5" />
+              <span>View Agenda</span>
+              <ChevronRight className="w-3 h-3" />
             </button>
           )}
         </div>
@@ -317,60 +317,60 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
       {/* Jump to Today banner when browsing another day */}
       {!isSelectedDayToday && (
-        <div className="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xs flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <Calendar className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
-            <span className="text-xs text-slate-600 dark:text-slate-400">
-              Viewing <strong className="text-slate-900 dark:text-white">{selectedDay}</strong>'s schedule. Today is <strong className="text-slate-900 dark:text-white">{currentDayName}</strong>.
+        <div className="p-2 sm:p-2.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xs flex items-center justify-between gap-2">
+          <div className="flex items-center gap-1.5 min-w-0">
+            <Calendar className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
+            <span className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 truncate">
+              Viewing <strong className="text-slate-900 dark:text-white">{selectedDay}</strong>
             </span>
           </div>
           <button
             type="button"
             onClick={() => onSelectDay(currentDayName as DayOfWeek)}
-            className="min-h-[36px] px-3.5 py-1.5 rounded-lg bg-slate-900 dark:bg-slate-100 hover:bg-slate-800 dark:hover:bg-white text-white dark:text-slate-900 font-semibold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-2xs shrink-0"
+            className="h-6 sm:h-7 px-2 sm:px-2.5 rounded-md bg-slate-900 dark:bg-slate-100 hover:bg-slate-800 dark:hover:bg-white text-white dark:text-slate-900 font-semibold text-[10px] sm:text-[11px] flex items-center gap-1 transition active:scale-95 shrink-0"
           >
-            <span>Jump to Today ({currentDayName.slice(0, 3)})</span>
-            <ChevronRight className="w-3.5 h-3.5" />
+            <span>Today ({currentDayName.slice(0, 3)})</span>
+            <ChevronRight className="w-3 h-3" />
           </button>
         </div>
       )}
 
       {/* Live Academic Status & Next Class Countdown Hero */}
-      {/* 1. Mobile-Optimized Unified Header (< sm screens): Compact, zero-overlap, saves ~200px vertical space */}
-      <div className="sm:hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-3.5 shadow-2xs space-y-3">
-        {/* Top Row: Live Status & Controls */}
+      {/* 1. Mobile-Optimized Compact Header (< sm screens): Ultra sleek, zero vertical congestion */}
+      <div className="sm:hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-2.5 shadow-2xs space-y-2">
+        {/* Top Row: Live Status & Day controls */}
         <div className="flex items-center justify-between gap-2">
-          <div className="flex items-center gap-2 min-w-0">
+          <div className="flex items-center gap-1.5 min-w-0">
             {isSelectedDayToday ? (
               activeSlot ? (
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800/80 text-blue-700 dark:text-blue-300 font-bold text-xs truncate">
-                  <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 shrink-0 animate-pulse" />
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300 font-bold text-[10px] truncate">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400 shrink-0 animate-pulse" />
                   <span className="truncate">Live: {courses[activeSlot.courseCode]?.shortName || activeSlot.courseCode}</span>
                 </span>
               ) : nextSlot ? (
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-xs truncate">
-                  <Clock className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-[10px] truncate">
+                  <Clock className="w-3 h-3 text-blue-600 dark:text-blue-400 shrink-0" />
                   <span className="truncate">Next: {courses[nextSlot.courseCode]?.shortName || nextSlot.courseCode} ({nextSlot.startTime})</span>
                 </span>
               ) : (
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/80 text-emerald-700 dark:text-emerald-300 font-semibold text-xs">
-                  <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
-                  <span>Lectures Concluded</span>
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 font-semibold text-[10px]">
+                  <CheckCircle2 className="w-3 h-3 shrink-0" />
+                  <span>Done for Day</span>
                 </span>
               )
             ) : (
-              <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
-                Day Schedule ({selectedDay.slice(0, 3)})
+              <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium truncate">
+                {selectedDay} Schedule
               </span>
             )}
           </div>
 
-          <div className="flex items-center gap-1.5 shrink-0">
+          <div className="flex items-center gap-1 shrink-0">
             {isSelectedDayToday && (
               <button
                 type="button"
                 onClick={handleRequestNotifications}
-                className={`p-1.5 rounded-lg border text-xs transition active:scale-95 cursor-pointer ${
+                className={`w-6 h-6 rounded-md border flex items-center justify-center transition active:scale-95 cursor-pointer ${
                   notificationActive
                     ? 'bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-400'
                     : 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-500'
@@ -378,54 +378,54 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                 title={notificationActive ? 'Class Alerts Active' : 'Enable Class Alerts'}
                 aria-label="Toggle class alerts"
               >
-                {notificationActive ? <BellRing className="w-4 h-4 text-blue-600 dark:text-blue-400" /> : <Bell className="w-4 h-4" />}
+                {notificationActive ? <BellRing className="w-3 h-3 text-blue-600 dark:text-blue-400" /> : <Bell className="w-3 h-3" />}
               </button>
             )}
             <button
               type="button"
               onClick={goToPrevDay}
-              className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 active:scale-95 transition cursor-pointer"
+              className="w-6 h-6 rounded-md bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 flex items-center justify-center active:scale-95 transition cursor-pointer"
               aria-label="Previous day"
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-3.5 h-3.5" />
             </button>
             <button
               type="button"
               onClick={goToNextDay}
-              className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 active:scale-95 transition cursor-pointer"
+              className="w-6 h-6 rounded-md bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 flex items-center justify-center active:scale-95 transition cursor-pointer"
               aria-label="Next day"
             >
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>
 
         {/* Middle Row: Day Title & Quick Info */}
-        <div className="flex items-center justify-between gap-2 pt-0.5">
+        <div className="flex items-center justify-between gap-2">
           <div>
-            <h2 className="text-base font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-1.5">
-              <span>{selectedDay}'s Timetable</span>
+            <h2 className="text-sm font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-1.5">
+              <span>{selectedDay}</span>
               {isSelectedDayToday && (
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-blue-600 text-white font-bold">
+                <span className="text-[9px] px-1 py-0.2 rounded bg-blue-600 text-white font-bold leading-tight">
                   Today
                 </span>
               )}
             </h2>
-            <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+            <div className="flex items-center gap-1.5 text-[10px] text-slate-500 dark:text-slate-400">
               <span>{totalClasses} Classes</span>
               {hasMinor && <span>· CS300M</span>}
-              {hasLab && <span>· 3h Lab</span>}
+              {hasLab && <span>· Lab</span>}
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 shrink-0">
+          <div className="flex items-center gap-1 shrink-0">
             {onOpenCustomizer && (
               <button
                 type="button"
                 onClick={onOpenCustomizer}
-                className="px-2.5 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-700 flex items-center gap-1 transition active:scale-95 cursor-pointer"
+                className="h-6 px-2 rounded-md bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-[10px] font-semibold border border-slate-200 dark:border-slate-700 flex items-center gap-1 transition active:scale-95 cursor-pointer"
               >
-                <Edit3 className="w-3.5 h-3.5 text-slate-500" />
+                <Edit3 className="w-3 h-3 text-slate-500" />
                 <span>Edit</span>
               </button>
             )}
@@ -433,9 +433,9 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
               <button
                 type="button"
                 onClick={() => onAdminAddSlot(selectedDay)}
-                className="px-2.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold flex items-center gap-1 transition active:scale-95 cursor-pointer"
+                className="h-6 px-2 rounded-md bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-semibold flex items-center gap-1 transition active:scale-95 cursor-pointer"
               >
-                <Plus className="w-3.5 h-3.5" />
+                <Plus className="w-3 h-3" />
                 <span>Add</span>
               </button>
             )}
@@ -444,9 +444,9 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
         {/* Bottom Row: Progress Bar on Today */}
         {isSelectedDayToday && totalClasses > 0 && (
-          <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2 text-[11px] text-slate-500 dark:text-slate-400">
-            <span>{completedClassesToday} of {totalClasses} classes done</span>
-            <div className="w-28 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+          <div className="pt-1.5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2 text-[10px] text-slate-500 dark:text-slate-400">
+            <span>{completedClassesToday}/{totalClasses} done</span>
+            <div className="w-24 h-1 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
               <div
                 className="h-full bg-blue-600 dark:bg-blue-500 rounded-full transition-all duration-500"
                 style={{ width: `${(completedClassesToday / totalClasses) * 100}%` }}
@@ -625,7 +625,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
       </div>
 
       {/* Timetable Cards List */}
-      <div className="space-y-3.5">
+      <div className="space-y-2.5 sm:space-y-3">
         {slots.map((slot, index) => {
           const active = isSlotActive(slot.startTime, slot.endTime);
           const passed = isSlotPassed(slot.endTime);
@@ -635,14 +635,14 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
             return (
               <div
                 key={slot.id || `lunch-${index}`}
-                className="py-3 px-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 flex items-center justify-between text-slate-600 dark:text-slate-400 text-xs sm:text-sm"
+                className="py-2 px-3 sm:py-2.5 sm:px-4 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 flex items-center justify-between text-slate-600 dark:text-slate-400 text-xs"
               >
-                <div className="flex items-center gap-2.5">
-                  <Coffee className="w-4 h-4 text-slate-500 dark:text-slate-400" />
+                <div className="flex items-center gap-2">
+                  <Coffee className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
                   <span className="font-semibold text-slate-800 dark:text-slate-200">LUNCH BREAK</span>
-                  <span className="text-slate-500 dark:text-slate-400">· Dining & Refreshment</span>
+                  <span className="text-slate-500 dark:text-slate-400 hidden sm:inline">· Dining & Refreshment</span>
                 </div>
-                <div className="font-mono text-xs text-slate-500 dark:text-slate-400">
+                <div className="font-mono text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
                   {slot.startTime} – {slot.endTime}
                 </div>
               </div>
@@ -654,28 +654,28 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
             return (
               <div
                 key={slot.id || `free-${index}`}
-                className="py-3 px-4 rounded-xl bg-slate-50/60 dark:bg-slate-900/40 border border-dashed border-slate-200 dark:border-slate-800 flex items-center justify-between text-slate-600 dark:text-slate-400 text-xs sm:text-sm"
+                className="py-2 px-3 sm:py-2.5 sm:px-4 rounded-lg bg-slate-50/60 dark:bg-slate-900/40 border border-dashed border-slate-200 dark:border-slate-800 flex items-center justify-between text-slate-600 dark:text-slate-400 text-xs"
               >
-                <div className="flex items-center gap-2.5">
+                <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-slate-400 dark:bg-slate-600" />
                   <div>
                     <span className="font-semibold text-slate-800 dark:text-slate-200">{slot.slotName}</span>
-                    <span className="text-slate-500 dark:text-slate-400 text-xs block sm:inline sm:ml-2">
+                    <span className="text-slate-500 dark:text-slate-400 text-[11px] hidden sm:inline sm:ml-2">
                       {slot.notes || 'Open Slot — Self-Study / Library Period'}
                     </span>
                   </div>
                 </div>
-                <div className="flex items-center gap-2.5">
-                  <div className="font-mono text-xs text-slate-500 dark:text-slate-400 shrink-0">
+                <div className="flex items-center gap-2">
+                  <div className="font-mono text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 shrink-0">
                     {slot.startTime} – {slot.endTime}
                   </div>
                   {isAdmin && onAdminEditSlot && (
                     <button
                       type="button"
                       onClick={() => onAdminEditSlot(slot, selectedDay)}
-                      className="px-2.5 py-1 rounded-md bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-xs flex items-center gap-1 border border-slate-200 dark:border-slate-700 shadow-2xs transition active:scale-95"
+                      className="h-6 px-2 rounded-md bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-[10px] flex items-center gap-1 border border-slate-200 dark:border-slate-700 shadow-2xs transition active:scale-95"
                     >
-                      <Edit3 className="w-3 h-3" />
+                      <Edit3 className="w-2.5 h-2.5" />
                       <span>Edit</span>
                     </button>
                   )}
@@ -695,7 +695,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
               <div
                 key={slot.id || `elective-${index}`}
                 onClick={() => onOpenCourseModal(chosenOption?.code || 'EE541')}
-                className={`group relative p-3.5 sm:p-5 rounded-xl border transition-all cursor-pointer shadow-2xs ${
+                className={`group relative p-3 sm:p-4 rounded-xl border transition-all cursor-pointer shadow-2xs ${
                   active
                     ? 'bg-white dark:bg-slate-900 border-blue-500/80 dark:border-blue-500/70 ring-1 ring-blue-500/20 shadow-xs'
                     : passed
@@ -703,27 +703,27 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                     : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
                 }`}
               >
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-3">
-                  <div className="flex items-center gap-2 flex-wrap min-w-0">
-                    <span className="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-semibold">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-2 mb-2">
+                  <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap min-w-0">
+                    <span className="px-1.5 py-0.5 rounded text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
                       {slot.slotName}
                     </span>
-                    <span className="font-mono text-xs text-slate-700 dark:text-slate-300 font-semibold whitespace-nowrap">
+                    <span className="font-mono text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 font-semibold whitespace-nowrap">
                       {slot.startTime} – {slot.endTime}
                     </span>
-                    <span className="text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">(55 mins)</span>
+                    <span className="text-[11px] text-slate-400 whitespace-nowrap">(55m)</span>
                   </div>
 
-                  <div className="flex flex-wrap items-center justify-start md:justify-end gap-2 min-w-0">
+                  <div className="flex flex-wrap items-center justify-start sm:justify-end gap-1.5 min-w-0">
                     {active && (
-                      <span className="shrink-0 whitespace-nowrap px-2.5 py-0.5 rounded-md bg-blue-600 dark:bg-blue-600 text-white font-bold text-[10px] tracking-wider uppercase shadow-xs">
-                        HAPPENING NOW
+                      <span className="shrink-0 whitespace-nowrap px-2 py-0.5 rounded bg-blue-600 text-white font-bold text-[9px] tracking-wider uppercase shadow-xs">
+                        LIVE
                       </span>
                     )}
 
-                    <div className="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400 min-w-0">
-                      <MapPin className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 shrink-0" />
-                      <span className="truncate max-w-[180px] sm:max-w-[240px]">Room {slot.room}</span>
+                    <div className="flex items-center gap-1 text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 min-w-0">
+                      <MapPin className="w-3 h-3 text-slate-400 dark:text-slate-500 shrink-0" />
+                      <span className="truncate max-w-[160px] sm:max-w-[220px]">Room {slot.room}</span>
                     </div>
 
                     {isAdmin && onAdminEditSlot && (
@@ -733,32 +733,32 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                           e.stopPropagation();
                           onAdminEditSlot(slot, selectedDay);
                         }}
-                        className="shrink-0 px-2.5 py-1 rounded-md bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-xs flex items-center gap-1 border border-slate-200 dark:border-slate-700 shadow-2xs transition active:scale-95"
+                        className="shrink-0 h-6 px-2 rounded-md bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-[10px] flex items-center gap-1 border border-slate-200 dark:border-slate-700 shadow-2xs transition active:scale-95"
                         title="Admin: Edit Slot & Syllabus"
                       >
-                        <Edit3 className="w-3 h-3" />
-                        <span>Edit Slot</span>
+                        <Edit3 className="w-2.5 h-2.5" />
+                        <span>Edit</span>
                       </button>
                     )}
                   </div>
                 </div>
 
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition flex items-center gap-2">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition flex items-center gap-1.5 truncate">
                       <span>{chosenOption?.code}</span>
                       <span className="text-slate-400 font-normal">·</span>
-                      <span>{chosenOption?.name}</span>
+                      <span className="truncate">{chosenOption?.name}</span>
                     </h3>
-                    <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 flex items-center gap-2">
-                      <User className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
-                      <span>
+                    <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5 flex items-center gap-1.5 truncate">
+                      <User className="w-3 h-3 text-slate-400 dark:text-slate-500 shrink-0" />
+                      <span className="truncate">
                         Coordinator: <strong className="text-slate-800 dark:text-slate-200">{courseDetails?.coordinator || chosenOption?.faculty}</strong>
                       </span>
                     </p>
                     {otherOption && (
-                      <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-2 bg-slate-50 dark:bg-slate-800/60 px-2.5 py-1 rounded-md inline-block border border-slate-200 dark:border-slate-700">
-                        Elective Choice Active: <span className="text-slate-900 dark:text-white font-semibold">{chosenOption?.code}</span> (Parallel: {otherOption.code})
+                      <p className="text-[10px] text-slate-600 dark:text-slate-400 mt-1 bg-slate-50 dark:bg-slate-800/60 px-2 py-0.5 rounded border border-slate-200 dark:border-slate-700 inline-block">
+                        Active: <span className="text-slate-900 dark:text-white font-semibold">{chosenOption?.code}</span> (Parallel: {otherOption.code})
                       </p>
                     )}
 
@@ -766,31 +766,31 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                       const courseTest = getCourseUpcomingTest(chosenOption?.code);
                       if (!courseTest) return null;
                       return (
-                        <div className="mt-2.5 inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/20 text-xs text-amber-900 dark:text-amber-200">
-                          <Calendar className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
+                        <div className="mt-1.5 inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-[10px] text-amber-900 dark:text-amber-200">
+                          <Calendar className="w-3 h-3 text-amber-600 dark:text-amber-400 shrink-0" />
                           <span>{courseTest.type}: <strong>{courseTest.title}</strong> ({courseTest.date})</span>
                         </div>
                       );
                     })()}
                   </div>
-                  <ChevronRight className="w-5 h-5 text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition shrink-0 self-center" />
+                  <ChevronRight className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition shrink-0 self-center" />
                 </div>
 
                 {/* Inline Attendance Action & Status Bar */}
                 {chosenOption?.code && (
                   <div
-                    className="mt-2.5 pt-2 sm:mt-3.5 sm:pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2"
+                    className="mt-2 pt-1.5 sm:mt-2.5 sm:pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="flex items-center gap-1.5 min-w-0">
-                      <CheckSquare className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 shrink-0" />
-                      <span className="text-xs text-slate-600 dark:text-slate-400 font-medium hidden sm:inline">Attendance:</span>
+                      <CheckSquare className="w-3 h-3 text-slate-400 dark:text-slate-500 shrink-0" />
+                      <span className="text-[11px] text-slate-600 dark:text-slate-400 font-medium hidden sm:inline">Attendance:</span>
                       {(() => {
                         const rec = attendanceRecords[chosenOption.code] || { attended: 0, total: 0 };
                         const pct = rec.total > 0 ? Math.round((rec.attended / rec.total) * 100) : null;
                         return (
                           <span
-                            className={`text-xs font-bold font-mono whitespace-nowrap ${
+                            className={`text-[11px] font-bold font-mono whitespace-nowrap ${
                               pct === null ? 'text-slate-400 dark:text-slate-500' : pct >= 75 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'
                             }`}
                           >
@@ -804,19 +804,19 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                       <button
                         type="button"
                         onClick={(e) => handleLogAttendance(chosenOption.code, true, e)}
-                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 text-xs font-semibold flex items-center gap-1 transition active:scale-95 cursor-pointer shadow-2xs"
+                        className="h-6 sm:h-7 px-2 sm:px-2.5 rounded-md bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 text-[10px] sm:text-[11px] font-semibold flex items-center gap-1 transition active:scale-95 cursor-pointer shadow-2xs"
                         title={`Mark +1 Present for ${chosenOption.code}`}
                       >
-                        <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400 stroke-[2.5]" />
+                        <Check className="w-2.5 h-2.5 text-emerald-600 dark:text-emerald-400 stroke-[2.5]" />
                         <span>+ Present</span>
                       </button>
                       <button
                         type="button"
                         onClick={(e) => handleLogAttendance(chosenOption.code, false, e)}
-                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/50 text-rose-800 dark:text-rose-300 border border-rose-200 dark:border-rose-800/60 text-xs font-semibold flex items-center gap-1 transition active:scale-95 cursor-pointer shadow-2xs"
+                        className="h-6 sm:h-7 px-2 sm:px-2.5 rounded-md bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/50 text-rose-800 dark:text-rose-300 border border-rose-200 dark:border-rose-800/60 text-[10px] sm:text-[11px] font-semibold flex items-center gap-1 transition active:scale-95 cursor-pointer shadow-2xs"
                         title={`Mark +1 Absent for ${chosenOption.code}`}
                       >
-                        <X className="w-3 h-3 text-rose-600 dark:text-rose-400 stroke-[2.5]" />
+                        <X className="w-2.5 h-2.5 text-rose-600 dark:text-rose-400 stroke-[2.5]" />
                         <span>+ Absent</span>
                       </button>
                     </div>
@@ -835,7 +835,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
               <div
                 key={slot.id || `lab-${index}`}
                 onClick={() => onOpenCourseModal(currentLab.code)}
-                className={`group relative p-3.5 sm:p-5 rounded-xl border transition-all cursor-pointer shadow-2xs ${
+                className={`group relative p-3 sm:p-4 rounded-xl border transition-all cursor-pointer shadow-2xs ${
                   active
                     ? 'bg-white dark:bg-slate-900 border-blue-500/80 dark:border-blue-500/70 ring-1 ring-blue-500/20 shadow-xs'
                     : passed
@@ -843,28 +843,28 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                     : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
                 }`}
               >
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-3">
-                  <div className="flex items-center gap-2 flex-wrap min-w-0">
-                    <span className="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-semibold flex items-center gap-1">
-                      <Beaker className="w-3 h-3 text-slate-500 dark:text-slate-400" />
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-2 mb-2">
+                  <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap min-w-0">
+                    <span className="px-1.5 py-0.5 rounded text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 flex items-center gap-1">
+                      <Beaker className="w-2.5 h-2.5 text-slate-500 dark:text-slate-400" />
                       {slot.slotName}
                     </span>
-                    <span className="font-mono text-xs text-slate-700 dark:text-slate-300 font-semibold whitespace-nowrap">
+                    <span className="font-mono text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 font-semibold whitespace-nowrap">
                       {slot.startTime} – {slot.endTime}
                     </span>
-                    <span className="text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">(2 Hrs 55 Mins)</span>
+                    <span className="text-[11px] text-slate-400 whitespace-nowrap">(2h 55m)</span>
                   </div>
 
-                  <div className="flex flex-wrap items-center justify-start md:justify-end gap-2 min-w-0">
+                  <div className="flex flex-wrap items-center justify-start sm:justify-end gap-1.5 min-w-0">
                     {active && (
-                      <span className="shrink-0 whitespace-nowrap px-2.5 py-0.5 rounded-md bg-blue-600 dark:bg-blue-600 text-white font-bold text-[10px] tracking-wider uppercase shadow-xs">
-                        HAPPENING NOW
+                      <span className="shrink-0 whitespace-nowrap px-2 py-0.5 rounded bg-blue-600 dark:bg-blue-600 text-white font-bold text-[9px] tracking-wider uppercase shadow-xs">
+                        LIVE
                       </span>
                     )}
 
-                    <div className="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400 min-w-0">
-                      <MapPin className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 shrink-0" />
-                      <span className="truncate max-w-[180px] sm:max-w-[240px]">{slot.room}</span>
+                    <div className="flex items-center gap-1 text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 min-w-0">
+                      <MapPin className="w-3 h-3 text-slate-400 dark:text-slate-500 shrink-0" />
+                      <span className="truncate max-w-[160px] sm:max-w-[220px]">{slot.room}</span>
                     </div>
 
                     {isAdmin && onAdminEditSlot && (
@@ -874,39 +874,39 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                           e.stopPropagation();
                           onAdminEditSlot(slot, selectedDay);
                         }}
-                        className="shrink-0 px-2.5 py-1 rounded-md bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-xs flex items-center gap-1 border border-slate-200 dark:border-slate-700 shadow-2xs transition active:scale-95"
+                        className="shrink-0 h-6 px-2 rounded-md bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-[10px] flex items-center gap-1 border border-slate-200 dark:border-slate-700 shadow-2xs transition active:scale-95"
                         title="Admin: Edit Slot & Syllabus"
                       >
-                        <Edit3 className="w-3 h-3" />
-                        <span>Edit Slot</span>
+                        <Edit3 className="w-2.5 h-2.5" />
+                        <span>Edit</span>
                       </button>
                     )}
                   </div>
                 </div>
 
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition flex items-center gap-2">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition flex items-center gap-1.5 truncate">
                       <span>{currentLab.code}</span>
                       <span className="text-slate-400 font-normal">·</span>
-                      <span>{currentLab.name}</span>
+                      <span className="truncate">{currentLab.name}</span>
                     </h3>
-                    <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 flex items-center gap-2">
-                      <User className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
-                      <span>
+                    <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5 flex items-center gap-1.5 truncate">
+                      <User className="w-3 h-3 text-slate-400 dark:text-slate-500 shrink-0" />
+                      <span className="truncate">
                         Faculty: <strong className="text-slate-800 dark:text-slate-200">{currentLab.faculty}</strong>
                       </span>
                     </p>
-                    <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-2 bg-slate-50 dark:bg-slate-800/60 px-2.5 py-1 rounded-md inline-block border border-slate-200 dark:border-slate-700">
-                      Batch Selection: <strong className="text-slate-900 dark:text-white">{selectedBatch === 'batch1' ? 'Batch 1' : 'Batch 2'}</strong> · Alternate batch: {alternateLab.code}
+                    <p className="text-[10px] text-slate-600 dark:text-slate-400 mt-1 bg-slate-50 dark:bg-slate-800/60 px-2 py-0.5 rounded border border-slate-200 dark:border-slate-700 inline-block">
+                      Batch: <strong className="text-slate-900 dark:text-white">{selectedBatch === 'batch1' ? 'Batch 1' : 'Batch 2'}</strong> · Alt: {alternateLab.code}
                     </p>
 
                     {(() => {
                       const labTest = getCourseUpcomingTest(currentLab.code);
                       if (!labTest) return null;
                       return (
-                        <div className="mt-2.5 inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/20 text-xs text-amber-900 dark:text-amber-200">
-                          <Calendar className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
+                        <div className="mt-1.5 inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-[10px] text-amber-900 dark:text-amber-200">
+                          <Calendar className="w-3 h-3 text-amber-600 dark:text-amber-400 shrink-0" />
                           <span>{labTest.type}: <strong>{labTest.title}</strong> ({labTest.date})</span>
                           {onNavigateToTests && (
                             <button
@@ -915,7 +915,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                                 e.stopPropagation();
                                 onNavigateToTests();
                               }}
-                              className="ml-1 text-[11px] underline font-bold hover:text-slate-900 dark:hover:text-white"
+                              className="ml-1 text-[10px] underline font-bold hover:text-slate-900 dark:hover:text-white"
                             >
                               Agenda
                             </button>
@@ -924,24 +924,24 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                       );
                     })()}
                   </div>
-                  <ChevronRight className="w-5 h-5 text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition shrink-0 self-center" />
+                  <ChevronRight className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition shrink-0 self-center" />
                 </div>
 
                 {/* Inline Attendance Action & Status Bar */}
                 {currentLab?.code && (
                   <div
-                    className="mt-2.5 pt-2 sm:mt-3.5 sm:pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2"
+                    className="mt-2 pt-1.5 sm:mt-2.5 sm:pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="flex items-center gap-1.5 min-w-0">
-                      <CheckSquare className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 shrink-0" />
-                      <span className="text-xs text-slate-600 dark:text-slate-400 font-medium hidden sm:inline">Lab Attendance:</span>
+                      <CheckSquare className="w-3 h-3 text-slate-400 dark:text-slate-500 shrink-0" />
+                      <span className="text-[11px] text-slate-600 dark:text-slate-400 font-medium hidden sm:inline">Lab Attendance:</span>
                       {(() => {
                         const rec = attendanceRecords[currentLab.code] || { attended: 0, total: 0 };
                         const pct = rec.total > 0 ? Math.round((rec.attended / rec.total) * 100) : null;
                         return (
                           <span
-                            className={`text-xs font-bold font-mono whitespace-nowrap ${
+                            className={`text-[11px] font-bold font-mono whitespace-nowrap ${
                               pct === null ? 'text-slate-400 dark:text-slate-500' : pct >= 75 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'
                             }`}
                           >
@@ -955,19 +955,19 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                       <button
                         type="button"
                         onClick={(e) => handleLogAttendance(currentLab.code, true, e)}
-                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 text-xs font-semibold flex items-center gap-1 transition active:scale-95 cursor-pointer shadow-2xs"
+                        className="h-6 sm:h-7 px-2 sm:px-2.5 rounded-md bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 text-[10px] sm:text-[11px] font-semibold flex items-center gap-1 transition active:scale-95 cursor-pointer shadow-2xs"
                         title={`Mark +1 Present for ${currentLab.code}`}
                       >
-                        <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400 stroke-[2.5]" />
+                        <Check className="w-2.5 h-2.5 text-emerald-600 dark:text-emerald-400 stroke-[2.5]" />
                         <span>+ Present</span>
                       </button>
                       <button
                         type="button"
                         onClick={(e) => handleLogAttendance(currentLab.code, false, e)}
-                        className="min-h-[34px] px-2.5 py-1 rounded-lg bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/50 text-rose-800 dark:text-rose-300 border border-rose-200 dark:border-rose-800/60 text-xs font-semibold flex items-center gap-1 transition active:scale-95 cursor-pointer shadow-2xs"
+                        className="h-6 sm:h-7 px-2 sm:px-2.5 rounded-md bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/50 text-rose-800 dark:text-rose-300 border border-rose-200 dark:border-rose-800/60 text-[10px] sm:text-[11px] font-semibold flex items-center gap-1 transition active:scale-95 cursor-pointer shadow-2xs"
                         title={`Mark +1 Absent for ${currentLab.code}`}
                       >
-                        <X className="w-3 h-3 text-rose-600 dark:text-rose-400 stroke-[2.5]" />
+                        <X className="w-2.5 h-2.5 text-rose-600 dark:text-rose-400 stroke-[2.5]" />
                         <span>+ Absent</span>
                       </button>
                     </div>
@@ -985,7 +985,7 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
             <div
               key={slot.id || `slot-${index}`}
               onClick={() => onOpenCourseModal(slot.courseCode)}
-              className={`group relative p-3.5 sm:p-5 rounded-xl border transition-all cursor-pointer shadow-2xs ${
+              className={`group relative p-3 sm:p-4 rounded-xl border transition-all cursor-pointer shadow-2xs ${
                 active
                   ? 'bg-white dark:bg-slate-900 border-blue-500/80 dark:border-blue-500/70 ring-1 ring-blue-500/20 shadow-xs'
                   : passed
@@ -993,38 +993,38 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                   : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
               }`}
             >
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-3">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-2 mb-2">
                 {/* Left: slot name + time */}
-                <div className="flex items-center gap-2 flex-wrap min-w-0">
+                <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap min-w-0">
                   <span
-                    className={`px-2 py-0.5 rounded-md text-xs font-semibold ${
+                    className={`px-1.5 py-0.5 rounded text-[11px] font-semibold ${
                       isMinor
                         ? 'bg-blue-50 dark:bg-blue-950/40 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-800 flex items-center gap-1 shadow-2xs'
                         : 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700'
                     }`}
                   >
-                    {isMinor && <BookOpen className="w-3 h-3 text-blue-600 dark:text-blue-400" />}
+                    {isMinor && <BookOpen className="w-2.5 h-2.5 text-blue-600 dark:text-blue-400" />}
                     {slot.slotName}
                   </span>
-                  <span className="font-mono text-xs text-slate-700 dark:text-slate-300 font-semibold whitespace-nowrap">
+                  <span className="font-mono text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 font-semibold whitespace-nowrap">
                     {slot.startTime} – {slot.endTime}
                   </span>
-                  <span className="text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">
-                    ({slot.isLab ? '2 Hrs 55 Mins' : '55 Mins'})
+                  <span className="text-[11px] text-slate-400 whitespace-nowrap">
+                    ({slot.isLab ? '2h 55m' : '55m'})
                   </span>
                 </div>
 
                 {/* Right: status + room + admin action */}
-                <div className="flex flex-wrap items-center justify-start md:justify-end gap-2 min-w-0">
+                <div className="flex flex-wrap items-center justify-start sm:justify-end gap-1.5 min-w-0">
                   {active && (
-                    <span className="shrink-0 whitespace-nowrap px-2.5 py-0.5 rounded-md bg-blue-600 dark:bg-blue-600 text-white font-bold text-[10px] tracking-wider uppercase shadow-xs">
-                      HAPPENING NOW
+                    <span className="shrink-0 whitespace-nowrap px-2 py-0.5 rounded bg-blue-600 text-white font-bold text-[9px] tracking-wider uppercase shadow-xs">
+                      LIVE
                     </span>
                   )}
 
-                  <div className="flex items-center gap-1.5 text-xs font-medium min-w-0 text-slate-600 dark:text-slate-400">
-                    <MapPin className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 shrink-0" />
-                    <span className="truncate max-w-[180px] sm:max-w-[240px]">
+                  <div className="flex items-center gap-1 text-[11px] sm:text-xs font-medium min-w-0 text-slate-600 dark:text-slate-400">
+                    <MapPin className="w-3 h-3 text-slate-400 dark:text-slate-500 shrink-0" />
+                    <span className="truncate max-w-[160px] sm:max-w-[220px]">
                       Room {slot.room || course?.room}
                     </span>
                   </div>
@@ -1036,75 +1036,75 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                         e.stopPropagation();
                         onAdminEditSlot(slot, selectedDay);
                       }}
-                      className="shrink-0 px-2.5 py-1 rounded-md bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-xs flex items-center gap-1 border border-slate-200 dark:border-slate-700 shadow-2xs transition active:scale-95"
+                      className="shrink-0 h-6 px-2 rounded-md bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-[10px] flex items-center gap-1 border border-slate-200 dark:border-slate-700 shadow-2xs transition active:scale-95"
                       title="Admin: Edit Slot & Syllabus"
                     >
-                      <Edit3 className="w-3 h-3" />
-                      <span>Edit Slot</span>
+                      <Edit3 className="w-2.5 h-2.5" />
+                      <span>Edit</span>
                     </button>
                   )}
                 </div>
               </div>
 
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="text-base sm:text-lg font-bold tracking-tight transition flex items-center gap-2 text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <h3 className="text-sm sm:text-base font-bold tracking-tight transition flex items-center gap-1.5 text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 truncate">
                     <span>{course?.code || slot.courseCode}</span>
                     <span className="text-slate-400 font-normal">·</span>
-                    <span>{course?.name || slot.slotName}</span>
+                    <span className="truncate">{course?.name || slot.slotName}</span>
                   </h3>
 
                   {course?.coordinator && (
-                    <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 flex items-center gap-2">
-                      <User className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
-                      <span>
+                    <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5 flex items-center gap-1.5 truncate">
+                      <User className="w-3 h-3 text-slate-400 dark:text-slate-500 shrink-0" />
+                      <span className="truncate">
                         Coordinator: <strong className="text-slate-800 dark:text-slate-200">{course.coordinator} ({course.shortName})</strong>
                       </span>
                     </p>
                   )}
 
                   {isMinor && (
-                    <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 text-[11px] text-blue-800 dark:text-blue-300">
-                      <BookOpen className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-                      <span>Special: CSE Minor Course · Coordinated by Dr. Pravati Swain</span>
+                    <div className="mt-1.5 inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 text-[10px] text-blue-800 dark:text-blue-300">
+                      <BookOpen className="w-3 h-3 text-blue-600 dark:text-blue-400" />
+                      <span>Special: CSE Minor Course · Dr. Pravati Swain</span>
                     </div>
                   )}
 
                   {slot.notes && !isMinor && (
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1.5 italic">{slot.notes}</p>
+                    <p className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 mt-1 italic">{slot.notes}</p>
                   )}
 
                   {(() => {
                     const regularTest = getCourseUpcomingTest(course?.code || slot.courseCode);
                     if (!regularTest) return null;
                     return (
-                      <div className="mt-2.5 inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/20 text-xs text-amber-900 dark:text-amber-200">
-                        <Calendar className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
+                      <div className="mt-1.5 inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-[10px] text-amber-900 dark:text-amber-200">
+                        <Calendar className="w-3 h-3 text-amber-600 dark:text-amber-400 shrink-0" />
                         <span>{regularTest.type}: <strong>{regularTest.title}</strong> ({regularTest.date})</span>
                       </div>
                     );
                   })()}
                 </div>
 
-                <ChevronRight className="w-5 h-5 text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition shrink-0 self-center" />
+                <ChevronRight className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition shrink-0 self-center" />
               </div>
 
               {/* Inline Attendance Action & Status Bar */}
               {(course?.code || slot.courseCode) && (
                 <div
-                  className="mt-2.5 pt-2 sm:mt-3.5 sm:pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2"
+                  className="mt-2 pt-1.5 sm:mt-2.5 sm:pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <div className="flex items-center gap-1.5 min-w-0">
-                    <CheckSquare className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 shrink-0" />
-                    <span className="text-xs text-slate-600 dark:text-slate-400 font-medium hidden sm:inline">Attendance:</span>
+                    <CheckSquare className="w-3 h-3 text-slate-400 dark:text-slate-500 shrink-0" />
+                    <span className="text-[11px] text-slate-600 dark:text-slate-400 font-medium hidden sm:inline">Attendance:</span>
                     {(() => {
                       const code = course?.code || slot.courseCode;
                       const rec = attendanceRecords[code] || { attended: 0, total: 0 };
                       const pct = rec.total > 0 ? Math.round((rec.attended / rec.total) * 100) : null;
                       return (
                         <span
-                          className={`text-xs font-bold font-mono whitespace-nowrap ${
+                          className={`text-[11px] font-bold font-mono whitespace-nowrap ${
                             pct === null ? 'text-slate-400 dark:text-slate-500' : pct >= 75 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'
                           }`}
                         >
@@ -1118,19 +1118,19 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                     <button
                       type="button"
                       onClick={(e) => handleLogAttendance(course?.code || slot.courseCode, true, e)}
-                      className="min-h-[34px] px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 text-xs font-semibold flex items-center gap-1 transition active:scale-95 cursor-pointer shadow-2xs"
+                      className="h-6 sm:h-7 px-2 sm:px-2.5 rounded-md bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 text-[10px] sm:text-[11px] font-semibold flex items-center gap-1 transition active:scale-95 cursor-pointer shadow-2xs"
                       title={`Mark +1 Present for ${course?.code || slot.courseCode}`}
                     >
-                      <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400 stroke-[2.5]" />
+                      <Check className="w-2.5 h-2.5 text-emerald-600 dark:text-emerald-400 stroke-[2.5]" />
                       <span>+ Present</span>
                     </button>
                     <button
                       type="button"
                       onClick={(e) => handleLogAttendance(course?.code || slot.courseCode, false, e)}
-                      className="min-h-[34px] px-2.5 py-1 rounded-lg bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/50 text-rose-800 dark:text-rose-300 border border-rose-200 dark:border-rose-800/60 text-xs font-semibold flex items-center gap-1 transition active:scale-95 cursor-pointer shadow-2xs"
+                      className="h-6 sm:h-7 px-2 sm:px-2.5 rounded-md bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/50 text-rose-800 dark:text-rose-300 border border-rose-200 dark:border-rose-800/60 text-[10px] sm:text-[11px] font-semibold flex items-center gap-1 transition active:scale-95 cursor-pointer shadow-2xs"
                       title={`Mark +1 Absent for ${course?.code || slot.courseCode}`}
                     >
-                      <X className="w-3 h-3 text-rose-600 dark:text-rose-400 stroke-[2.5]" />
+                      <X className="w-2.5 h-2.5 text-rose-600 dark:text-rose-400 stroke-[2.5]" />
                       <span>+ Absent</span>
                     </button>
                   </div>
@@ -1142,13 +1142,13 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
       </div>
 
       {isAdmin && onAdminAddSlot && (
-        <div className="pt-2">
+        <div className="pt-1">
           <button
             type="button"
             onClick={() => onAdminAddSlot(selectedDay)}
-            className="w-full py-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-dashed border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-xs flex items-center justify-center gap-2 transition active:scale-98 shadow-2xs"
+            className="w-full py-2 sm:py-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-dashed border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-xs flex items-center justify-center gap-1.5 transition active:scale-98 shadow-2xs"
           >
-            <Plus className="w-4 h-4" />
+            <Plus className="w-3.5 h-3.5" />
             <span>+ Add Slot for {selectedDay} (Admin)</span>
           </button>
         </div>
