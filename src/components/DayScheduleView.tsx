@@ -237,8 +237,8 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
   return (
     <div className="space-y-3 sm:space-y-5">
-      {/* Day Selector Pills: Compact horizontal scroll on mobile, 7-col grid on desktop */}
-      <div className="flex sm:grid sm:grid-cols-7 gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar pb-0.5 select-none">
+      {/* Day Selector: 7-col grid on all screens, zero slider, all 7 days visible at once */}
+      <div className="grid grid-cols-7 gap-1 sm:gap-1.5 w-full select-none">
         {days.map((day) => {
           const isToday = currentDayName === day;
           const isSelected = selectedDay === day;
@@ -251,19 +251,20 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
               key={day}
               type="button"
               onClick={() => onSelectDay(day)}
-              className={`min-w-[44px] sm:min-w-0 sm:w-full h-8 sm:h-9 px-1.5 sm:px-2 rounded-lg font-semibold text-[11px] sm:text-xs flex items-center justify-center gap-1 transition-all active:scale-95 shrink-0 cursor-pointer ${
+              className={`w-full h-10 sm:h-11 rounded-lg border text-center transition-all flex flex-col items-center justify-center relative cursor-pointer active:scale-95 ${
                 isSelected
-                  ? 'bg-blue-600 dark:bg-blue-600 text-white font-bold shadow-xs ring-1 ring-blue-600'
+                  ? 'bg-blue-600 dark:bg-blue-600 text-white font-bold border-blue-600 shadow-xs ring-2 ring-blue-600/25'
+                  : isToday
+                  ? 'bg-white dark:bg-slate-900 border-blue-400 dark:border-blue-600 text-slate-800 dark:text-slate-200 hover:bg-blue-50/50 dark:hover:bg-blue-950/30'
                   : isWeekend
-                  ? 'bg-slate-50 dark:bg-slate-900/60 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-800'
-                  : 'bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800'
+                  ? 'bg-slate-50 dark:bg-slate-900/60 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800'
+                  : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800'
               }`}
             >
-              <span className="hidden sm:inline">{day}</span>
-              <span className="sm:hidden font-bold">{shortDay}</span>
+              <span className="text-[11px] sm:text-xs font-bold leading-none">{shortDay}</span>
               {isToday ? (
                 <span
-                  className={`text-[8px] sm:text-[9px] px-1 py-0.2 rounded font-extrabold uppercase tracking-tight ${
+                  className={`text-[7px] sm:text-[8px] font-extrabold uppercase tracking-tight px-1 py-0.2 rounded leading-none mt-1 ${
                     isSelected
                       ? 'bg-white/25 text-white'
                       : 'bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300'
@@ -272,13 +273,16 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                   Today
                 </span>
               ) : isWeekend ? (
-                <span className={`sm:hidden text-[7px] font-medium leading-none ${isSelected ? 'text-white/80' : 'text-slate-400'}`}>wknd</span>
-              ) : null}
-              {dayMinor && !isToday && (
+                <span className={`text-[7px] sm:text-[8px] font-medium uppercase tracking-tight leading-none mt-1 ${isSelected ? 'text-white/75' : 'text-slate-400 dark:text-slate-500'}`}>
+                  wknd
+                </span>
+              ) : dayMinor ? (
                 <span
-                  className={`w-1 h-1 rounded-full ${isSelected ? 'bg-amber-300' : 'bg-blue-500 dark:bg-blue-400'}`}
-                  title="Has CS300M Minor Class"
+                  className={`w-1.5 h-1.5 rounded-full mt-1 ${isSelected ? 'bg-amber-300' : 'bg-blue-500 dark:bg-blue-400'}`}
+                  title="CSE Minor (CS300M)"
                 />
+              ) : (
+                <span className="w-1.5 h-1.5 mt-1 opacity-0" />
               )}
             </button>
           );
@@ -287,55 +291,33 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
 
       {/* Alert banner if test scheduled today */}
       {todaysTests.length > 0 && (
-        <div className="p-2.5 sm:p-3.5 rounded-lg bg-amber-500/10 border border-amber-500/20 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 animate-in fade-in">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <div className="w-7 h-7 rounded-md bg-amber-500/20 text-amber-700 dark:text-amber-300 flex items-center justify-center font-bold shrink-0">
-              <CalendarCheck className="w-3.5 h-3.5" />
+        <div className="p-2 sm:p-2.5 rounded-lg bg-amber-500/10 border border-amber-500/20 shadow-2xs flex items-center justify-between gap-2 animate-in fade-in">
+          <div className="flex items-center gap-2 min-w-0">
+            <div className="w-6 h-6 rounded-md bg-amber-500/20 text-amber-700 dark:text-amber-300 flex items-center justify-center font-bold shrink-0">
+              <CalendarCheck className="w-3 h-3" />
             </div>
             <div className="min-w-0">
-              <div className="text-[10px] font-bold text-amber-900 dark:text-amber-200 uppercase tracking-wider">
-                Scheduled Test / Exam Today
-              </div>
-              <div className="text-xs font-bold text-slate-900 dark:text-white truncate">
+              <span className="text-[10px] font-bold text-amber-900 dark:text-amber-200 uppercase tracking-wider block">
+                Exam / Test Today
+              </span>
+              <span className="text-xs font-bold text-slate-900 dark:text-white truncate block">
                 {todaysTests.map((t) => `${t.courseCode}: ${t.title} (${t.startTime})`).join(' • ')}
-              </div>
+              </span>
             </div>
           </div>
-
           {onNavigateToTests && (
             <button
               type="button"
               onClick={onNavigateToTests}
-              className="h-6 sm:h-7 px-2.5 rounded-md bg-amber-600 hover:bg-amber-700 text-white text-[11px] font-bold flex items-center gap-1 transition self-start sm:self-auto shrink-0 shadow-2xs active:scale-95"
+              className="h-6 px-2 rounded-md bg-amber-600 hover:bg-amber-700 text-white text-[10px] font-bold flex items-center gap-1 shrink-0 active:scale-95"
             >
-              <span>View Agenda</span>
+              <span>Agenda</span>
               <ChevronRight className="w-3 h-3" />
             </button>
           )}
         </div>
       )}
 
-      {/* Jump to Today banner when browsing another day */}
-      {!isSelectedDayToday && (
-        <div className="p-2 sm:p-2.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xs flex items-center justify-between gap-2">
-          <div className="flex items-center gap-1.5 min-w-0">
-            <Calendar className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
-            <span className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 truncate">
-              Viewing <strong className="text-slate-900 dark:text-white">{selectedDay}</strong>
-            </span>
-          </div>
-          <button
-            type="button"
-            onClick={() => onSelectDay(currentDayName as DayOfWeek)}
-            className="h-6 sm:h-7 px-2 sm:px-2.5 rounded-md bg-slate-900 dark:bg-slate-100 hover:bg-slate-800 dark:hover:bg-white text-white dark:text-slate-900 font-semibold text-[10px] sm:text-[11px] flex items-center gap-1 transition active:scale-95 shrink-0"
-          >
-            <span>Today ({currentDayName.slice(0, 3)})</span>
-            <ChevronRight className="w-3 h-3" />
-          </button>
-        </div>
-      )}
-
-      {/* Live Academic Status & Next Class Countdown Hero */}
       {/* 1. Mobile-Optimized Compact Header (< sm screens): Ultra sleek, zero vertical congestion */}
       <div className="sm:hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-2.5 shadow-2xs space-y-2">
         {/* Top Row: Live Status & Day controls */}
@@ -366,6 +348,17 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
           </div>
 
           <div className="flex items-center gap-1 shrink-0">
+            {!isSelectedDayToday && (
+              <button
+                type="button"
+                onClick={() => onSelectDay(currentDayName as DayOfWeek)}
+                className="h-6 px-2 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-bold text-[10px] flex items-center gap-1 transition active:scale-95 shadow-2xs shrink-0 cursor-pointer"
+                title={`Jump to Today (${currentDayName})`}
+              >
+                <span>Today</span>
+                <ChevronRight className="w-3 h-3" />
+              </button>
+            )}
             {isSelectedDayToday && (
               <button
                 type="button"

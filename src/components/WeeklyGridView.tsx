@@ -129,8 +129,8 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
       {/* MOBILE-OPTIMIZED DAY CARDS VIEW */}
       {mobileMode === 'cards' && (
         <div className="space-y-4">
-          {/* Day selection tabs */}
-          <div className="flex sm:grid sm:grid-cols-7 gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar pb-0.5 select-none">
+          {/* Day selection tabs: 7-col grid on all screens, zero slider */}
+          <div className="grid grid-cols-7 gap-1 sm:gap-1.5 w-full select-none">
             {days.map((day) => {
               const isToday = currentDayName === day;
               const isSelected = selectedMobileDay === day;
@@ -143,19 +143,20 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                   key={day}
                   type="button"
                   onClick={() => setSelectedMobileDay(day)}
-                  className={`min-w-[44px] sm:min-w-0 sm:w-full h-8 sm:h-9 px-1.5 sm:px-2 rounded-lg font-semibold text-[11px] sm:text-xs flex items-center justify-center gap-1 transition-all active:scale-95 shrink-0 cursor-pointer ${
+                  className={`w-full h-10 sm:h-11 rounded-lg border text-center transition-all flex flex-col items-center justify-center relative cursor-pointer active:scale-95 ${
                     isSelected
-                      ? 'bg-blue-600 dark:bg-blue-600 text-white font-bold shadow-xs ring-1 ring-blue-600'
+                      ? 'bg-blue-600 dark:bg-blue-600 text-white font-bold border-blue-600 shadow-xs ring-2 ring-blue-600/25'
+                      : isToday
+                      ? 'bg-white dark:bg-slate-900 border-blue-400 dark:border-blue-600 text-slate-800 dark:text-slate-200 hover:bg-blue-50/50 dark:hover:bg-blue-950/30'
                       : isWeekend
-                      ? 'bg-slate-50 dark:bg-slate-900/60 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-800'
-                      : 'bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800'
+                      ? 'bg-slate-50 dark:bg-slate-900/60 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800'
+                      : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800'
                   }`}
                 >
-                  <span className="hidden sm:inline">{day}</span>
-                  <span className="sm:hidden font-bold">{shortDay}</span>
+                  <span className="text-[11px] sm:text-xs font-bold leading-none">{shortDay}</span>
                   {isToday ? (
                     <span
-                      className={`text-[8px] sm:text-[9px] px-1 py-0.2 rounded font-extrabold uppercase tracking-tight ${
+                      className={`text-[7px] sm:text-[8px] font-extrabold uppercase tracking-tight px-1 py-0.2 rounded leading-none mt-1 ${
                         isSelected
                           ? 'bg-white/25 text-white'
                           : 'bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300'
@@ -164,13 +165,16 @@ export const WeeklyGridView: React.FC<WeeklyGridViewProps> = ({
                       Today
                     </span>
                   ) : isWeekend ? (
-                    <span className={`sm:hidden text-[7px] font-medium leading-none ${isSelected ? 'text-white/80' : 'text-slate-400'}`}>wknd</span>
-                  ) : null}
-                  {dayMinor && !isToday && (
+                    <span className={`text-[7px] sm:text-[8px] font-medium uppercase tracking-tight leading-none mt-1 ${isSelected ? 'text-white/75' : 'text-slate-400 dark:text-slate-500'}`}>
+                      wknd
+                    </span>
+                  ) : dayMinor ? (
                     <span
-                      className={`w-1 h-1 rounded-full ${isSelected ? 'bg-amber-300' : 'bg-blue-500 dark:bg-blue-400'}`}
-                      title="Has CS300M Minor Class"
+                      className={`w-1.5 h-1.5 rounded-full mt-1 ${isSelected ? 'bg-amber-300' : 'bg-blue-500 dark:bg-blue-400'}`}
+                      title="CSE Minor (CS300M)"
                     />
+                  ) : (
+                    <span className="w-1.5 h-1.5 mt-1 opacity-0" />
                   )}
                 </button>
               );
