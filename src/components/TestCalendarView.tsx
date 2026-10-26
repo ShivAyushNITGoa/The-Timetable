@@ -31,6 +31,7 @@ interface TestCalendarViewProps {
   onAddTest: (test: Omit<AcademicTest, 'id' | 'createdAt'>) => void;
   onUpdateTest: (test: AcademicTest) => void;
   onDeleteTest: (testId: string) => void;
+  onClearAllTests?: () => void;
   onExportCalendar?: () => void;
   onOpenCourseModal?: (courseCode: string) => void;
   branch?: string;
@@ -45,6 +46,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
   onAddTest,
   onUpdateTest,
   onDeleteTest,
+  onClearAllTests,
   onExportCalendar,
   onOpenCourseModal,
   initialCourseCode,
@@ -96,6 +98,7 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
 
   // Delete confirmation modal state (safe in iframe)
   const [testToDelete, setTestToDelete] = useState<AcademicTest | null>(null);
+  const [showConfirmClearAll, setShowConfirmClearAll] = useState(false);
 
   // Auto-fill and open Add Modal if initialCourseCode passed from another view
   useEffect(() => {
@@ -428,6 +431,18 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
               <Download className="w-4 h-4 text-blue-600 dark:text-blue-400" />
               <span>Export Tests (.ics)</span>
             </button>
+
+            {tests.length > 0 && onClearAllTests && (
+              <button
+                type="button"
+                onClick={() => setShowConfirmClearAll(true)}
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/60 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800 text-xs sm:text-sm font-semibold transition active:scale-95 shadow-2xs cursor-pointer"
+                title="Remove all scheduled tests from calendar"
+              >
+                <Trash2 className="w-4 h-4 text-rose-600 dark:text-rose-400" />
+                <span>Clear All Tests</span>
+              </button>
+            )}
           </div>
         </div>
 
@@ -1640,6 +1655,45 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Clear All Tests Confirmation Modal */}
+      {showConfirmClearAll && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs animate-in fade-in duration-150">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-sm w-full p-5 shadow-2xl space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0">
+                <Trash2 className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-slate-900 dark:text-white">Clear All Scheduled Tests?</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                  This will remove all {tests.length} tests from your calendar. This action cannot be undone.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+              <button
+                type="button"
+                onClick={() => setShowConfirmClearAll(false)}
+                className="px-3.5 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-semibold transition cursor-pointer"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowConfirmClearAll(false);
+                  onClearAllTests?.();
+                }}
+                className="px-4 py-2 rounded-lg bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold shadow-xs transition active:scale-95 cursor-pointer"
+              >
+                Yes, Delete All
+              </button>
+            </div>
           </div>
         </div>
       )}

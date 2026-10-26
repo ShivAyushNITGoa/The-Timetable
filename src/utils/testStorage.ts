@@ -4,9 +4,53 @@ const TESTS_STORAGE_KEY = 'nit_goa_academic_tests_v1';
 
 export const DEFAULT_TESTS: AcademicTest[] = [];
 
+/**
+ * Robustly detects any legacy demo or placeholder tests
+ */
+export function isDemoTest(t: any): boolean {
+  if (!t || typeof t !== 'object') return true;
+  if (!t.id || typeof t.id !== 'string') return true;
+
+  const idLower = t.id.toLowerCase();
+  if (
+    idLower.startsWith('test-cie') ||
+    idLower.startsWith('cie-') ||
+    idLower.startsWith('demo') ||
+    idLower.startsWith('sample') ||
+    idLower === 'test-1' ||
+    idLower === 'test-2' ||
+    idLower === 'test-3' ||
+    idLower === 'test-4' ||
+    idLower === '1' ||
+    idLower === '2' ||
+    idLower === '3' ||
+    idLower === '4' ||
+    idLower.includes('demo')
+  ) {
+    return true;
+  }
+
+  const titleLower = (t.title || '').toLowerCase();
+  if (titleLower.includes('demo') || titleLower.includes('sample')) {
+    return true;
+  }
+
+  // Pre-configured mock dates in September/August 2026
+  if (t.date && (t.date.startsWith('2026-09') || t.date.startsWith('2026-08'))) {
+    return true;
+  }
+
+  // Tests created before real user feature or without valid creation timestamp
+  if (!t.createdAt || typeof t.createdAt !== 'number' || t.createdAt < 1740000000000) {
+    return true;
+  }
+
+  return false;
+}
+
 export function getStoredTests(): AcademicTest[] {
   try {
-    const raw = localStorage.getItem(TESTS_STORAGE_KEY);
+    const raw = localStorage.getItem(TESTS_STORAGE_KEY) || localStorage.getItem('nit_goa_academic_tests');
     if (!raw) {
       return [];
     }
@@ -14,21 +58,25 @@ export function getStoredTests(): AcademicTest[] {
     if (!Array.isArray(parsed)) return [];
 
     // Purge any legacy demo or placeholder tests
-    const filtered = parsed.filter(
-      (t: any) =>
-        t &&
-        !t.id?.startsWith('test-cie-') &&
-        !t.id?.toLowerCase().includes('demo') &&
-        !(t.title && t.title.toLowerCase().includes('demo test'))
-    );
+    const filtered = parsed.filter((t: any) => !isDemoTest(t));
 
     if (filtered.length !== parsed.length) {
       localStorage.setItem(TESTS_STORAGE_KEY, JSON.stringify(filtered));
+      localStorage.removeItem('nit_goa_academic_tests');
     }
     return filtered;
   } catch (err) {
     console.error('Failed to load academic tests:', err);
     return [];
+  }
+}
+
+export function clearAllTests(): void {
+  try {
+    localStorage.setItem(TESTS_STORAGE_KEY, JSON.stringify([]));
+    localStorage.removeItem('nit_goa_academic_tests');
+  } catch (err) {
+    console.error('Failed to clear tests:', err);
   }
 }
 

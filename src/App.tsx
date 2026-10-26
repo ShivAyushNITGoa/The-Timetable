@@ -30,6 +30,8 @@ import {
   addAcademicTest,
   updateAcademicTest,
   deleteAcademicTest,
+  isDemoTest,
+  clearAllTests,
 } from './utils/testStorage';
 import { downloadICS } from './utils/calendarExport';
 import { TimeSlot, DayOfWeek, Course } from './data/timetableData';
@@ -364,15 +366,14 @@ export default function App() {
             setProfile((prev) => ({ ...prev, ...cloudData.profile }));
           }
           if (cloudData.tests && Array.isArray(cloudData.tests)) {
-            const cleanCloudTests = cloudData.tests.filter(
-              (t: any) =>
-                t &&
-                !t.id?.startsWith('test-cie-') &&
-                !t.id?.toLowerCase().includes('demo') &&
-                !(t.title && t.title.toLowerCase().includes('demo test'))
-            );
+            const cleanCloudTests = cloudData.tests.filter((t: any) => !isDemoTest(t));
             saveStoredTests(cleanCloudTests);
             setTests(cleanCloudTests);
+            if (cleanCloudTests.length !== cloudData.tests.length) {
+              saveUserCloudData(currentUser.uid, { tests: cleanCloudTests }).catch((err) =>
+                console.warn('Could not sync cleaned tests to cloud:', err)
+              );
+            }
           }
           if (cloudData.attendance) {
             Object.entries(cloudData.attendance).forEach(([key, val]) => {
@@ -613,6 +614,17 @@ export default function App() {
     deleteAcademicTest(id);
     refreshTests();
     showToast('Test removed from calendar');
+  };
+
+  const handleClearAllTests = () => {
+    clearAllTests();
+    setTests([]);
+    if (currentUser?.uid) {
+      saveUserCloudData(currentUser.uid, { tests: [] }).catch((err) =>
+        console.warn('Could not sync cleared tests to cloud:', err)
+      );
+    }
+    showToast('All scheduled tests removed');
   };
 
   // Effective courses with cloud overrides merged in
@@ -986,6 +998,7 @@ export default function App() {
             onAddTest={handleAddTest}
             onUpdateTest={handleUpdateTest}
             onDeleteTest={handleDeleteTest}
+            onClearAllTests={handleClearAllTests}
             onExportCalendar={handleExportCalendar}
             courses={effectiveCourses}
             branch={safeProfile.branch}

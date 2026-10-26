@@ -68,11 +68,10 @@ export function playNotificationTone(): void {
 }
 
 /**
- * Request permission from the user
+ * Request permission from the user quietly without test popups
  */
 export async function requestNotificationPermission(): Promise<boolean> {
   if (!isNotificationSupported()) {
-    dispatchInAppAlert('Notifications Unsupported', 'Your browser does not support Web Notifications.', 'warning');
     return false;
   }
 
@@ -80,20 +79,36 @@ export async function requestNotificationPermission(): Promise<boolean> {
     const permission = await Notification.requestPermission();
     if (permission === 'granted') {
       setNotificationEnabled(true);
-      playNotificationTone();
-      sendBrowserNotification('Class Reminders Active', {
-        body: 'You will receive reminders 10 minutes before your lectures and exams.',
-        icon: '/favicon.svg',
-      });
-      dispatchInAppAlert('Alerts Enabled', 'You will receive timely reminders before lectures & exams.', 'success');
       return true;
     } else {
       setNotificationEnabled(false);
-      dispatchInAppAlert('Alerts Blocked', 'Please enable notifications in your browser or device settings.', 'warning');
       return false;
     }
   } catch (err) {
     console.warn('Error requesting notification permission:', err);
+    return false;
+  }
+}
+
+/**
+ * User-based toggle: Turn class & exam notifications ON or OFF
+ */
+export async function toggleNotification(targetState?: boolean): Promise<boolean> {
+  const current = isNotificationEnabled();
+  const next = targetState !== undefined ? targetState : !current;
+
+  if (next) {
+    if (!isNotificationSupported()) {
+      return false;
+    }
+    if (Notification.permission !== 'granted') {
+      const granted = await requestNotificationPermission();
+      return granted;
+    }
+    setNotificationEnabled(true);
+    return true;
+  } else {
+    setNotificationEnabled(false);
     return false;
   }
 }
@@ -158,17 +173,10 @@ export function dispatchInAppAlert(title: string, message: string, type: 'info' 
 }
 
 /**
- * Send an immediate test notification so user can verify functionality on their device
+ * Legacy test trigger retained for compatibility (silent, no test popup)
  */
 export function triggerTestNotification(): void {
-  playNotificationTone();
-  if (isNotificationSupported() && Notification.permission === 'granted') {
-    sendBrowserNotification('NIT Goa Timetable: Notification Test', {
-      body: 'Notifications are working! You will be alerted before your upcoming classes and exams.',
-      icon: '/favicon.svg',
-    });
-  }
-  dispatchInAppAlert('Notification Test', 'Alert sound and notifications are functioning correctly!', 'success');
+  // Silent - popups disabled per user request
 }
 
 /**
