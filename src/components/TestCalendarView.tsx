@@ -50,8 +50,8 @@ export const TestCalendarView: React.FC<TestCalendarViewProps> = ({
   initialCourseCode,
   onClearInitialCourseCode,
 }) => {
-  // Calendar month state (default to current date)
-  const [currentDate, setCurrentDate] = useState(() => new Date(2026, 8, 8)); // September 2026 as per base
+  // Calendar month state (defaults to today's active month)
+  const [currentDate, setCurrentDate] = useState(() => new Date());
   const [selectedDateStr, setSelectedDateStr] = useState<string | null>(null);
 
   // Filter state

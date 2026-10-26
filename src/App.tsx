@@ -34,6 +34,11 @@ import {
 import { downloadICS } from './utils/calendarExport';
 import { TimeSlot, DayOfWeek, Course } from './data/timetableData';
 import { initPWA } from './pwa';
+import { useMobilePWAHistory } from './hooks/useMobilePWAHistory';
+import {
+  runScheduleNotificationCheck,
+  InAppAlertDetail,
+} from './utils/notificationService';
 import {
   auth,
   signInWithGoogle,
@@ -59,6 +64,7 @@ import {
   Building2,
   CheckCircle,
   Sliders,
+  ChevronLeft,
   ChevronRight,
   Plus,
   Mail,
@@ -313,8 +319,23 @@ export default function App() {
     });
   };
 
-  // Toast message
+  // Toast & In-App Alert states
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [inAppAlert, setInAppAlert] = useState<InAppAlertDetail | null>(null);
+
+  // Listen for rich in-app schedule notifications
+  useEffect(() => {
+    const handleAlert = (e: any) => {
+      if (e.detail) {
+        setInAppAlert(e.detail);
+        setTimeout(() => {
+          setInAppAlert((curr) => (curr?.timestamp === e.detail.timestamp ? null : curr));
+        }, 5500);
+      }
+    };
+    window.addEventListener('nit_goa_inapp_alert', handleAlert);
+    return () => window.removeEventListener('nit_goa_inapp_alert', handleAlert);
+  }, []);
 
   // PWA initialization
   useEffect(() => {
@@ -342,9 +363,16 @@ export default function App() {
           if (cloudData.profile) {
             setProfile((prev) => ({ ...prev, ...cloudData.profile }));
           }
-          if (cloudData.tests && Array.isArray(cloudData.tests) && cloudData.tests.length > 0) {
-            saveStoredTests(cloudData.tests);
-            setTests(cloudData.tests);
+          if (cloudData.tests && Array.isArray(cloudData.tests)) {
+            const cleanCloudTests = cloudData.tests.filter(
+              (t: any) =>
+                t &&
+                !t.id?.startsWith('test-cie-') &&
+                !t.id?.toLowerCase().includes('demo') &&
+                !(t.title && t.title.toLowerCase().includes('demo test'))
+            );
+            saveStoredTests(cleanCloudTests);
+            setTests(cleanCloudTests);
           }
           if (cloudData.attendance) {
             Object.entries(cloudData.attendance).forEach(([key, val]) => {
@@ -361,12 +389,26 @@ export default function App() {
           if (cloudData.selectedBatch) {
             setSelectedBatch(cloudData.selectedBatch);
           }
+          if (cloudData.scheduleOverrides) {
+            const branchSemKey = `${safeProfile.branch}_${safeProfile.semester}`;
+            if (cloudData.scheduleOverrides[branchSemKey]) {
+              setScheduleOverride(cloudData.scheduleOverrides[branchSemKey]);
+              try {
+                localStorage.setItem(
+                  `nit_goa_schedule_${branchSemKey}`,
+                  JSON.stringify(cloudData.scheduleOverrides[branchSemKey])
+                );
+              } catch (e) {
+                console.error(e);
+              }
+            }
+          }
         }
       })
       .catch((err) => {
         console.warn('Could not load user cloud data (offline mode active):', err);
       });
-  }, [currentUser?.uid]);
+  }, [currentUser?.uid, safeProfile.branch, safeProfile.semester]);
 
   // Listen for attendance updates and synchronize immediately to cloud
   useEffect(() => {
@@ -519,6 +561,17 @@ export default function App() {
     } catch (e) {
       console.error(e);
     }
+
+    if (currentUser?.uid) {
+      const branchSemKey = `${safeProfile.branch}_${safeProfile.semester}`;
+      saveUserCloudData(currentUser.uid, {
+        email: currentUser.email || '',
+        scheduleOverrides: {
+          [branchSemKey]: updated,
+        },
+      }).catch((err) => console.warn('Could not sync custom schedule to cloud:', err));
+    }
+
     showToast(`Saved customized timetable for ${day}`);
   };
 
@@ -529,6 +582,17 @@ export default function App() {
     } catch (e) {
       console.error(e);
     }
+
+    if (currentUser?.uid) {
+      const branchSemKey = `${safeProfile.branch}_${safeProfile.semester}`;
+      saveUserCloudData(currentUser.uid, {
+        email: currentUser.email || '',
+        scheduleOverrides: {
+          [branchSemKey]: null as any,
+        },
+      }).catch((err) => console.warn('Could not reset custom schedule in cloud:', err));
+    }
+
     showToast('Reset timetable to official institute master schedule');
   };
 
@@ -572,6 +636,39 @@ export default function App() {
   const effectiveSchedule = useMemo(() => {
     return scheduleOverride || cloudScheduleOverride || activeBranchData.schedule;
   }, [scheduleOverride, cloudScheduleOverride, activeBranchData.schedule]);
+
+  // Active background notification monitor (checks every 30 seconds for upcoming classes & exams)
+  useEffect(() => {
+    runScheduleNotificationCheck(effectiveSchedule, tests, effectiveCourses);
+    const interval = setInterval(() => {
+      runScheduleNotificationCheck(effectiveSchedule, tests, effectiveCourses);
+    }, 30000);
+    return () => clearInterval(interval);
+  }, [effectiveSchedule, tests, effectiveCourses]);
+
+  // Mobile PWA Back & Slide Gestures (handles hardware back button, iOS edge swipe, and horizontal swipes)
+  const todayDayName = useMemo(() => getTodayDayOfWeek(), []);
+  const { canGoBack, handleBack } = useMobilePWAHistory({
+    activeTab,
+    setActiveTab: handleSetActiveTab,
+    selectedDay,
+    setSelectedDay: handleSelectDay,
+    todayDay: todayDayName,
+    activeModalCourse,
+    setActiveModalCourse,
+    isCustomizerOpen,
+    setIsCustomizerOpen,
+    isBranchSelectorOpen,
+    setIsBranchSelectorOpen,
+    isPwaModalOpen,
+    setIsPwaModalOpen,
+    isAdminModalOpen,
+    setIsAdminModalOpen,
+    isSlotEditorOpen: slotEditorState.isOpen,
+    setIsSlotEditorOpen: (open) => setSlotEditorState((prev) => ({ ...prev, isOpen: open })),
+    isCommandPaletteOpen,
+    setIsCommandPaletteOpen,
+  });
 
   // Export calendar handler
   const handleExportCalendar = () => {
@@ -763,12 +860,33 @@ export default function App() {
         onSignIn={handleGoogleSignIn}
         onSignOut={handleGoogleSignOut}
         onOpenAdmin={() => setIsAdminModalOpen(true)}
+        canGoBack={canGoBack}
+        onBack={handleBack}
         onOpenLanding={() => setShowLandingPage(true)}
         onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
       />
 
       {/* Main Content Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-6 pb-[calc(5rem+env(safe-area-inset-bottom,0px))] sm:pb-8">
+        {/* Mobile Slide-Back Quick Return (Tap or swipe right anywhere on mobile) */}
+        {activeTab !== 'day' && (
+          <div className="sm:hidden mb-2.5">
+            <button
+              type="button"
+              onClick={handleBack}
+              className="w-full flex items-center justify-between px-3 py-1.5 rounded-lg bg-blue-50/80 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 text-blue-700 dark:text-blue-300 text-xs font-semibold active:scale-[0.99] transition cursor-pointer"
+            >
+              <div className="flex items-center gap-1.5">
+                <ChevronLeft className="w-4 h-4" />
+                <span>Back to Timetable</span>
+              </div>
+              <span className="text-[10px] text-blue-500/80 dark:text-blue-400/70 font-medium">
+                Swipe right ➔
+              </span>
+            </button>
+          </div>
+        )}
+
         {/* Next Class / Ongoing Session Live Status Banner (Shown on non-day tabs so Day view does not have duplicate hero boxes) */}
         {activeTab !== 'day' && (
           <NextClassLiveBanner
@@ -1076,6 +1194,41 @@ export default function App() {
           onExportCalendar={handleExportCalendar}
           onOpenPwaGuide={() => setIsPwaModalOpen(true)}
         />
+      )}
+
+      {/* Floating In-App Class & Exam Reminder Toast */}
+      {inAppAlert && (
+        <div className="fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[calc(100vw-1.5rem)] max-w-md bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-blue-500/40 dark:border-blue-400/40 rounded-xl shadow-2xl p-3 sm:p-3.5 flex items-start gap-3 animate-in fade-in slide-in-from-top-4 duration-200">
+          <div
+            className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
+              inAppAlert.type === 'urgent'
+                ? 'bg-rose-100 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400'
+                : inAppAlert.type === 'warning'
+                ? 'bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400'
+                : 'bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400'
+            }`}
+          >
+            <Bell className="w-4 h-4 animate-bounce" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center justify-between gap-1">
+              <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white truncate">
+                {inAppAlert.title}
+              </h4>
+              <button
+                type="button"
+                onClick={() => setInAppAlert(null)}
+                className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-0.5 rounded cursor-pointer"
+                aria-label="Dismiss alert"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            </div>
+            <p className="text-xs text-slate-600 dark:text-slate-300 mt-0.5 leading-relaxed">
+              {inAppAlert.message}
+            </p>
+          </div>
+        </div>
       )}
 
       {/* Floating Action Toast Notification (positioned cleanly above mobile nav) */}

@@ -49,6 +49,8 @@ interface NavbarProps {
   onSignIn?: () => void;
   onSignOut?: () => void;
   onOpenAdmin?: () => void;
+  canGoBack?: boolean;
+  onBack?: () => void;
   onOpenLanding?: () => void;
   onOpenThemeSelector?: () => void;
   onOpenCommandPalette?: () => void;
@@ -71,6 +73,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   onSignIn,
   onSignOut,
   onOpenAdmin,
+  canGoBack,
+  onBack,
   onOpenLanding,
   onOpenThemeSelector,
   onOpenCommandPalette,
@@ -186,7 +190,19 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="sm:hidden py-2">
           <div className="flex items-center justify-between gap-2">
             {/* Brand & Active Branch Quick Pill */}
-            <div className="flex items-center gap-2 min-w-0">
+            <div className="flex items-center gap-1.5 min-w-0">
+              {canGoBack && onBack ? (
+                <button
+                  type="button"
+                  onClick={onBack}
+                  className="flex items-center gap-0.5 px-2 py-1 rounded-md bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold text-xs shadow-xs transition active:scale-95 shrink-0 cursor-pointer"
+                  title="Back to Previous View"
+                  aria-label="Back"
+                >
+                  <ChevronLeft className="w-3.5 h-3.5" />
+                  <span>Back</span>
+                </button>
+              ) : null}
               <BrandIcon size={28} className="rounded-md shadow-2xs shrink-0" />
               <button
                 type="button"
@@ -337,6 +353,18 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Desktop & Tablet Top Strip (>= sm screens): Responsive, zero-overlap layout */}
         <div className="hidden sm:flex py-2.5 items-center justify-between gap-x-3 gap-y-2 border-b border-slate-200 dark:border-slate-800/80 flex-wrap">
           <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+            {canGoBack && onBack && (
+              <button
+                type="button"
+                onClick={onBack}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-100 dark:hover:bg-blue-900 text-blue-700 dark:text-blue-300 font-bold text-xs border border-blue-200 dark:border-blue-800 transition active:scale-95 shrink-0 cursor-pointer shadow-2xs"
+                title="Back to Previous View"
+              >
+                <ChevronLeft className="w-4 h-4" />
+                <span>Back</span>
+              </button>
+            )}
+
             {/* The GDevelopers Official Brand Logo */}
             <BrandLogo
               iconSize={36}

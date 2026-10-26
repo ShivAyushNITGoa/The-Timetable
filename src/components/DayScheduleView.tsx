@@ -24,6 +24,11 @@ import {
   CheckCircle2,
   TrendingUp,
 } from 'lucide-react';
+import {
+  isNotificationEnabled,
+  requestNotificationPermission,
+  triggerTestNotification,
+} from '../utils/notificationService';
 
 interface DayScheduleViewProps {
   selectedDay: DayOfWeek;
@@ -147,31 +152,14 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
     }
   };
 
-  const [notificationActive, setNotificationActive] = useState(() => {
-    try {
-      return 'Notification' in window && Notification.permission === 'granted';
-    } catch {
-      return false;
-    }
-  });
+  const [notificationActive, setNotificationActive] = useState(() => isNotificationEnabled());
 
   const handleRequestNotifications = async () => {
-    if (!('Notification' in window)) return;
-    if (Notification.permission === 'granted') {
-      new Notification('NIT Goa Timetable Reminders', {
-        body: 'Timetable alerts are active for all scheduled sessions.',
-        icon: '/favicon.svg',
-      });
-      setNotificationActive(true);
-    } else if (Notification.permission !== 'denied') {
-      const perm = await Notification.requestPermission();
-      if (perm === 'granted') {
-        setNotificationActive(true);
-        new Notification('NIT Goa Timetable Reminders', {
-          body: 'Class alerts enabled! You will receive timely reminders before lectures.',
-          icon: '/favicon.svg',
-        });
-      }
+    if (!notificationActive) {
+      const granted = await requestNotificationPermission();
+      setNotificationActive(granted);
+    } else {
+      triggerTestNotification();
     }
   };
 
@@ -516,14 +504,14 @@ export const DayScheduleView: React.FC<DayScheduleViewProps> = ({
                       ? 'bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300'
                       : 'bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'
                   }`}
-                  title="Enable web alerts before your classes"
+                  title={notificationActive ? 'Alerts active — click to test on this device' : 'Enable web alerts before your classes'}
                 >
                   {notificationActive ? (
                     <BellRing className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                   ) : (
                     <Bell className="w-3.5 h-3.5 text-slate-400" />
                   )}
-                  <span>{notificationActive ? 'Class Alerts Active' : 'Enable Class Alerts'}</span>
+                  <span>{notificationActive ? 'Class Alerts Active (Click to Test)' : 'Enable Class Alerts'}</span>
                 </button>
               </div>
             </div>
