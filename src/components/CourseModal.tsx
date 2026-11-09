@@ -2,6 +2,7 @@ import React from 'react';
 import { COURSES, Course } from '../data/timetableData';
 import { getAllKnownCourses } from '../data/branchesData';
 import { getOfficialCourseSyllabus } from '../data/officialSyllabusRegistry';
+import { getFacultyByCoordinator } from '../data/facultyDirectory';
 import {
   X,
   BookOpen,
@@ -61,7 +62,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
     COURSES[safeCode] || {
       code: safeCode,
       name: officialSyllabus?.name || (safeCode ? `Course ${safeCode}` : ''),
-      type: (safeCode.includes('Lab') || officialSyllabus?.name.toLowerCase().includes('lab')) ? 'Lab' : 'Theory',
+      type: (safeCode.includes('Lab') || officialSyllabus?.name?.toLowerCase().includes('lab')) ? 'Lab' : 'Theory',
       credits: officialSyllabus?.credits || 3,
       ltp: officialSyllabus?.ltp || '3-0-0',
       teachingSlot: 'Core',
@@ -72,6 +73,9 @@ export const CourseModal: React.FC<CourseModalProps> = ({
       category: 'core',
       notes: 'Course details retrieved from academic curriculum.',
     };
+
+  // Lookup authentic NIT Goa faculty profile for coordinator
+  const matchedFaculty = getFacultyByCoordinator(courseBase.coordinator, courseBase.shortName);
 
   // Combine static and official registry details - Accredited official syllabus takes precedence
   const effectiveCredits = officialSyllabus?.credits || courseBase.credits || 3;
@@ -90,6 +94,14 @@ export const CourseModal: React.FC<CourseModalProps> = ({
     ltp: effectiveLtp,
     modules: effectiveModules,
     textbooks: effectiveTextbooks,
+    facultyDesignation: courseBase.facultyDesignation || matchedFaculty?.designation,
+    facultyResearch: courseBase.facultyResearch || (matchedFaculty?.researchInterests ? matchedFaculty.researchInterests.join(', ') : undefined),
+    email: courseBase.email || matchedFaculty?.email,
+    facultyWebsite: courseBase.facultyWebsite || matchedFaculty?.website,
+    facultyScholar: courseBase.facultyScholar || matchedFaculty?.scholarUrl,
+    papers: (courseBase.papers && courseBase.papers.length > 0) ? courseBase.papers : matchedFaculty?.prominentPapers,
+    patents: (courseBase.patents && courseBase.patents.length > 0) ? courseBase.patents : matchedFaculty?.patents,
+    books: (courseBase.books && courseBase.books.length > 0) ? courseBase.books : matchedFaculty?.books,
   };
 
   const isMinor = course.isMinor || safeCode === 'CS300M';
@@ -414,6 +426,14 @@ export const CourseModal: React.FC<CourseModalProps> = ({
               {course.facultyDesignation && (
                 <div className="text-xs text-blue-900 font-medium">
                   {course.facultyDesignation}
+                  {matchedFaculty?.department ? ` • ${matchedFaculty.department}` : ''}
+                </div>
+              )}
+
+              {matchedFaculty?.cabin && (
+                <div className="text-xs text-slate-500 flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                  <span>{matchedFaculty.cabin}</span>
                 </div>
               )}
 

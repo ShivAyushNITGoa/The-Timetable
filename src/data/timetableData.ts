@@ -421,8 +421,15 @@ export const COURSES: Record<string, Course> = {
     examSlot: "Practical",
     coordinator: "Dr. Anudevi Samuel / Dr. Mahi Teja Talluri",
     shortName: "ADS/MTT",
+    facultyDesignation: "Assistant Professor(s), Dept of EEE",
+    facultyResearch: "High Voltage Engineering, Special Machines, DC-DC Converters, Electric Vehicle Powertrains",
     email: "ad.dksamuel@nitgoa.ac.in",
     facultyWebsite: "https://www.nitgoa.ac.in/department/eee",
+    facultyScholar: "https://scholar.google.com/citations?user=mtalluri",
+    papers: [
+      "Regenerative Switched-Inductor/Capacitor Configuration-Based Cubic Bidirectional DC-DC Converter for EV Applications (IEEE JESTIE)",
+      "Performance Evaluation of Permanent Magnet Synchronous Motors for Electric Traction Applications (IEEE PEDES)"
+    ],
     room: "Workshop Complex",
     category: "lab",
     notes: "TAs: Mr. Pinaki Chatterjee & Mr. Arjun Singh. Hands-on testing of alternators, induction motors, and synchronous drives."
@@ -437,8 +444,15 @@ export const COURSES: Record<string, Course> = {
     examSlot: "Practical",
     coordinator: "Dr. Amritansh Sagar",
     shortName: "AMS",
+    facultyDesignation: "Assistant Professor | CARIPARO Fellow (Univ of Padova)",
+    facultyResearch: "Bidirectional Wireless Power Transfer (WPT), Electric Vehicle Charging Systems, Microprocessor Interfacing",
     email: "amritansh@nitgoa.ac.in",
     facultyWebsite: "https://www.nitgoa.ac.in/department/eee/faculty/amritansh-sagar",
+    facultyScholar: "https://scholar.google.com/citations?user=amritanshsagar",
+    papers: [
+      "Control Strategy for a Bidirectional Wireless Power Transfer System With Vehicle to Home Functionality (IEEE Access)",
+      "Analysis and Design of Robust Interleaved Buck Converter with Minimal Ripple Current (IEEE INCET)"
+    ],
     room: "Abdul Kalam Complex",
     category: "lab",
     notes: "TA: Mr. Diljith K.M. Assembly coding and hardware interfacing on 8086 kits and 8051 trainer boards."
@@ -453,7 +467,7 @@ export const COURSES: Record<string, Course> = {
     examSlot: "Practical",
     coordinator: "Dr. C. Vyjayanthi",
     shortName: "CV",
-    facultyDesignation: "Associate Professor",
+    facultyDesignation: "Associate Professor & Dean (Academics)",
     facultyResearch: "Restructured Power Systems, Smart Electric Grids, FACTS, AC/DC Microgrids, Electric Vehicles, Battery Charging",
     email: "vyjayanthi@nitgoa.ac.in",
     facultyWebsite: "https://www.nitgoa.ac.in/department/eee/faculty/c-vyjayanthi",
@@ -511,7 +525,14 @@ export const COURSES: Record<string, Course> = {
     coordinator: "Dr. Amol D Rahulkar",
     shortName: "ADR",
     facultyDesignation: "Associate Professor (5th Sem Faculty Advisor)",
+    facultyResearch: "Signal & Image Processing, Control Systems, Wavelet Filter-banks, Biometrics, Neural Networks, FPGA Accelerators",
     email: "amol.rahulkar@nitgoa.ac.in",
+    facultyWebsite: "https://www.nitgoa.ac.in/department/eee/faculty/amol-d-rahulkar",
+    facultyScholar: "https://scholar.google.com/citations?user=8M_2_4IAAAAJ",
+    papers: [
+      "Partial Iris Feature Extraction and Recognition Based on Combined Directional Wavelet Filter Banks (IEEE TIFS)",
+      "FPGA Implementation of Pipelined Wavelet Hardware Architecture for Real-Time Image Denoising (IEEE TVLSI)"
+    ],
     room: "51/52",
     category: "core",
     notes: "Doubt-clearing session, numerical tutorials, and makeup classes for semester curriculum."
@@ -526,8 +547,15 @@ export const COURSES: Record<string, Course> = {
     examSlot: "Activity",
     coordinator: "Dr. C. Vyjayanthi",
     shortName: "CV",
-    facultyDesignation: "Associate Professor (IEEE Branch Counselor)",
+    facultyDesignation: "Associate Professor & Dean (Academics)",
+    facultyResearch: "Restructured Power Systems, Smart Grids, Microgrids, EV Fast Charging, IEEE Student Branch Activities",
     email: "vyjayanthi@nitgoa.ac.in",
+    facultyWebsite: "https://www.nitgoa.ac.in/department/eee/faculty/c-vyjayanthi",
+    facultyScholar: "https://scholar.google.com/citations?user=eX7w49EAAAAJ",
+    papers: [
+      "Design and Implementation of Multi-Stage Wavelet-Controlled Fast EV Charger (IEEE Transactions on Industry Applications)",
+      "Blockchain-Enabled Privacy-Preserving Energy Trading Framework in Distributed Microgrids (IEEE Transactions on Industrial Informatics)"
+    ],
     room: "Innovation & Tinkering Lab",
     category: "mlc",
     notes: "Hands-on hardware development, PCB fabrication, IoT sensor integration, and technical paper reading circle."
@@ -542,8 +570,15 @@ export const COURSES: Record<string, Course> = {
     examSlot: "Practical",
     coordinator: "Dr. Sreeraj E.S.",
     shortName: "SES",
-    facultyDesignation: "Associate Professor",
+    facultyDesignation: "Associate Professor (EEE)",
+    facultyResearch: "Power Electronics, Renewable Energy Systems, Sensorless Inverters, Embedded Hardware Prototyping",
     email: "sreeraj@nitgoa.ac.in",
+    facultyWebsite: "https://www.nitgoa.ac.in/department/eee/faculty/sreeraj-es",
+    facultyScholar: "https://scholar.google.com/citations?user=K5f2n04AAAAJ",
+    papers: [
+      "One-Cycle-Controlled Single-Stage Single-Phase Voltage-Sensorless Grid-Connected PV System (IEEE Transactions on Industrial Electronics)",
+      "Analysis and Design of High-Gain Non-Isolated DC-DC Converters (IEEE JESTIE)"
+    ],
     room: "Abdul Kalam Complex",
     category: "lab",
     notes: "Project prototyping, microcontroller programming, hardware debugging, and inter-NIT hackathon prep."
@@ -559,7 +594,9 @@ export const COURSES: Record<string, Course> = {
     coordinator: "Faculty Advisor & Library Committee",
     shortName: "LIB",
     facultyDesignation: "Central Library NIT Goa",
+    facultyResearch: "National Digital Library of India (NDLI), IEEE Xplore, ScienceDirect, GATE Curriculum Analytics",
     email: "library@nitgoa.ac.in",
+    facultyWebsite: "https://www.nitgoa.ac.in/facilities/library",
     room: "Central Library",
     category: "mlc",
     notes: "Reference textbooks, IEEE Xplore digital library access, NPTEL/SWAYAM lectures, and GATE preparation peer group."
@@ -575,7 +612,9 @@ export const COURSES: Record<string, Course> = {
     coordinator: "SAC Coordinator & Sports Council",
     shortName: "SAC",
     facultyDesignation: "Student Activity Centre NIT Goa",
+    facultyResearch: "Sports Science, Extra-Curricular Development, Institute Cultural Initiatives",
     email: "sac@nitgoa.ac.in",
+    facultyWebsite: "https://www.nitgoa.ac.in/student/sac",
     room: "SAC Sports Complex & Grounds",
     category: "mlc",
     notes: "Inter-branch league training, sports conditioning (badminton, football, cricket), cultural society practice, and NSS activities."
@@ -1267,288 +1306,7 @@ export const NIT_GOA_PORTALS = [
     icon: "BookOpen"
   }
 ];
+import { COMPREHENSIVE_FACULTY_PROFILES } from './facultyDirectory';
 
-export const NIT_GOA_FACULTY_PROFILES: FacultyProfile[] = [
-  {
-    id: "suresh-mikkili",
-    name: "Dr. Suresh Mikkili",
-    shortName: "SM",
-    designation: "Associate Professor & Head of Department (EEE)",
-    department: "Electrical & Electronics Engineering",
-    cabin: "EEE Dept Faculty Block, Cuncolim Campus",
-    email: "mikkili.suresh@nitgoa.ac.in",
-    website: "https://www.nitgoa.ac.in/department/eee/faculty/suresh-mikkili",
-    scholarUrl: "https://scholar.google.com/citations?user=Y70xYHsAAAAJ",
-    researchInterests: [
-      "Smart Electric Grids",
-      "Electric Vehicles (EVs)",
-      "Grid-Connected & Stand-Alone PV Systems",
-      "Wireless Power Transfer",
-      "Power Quality & Harmonic Mitigation",
-      "Soft Computing Techniques in Power Systems"
-    ],
-    books: [
-      "Power Quality Issues: Current Harmonics (CRC Press / Taylor & Francis)",
-      "Modelling and Simulation of Photovoltaic Systems: Array Configurations and Distributed MPPT Architectures"
-    ],
-    prominentPapers: [
-      "Hardware Implementation of an Improved Transformer-less Grid-Connected PV Inverter Topology (IEEE Transactions on Sustainable Energy)",
-      "PV Array Configurations for Reducing Multiple-Peak Power Points Under Partial Shading Conditions (Applied Energy, Elsevier)",
-      "Investigation of MPPT Techniques Under Dynamic Solar Irradiation Conditions (IEEE Transactions on Industrial Electronics)",
-      "Photovoltaic Mismatch and Wiring Losses Caused by Cloud Transients (Solar Energy, Elsevier)"
-    ],
-    coursesTaught: [
-      { code: "EE302", name: "Power Systems-I", role: "Course Coordinator & Lecturer" }
-    ]
-  },
-  {
-    id: "sreeraj-es",
-    name: "Dr. Sreeraj E.S.",
-    shortName: "SES",
-    designation: "Associate Professor",
-    department: "Electrical & Electronics Engineering",
-    cabin: "EEE Dept Faculty Block, Cuncolim Campus",
-    email: "sreeraj@nitgoa.ac.in",
-    website: "https://www.nitgoa.ac.in/department/eee/faculty/sreeraj-es",
-    scholarUrl: "https://scholar.google.com/citations?user=K5f2n04AAAAJ",
-    researchInterests: [
-      "Power Electronics & Drives",
-      "Renewable Energy Systems",
-      "Sensorless Grid Inverters",
-      "High-Gain DC-DC Converters",
-      "Soft Computing in Power Electronics"
-    ],
-    prominentPapers: [
-      "One-Cycle-Controlled Single-Stage Single-Phase Voltage-Sensorless Grid-Connected PV System (IEEE Transactions on Industrial Electronics)",
-      "Analysis and Design of High-Gain Non-Isolated DC-DC Converters (IEEE Journal of Emerging and Selected Topics in Industrial Electronics)",
-      "Novel Modulation Strategies for Multi-Level Inverters in Renewable Grid Integration (CSEE JPES)"
-    ],
-    coursesTaught: [
-      { code: "EE300", name: "Power Electronics", role: "Course Coordinator & Lecturer" }
-    ]
-  },
-  {
-    id: "pravati-swain",
-    name: "Dr. Pravati Swain",
-    shortName: "PS",
-    designation: "Associate Professor",
-    department: "Computer Science & Engineering",
-    cabin: "CSE Dept Block, Cuncolim Campus",
-    email: "pravati@nitgoa.ac.in",
-    website: "https://www.nitgoa.ac.in/department/cse/faculty/pravati-swain",
-    scholarUrl: "https://scholar.google.com/citations?user=tT1fEa8AAAAJ",
-    researchInterests: [
-      "Human In The Loop (HITL) Learning",
-      "AI/ML for Next-Gen Communication Networks",
-      "Federated Learning & Edge Intelligence",
-      "Beyond 5G / 6G Mobile Systems",
-      "IoT-Edge-Cloud Continuum Systems",
-      "Algorithmic Game Theory & Markov Models"
-    ],
-    prominentPapers: [
-      "Federated Learning for Edge-Assisted Mobile Networks under Uncertain Communication Environments (IEEE Transactions on Mobile Computing)",
-      "Human-in-the-Loop AI Paradigm for Distributed Resource Allocation in Next-Generation Cellular Networks (IEEE Access)",
-      "Game-Theoretic Bandwidth Allocation in Heterogeneous IoT-Edge Clouds (IEEE ANTS)"
-    ],
-    coursesTaught: [
-      { code: "CS300M", name: "Design and Analysis of Algorithm", role: "Minor Course Coordinator (CSE)" }
-    ]
-  },
-  {
-    id: "c-vyjayanthi",
-    name: "Dr. C. Vyjayanthi",
-    shortName: "CV",
-    designation: "Associate Professor",
-    department: "Electrical & Electronics Engineering",
-    cabin: "EEE Dept Faculty Block, Cuncolim Campus",
-    email: "vyjayanthi@nitgoa.ac.in",
-    website: "https://www.nitgoa.ac.in/department/eee/faculty/c-vyjayanthi",
-    scholarUrl: "https://scholar.google.com/citations?user=eX7w49EAAAAJ",
-    researchInterests: [
-      "Restructured Power Systems & Smart Grid",
-      "FACTS & Power Quality Controllers",
-      "Electric Arc Furnace (EAF) Operations",
-      "Hybrid AC/DC Microgrids & Network Security",
-      "EV Battery Fast Charging Algorithms",
-      "Blockchain in Distributed Energy Trading"
-    ],
-    patents: [
-      "Indian Patent Granted: 'Wavelet Based Real-Time Multi-Stage Battery Charging Device for Electric Vehicle' (with Dr. Amol D. Rahulkar & Ms. Nivedita Naik)"
-    ],
-    prominentPapers: [
-      "Design and Implementation of Multi-Stage Wavelet-Controlled Fast EV Charger (IEEE Transactions on Industry Applications)",
-      "Blockchain-Enabled Privacy-Preserving Energy Trading Framework in Distributed Microgrids (IEEE Transactions on Industrial Informatics)",
-      "Coordinated Control of Hybrid AC/DC Microgrid with Renewable Generation and Energy Storage (Elsevier Journal of Energy Storage)"
-    ],
-    coursesTaught: [
-      { code: "EE306", name: "Tinkering Lab - II", role: "Lab In-Charge & Coordinator" }
-    ]
-  },
-  {
-    id: "amol-d-rahulkar",
-    name: "Dr. Amol D Rahulkar",
-    shortName: "ADR",
-    designation: "Associate Professor & 5th Sem Faculty Advisor",
-    department: "Electrical & Electronics Engineering",
-    cabin: "EEE Dept Faculty Block, Cuncolim Campus",
-    email: "amol.rahulkar@nitgoa.ac.in",
-    website: "https://www.nitgoa.ac.in/department/eee/faculty/amol-d-rahulkar",
-    scholarUrl: "https://scholar.google.com/citations?user=8M_2_4IAAAAJ",
-    researchInterests: [
-      "Digital Signal & Biomedical Image Processing",
-      "Wavelet Filter-banks & Feature Extraction",
-      "Biometrics & Iris Feature Recognition",
-      "Neural Networks & Deep Learning",
-      "FPGA-Based Hardware Accelerators",
-      "Control Systems Engineering"
-    ],
-    patents: [
-      "Indian Patent Granted: 'Wavelet Based Real-Time Multi-Stage Battery Charging Device for Electric Vehicle' (with Dr. C. Vyjayanthi & Ms. Nivedita Naik)"
-    ],
-    books: [
-      "Iris Image Recognition: New Wavelet Filter-banks Based Iris Feature Extraction Schemes",
-      "Wavelet Transform for Cardiac Image Retrieval (Elsevier Book Chapter)"
-    ],
-    prominentPapers: [
-      "Partial Iris Feature Extraction and Recognition Based on Combined Directional and Rotated Directional Wavelet Filter Banks (IEEE Transactions on Information Forensics and Security)",
-      "FPGA Implementation of Pipelined Wavelet Hardware Architecture for Real-Time Image Denoising (IEEE Transactions on VLSI Systems)",
-      "Design of Compact 2D Wavelet Filters for High-Throughput Hardware Processing"
-    ],
-    coursesTaught: [
-      { code: "EE307", name: "Seminar", role: "Course Coordinator & Faculty Advisor" }
-    ]
-  },
-  {
-    id: "mahi-teja-talluri",
-    name: "Dr. Mahi Teja Talluri",
-    shortName: "MTT",
-    designation: "Assistant Professor (Faculty on Contract)",
-    department: "Electrical & Electronics Engineering",
-    cabin: "EEE Dept Faculty Cabin, Cuncolim Campus",
-    email: "mtalluri@nitgoa.ac.in",
-    website: "https://www.nitgoa.ac.in/department/eee/faculty/mahi-teja-talluri",
-    scholarUrl: "https://scholar.google.com/citations?user=mtalluri",
-    researchInterests: [
-      "High-Efficiency Bidirectional DC-DC Converters",
-      "Electric Vehicle Powertrains & Charging Infrastructure",
-      "Dual Active Bridge (DAB) Converters",
-      "Renewable Energy Systems & Battery Energy Storage (BESS)",
-      "FPGA-Based Digital Controllers & Reconfigurable Hardware"
-    ],
-    patents: [
-      "IN Patent 563,278 (Granted 2025): Novel High Conversion Ratio DC-DC Converter Topology for Electric Vehicle Energy Storage Systems"
-    ],
-    prominentPapers: [
-      "Regenerative Switched-Inductor/Capacitor Configuration-Based Cubic Bidirectional DC-DC Converter for EV Applications (IEEE JESTIE, 2025)",
-      "Asymmetric Operation of DAB Converter with Reduced Conduction Devices for Energy Storage Applications (IEEE Transactions on Industry Applications, 2025)",
-      "A Novel Buck Converter Topology with High Step Down Ratio and Continuous Conduction (IEEE Transactions on Circuits and Systems II: Express Briefs, 2024)",
-      "Current Sharing Network-Based Bidirectional DC-DC Converter with High Conversion Ratio (IJCTA, 2025)"
-    ],
-    coursesTaught: [
-      { code: "EE530", name: "Renewable Energy Systems", role: "Course Coordinator & Lecturer" },
-      { code: "EE545", name: "FPGA based Digital Design", role: "Elective Coordinator & Lecturer" },
-      { code: "EE304", name: "Electrical Machine-II Lab", role: "Joint Lab In-Charge" }
-    ]
-  },
-  {
-    id: "amritansh-sagar",
-    name: "Dr. Amritansh Sagar",
-    shortName: "AMS",
-    designation: "Assistant Professor (Faculty on Contract)",
-    department: "Electrical & Electronics Engineering",
-    cabin: "EEE Dept Faculty Cabin, Cuncolim Campus",
-    email: "amritansh@nitgoa.ac.in",
-    website: "https://www.nitgoa.ac.in/department/eee/faculty/amritansh-sagar",
-    scholarUrl: "https://scholar.google.com/citations?user=amritanshsagar",
-    researchInterests: [
-      "Bidirectional Wireless Power Transfer (WPT)",
-      "Vehicle-to-Home (V2H) & Vehicle-to-Grid (V2G) Systems",
-      "Electric Vehicle Dynamic Charging",
-      "Microprocessor & Microcontroller Interfacing",
-      "Interleaved Converters & Power Conditioning"
-    ],
-    prominentPapers: [
-      "Control Strategy for a Bidirectional Wireless Power Transfer System With Vehicle to Home Functionality (IEEE Access, 2023)",
-      "Analysis and Comparisons of Reactive Power Control State for the V2H Wireless Power Transfer System (IEEE Access, 2023)",
-      "Analysis and Design of a Two-Winding Wireless Power Transfer System with Higher System Efficiency (IEEE IECON, 48th Annual Conf. of IEEE IES)",
-      "Design and Analysis of Robust Interleaved Buck Converter with Minimal Ripple Current (IEEE INCET)"
-    ],
-    coursesTaught: [
-      { code: "EE303", name: "Microprocessor and Microcontroller", role: "Course Coordinator & Lecturer" },
-      { code: "EE305", name: "Microprocessor Laboratory", role: "Lab In-Charge" }
-    ]
-  },
-  {
-    id: "anudevi-samuel",
-    name: "Dr. Anudevi Samuel",
-    shortName: "ADS",
-    designation: "Assistant Professor (Faculty on Contract)",
-    department: "Electrical & Electronics Engineering",
-    cabin: "EEE Dept Faculty Cabin, Cuncolim Campus",
-    email: "ad.dksamuel@nitgoa.ac.in",
-    website: "https://www.nitgoa.ac.in/department/eee/faculty/anudevi-samuel",
-    researchInterests: [
-      "Electrical Machines & Synchronous Drives",
-      "Electric Vehicle Traction Motors",
-      "Special Electrical Machines & Control",
-      "Harmonics and Loss Minimization in AC Drives"
-    ],
-    prominentPapers: [
-      "Performance Evaluation of Permanent Magnet Synchronous Motors for Electric Traction Applications (IEEE PEDES)",
-      "Harmonic Distortion and Core Loss Minimization in Multi-Phase Induction Machine Drives under Inverter Supply"
-    ],
-    coursesTaught: [
-      { code: "EE301", name: "Electrical Machines-II", role: "Course Coordinator & Lecturer" },
-      { code: "EE304", name: "Electrical Machine-II Lab", role: "Joint Lab In-Charge" }
-    ]
-  },
-  {
-    id: "ankeshwarapu-sunil",
-    name: "Dr. Ankeshwarapu Sunil",
-    shortName: "AWS",
-    designation: "Assistant Professor (Faculty on Contract)",
-    department: "Electrical & Electronics Engineering",
-    cabin: "EEE Dept Faculty Cabin, Cuncolim Campus",
-    email: "a.sunil@nitgoa.ac.in",
-    website: "https://www.nitgoa.ac.in/department/eee/faculty/ankeshwarapu-sunil",
-    scholarUrl: "https://scholar.google.com/citations?user=ankeshwarapusuni",
-    researchInterests: [
-      "Active Distribution Systems & DER Integration",
-      "Networked Microgrids & Power Flow Dynamics",
-      "Soft Computing Optimization Algorithms",
-      "Embedded Systems, ARM Architectures & RTOS"
-    ],
-    prominentPapers: [
-      "Multi-Objective Adaptive Fuzzy Campus Placement-Based Optimization for Optimal Integration of DERs and DSTATCOMs (Elsevier Journal of Energy Storage)",
-      "Optimal Power Dispatch of Multiple Distributed Generators in Radial Distribution Networks (Elsevier)",
-      "Investigation of Power Flow Analysis and Islanding Detection in Networked Microgrids (IEEE Smart Grid)"
-    ],
-    coursesTaught: [
-      { code: "EE541", name: "Embedded Systems Design", role: "Elective Coordinator & Lecturer" }
-    ]
-  },
-  {
-    id: "velavan-kathirvelu",
-    name: "Dr. Velavan Kathirvelu",
-    shortName: "VK",
-    designation: "Assistant Professor",
-    department: "Department of Applied Sciences (Chemistry)",
-    cabin: "Applied Sciences Block, Cuncolim Campus",
-    email: "velavan@nitgoa.ac.in",
-    website: "https://www.nitgoa.ac.in/department/as/faculty/velavan-kathirvelu",
-    scholarUrl: "https://scholar.google.com/citations?user=velavankathirvelu",
-    researchInterests: [
-      "Chemical Sciences & Spectroscopic Methods",
-      "Electron Paramagnetic Resonance (EPR) Spectroscopy",
-      "Green Energy & Functional Nanomaterials",
-      "Environmental Chemistry & Waste Management"
-    ],
-    prominentPapers: [
-      "Electron Paramagnetic Resonance (EPR) Spectroscopy of Advanced Metal-Organic Frameworks (Journal of Physical Chemistry)",
-      "Green Synthesis of Bio-sorbents for Heavy Metal Removal from Industrial Effluents (Environmental Science & Pollution Research)"
-    ],
-    coursesTaught: [
-      { code: "ES300", name: "Environmental Studies", role: "Course Coordinator & Lecturer" }
-    ]
-  }
-];
+export const NIT_GOA_FACULTY_PROFILES: FacultyProfile[] = COMPREHENSIVE_FACULTY_PROFILES;
+

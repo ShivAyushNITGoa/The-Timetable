@@ -12991,14 +12991,30 @@ export function getOfficialCourseSyllabus(courseCode: string): OfficialCourseSyl
     }
   }
 
-  // Handle Elective Aliases
+  // Comprehensive Course & Elective Aliases across Handbooks and Timetables
   const ELECTIVE_ALIASES: Record<string, string> = {
+    // CSE Electives
     'CS815': 'CS505', // Data Warehousing and Data Mining
-    'CS814': 'CS511', // Optimization Techniques
+    'CS814': 'CS511', // Game Theory / Optimization Techniques
+    // Mechanical Electives
     'ME540': 'ME516', // Industrial Robotics & Automation
     'ME545': 'ME530', // Gas Dynamics & Jet Propulsion
+    // Civil Engineering Curriculum Mappings (CE -> CV accredited syllabus)
+    'CE250': 'CV251', // Structural Analysis - I
+    'CE251': 'CV252', // Geotechnical Engineering - I (Soil Mechanics)
+    'CE252': 'CV254', // Transportation / Highway Engineering
+    'CE253': 'CV253', // Environmental Engineering - I
+    'CE254': 'CV306', // Geotechnical Engineering Laboratory
+    'CE255': 'CV255', // Concrete Technology / Environmental Testing Lab
+    'CE350': 'CV301', // Design of Reinforced Concrete Structures
+    'CE351': 'CV303', // Geotechnical Engineering - II (Foundations)
+    'CE352': 'CV304', // Environmental Engineering - II (Wastewater)
+    'CE353': 'CV352', // Water Resources Engineering / Hydrology
+    'CE520': 'CV537', // Ground Improvement Techniques
+    'CE354': 'CV353', // Structural Design Studio
     'CE355': 'CV355', // Environmental Quality Testing Lab
-    'HS300': 'HS350', // Industrial Economics / Humanities
+    // Humanities & Management
+    'HS300': 'HS350', // Industrial Economics / Principles of Management
     'HS350': 'HS300'
   };
 
