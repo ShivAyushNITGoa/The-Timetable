@@ -35,9 +35,10 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
   const [labBatch, setLabBatch] = React.useState<string>(activeProfile?.labBatch || activeProfile?.batch || 'batch1');
   const [hasMinor, setHasMinor] = React.useState<boolean>(activeProfile?.hasMinor ?? true);
 
-  // Sync state whenever the modal opens or the profile updates
+  // Sync state only when the modal opens, preventing in-progress mobile selections from being reset
+  const prevIsOpenRef = React.useRef(false);
   React.useEffect(() => {
-    if (isOpen) {
+    if (isOpen && !prevIsOpenRef.current) {
       const p = profile || currentProfile || DEFAULT_STUDENT_PROFILE;
       setSelectedBranch(p.branch || 'EEE');
       setSelectedYear(p.year || 3);
@@ -46,6 +47,7 @@ export const BranchYearSelector: React.FC<BranchYearSelectorProps> = ({
       setLabBatch(p.labBatch || p.batch || 'batch1');
       setHasMinor(p.hasMinor ?? true);
     }
+    prevIsOpenRef.current = isOpen;
   }, [isOpen, profile, currentProfile]);
 
   if (!isOpen) return null;

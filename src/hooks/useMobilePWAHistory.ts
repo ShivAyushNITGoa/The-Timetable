@@ -158,11 +158,9 @@ export function useMobilePWAHistory({
       if (deltaTime > 500) return;
       if (Math.abs(deltaY) > 65) return;
 
-      // 1. SWIPE RIGHT (Slide back feature)
-      if (deltaX > 75) {
-        if (isAnyModalOpen) {
-          closeAllModals();
-        } else if (activeTab !== 'day') {
+      // 1. SWIPE RIGHT (Slide back feature - only when no modal is open to avoid cancelling form selections)
+      if (deltaX > 75 && !isAnyModalOpen) {
+        if (activeTab !== 'day') {
           setActiveTab('day');
         } else {
           // Go to previous day

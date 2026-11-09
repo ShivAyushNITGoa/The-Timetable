@@ -355,15 +355,38 @@ export default function App() {
     }
   }, [profile]);
 
-  // Sync user progress from Cloud Firestore upon authentication
+  // Sync user progress from Cloud Firestore upon authentication (run once per user session)
+  const hasLoadedCloudProfileRef = React.useRef<string | null>(null);
+
   useEffect(() => {
-    if (!currentUser?.uid) return;
+    if (!currentUser?.uid) {
+      hasLoadedCloudProfileRef.current = null;
+      return;
+    }
+
+    // Only restore cloud profile ONCE on sign-in, not on every local branch switch!
+    if (hasLoadedCloudProfileRef.current === currentUser.uid) return;
+    hasLoadedCloudProfileRef.current = currentUser.uid;
 
     getUserCloudData(currentUser.uid)
       .then((cloudData) => {
         if (cloudData) {
-          if (cloudData.profile) {
-            setProfile((prev) => ({ ...prev, ...cloudData.profile }));
+          if (cloudData.profile && cloudData.profile.branch) {
+            setProfile((prev) => {
+              // Prefer currently saved local profile if user already made an explicit selection
+              try {
+                const localSaved = localStorage.getItem('nit_goa_student_profile');
+                if (localSaved) {
+                  const parsed = JSON.parse(localSaved);
+                  if (parsed && typeof parsed === 'object' && parsed.branch) {
+                    return { ...prev, ...parsed };
+                  }
+                }
+              } catch {
+                // ignore
+              }
+              return { ...prev, ...cloudData.profile };
+            });
           }
           if (cloudData.tests && Array.isArray(cloudData.tests)) {
             const cleanCloudTests = cloudData.tests.filter((t: any) => !isDemoTest(t));
@@ -391,25 +414,25 @@ export default function App() {
             setSelectedBatch(cloudData.selectedBatch);
           }
           if (cloudData.scheduleOverrides) {
-            const branchSemKey = `${safeProfile.branch}_${safeProfile.semester}`;
-            if (cloudData.scheduleOverrides[branchSemKey]) {
-              setScheduleOverride(cloudData.scheduleOverrides[branchSemKey]);
-              try {
-                localStorage.setItem(
-                  `nit_goa_schedule_${branchSemKey}`,
-                  JSON.stringify(cloudData.scheduleOverrides[branchSemKey])
-                );
-              } catch (e) {
-                console.error(e);
+            Object.entries(cloudData.scheduleOverrides).forEach(([branchSemKey, override]) => {
+              if (override) {
+                try {
+                  localStorage.setItem(
+                    `nit_goa_schedule_${branchSemKey}`,
+                    JSON.stringify(override)
+                  );
+                } catch (e) {
+                  console.error(e);
+                }
               }
-            }
+            });
           }
         }
       })
       .catch((err) => {
         console.warn('Could not load user cloud data (offline mode active):', err);
       });
-  }, [currentUser?.uid, safeProfile.branch, safeProfile.semester]);
+  }, [currentUser?.uid]);
 
   // Listen for attendance updates and synchronize immediately to cloud
   useEffect(() => {
@@ -464,11 +487,12 @@ export default function App() {
 
     getTimetableOverride(timetableKey)
       .then((override) => {
-        if (override) {
-          setCloudScheduleOverride(override);
-        }
+        setCloudScheduleOverride(override || null);
       })
-      .catch((err) => console.error('Error fetching timetable override:', err));
+      .catch((err) => {
+        setCloudScheduleOverride(null);
+        console.error('Error fetching timetable override:', err);
+      });
 
     getAllTimetableOverrides()
       .then((allOverrides) => {
@@ -528,15 +552,50 @@ export default function App() {
   // Profile save handler from modal
   const handleSaveProfile = (newProfile: StudentProfile) => {
     setProfile(newProfile);
-    if (newProfile.elective) setSelectedElective(newProfile.elective);
-    else if (newProfile.electiveCode) setSelectedElective(newProfile.electiveCode);
-    if (newProfile.batch) setSelectedBatch(newProfile.batch);
-    else if (newProfile.labBatch) setSelectedBatch(newProfile.labBatch);
+    try {
+      localStorage.setItem('nit_goa_student_profile', JSON.stringify(newProfile));
+    } catch (e) {
+      console.error(e);
+    }
 
-    // Reset schedule override if branch/sem changed
+    let newElective = selectedElective;
+    if (newProfile.elective) {
+      setSelectedElective(newProfile.elective);
+      newElective = newProfile.elective;
+    } else if (newProfile.electiveCode) {
+      setSelectedElective(newProfile.electiveCode);
+      newElective = newProfile.electiveCode;
+    } else if (newProfile.branch === 'EEE' && newProfile.semester === 5) {
+      newElective = 'EE541';
+      setSelectedElective('EE541');
+    }
+
+    let newBatch = selectedBatch;
+    if (newProfile.batch) {
+      setSelectedBatch(newProfile.batch);
+      newBatch = newProfile.batch;
+    } else if (newProfile.labBatch) {
+      setSelectedBatch(newProfile.labBatch);
+      newBatch = newProfile.labBatch;
+    }
+
+    // Reset schedule override if branch/sem changed so master timetable takes over immediately
     const key = `nit_goa_schedule_${newProfile.branch}_${newProfile.semester}`;
     const saved = localStorage.getItem(key);
     setScheduleOverride(saved ? JSON.parse(saved) : null);
+    setCloudScheduleOverride(null);
+
+    // Save directly to cloud if logged in
+    if (currentUser?.uid) {
+      saveUserCloudData(currentUser.uid, {
+        email: currentUser.email || '',
+        profile: newProfile,
+        selectedElective: newElective,
+        selectedBatch: newBatch,
+      }).catch((err) => {
+        console.warn('Could not sync profile to cloud:', err);
+      });
+    }
 
     showToast(
       `Switched to Year ${newProfile.year} • Semester ${newProfile.semester} (${newProfile.branch})`
