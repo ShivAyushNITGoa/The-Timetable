@@ -19,7 +19,6 @@ import {
   PanelLeftClose,
   PanelLeftOpen,
   ArrowUp,
-  RotateCcw,
 } from 'lucide-react';
 
 // Configure PDF.js worker
@@ -50,9 +49,9 @@ interface PdfPageCardProps {
   scale: number;
   baseWidth: number;
   baseHeight: number;
+  isVisible: boolean;
   isMatch?: boolean;
   totalCount: number;
-  containerRef: React.RefObject<HTMLDivElement | null>;
 }
 
 const PdfPageCard = memo(
@@ -62,15 +61,13 @@ const PdfPageCard = memo(
     scale,
     baseWidth,
     baseHeight,
+    isVisible,
     isMatch = false,
     totalCount,
-    containerRef,
   }: PdfPageCardProps) => {
-    const cardRef = useRef<HTMLDivElement | null>(null);
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const renderTaskRef = useRef<any>(null);
 
-    const [isInView, setIsInView] = useState<boolean>(false);
     const [isRendered, setIsRendered] = useState<boolean>(false);
     const [pageError, setPageError] = useState<string | null>(null);
 
@@ -78,39 +75,9 @@ const PdfPageCard = memo(
     const computedWidth = Math.max(Math.floor(baseWidth * scale), 260);
     const computedHeight = Math.max(Math.floor(baseHeight * scale), 360);
 
-    // Pre-rendering Intersection Observer:
-    // Uses generous rootMargin (800px) to render pages slightly before they enter the screen,
-    // eliminating white flashes while maintaining low memory consumption.
-    useEffect(() => {
-      const el = cardRef.current;
-      if (!el) return;
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          const entry = entries[0];
-          if (entry.isIntersecting) {
-            setIsInView(true);
-          } else {
-            // When far off-screen, unload canvas bitmap to conserve RAM on mobile devices
-            setIsInView(false);
-          }
-        },
-        {
-          root: containerRef.current || null,
-          rootMargin: '800px 0px 800px 0px',
-          threshold: 0.01,
-        }
-      );
-
-      observer.observe(el);
-      return () => {
-        observer.disconnect();
-      };
-    }, [containerRef]);
-
     // Canvas render logic
     useEffect(() => {
-      if (!isInView || !pdfDoc) return;
+      if (!isVisible || !pdfDoc) return;
       let isCancelled = false;
 
       const render = async () => {
@@ -156,7 +123,7 @@ const PdfPageCard = memo(
           if (err?.name !== 'RenderingCancelledException') {
             console.warn(`Error rendering page ${pageNumber}:`, err);
             if (!isCancelled) {
-              setPageError('Failed to render page');
+              setPageError('Failed to display page');
             }
           }
         }
@@ -172,12 +139,11 @@ const PdfPageCard = memo(
           } catch {}
         }
       };
-    }, [isInView, pdfDoc, pageNumber, scale]);
+    }, [isVisible, pdfDoc, pageNumber, scale]);
 
     return (
       <div
         id={`pdf-page-${pageNumber}`}
-        ref={cardRef}
         data-page-number={pageNumber}
         className="w-full flex flex-col items-center justify-start my-3 sm:my-4 select-text"
         style={{ minHeight: `${computedHeight + 36}px` }}
@@ -215,19 +181,27 @@ const PdfPageCard = memo(
             height: `${computedHeight}px`,
           }}
         >
-          {isInView ? (
-            <canvas ref={canvasRef} className="block select-none" />
-          ) : (
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-50 text-slate-400">
-              <span className="text-xs font-mono">Page {pageNumber}</span>
-            </div>
-          )}
+          {/* Canvas always mounted to guarantee canvasRef availability */}
+          <canvas
+            ref={canvasRef}
+            className={`block select-none transition-opacity duration-200 ${
+              isRendered ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
 
-          {/* Loading indicator when page enters viewport before render completes */}
-          {isInView && !isRendered && !pageError && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-50/80 backdrop-blur-2xs text-slate-500">
-              <Loader2 className="w-6 h-6 animate-spin text-blue-600 mb-2" />
-              <span className="text-xs font-medium">Rendering page {pageNumber}...</span>
+          {/* Placeholder / Loading State */}
+          {!isRendered && !pageError && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-50 text-slate-400">
+              {isVisible ? (
+                <>
+                  <Loader2 className="w-6 h-6 animate-spin text-blue-600 mb-2" />
+                  <span className="text-xs font-medium text-slate-500">
+                    Loading page {pageNumber}...
+                  </span>
+                </>
+              ) : (
+                <span className="text-xs font-mono text-slate-400">Page {pageNumber}</span>
+              )}
             </div>
           )}
 
@@ -257,7 +231,6 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
-  const pageRefs = useRef<{ [key: number]: HTMLElement | null }>({});
 
   // PDF Document state
   const [pdfDoc, setPdfDoc] = useState<any | null>(null);
@@ -274,6 +247,17 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
   const [viewerMode, setViewerMode] = useState<'canvas' | 'native'>('canvas');
   const [showThumbnails, setShowThumbnails] = useState<boolean>(false);
 
+  // Set of pages that have entered visibility (initially preloads pages 1-4 & initialPage)
+  const [visiblePages, setVisiblePages] = useState<Set<number>>(() => {
+    const initialSet = new Set<number>([1, 2, 3, 4]);
+    if (initialPage > 0) {
+      initialSet.add(initialPage);
+      if (initialPage > 1) initialSet.add(initialPage - 1);
+      initialSet.add(initialPage + 1);
+    }
+    return initialSet;
+  });
+
   // Search state
   const [showSearch, setShowSearch] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>(courseCode || '');
@@ -288,6 +272,16 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
   const scrollToPage = useCallback(
     (pageNum: number, behavior: ScrollBehavior = 'smooth') => {
       const targetPage = Math.max(1, Math.min(pageNum, numPages || 1));
+
+      // Mark target page and adjacent pages as visible immediately
+      setVisiblePages((prev) => {
+        const next = new Set(prev);
+        next.add(targetPage);
+        if (targetPage > 1) next.add(targetPage - 1);
+        if (targetPage < (numPages || 1)) next.add(targetPage + 1);
+        return next;
+      });
+
       const el = document.getElementById(`pdf-page-${targetPage}`);
       if (el && scrollContainerRef.current) {
         el.scrollIntoView({ behavior, block: 'start' });
@@ -300,14 +294,13 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
 
   // Auto-calculate optimal fit scale based on viewport width
   const fitWidth = useCallback(
-    (docToUse?: any, customBaseWidth?: number) => {
+    (customBaseWidth?: number) => {
       if (!scrollContainerRef.current) return;
       try {
         const containerWidth = scrollContainerRef.current.clientWidth;
-        // On mobile leave 24px padding, on desktop leave 48px
-        const padding = containerWidth < 640 ? 24 : 48;
+        const padding = containerWidth < 640 ? 20 : 44;
         const availableWidth = Math.max(containerWidth - padding, 260);
-        const unscaledWidth = customBaseWidth || baseDimensions.width || 595;
+        const unscaledWidth = customBaseWidth || baseDimensions.width || 595.28;
 
         const fitRatio = availableWidth / unscaledWidth;
         const targetScale = Math.min(Math.max(Number(fitRatio.toFixed(2)), 0.45), 2.5);
@@ -316,10 +309,10 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
         console.warn('Auto fit scale calculation error:', err);
       }
     },
-    [baseDimensions]
+    [baseDimensions.width]
   );
 
-  // Load PDF Document
+  // Primary PDF Document Loader - Depends strictly on pdfUrl to eliminate infinite re-render loops
   useEffect(() => {
     let isCancelled = false;
     setLoading(true);
@@ -330,15 +323,14 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
         const loadingTask = pdfjsLib.getDocument({
           url: pdfUrl,
           withCredentials: false,
-          cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/cmaps/',
-          cMapPacked: true,
         });
 
         const doc = await loadingTask.promise;
         if (isCancelled) return;
 
         setPdfDoc(doc);
-        setNumPages(doc.numPages);
+        const total = doc.numPages;
+        setNumPages(total);
 
         // Fetch page 1 to measure natural unscaled aspect ratio
         try {
@@ -350,25 +342,43 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
           };
           setBaseDimensions(newBase);
 
-          // Calculate fit width scale based on first page's natural width
-          fitWidth(doc, newBase.width);
+          // Calculate initial fit-width
+          const containerW =
+            scrollContainerRef.current?.clientWidth || containerRef.current?.clientWidth || 800;
+          const padding = containerW < 640 ? 20 : 44;
+          const avail = Math.max(containerW - padding, 260);
+          const autoScale = Math.min(
+            Math.max(Number((avail / unscaledViewport.width).toFixed(2)), 0.45),
+            2.5
+          );
+          setScale(autoScale);
         } catch {
-          fitWidth(doc);
+          // Use default A4 dimensions
         }
 
-        const startPage = initialPage > 0 && initialPage <= doc.numPages ? initialPage : 1;
+        const startPage = initialPage > 0 && initialPage <= total ? initialPage : 1;
         setCurrentPage(startPage);
         setJumpPageInput(String(startPage));
+
+        // Preload visible pages around startPage
+        setVisiblePages((prev) => {
+          const next = new Set(prev);
+          next.add(startPage);
+          if (startPage > 1) next.add(startPage - 1);
+          if (startPage < total) next.add(startPage + 1);
+          return next;
+        });
+
         setLoading(false);
 
-        // Smooth scroll to initial page after initial mount
+        // Smooth scroll to initial page if target is greater than 1
         if (startPage > 1) {
           setTimeout(() => {
             scrollToPage(startPage, 'auto');
-          }, 350);
+          }, 300);
         }
       } catch (err: any) {
-        console.warn('Canvas PDF engine load error, attempting fallback fetch:', err);
+        console.warn('Canvas PDF load error, trying direct ArrayBuffer fetch:', err);
         if (isCancelled) return;
 
         try {
@@ -380,19 +390,6 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
           if (isCancelled) return;
           setPdfDoc(doc);
           setNumPages(doc.numPages);
-
-          try {
-            const firstPage = await doc.getPage(1);
-            const unscaledViewport = firstPage.getViewport({ scale: 1.0 });
-            setBaseDimensions({
-              width: unscaledViewport.width,
-              height: unscaledViewport.height,
-            });
-            fitWidth(doc, unscaledViewport.width);
-          } catch {
-            fitWidth(doc);
-          }
-
           setCurrentPage(1);
           setJumpPageInput('1');
           setLoading(false);
@@ -413,7 +410,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
     return () => {
       isCancelled = true;
     };
-  }, [pdfUrl, initialPage, fitWidth, scrollToPage]);
+  }, [pdfUrl, initialPage, scrollToPage]);
 
   // Window Resize listener to maintain responsive page width
   useEffect(() => {
@@ -430,6 +427,46 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
       window.removeEventListener('resize', handleResize);
     };
   }, [fitWidth]);
+
+  // Unified Intersection Observer: detects which pages approach the viewport and marks them visible
+  useEffect(() => {
+    if (!scrollContainerRef.current || numPages === 0 || loading) return;
+    const container = scrollContainerRef.current;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        setVisiblePages((prev) => {
+          let hasChanges = false;
+          const next = new Set(prev);
+          entries.forEach((entry) => {
+            const pageNum = Number(entry.target.getAttribute('data-page-number'));
+            if (pageNum && entry.isIntersecting && !next.has(pageNum)) {
+              next.add(pageNum);
+              // Also preload adjacent page for smooth fast scrolling
+              if (pageNum < numPages) next.add(pageNum + 1);
+              hasChanges = true;
+            }
+          });
+          return hasChanges ? next : prev;
+        });
+      },
+      {
+        root: container,
+        rootMargin: '1000px 0px 1000px 0px', // Preload pages 1000px ahead of viewport
+        threshold: 0.01,
+      }
+    );
+
+    // Observe each page element
+    for (let p = 1; p <= numPages; p++) {
+      const el = document.getElementById(`pdf-page-${p}`);
+      if (el) observer.observe(el);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [numPages, loading]);
 
   // Scroll listener: dynamically updates active page indicator as the user scrolls through the document
   const handleScroll = useCallback(() => {
@@ -454,6 +491,16 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
     if (detectedPage !== currentPage) {
       setCurrentPage(detectedPage);
       setJumpPageInput(String(detectedPage));
+      // Ensure nearby pages are marked visible
+      setVisiblePages((prev) => {
+        if (!prev.has(detectedPage)) {
+          const next = new Set(prev);
+          next.add(detectedPage);
+          if (detectedPage < numPages) next.add(detectedPage + 1);
+          return next;
+        }
+        return prev;
+      });
     }
   }, [numPages, currentPage]);
 
@@ -924,12 +971,12 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
           >
             {/* Loading Overlay */}
             {loading && (
-              <div className="absolute inset-0 z-20 bg-white/90 backdrop-blur-xs flex flex-col items-center justify-center gap-3">
+              <div className="absolute inset-0 z-20 bg-white/95 backdrop-blur-xs flex flex-col items-center justify-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600">
                   <Loader2 className="w-6 h-6 animate-spin" />
                 </div>
-                <p className="text-sm font-semibold text-slate-800">Loading Official PDF Handbook...</p>
-                <p className="text-xs text-slate-500">Preparing continuous page scroll viewer</p>
+                <p className="text-sm font-semibold text-slate-800">Opening PDF Handbook...</p>
+                <p className="text-xs text-slate-500">Rendering continuous scroll document</p>
               </div>
             )}
 
@@ -960,7 +1007,7 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
             )}
 
             {/* Stacked Continuous Pages (1 to numPages) */}
-            {!loading && numPages > 0 && (
+            {numPages > 0 && (
               <div className="w-full flex flex-col items-center justify-start pb-16">
                 {pagesList.map((pageNum) => (
                   <PdfPageCard
@@ -970,9 +1017,9 @@ export const EmbeddedPdfViewer: React.FC<EmbeddedPdfViewerProps> = ({
                     scale={scale}
                     baseWidth={baseDimensions.width}
                     baseHeight={baseDimensions.height}
+                    isVisible={visiblePages.has(pageNum)}
                     isMatch={searchMatches.includes(pageNum)}
                     totalCount={numPages}
-                    containerRef={scrollContainerRef}
                   />
                 ))}
 
