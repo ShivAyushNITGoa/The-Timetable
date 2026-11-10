@@ -17,8 +17,14 @@ service cloud.firestore {
 
     // User accounts
     match /users/{userId} {
-      allow read: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+      allow read: if true;
       allow write: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+    }
+
+    // User activity logs & telemetry for admin user tracking
+    match /user_activity/{activityId} {
+      allow create: if true;
+      allow read, delete: if isAdmin();
     }
 
     // Master Timetable branch & semester overrides

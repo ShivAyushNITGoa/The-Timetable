@@ -20,6 +20,15 @@ import {
   Search,
   Filter,
   PlusCircle,
+  Users,
+  Activity,
+  Download,
+  Smartphone,
+  Monitor,
+  BarChart3,
+  Layers,
+  ArrowUpRight,
+  Eye,
 } from 'lucide-react';
 import { User } from 'firebase/auth';
 import {
@@ -40,6 +49,15 @@ import {
   removeAnnouncement,
   AnnouncementDoc,
 } from '../services/firestoreSync';
+import {
+  UserActivityLog,
+  UserSummaryItem,
+  subscribeToUserActivities,
+  fetchAllTrackedUsers,
+  deleteUserActivityLog,
+  exportActivitiesToCSV,
+  getInitialSampleActivities,
+} from '../services/userTrackingService';
 import { firebaseConfig } from '../firebase';
 
 export interface AdminPanelModalProps {
@@ -54,7 +72,7 @@ export interface AdminPanelModalProps {
   onCoursesUpdated?: (courseCode: string, override: Partial<Course>) => void;
 }
 
-type AdminTab = 'timetable' | 'syllabus' | 'announcements' | 'diagnostics';
+type AdminTab = 'timetable' | 'syllabus' | 'announcements' | 'user_tracking' | 'diagnostics';
 
 const DAYS: DayOfWeek[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
@@ -106,6 +124,183 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
   const [newAnnouncementContent, setNewAnnouncementContent] = useState('');
   const [newAnnouncementType, setNewAnnouncementType] = useState<'info' | 'warning' | 'success' | 'urgent'>('info');
   const [confirmDeleteAnnId, setConfirmDeleteAnnId] = useState<string | null>(null);
+
+  // User Tracking & Analytics State
+  const [activities, setActivities] = useState<UserActivityLog[]>(() => getInitialSampleActivities());
+  const [trackedUsers, setTrackedUsers] = useState<UserSummaryItem[]>([]);
+  const [userSearchQuery, setUserSearchQuery] = useState('');
+  const [userBranchFilter, setUserBranchFilter] = useState<string>('ALL');
+  const [userSemFilter, setUserSemFilter] = useState<string>('ALL');
+  const [userActionFilter, setUserActionFilter] = useState<string>('ALL');
+  const [userDeviceFilter, setUserDeviceFilter] = useState<string>('ALL');
+  const [trackingSubView, setTrackingSubView] = useState<'feed' | 'users' | 'analytics'>('feed');
+  const [isRefreshingActivities, setIsRefreshingActivities] = useState(false);
+  const [confirmDeleteActId, setConfirmDeleteActId] = useState<string | null>(null);
+
+  // Subscribe to live user activity logs when modal is open
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const unsubscribe = subscribeToUserActivities(120, (logs) => {
+      if (logs && logs.length > 0) {
+        setActivities(logs);
+      }
+    });
+
+    fetchAllTrackedUsers().then((users) => {
+      if (users && users.length > 0) {
+        setTrackedUsers(users);
+      }
+    });
+
+    return () => unsubscribe();
+  }, [isOpen]);
+
+  const handleRefreshTracking = async () => {
+    try {
+      setIsRefreshingActivities(true);
+      const users = await fetchAllTrackedUsers();
+      if (users && users.length > 0) {
+        setTrackedUsers(users);
+      }
+      setSaveStatus('User tracking data refreshed.');
+      setTimeout(() => setSaveStatus(null), 3000);
+    } catch (e: any) {
+      setSaveStatus(`Refresh notice: ${e.message}`);
+    } finally {
+      setIsRefreshingActivities(false);
+    }
+  };
+
+  const handleDeleteActivity = async (id: string) => {
+    if (confirmDeleteActId !== id) {
+      setConfirmDeleteActId(id);
+      setSaveStatus('Click Delete again within 4s to confirm removing this tracking log.');
+      setTimeout(() => setConfirmDeleteActId(null), 4000);
+      return;
+    }
+    setConfirmDeleteActId(null);
+    try {
+      await deleteUserActivityLog(id);
+      setActivities((prev) => prev.filter((a) => a.id !== id));
+      setSaveStatus('Activity log deleted.');
+      setTimeout(() => setSaveStatus(null), 3000);
+    } catch (e: any) {
+      setSaveStatus(`Failed to delete activity: ${e.message}`);
+    }
+  };
+
+  // Helper for relative time
+  const formatTimeAgo = (isoString: string): string => {
+    try {
+      const diffMs = Date.now() - new Date(isoString).getTime();
+      const diffSec = Math.floor(diffMs / 1000);
+      if (diffSec < 60) return 'Just now';
+      const diffMin = Math.floor(diffSec / 60);
+      if (diffMin < 60) return `${diffMin}m ago`;
+      const diffHours = Math.floor(diffMin / 60);
+      if (diffHours < 24) return `${diffHours}h ago`;
+      const diffDays = Math.floor(diffHours / 24);
+      if (diffDays < 7) return `${diffDays}d ago`;
+      return new Date(isoString).toLocaleDateString();
+    } catch {
+      return 'Recently';
+    }
+  };
+
+  // Filtered Activities
+  const filteredActivities = useMemo(() => {
+    const q = userSearchQuery.trim().toLowerCase();
+    return activities.filter((act) => {
+      if (q) {
+        const matchEmail = act.userEmail?.toLowerCase().includes(q);
+        const matchName = act.userName?.toLowerCase().includes(q);
+        const matchId = act.userId?.toLowerCase().includes(q);
+        const matchAction = act.actionTitle?.toLowerCase().includes(q);
+        const matchDetails = act.details?.toLowerCase().includes(q);
+        if (!matchEmail && !matchName && !matchId && !matchAction && !matchDetails) {
+          return false;
+        }
+      }
+      if (userBranchFilter !== 'ALL' && act.branch !== userBranchFilter) {
+        return false;
+      }
+      if (userSemFilter !== 'ALL' && act.semester !== Number(userSemFilter)) {
+        return false;
+      }
+      if (userActionFilter !== 'ALL' && act.action !== userActionFilter) {
+        return false;
+      }
+      if (userDeviceFilter !== 'ALL') {
+        if (userDeviceFilter === 'PWA' && !act.device.includes('PWA')) return false;
+        if (userDeviceFilter === 'Mobile' && !act.device.includes('Mobile')) return false;
+        if (userDeviceFilter === 'Desktop' && !act.device.includes('Desktop')) return false;
+      }
+      return true;
+    });
+  }, [activities, userSearchQuery, userBranchFilter, userSemFilter, userActionFilter, userDeviceFilter]);
+
+  // Analytics Aggregates
+  const analyticsData = useMemo(() => {
+    const totalEvents = activities.length;
+    const uniqueUsersSet = new Set<string>();
+    let todayEvents = 0;
+    const branchCounts: Record<string, number> = { EEE: 0, CSE: 0, ECE: 0, ME: 0, CVE: 0 };
+    const semCounts: Record<number, number> = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0 };
+    let pwaCount = 0;
+    let mobileCount = 0;
+    let desktopCount = 0;
+    const actionCounts: Record<string, number> = {};
+
+    const oneDayAgo = Date.now() - 24 * 60 * 60 * 1000;
+
+    activities.forEach((act) => {
+      const userKey = act.userEmail || act.userId;
+      if (userKey) uniqueUsersSet.add(userKey);
+
+      const time = new Date(act.timestamp).getTime();
+      if (time > oneDayAgo) todayEvents++;
+
+      if (act.branch && branchCounts[act.branch] !== undefined) {
+        branchCounts[act.branch]++;
+      }
+      if (act.semester && semCounts[act.semester] !== undefined) {
+        semCounts[act.semester]++;
+      }
+
+      if (act.device.includes('PWA')) pwaCount++;
+      else if (act.device.includes('Mobile')) mobileCount++;
+      else desktopCount++;
+
+      actionCounts[act.action] = (actionCounts[act.action] || 0) + 1;
+    });
+
+    // Top branch
+    let topBranch = 'EEE';
+    let maxBranchCount = 0;
+    Object.entries(branchCounts).forEach(([b, count]) => {
+      if (count > maxBranchCount) {
+        maxBranchCount = count;
+        topBranch = b;
+      }
+    });
+
+    const pwaRate = totalEvents > 0 ? Math.round((pwaCount / totalEvents) * 100) : 0;
+
+    return {
+      totalEvents,
+      uniqueUsersCount: uniqueUsersSet.size,
+      todayEvents,
+      topBranch,
+      branchCounts,
+      semCounts,
+      pwaCount,
+      mobileCount,
+      desktopCount,
+      pwaRate,
+      actionCounts,
+    };
+  }, [activities]);
 
   // Initialize course catalog
   useEffect(() => {
@@ -535,6 +730,24 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
           >
             <Bell size={15} />
             Broadcast Notices ({announcements.length})
+          </button>
+          <button
+            onClick={() => setActiveTab('user_tracking')}
+            className={`flex items-center gap-2 px-3.5 py-3 text-xs font-semibold border-b-2 transition whitespace-nowrap ${
+              activeTab === 'user_tracking'
+                ? 'border-indigo-600 dark:border-indigo-400 text-indigo-700 dark:text-indigo-400 font-bold'
+                : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
+            }`}
+          >
+            <Users size={15} />
+            User Tracking
+            <span className="flex h-2 w-2 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span className="text-[10px] px-1.5 py-0.2 rounded bg-indigo-50 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-300 font-mono font-bold border border-indigo-200 dark:border-indigo-800">
+              {analyticsData.uniqueUsersCount}
+            </span>
           </button>
           <button
             onClick={() => setActiveTab('diagnostics')}
@@ -1306,7 +1519,521 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
             </div>
           )}
 
-          {/* TAB 4: DIAGNOSTICS */}
+          {/* TAB 4: USER TRACKING & ANALYTICS */}
+          {activeTab === 'user_tracking' && (
+            <div className="space-y-6">
+              {/* Top Analytics KPI Cards */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div className="p-3.5 rounded-lg bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 shadow-2xs">
+                  <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-1">
+                    <span className="text-[11px] font-bold uppercase tracking-wider">Active Students</span>
+                    <Users size={16} className="text-indigo-600 dark:text-indigo-400" />
+                  </div>
+                  <div className="text-2xl font-black text-slate-900 dark:text-white font-mono">
+                    {analyticsData.uniqueUsersCount}
+                  </div>
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse" />
+                    <span>Unique accounts tracked</span>
+                  </div>
+                </div>
+
+                <div className="p-3.5 rounded-lg bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 shadow-2xs">
+                  <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-1">
+                    <span className="text-[11px] font-bold uppercase tracking-wider">Today's Activity</span>
+                    <Activity size={16} className="text-emerald-600 dark:text-emerald-400" />
+                  </div>
+                  <div className="text-2xl font-black text-slate-900 dark:text-white font-mono">
+                    {analyticsData.todayEvents}
+                  </div>
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400 mt-1">
+                    Events in last 24 hours
+                  </div>
+                </div>
+
+                <div className="p-3.5 rounded-lg bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 shadow-2xs">
+                  <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-1">
+                    <span className="text-[11px] font-bold uppercase tracking-wider">Top Department</span>
+                    <BarChart3 size={16} className="text-amber-600 dark:text-amber-400" />
+                  </div>
+                  <div className="text-2xl font-black text-amber-700 dark:text-amber-400 font-mono">
+                    {analyticsData.topBranch}
+                  </div>
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400 mt-1">
+                    {analyticsData.branchCounts[analyticsData.topBranch] || 0} sessions recorded
+                  </div>
+                </div>
+
+                <div className="p-3.5 rounded-lg bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 shadow-2xs">
+                  <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-1">
+                    <span className="text-[11px] font-bold uppercase tracking-wider">PWA Adoption</span>
+                    <Smartphone size={16} className="text-teal-600 dark:text-teal-400" />
+                  </div>
+                  <div className="text-2xl font-black text-teal-700 dark:text-teal-400 font-mono">
+                    {analyticsData.pwaRate}%
+                  </div>
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400 mt-1">
+                    {analyticsData.pwaCount} standalone app users
+                  </div>
+                </div>
+              </div>
+
+              {/* Sub-view Navigation & Action Controls */}
+              <div className="p-4 rounded-lg bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+                {/* View Pills */}
+                <div className="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-900 p-1 rounded-lg">
+                  <button
+                    onClick={() => setTrackingSubView('feed')}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold transition ${
+                      trackingSubView === 'feed'
+                        ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-2xs'
+                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                    }`}
+                  >
+                    <Activity size={13} />
+                    Live Activity Feed ({filteredActivities.length})
+                  </button>
+                  <button
+                    onClick={() => setTrackingSubView('users')}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold transition ${
+                      trackingSubView === 'users'
+                        ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-2xs'
+                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                    }`}
+                  >
+                    <Users size={13} />
+                    User Directory ({trackedUsers.length > 0 ? trackedUsers.length : analyticsData.uniqueUsersCount})
+                  </button>
+                  <button
+                    onClick={() => setTrackingSubView('analytics')}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold transition ${
+                      trackingSubView === 'analytics'
+                        ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-2xs'
+                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                    }`}
+                  >
+                    <BarChart3 size={13} />
+                    Usage Breakdown
+                  </button>
+                </div>
+
+                {/* Right Action Buttons */}
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => exportActivitiesToCSV(filteredActivities)}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold transition cursor-pointer"
+                    title="Download tracking log as CSV"
+                  >
+                    <Download size={13} />
+                    Export CSV
+                  </button>
+                  <button
+                    onClick={handleRefreshTracking}
+                    disabled={isRefreshingActivities}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-xs font-semibold transition cursor-pointer"
+                    title="Refresh live tracking data"
+                  >
+                    <RefreshCw size={13} className={isRefreshingActivities ? 'animate-spin' : ''} />
+                    Refresh
+                  </button>
+                </div>
+              </div>
+
+              {/* SUBVIEW 1: LIVE ACTIVITY FEED */}
+              {trackingSubView === 'feed' && (
+                <div className="space-y-4">
+                  {/* Filters Bar */}
+                  <div className="p-3.5 rounded-lg bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-3">
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                      <div className="relative flex-1">
+                        <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                        <input
+                          type="text"
+                          value={userSearchQuery}
+                          onChange={(e) => setUserSearchQuery(e.target.value)}
+                          placeholder="Filter activities by student email, name, guest ID, action, or details..."
+                          className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg pl-9 pr-8 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500"
+                        />
+                        {userSearchQuery && (
+                          <button
+                            onClick={() => setUserSearchQuery('')}
+                            className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 dark:hover:text-white"
+                          >
+                            <X size={13} />
+                          </button>
+                        )}
+                      </div>
+
+                      <div className="flex items-center gap-2 shrink-0">
+                        <select
+                          value={userActionFilter}
+                          onChange={(e) => setUserActionFilter(e.target.value)}
+                          className="bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
+                        >
+                          <option value="ALL">All Actions</option>
+                          <option value="session_start">App Launch / Visit</option>
+                          <option value="view_timetable">Timetable Lookup</option>
+                          <option value="view_syllabus">Syllabus PDF View</option>
+                          <option value="attendance_update">Attendance Logged</option>
+                          <option value="test_scheduled">Test Scheduled</option>
+                          <option value="branch_change">Branch Switch</option>
+                          <option value="auth_change">Auth / Admin</option>
+                        </select>
+
+                        <select
+                          value={userDeviceFilter}
+                          onChange={(e) => setUserDeviceFilter(e.target.value)}
+                          className="bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
+                        >
+                          <option value="ALL">All Devices</option>
+                          <option value="PWA">PWA App</option>
+                          <option value="Mobile">Mobile Web</option>
+                          <option value="Desktop">Desktop</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* Department Quick Filter Pills */}
+                    <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-100 dark:border-slate-800/80">
+                      <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mr-1">
+                        Branch:
+                      </span>
+                      {['ALL', 'EEE', 'CSE', 'ECE', 'ME', 'CVE'].map((b) => (
+                        <button
+                          key={b}
+                          onClick={() => setUserBranchFilter(b)}
+                          className={`px-2.5 py-0.5 rounded text-[11px] font-semibold transition ${
+                            userBranchFilter === b
+                              ? 'bg-indigo-600 text-white'
+                              : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                          }`}
+                        >
+                          {b}
+                        </button>
+                      ))}
+
+                      <div className="h-4 w-[1px] bg-slate-200 dark:bg-slate-800 mx-2" />
+
+                      <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mr-1">
+                        Semester:
+                      </span>
+                      {['ALL', '1', '2', '3', '4', '5', '6', '7', '8'].map((s) => (
+                        <button
+                          key={s}
+                          onClick={() => setUserSemFilter(s)}
+                          className={`px-2 py-0.5 rounded text-[11px] font-mono font-semibold transition ${
+                            userSemFilter === s
+                              ? 'bg-amber-600 text-white'
+                              : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                          }`}
+                        >
+                          {s === 'ALL' ? 'All' : `S${s}`}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Activity Feed List / Table */}
+                  <div className="space-y-2">
+                    {filteredActivities.length === 0 ? (
+                      <div className="p-12 text-center text-slate-500 dark:text-slate-400 text-xs bg-white dark:bg-slate-950 rounded-lg border border-slate-200 dark:border-slate-800">
+                        No activity records found matching the selected filters.
+                      </div>
+                    ) : (
+                      filteredActivities.map((act) => {
+                        const isPwa = act.device?.includes('PWA');
+                        const isMobile = act.device?.includes('Mobile');
+                        
+                        // Badge color per action type
+                        let badgeBg = 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700';
+                        if (act.action === 'view_timetable') {
+                          badgeBg = 'bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800';
+                        } else if (act.action === 'view_syllabus') {
+                          badgeBg = 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800';
+                        } else if (act.action === 'attendance_update') {
+                          badgeBg = 'bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border-amber-200 dark:border-amber-800';
+                        } else if (act.action === 'test_scheduled') {
+                          badgeBg = 'bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-800';
+                        } else if (act.action === 'branch_change') {
+                          badgeBg = 'bg-purple-50 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800';
+                        } else if (act.action === 'session_start') {
+                          badgeBg = 'bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800';
+                        }
+
+                        return (
+                          <div
+                            key={act.id}
+                            className="p-3.5 rounded-lg bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800/90 shadow-2xs hover:border-slate-300 dark:hover:border-slate-700 transition flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-xs"
+                          >
+                            {/* User & Action Title */}
+                            <div className="flex items-start gap-3 min-w-0 flex-1">
+                              {/* Avatar Icon */}
+                              <div className="w-8 h-8 rounded-full bg-linear-to-br from-indigo-500 to-sky-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs">
+                                {act.userName ? act.userName.charAt(0).toUpperCase() : 'S'}
+                              </div>
+
+                              <div className="min-w-0 flex-1">
+                                <div className="flex flex-wrap items-center gap-2">
+                                  <span className="font-bold text-slate-900 dark:text-white truncate">
+                                    {act.userName || 'NIT Goa Student'}
+                                  </span>
+                                  <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400 truncate">
+                                    {act.userEmail}
+                                  </span>
+                                  <span className={`text-[10px] px-2 py-0.5 rounded font-bold border ${badgeBg}`}>
+                                    {act.actionTitle}
+                                  </span>
+                                </div>
+
+                                {act.details && (
+                                  <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
+                                    {act.details}
+                                  </p>
+                                )}
+                              </div>
+                            </div>
+
+                            {/* Branch, Sem, Device & Timestamp */}
+                            <div className="flex items-center gap-3 shrink-0 self-end md:self-auto text-[11px]">
+                              {/* Branch & Semester Target */}
+                              <div className="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1">
+                                <span>{act.branch}</span>
+                                <span className="text-slate-400">/</span>
+                                <span>Sem {act.semester}</span>
+                                {act.section && <span className="text-amber-600">({act.section})</span>}
+                              </div>
+
+                              {/* Device Badge */}
+                              <div className="flex items-center gap-1 text-slate-500 dark:text-slate-400 px-2 py-1 rounded bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                                {isPwa ? (
+                                  <Smartphone size={12} className="text-teal-500" />
+                                ) : isMobile ? (
+                                  <Smartphone size={12} className="text-slate-400" />
+                                ) : (
+                                  <Monitor size={12} className="text-slate-400" />
+                                )}
+                                <span className="text-[10px]">{act.device}</span>
+                              </div>
+
+                              {/* Relative Time */}
+                              <div
+                                className="text-slate-400 dark:text-slate-500 font-mono text-[10px] min-w-16 text-right"
+                                title={new Date(act.timestamp).toLocaleString()}
+                              >
+                                {formatTimeAgo(act.timestamp)}
+                              </div>
+
+                              {/* Delete button */}
+                              <button
+                                onClick={() => handleDeleteActivity(act.id)}
+                                className="p-1 text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 rounded transition"
+                                title="Remove log entry"
+                              >
+                                <Trash2 size={13} />
+                              </button>
+                            </div>
+                          </div>
+                        );
+                      })
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* SUBVIEW 2: USER DIRECTORY */}
+              {trackingSubView === 'users' && (
+                <div className="space-y-4">
+                  <div className="p-4 rounded-lg bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+                    <div className="flex items-center justify-between mb-3">
+                      <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                        <Users size={14} className="text-indigo-600 dark:text-indigo-400" />
+                        Registered & Active Student Profiles
+                      </h4>
+                      <span className="text-xs text-slate-500 font-mono">
+                        {trackedUsers.length} profiles synced with cloud
+                      </span>
+                    </div>
+
+                    {trackedUsers.length === 0 ? (
+                      <div className="p-8 text-center text-slate-500 dark:text-slate-400 text-xs">
+                        No registered cloud user profiles found yet. Users automatically appear here when they log in or sync their academic profile.
+                      </div>
+                    ) : (
+                      <div className="overflow-x-auto">
+                        <table className="w-full text-left text-xs border-collapse">
+                          <thead>
+                            <tr className="border-b border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 text-[11px] uppercase tracking-wider">
+                              <th className="py-2.5 px-3">Student / User</th>
+                              <th className="py-2.5 px-3">Department Branch</th>
+                              <th className="py-2.5 px-3">Semester</th>
+                              <th className="py-2.5 px-3">Device / Platform</th>
+                              <th className="py-2.5 px-3">Role</th>
+                              <th className="py-2.5 px-3 text-right">Last Active</th>
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y divide-slate-100 dark:divide-slate-800/60">
+                            {trackedUsers.map((u) => (
+                              <tr key={u.id} className="hover:bg-slate-50 dark:hover:bg-slate-900/50 transition">
+                                <td className="py-3 px-3">
+                                  <div className="font-bold text-slate-900 dark:text-white">{u.displayName || 'Student'}</div>
+                                  <div className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">{u.email}</div>
+                                </td>
+                                <td className="py-3 px-3">
+                                  <span className="px-2 py-0.5 rounded font-mono font-bold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 text-[11px]">
+                                    {u.branch || 'EEE'}
+                                  </span>
+                                </td>
+                                <td className="py-3 px-3">
+                                  <span className="text-slate-800 dark:text-slate-200 font-semibold">
+                                    Semester {u.semester || 5} {u.section ? `(Sec ${u.section})` : ''}
+                                  </span>
+                                </td>
+                                <td className="py-3 px-3 text-slate-600 dark:text-slate-400">
+                                  {u.device || 'Mobile PWA'}
+                                </td>
+                                <td className="py-3 px-3">
+                                  <span
+                                    className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
+                                      u.role === 'admin'
+                                        ? 'bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300'
+                                        : 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300'
+                                    }`}
+                                  >
+                                    {u.role || 'student'}
+                                  </span>
+                                </td>
+                                <td className="py-3 px-3 text-right font-mono text-[11px] text-slate-500 dark:text-slate-400">
+                                  {formatTimeAgo(u.lastActive)}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* SUBVIEW 3: USAGE BREAKDOWN & ANALYTICS */}
+              {trackingSubView === 'analytics' && (
+                <div className="space-y-6">
+                  {/* Department & Semester Distribution */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {/* Branch Breakdown */}
+                    <div className="p-4 rounded-lg bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-3">
+                      <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                        <BarChart3 size={14} className="text-indigo-600" />
+                        Branch Department Distribution
+                      </h4>
+                      <div className="space-y-2.5">
+                        {Object.entries(analyticsData.branchCounts).map(([bCode, rawCount]) => {
+                          const count = Number(rawCount) || 0;
+                          const pct = analyticsData.totalEvents > 0 ? Math.round((count / analyticsData.totalEvents) * 100) : 0;
+                          return (
+                            <div key={bCode} className="space-y-1">
+                              <div className="flex items-center justify-between text-xs">
+                                <span className="font-bold text-slate-800 dark:text-slate-200">{bCode}</span>
+                                <span className="font-mono text-slate-500 dark:text-slate-400">
+                                  {count} logs ({pct}%)
+                                </span>
+                              </div>
+                              <div className="h-2 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                                <div
+                                  className="h-full bg-linear-to-r from-indigo-500 to-indigo-600 rounded-full transition-all duration-500"
+                                  style={{ width: `${pct}%` }}
+                                />
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    {/* Semester Breakdown */}
+                    <div className="p-4 rounded-lg bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-3">
+                      <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                        <Layers size={14} className="text-amber-600" />
+                        Semester Distribution (1st to 8th)
+                      </h4>
+                      <div className="grid grid-cols-4 gap-2 pt-1">
+                        {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => {
+                          const count = analyticsData.semCounts[s] || 0;
+                          return (
+                            <div
+                              key={s}
+                              className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center"
+                            >
+                              <div className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase">
+                                Sem {s}
+                              </div>
+                              <div className="text-lg font-black text-slate-900 dark:text-white font-mono mt-1">
+                                {count}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Device & Platform Breakdown */}
+                  <div className="p-4 rounded-lg bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-3">
+                    <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                      <Smartphone size={14} className="text-teal-600" />
+                      Client Platform Breakdown
+                    </h4>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center gap-3">
+                        <div className="p-2 rounded-lg bg-teal-50 dark:bg-teal-950/60 text-teal-600 dark:text-teal-400">
+                          <Smartphone size={20} />
+                        </div>
+                        <div>
+                          <div className="text-[11px] text-slate-500 dark:text-slate-400 font-semibold">
+                            Installed PWA App
+                          </div>
+                          <div className="text-lg font-bold text-slate-900 dark:text-white font-mono">
+                            {analyticsData.pwaCount} sessions
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center gap-3">
+                        <div className="p-2 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
+                          <Smartphone size={20} />
+                        </div>
+                        <div>
+                          <div className="text-[11px] text-slate-500 dark:text-slate-400 font-semibold">
+                            Mobile Browser (Safari/Chrome)
+                          </div>
+                          <div className="text-lg font-bold text-slate-900 dark:text-white font-mono">
+                            {analyticsData.mobileCount} sessions
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center gap-3">
+                        <div className="p-2 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400">
+                          <Monitor size={20} />
+                        </div>
+                        <div>
+                          <div className="text-[11px] text-slate-500 dark:text-slate-400 font-semibold">
+                            Desktop Workstation
+                          </div>
+                          <div className="text-lg font-bold text-slate-900 dark:text-white font-mono">
+                            {analyticsData.desktopCount} sessions
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* TAB 5: DIAGNOSTICS */}
           {activeTab === 'diagnostics' && (
             <div className="space-y-6">
               <div className="p-5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-4">

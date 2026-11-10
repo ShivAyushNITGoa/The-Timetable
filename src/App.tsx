@@ -60,6 +60,7 @@ import {
   getUserCloudData,
   saveUserCloudData,
 } from './services/firestoreSync';
+import { trackUserActivity } from './services/userTrackingService';
 import {
   Bookmark,
   CalendarCheck,
@@ -165,6 +166,23 @@ export default function App() {
     } catch (e) {
       console.error(e);
     }
+    const tabLabels: Record<ActiveTab, string> = {
+      day: 'Day Schedule',
+      weekly: 'Weekly Grid',
+      courses: 'Courses Directory',
+      attendance: 'Attendance Tracker',
+      tests: 'Test Calendar',
+      academic: 'Academic Portal',
+      resources: 'Study Resources',
+      exams: 'Exam Schedule',
+    };
+    trackUserActivity('view_timetable', `Viewed ${tabLabels[tab] || tab}`, {
+      branch: safeProfile.branch,
+      semester: safeProfile.semester,
+      section: safeProfile.firstYearSection,
+      details: `Switched view to ${tabLabels[tab] || tab}`,
+      currentUser,
+    });
   };
 
   // Universal Student Profile (Branch, Year, Semester, Batch, Elective, Minor)
@@ -202,6 +220,13 @@ export default function App() {
   useEffect(() => {
     setActiveTab('day');
     setSelectedDay(getTodayDayOfWeek());
+    trackUserActivity('session_start', 'Session Started', {
+      branch: safeProfile.branch,
+      semester: safeProfile.semester,
+      section: safeProfile.firstYearSection,
+      details: `Landed on ${safeProfile.branch} Sem ${safeProfile.semester} today schedule`,
+      currentUser,
+    });
   }, []);
 
   const handleSelectDay = (day: DayOfWeek) => {
@@ -281,6 +306,19 @@ export default function App() {
   const [isCustomizerOpen, setIsCustomizerOpen] = useState(false);
   const [isPwaModalOpen, setIsPwaModalOpen] = useState(false);
   const [activeModalCourse, setActiveModalCourse] = useState<string | null>(null);
+
+  const handleOpenCourseModal = (courseCode: string | null) => {
+    setActiveModalCourse(courseCode);
+    if (courseCode) {
+      trackUserActivity('view_syllabus', `Viewed Course ${courseCode}`, {
+        branch: safeProfile.branch,
+        semester: safeProfile.semester,
+        section: safeProfile.firstYearSection,
+        details: `Inspected syllabus and course details for ${courseCode}`,
+        currentUser,
+      });
+    }
+  };
   const [scheduleTestCourseCode, setScheduleTestCourseCode] = useState<string | null>(null);
 
   // Admin slot and syllabus editor modal state
@@ -558,6 +596,14 @@ export default function App() {
       console.error(e);
     }
 
+    trackUserActivity('branch_change', `Switched to ${newProfile.branch} Sem ${newProfile.semester}`, {
+      branch: newProfile.branch,
+      semester: newProfile.semester,
+      section: newProfile.firstYearSection,
+      details: `Academic selection updated to ${newProfile.branch} Semester ${newProfile.semester}${newProfile.firstYearSection ? ` Sec ${newProfile.firstYearSection}` : ''}`,
+      currentUser,
+    });
+
     let newElective = selectedElective;
     if (newProfile.elective) {
       setSelectedElective(newProfile.elective);
@@ -661,6 +707,13 @@ export default function App() {
     addAcademicTest(newTest);
     refreshTests();
     showToast(`Added test for ${newTest.courseCode}: ${newTest.title}`);
+    trackUserActivity('test_scheduled', `Scheduled Test: ${newTest.title}`, {
+      branch: safeProfile.branch,
+      semester: safeProfile.semester,
+      section: safeProfile.firstYearSection,
+      details: `${newTest.courseCode || 'Course'} - ${newTest.type || 'Exam'} on ${newTest.date}`,
+      currentUser,
+    });
   };
 
   const handleUpdateTest = (updatedTest: AcademicTest) => {
@@ -965,7 +1018,7 @@ export default function App() {
             courses={effectiveCourses}
             selectedElective={selectedElective}
             selectedBatch={selectedBatch}
-            onOpenCourseModal={setActiveModalCourse}
+            onOpenCourseModal={handleOpenCourseModal}
             onNavigateToDay={(day) => {
               setSelectedDay(day);
               handleSetActiveTab('day');
@@ -1016,7 +1069,7 @@ export default function App() {
             onSelectDay={handleSelectDay}
             selectedElective={selectedElective}
             selectedBatch={selectedBatch}
-            onOpenCourseModal={setActiveModalCourse}
+            onOpenCourseModal={handleOpenCourseModal}
             schedule={effectiveSchedule}
             courses={effectiveCourses}
             branch={safeProfile.branch}
@@ -1041,7 +1094,7 @@ export default function App() {
             courses={effectiveCourses}
             selectedElective={selectedElective}
             selectedBatch={selectedBatch}
-            onOpenCourseModal={setActiveModalCourse}
+            onOpenCourseModal={handleOpenCourseModal}
             branch={safeProfile.branch}
             semester={safeProfile.semester}
             isAdmin={isAdmin}
@@ -1070,7 +1123,7 @@ export default function App() {
         {/* Courses Directory Tab */}
         {activeTab === 'courses' && (
           <CoursesDirectory
-            onOpenCourseModal={setActiveModalCourse}
+            onOpenCourseModal={handleOpenCourseModal}
             selectedElective={selectedElective}
             courses={effectiveCourses}
             branch={safeProfile.branch}
@@ -1093,7 +1146,7 @@ export default function App() {
           <ExamScheduleView
             courses={effectiveCourses}
             selectedElective={selectedElective}
-            onOpenCourseModal={setActiveModalCourse}
+            onOpenCourseModal={handleOpenCourseModal}
             branch={safeProfile.branch}
             semester={safeProfile.semester}
           />
@@ -1104,7 +1157,7 @@ export default function App() {
           <AcademicPortalView
             courses={effectiveCourses}
             selectedElective={selectedElective}
-            onOpenCourseModal={setActiveModalCourse}
+            onOpenCourseModal={handleOpenCourseModal}
             branch={safeProfile.branch}
             semester={safeProfile.semester}
             onOpenPwaGuide={() => setIsPwaModalOpen(true)}
@@ -1257,7 +1310,7 @@ export default function App() {
           isOpen={isCommandPaletteOpen}
           onClose={() => setIsCommandPaletteOpen(false)}
           courses={effectiveCourses}
-          onSelectCourse={(courseCode) => setActiveModalCourse(courseCode)}
+          onSelectCourse={(courseCode) => handleOpenCourseModal(courseCode)}
           onSelectTab={handleSetActiveTab}
           onSelectDay={(day) => {
             setSelectedDay(day);

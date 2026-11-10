@@ -60,12 +60,34 @@
         "createdAt": { "type": "string", "description": "ISO timestamp of creation" }
       },
       "required": ["title", "content", "type", "active", "authorEmail", "createdAt"]
+    },
+    "UserActivity": {
+      "title": "UserActivity",
+      "description": "User activity log for admin user tracking and analytics",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "User UID or anonymous client ID" },
+        "userEmail": { "type": "string", "description": "User email or guest identifier" },
+        "userName": { "type": "string", "description": "Display name of the user" },
+        "action": { "type": "string", "description": "Action performed (e.g., view_timetable, switch_branch, view_syllabus)" },
+        "branch": { "type": "string", "description": "Branch code (EEE, CSE, ECE, ME, CVE)" },
+        "semester": { "type": "number", "description": "Semester number (1-8)" },
+        "section": { "type": "string", "description": "Section for first year (A, B, C, D)" },
+        "device": { "type": "string", "description": "Device type (Mobile, Desktop, Tablet, PWA Standalone)" },
+        "details": { "type": "string", "description": "Additional event details" },
+        "timestamp": { "type": "string", "description": "ISO timestamp of the event" }
+      },
+      "required": ["userId", "action", "timestamp"]
     }
   },
   "firestore": {
     "/users/{userId}": {
       "schema": "UserProfile",
       "description": "Stores user profile and role data"
+    },
+    "/user_activity/{activityId}": {
+      "schema": "UserActivity",
+      "description": "Stores user tracking logs and sessions for admin analytics"
     },
     "/timetable_overrides/{branchSemesterKey}": {
       "schema": "TimetableOverride",
