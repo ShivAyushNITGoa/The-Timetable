@@ -414,149 +414,189 @@ export const ECE_4: SemesterData = {
 };
 
 // ==========================================
+// ==========================================
 // 4th Semester (2nd Year Even) - EEE
 // ==========================================
 export const EEE_4: SemesterData = {
   courses: {
-    'EE250': {
-      code: 'EE250',
-      name: 'Electrical Machines - II',
+    'IE250': {
+      code: 'IE250',
+      name: 'Innovation & Entrepreneurship',
       type: 'Theory',
-      credits: 4,
-      ltp: '3-1-0',
-      teachingSlot: 'A',
-      examSlot: 'A',
-      coordinator: 'Dr. Anudevi Samuel',
-      shortName: 'ADS',
-      facultyDesignation: 'Assistant Professor (EEE)',
-      facultyResearch: 'Electric Vehicles, Synchronous Motors, AC Machine Dynamics',
-      email: 'ad.dksamuel@nitgoa.ac.in',
-      facultyWebsite: 'https://www.nitgoa.ac.in/department/eee/faculty/anudevi-samuel',
+      credits: 1,
+      ltp: '1-0-0',
+      teachingSlot: 'F',
+      examSlot: 'F',
+      coordinator: 'Dr. Suresh Mikkili',
+      shortName: 'SM',
+      facultyDesignation: 'Associate Professor & HoD (EEE)',
+      facultyResearch: 'Renewable Energy Systems, Smart Grids, Power Quality & Entrepreneurship',
+      email: 'mikkili.suresh@nitgoa.ac.in',
+      facultyWebsite: 'https://www.nitgoa.ac.in/department/eee/faculty/suresh-mikkili',
       room: 'Classroom 52',
       category: 'core',
-      notes: '3-phase induction motors, circle diagram, synchronous alternators, voltage regulation, synchronous motors.',
+      notes: 'Creative thinking, TRIZ problem-solving principles, product design, IPR, patent laws, and business plan finance.',
       modules: [
-        'Module 1: Three Phase Induction Motors - Rotating magnetic field, Slip, Equivalent circuit, Torque-slip characteristics, Maximum torque, Circle diagram, Starting and speed control methods.',
-        'Module 2: Synchronous Alternators - Armature winding factors (Distribution, Chording), EMF equation, Armature reaction, Voltage regulation by Synchronous Impedance (EMF), MMF, and Potier (ZPF) methods.',
-        'Module 3: Parallel Operation & Salient Pole - Synchronizing power and torque, Two-reaction theory of salient pole machines, Power angle characteristics, Slip test for Xd and Xq determination.',
-        'Module 4: Synchronous Motors & Special Machines - V and inverted V curves, Hunting and damper windings, Synchronous condenser, Permanent Magnet Synchronous Motors (PMSM), Switched Reluctance Motors (SRM).'
+        'Module 1: Introduction to Innovation & Creativity - Creative thinking, blocks to creativity, factors influencing creative design, engineering design vs creative design, market pull and technology push, three levels of design (Visceral, Behavioral, Reflective), entrepreneurial functions and economic impact.',
+        'Module 2: Ideas for Entrepreneurship - Need and problem identification, market survey, data collection and analysis, problem definition, challenge statement, brainstorming, synectics, checklist methods, morphological methods, and decision making matrices.',
+        'Module 3: Theory of Inventive Problem Solving (TRIZ) - 20 key TRIZ principles: multifunction, compensation, nested doll, blessing in disguise, segmentation, separation, symmetry change, phase transformation, and surface response.',
+        'Module 4: Product Design, IPR & Finance - Detail design, prototyping, product deployment, lifecycle assessment, recycling and sustainability, patent act and patent laws, business models, capital ownership, venture funding, and financial planning.'
       ],
       textbooks: [
-        'P. S. Bimbhra, "Electrical Machinery", 7th Edition, Khanna Publishers',
-        'A. E. Fitzgerald, C. Kingsley, S. D. Umans, "Electric Machinery", 7th Edition, McGraw-Hill'
+        'C. B. Gupta and N. P. Srinivasan, "Entrepreneurial Development", Sultan Chand and Sons, 2020',
+        'Kalevi Rantanen and Ellen Domb, "Simplified TRIZ", 2nd Edition, Auerbach Publications / CRC Press, 2010',
+        'John Adair, "The Art of Creative Thinking", Kogan Page Publication, 2011'
+      ]
+    },
+    'EE250': {
+      code: 'EE250',
+      name: 'Signals and Systems',
+      type: 'Theory',
+      credits: 3,
+      ltp: '3-0-0',
+      teachingSlot: 'A',
+      examSlot: 'A',
+      coordinator: 'Dr. Amol D Rahulkar',
+      shortName: 'ADR',
+      facultyDesignation: 'Associate Professor (EEE)',
+      facultyResearch: 'Signal Processing, Multirate Signal Analysis, Digital Control Systems, Wavelets',
+      email: 'amol.rahulkar@nitgoa.ac.in',
+      facultyWebsite: 'https://www.nitgoa.ac.in/department/eee/faculty/amol-rahulkar',
+      room: 'Classroom 52',
+      category: 'core',
+      notes: 'Continuous & discrete-time signals, LTI systems, convolution integral, Laplace transform circuit analysis, Fourier transforms, sampling theorem, and Z-transforms.',
+      modules: [
+        'Module 1: Introduction to CT Signals & Systems - Continuous-time signals, transformations of independent variables, unit step, impulse, sinusoid, complex exponential, signal classification, linearity, time-invariance, causality, and stability with examples.',
+        'Module 2: Time-Domain Analysis of LTI Systems - Impulse response and step response, convolution integral, characterization of causality and stability, differential equation representations of electrical networks, Laplace transform circuit analysis, and state space representations.',
+        'Module 3: Frequency-Domain Analysis - Continuous-Time Fourier Series (CTFS), Continuous-Time Fourier Transform (CTFT), Fourier transform properties, magnitude and phase response computation for electrical networks, Fourier domain duality, and harmonic analysis.',
+        'Module 4: Sampling, Reconstruction & Z-Transforms - Sampling theorem, aliasing, quantization, reconstruction of band-limited signals, discrete-time signals and systems, convolution sum, Z-Transform, Region of Convergence (ROC), inverse Z-transform, difference equations, and DTFT.'
+      ],
+      textbooks: [
+        'Alan V. Oppenheim, Alan S. Willsky, and S. Hamid Nawab, "Signals and Systems", 2nd Edition, Prentice Hall / Pearson, 1997',
+        'Simon Haykin and Barry Van Veen, "Signals and Systems", 2nd Edition, John Wiley & Sons, 2003',
+        'B. P. Lathi, "Signal Processing and Linear Systems", Oxford University Press, 1998'
       ]
     },
     'EE251': {
       code: 'EE251',
-      name: 'Microprocessors & Microcontrollers',
+      name: 'Electrical Machines - I',
       type: 'Theory',
       credits: 3,
       ltp: '3-0-0',
       teachingSlot: 'B',
       examSlot: 'B',
-      coordinator: 'Dr. Amol D Rahulkar',
-      shortName: 'ADR',
-      facultyDesignation: 'Associate Professor (EEE)',
-      facultyResearch: 'Embedded Controllers for Power Electronics, Digital Control',
-      email: 'amol.rahulkar@nitgoa.ac.in',
-      facultyWebsite: 'https://www.nitgoa.ac.in/department/eee/faculty/amol-rahulkar',
+      coordinator: 'Dr. Anudevi Samuel',
+      shortName: 'ADS',
+      facultyDesignation: 'Assistant Professor (EEE)',
+      facultyResearch: 'AC and DC Machine Modeling, Synchronous Machines, Electric Vehicle Powertrains',
+      email: 'ad.dksamuel@nitgoa.ac.in',
+      facultyWebsite: 'https://www.nitgoa.ac.in/department/eee/faculty/anudevi-samuel',
       room: 'Classroom 52',
       category: 'core',
-      notes: '8085/8086 processor, 8051 microcontroller, timers, serial ports, PWM generation for converter firing.',
+      notes: 'Magnetic circuits, electromechanical energy conversion, DC generators and motors, single-phase and three-phase transformers, polyphase induction machines.',
       modules: [
-        'Module 1: 8086 Architecture & Assembly - Register banks, Memory organization, Addressing modes, Flag register, Assembly program design for mathematical computations.',
-        'Module 2: Interfacing Peripherals - 8255 PPI, 8254 Timer/Counter for PWM generation, 8259 Interrupt Controller, ADC 0809 and DAC 0808 interfacing.',
-        'Module 3: 8051 Microcontroller Architecture - Hardware overview, Timers and counters, Interrupt priority, Serial port communication (Modes 0, 1, 2, 3).',
-        'Module 4: Microcontroller Applications in Power Systems - Frequency and phase measurement, Firing angle calculation and gate trigger pulse generation for SCR converters.'
+        'Module 1: Basic Magnetic Concepts & Electromechanical Conversion - Review of magnetic circuits, flux, MMF, EMF, force, exciting current, hysteresis and eddy current losses, field energy and co-energy, concentrated and distributed windings, winding factors, pulsating and rotating magnetic fields, torque production.',
+        'Module 2: DC Machines - Classification of DC machines, armature windings, EMF equation, armature reaction, commutation, electromagnetic torque, operating characteristics, losses and efficiency, speed control of DC motors, electric braking, and PMDC motors.',
+        'Module 3: Transformers - Single-phase: Working principle, ideal vs practical transformer, per-unit system, equivalent circuit, phasor diagrams, voltage regulation, losses and efficiency, OC and SC tests, autotransformers. Three-phase: Winding connections, vector grouping, Scott connection, parallel operation, and harmonics.',
+        'Module 4: Induction Machines Fundamentals - Modes of operation, equivalent circuit model, torque-slip and power-slip characteristics, parameter determination, circle diagram, starting methods, and speed control of induction motors.'
       ],
       textbooks: [
-        'Muhammad Ali Mazidi, "The 8051 Microcontroller and Embedded Systems", Pearson',
-        'Douglas V. Hall, "Microprocessors and Interfacing", McGraw-Hill'
+        'A. E. Fitzgerald, C. Kingsley, and S. D. Umans, "Electric Machinery", 6th Edition, Tata McGraw-Hill, 2003',
+        'P. S. Bimbhra, "Electrical Machinery", 7th Edition, Khanna Publishers, 2008',
+        'P. C. Sen, "Principles of Electric Machines and Power Electronics", 3rd Edition, Wiley India, 2020'
       ]
     },
     'EE252': {
       code: 'EE252',
-      name: 'Control Systems',
+      name: 'Digital Systems',
       type: 'Theory',
-      credits: 4,
-      ltp: '3-1-0',
+      credits: 3,
+      ltp: '3-0-0',
       teachingSlot: 'C',
       examSlot: 'C',
-      coordinator: 'Dr. Sreeraj E.S.',
-      shortName: 'SES',
-      facultyDesignation: 'Associate Professor (EEE)',
-      facultyResearch: 'Control Systems, Grid Inverter Controls, Soft Computing',
-      email: 'sreeraj@nitgoa.ac.in',
-      facultyWebsite: 'https://www.nitgoa.ac.in/department/eee/faculty/sreeraj-es',
+      coordinator: 'Dr. Mahi Teja Talluri',
+      shortName: 'MTT',
+      facultyDesignation: 'Assistant Professor (EEE)',
+      facultyResearch: 'Digital VLSI Architecture, FPGA Digital Design, Hardware Description Languages',
+      email: 'mahiteja.talluri@nitgoa.ac.in',
+      facultyWebsite: 'https://www.nitgoa.ac.in/department/eee/faculty/mahi-teja',
       room: 'Classroom 52',
       category: 'core',
-      notes: 'Block diagrams, signal flow graphs, time response, Routh-Hurwitz, Root Locus, Bode and Nyquist plots.',
+      notes: 'Number systems, Boolean logic minimization, combinational MSI circuits, sequential state machines, semiconductor memories, and Verilog HDL.',
       modules: [
-        'Module 1: System Modeling & Feedback - Transfer functions of electrical, mechanical, and electro-mechanical systems, Block diagram reduction, Mason gain formula.',
-        'Module 2: Time Domain Analysis - Standard test signals, Transient response of first and second order systems, Time domain specifications (Damping ratio, Settling time, Peak overshoot), Steady state error and error constants.',
-        'Module 3: Stability & Root Locus - Concept of BIBO stability, Routh-Hurwitz stability criterion, Construction rules of Root Locus, Determination of marginal gain K, Effect of adding poles and zeros.',
-        'Module 4: Frequency Domain Analysis - Bode plot, Gain Margin and Phase Margin, Polar plots, Nyquist stability criterion, Lead, Lag and Lead-Lag compensator design.'
+        'Module 1: Number Systems & Logic Minimization - Number systems and conversion, error detecting and correcting codes, Boolean algebra theorems, logic gates, Karnaugh map minimization (up to 5 variables), Quine-McCluskey tabulation method, and static/dynamic hazards.',
+        'Module 2: Combinational Logic Circuits - Adders, subtractors, parallel adders, BCD adders, binary multipliers, magnitude comparators, decoders, BCD-to-7-segment decoders, encoders, priority encoders, multiplexers, demultiplexers, and logic implementation using multiplexers.',
+        'Module 3: Sequential Circuits & State Machines - Latches, flip-flops (SR, D, JK, T), edge-triggered flip-flops, timing races, shift registers, universal shift registers, ring and Johnson counters, sequence generators and detectors, synchronous and asynchronous counters.',
+        'Module 4: Synchronous State Machines & Memories - Canonical models of state machines, state diagrams, state tables, state assignment, Moore and Mealy models, state minimization, timing analysis (setup and hold times), SRAM, DRAM, ROM, PLA, PAL, ADC, DACs, and Verilog HDL modeling.'
       ],
       textbooks: [
-        'Katsuhiko Ogata, "Modern Control Engineering", 5th Edition, Pearson',
-        'I. J. Nagrath, M. Gopal, "Control Systems Engineering", 6th Edition, New Age International'
+        'M. Morris Mano and Michael D. Ciletti, "Digital Design: With an Introduction to the Verilog HDL", 5th Edition, Pearson, 2013',
+        'John F. Wakerly, "Digital Design: Principles and Practices", 4th Edition, Prentice-Hall, 2006',
+        'Stephen Brown and Zvonko Vranesic, "Fundamentals of Digital Logic with VHDL Design", 3rd Edition, McGraw-Hill, 2017'
       ]
     },
     'EE253': {
       code: 'EE253',
-      name: 'Power Systems - I (Generation & Trans.)',
+      name: 'Control Systems',
       type: 'Theory',
-      credits: 3,
-      ltp: '3-0-0',
+      credits: 4,
+      ltp: '3-1-0',
       teachingSlot: 'D',
       examSlot: 'D',
-      coordinator: 'Dr. Suresh Mikkili',
-      shortName: 'SM',
-      facultyDesignation: 'Associate Professor & HoD (EEE)',
-      facultyResearch: 'Power System Operation, Renewable Energy Integration, Power Quality',
-      email: 'mikkili.suresh@nitgoa.ac.in',
-      facultyWebsite: 'https://www.nitgoa.ac.in/department/eee/faculty/suresh-mikkili',
+      coordinator: 'Dr. Sreeraj E.S.',
+      shortName: 'SES',
+      facultyDesignation: 'Associate Professor (EEE)',
+      facultyResearch: 'Control Systems Engineering, Sensorless Inverter Control, Grid Integration, Soft Computing',
+      email: 'sreeraj@nitgoa.ac.in',
+      facultyWebsite: 'https://www.nitgoa.ac.in/department/eee/faculty/sreeraj-es',
       room: 'Classroom 52',
       category: 'core',
-      notes: 'Generation economics, transmission line parameters (R, L, C), performance models, corona, underground cables.',
+      notes: 'Mathematical modeling, block diagrams, signal flow graphs, time response specifications, Routh-Hurwitz, Root Locus, Bode and Nyquist plots, compensator design, and state-space analysis.',
       modules: [
-        'Module 1: Generation & Economics of Power - Load curves, Load factor, Diversity factor, Plant capacity factor, Tariffs, Solar PV and wind energy conversion principles.',
-        'Module 2: Transmission Line Parameters - Resistance, Skin effect, Proximity effect, Inductance of single and 3-phase lines with symmetrical and unsymmetrical spacing, GMD and GMR, Bundled conductors, Line capacitance.',
-        'Module 3: Performance of Transmission Lines - Short, Medium (Nominal-T and Nominal-Pi), and Long transmission line models (Rigorous solution), Ferranti effect, Surge Impedance Loading (SIL).',
-        'Module 4: Mechanical Design & Cables - Overhead line insulators (Suspension, Pin), String efficiency and grading methods, Sag and tension calculations (Equal and unequal level supports), Underground cables (Grading of cables, Capacitance of 3-core cables).'
+        'Module 1: Mathematical Modeling of Physical Systems - Open loop and closed loop systems, transfer functions of electrical and mechanical systems, block diagram reduction, signal flow graphs and Mason gain formula, feedback characteristics, stepper motors, tachogenerators, AC/DC servomotors.',
+        'Module 2: Time Response Analysis - Standard test signals, transient response of first and second-order systems, steady-state errors and static error coefficients, time domain specifications (rise time, peak time, peak overshoot, settling time), effect of adding poles and zeros.',
+        'Module 3: Stability & Root Locus Techniques - Concept of absolute and relative stability, Routh-Hurwitz stability criterion, construction rules of Root Locus, determination of marginal gain K, effects of pole-zero additions on root locus trajectories.',
+        'Module 4: Frequency Domain Analysis & Compensation - Frequency response specifications, correlation between time and frequency domains, Bode plots, Polar plots, Nyquist stability criterion, gain margin and phase margin, P, PI, and PID controllers, design of Lead, Lag, and Lead-Lag compensators.',
+        'Module 5: State Space Analysis - State space modeling, state transition matrix, diagonalization, Jordan canonical form, phase-variable canonical forms, controllability and observability (Kalman tests).'
       ],
       textbooks: [
-        'C. L. Wadhwa, "Electrical Power Systems", 7th Edition, New Age International',
-        'I. J. Nagrath, D. P. Kothari, "Modern Power System Analysis", 4th Edition, McGraw-Hill'
+        'Katsuhiko Ogata, "Modern Control Engineering", 5th Edition, PHI / Pearson, 2020',
+        'M. Gopal, "Control Systems: Principles and Design", 4th Edition, Tata McGraw-Hill, 2020',
+        'I. J. Nagrath and M. Gopal, "Control Systems Engineering", 7th Edition, New Age International, 2021'
       ]
-    },
-    'MA250': {
-      code: 'MA250',
-      name: 'Linear Algebra & Numerical Methods',
-      type: 'Theory',
-      credits: 3,
-      ltp: '3-0-0',
-      teachingSlot: 'E',
-      examSlot: 'E',
-      coordinator: 'Dr. J. P. Jaiswal',
-      shortName: 'JPJ',
-      facultyDesignation: 'Associate Professor & HoD (Applied Sciences)',
-      facultyResearch: 'Numerical Analysis and Mathematical Modeling',
-      email: 'jpjaiswal@nitgoa.ac.in',
-      room: 'Classroom 52',
-      category: 'core',
-      notes: 'Numerical solutions of non-linear equations, linear systems, numerical calculus and ODE solvers.',
-      modules: [
-        'Module 1: Iterative Methods for Non-linear Equations.',
-        'Module 2: Numerical Linear Algebra & Eigenvalue Algorithms.',
-        'Module 3: Interpolation and Splines.',
-        'Module 4: Numerical Integration and Differential Equation Solvers.'
-      ],
-      textbooks: ['M. K. Jain, S. R. K. Iyengar, "Numerical Methods", New Age']
     },
     'EE254': {
       code: 'EE254',
-      name: 'Electrical Machines - II Laboratory',
+      name: 'Computational Methods',
+      type: 'Theory',
+      credits: 3,
+      ltp: '2-0-2',
+      teachingSlot: 'E',
+      examSlot: 'E',
+      coordinator: 'Dr. Ankeshwarapu Sunil',
+      shortName: 'ASU',
+      facultyDesignation: 'Assistant Professor (Mathematics / Applied Sciences)',
+      facultyResearch: 'Computational Mathematics, Numerical Solutions of Differential Equations',
+      email: 'ankeshwarapu@nitgoa.ac.in',
+      facultyWebsite: 'https://www.nitgoa.ac.in/department/applied-sciences/faculty/ankeshwarapu-sunil',
+      room: 'Classroom 52',
+      category: 'core',
+      notes: 'Theory cum practical course: Numerical root finding, Jacobi/Gauss-Seidel solvers, Power method for eigenvalues, interpolation, numerical quadrature, and numerical ODE/PDE solvers.',
+      modules: [
+        'Module 1: Numerical Solution of Equations & Systems - Bisection method, Fixed point iteration, Secant, Regula-Falsi, Newton-Raphson methods and convergence analysis. Jacobi and Gauss-Seidel iterative methods, Power method for dominant eigenvalue and eigenvector.',
+        'Module 2: Interpolation, Differentiation & Integration - Lagrange interpolation, Newton divided differences, method of least squares curve fitting, open and closed Newton-Cotes formulas, Trapezoidal and Simpson rules, Gaussian quadrature.',
+        'Module 3: Numerical Differential Equations - Euler, Modified Euler, Taylor series, and 4th-order Runge-Kutta methods for ODEs. Multistep methods. Finite difference methods for elliptic, parabolic (Crank-Nicolson), and hyperbolic partial differential equations.',
+        'Module 4: Computational Laboratory Experiments - Computer programming on numerical platforms to solve single-variable and system equations, eigenvalue problems, curve fitting, numerical calculus, and differential equations in electrical engineering.'
+      ],
+      textbooks: [
+        'M. K. Jain, S. R. K. Iyengar, and R. K. Jain, "Numerical Methods for Scientific and Engineering Computation", 6th Edition, New Age International, 2012',
+        'Erwin Kreyszig, "Advanced Engineering Mathematics", 8th Edition, Wiley India, 2010',
+        'R. L. Burden and J. D. Faires, "Numerical Analysis", 9th Edition, Brooks/Cole, 2012'
+      ]
+    },
+    'EE255': {
+      code: 'EE255',
+      name: 'Electrical Machines - I Lab',
       type: 'Practical',
       credits: 2,
       ltp: '0-0-3',
@@ -565,42 +605,87 @@ export const EEE_4: SemesterData = {
       coordinator: 'Dr. Anudevi Samuel',
       shortName: 'ADS',
       facultyDesignation: 'Assistant Professor (EEE)',
-      facultyResearch: 'AC Machines and Drives Testing',
+      facultyResearch: 'Electrical Machine Characterization and Drive Testing',
       email: 'ad.dksamuel@nitgoa.ac.in',
       room: 'Electrical Machines Lab',
       category: 'lab',
-      notes: 'No-load and blocked rotor test of 3-phase induction motor, slip test, regulation of alternator by EMF/MMF/ZPF methods.',
+      notes: 'B-H curve, DC generator & motor load characteristics, speed control of DC motors, open/short circuit tests on transformers, no-load and blocked rotor test of induction motor.',
       modules: [
-        'Lab 1: No-load and blocked rotor tests on 3-Phase Induction Motor to draw circle diagram and determine performance.',
-        'Lab 2: Voltage regulation of 3-phase alternator by Synchronous Impedance (EMF) and MMF methods.',
-        'Lab 3: Potier method (ZPF) to determine armature leakage reactance and voltage regulation.',
-        'Lab 4: Slip test on Salient Pole Synchronous Machine to determine direct axis (Xd) and quadrature axis (Xq) reactances.'
+        'Experiment 1: Determination of B-H curve and magnetization characteristics for ferromagnetic core.',
+        'Experiment 2: Open-circuit and load characteristics of separately excited and self-excited DC shunt generator.',
+        'Experiment 3: Load characteristics of DC series and compound motors.',
+        'Experiment 4: Speed control of DC shunt motor by armature voltage control and field flux weakening.',
+        'Experiment 5: Open-circuit (OC) and short-circuit (SC) tests on single-phase transformer to determine equivalent circuit parameters, efficiency, and regulation.',
+        'Experiment 6: Direct load test on single-phase and three-phase transformers.',
+        'Experiment 7: No-load and blocked-rotor tests on three-phase induction motor to determine circle diagram and performance metrics.',
+        'Experiment 8: Load test and speed control of slip ring induction motor via rotor resistance variation.'
       ],
-      textbooks: ['P. S. Bimbhra, "Electrical Machinery", Khanna Publishers']
+      textbooks: [
+        'P. S. Bimbhra, "Electrical Machinery", Khanna Publishers',
+        'Department of EEE, "Electrical Machines - I Laboratory Manual", NIT Goa'
+      ]
     },
-    'EE255': {
-      code: 'EE255',
-      name: 'Control Systems Laboratory',
+    'EE256': {
+      code: 'EE256',
+      name: 'Analog and Digital circuit Lab',
       type: 'Practical',
       credits: 2,
       ltp: '0-0-3',
       teachingSlot: 'LAB_THU',
       examSlot: 'LAB',
+      coordinator: 'Dr. Mahi Teja Talluri',
+      shortName: 'MTT',
+      facultyDesignation: 'Assistant Professor (EEE)',
+      facultyResearch: 'Analog and Digital Circuit Prototyping, FPGA Systems',
+      email: 'mahiteja.talluri@nitgoa.ac.in',
+      room: 'Analog & Digital Electronics Lab',
+      category: 'lab',
+      notes: 'MOSFET characteristics, RC oscillators, adders/subtractors, MUX/DEMUX, counters/registers, op-amp linear/non-linear circuits, multivibrators, PLL, and Verilog HDL simulations.',
+      modules: [
+        'Experiment 1: Static and dynamic characteristics of MOSFET in different configurations and RC phase-shift oscillator.',
+        'Experiment 2: Design and testing of full adder, full subtractor, binary multiplier, and magnitude comparator circuits.',
+        'Experiment 3: Implementation of multiplexer, demultiplexer, and realization of combinational logic functions using MUX.',
+        'Experiment 4: Design of synchronous and asynchronous counters and shift registers using flip-flops.',
+        'Experiment 5: Linear and non-linear applications of Op-Amps: Inverting/non-inverting amplifiers, summing amplifiers, Schmitt trigger, and active second-order Butterworth filters.',
+        'Experiment 6: Astable, monostable, and bistable multivibrators using IC 555 and Phase Locked Loop (IC 565) frequency tracking.',
+        'Experiment 7: Analog-to-Digital (ADC) and Digital-to-Analog (DAC) converters.',
+        'Experiment 8: Verilog/VHDL programming to realize logic gates, sequential counters, and finite state machines.'
+      ],
+      textbooks: [
+        'M. Morris Mano, "Digital Design", Pearson',
+        'D. Roy Choudhury, "Linear Integrated Circuits", New Age International',
+        'Department of EEE, "Analog & Digital Circuits Lab Manual", NIT Goa'
+      ]
+    },
+    'EE257': {
+      code: 'EE257',
+      name: 'Control System Lab',
+      type: 'Practical',
+      credits: 2,
+      ltp: '0-0-3',
+      teachingSlot: 'LAB_WED',
+      examSlot: 'LAB',
       coordinator: 'Dr. Sreeraj E.S.',
       shortName: 'SES',
       facultyDesignation: 'Associate Professor (EEE)',
-      facultyResearch: 'Control Systems and Inverter Control',
+      facultyResearch: 'Control Systems Modeling and Validation, Digital PID Controllers',
       email: 'sreeraj@nitgoa.ac.in',
       room: 'Control Systems Lab',
       category: 'lab',
-      notes: 'Synchro transmitter-receiver, AC/DC servo motor characteristics, PID controller tuning and MATLAB/Simulink.',
+      notes: 'MATLAB/Simulink control tools, DC servomotor and Synchro pairs, DC/AC position control, PID tuning, two-tank level control, inverted pendulum, and PLC ladder programming.',
       modules: [
-        'Lab 1: Transfer function determination and torque-speed characteristics of AC Servomotor and DC Servomotor.',
-        'Lab 2: Design and experimental implementation of analog Lead and Lag compensators.',
-        'Lab 3: Tuning of Proportional-Integral-Derivative (PID) controller for temperature and speed control loops.',
-        'Lab 4: MATLAB simulation of Root Locus, Bode plot, and Nyquist stability verification of higher-order systems.'
+        'Experiment 1: Simulation of linear control system tools, step/impulse responses, and root locus / Bode / Nyquist stability analysis in MATLAB/Simulink.',
+        'Experiment 2: Determination of transfer function and torque-speed characteristics of DC servomotor and Synchro transmitter-receiver pairs.',
+        'Experiment 3: Study of rectilinear motion and closed-loop DC and AC position control systems.',
+        'Experiment 4: Design and experimental implementation of closed-loop P, PI, PD, and PID controllers for motor speed and position control.',
+        'Experiment 5: Process control experiments: Temperature control system and two-tank water level control system.',
+        'Experiment 6: Study of inverted pendulum system, 2-DoF ball-on-beam, and 3-DoF gyroscope cascade control.',
+        'Experiment 7: Programmable Logic Controller (PLC) ladder programming for industrial process sequencing and magnetic levitation system.'
       ],
-      textbooks: ['Katsuhiko Ogata, "Modern Control Engineering", Pearson']
+      textbooks: [
+        'Katsuhiko Ogata, "Modern Control Engineering", Pearson',
+        'Department of EEE, "Control Systems Laboratory Manual", NIT Goa'
+      ]
     }
   },
   schedule: buildStandardWeeklySchedule({
@@ -610,10 +695,12 @@ export const EEE_4: SemesterData = {
     slotB: 'EE251',
     slotC: 'EE252',
     slotD: 'EE253',
-    slotE: 'MA250',
-    labTue: { code: 'EE254', name: 'Electrical Machines - II Laboratory', room: 'Electrical Machines Lab' },
-    labThu: { code: 'EE255', name: 'Control Systems Laboratory', room: 'Control Systems Lab' },
-    saturdayFocus: 'Control Stability & Grid Power Modeling Clinic',
+    slotE: 'EE254',
+    slotF: 'IE250',
+    labTue: { code: 'EE255', name: 'Electrical Machines - I Lab', room: 'Electrical Machines Lab' },
+    labWed: { code: 'EE257', name: 'Control System Lab', room: 'Control Systems Lab' },
+    labThu: { code: 'EE256', name: 'Analog and Digital circuit Lab', room: 'Analog & Digital Electronics Lab' },
+    saturdayFocus: 'Computational Methods & Control Systems Modeling Workshop',
   }),
 };
 

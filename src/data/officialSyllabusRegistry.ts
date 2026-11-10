@@ -8,6 +8,7 @@ export interface OfficialCourseSyllabus {
   branch: string;
   pdfPath: string;
   pdfName: string;
+  pdfPage?: number;
   sourceUrl?: string;
   ltp: string;
   credits: number;
@@ -1458,9 +1459,10 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "code": "ME255",
     "name": "Kinematics & Dynamics Laboratory",
     "branch": "MCE",
-    "pdfPath": "/syllabi/MCE2025.pdf",
-    "pdfName": "MCE2025.pdf",
-    "sourceUrl": "https://nitgoa.ac.in/uploads/MCE2025.pdf",
+    "pdfPath": "/syllabi/Mechanical2025.pdf",
+    "pdfName": "Mechanical2025.pdf",
+    "pdfPage": 36,
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/Mechanical2025.pdf",
     "ltp": "0-0-3",
     "credits": 2,
     "modules": [
@@ -1479,6 +1481,64 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
       "CO2: Perform dynamic balancing of rotating machinery and quantify unbalance forces.",
       "CO3: Verify gyroscopic precession laws and governor sensitivity experimentally.",
       "CO4: Determine natural frequencies and damping ratios of vibrating mechanical structures."
+    ]
+  },
+  "ME256": {
+    "code": "ME256",
+    "name": "Machine Shop - I",
+    "branch": "MCE",
+    "pdfPath": "/syllabi/Mechanical2025.pdf",
+    "pdfName": "Mechanical2025.pdf",
+    "pdfPage": 38,
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/Mechanical2025.pdf",
+    "ltp": "0-0-3",
+    "credits": 2,
+    "modules": [
+      "Module 1: Lathe Operations - Facing, plain turning, step turning, taper turning by compound rest swiveling, knurling, eccentric turning, and thread cutting (metric V-threads).",
+      "Module 2: Shaper, Planer & Milling Operations - Shaping flat horizontal and vertical surfaces, cutting V-grooves and keyways, milling spur gears with simple and compound indexing setups.",
+      "Module 3: Grinding & Finishing - Surface grinding for specified dimensional tolerance and Ra roughness values, tool grinding on pedestal grinder."
+    ],
+    "textbooks": [
+      "S. K. Hajra Choudhury, \"Elements of Workshop Technology (Vol. II - Machine Tools)\", Media Promoters & Publishers.",
+      "Department of Mechanical Engineering, \"Machine Shop - I Laboratory Manual\", NIT Goa."
+    ],
+    "objectives": [
+      "Provide practical hands-on machining skills on conventional machine tools including lathes, shapers, and milling machines.",
+      "Understand machining tolerances, tool geometries, cutting parameters, and workshop safety."
+    ],
+    "outcomes": [
+      "CO1: Operate center lathes to machine components with turning, knurling, and single-point thread cutting.",
+      "CO2: Perform surface shaping and keyway machining with shaper machine tools.",
+      "CO3: Manufacture spur gears on a milling machine utilizing universal dividing head indexing."
+    ]
+  },
+  "ME257": {
+    "code": "ME257",
+    "name": "Design Laboratory - II",
+    "branch": "MCE",
+    "pdfPath": "/syllabi/Mechanical2025.pdf",
+    "pdfName": "Mechanical2025.pdf",
+    "pdfPage": 39,
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/Mechanical2025.pdf",
+    "ltp": "0-0-3",
+    "credits": 2,
+    "modules": [
+      "Module 1: 3D Part & Assembly Modeling - Parametric solid modeling of mechanical machine components: shafts, couplings, bearings, gears, connecting rods, and piston assemblies.",
+      "Module 2: Engineering Drafting & GD&T - Production drawings with orthographic projections, section views, bill of materials (BOM), limits, fits, and geometric dimensioning and tolerancing (GD&T).",
+      "Module 3: Finite Element Simulation Basics - Linear static stress analysis and displacement deflection verification of beam and bracket components under design loads."
+    ],
+    "textbooks": [
+      "Sham Tickoo, \"SolidWorks for Designers\", CADCIM Technologies.",
+      "K. L. Narayana, \"Machine Drawing\", New Age International Publishers."
+    ],
+    "objectives": [
+      "Master computer-aided mechanical drafting and 3D parametric CAD solid modeling.",
+      "Generate standard production drawings with ISO/ASME GD&T symbols and bills of material."
+    ],
+    "outcomes": [
+      "CO1: Create parametric 3D CAD parts and multi-component assemblies with motion constraints.",
+      "CO2: Produce standardized manufacturing engineering drawings complying with GD&T conventions.",
+      "CO3: Perform preliminary stress and deflection checks on modeled machine elements."
     ]
   },
   "ME300": {
@@ -2232,27 +2292,33 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "pdfPage": 33,
+    "ltp": "1-0-0",
+    "credits": 1,
     "modules": [
-      "Module 1: Introduction: Creative thinking, blocks to creativity, factors that influence creative design, engi-\nneering design and creative design, influence of society, market pull & technology push, attribute\nof a creative person Three levels of Design - Viceral, Behavioral and Reflective design. Qualities\nand skills required for entrepreneurship, Functions of an entrepreneur, Importance of entrepreneur\nin economic development",
-      "Module 2: Ideas for Entrepreneurship: Need or identification of a problem, market survey, data collection,\nreview & analysis, problem definition, challenge statement, problem statement initial specifications,\nBrain storming, analogy technique or Synectic, check list, trigger words, morphological method,\ninteraction matrix method, analysis of interconnected decision making.",
-      "Module 3: Theory of Inventive Problem Solving (TRIZ): 20 key TRIZ principles – multifunction, com-\npensation, nested doll, blessing in disguise, segmentation, separation, symmetry change, opaque &\nporous, inflate and deflate, recycle & recover, phase transformation, energy, imaging, environment,\ncomposition, economical, surface response, static & dynamic, continuous & intermittent, dimensions.",
-      "Module 4: Product Design, IPR & Finance: Detail design, prototyping, product deployment, useful life\nassessment and recycling and sustainability; patent act, patent laws, Types of entrepreneurs- Based\non type of business, based on use of technology, based on motivation, based on stages of development,\nbased on motive, Based on capital ownership, Business Plan, Finance and Funding.\n3.1.5"
+      "Module 1: Introduction: Creative thinking, blocks to creativity, factors that influence creative design, engineering design and creative design, influence of society, market pull & technology push, attribute of a creative person. Three levels of Design - Visceral, Behavioral and Reflective design. Qualities and skills required for entrepreneurship, Functions of an entrepreneur, Importance of entrepreneur in economic development.",
+      "Module 2: Ideas for Entrepreneurship: Need or identification of a problem, market survey, data collection, review & analysis, problem definition, challenge statement, problem statement initial specifications, Brain storming, analogy technique or Synectic, check list, trigger words, morphological method, interaction matrix method, analysis of interconnected decision making.",
+      "Module 3: Theory of Inventive Problem Solving (TRIZ): 20 key TRIZ principles – multifunction, compensation, nested doll, blessing in disguise, segmentation, separation, symmetry change, opaque & porous, inflate and deflate, recycle & recover, phase transformation, energy, imaging, environment, composition, economical, surface response, static & dynamic, continuous & intermittent, dimensions.",
+      "Module 4: Product Design, IPR & Finance: Detail design, prototyping, product deployment, useful life assessment and recycling and sustainability; patent act, patent laws, Types of entrepreneurs - Based on type of business, based on use of technology, based on motivation, based on stages of development, based on capital ownership, Business Plan, Finance and Funding."
     ],
     "textbooks": [
-      "3.1.5.1 Text Books:",
       "1. C B Gupta and N P Srinivasan, ”Entrepreneurial Development”, Sultan Chand and Sons, 2020",
-      "3.1.5.2 Reference Books:",
-      "1. Floyd Hurt, ”Rousing Creativity: Think New Now”, Crisp Publications Inc., 1999",
-      "2. Kalevi Rantanen and Ellen Domb, ”Simplified TRIZ”, Auerbach Publications, Taylor & Francis Group, 2010\n(2nd Ed.)",
-      "3. John Adair, ”The Art of Creative Thinking”, Kogan Page Publication, 2011",
-      "3.2 Signals and Systems"
+      "2. Floyd Hurt, ”Rousing Creativity: Think New Now”, Crisp Publications Inc., 1999",
+      "3. Kalevi Rantanen and Ellen Domb, ”Simplified TRIZ”, Auerbach Publications, Taylor & Francis Group, 2010 (2nd Ed.)",
+      "4. John Adair, ”The Art of Creative Thinking”, Kogan Page Publication, 2011"
     ],
-    "objectives": [],
+    "objectives": [
+      "Introduce a project-based learning approach from Ideation to Innovation and Entrepreneurship.",
+      "Learn the essential concepts of innovation and entrepreneurship through hands-on activities.",
+      "Provide tools necessary for starting independent innovation, IPR, patenting, and venture finance."
+    ],
     "outcomes": [
-      "At the completion of this course, the student shall acquire knowledge and ability"
-    ]
+      "CO1: Comprehend the basic theories and concepts of Innovation, Entrepreneurship and Social Business.",
+      "CO2: Understand how to generate startup business ideas and refine them for marketplace success.",
+      "CO3: Gain exposure to strategies of effective real-life innovators and entrepreneurs.",
+      "CO4: Master IPR, patent laws, rapid prototyping, and financial management."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/EEE2025.pdf"
   },
   "EE250": {
     "code": "EE250",
@@ -2260,28 +2326,34 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
+    "pdfPage": 35,
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-      "Module 1: Introduction to CT Signals and Systems: Continuous-time signals, transformation of indepen-\ndent variables, some signals of importance: unit step, unit impulse, sinusoid, complex exponential\netc., Classification of signals, Operations on Signals, Systems and its properties (linearity, shift-\ninvariance, causality, stability etc.) with examples.",
-      "Module 2: Analysis of CT signals and Systems in Time-domain: Impulse response and step response\nof continuous-time linear time invariant systems, Convolution integral, characterization of causality\nand stability of linear time-invariant systems, system representation using differential equations\nwith electrical networks, Analysis of Electrical circuits (First order and Second Order Circuits)\nusing Laplace transform, state space representation in Laplace transform.",
-      "Module 3: Analysis of CT signals and Systems in Frequency-domain: Fourier Transform and its prop-\nerties, magnitude and phase response computation for electrical networks, Fourier domain duality,\nharmonic analysis of simple electrical networks.",
-      "Module 4: Sampling and Reconstruction: Sampling theorem, Aliasing, Quantization, reconstruction of\nband limited signals, discrete-time signals and systems, difference equation, convolution sum, auto-\ncorrelation and cross-correlation.",
-      "Module 5: Analysis of DT signals and systems in Frequency domain: Z-transform and inverse Z-\ntransform for some typical signals, solution of difference equation, stability analysis in z-domain.\nDiscrete-time Fourier series and its properties, Discrete-time Fourier transform and its properties,\napplications of signals and system theory.\n3.2.5"
+      "Module 1: Introduction to CT Signals and Systems: Continuous-time signals, transformation of independent variables, signals of importance (unit step, unit impulse, sinusoid, complex exponential), Classification of signals, Operations on Signals, Systems and properties (linearity, shift-invariance, causality, stability).",
+      "Module 2: Analysis of CT signals and Systems in Time-domain: Impulse response and step response of continuous-time linear time invariant systems, Convolution integral, characterization of causality and stability of linear time-invariant systems, system representation using differential equations with electrical networks, Analysis of Electrical circuits (First order and Second Order Circuits) using Laplace transform, state space representation in Laplace transform.",
+      "Module 3: Analysis of CT signals and Systems in Frequency-domain: Continuous-Time Fourier Series (CTFS), Continuous-Time Fourier Transform (CTFT) and properties, magnitude and phase response computation for electrical networks, Fourier domain duality, harmonic analysis of electrical networks.",
+      "Module 4: Sampling and Reconstruction: Sampling theorem, Aliasing, Quantization, reconstruction of band-limited signals, discrete-time signals and systems, difference equations, convolution sum, auto-correlation and cross-correlation.",
+      "Module 5: Analysis of DT signals and systems in Frequency domain: Z-transform and inverse Z-transform for typical signals, solution of difference equations, stability analysis in z-domain. Discrete-time Fourier series and its properties, Discrete-time Fourier transform (DTFT) and properties."
     ],
     "textbooks": [
-      "3.2.5.1 Text Books:",
-      "1. Alan V Oppenheim, Alan S Willsky and S Hamid Nawab, ”Signals and Systems”, Prentice Hall, 1983",
-      "2. Simon Haykin and Barry van Veen, ”Signals and Systems”, John Wiley and Sons (Asia) Private Limited, 1998",
-      "3.2.5.2 Reference Books:",
-      "1. M E Van Valkenberg, “Network Analysis”, PHI Learning Publications, 2014 (3rd Ed.)",
-      "2. B P Lathi, ”Signal Processing and Linear Systems”, Oxford University Press, 1998",
-      "3.3 Electrical Machines - I"
+      "1. Alan V Oppenheim, Alan S Willsky and S Hamid Nawab, ”Signals and Systems”, Prentice Hall, 1997 (2nd Ed.)",
+      "2. Simon Haykin and Barry van Veen, ”Signals and Systems”, John Wiley and Sons, 2003 (2nd Ed.)",
+      "3. M E Van Valkenberg, “Network Analysis”, PHI Learning Publications, 2014 (3rd Ed.)",
+      "4. B P Lathi, ”Signal Processing and Linear Systems”, Oxford University Press, 1998"
     ],
-    "objectives": [],
+    "objectives": [
+      "Analyze continuous-time and discrete-time signals in both time and frequency domains.",
+      "Evaluate linearity, time-invariance, causality, and stability of physical LTI electrical networks.",
+      "Apply Laplace transforms, Fourier transforms, and Z-transforms to circuit analysis."
+    ],
     "outcomes": [
-      "At the completion of this course, the student shall acquire knowledge and ability"
-    ]
+      "CO1: Categorize signals and systems and analyze system properties mathematically.",
+      "CO2: Compute impulse response, convolution integral, and state space representations of electrical circuits.",
+      "CO3: Formulate frequency response and spectra of signals using Fourier analysis.",
+      "CO4: Apply Z-transform and DTFT to solve discrete-time difference equations and verify stability."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/EEE2025.pdf"
   },
   "EE251": {
     "code": "EE251",
@@ -2289,29 +2361,32 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
+    "pdfPage": 37,
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-      "Module 1: Basic Concepts: Review of Magnetic Circuits, Flux, MMF, EMF, Force, exciting current, Hystere-\nsis and eddy current loss, Sinusoidal excitation- Review of three phase AC circuits-Concept of Field\nenergy and Co energy, Mechanical force in electromagnetic system- Linear and rotational, Rotating\nmachines, Cylindrical machines, Concentrated and Distributed Winding – Winding factors-MMF\ndistribution in windings, Pulsating and Rotating magnetic field, space and time harmonics, EMF\ngeneration, Torque Production.",
-      "Module 2: DC Machines: Classification of DC machines, Armature windings, EMF, Armature Reaction,\nElectromagnetic torque, Characteristic curves for DC machines, Losses and Efficiency , Speed control\nof DC motors, Braking of DC motors, PMDC motors",
-      "Module 3: Transformer: Single phase: Working principle, Ideal and practical transformer, Per unit concept\nEquivalent circuit and phasor diagrams, Determination of Equivalent circuit parameters, Voltage\nregulation, losses and efficiency, Tests on Transformer, Auto transformer, Distribution transformers.\nThree phase: Three phase winding connections, Vector grouping, Three winding transformers, Tap\nchanging of transformers.",
-      "Module 4: Induction Machines: Introduction ,Modes of operation, Equivalent circuit model, Analysis of\nequivalent circuit- Torque-slip and Power slip characteristics, Determination of equivalent circuit\nparameters, Performance characteristics, Powerflow, Circle diagram, Starting methods of Induction\nmotors, Speed control of induction motors\n3.3.5"
+      "Module 1: Basic Magnetic Concepts: Review of Magnetic Circuits, Flux, MMF, EMF, Force, exciting current, Hysteresis and eddy current loss, Sinusoidal excitation, Concept of Field energy and Co-energy, Mechanical force in electromagnetic systems (Linear and rotational), Rotating machines, Cylindrical machines, Concentrated and Distributed Winding – Winding factors, MMF distribution in windings, Pulsating and Rotating magnetic fields, space and time harmonics, EMF generation, Torque Production.",
+      "Module 2: DC Machines: Classification of DC machines, Armature windings, EMF equation, Armature Reaction, Electromagnetic torque, Characteristic curves for DC machines, Losses and Efficiency, Speed control of DC motors, Braking of DC motors, PMDC motors.",
+      "Module 3: Transformers: Single phase: Working principle, Ideal and practical transformer, Per-unit concept, Equivalent circuit and phasor diagrams, Determination of Equivalent circuit parameters, Voltage regulation, losses and efficiency, Tests on Transformer (OC/SC), Auto transformer. Three phase: Three phase winding connections, Vector grouping, Three winding transformers, Scott connection, Tap changing of transformers.",
+      "Module 4: Induction Machines: Introduction, Modes of operation, Equivalent circuit model, Analysis of equivalent circuit - Torque-slip and Power-slip characteristics, Determination of equivalent circuit parameters, Performance characteristics, Power flow, Circle diagram, Starting methods of Induction motors, Speed control of induction motors."
     ],
     "textbooks": [
-      "3.3.5.1 Text Books:",
-      "1. A E Fitzgerald, C Kingsley and S D Umans, “Electrical Machinery,” Tata McGraw Hill, 2003 (6th Ed.).",
-      "2. AE Clayton and NN Hancock, “Performance & Design Of DC Machines,” CBS, 2001 (3rd Ed.).",
-      "3. P C Sen, “Principles of Electric Machines,” Wiley India Pvt Ltd., 2020 (3rd Ed.).",
-      "3.3.5.2 Reference Books:",
-      "1. S J Chapman, “Electric Machinery Fundamentals,” McGraw Hill, 2010 (4th Ed.).",
-      "2. I J Nagarath and D P Kothari, “Electric Machines,” Tata McGraw Hill, 2010 (4th Ed.).",
-      "3. P S Bimbhra, “Electrical Machinery,” Khanna Publishers, 2008 (7th Ed.).",
-      "3.4 Digital Systems"
+      "1. A E Fitzgerald, C Kingsley and S D Umans, “Electrical Machinery,” Tata McGraw Hill, 2003 (6th Ed.)",
+      "2. P S Bimbhra, “Electrical Machinery,” Khanna Publishers, 2008 (7th Ed.)",
+      "3. P C Sen, “Principles of Electric Machines,” Wiley India Pvt Ltd., 2020 (3rd Ed.)",
+      "4. I J Nagrath and D P Kothari, “Electric Machines,” Tata McGraw Hill, 2010 (4th Ed.)"
     ],
-    "objectives": [],
+    "objectives": [
+      "Review fundamentals of magnetic circuits and electromechanical energy conversion.",
+      "Understand the working of transformers, DC machines, and polyphase induction machines.",
+      "Analyze equivalent circuit models, efficiency, voltage regulation, and torque-slip characteristics."
+    ],
     "outcomes": [
-      "At the completion of this course, the student shall acquire knowledge and ability"
-    ]
+      "CO1: Familiarize the application of magnetic circuit fundamentals in the working of electrical machines.",
+      "CO2: Understand the electromechanical energy conversion phenomenon in rotating and stationary machines.",
+      "CO3: Predetermine the performance of transformers, DC machines, and induction motors using equivalent circuits."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/EEE2025.pdf"
   },
   "EE252": {
     "code": "EE252",
@@ -2319,31 +2394,33 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
+    "pdfPage": 39,
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
-      "Module 1: Review of Number systems-representation-conversion, error detecting and correcting codes, re-\nview on Boolean algebra and logic gates, simplification of logic functions using Karnaugh map,\nQuine–McCluskey method.",
-      "Module 2: Combinational logic Circuits: Adders, subtractors, parallel adder, BCD adder, binary multiplier,\nmagnitude comparator, decoders, BCD to 7-segment decoder driver, encoders, priority encoders,\ncode converters, parity generator/checker, multiplexers and de-multiplexers, implementation of log-\nical functions using multiplexers.",
-      "Module 3: Sequential circuits, latches and flip-flops: SR-latch, D-latch, D flip-flop, JK flip-flop, T flip-flop,\ntiming hazards and races, edge-triggered flip-flops, register, shift register, universal shift register;\napplication of shift register: ring counter, Johnson counter, sequence generator and detector, up-\nand down counter, asynchronous ripple counter, synchronous counters, counter design using flip\nflops, counter design with asynchronous reset or preset; applications of counters.",
-      "Module 4: Canonical model of a state machine, types of state machines, state diagram, state table, state\nassignment, Moore and Mealy model, state minimization, timing a digital circuit, fundamentals of\ntiming analysis, setup and hold time, Read-only memory, read/write memory – SRAM, DRAM,\nPLAs, PALs, ADC, DACs",
-      "Module 5: Introduction to VLSI design-Basic gate design, Design of general Boolean circuits using CMOS\ngates, Verilog concepts.\n3.4.5"
+      "Module 1: Number Systems & Logic Minimization: Review of Number systems, representation, conversion, error detecting and correcting codes, Boolean algebra and logic gates, simplification of logic functions using Karnaugh map (up to 5 variables), Quine–McCluskey tabulation method, static and dynamic hazards.",
+      "Module 2: Combinational Logic Circuits: Adders, subtractors, parallel adders, BCD adders, binary multipliers, magnitude comparators, decoders, BCD to 7-segment decoder drivers, encoders, priority encoders, code converters, parity generator/checker, multiplexers and de-multiplexers, implementation of logical functions using multiplexers.",
+      "Module 3: Sequential circuits, latches and flip-flops: SR-latch, D-latch, D flip-flop, JK flip-flop, T flip-flop, timing hazards and races, edge-triggered flip-flops, registers, shift registers, universal shift registers; application of shift register: ring counter, Johnson counter, sequence generator and detector, up- and down counters, asynchronous ripple counter, synchronous counters, counter design with asynchronous reset/preset.",
+      "Module 4: Synchronous State Machines & Memory: Canonical model of a state machine, types of state machines, state diagram, state table, state assignment, Moore and Mealy models, state minimization, timing a digital circuit, fundamentals of timing analysis (setup and hold times), Read-only memory (ROM), read/write memory – SRAM, DRAM, PLAs, PALs, ADC, DACs.",
+      "Module 5: Introduction to VLSI design & Verilog: Basic CMOS gate design, Design of general Boolean circuits using CMOS gates, Verilog HDL syntax, behavioral and structural modeling, testbench design."
     ],
     "textbooks": [
-      "3.4.5.1 Text Books:",
-      "1. M. Morris Mano and Michael D. Ciletti, “Digital Design: With an Introduction to Verilog HDL”, Pearson\nEducation India, 2013 (5th Ed.)",
-      "2. Wakerly J F, “Digital Design: Principles and Practices”, Prentice-Hall, 2022 (2nd Ed.)",
-      "3. D. D. Givone, “Digital Principles and Design”, Tata Mc-Graw Hill, New Delhi, 2003",
-      "3.4.5.2 Reference Books:",
-      "1. Stephen Brown and Zvonko Vranesic, “Fundamentals of Digital Logic with VHDL Design”, McGraw Hill Edu-\ncation, 2017 (3rd Ed.)",
-      "2. Ronald J. Tocci, Neal S. Widmer, Gregory L. Moss, “Digital Systems: Principles and Applications”, Pearson\nEducation, 2009 (10th Ed.)",
-      "3. Herbert Taub and Donald Schilling, “Digital Integrated Electronics”, McGraw Hill Education, 2017",
-      "4. T. L. Floyd and Jain, “Digital Fundamentals”, Pearson Education, 2003 (8th Ed.)",
-      "3.5 Control Systems"
+      "1. M. Morris Mano and Michael D. Ciletti, “Digital Design: With an Introduction to Verilog HDL”, Pearson Education, 2013 (5th Ed.)",
+      "2. Wakerly J F, “Digital Design: Principles and Practices”, Prentice-Hall, 2022 (4th Ed.)",
+      "3. Stephen Brown and Zvonko Vranesic, “Fundamentals of Digital Logic with VHDL Design”, McGraw Hill, 2017 (3rd Ed.)"
     ],
-    "objectives": [],
+    "objectives": [
+      "Design optimal combinational and sequential digital circuits using Boolean algebra and K-maps.",
+      "Model and analyze synchronous finite state machines.",
+      "Familiarize with Verilog HDL and FPGA logic synthesis for digital system implementation."
+    ],
     "outcomes": [
-      "At the completion of this course, the student shall acquire knowledge and ability"
-    ]
+      "CO1: Apply Boolean algebra and minimization schemes to deduce optimal digital circuits.",
+      "CO2: Design combinational and sequential circuits for given engineering specifications.",
+      "CO3: Analyze and develop synchronous digital networks using state diagrams.",
+      "CO4: Code combinational and sequential circuits using Verilog HDL."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/EEE2025.pdf"
   },
   "EE253": {
     "code": "EE253",
@@ -2351,111 +2428,137 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
-    "ltp": "3-0-0",
-    "credits": 3,
+    "pdfPage": 41,
+    "ltp": "3-1-0",
+    "credits": 4,
     "modules": [
-      "Module 1: Mathematical Modelling: Open loop and closed loop systems, mathematical modelling of physi-\ncal systems, transfer functions, block diagram and Signal flow graph representation and Analysis of\nSystem, feedback characteristics of closed loop system. Control system components, Stepper motors,\nTacho-generators, DC and AC Servomotors.",
-      "Module 2: Time Response Analysis: Standard test signals, time response of first and second order systems,\nsteady-state errors and dynamic error coefficients, effect of addition of poles and zeros on response\nof system.",
-      "Module 3: Concept of stability: Routh-Hurwitz criterion, Root locus, gain margin and phase margin, effect\nof addition of poles and zeros on root locus.",
-      "Module 4: Frequency domain Analysis: Frequency response specifications, frequency and time domain\ncorrelation, Bode plot, Polar plot, Nyquist criterion, Compensation Techniques: Response of P, PI,\nPID controllers, Design of Lead, Lag, Lead-Lag Compensation.",
-      "Module 5: State Space Analysis: State space model, transfer function from the state space model, Eigen\nvalues, Eigen vector and diagonalisation of the state matrix, Jordan canonical form, Computation\nof state transition matrix, Transformation to phase to variable canonical form, The state diagram,\ndecomposition of digital system, Concept of controllability and observability.\n3.5.5"
+      "Module 1: Mathematical Modelling: Open loop and closed loop systems, mathematical modelling of physical systems, transfer functions, block diagram and Signal flow graph representation and Mason gain formula, feedback characteristics of closed loop systems. Control system components: Stepper motors, Tacho-generators, DC and AC Servomotors.",
+      "Module 2: Time Response Analysis: Standard test signals, time response of first and second order systems, steady-state errors and dynamic error coefficients, effect of addition of poles and zeros on response of systems, time-domain specifications.",
+      "Module 3: Concept of Stability & Root Locus: Absolute and relative stability, Routh-Hurwitz criterion, Root locus construction rules, gain margin and phase margin, effect of addition of poles and zeros on root locus trajectories.",
+      "Module 4: Frequency Domain Analysis & Compensator Design: Frequency response specifications, frequency and time domain correlation, Bode plot, Polar plot, Nyquist stability criterion. Compensation Techniques: Response of P, PI, PID controllers, Design of Lead, Lag, Lead-Lag Compensators.",
+      "Module 5: State Space Analysis: State space model, transfer function from state space model, Eigen values, Eigen vectors and diagonalisation of state matrix, Jordan canonical form, Computation of state transition matrix, Controllability and observability (Kalman tests)."
     ],
     "textbooks": [
-      "3.5.5.1 Text Books:",
-      "1. Katsuhiko Ogata, “Modern Control Engineering”, PHI, 5th Edition, 2020",
+      "1. Katsuhiko Ogata, “Modern Control Engineering”, PHI / Pearson, 5th Edition, 2020",
       "2. M. Gopal, “Control Systems, Principles and Design”, Tata McGraw Hill, 2020",
-      "3.5.5.2 Reference Books:",
-      "1. I. J. Nagrath M. Gopal, “Control Systems Engineering”, New Age Int., 7th Edition,2021",
-      "2. Norman S. Nise, “Control System Engineering”, John Wiley and Sons, Inc, 2018",
-      "3.6 Computational Methods"
+      "3. I. J. Nagrath and M. Gopal, “Control Systems Engineering”, New Age International, 7th Edition, 2021",
+      "4. Norman S. Nise, “Control System Engineering”, John Wiley & Sons, 2018"
     ],
-    "objectives": [],
+    "objectives": [
+      "Familiarize with basic control configurations and mathematical modeling of physical electro-mechanical systems.",
+      "Analyze time and frequency domain responses and evaluate system stability using Root Locus and Nyquist criteria.",
+      "Design and tune P, PI, PID controllers and Lead/Lag compensators."
+    ],
     "outcomes": [
-      "At the completion of this course, the student shall acquire knowledge and ability"
-    ]
+      "CO1: Develop mathematical models for electrical and mechanical systems.",
+      "CO2: Compute and analyze transient and steady-state responses of control loops.",
+      "CO3: Analyze stability using Routh-Hurwitz, Root Locus, Bode, and Nyquist techniques.",
+      "CO4: Design classical compensators and state-space controllers."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/EEE2025.pdf"
   },
   "EE254": {
     "code": "EE254",
-    "name": "Computational Methods Theory cum",
+    "name": "Computational Methods",
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
-    "ltp": "3-0-0",
+    "pdfPage": 43,
+    "ltp": "2-0-2",
     "credits": 3,
     "modules": [
-      "Module 1: Numerical solution of equations and systems: Equations in one variable: The Bisection\nmethod, Fixed point iteration method; Secant method; Regular-Falsi method; Newton’s method\nand its extensions; Convergence of Newtons’s method. System of equations: Jacobi and Gauss-\nSeidel iterative methods; Sufficient conditions for convergence; Power method to find the dominant\neigen value and eigenvector.",
-      "Module 2: Interpolation, Numerical Differentiation and Integration: Interpolation and Curve fitting:\nThe Lagrange polynomial; Divided differences; Method of least square approximations. Numerical\nintegration: Open and closed Newton-Cotes formula; Gaussian quadrature formula.",
-      "Module 3: Numerical Methods for Differential Equations: Ordinary Differential Equations: Euler’s\nmethod; Euler’s modified method; Taylor’s method and Runge-Kutta method; Multistep meth-\nods. Elliptic partial differential equations: Finite difference method for two dimensional equations.\nParabolic partial differential equations: Forward difference method, backward difference method and\nthe Crank-Nicolson method for one dimensional equations. Hyperbolic partial differential equations:\nCentral difference method for one dimensional equations.",
-      "Module 4: Lab Experiments: 2 hrs per week\n1. Introduction on a standard simulation platform.\n2. Program to solve one variable equation using Bisection, Fixed point, Newton Raphson, Regula-\nFalsi and Secant methods.\n3. Program to solve system of equations using Gauss-Jacobi and Gauss-Seidal Method\n4. Program to find dominant eigenvalue using the Power Method\n5. Program to fit a curve using method of least square.\n6. Program to interpolate using the Lagrange polynomial method.\n7. Program to evaluate differentiation and integration.\n8. Programs to solve ordinary differential equations using Euler’s Method, Taylor’s method, R-K\nmethod of order four, multistep methods.\n9. Programs to solve elliptic equations using the finite difference method.\n10. Programs to solve parabolic and hyperbolic equations using the finite difference method.\n3.6.5"
+      "Module 1: Numerical Solution of Equations and Systems: Equations in one variable: The Bisection method, Fixed point iteration method, Secant method, Regula-Falsi method, Newton’s method and its extensions, Convergence of Newton’s method. System of equations: Jacobi and Gauss-Seidel iterative methods, Sufficient conditions for convergence, Power method to find dominant eigenvalue and eigenvector.",
+      "Module 2: Interpolation, Numerical Differentiation and Integration: Interpolation and Curve fitting: The Lagrange polynomial, Divided differences, Method of least square approximations. Numerical integration: Open and closed Newton-Cotes formula, Gaussian quadrature formula.",
+      "Module 3: Numerical Methods for Differential Equations: Ordinary Differential Equations: Euler’s method, Euler’s modified method, Taylor’s method, Runge-Kutta 4th order method, Multistep methods. Elliptic PDEs: Finite difference method for two-dimensional equations. Parabolic PDEs: Forward, backward, and Crank-Nicolson methods for one-dimensional equations. Hyperbolic PDEs: Central difference method for one-dimensional equations.",
+      "Module 4: Lab Experiments (2 hrs per week): Programming on standard computational simulation platforms for root finding, linear systems solvers, power method, curve fitting, Lagrange interpolation, numerical calculus, and ODE/PDE solvers."
     ],
     "textbooks": [
-      "3.6.5.1 Text Books:",
-      "1. M K Jain, S R K Iyengar and R K Jain, “Numerical Methods for Scientific and Engineering Computation”, New\nAge Publishers, 2012 (6th Ed.)",
-      "3.6.5.2 Reference Books:",
-      "1. E Kreyszig, “Advanced engineering mathematics”, Wiley India Pvt. Ltd., 2010 (8th Ed.)",
-      "2. R L Burden and J D Faires, “Numerical Analysis”, Brooks/Cole, 2012 (9th Ed.)",
-      "3. G D Smith, “Numerical solution of Partial Differential Equations”, Oxford University Press, 1985, (3rd Ed.)",
-      "4. M B Patil, M C Chandorkar, V Ramanarayanan and V T Ranganathan, “Simulation of Power Electronic\nCircuits”, Narosa, 2009, (1st Ed.)",
-      "3.7 Electrical Machine Lab - I"
+      "1. M K Jain, S R K Iyengar and R K Jain, “Numerical Methods for Scientific and Engineering Computation”, New Age Publishers, 2012 (6th Ed.)",
+      "2. E Kreyszig, “Advanced Engineering Mathematics”, Wiley India Pvt. Ltd., 2010 (8th Ed.)",
+      "3. R L Burden and J D Faires, “Numerical Analysis”, Brooks/Cole, 2012 (9th Ed.)",
+      "4. G D Smith, “Numerical Solution of Partial Differential Equations”, Oxford University Press, 1985 (3rd Ed.)"
     ],
-    "objectives": [],
+    "objectives": [
+      "Offer a thorough understanding of numerical algorithms for linear and non-linear algebraic equations.",
+      "Emphasize essential concepts of curve fitting, numerical differentiation, and numerical quadrature.",
+      "Implement numerical solutions for ordinary and partial differential equations on simulation platforms."
+    ],
     "outcomes": [
-      "At the completion of this course, the student shall acquire knowledge and ability"
-    ]
+      "CO1: Gain expertise in numerical solving techniques for single-variable and systems of equations.",
+      "CO2: Apply curve fitting, interpolation, and numerical integration to electrical engineering challenges.",
+      "CO3: Solve ODEs and PDEs using single-step, multistep, and finite difference methods."
+    ],
+    "sourceUrl": "https://www.nitgoa.ac.in/uploads/EEE2025.pdf"
   },
   "EE255": {
     "code": "EE255",
-    "name": "Electrical Machine Lab - I",
+    "name": "Electrical Machines - I Lab",
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
+    "pdfPage": 45,
     "ltp": "0-0-3",
     "credits": 2,
     "modules": [
-      "Module 1: Magnetic Core & DC Generators - B-H curve and hysteresis loop determination for ferromagnetic cores; open circuit and load characteristics of DC shunt, series, and compound generators.",
-      "Module 2: DC Motors & Testing - Speed control of DC shunt motor via armature voltage and field flux control; Swinburne's test, Hopkinson's regenerative test, and direct brake load test on DC series motor.",
-      "Module 3: Transformers - Open circuit (OC) and short circuit (SC) tests on single-phase transformers; predetermination of efficiency and voltage regulation; Sumpner's back-to-back test; Scott connection for 3-phase to 2-phase conversion.",
-      "Module 4: Polyphase Induction Motors - No-load and blocked rotor tests on three-phase squirrel cage induction motor; circle diagram construction; direct load test on wound rotor motor and rotor resistance speed control."
+      "Experiment 1: Determination of B-H curve and magnetization characteristics for ferromagnetic core.",
+      "Experiment 2: Performance characteristics of separately excited and self-excited DC generator.",
+      "Experiment 3: Load and performance characteristics of DC shunt, series, and compound motors.",
+      "Experiment 4: Speed control of DC shunt Motor using armature voltage and field weakening methods.",
+      "Experiment 5: Open circuit (OC) and Short circuit (SC) test of 1-phase and 3-phase transformers.",
+      "Experiment 6: Direct load test on 1-phase and 3-phase transformers.",
+      "Experiment 7: No Load and Blocked rotor test on three-phase Induction motor to construct circle diagram.",
+      "Experiment 8: Performance characteristics and load testing of three-phase Induction motor.",
+      "Experiment 9: Speed control of Slip ring Induction motor via rotor resistance control."
     ],
     "textbooks": [
-      "1. I. J. Nagrath and D. P. Kothari, \"Electric Machines\", 5th Edition, McGraw-Hill.",
-      "2. P. S. Bimbhra, \"Electrical Machinery\", 7th Edition, Khanna Publishers."
+      "1. P. S. Bimbhra, \"Electrical Machinery\", 7th Edition, Khanna Publishers.",
+      "2. A. E. Fitzgerald, C. Kingsley, and S. D. Umans, \"Electric Machinery\", McGraw-Hill.",
+      "3. Department of EEE, \"Electrical Machines - I Laboratory Manual\", NIT Goa."
     ],
     "objectives": [
-      "To perform operational and performance testing on DC machines, transformers, and polyphase induction motors.",
-      "To evaluate efficiency, losses, voltage regulation, and torque-speed characteristics."
+      "Provide insight into constructional details of DC machines and transformers for better understanding of their working principles.",
+      "Test and evaluate performance of various DC machines, transformers, and induction machines by conducting standard experiments."
     ],
     "outcomes": [
       "CO1: Conduct standard tests to determine equivalent circuit parameters of transformers and induction machines.",
-      "CO2: Control the speed and analyze torque-speed characteristics of DC motors.",
+      "CO2: Control the speed and analyze torque-speed characteristics of DC motors and induction motors.",
       "CO3: Construct circle diagrams and predict performance metrics under varying industrial loads."
     ],
     "sourceUrl": "https://www.nitgoa.ac.in/uploads/EEE2025.pdf"
   },
   "EE256": {
     "code": "EE256",
-    "name": "Analog and Digital Circuits Lab",
+    "name": "Analog and Digital circuit Lab",
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
+    "pdfPage": 46,
     "ltp": "0-0-3",
     "credits": 2,
     "modules": [
-      "Module 1: Discrete Analog Circuits - Static and dynamic characteristics of BJT and MOSFET amplifiers, frequency response, feedback amplifier topologies, RC phase-shift and Wien bridge oscillators.",
-      "Module 2: Operational Amplifier Applications - Inverting, non-inverting, summing, and difference amplifiers; active low-pass, high-pass, and band-pass Butterworth filters; Schmitt trigger and precision rectifiers.",
-      "Module 3: Digital Combinational & Sequential Logic - Implementation of adders, subtractors, multiplexers, demultiplexers, flip-flops, asynchronous and synchronous counters, and shift registers.",
-      "Module 4: Multivibrators & HDL Simulation - Astable and monostable multivibrators using IC 555; introduction to Verilog/VHDL simulation and implementation of combinational/sequential logic on FPGA/CPLD trainer boards."
+      "Experiment 1: Characteristics of MOSFET in different configurations and RC phase-shift oscillator.",
+      "Experiment 2: Design and testing of full adder and full subtractor circuits.",
+      "Experiment 3: Realization of Multiplexer and Demultiplexer functions.",
+      "Experiment 4: Counters and registers design using flip-flops (synchronous and ripple).",
+      "Experiment 5: Linear applications of Op-Amps: Inverting, non-inverting, and summing amplifiers.",
+      "Experiment 6: Non-linear applications of Op-Amps: Schmitt trigger, comparator, and precision rectifiers.",
+      "Experiment 7: Second-order active low-pass, high-pass, and band-pass Butterworth filter implementations.",
+      "Experiment 8: Monostable, Astable, and bistable multivibrators using IC 555.",
+      "Experiment 9: Phase Locked Loop (IC 565) frequency tracking and demodulation.",
+      "Experiment 10: Analog-to-Digital (ADC) and Digital-to-Analog (DAC) converters.",
+      "Experiment 11: Verilog/VHDL programming to realize logic gates, sequential and combinational circuits."
     ],
     "textbooks": [
       "1. Adel S. Sedra and Kenneth C. Smith, \"Microelectronic Circuits\", 7th Edition, Oxford University Press.",
-      "2. M. Morris Mano and Michael D. Ciletti, \"Digital Design\", 6th Edition, Pearson."
+      "2. M. Morris Mano and Michael D. Ciletti, \"Digital Design\", 6th Edition, Pearson.",
+      "3. Department of EEE, \"Analog & Digital Circuits Lab Manual\", NIT Goa."
     ],
     "objectives": [
-      "To design, build, and test practical analog amplifier, filter, and oscillator circuits.",
-      "To synthesize digital combinational and sequential logic circuits using discrete ICs and hardware description languages."
+      "Demonstrate practical knowledge of analog and digital circuit design.",
+      "Build, test, and analyze linear/non-linear op-amp circuits, multivibrators, PLL, and logic circuits."
     ],
     "outcomes": [
-      "CO1: Design and verify linear and non-linear op-amp processing circuits.",
+      "CO1: Design and verify linear and non-linear op-amp processing circuits and filters.",
       "CO2: Construct synchronous counters and register circuits using flip-flops and logic gates.",
       "CO3: Model and simulate digital hardware blocks using Verilog/VHDL."
     ],
@@ -2467,26 +2570,37 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "EEE",
     "pdfPath": "/syllabi/EEE2025.pdf",
     "pdfName": "EEE2025.pdf",
+    "pdfPage": 47,
     "ltp": "0-0-3",
     "credits": 2,
     "modules": [
-      "Module 1: Simulation of Control Systems - MATLAB/Simulink modeling of transfer functions, state-space representations, step and impulse responses, and pole-zero map stability analysis.",
-      "Module 2: Servomotors & Position Control - Experimental study of AC and DC servomotors, synchro transmitter-receiver pairs, and closed-loop angular/rectilinear position control systems.",
-      "Module 3: PID Controller Design & Tuning - Design, tuning (Ziegler-Nichols), and experimental validation of P, PI, PD, and PID controllers for DC motor speed control, liquid level control, and temperature control systems.",
-      "Module 4: Advanced Control & Automation - Study of inverted pendulum system, 2-DoF ball-on-beam balance, 3-DoF gyroscope cascade control, and PLC ladder logic programming for industrial sequencing."
+      "Experiment 1: Simulation of various control systems tools using suitable software (MATLAB/Simulink).",
+      "Experiment 2: Study of DC servo motors and Synchro transmitter-receiver pairs.",
+      "Experiment 3: Study of rectilinear motion and speed-torque characteristics.",
+      "Experiment 4: Closed-loop DC and AC position Control Systems.",
+      "Experiment 5: (a) Closed-loop P, PI, PD, and PID controllers. (b) Design and validation of PID controller for speed and position control.",
+      "Experiment 6: (a) Temperature Control Systems. (b) Two tank water Level Control Systems.",
+      "Experiment 7: Study of Inverted Pendulum System.",
+      "Experiment 8: (a) Study of 2-DoF ball on beam. (b) Study of Cascade Control using 3-DoF gyroscope.",
+      "Experiment 9: Study and develop ladder programs using PLC for different automation applications.",
+      "Experiment 10: Study of Magnetic Levitation system.",
+      "Experiment 11: Microcontroller based Control System with real-world application."
     ],
     "textbooks": [
-      "1. I. J. Nagrath and M. Gopal, \"Control Systems Engineering\", 6th Edition, New Age International, 2018.",
-      "2. Katsuhiko Ogata, \"Modern Control Engineering\", 5th Edition, Pearson, 2015."
+      "1. Katsuhiko Ogata, \"Modern Control Engineering\", 5th Edition, Pearson.",
+      "2. I. J. Nagrath and M. Gopal, \"Control Systems Engineering\", 7th Edition, New Age International.",
+      "3. Department of EEE, \"Control Systems Laboratory Manual\", NIT Goa."
     ],
     "objectives": [
-      "To experimentally verify the principles of classical and modern control system engineering.",
-      "To design, tune, and test analog and digital PID controllers on real hardware plants."
+      "Demonstrate knowledge of simulation tools for control system design.",
+      "Develop mathematical models of physical systems by conducting appropriate experiments.",
+      "Analyze stability using classical and modern control approaches and design PID controllers."
     ],
     "outcomes": [
-      "CO1: Model dynamic systems and analyze stability using time-domain and frequency-domain response curves.",
-      "CO2: Implement and tune PID controllers for speed, position, temperature, and level regulation.",
-      "CO3: Program PLCs and configure industrial control loops for automated machinery."
+      "CO1: Model and simulate control components in MATLAB/Simulink.",
+      "CO2: Characterize DC/AC servo motors and position control systems.",
+      "CO3: Tune and validate analog and digital PID controllers on industrial physical testbeds.",
+      "CO4: Implement PLC ladder programs for automation."
     ],
     "sourceUrl": "https://www.nitgoa.ac.in/uploads/EEE2025.pdf"
   },
@@ -6506,6 +6620,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "CSE",
     "pdfPath": "/syllabi/CSE2025.pdf",
     "pdfName": "CSE2025.pdf",
+    "pdfPage": 28,
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
@@ -6533,6 +6648,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "CSE",
     "pdfPath": "/syllabi/CSE2025.pdf",
     "pdfName": "CSE2025.pdf",
+    "pdfPage": 30,
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
@@ -6565,6 +6681,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "CSE",
     "pdfPath": "/syllabi/CSE2025.pdf",
     "pdfName": "CSE2025.pdf",
+    "pdfPage": 32,
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
@@ -6594,6 +6711,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "CSE",
     "pdfPath": "/syllabi/CSE2025.pdf",
     "pdfName": "CSE2025.pdf",
+    "pdfPage": 34,
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
@@ -6620,6 +6738,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "CSE",
     "pdfPath": "/syllabi/CSE2025.pdf",
     "pdfName": "CSE2025.pdf",
+    "pdfPage": 37,
     "ltp": "3-0-0",
     "credits": 3,
     "modules": [
@@ -6649,6 +6768,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "CSE",
     "pdfPath": "/syllabi/CSE2025.pdf",
     "pdfName": "CSE2025.pdf",
+    "pdfPage": 39,
     "ltp": "0-0-3",
     "credits": 2,
     "modules": [
@@ -6678,6 +6798,7 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
     "branch": "CSE",
     "pdfPath": "/syllabi/CSE2025.pdf",
     "pdfName": "CSE2025.pdf",
+    "pdfPage": 40,
     "ltp": "0-0-3",
     "credits": 2,
     "modules": [
@@ -12975,19 +13096,60 @@ export const OFFICIAL_NIT_GOA_SYLLABI: Record<string, OfficialCourseSyllabus> = 
   }
 };
 
+// Accredited Course Handbook Start Page Index for all NIT Goa Branches
+const COURSE_PDF_PAGE_MAP: Record<string, number> = {
+  // EEE Handbook (EEE2025.pdf)
+  'MA203': 20, 'EE200': 22, 'EE201': 24, 'EE202': 26, 'EE203': 28, 'EE204': 30, 'EE205': 31, 'EE206': 32,
+  'IE250': 33, 'EE250': 35, 'EE251': 37, 'EE252': 39, 'EE253': 41, 'EE254': 43, 'EE255': 45, 'EE256': 46, 'EE257': 47,
+  'EE300': 50, 'EE301': 52, 'EE302': 54, 'EE303': 56, 'EE304': 58, 'EE305': 59, 'EE306': 60,
+  'EE350': 61, 'EE351': 62, 'EE352': 64, 'EE353': 66, 'EE354': 67, 'EE355': 68,
+  // CSE Handbook (CSE2025.pdf)
+  'MA201': 9, 'CS200': 11, 'CS201': 13, 'CS202': 15, 'CS203': 17, 'CS204': 19, 'CS205': 21, 'CS206': 23,
+  'CS250': 28, 'CS251': 30, 'CS252': 32, 'CS253': 34, 'CS254': 37, 'CS255': 39, 'CS256': 40,
+  'CS300': 43, 'CS301': 45, 'CS302': 47, 'CS303': 49, 'CS304': 52, 'CS305': 53,
+  'CS350': 58, 'CS351': 60, 'CS352': 62, 'CS354': 66,
+  // ECE Handbook (ECE2025.pdf)
+  'EC200': 11, 'EC201': 13, 'EC202': 14, 'EC203': 16, 'EC204': 18, 'EC205': 20,
+  'EC250': 23, 'EC251': 25, 'EC252': 26, 'EC253': 28, 'EC254': 30, 'EC255': 31, 'EC256': 33,
+  'EC300': 34, 'EC301': 36, 'EC302': 38, 'EC303': 40, 'EC304': 42, 'EC305': 44,
+  'EC350': 50, 'EC351': 52, 'EC352': 53, 'EC353': 55, 'EC354': 57,
+  // Mechanical Handbook (Mechanical2025.pdf)
+  'ME201': 11, 'ME202': 13, 'ME203': 15, 'ME204': 17, 'ME205': 19,
+  'ME250': 26, 'ME251': 28, 'ME252': 30, 'ME253': 32, 'ME254': 34, 'ME255': 36, 'ME256': 38, 'ME257': 39,
+  'ME300': 40, 'ME301': 43, 'ME302': 45, 'ME303': 47, 'ME304': 49, 'ME305': 51, 'ME306': 53,
+  'ME350': 58, 'ME351': 60, 'ME352': 62, 'ME353': 64, 'ME354': 66,
+  // Civil Handbook (CVE2025.pdf)
+  'CV200': 9, 'CV201': 12, 'CV202': 15, 'CV203': 18, 'CV204': 21, 'CV205': 24, 'CV206': 26, 'CV207': 28,
+  'CV250': 32, 'CV251': 35, 'CV252': 38, 'CV253': 41, 'CV254': 44, 'CV255': 47, 'CV256': 49,
+  'CV300': 52, 'CV301': 55, 'CV302': 58, 'CV303': 61, 'CV304': 64, 'CV305': 68, 'CV306': 70,
+  'CV350': 75,
+  // Common 1st Year (FIRST_YEAR_2025.pdf)
+  'PH100': 15, 'PH101': 18, 'CY100': 20, 'CY101': 23, 'MA100': 25, 'MA150': 28,
+  'EE100': 30, 'EE101': 33, 'EC100': 35, 'EC101': 38, 'CS100': 40, 'CS101': 43,
+  'ME100': 45, 'ME101': 48, 'CV100': 50, 'HS100': 53
+};
+
 export function getOfficialCourseSyllabus(courseCode: string): OfficialCourseSyllabus | null {
   if (!courseCode) return null;
   const clean = courseCode.trim().toUpperCase().replace(/\s+/g, '');
-  
+
+  const withPage = (item: OfficialCourseSyllabus, codeKey: string): OfficialCourseSyllabus => {
+    const matchedPage = COURSE_PDF_PAGE_MAP[clean] || COURSE_PDF_PAGE_MAP[codeKey] || item.pdfPage || 1;
+    return {
+      ...item,
+      pdfPage: matchedPage,
+    };
+  };
+
   if (OFFICIAL_NIT_GOA_SYLLABI[clean]) {
-    return OFFICIAL_NIT_GOA_SYLLABI[clean];
+    return withPage(OFFICIAL_NIT_GOA_SYLLABI[clean], clean);
   }
 
   // Handle Minor course codes ending in M (e.g. CS300M -> CS300M or CS300)
   if (clean.endsWith('M')) {
     const baseWithoutM = clean.slice(0, -1);
     if (OFFICIAL_NIT_GOA_SYLLABI[baseWithoutM]) {
-      return OFFICIAL_NIT_GOA_SYLLABI[baseWithoutM];
+      return withPage(OFFICIAL_NIT_GOA_SYLLABI[baseWithoutM], baseWithoutM);
     }
   }
 
@@ -13019,22 +13181,22 @@ export function getOfficialCourseSyllabus(courseCode: string): OfficialCourseSyl
   };
 
   if (ELECTIVE_ALIASES[clean] && OFFICIAL_NIT_GOA_SYLLABI[ELECTIVE_ALIASES[clean]]) {
-    return OFFICIAL_NIT_GOA_SYLLABI[ELECTIVE_ALIASES[clean]];
+    return withPage(OFFICIAL_NIT_GOA_SYLLABI[ELECTIVE_ALIASES[clean]], ELECTIVE_ALIASES[clean]);
   }
-  
+
   // Try CE -> CV alias (Civil Engineering)
   if (clean.startsWith('CE')) {
     const cvCode = 'CV' + clean.slice(2);
     if (OFFICIAL_NIT_GOA_SYLLABI[cvCode]) {
-      return OFFICIAL_NIT_GOA_SYLLABI[cvCode];
+      return withPage(OFFICIAL_NIT_GOA_SYLLABI[cvCode], cvCode);
     }
   }
-  
+
   // Try CV -> CE alias
   if (clean.startsWith('CV')) {
     const ceCode = 'CE' + clean.slice(2);
     if (OFFICIAL_NIT_GOA_SYLLABI[ceCode]) {
-      return OFFICIAL_NIT_GOA_SYLLABI[ceCode];
+      return withPage(OFFICIAL_NIT_GOA_SYLLABI[ceCode], ceCode);
     }
   }
 
@@ -13042,16 +13204,16 @@ export function getOfficialCourseSyllabus(courseCode: string): OfficialCourseSyl
   if (clean.startsWith('MCE')) {
     const meCode = 'ME' + clean.slice(3);
     if (OFFICIAL_NIT_GOA_SYLLABI[meCode]) {
-      return OFFICIAL_NIT_GOA_SYLLABI[meCode];
+      return withPage(OFFICIAL_NIT_GOA_SYLLABI[meCode], meCode);
     }
   }
 
   if (clean.startsWith('ME')) {
     const mceCode = 'MCE' + clean.slice(2);
     if (OFFICIAL_NIT_GOA_SYLLABI[mceCode]) {
-      return OFFICIAL_NIT_GOA_SYLLABI[mceCode];
+      return withPage(OFFICIAL_NIT_GOA_SYLLABI[mceCode], mceCode);
     }
   }
-  
+
   return null;
 }

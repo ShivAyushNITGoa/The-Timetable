@@ -341,6 +341,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
               sourceUrl={officialSyllabus.sourceUrl}
               courseModules={officialSyllabus.modules}
               courseCode={course.code}
+              initialPage={officialSyllabus.pdfPage || 1}
               onClose={() => setViewTab('details')}
               className="rounded-none border-0 h-full"
             />
