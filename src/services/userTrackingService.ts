@@ -50,22 +50,7 @@ export interface UserSummaryItem {
   sessionCount?: number;
 }
 
-const LOCAL_STORAGE_CLIENT_ID_KEY = 'nit_goa_anonymous_client_id';
 const LOCAL_STORAGE_ACTIVITY_CACHE = 'nit_goa_recent_activity_cache';
-
-// Retrieve or generate a persistent anonymous device client ID
-export function getOrCreateClientId(): string {
-  try {
-    let clientId = localStorage.getItem(LOCAL_STORAGE_CLIENT_ID_KEY);
-    if (!clientId) {
-      clientId = 'guest_' + Math.random().toString(36).substring(2, 9) + Date.now().toString(36).slice(-4);
-      localStorage.setItem(LOCAL_STORAGE_CLIENT_ID_KEY, clientId);
-    }
-    return clientId;
-  } catch {
-    return 'guest_' + Math.random().toString(36).substring(2, 9);
-  }
-}
 
 // Detect client device and environment details
 export function getClientDeviceSummary(): string {
@@ -97,7 +82,7 @@ export function getClientDeviceSummary(): string {
   return `${deviceName} (${browser})`;
 }
 
-// Local cache helper to keep recent logs in localStorage for resilience
+// Local cache helper to keep recent logs in localStorage for logged-in user resilience
 function cacheActivityLocally(log: UserActivityLog) {
   try {
     const raw = localStorage.getItem(LOCAL_STORAGE_ACTIVITY_CACHE);
@@ -113,17 +98,40 @@ function cacheActivityLocally(log: UserActivityLog) {
 export function getCachedLocalActivities(): UserActivityLog[] {
   try {
     const raw = localStorage.getItem(LOCAL_STORAGE_ACTIVITY_CACHE);
-    return raw ? JSON.parse(raw) : [];
+    if (!raw) return [];
+    const list: UserActivityLog[] = JSON.parse(raw);
+    // Only return activities from genuine logged-in users (filter out any demo/seed/guest artifacts)
+    return list.filter(
+      (a) =>
+        a &&
+        !a.id?.startsWith('seed_') &&
+        a.userEmail &&
+        a.userEmail.includes('@') &&
+        !a.userEmail.includes('guest') &&
+        !a.userId?.startsWith('guest_') &&
+        !a.userId?.startsWith('uid_')
+    );
   } catch {
     return [];
   }
+}
+
+// Check if a log entry represents a real authenticated user
+export function isRealUserLog(a: UserActivityLog): boolean {
+  if (!a || !a.userEmail) return false;
+  if (a.id?.startsWith('seed_')) return false;
+  if (a.userId?.startsWith('uid_') || a.userId?.startsWith('guest_')) return false;
+  if (a.userEmail.toLowerCase().includes('guest')) return false;
+  return a.userEmail.includes('@');
 }
 
 // Throttle mechanism to prevent flooding writes on rapid events
 const lastTrackedMap = new Map<string, number>();
 
 /**
- * Tracks a user interaction in Firestore and updates active presence
+ * Tracks a user interaction in Firestore and updates active presence.
+ * CRITICAL REQUIREMENT: ONLY records for authenticated / logged-in users.
+ * Does not track any demo, anonymous, or guest users.
  */
 export async function trackUserActivity(
   action: ActivityActionType,
@@ -136,21 +144,26 @@ export async function trackUserActivity(
     currentUser?: User | null;
   }
 ): Promise<void> {
+  const user = context.currentUser;
+
+  // STRICT REQUIREMENT: Only track authenticated / logged-in users
+  if (!user || !user.email) {
+    return;
+  }
+
   const now = Date.now();
-  const throttleKey = `${action}_${context.branch}_${context.semester}`;
+  const throttleKey = `${user.uid}_${action}_${context.branch}_${context.semester}`;
   const lastTime = lastTrackedMap.get(throttleKey) || 0;
 
-  // Throttle same action within 15 seconds to conserve quota
+  // Throttle same action within 15 seconds to conserve Firestore quota
   if (now - lastTime < 15000 && action !== 'attendance_update' && action !== 'test_scheduled') {
     return;
   }
   lastTrackedMap.set(throttleKey, now);
 
-  const clientId = getOrCreateClientId();
-  const user = context.currentUser;
-  const userId = user?.uid || clientId;
-  const userEmail = user?.email || `Student (${clientId.slice(0, 10)})`;
-  const userName = user?.displayName || (user?.email ? user.email.split('@')[0] : 'NIT Goa Student');
+  const userId = user.uid;
+  const userEmail = user.email;
+  const userName = user.displayName || user.email.split('@')[0] || 'Logged Student';
   const branch = context.branch || 'EEE';
   const semester = context.semester || 5;
   const section = context.section || '';
@@ -173,49 +186,47 @@ export async function trackUserActivity(
     timestamp,
   };
 
-  // Cache locally right away
+  // Cache locally
   cacheActivityLocally(activityLog);
 
-  // Sync to Firestore asynchronously
+  // Sync to Firestore
   const path = `user_activity/${activityId}`;
   try {
     const docRef = doc(db, 'user_activity', activityId);
     await setDoc(docRef, activityLog);
   } catch (err: any) {
-    // Fail silently in guest / offline conditions
-    console.debug('User activity queued locally (Firestore sync deferred):', err?.message || err);
+    console.debug('User activity queued locally:', err?.message || err);
   }
 
-  // Also update user's presence document in /users/{userId} if authenticated
-  if (user && user.uid) {
-    try {
-      const userRef = doc(db, 'users', user.uid);
-      await setDoc(
-        userRef,
-        {
-          email: user.email || '',
-          displayName: user.displayName || '',
-          photoURL: user.photoURL || '',
-          branch,
-          semester,
-          section,
-          device,
-          lastActive: timestamp,
-          lastAction: actionTitle,
-        },
-        { merge: true }
-      );
-    } catch (err: any) {
-      console.debug('User presence update deferred:', err?.message || err);
-    }
+  // Update user's presence document in /users/{userId}
+  try {
+    const userRef = doc(db, 'users', user.uid);
+    await setDoc(
+      userRef,
+      {
+        email: user.email,
+        displayName: user.displayName || user.email.split('@')[0],
+        photoURL: user.photoURL || '',
+        branch,
+        semester,
+        section,
+        device,
+        lastActive: timestamp,
+        lastAction: actionTitle,
+      },
+      { merge: true }
+    );
+  } catch (err: any) {
+    console.debug('User presence update deferred:', err?.message || err);
   }
 }
 
 /**
- * Subscribes to real-time user activity logs for the Administrator
+ * Subscribes to real-time user activity logs for the Administrator.
+ * Filters strictly to real authenticated logged-in users only.
  */
 export function subscribeToUserActivities(
-  limitCount: number = 60,
+  limitCount: number = 80,
   onUpdate: (logs: UserActivityLog[]) => void,
   onError?: (err: Error) => void
 ): () => void {
@@ -230,19 +241,22 @@ export function subscribeToUserActivities(
         const logs: UserActivityLog[] = [];
         snapshot.forEach((docSnap) => {
           const data = docSnap.data() as UserActivityLog;
-          logs.push({
+          const logItem: UserActivityLog = {
             ...data,
             id: docSnap.id,
-          });
+          };
+          if (isRealUserLog(logItem)) {
+            logs.push(logItem);
+          }
         });
 
-        // Merge with any fresh local items
+        // Merge with any fresh local items from real logged-in users
         const local = getCachedLocalActivities();
         const mergedMap = new Map<string, UserActivityLog>();
         
         logs.forEach((item) => mergedMap.set(item.id, item));
         local.forEach((item) => {
-          if (!mergedMap.has(item.id)) {
+          if (isRealUserLog(item) && !mergedMap.has(item.id)) {
             mergedMap.set(item.id, item);
           }
         });
@@ -255,21 +269,21 @@ export function subscribeToUserActivities(
       },
       (err: any) => {
         console.warn('Notice listening to user activity (fallback to local cache):', err?.message || err);
-        // Fallback to local activities cache
-        const local = getCachedLocalActivities();
+        const local = getCachedLocalActivities().filter(isRealUserLog);
         onUpdate(local);
         if (onError) onError(err);
       }
     );
   } catch (err: any) {
     console.warn('Failed to subscribe to user activity:', err);
-    onUpdate(getCachedLocalActivities());
+    onUpdate(getCachedLocalActivities().filter(isRealUserLog));
     return () => {};
   }
 }
 
 /**
- * Fetches all registered or recently active users from Firestore
+ * Fetches all real registered and logged-in users from Firestore.
+ * Excludes any demo or anonymous mock accounts.
  */
 export async function fetchAllTrackedUsers(): Promise<UserSummaryItem[]> {
   const path = 'users';
@@ -279,17 +293,27 @@ export async function fetchAllTrackedUsers(): Promise<UserSummaryItem[]> {
     const snapshot = await getDocs(colRef);
     snapshot.forEach((d) => {
       const data = d.data() as any;
-      list.push({
-        id: d.id,
-        email: data.email || 'student@nitgoa.ac.in',
-        displayName: data.displayName || data.name || 'NIT Goa Student',
-        branch: data.branch || 'EEE',
-        semester: data.semester || 5,
-        section: data.section || '',
-        device: data.device || 'Mobile PWA',
-        role: data.role || 'student',
-        lastActive: data.lastActive || data.lastLogin || new Date().toISOString(),
-      });
+      const email = data.email || '';
+      // Exclude demo / anonymous users
+      if (
+        email &&
+        email.includes('@') &&
+        !email.toLowerCase().includes('guest') &&
+        !d.id.startsWith('uid_') &&
+        !d.id.startsWith('guest_')
+      ) {
+        list.push({
+          id: d.id,
+          email,
+          displayName: data.displayName || data.name || email.split('@')[0],
+          branch: data.branch || 'EEE',
+          semester: data.semester || 5,
+          section: data.section || '',
+          device: data.device || 'Mobile PWA',
+          role: data.role || (email === 'ashivamone@gmail.com' ? 'admin' : 'student'),
+          lastActive: data.lastActive || data.lastLogin || new Date().toISOString(),
+        });
+      }
     });
     // Sort newest active first
     list.sort((a, b) => new Date(b.lastActive).getTime() - new Date(a.lastActive).getTime());
@@ -319,15 +343,16 @@ export async function deleteUserActivityLog(activityId: string): Promise<void> {
 }
 
 /**
- * Export logs to CSV file for download
+ * Export real logs to CSV file for download
  */
 export function exportActivitiesToCSV(activities: UserActivityLog[]) {
-  if (!activities || activities.length === 0) return;
+  const realLogs = (activities || []).filter(isRealUserLog);
+  if (realLogs.length === 0) return;
 
-  const headers = ['Timestamp', 'User Email / ID', 'User Name', 'Action Type', 'Action Title', 'Branch', 'Semester', 'Section', 'Device', 'Details'];
-  const rows = activities.map((a) => [
+  const headers = ['Timestamp', 'User Email', 'User Name', 'Action Type', 'Action Title', 'Branch', 'Semester', 'Section', 'Device', 'Details'];
+  const rows = realLogs.map((a) => [
     `"${a.timestamp}"`,
-    `"${a.userEmail || a.userId}"`,
+    `"${a.userEmail}"`,
     `"${a.userName || ''}"`,
     `"${a.action}"`,
     `"${(a.actionTitle || '').replace(/"/g, '""')}"`,
@@ -347,117 +372,4 @@ export function exportActivitiesToCSV(activities: UserActivityLog[]) {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
-}
-
-/**
- * Seed realistic telemetry events if starting fresh or previewing
- */
-export function getInitialSampleActivities(): UserActivityLog[] {
-  const now = Date.now();
-  const sampleActions: Array<{
-    email: string;
-    name: string;
-    action: ActivityActionType;
-    title: string;
-    branch: string;
-    sem: number;
-    sec?: string;
-    device: string;
-    offsetMinutes: number;
-    details: string;
-  }> = [
-    {
-      email: 'student.22eee014@nitgoa.ac.in',
-      name: 'Aditya S.',
-      action: 'view_timetable',
-      title: 'Viewed EEE 5th Sem Timetable',
-      branch: 'EEE',
-      sem: 5,
-      device: 'Mobile PWA App',
-      offsetMinutes: 2,
-      details: 'Checked Tuesday afternoon Microprocessors Slot B',
-    },
-    {
-      email: 'shivam.cse@nitgoa.ac.in',
-      name: 'Shivam K.',
-      action: 'view_syllabus',
-      title: 'Opened Embedded Syllabus PDF',
-      branch: 'CSE',
-      sem: 7,
-      device: 'Desktop (Chrome)',
-      offsetMinutes: 7,
-      details: 'Viewed CS400 Cloud Computing page 42 in continuous reader',
-    },
-    {
-      email: 'priya.ece23@nitgoa.ac.in',
-      name: 'Priya R.',
-      action: 'attendance_update',
-      title: 'Logged Attendance for Signals & Systems',
-      branch: 'ECE',
-      sem: 4,
-      device: 'Mobile (Safari)',
-      offsetMinutes: 14,
-      details: 'Attendance marked 18/20 (90%) in EC250',
-    },
-    {
-      email: 'rahul.me@nitgoa.ac.in',
-      name: 'Rahul M.',
-      action: 'session_start',
-      title: 'Started Session on Mobile',
-      branch: 'ME',
-      sem: 6,
-      device: 'Mobile PWA App',
-      offsetMinutes: 28,
-      details: 'Opened Day Schedule directly on today timetable',
-    },
-    {
-      email: 'neha.cve@nitgoa.ac.in',
-      name: 'Neha P.',
-      action: 'test_scheduled',
-      title: 'Added Academic Test Reminder',
-      branch: 'CVE',
-      sem: 4,
-      device: 'Desktop (Firefox)',
-      offsetMinutes: 45,
-      details: 'Scheduled Mid-Sem countdown for Fluid Mechanics',
-    },
-    {
-      email: 'ashivamone@gmail.com',
-      name: 'Academic Administrator',
-      action: 'auth_change',
-      title: 'Admin Console Access',
-      branch: 'EEE',
-      sem: 4,
-      device: 'Desktop (Chrome)',
-      offsetMinutes: 62,
-      details: 'Verified EEE 4th Sem syllabus & Table 1.3 mapping',
-    },
-    {
-      email: 'firstyear.sec_c@nitgoa.ac.in',
-      name: 'Aryan T.',
-      action: 'branch_change',
-      title: 'Selected 1st Year Chemistry Cycle',
-      branch: 'CSE',
-      sem: 1,
-      sec: 'C',
-      device: 'Mobile (Chrome)',
-      offsetMinutes: 80,
-      details: 'Switched to Section C (LH 03) Schedule',
-    },
-  ];
-
-  return sampleActions.map((s, idx) => ({
-    id: `seed_act_${idx}`,
-    userId: `uid_${idx}`,
-    userEmail: s.email,
-    userName: s.name,
-    action: s.action,
-    actionTitle: s.title,
-    branch: s.branch,
-    semester: s.sem,
-    section: s.sec,
-    device: s.device,
-    details: s.details,
-    timestamp: new Date(now - s.offsetMinutes * 60 * 1000).toISOString(),
-  }));
 }

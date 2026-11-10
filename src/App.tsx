@@ -92,6 +92,27 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
 
+  // Universal Student Profile (Branch, Year, Semester, Batch, Elective, Minor)
+  const [profile, setProfile] = useState<StudentProfile>(() => {
+    try {
+      const saved = localStorage.getItem('nit_goa_student_profile');
+      if (saved && saved !== 'undefined' && saved !== 'null') {
+        const parsed = JSON.parse(saved);
+        if (parsed && typeof parsed === 'object' && parsed.branch) {
+          return {
+            ...DEFAULT_STUDENT_PROFILE,
+            ...parsed,
+          };
+        }
+      }
+    } catch (e) {
+      console.error(e);
+    }
+    return DEFAULT_STUDENT_PROFILE;
+  });
+
+  const safeProfile: StudentProfile = profile && profile.branch ? profile : DEFAULT_STUDENT_PROFILE;
+
   // App Entry / Landing Page State: If not logged in and first time in session, show landing page
   const [hasEnteredApp, setHasEnteredApp] = useState<boolean>(() => {
     try {
@@ -128,9 +149,18 @@ export default function App() {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       setAuthLoading(false);
+      if (user && user.email) {
+        trackUserActivity('session_start', 'Active Session', {
+          branch: safeProfile.branch,
+          semester: safeProfile.semester,
+          section: safeProfile.firstYearSection,
+          details: `Active session for logged-in user: ${user.email}`,
+          currentUser: user,
+        });
+      }
     });
     return () => unsubscribe();
-  }, []);
+  }, [safeProfile.branch, safeProfile.semester, safeProfile.firstYearSection]);
 
   // Subscribe to live announcements
   useEffect(() => {
@@ -184,27 +214,6 @@ export default function App() {
       currentUser,
     });
   };
-
-  // Universal Student Profile (Branch, Year, Semester, Batch, Elective, Minor)
-  const [profile, setProfile] = useState<StudentProfile>(() => {
-    try {
-      const saved = localStorage.getItem('nit_goa_student_profile');
-      if (saved && saved !== 'undefined' && saved !== 'null') {
-        const parsed = JSON.parse(saved);
-        if (parsed && typeof parsed === 'object' && parsed.branch) {
-          return {
-            ...DEFAULT_STUDENT_PROFILE,
-            ...parsed,
-          };
-        }
-      }
-    } catch (e) {
-      console.error(e);
-    }
-    return DEFAULT_STUDENT_PROFILE;
-  });
-
-  const safeProfile: StudentProfile = profile && profile.branch ? profile : DEFAULT_STUDENT_PROFILE;
 
   // Active Branch & Semester Dataset
   const activeBranchData = getActiveBranchSemesterData(
@@ -486,6 +495,14 @@ export default function App() {
         }).catch((err) => {
           console.warn('Could not sync attendance to cloud:', err);
         });
+
+        trackUserActivity('attendance_update', 'Logged Attendance', {
+          branch: safeProfile.branch,
+          semester: safeProfile.semester,
+          section: safeProfile.firstYearSection,
+          details: `Updated attendance records for ${safeProfile.branch} Sem ${safeProfile.semester}`,
+          currentUser,
+        });
       }
     };
 
@@ -568,10 +585,19 @@ export default function App() {
   // Google Authentication Handlers
   const handleGoogleSignIn = async () => {
     try {
-      await signInWithGoogle();
+      const signedInUser = await signInWithGoogle();
       setHasEnteredApp(true);
       sessionStorage.setItem('nit_goa_entered_app', 'true');
       showToast('Successfully signed in with Google!');
+      if (signedInUser && signedInUser.email) {
+        trackUserActivity('auth_change', 'Signed In via Google', {
+          branch: safeProfile.branch,
+          semester: safeProfile.semester,
+          section: safeProfile.firstYearSection,
+          details: `User signed in with account: ${signedInUser.email}`,
+          currentUser: signedInUser,
+        });
+      }
     } catch (err: any) {
       console.error('Sign in error:', err);
       showToast(err.message || 'Google sign-in was cancelled or failed.');
@@ -579,6 +605,15 @@ export default function App() {
   };
 
   const handleGoogleSignOut = async () => {
+    if (currentUser && currentUser.email) {
+      trackUserActivity('auth_change', 'Signed Out', {
+        branch: safeProfile.branch,
+        semester: safeProfile.semester,
+        section: safeProfile.firstYearSection,
+        details: `User signed out from session: ${currentUser.email}`,
+        currentUser,
+      });
+    }
     try {
       await signOutUser();
       showToast('Signed out successfully.');

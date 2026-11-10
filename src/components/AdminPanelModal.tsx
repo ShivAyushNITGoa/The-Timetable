@@ -56,7 +56,6 @@ import {
   fetchAllTrackedUsers,
   deleteUserActivityLog,
   exportActivitiesToCSV,
-  getInitialSampleActivities,
 } from '../services/userTrackingService';
 import { firebaseConfig } from '../firebase';
 
@@ -126,7 +125,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
   const [confirmDeleteAnnId, setConfirmDeleteAnnId] = useState<string | null>(null);
 
   // User Tracking & Analytics State
-  const [activities, setActivities] = useState<UserActivityLog[]>(() => getInitialSampleActivities());
+  const [activities, setActivities] = useState<UserActivityLog[]>([]);
   const [trackedUsers, setTrackedUsers] = useState<UserSummaryItem[]>([]);
   const [userSearchQuery, setUserSearchQuery] = useState('');
   const [userBranchFilter, setUserBranchFilter] = useState<string>('ALL');
@@ -1736,8 +1735,14 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                   {/* Activity Feed List / Table */}
                   <div className="space-y-2">
                     {filteredActivities.length === 0 ? (
-                      <div className="p-12 text-center text-slate-500 dark:text-slate-400 text-xs bg-white dark:bg-slate-950 rounded-lg border border-slate-200 dark:border-slate-800">
-                        No activity records found matching the selected filters.
+                      <div className="p-12 text-center text-slate-500 dark:text-slate-400 text-xs bg-white dark:bg-slate-950 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2">
+                        <Users size={28} className="mx-auto text-slate-400 opacity-60" />
+                        <div className="font-bold text-slate-800 dark:text-slate-200 text-sm">
+                          No Activity Logged for Authenticated Users Yet
+                        </div>
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400 max-w-md mx-auto">
+                          User tracking records verified logged-in users only (no demo or anonymous users). Real-time interactions will appear here when authenticated students or faculty use the application.
+                        </p>
                       </div>
                     ) : (
                       filteredActivities.map((act) => {
@@ -1855,8 +1860,14 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                     </div>
 
                     {trackedUsers.length === 0 ? (
-                      <div className="p-8 text-center text-slate-500 dark:text-slate-400 text-xs">
-                        No registered cloud user profiles found yet. Users automatically appear here when they log in or sync their academic profile.
+                      <div className="p-8 text-center text-slate-500 dark:text-slate-400 text-xs space-y-2">
+                        <Users size={28} className="mx-auto text-slate-400 opacity-60" />
+                        <div className="font-bold text-slate-800 dark:text-slate-200 text-sm">
+                          No Registered Logged-In Student Accounts in Cloud Yet
+                        </div>
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400 max-w-md mx-auto">
+                          Demo users have been completely removed. Student and faculty profiles will appear here automatically when they sign in with their Google account.
+                        </p>
                       </div>
                     ) : (
                       <div className="overflow-x-auto">
